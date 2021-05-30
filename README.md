@@ -1,0 +1,2 @@
+Wefabric WordPress - Theme
+==========================
