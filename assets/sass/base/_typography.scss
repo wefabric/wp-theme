@@ -1,0 +1,78 @@
+@layer base {
+
+  h1, .h1 {
+    @apply text-2xl text-primary font-head break-words uppercase;
+    line-height: 1.2 !important;
+
+    @media (min-width: 640px) {
+    }
+
+    @media (min-width: 768px) {
+      @apply text-3xl;
+    }
+
+    @media (min-width: 1024px) {
+      @apply text-3xl
+    }
+
+    @media (min-width: 1280px) {
+    }
+
+    @media (min-width: 1536px) {
+      @apply text-5xl;
+    }
+  }
+
+  h2, .h2 {
+    @apply text-2xl text-primary font-head break-words leading-snug;
+
+    @media (min-width: 640px) {
+    }
+
+    @media (min-width: 768px) {
+      @apply text-2xl;
+    }
+
+    @media (min-width: 1024px) {
+      @apply text-2xl
+    }
+
+    @media (min-width: 1280px) {
+    }
+
+    @media (min-width: 1536px) {
+      @apply text-4xl;
+    }
+  }
+
+  h3, .h3 {
+    @apply text-xl text-primary font-head break-words;
+
+
+    @media (min-width: 640px) {
+    }
+
+    @media (min-width: 768px) {
+      @apply text-lg;
+    }
+
+    @media (min-width: 1024px) {
+      @apply text-lg
+    }
+
+    @media (min-width: 1280px) {
+    }
+
+    @media (min-width: 1536px) {
+      @apply text-2xl;
+    }
+
+  }
+
+  h4, .h4 {
+    @apply text-lg text-primary font-head break-words;
+    @media (min-width: 768px) {
+      @apply text-md;
+    }
+  }
+}

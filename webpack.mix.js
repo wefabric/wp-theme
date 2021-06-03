@@ -15,7 +15,6 @@ mix.setPublicPath('dist');
 
 mix.js('assets/js/app.js', 'dist/js')
     .sass('assets/sass/app.scss', 'dist/css')
-    .sass('assets/sass/woocommerce.scss', 'dist/css')
     .options({
         processCssUrls: false,
         postCss: [ tailwindcss('./tailwind.config.js') ],

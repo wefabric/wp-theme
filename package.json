@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/wefabric/wp-theme/#readme",
   "devDependencies": {
+    "@tailwindcss/forms": "^0.2.1",
+    "@tailwindcss/typography": "^0.3.0",
     "autoprefixer": "^10.0.2",
     "axios": "^0.21",
     "laravel-mix": "^6.0.6",

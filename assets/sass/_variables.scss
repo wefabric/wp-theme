@@ -1,0 +1,29 @@
+$fa-font-path: "/fonts";
+$fa-font-family: "Font Awesome 5 Pro";
+$fa-font-family-brands: "Font Awesome 5 Brands";
+
+//$slick-font-path: "/assets/dist/fonts";
+//$slick-loader-path: "~slick-carousel/slick/";
+$themeColors: 'primary', 'secondary', 'tertiary';
+$screenSizes: (
+                (
+                        'sm',
+                        '640px'
+                ),
+                (
+                        'md',
+                        '768px'
+                ),
+                (
+                        'lg',
+                        '1024px'
+                ),
+                (
+                        'xl',
+                        '1280px'
+                ),
+                (
+                        'twoxl',
+                        '1536px'
+                )
+)
