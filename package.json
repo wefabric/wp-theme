@@ -3,18 +3,6 @@
   "version": "2.0.0",
   "description": "Wefabric boilerplate theme.",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-  },
-  "author": "Wefabric",
-  "license": "GPL-2.0-or-later",
-  "bugs": {
-    "url": "https://github.com/wefabric/wp-theme/issues"
-  },
-  "homepage": "https://github.com/wefabric/wp-theme/#readme",
-  "scripts": {
     "dev": "npm run development",
     "development": "mix",
     "watch": "mix watch",
@@ -23,6 +11,12 @@
     "prod": "npm run production",
     "production": "mix --production"
   },
+  "author": "Wefabric",
+  "license": "GPL-2.0-or-later",
+  "bugs": {
+    "url": "https://github.com/wefabric/wp-theme/issues"
+  },
+  "homepage": "https://github.com/wefabric/wp-theme/#readme",
   "devDependencies": {
     "autoprefixer": "^10.0.2",
     "axios": "^0.21",
@@ -37,6 +31,7 @@
     "tailwindcss-textshadow": "^2.1.3"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-pro": "^5.15.3"
+    "@fortawesome/fontawesome-pro": "^5.15.3",
+    "slick-carousel": "^1.8.1"
   }
 }
