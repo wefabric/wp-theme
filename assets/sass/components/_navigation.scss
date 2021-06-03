@@ -1,0 +1,10 @@
+.menu {
+
+
+    @apply flex flex-row w-full;
+
+    > li {
+      @apply block ml-4;
+    }
+
+}

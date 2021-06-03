@@ -1,0 +1,109 @@
+.content {
+  p {
+    @apply mb-3;
+  }
+
+  a {
+    @apply underline;
+  }
+
+  b, strong {
+    @apply font-bold
+  }
+
+  h2 {
+    @apply mb-3;
+
+    @screen lg {
+      @apply mb-6;
+    }
+  }
+
+  figure {
+    img, video {
+      @apply inline-block
+    }
+
+    figcaption {
+      @apply text-sm mt-1 mb-2 text-gray-900 italic;
+    }
+  }
+
+  table {
+    @apply shadow overflow-hidden border-b border-gray-200 mb-6;
+
+    thead {
+      @apply bg-gray-50;
+    }
+
+    th {
+      @apply px-4 py-2 text-left text-xs font-bold uppercase tracking-wider border-r border-gray-300;
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    tbody {
+      @apply bg-white divide-y divide-gray-300;
+    }
+
+    td {
+      @apply px-4 py-2 text-sm text-gray-900 border-r border-gray-300;
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    th, td {
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+
+  }
+
+
+  li {
+    line-height: 1.6;
+    &:before {
+      @apply inline-block mr-3;
+    }
+  }
+
+  ul, ol {
+    @apply mb-6;
+
+    ul, ol {
+      @apply pl-4 mb-2;
+    }
+  }
+
+  ul {
+    li {
+      &:before {
+        @apply bg-primary-light;
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 100%;
+      }
+    }
+  }
+
+  ol {
+    counter-reset: ol-counter;
+    li {
+      counter-increment: ol-counter;
+
+      &:before {
+        @apply text-primary-light;
+        content: counters(ol-counter, '.') '.';
+      }
+
+    }
+  }
+}
+

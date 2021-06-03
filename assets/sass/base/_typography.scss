@@ -1,43 +1,23 @@
 @layer base {
 
-  h1, .h1 {
-    @apply text-2xl text-primary font-head break-words uppercase;
-    line-height: 1.2 !important;
+  p {
+    line-height: 1.875rem;
 
-    @media (min-width: 640px) {
+    @screen lg {
+      line-height: 3rem;
     }
+  }
+
+  h1, .h1 {
+    @apply text-2xl text-primary font-head font-semibold break-words uppercase;
+    line-height: 1.2 !important;
 
     @media (min-width: 768px) {
       @apply text-3xl;
     }
 
     @media (min-width: 1024px) {
-      @apply text-3xl
-    }
-
-    @media (min-width: 1280px) {
-    }
-
-    @media (min-width: 1536px) {
-      @apply text-5xl;
-    }
-  }
-
-  h2, .h2 {
-    @apply text-2xl text-primary font-head break-words leading-snug;
-
-    @media (min-width: 640px) {
-    }
-
-    @media (min-width: 768px) {
-      @apply text-2xl;
-    }
-
-    @media (min-width: 1024px) {
-      @apply text-2xl
-    }
-
-    @media (min-width: 1280px) {
+      @apply text-3xl font-bold
     }
 
     @media (min-width: 1536px) {
@@ -45,22 +25,29 @@
     }
   }
 
-  h3, .h3 {
-    @apply text-xl text-primary font-head break-words;
-
-
-    @media (min-width: 640px) {
+  h2, .h2 {
+    @apply text-2xl text-primary font-head font-semibold  break-words leading-snug;
+    @media (min-width: 768px) {
+      @apply text-2xl;
     }
+
+    @media (min-width: 1024px) {
+      @apply text-2xl font-bold;
+    }
+    @media (min-width: 1536px) {
+      @apply text-3xl;
+    }
+  }
+
+  h3, .h3 {
+    @apply text-xl text-primary font-head font-semibold break-words;
 
     @media (min-width: 768px) {
       @apply text-lg;
     }
 
     @media (min-width: 1024px) {
-      @apply text-lg
-    }
-
-    @media (min-width: 1280px) {
+      @apply text-lg font-bold
     }
 
     @media (min-width: 1536px) {
@@ -70,9 +57,35 @@
   }
 
   h4, .h4 {
-    @apply text-lg text-primary font-head break-words;
+    @apply text-lg text-secondary font-head font-semibold break-words;
+
     @media (min-width: 768px) {
       @apply text-md;
+    }
+    @media (min-width: 1536px) {
+      @apply text-2xl font-bold;
+    }
+  }
+
+  h5, .h5 {
+    @apply text-md text-primary font-head font-bold  break-words;
+
+    @media (min-width: 768px) {
+      @apply text-md;
+    }
+    @media (min-width: 1536px) {
+      @apply text-lg;
+    }
+  }
+
+  h6, .h6 {
+    @apply text-md text-secondary font-head font-semibold break-words;
+
+    @media (min-width: 768px) {
+      @apply text-md;
+    }
+    @media (min-width: 1536px) {
+      @apply text-lg font-bold;
     }
   }
 }
