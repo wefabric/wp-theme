@@ -9,33 +9,28 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     boxShadow: {
-      sm: '0 1px 2px 0 rgba(60, 30, 92, 0.12)',
-      DEFAULT: '0 1px 3px 0 rgba(60, 30, 92, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-      md: '0 4px 6px -1px rgba(60, 30, 92, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-      lg: '0 10px 15px -3px rgba(60, 30, 92, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-      xl: '0 20px 25px -5px rgba(60, 30, 92, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-      '2xl': '0 25px 50px -12px rgba(60, 30, 92, 0.25)',
-      '3xl': '0 35px 60px -15px rgba(60, 30, 92, 0.30)',
-      inner: 'inset 0 2px 4px 0 rgba(60, 30, 92, 0.06)',
+      sm: '0 1px 2px 0 rgba(0, 0, 0, 0.04)',
+      DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04)',
+      md: '0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.04)',
+      lg: '0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.04)',
+      xl: '0 20px 25px -5px rgba(0, 0, 0, 0.04), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+      '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.04)',
+      '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.04)',
+      inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.04)',
       none: 'none',
     },
     extend: {
       colors: {
-        DEFAULT: '#000',
+        DEFAULT: '#000000',
         primary: {
-          light: '#000',
-          DEFAULT: '#000',
-          dark: '#000'
+          light: '#000000',
+          DEFAULT: '#000000',
+          dark: '#000000'
         },
         secondary: {
-          light: '#000',
-          DEFAULT: '#000',
-          dark: '#000'
-        },
-        tertiary: {
-          light: '#000',
-          DEFAULT: '#000',
-          dark: '#000'
+          light: '#ea7039',
+          DEFAULT: '#CE5827',
+          dark: '#ac481e'
         },
         input: {
           background: '#F0F5FC',
@@ -43,8 +38,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Roboto', ...defaultTheme.fontFamily.sans],
-        head: ['Montserrat', ...defaultTheme.fontFamily.sans],
+        sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+        head: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
       fontSize: theme => ({
         'xs':   ['0.75rem', theme('lineHeight.normal')],  // 12

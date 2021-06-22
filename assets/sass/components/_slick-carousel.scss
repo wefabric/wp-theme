@@ -1,0 +1,75 @@
+// Import Slick slide CSS
+@import "~slick-carousel/slick/slick.scss";
+@import "~slick-carousel/slick/slick-theme.scss";
+
+
+/* purgecss start ignore */
+.slick-slider {
+
+  .slick-track {
+    display: flex !important;
+  }
+
+  .slick-slide {
+    display: flex !important;
+    height: inherit !important;
+  }
+
+  .slick-prev,
+  .slick-next {
+    font-size: 0;
+    top: 0;
+
+    &:before {
+      position: absolute;
+      font-family: $fa-font-family;
+      @apply text-primary;
+      font-weight: bold;
+      font-size: 50px;
+      top: 155px;
+      opacity: 1;
+    }
+  }
+
+  .slick-prev {
+    &:before {
+      content: "\f0a8";
+      left: -75px;
+    }
+  }
+
+  .slick-next {
+    &:before {
+      content: "\f0a9";
+      right: -75px;
+    }
+  }
+
+  .slick-dots {
+    li {
+      button {
+        &:before {
+          font-size: 65px;
+          color: rgba(255, 255, 255, 0.39);
+          color: black;
+          opacity: 1;
+        }
+      }
+
+      &.slick-active {
+        button {
+          &:before {
+            color: #DF4113;
+          }
+        }
+      }
+    }
+  }
+}
+
+.slick-list {
+  .slick-loading & {
+    background: #fff;
+  }
+}
+/* purgecss end ignore */

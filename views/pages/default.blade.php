@@ -2,7 +2,10 @@
 
 @section('content')
     @loop
-        <div class="content">
+        <div class="header">
+            {!! themeHeader()->render() !!}
+        </div>
+        <div class="page-builder">
             {!! pageBuilder()->render() !!}
         </div>
     @endloop

@@ -13,6 +13,10 @@ const tailwindcss = require('tailwindcss')
  */
 mix.setPublicPath('dist');
 
+mix.autoload({
+    jquery: ['$', 'jQuery', 'window.jQuery'],
+});
+
 mix.js('assets/js/app.js', 'dist/js')
     .sass('assets/sass/app.scss', 'dist/css')
     .options({

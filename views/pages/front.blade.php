@@ -13,6 +13,6 @@
         @endwhile
         {!! get_the_posts_navigation() !!}
     @else
-        @template('parts.content', 'none')
+        @template('components.post-content', 'none')
     @endif
 @endsection
