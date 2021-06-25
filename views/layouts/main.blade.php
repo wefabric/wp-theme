@@ -30,10 +30,7 @@
     </div><!-- #content -->
 
     <footer id="colophon" class="site-footer">
-        <div class="site-info">
-            <span class="sep"> ©{{ (new DateTime())->format('Y') }} {{ get_bloginfo('name') }} | </span>
-            {!! sprintf(esc_html__('Ontwikkeld door %1$s .', THEME_TD), '<a href="https://wefabric.nl">Wefabric</a>') !!}
-        </div><!-- .site-info -->
+        @include('components.footer.footer')
     </footer><!-- #colophon -->
 </div><!-- #page -->
 
