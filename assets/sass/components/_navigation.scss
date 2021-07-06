@@ -1,10 +1,10 @@
-.menu {
+.main-navigation {
+    .menu {
+        @apply flex flex-row w-full;
 
+        > li {
+          @apply block ml-4;
+        }
 
-    @apply flex flex-row w-full;
-
-    > li {
-      @apply block ml-4;
     }
-
 }
