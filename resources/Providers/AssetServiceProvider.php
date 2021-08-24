@@ -23,8 +23,14 @@ class AssetServiceProvider extends ServiceProvider
         /** @var ThemeManager $theme */
         $theme = $this->app->make('wp.theme');
 
-        Asset::add('theme_styles', 'css/app.css', [], $theme->getHeader('version'))->to('front');
-        Asset::add('theme_woo', 'css/woocommerce.css', ['theme_styles'], $theme->getHeader('version'))->to('front');
-        Asset::add('theme_js', 'js/app.js', [], $theme->getHeader('version'))->to('front');
+        /** For cache busting **/
+        $version = $theme->getHeader('version');
+        if(App::environment() !== 'production') {
+            $version = substr(md5($theme->getUrl().microtime()), 0, 8);
+        }
+        
+        Asset::add('theme_styles', 'css/app.css', [], $version)->to('front');
+        Asset::add('theme_woo', 'css/woocommerce.css', ['theme_styles'], $version)->to('front');
+        Asset::add('theme_js', 'js/app.js', [], $version)->to('front');
     }
 }
