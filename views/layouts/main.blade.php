@@ -1,3 +1,6 @@
+@php
+    $options = get_fields('option');
+@endphp
 <!doctype html>
 <html {!! get_language_attributes() !!}>
 <head>
@@ -7,8 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     @head
+    @if(isset($options['header_codes']) && $options['header_codes'])
+        {!! $options['header_codes'] !!}
+    @endif
 </head>
 <body @php(body_class())>
+@if(isset($options['body_codes']) && $options['body_codes'])
+    {!! $options['body_codes'] !!}
+@endif
 <div id="page" class="site">
     <header id="masthead" class="bg-primary px-4 py-8">
         <div class="flex flex-row">
