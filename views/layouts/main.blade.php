@@ -22,7 +22,7 @@
 <div id="page" class="site">
     @include('components.navigation.header-top')
     <header id="masthead" class="px-4">
-        <div class="flex flex-row">
+        <div class="flex flex-row container mx-auto">
             <div class="w-1/6 items-center">
                 @include('components.header.logo')
             </div>
