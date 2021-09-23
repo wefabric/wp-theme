@@ -1,13 +1,13 @@
 <div class="justify-end hidden pt-2 px-4 lg:flex">
-    @if($phone = $options['contact_phone'])
+    @if(isset($options['contact_phone']) && $phone = $options['contact_phone'])
         <a href="tel:{{ str_replace([' ', '-'], '', $phone) }}" target="_blank" class="mr-3">
             <i class="fas fa-phone mr-3"></i><span class="d-none d-lg-inline-block"></span>
         </a>
     @endif
-    @if ($email = $options['contact_email'])
+    @if (isset($options['contact_email']) && $email = $options['contact_email'])
         <a href="mailto:{{ $email }}" class="default-color-link mr-3" target="_blank"><i class="fas fa-envelope contact-icon-header mr-3"></i></a>
     @endif
-    @if ($button = $options['contact_appointment'])
+    @if (isset($options['contact_appointment']) && $button = $options['contact_appointment'])
         <a class="btn btn-small bg-primary text-white" href="{{ $button['link'] }}">
             {{ $button['title'] }}
         </a>
