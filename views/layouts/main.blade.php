@@ -1,7 +1,8 @@
 @php
     $options = get_fields('option');
 @endphp
-<!doctype html>
+
+        <!doctype html>
 <html {!! get_language_attributes() !!}>
 <head>
     <meta charset="{{ get_bloginfo('charset') }}">
@@ -19,13 +20,15 @@
     {!! $options['body_codes'] !!}
 @endif
 <div id="page" class="site">
-    <header id="masthead" class="bg-primary px-4 py-8">
+    @include('components.navigation.header-top')
+    <header id="masthead" class="px-4">
         <div class="flex flex-row">
-            <div class="w-1/6">
+            <div class="w-1/6 items-center">
                 @include('components.header.logo')
             </div>
-            <div class="w-5/6">
+            <div class="w-5/6 flex items-center justify-end">
                 @include('components.navigation.main-nav')
+                @include('components.navigation.header-mobile')
             </div>
         </div>
     </header>

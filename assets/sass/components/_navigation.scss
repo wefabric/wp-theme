@@ -2,9 +2,20 @@
     .menu {
         @apply flex flex-row w-full;
 
-        > li {
-          @apply block ml-4;
+        > ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            @media only screen and (max-width: 1023px) {
+                flex-direction: column;
+            }
         }
 
+        li {
+            padding-right: 1rem;
+            @media only screen and (max-width: 1023px) {
+                padding-bottom: 1rem;
+            }
+        }
     }
 }

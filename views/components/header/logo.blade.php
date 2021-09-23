@@ -8,12 +8,12 @@
             </a>
         </h1>
     @else
-        <p class="site-title">
+        <div class="site-title">
             <a href="{{ esc_url( home_url('/')) }}" class="block" aria-label="home" rel="home">
                 @if(isset(get_field('common', 'option')['logo']) && $logoId = get_field('common', 'option')['logo'])
                     {!! wp_get_attachment_image( $logoId , 'full', false, ['class' => 'w-full']) !!}
                 @endif
             </a>
-        </p>
+        </div>
     @endif
 </div>
