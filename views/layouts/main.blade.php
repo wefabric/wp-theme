@@ -19,6 +19,9 @@
 @if(isset($options['body_codes']) && $options['body_codes'])
     {!! $options['body_codes'] !!}
 @endif
+@if(isset($options['out_of_office']['active']) && $options['out_of_office']['active'])
+    @include('components.out-of-office', ['outOfOffice' => $options['out_of_office']])
+@endif
 <div id="page" class="site">
     @include('components.navigation.header-top')
     <header id="masthead" class="px-4">
