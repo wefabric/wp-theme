@@ -19,7 +19,13 @@
 @if(isset($options['body_codes']) && $options['body_codes'])
     {!! $options['body_codes'] !!}
 @endif
-@if(isset($options['out_of_office']['active']) && $options['out_of_office']['active'])
+@if(isset($options['out_of_office']['active'],
+          $options['out_of_office']['start_display_date'],
+          $options['out_of_office']['end_display_date'])
+          && $options['out_of_office']['active']
+          && $options['out_of_office']['start_display_date'] <= date('Ymd') || !$options['out_of_office']['start_display_date']
+          && $options['out_of_office']['end_display_date'] >= date('Ymd') || !$options['out_of_office']['end_display_date']
+          )
     @include('components.out-of-office', ['outOfOffice' => $options['out_of_office']])
 @endif
 <div id="page" class="site">
