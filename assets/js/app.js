@@ -6,3 +6,4 @@ import 'slick-carousel';
 import './sliders';
 
 // Import custom JS files
+import './outOfOffice';
