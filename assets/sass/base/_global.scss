@@ -14,3 +14,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+// Hide the cookiebot and recaptcha sticky badges from page
+#CookiebotWidget,
+.grecaptcha-badge {
+  display: none;
+}
