@@ -17,5 +17,27 @@
                 padding-bottom: 1rem;
             }
         }
+
+        .menu-item-has-children {
+            position: relative;
+
+            > .sub-menu {
+                display: none;
+                position: absolute;
+
+                .menu-item-has-children {
+                    .sub-menu {
+                        right: -100%;
+                        top: 0;
+                    }
+                }
+            }
+
+            &:hover {
+                > .sub-menu {
+                    display: block;
+                }
+            }
+        }
     }
 }

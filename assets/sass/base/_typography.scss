@@ -88,4 +88,14 @@
       @apply text-lg font-bold;
     }
   }
+
+  ul, ol {
+    li {
+      line-height: 1.875rem;
+
+      @screen lg {
+        line-height: 3rem;
+      }
+    }
+  }
 }
