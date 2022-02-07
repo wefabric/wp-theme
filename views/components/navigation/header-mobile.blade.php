@@ -1,5 +1,5 @@
 <input type="checkbox" class="hidden" id="nav-mobile-active">
-<div class="logo-mobile float-left">
+<div class="logo-mobile float-left lg:hidden">
     <div class="site-title">
         <a href="{{ esc_url( home_url('/')) }}" class="block" aria-label="home" rel="home">
             @if(isset(get_field('common', 'option')['logo']) && $logoId = get_field('common', 'option')['logo'])
@@ -12,7 +12,7 @@
 @php
     $contact_information = get_fields('option');
 @endphp
-<header class="banner z-2 absolute w-full">
+<header class="banner z-2 absolute left-0 w-full">
     <div>
         <div class="py-6 flex items-center lg:hidden">
             <div class="hamburger-menu">
