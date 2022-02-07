@@ -15,6 +15,22 @@
 <div class="container mx-auto">
     <div class="grid grid-cols-2 lg:grid-cols-4 py-16 text-primary px-5">
         <div class="md:pr-16 mb-6">
+            {{-- This is an example footer menu --}}
+            @php
+                $menu = wp_nav_menu([
+                              'theme_location' => 'primary_navigation',
+                              'menu_id' => 'footer-menu-one',
+                              'echo' => false
+                            ]);
+                $title = 'test';
+                $accordionId = 1;
+                $setAccordion = true;
+            @endphp
+
+            @include('components.footer.accordion-menu', ['menu' => $menu, 'title' => $title, 'accordionId' => $accordionId, 'setAccordion' => $setAccordion])
+        </div>
+
+        <div class="md:pr-16 mb-6">
             @if(isset($options['channels']) && $options['channels'])
                 <h3 class="text-primary text-lg font-bold xl:text-xl mb-5">
                     @if($options['footer_socials_title'])
