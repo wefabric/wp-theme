@@ -31,10 +31,10 @@
     @include('components.navigation.header-top')
     <header id="masthead" class="px-4">
         <div class="flex flex-row container mx-auto">
-            <div class="w-1/6 items-center">
+            <div class="hidden lg:block w-1/6 items-center">
                 @include('components.header.logo')
             </div>
-            <div class="w-5/6 flex items-center justify-end">
+            <div class="lg:w-5/6 lg:flex items-center justify-end h-12 lg:h-auto">
                 @include('components.navigation.main-nav')
                 @include('components.navigation.header-mobile')
             </div>

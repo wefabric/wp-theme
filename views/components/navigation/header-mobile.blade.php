@@ -1,11 +1,20 @@
 <input type="checkbox" class="hidden" id="nav-mobile-active">
+<div class="logo-mobile float-left">
+    <div class="site-title">
+        <a href="{{ esc_url( home_url('/')) }}" class="block" aria-label="home" rel="home">
+            @if(isset(get_field('common', 'option')['logo']) && $logoId = get_field('common', 'option')['logo'])
+                {!! wp_get_attachment_image( $logoId , 'full', false, ['class' => 'max-h-12 w-auto']) !!}
+            @endif
+        </a>
+    </div>
+</div>
 <label for="nav-mobile-active" class="nav-mobile-toggle-visibility nav-mobile-toggler nav-mobile-overlay z-0"></label>
 @php
     $contact_information = get_fields('option');
 @endphp
 <header class="banner z-2 absolute w-full">
     <div>
-        <div class="py-3 flex items-center lg:hidden">
+        <div class="py-6 flex items-center lg:hidden">
             <div class="hamburger-menu">
                 <label for="nav-mobile-active" class="mb-0 toggle-mobile-menu hamburger-button">
                     <span class="hamburger-button-bar"></span>

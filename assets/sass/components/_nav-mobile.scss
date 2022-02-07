@@ -61,6 +61,13 @@ header.banner {
 }
 
 #nav-mobile-active:checked {
+  ~ .logo-mobile {
+    .site-title {
+      display: none;
+      transition: 1s;
+    }
+  }
+
   ~ .nav-mobile-toggle-visibility,
   ~ .banner .nav-mobile-toggle-visibility {
     visibility: visible;
