@@ -7,3 +7,4 @@ import './sliders';
 
 // Import custom JS files
 import './outOfOffice';
+import './forms';
