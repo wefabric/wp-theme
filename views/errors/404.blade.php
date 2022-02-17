@@ -6,7 +6,7 @@
     </header><!-- .page-header -->
     <section class="error-404 not-found container mx-auto py-9 px-8">
         <div class="page-content">
-            <p>{{ esc_html__('Het lijkt erop dat deze pagina niet bestaat. Controleer of je de pagina correct hebt geschreven of gebruik het menu om te vinden wat je zoekt.', THEME_TD) }}</p>
+            <p>{{ esc_html__('Het lijkt erop dat deze pagina niet (meer) bestaat. Controleer of je de pagina correct hebt geschreven of gebruik het menu om te vinden wat je zoekt.', THEME_TD) }}</p>
         </div>
     </section>
 @endsection
