@@ -5,6 +5,7 @@
                 @if(isset(get_field('common', 'option')['logo']) && $logoId = get_field('common', 'option')['logo'])
                     {!! wp_get_attachment_image( $logoId , 'full', false, ['class' => '']) !!}
                 @endif
+                <span class="screen-reader-only">{{ get_bloginfo('name') }}</span>
             </a>
         </h1>
     @else
@@ -13,6 +14,7 @@
                 @if(isset(get_field('common', 'option')['logo']) && $logoId = get_field('common', 'option')['logo'])
                     {!! wp_get_attachment_image( $logoId , 'full', false, ['class' => 'w-full']) !!}
                 @endif
+                <span class="screen-reader-only">{{ get_bloginfo('name') }}</span>
             </a>
         </div>
     @endif
