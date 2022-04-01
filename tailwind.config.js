@@ -1,12 +1,11 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  purge: [
+  content: [
     './views/**/*.blade.php',
     './assets/**/*.js',
     './assets/**/*.vue',
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     boxShadow: {
       sm: '0 1px 2px 0 rgba(0, 0, 0, 0.04)',
@@ -88,3 +87,4 @@ module.exports = {
   ],
 
 }
+
