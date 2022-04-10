@@ -40,8 +40,9 @@
 
                 <div class="mb-9">
                     @foreach($options['channels'] as $social)
-                        <a href="{{ $social['url'] }}" target="_blank">
+                        <a href="{{ $social['url'] }}" aria-label="{{ $social['name'] }}" target="_blank">
                             <i class="{{ $social['icon'] }} w-9 h-9 py-1 text-lg bg-primary text-white text-center hover:bg-secondary hover:text-white mr-3"></i>
+                             <span class="screen-reader-only">{{ $social['name'] }}</span>
                         </a>
                     @endforeach
                 </div>
