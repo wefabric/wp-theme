@@ -93,7 +93,7 @@
             </div>
         </div>
     </div>
-    <div class="site-info text-primary text-sm pb-6 mt-32 text-center">
+    <div class="site-info text-primary text-sm pb-6 mt-12 text-center">
         @if(isset(get_field('common', 'option')['logo']) && $logoId = get_field('common', 'option')['logo'])
             {!! wp_get_attachment_image( $logoId , 'full', false, ['class' => 'footer-logo']) !!}
         @endif
