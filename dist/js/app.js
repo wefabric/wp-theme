@@ -13,10 +13,70 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(slick_carousel__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _sliders__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sliders */ "./assets/js/sliders.js");
 /* harmony import */ var _sliders__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_sliders__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _outOfOffice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./outOfOffice */ "./assets/js/outOfOffice.js");
+/* harmony import */ var _outOfOffice__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_outOfOffice__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./forms */ "./assets/js/forms.js");
+/* harmony import */ var _forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_forms__WEBPACK_IMPORTED_MODULE_3__);
 /* provided dependency */ var __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+// Import dependencies
 window.$ = __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+ // Import default theme JS files
+
+ // Import custom JS files
 
 
+
+
+/***/ }),
+
+/***/ "./assets/js/forms.js":
+/*!****************************!*\
+  !*** ./assets/js/forms.js ***!
+  \****************************/
+/***/ (() => {
+
+document.addEventListener('wpcf7mailsent', function (event) {
+  var contactFormId = event.detail.unitTag;
+
+  if (!contactFormId) {
+    return;
+  }
+
+  var contactForm = document.getElementById(contactFormId);
+
+  if (!contactForm) {
+    return;
+  }
+
+  var redirectUrls = contactForm.getElementsByClassName("contact_form_success_redirect");
+
+  if (redirectUrls.length < 1) {
+    return;
+  }
+
+  var redirectUrl = redirectUrls[0];
+  window.location = redirectUrl.value;
+}, false);
+
+/***/ }),
+
+/***/ "./assets/js/outOfOffice.js":
+/*!**********************************!*\
+  !*** ./assets/js/outOfOffice.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+$(document).ready(function () {
+  if (sessionStorage.getItem("outOfOfficeStatus") !== "closed") {
+    $("#popup").delay(500).fadeIn();
+  }
+
+  $('#popup-close').click(function (e) {
+    $('#popup').fadeOut();
+    sessionStorage.setItem("outOfOfficeStatus", "closed");
+  });
+});
 
 /***/ }),
 
@@ -27,50 +87,13 @@ window.$ = __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 /* provided dependency */ var jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-jQuery('.slick-carousel.inspiration-slider').slick({
-  infinite: true,
+jQuery('.slick-carousel.usp-slider').slick({
+  slidesToShow: 1,
   slidesToScroll: 1,
-  slidesToShow: 4,
-  arrows: true,
-  dots: false,
+  mobileFirst: true,
   responsive: [{
-    breakpoint: 1280,
-    settings: {
-      arrows: false,
-      dots: true,
-      slidesToShow: 2
-    }
-  }, {
     breakpoint: 768,
-    settings: {
-      arrows: false,
-      dots: true,
-      slidesToShow: 1
-    }
-  }]
-});
-jQuery('.slick-carousel.brands-logo-slider').slick({
-  infinite: true,
-  slidesToScroll: 4,
-  slidesToShow: 4,
-  arrows: false,
-  dots: true,
-  responsive: [{
-    breakpoint: 1280,
-    settings: {
-      arrows: false,
-      dots: true,
-      slidesToShow: 2,
-      slidesToScroll: 2
-    }
-  }, {
-    breakpoint: 768,
-    settings: {
-      arrows: false,
-      dots: true,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    }
+    settings: 'unslick'
   }]
 });
 
@@ -14055,7 +14078,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /******/ 				}
 /******/ 				if(fulfilled) {
 /******/ 					deferred.splice(i--, 1)
-/******/ 					result = fn();
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
@@ -14132,19 +14156,21 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /******/ 			// add "moreModules" to the modules object,
 /******/ 			// then flag all "chunkIds" as loaded and fire callback
 /******/ 			var moduleId, chunkId, i = 0;
-/******/ 			for(moduleId in moreModules) {
-/******/ 				if(__webpack_require__.o(moreModules, moduleId)) {
-/******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
 /******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
 /******/ 			}
-/******/ 			if(runtime) var result = runtime(__webpack_require__);
 /******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
 /******/ 			for(;i < chunkIds.length; i++) {
 /******/ 				chunkId = chunkIds[i];
 /******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
 /******/ 					installedChunks[chunkId][0]();
 /******/ 				}
-/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 				installedChunks[chunkId] = 0;
 /******/ 			}
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
