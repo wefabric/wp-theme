@@ -1,4 +1,6 @@
-<div class=" {{ $classes ?? 'mx-3 lg:mx-20' }}">
+<script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.js"></script>
+<div>
+
     <div x-data="{
         skip: 1,
         atBeginning: false,
@@ -59,6 +61,20 @@
         >
             <h2 id="carousel-label" class="sr-only" hidden>Carousel</h2>
 
+            <!-- Prev Button -->
+            <button
+                    x-on:click="prev"
+                    class="text-6xl"
+                    :aria-disabled="atBeginning"
+                    :tabindex="atEnd ? -1 : 0"
+                    :class="{ 'opacity-50 cursor-not-allowed': atBeginning }"
+            >
+                <span aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+                </span>
+                <span class="sr-only">Skip to previous slide page</span>
+            </button>
+
             <span id="carousel-content-label" class="sr-only" hidden>Carousel</span>
 
             <ul
@@ -66,56 +82,31 @@
                     tabindex="0"
                     role="listbox"
                     aria-labelledby="carousel-content-label"
-                    class="flex w-full overflow-x-scroll snap-x snap-mandatory hide-scrollbar"
+                    class="flex w-full overflow-x-scroll snap-x snap-mandatory"
             >
                 @foreach($items as $item)
                     <li class="snap-start {{ $card_classes ?? 'w-5/6 md:w-2/5 lg:w-1/4 2xl:w-1/5' }} shrink-0 flex flex-col items-center justify-center p-4" role="option">
-                        @include('components.cards.'. $card_type, [
+                        @include('components.slider.cards.'. $card_type, [
                             'item' => $item,
                         ])
                     </li>
                 @endforeach
             </ul>
 
-        </div>
-
-        <div class="mx-auto w-full p-4 grid lg:grid-cols-4 lg:gap-x-4 lg:pt-10">
-
-        @if( $items->count() > 4 ) {{-- only show slider-buttons on lg: if there's anything to slide. --}}
-        <!-- Prev Button -->
-            <div class="col-start-2 hidden lg:flex justify-end">
-                <button
-                        x-on:click="prev"
-                        class="btn btn-secondary-light rounded-full reversed-chevron-only h-8"
-                        :aria-disabled="atBeginning"
-                        :tabindex="atEnd ? -1 : 0"
-                        :class="{ 'cursor-not-allowed': atBeginning }"
-                >
-                    <span class="sr-only">Skip to previous slide page</span>
-                </button>
-            </div>
-
             <!-- Next Button -->
-            <div class="hidden lg:flex justify-start">
-                <button
-                        x-on:click="next"
-                        class="btn btn-secondary-light rounded-full chevron-only h-8"
-                        :aria-disabled="atEnd"
-                        :tabindex="atEnd ? -1 : 0"
-                        :class="{ 'cursor-not-allowed': atEnd }"
-                >
-                    <span class="sr-only">Skip to next slide page</span>
-                </button>
-            </div>
-            @endif
+            <button
+                    x-on:click="next"
+                    class="text-6xl"
+                    :aria-disabled="atEnd"
+                    :tabindex="atEnd ? -1 : 0"
+                    :class="{ 'opacity-50 cursor-not-allowed': atEnd }"
+            >
+                <span aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                </span>
+                <span class="sr-only">Skip to next slide page</span>
+            </button>
 
-            <div class="flex {{ ($items->count() <= 4 ? 'col-start-4' : '') }} justify-center lg:justify-end">
-                <div class="btn rounded-full bg-secondary-light cursor-pointer" onclick="window.location.href='{{ $overview_link }}'">
-                    <a href="{{ $overview_link }}">
-                        {{ $overview_text }}
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
 </div>
