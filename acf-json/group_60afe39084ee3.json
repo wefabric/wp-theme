@@ -31,7 +31,7 @@
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "",
+                                "width": "75",
                                 "class": "",
                                 "id": ""
                             },
@@ -40,6 +40,35 @@
                             "toolbar": "full",
                             "media_upload": 1,
                             "delay": 0
+                        },
+                        {
+                            "key": "field_62ce893297c88",
+                            "label": "Breedte (desktop)",
+                            "name": "width_copy",
+                            "type": "select",
+                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "w-1\/2": "50%",
+                                "w-3\/5": "60%",
+                                "w-2\/3": "66%",
+                                "w-3\/4": "75%",
+                                "w-4\/5": "80%",
+                                "w-full": "100%"
+                            },
+                            "default_value": "w-3\/4",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
                         }
                     ],
                     "min": "",
@@ -77,11 +106,11 @@
                         },
                         {
                             "key": "field_62bc56ae73be8",
-                            "label": "Breedte (Desktop)",
+                            "label": "Breedte (desktop)",
                             "name": "width",
                             "type": "select",
                             "instructions": "Geef de relatieve breedte op voor desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
-                            "required": 0,
+                            "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "50",
@@ -95,6 +124,139 @@
                                 "w-full": "100%"
                             },
                             "default_value": "w-3\/4",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_610d324bf380e": {
+                    "key": "layout_610d324bf380e",
+                    "name": "textblockImage",
+                    "label": "Tekst met afbeelding",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_610d3286f380f",
+                            "label": "Tekst",
+                            "name": "text",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "66",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_610d3297f3810",
+                            "label": "Afbeelding",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "preview_size": "thumbnail",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_62ce78bcdbc16",
+                            "label": "Afbeelding positie (desktop)",
+                            "name": "image_position",
+                            "type": "select",
+                            "instructions": "Selecteer de positie van de afbeelding ten opzichte van de tekst (voor desktopweergave). Op mobiele weergave komt de afbeelding altijd onder de tekst.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Links van tekst",
+                                "right": "Rechts van tekst"
+                            },
+                            "default_value": "right",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62ce78f0dbc17",
+                            "label": "Afbeelding uitlijning (desktop)",
+                            "name": "image_vertical_position",
+                            "type": "select",
+                            "instructions": "Selecteer de verticale uitlijning van de afbeelding ten opzichte van de tekst (voor desktopweergave). Niet van toepassing op mobiele weergave, hierbij komt de afbeelding altijd onder de tekst in plaats van ernaast. Werkt ook andersom indien de tekst kleiner is dan de afbeelding.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "top": "Boven",
+                                "middle": "Gecentreerd",
+                                "bottom": "Onder"
+                            },
+                            "default_value": "middle",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62ce872d1c517",
+                            "label": "Breedte (desktop)",
+                            "name": "width",
+                            "type": "select",
+                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "w-1\/2": "50%",
+                                "w-3\/5": "60%",
+                                "w-2\/3": "66%",
+                                "w-3\/4": "75%",
+                                "w-4\/5": "80%",
+                                "w-full": "100%"
+                            },
+                            "default_value": "w-full",
                             "allow_null": 0,
                             "multiple": 0,
                             "ui": 0,
@@ -239,59 +401,6 @@
                                 "class": "",
                                 "id": ""
                             }
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
-                "layout_610d324bf380e": {
-                    "key": "layout_610d324bf380e",
-                    "name": "textblockImage",
-                    "label": "Tekst met afbeelding",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_610d3286f380f",
-                            "label": "Tekst",
-                            "name": "text",
-                            "type": "wysiwyg",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "tabs": "all",
-                            "toolbar": "full",
-                            "media_upload": 1,
-                            "delay": 0
-                        },
-                        {
-                            "key": "field_610d3297f3810",
-                            "label": "Afbeelding",
-                            "name": "image",
-                            "type": "image",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "id",
-                            "preview_size": "medium",
-                            "library": "all",
-                            "min_width": "",
-                            "min_height": "",
-                            "min_size": "",
-                            "max_width": "",
-                            "max_height": "",
-                            "max_size": "",
-                            "mime_types": ""
                         }
                     ],
                     "min": "",
@@ -506,5 +615,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1656512536
+    "modified": 1657703714
 }
