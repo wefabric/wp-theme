@@ -1,118 +1,111 @@
 @php
     $options = get_fields('option');
-    $args = array(
-        'posts_per_page'   => 1,
-        'post_type'        => 'establishments',
-    );
-    $query = new WP_Query( $args );
-    $establishment = $query->posts;
-
-    if(isset($establishment[0])) {
-     $fields = get_fields($establishment[0]->ID);
-    }
+    // dd($options);
 @endphp
 
-<div class="container mx-auto">
-    <div class="grid grid-cols-2 lg:grid-cols-4 py-16 text-primary px-5">
-        <div class="md:pr-16 mb-6">
-            {{-- This is an example footer menu --}}
-            @php
-                $menu = wp_nav_menu([
-                              'theme_location' => 'primary_navigation',
-                              'menu_id' => 'footer-menu-one',
-                              'echo' => false
-                            ]);
-                $title = 'test';
-                $accordionId = 1;
-                $setAccordion = true;
-            @endphp
+<div class="bg-black text-white text-base pb-24">
+    <div class="container mx-auto px-8 lg:px-0 relative">
 
-            @include('components.footer.accordion-menu', ['menu' => $menu, 'title' => $title, 'accordionId' => $accordionId, 'setAccordion' => $setAccordion])
-        </div>
-
-        <div class="md:pr-16 mb-6">
-            @if(isset($options['channels']) && $options['channels'])
-                <h3 class="text-primary text-lg font-bold xl:text-xl mb-5">
-                    @if($options['footer_socials_title'])
-                        {{ $options['footer_socials_title'] }}
-                    @endif
-                </h3>
-
-                <div class="mb-9">
-                    @foreach($options['channels'] as $social)
-                        <a href="{{ $social['url'] }}" aria-label="{{ $social['name'] }}" target="_blank">
-                            <i class="{{ $social['icon'] }} w-9 h-9 py-1 text-lg bg-primary text-white text-center hover:bg-secondary hover:text-white mr-3"></i>
-                             <span class="screen-reader-only">{{ $social['name'] }}</span>
-                        </a>
-                    @endforeach
+        <div class="w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-16 px-5">
+                <div class="pb-6 border-b md:border-0">
+                    @php
+                        $menu = wp_nav_menu([
+                          'theme_location' => 'footer_menu_one',
+                          'menu_id' => 'footer_menu_one',
+                          'echo' => false
+                        ]);
+                    @endphp
+                    @include('components.footer.accordion-menu', ['menu' => $menu, 'title' => wp_get_nav_menu_name('footer_menu_one'), 'accordionId' => 1, 'setAccordion' => true])
                 </div>
-            @endif
-        </div>
-        <div class=" mb-6 col-span-2 md:col-span-1">
-            <h3 class="text-primary text-lg xl:text-xl mb-5">
-                @if(isset($options['contact_title']) && $options['contact_title'])
-                    {{ $options['contact_title'] }}
-                @endif
-            </h3>
 
-            <div class="text-sm mb-6 leading-7">
-                @if(isset($fields['name']) && $fields['name'])<b>{{ $fields['name'] }}</b> <br>@endif
-                @if(isset($fields['street'], $fields['house_number']) && $fields['street'] && $fields['house_number'])
-                    {{ $fields['street'] }} {{ $fields['house_number'] }} {{ $fields['house_number_addition'] }} <br>
-                @endif
-                @if(isset($fields['postcode'], $fields['city']) && $fields['postcode'] && $fields['city'])
-                    {{ $fields['postcode'] }} {{ $fields['city'] }}
-                @endif
+                <div class="pb-6 border-b md:border-0">
+                    @php
+                        $menu = wp_nav_menu([
+                          'theme_location' => 'footer_menu_two',
+                          'menu_id' => 'footer_menu_two',
+                          'echo' => false
+                        ]);
+                    @endphp
+
+                    @include('components.footer.accordion-menu', ['menu' => $menu, 'title' => wp_get_nav_menu_name('footer_menu_two'), 'accordionId' => 2, 'setAccordion' => true])
+                </div>
+
+                <div class="pb-6 border-b md:border-0">
+                    @include('components.footer.accordion-menu', ['menu' => view('components.footer.contact'), 'title' => 'Contactgegevens', 'accordionId' => 3, 'setAccordion' => true])
+                </div>
+
+                <div class="pb-6 border-b md:border-0">
+                    @include('components.footer.accordion-menu', ['menu' => view('components.footer.follow-us'), 'title' => 'Volg ons', 'accordionId' => 4, 'setAccordion' => true])
+                </div>
             </div>
         </div>
 
-        <div class="mb-6 col-span-2">
-            <h3 class="text-primary text-lg xl:text-xl mb-5">
-                @if(isset($options['more_info_title']) && $options['more_info_title'])
-                    {{ $options['more_info_title'] }}
-                @endif
-            </h3>
-
-            <div class="text-sm leading-3">
-                @if(isset($options['more_info_content']) && $options['more_info_content'])
-                    {!! apply_filters('the_content', $options['more_info_content']) !!}
+        <div class="grid grid-cols-4 content-center">
+            <div class="">
+                @if(isset(get_field('common', 'option')['logo_white']) && $logoId = get_field('common', 'option')['logo_white'])
+                    {!! wp_get_attachment_image( $logoId , 'employee-thumbnail', false, ['class' => 'mb-4 mx-auto lg:mx-0 inline-block']) !!}
                 @endif
             </div>
 
-            <div class="text-sm leading-7">
-                @if(isset($fields['common_phone']) && $fields['common_phone'])
-                    <a href="tel:{{ $fields['common_phone'] }}" class="underline">
-                        <i class="fas fa-phone mr-4"></i> {{ $fields['common_phone'] }}
-                    </a><br>
-                @endif
-                @if(isset($fields['common_email']) && $fields['common_email'])
-                    <a href="mailto:{{ $fields['common_email'] }}" class="underline">
-                        <i class="fab fa-telegram-plane mr-4"></i> {{ $fields['common_email'] }}
-                    </a>
-                @endif
+            <div class="col-span-2 flex flex-col">
+                <div class="flex flex-row">
+                    @foreach(['a', 'b', 'c'] as $item)
+                        <div class="w-10 md:px-2.5">
+                            {{ $item }}
+                        </div>
+                    @endforeach {{-- Logos van partners --}}
+                </div>
+                <div class="flex flex-row">
+                    @php
+                        $class = 'my-3 lg:my-0 block md:inline-block hover:underline md:px-2';
+                    @endphp
+
+                    @if($termsOfService = get_field('terms_of_service', 'option'))
+                        @include('components.link.simple', [
+                            'href' => get_permalink($termsOfService),
+                            'class' => $class,
+                            'text' => __('Algemene voorwaarden', 'wefabric')
+                        ]) /
+                    @endif
+
+                    @include('components.link.simple', [
+                        'href' => get_privacy_policy_url(),
+                        'class' => $class,
+                        'text' => __('Privacy policy', 'wefabric')
+                    ]) /
+
+                    @if($cookiepolicy = get_field('cookie_policy', 'option'))
+                        @include('components.link.simple', [
+                            'href' => get_permalink($cookiepolicy),
+                            'class' => $class,
+                            'text' => __('Cookie beleid', 'wefabric')
+                        ]) /
+                    @endif
+
+                    @if($sitemap = get_field('sitemap', 'option'))
+                        @include('components.link.simple', [
+                            'href' => get_permalink($sitemap),
+                            'class' => $class,
+                            'text' => __('Sitemap', 'wefabric')
+                        ])
+                    @endif
+
+                </div>
+            </div>
+
+            <div class="flex align-right pb-0 pt-auto">
+                <span class="pr-1">
+                    Gerealiseerd door:
+                </span>
+                @include('components.link.opening', [
+                    'href' => 'https://wefabric.nl/',
+                    'alt' => 'Wefabric.nl'
+                ])
+                    <img src="@asset('images/footer/logo-wefabric.png')" max-width="100%" height="100%" class="wefabric-logo" alt="Wefabric logo - wefabric.nl"/>
+                @include('components.link.closing')
             </div>
         </div>
+
     </div>
-    <div class="site-info text-primary text-sm pb-6 mt-12 text-center">
-        @if(isset(get_field('common', 'option')['logo']) && $logoId = get_field('common', 'option')['logo'])
-            {!! wp_get_attachment_image( $logoId , 'full', false, ['class' => 'footer-logo']) !!}
-        @endif
-
-        @if(isset($options['terms_of_service']) && $options['terms_of_service'])
-            <a href="{{ $options['terms_of_service'] }}">{{ __('Algemene voorwaarden', 'wefabric') }}</a>
-            <span class="mx-4">/</span>
-        @endif
-        @if(isset($options['privacy_policy']) && $options['privacy_policy'])
-            <a href="{{ $options['privacy_policy'] }}">{{ __('Privacy policy', 'wefabric') }}</a>
-            <span class="mx-4">/</span>
-        @endif
-        @if(isset($options['cookie_policy']) && $options['cookie_policy'])
-            <a href="{{ $options['cookie_policy'] }}">{{ __('Cookie beleid', 'wefabric') }}</a>
-        @endif
-
-        <div class="inline md:float-right text-sm">
-            <span class="sep text-white"> ©{{ (new DateTime())->format('Y') }} {{ get_bloginfo('name') }} | </span>
-            {!! sprintf(esc_html__('Ontwikkeld door %1$s .', THEME_TD), '<a href="https://wefabric.nl">Wefabric</a>') !!}
-        </div>
-    </div><!-- .site-info -->
 </div>
