@@ -22,14 +22,23 @@ module.exports = {
       colors: {
         DEFAULT: '#000000',
         primary: {
-          light: '#000000',
-          DEFAULT: '#000000',
-          dark: '#000000'
+          light: 'var(--primary-color-light)',
+          DEFAULT: 'var(--primary-color)',
+          dark: 'var(--primary-color-dark)'
         },
         secondary: {
-          light: '#ea7039',
-          DEFAULT: '#CE5827',
-          dark: '#ac481e'
+          light: 'var(--secondary-color-light)',
+          DEFAULT: 'var(--secondary-color)',
+          dark: 'var(--secondary-color-dark)'
+        },
+        tertiary: {
+          light: 'var(--tertiary-color-light)',
+          DEFAULT: 'var(--tertiary-color)',
+          dark: 'var(--tertiary-color-dark)'
+        },
+        basic: {
+          success: 'var(--basic-color-success)',
+          danger: 'var(--basic-color-danger)'
         },
         input: {
           background: '#F0F5FC',

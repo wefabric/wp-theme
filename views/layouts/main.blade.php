@@ -55,5 +55,7 @@
 
 @footer
 
+{!! styleCustomizer()->renderCustomColors() !!}
+
 </body>
 </html>
