@@ -1,16 +1,5 @@
-<div class="">
-
-    <div class="font-bold text-2xl py-2">
-        {{ $block->get('title') }}
-    </div>
-
-    <div class="font-bold text-xl py-4">
-        {{ $block->get('subtitle') }}
-    </div>
-
-    @include('components.slider.smart-slider', [
-	    'items' => $block->get('usps'),
-        'card_type' => 'usp-large',
-    ])
-
-</div>
+@include('components.blocks.usps-large', [
+	'title' => $block->get('title'),
+	'subtitle' => $block->get('subtitle'),
+	'usps' => $block->get('usps')
+])
