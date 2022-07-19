@@ -1,4 +1,4 @@
-<div class="{{ $classes ?? '' }} mx-auto {{ $block->get('width') }}">
+<div class="{{ $classes ?? '' }} mx-auto lg:{{ $block->get('width') }}">
     @if($block['video'])
         @if(strpos($block['video'], 'youtube') > 0)
             @php
@@ -29,7 +29,7 @@
         @endif
 
         @if(isset($iframe))
-            <div class="video-container">
+            <div class="iframe-container">
                 <iframe width="100%" height="100%" allowfullscreen {!! $iframe !!} ></iframe>
             </div>
         @endif

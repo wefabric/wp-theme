@@ -1,7 +1,7 @@
 
 /* purgecss start ignore */
 
-.video-container {
+.iframe-container {
     position: relative;
     padding-bottom: 56.25%;
     padding-top: 30px;
@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-.video-container iframe, .video-container object, .video-container embed {
+.iframe-container iframe, .iframe-container object, .iframe-container embed {
     position: absolute;
     top: 0;
     left: 0;
