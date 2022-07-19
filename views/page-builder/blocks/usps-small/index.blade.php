@@ -21,7 +21,7 @@
                 @endphp
 
                 @if(! empty($link))
-                    @include('components.link.link-text', [
+                    @include('components.link.simple', [
                         'href' => $link,
                         'text' => $usp->get('title'),
                         'class' => $font,

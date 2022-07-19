@@ -1,4 +1,4 @@
-<div class=>
+<div class="">
 
     <div class="font-bold text-2xl py-2">
         {{ $block->get('title') }}

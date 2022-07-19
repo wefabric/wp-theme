@@ -17,7 +17,7 @@
         @if($block->get('image'))
             @include('components.image', [
                 'image_id' => $block->get('image'),
-                'class' => 'w-full h-full object-cover'
+                'class' => 'mx-auto'
             ])
         @endif
     </div>
