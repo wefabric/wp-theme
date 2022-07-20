@@ -1,13 +1,8 @@
-@php
-    $options = get_fields('option');
-    // dd($options);
-@endphp
-
 <div class="bg-black text-white text-base pb-24">
     <div class="container mx-auto px-8 lg:px-0 relative">
 
         <div class="w-full">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-16 px-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-16">
                 <div class="pb-6 border-b md:border-0">
                     @php
                         $menu = wp_nav_menu([
@@ -32,78 +27,91 @@
                 </div>
 
                 <div class="pb-6 border-b md:border-0">
-                    @include('components.footer.accordion-menu', ['menu' => view('components.footer.contact'), 'title' => 'Contactgegevens', 'accordionId' => 3, 'setAccordion' => true])
+                    @include('components.footer.accordion-menu', ['menu' => view('components.footer.contact'), 'title' => __('Contactgegevens', 'wefabric'), 'accordionId' => 3, 'setAccordion' => true])
                 </div>
 
                 <div class="pb-6 border-b md:border-0">
-                    @include('components.footer.accordion-menu', ['menu' => view('components.footer.follow-us'), 'title' => 'Volg ons', 'accordionId' => 4, 'setAccordion' => true])
+                    @include('components.footer.accordion-menu', ['menu' => view('components.footer.follow-us'), 'title' => __('Volg ons', 'wefabric'), 'accordionId' => 4, 'setAccordion' => true])
                 </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-4 content-center">
-            <div class="">
+        <div class="flex flex-row">
+            <div class="w-1/4">
                 @if(isset(get_field('common', 'option')['logo_white']) && $logoId = get_field('common', 'option')['logo_white'])
-                    {!! wp_get_attachment_image( $logoId , 'employee-thumbnail', false, ['class' => 'mb-4 mx-auto lg:mx-0 inline-block']) !!}
+                    {!! wp_get_attachment_image( $logoId , 'employee-thumbnail', false, ['class' => 'mx-auto lg:mx-0 inline-block']) !!}
                 @endif
             </div>
 
-            <div class="col-span-2 flex flex-col">
-                <div class="flex flex-row">
-                    @foreach(['a', 'b', 'c'] as $item)
-                        <div class="w-10 md:px-2.5">
-                            {{ $item }}
+            <div class="w-1/2 flex flex-col  self-end">
+                <div class="flex flex-row mb-5">
+                    @php
+                        $footer = get_fields('option')['footer_partners'];
+                    @endphp
+
+                    @foreach($footer as $item)
+                        <div class="pr-5">
+                            @if($item['url'])
+                                @include('components.link.opening', [
+                                    'href' => $item['url'],
+                                    'alt' => $item['alt_text']
+                                ])
+                            @endif
+                                @include('components.image', [
+                                    'image_id' => $item['logo'],
+                                    'size' => [0,32],
+                                    'class' => '',
+                                ])
+                            @if($item['url'])
+                                @include('components.link.closing')
+                            @endif
                         </div>
                     @endforeach {{-- Logos van partners --}}
                 </div>
+
                 <div class="flex flex-row">
                     @php
                         $class = 'my-3 lg:my-0 block md:inline-block hover:underline md:px-2';
+
+                        $menuLocations = get_nav_menu_locations();
+                        $menuID = $menuLocations['footer_menu_three'];
+                        $menu = wp_get_nav_menu_items($menuID);
                     @endphp
 
-                    @if($termsOfService = get_field('terms_of_service', 'option'))
+                    @foreach($menu as $post)
                         @include('components.link.simple', [
-                            'href' => get_permalink($termsOfService),
+                            'href' => $post->url,
                             'class' => $class,
-                            'text' => __('Algemene voorwaarden', 'wefabric')
-                        ]) /
-                    @endif
-
-                    @include('components.link.simple', [
-                        'href' => get_privacy_policy_url(),
-                        'class' => $class,
-                        'text' => __('Privacy policy', 'wefabric')
-                    ]) /
-
-                    @if($cookiepolicy = get_field('cookie_policy', 'option'))
-                        @include('components.link.simple', [
-                            'href' => get_permalink($cookiepolicy),
-                            'class' => $class,
-                            'text' => __('Cookie beleid', 'wefabric')
-                        ]) /
-                    @endif
-
-                    @if($sitemap = get_field('sitemap', 'option'))
-                        @include('components.link.simple', [
-                            'href' => get_permalink($sitemap),
-                            'class' => $class,
-                            'text' => __('Sitemap', 'wefabric')
+                            'text' => __($post->title, 'wefabric')
                         ])
-                    @endif
 
+                        @php
+                            $last = (in_array($post, $menu) && $post == end($menu));
+                        @endphp
+                        @if(!$last)
+                            <span class="">
+                                /
+                            </span> {{-- This is the divider --}}
+                        @endif
+                    @endforeach
                 </div>
             </div>
 
-            <div class="flex align-right pb-0 pt-auto">
-                <span class="pr-1">
-                    Gerealiseerd door:
-                </span>
-                @include('components.link.opening', [
-                    'href' => 'https://wefabric.nl/',
-                    'alt' => 'Wefabric.nl'
-                ])
-                    <img src="@asset('images/footer/logo-wefabric.png')" max-width="100%" height="100%" class="wefabric-logo" alt="Wefabric logo - wefabric.nl"/>
-                @include('components.link.closing')
+            <div class="w-1/4 flex ">
+                <div class="self-end float-right w-full text-right">
+                    <span class="pr-1">
+                        Gerealiseerd door:
+                    </span>
+                    @include('components.link.opening', [
+                        'href' => 'https://wefabric.nl/',
+                        'alt' => 'Wefabric.nl'
+                    ])
+                        @php
+                            $theme = app('wp.theme');
+                        @endphp
+                        <img src="{{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }}" max-width="100%" height="100%" class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:18px;"/>
+                    @include('components.link.closing')
+                </div>
             </div>
         </div>
 

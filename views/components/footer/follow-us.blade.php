@@ -22,10 +22,14 @@
     </span>
     <div>
         <div id="mc_embed_signup">
+            @php
+                $mailchimp_code = get_fields('option')['mailchimp_code'];
+                // TODO now what
+            @endphp
             <form action="https://wefabric.us16.list-manage.com/subscribe/post?u=97458c1812b52842329db8e54&amp;id=5af5026eaf" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                 <div id="mc_embed_signup_scroll"></div>
                 <div class="flex">
-                    <input type="email" value="" placeholder="E-mailadres" name="EMAIL" class="w-3/4 required email" id="mce-EMAIL">
+                    <input type="email" value="" placeholder="E-mailadres" name="EMAIL" class="w-3/4 required email bg-white rounded-l-lg" id="mce-EMAIL">
                     <div id="mce-responses" class="clear">
                         <div class="response" id="mce-error-response" style="display:none"></div>
                         <div class="response" id="mce-success-response" style="display:none"></div>
@@ -34,7 +38,7 @@
                         <input type="text" name="b_97458c1812b52842329db8e54_5af5026eaf" tabindex="-1" value="">
                     </div>
                     <div class="flex align-center">
-                        <button type="submit" class="w-10 h-10 ml-2 bg-primary-dark text-white text-center text-sm py-auto hover:bg-primary rounded-lg">
+                        <button type="submit" class="w-10 h-10 bg-white text-primary-dark text-center text-sm hover:text-primary rounded-r-lg">
                             <i class="fa-solid fa-paper-plane "></i>
                             <span class="screen-reader-only">Aanmelden</span>
                         </button>
