@@ -18,9 +18,9 @@
         <h3 class="text-xl">{{ get_the_title($employeeId) }}</h3>
     </div>
 
-    @if(isset($fields['overview_text']) && $fields['overview_text'])
+    @if(isset($fields['function']) && $fields['function'])
         <div class="mx-auto mb-3">
-            <p class="text-center text-base">{{ $fields['overview_text'] }}</p>
+            <p class="text-center text-base">{{ $fields['function'] }}</p>
         </div>
     @endif
 
