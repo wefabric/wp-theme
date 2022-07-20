@@ -1,9 +1,9 @@
-<div class="bg-black text-white text-base pb-24">
+<div class="bg-black text-white text-base pb-10 lg:pb-24">
     <div class="container mx-auto px-8 lg:px-0 relative">
 
         <div class="w-full">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-16">
-                <div class="pb-6 border-b md:border-0">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-4 pt-12 lg:pt-16 pb-6 lg:pb-0">
+                <div class="lg:pb-6">
                     @php
                         $menu = wp_nav_menu([
                           'theme_location' => 'footer_menu_one',
@@ -14,7 +14,7 @@
                     @include('components.footer.accordion-menu', ['menu' => $menu, 'title' => wp_get_nav_menu_name('footer_menu_one'), 'accordionId' => 1, 'setAccordion' => true])
                 </div>
 
-                <div class="pb-6 border-b md:border-0">
+                <div class="lg:pb-6">
                     @php
                         $menu = wp_nav_menu([
                           'theme_location' => 'footer_menu_two',
@@ -26,24 +26,24 @@
                     @include('components.footer.accordion-menu', ['menu' => $menu, 'title' => wp_get_nav_menu_name('footer_menu_two'), 'accordionId' => 2, 'setAccordion' => true])
                 </div>
 
-                <div class="pb-6 border-b md:border-0">
+                <div class="lg:pb-6">
                     @include('components.footer.accordion-menu', ['menu' => view('components.footer.contact'), 'title' => __('Contactgegevens', 'wefabric'), 'accordionId' => 3, 'setAccordion' => true])
                 </div>
 
-                <div class="pb-6 border-b md:border-0">
+                <div class="lg:pb-6">
                     @include('components.footer.accordion-menu', ['menu' => view('components.footer.follow-us'), 'title' => __('Volg ons', 'wefabric'), 'accordionId' => 4, 'setAccordion' => true])
                 </div>
             </div>
         </div>
 
-        <div class="flex flex-row">
-            <div class="w-1/4">
+        <div class="flex flex-col lg:flex-row">
+            <div class="hidden lg:block lg:w-1/4">
                 @if(isset(get_field('common', 'option')['logo_white']) && $logoId = get_field('common', 'option')['logo_white'])
                     {!! wp_get_attachment_image( $logoId , 'employee-thumbnail', false, ['class' => 'mx-auto lg:mx-0 inline-block']) !!}
                 @endif
             </div>
 
-            <div class="w-1/2 flex flex-col  self-end">
+            <div class="w-full lg:w-1/2 flex flex-col self-end">
                 <div class="flex flex-row mb-5">
                     @php
                         $footer = get_fields('option')['footer_partners'];
@@ -71,7 +71,7 @@
 
                 <div class="flex flex-row">
                     @php
-                        $class = 'my-3 lg:my-0 block md:inline-block hover:underline md:px-2';
+                        $class = 'inline-block hover:underline md:px-2';
 
                         $menuLocations = get_nav_menu_locations();
                         $menuID = $menuLocations['footer_menu_three'];
@@ -97,8 +97,8 @@
                 </div>
             </div>
 
-            <div class="w-1/4 flex ">
-                <div class="self-end float-right w-full text-right">
+            <div class="w-full lg:w-1/4 flex">
+                <div class="flex w-full pt-8 lg:pt-0 lg:text-right lg:self-end">
                     <span class="pr-1">
                         Gerealiseerd door:
                     </span>

@@ -8,7 +8,7 @@
 	            'rel' => 'noopener',
 	            'target' => '_blank'
             ])
-                <span class="inline-block h-14 w-14 rounded-full mr-3 text-center pt-2.5
+                <span class="inline-block h-12 w-12 lg:h-14 lg:w-14 rounded-full mr-3 text-center pt-1.5 lg:pt-2.5
                 bg-white hover:bg-primary-dark text-black hover:text-white ">
                     <i class="{{ $social['icon'] }} text-xl"></i>
                     <span class="screen-reader-only">{{ $social['name'] }}</span>
