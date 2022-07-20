@@ -18,7 +18,7 @@
     <div class="text-6xl font-bold {{ $item->get('icon') }} " style="color: {{ $block->get('icon_color') }};"></div>
 
     <div>
-        <span class="block text-2xl font-bold">
+        <span class="block text-xl font-bold">
             {{ $item->get('title') }}
         </span>
 
