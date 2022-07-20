@@ -20,27 +20,22 @@
 	    'class' => 'text-center text-base mb-12'
     ])
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3">
-        @foreach($postList as $employeeId)
-            @include('components.cards.employee', [
-                'employeeId' => $employeeId,
+    @if($block->get('display_type') === 'slider')
+        <div class="">
+            @include('components.slider.slider', [
+                'items' => $postList,
+                'card_type' => 'employee',
+                'card_classes' => 'w-1/3',
             ])
-        @endforeach
-    </div>
-</div>
-
-@if(false)
-    @if($block->get('display_type') === 'image_view')
-        <div class="container mx-auto my-16 text-center">
-            <h2 class="uppercase">{{ $block->get('title') }}</h2>
-
-            @include('components.employees.employee-list', ['postList' => $postList])
         </div>
-    @elseif($block->get('display_type') === 'block_view')
-        <div class="container mx-auto">
-            <h2 class="uppercase ml-4">{{ $block->get('title') }}</h2>
-
-            @include('components.employees.employee-list-blocks', ['postList' => $postList])
+    @elseif($block->get('display_type') === 'grid')
+        <div class="grid md:grid-cols-2 lg:grid-cols-3">
+            @foreach($postList as $employeeId)
+                @include('components.cards.employee', [
+                    'employeeId' => $employeeId,
+                ])
+            @endforeach
         </div>
     @endif
-@endif
+</div>
+

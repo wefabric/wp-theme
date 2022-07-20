@@ -1,4 +1,7 @@
 @php
+    if(! isset($employeeId)) {
+        $employeeId = $item; //in case of slider
+    }
     $fields = get_fields($employeeId);
     $service = get_post($employeeId);
 @endphp

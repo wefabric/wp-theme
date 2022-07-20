@@ -1173,11 +1173,11 @@
                         },
                         {
                             "key": "field_60ce431d19eac",
-                            "label": "Afbeelding weergave of blokken weergave",
+                            "label": "Weergave",
                             "name": "display_type",
                             "type": "radio",
                             "instructions": "",
-                            "required": 0,
+                            "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
@@ -1185,8 +1185,8 @@
                                 "id": ""
                             },
                             "choices": {
-                                "image_view": "Afbeelding weergave",
-                                "block_view": "Blokken weergave"
+                                "slider": "Slider weergave",
+                                "grid": "Blokken weergave"
                             },
                             "allow_null": 0,
                             "other_choice": 0,
@@ -1243,25 +1243,6 @@
                             "multiple": 1,
                             "return_format": "id",
                             "ui": 1
-                        },
-                        {
-                            "key": "field_60d02beac09b3",
-                            "label": "Sectie naam voor balk met links",
-                            "name": "section_name",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
                         }
                     ],
                     "min": "",
@@ -1293,5 +1274,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1658330131
+    "modified": 1658332015
 }
