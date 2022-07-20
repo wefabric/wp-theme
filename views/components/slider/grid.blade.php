@@ -5,7 +5,7 @@
 @endphp
 <div class="grid grid-cols-{{ $count }}">
     @foreach($items as $item)
-        @include('components.slider.cards.'. $card_type, [
+        @include('components.cards.'. $card_type, [
             'item' => $item
         ])
     @endforeach

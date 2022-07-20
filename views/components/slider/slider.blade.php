@@ -86,7 +86,7 @@
             >
                 @foreach($items as $item)
                     <li class="snap-start {{ $card_classes ?? 'w-5/6 md:w-2/5 lg:w-1/4 2xl:w-1/5' }} shrink-0 flex flex-col items-center justify-center p-4" role="option">
-                        @include('components.slider.cards.'. $card_type, [
+                        @include('components.cards.'. $card_type, [
                             'item' => $item,
                         ])
                     </li>
