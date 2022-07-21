@@ -1,4 +1,4 @@
-<div class=" {{ $class ?? '' }} mx-auto lg:{{ $block->get('width') }}  ">
+<div class="container mx-auto  {{ $class ?? '' }} w-full lg:{{ $block->get('width') }}  ">
     <iframe
         src="{{ $block->get('iframe-url') }}"
         width="100%"

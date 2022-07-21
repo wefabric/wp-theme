@@ -1,4 +1,4 @@
-<div class="{{ $classes ?? '' }} mx-auto lg:{{ $block->get('width') }}">
+<div class="container mx-auto {{ $class ?? '' }} w-full lg:{{ $block->get('width') }}">
     @if($block['video'])
         @if(strpos($block['video'], 'youtube') > 0)
             @php

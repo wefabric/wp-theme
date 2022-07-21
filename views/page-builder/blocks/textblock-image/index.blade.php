@@ -1,4 +1,4 @@
-<div class="mx-auto w-full lg:flex lg:{{ $block->get('width') }}">
+<div class="container mx-auto w-full lg:flex lg:{{ $block->get('width') }}">
 
     <div class="w-full lg:w-4/6 @if($block->get('image_position') === 'left') order-1 lg:order-2 lg:pl-16 @else lg:pr-16 @endif @switch($block->get('image_vertical_position')) {{-- For aligning the text,when shorter than the image. --}}
             @case('middle') lg:my-auto @break

@@ -1,4 +1,4 @@
-<div class="">
+<div class="container mx-auto {{ $class ?? '' }}">
     @if(!empty($title))
         @include('components.headings.normal', [
             'type' => '2',
