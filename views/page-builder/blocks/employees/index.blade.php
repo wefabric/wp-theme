@@ -21,7 +21,7 @@
 
     @include('components.content', [
 	    'content' => $block->get('subtitle'),
-	    'class' => 'text-center text-base mb-12'
+	    'class' => 'text-center mb-12'
     ])
 
     @if($block->get('display_type') === 'slider')

@@ -4,6 +4,8 @@
     }
     $fields = get_fields($postId);
     $service = get_post($postId);
+
+    $categories = get_the_category($postId);
 @endphp
 
 <div class="hover:shadow-3xl max-w-md flex flex-col mx-auto h-full relative">
@@ -17,7 +19,7 @@
 
     <div class="px-5">
         <div class="text-sm text-gray">
-            Blog
+            {{ $categories[0]->name }}
         </div>
 
         <div class="">
