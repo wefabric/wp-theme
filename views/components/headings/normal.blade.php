@@ -4,7 +4,7 @@
 
 <div class="container flex">
     <{{$hx}} @if($id ?? '') id="{{ $id }}" @endif
-        class="font-head inline-block align-text-top z-10 {{ $classes ?? 'text-black'  }}">
+        class="font-head inline-block align-text-top z-10 {{ $class ?? 'text-black'  }}">
         {!! $heading !!}
     </{{$hx}}>
 </div>

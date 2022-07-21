@@ -15,7 +15,11 @@
     </div>
 
     <div class="mx-auto mb-3">
-        <h3 class="text-xl">{{ get_the_title($employeeId) }}</h3>
+        @include('components.headings.normal', [
+            'type' => '3',
+            'heading' => get_the_title($employeeId),
+            'class' => 'text-center'
+        ])
     </div>
 
     @if(isset($fields['function']) && $fields['function'])

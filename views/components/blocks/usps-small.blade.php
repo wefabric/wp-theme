@@ -2,7 +2,7 @@
     @if(!empty($title))
         @include('components.headings.normal', [
             'type' => '2',
-            'classes' => 'font-bold text-2xl py-2',
+            'class' => 'font-bold text-2xl py-2',
             'heading' => $title,
         ])
     @endif
