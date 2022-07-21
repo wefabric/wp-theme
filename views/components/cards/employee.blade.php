@@ -3,11 +3,11 @@
         $employeeId = $item; //in case of slider
     }
     $fields = get_fields($employeeId);
-    $service = get_post($employeeId);
+    // $service = get_post($employeeId);
 @endphp
 
 <div class="hover:shadow-3xl max-w-md flex flex-col mx-auto">
-    <div class="mx-auto mb-3 h-80 px-5 rounded-lg">
+    <div class="mx-auto mb-3 lg:h-80 lg:px-5 rounded-lg">
         @include('components.image', [
             'image_id' => $fields['image'],
             'class' => 'rounded-lg'
@@ -34,7 +34,7 @@
                 'href' => 'tel:'. $fields['phonenumber'],
                 'alt' => 'Telefoonnummer'
             ])
-                <span class="inline-block h-8 w-8 rounded-full mr-2 text-center
+                <span class="inline-block h-8 w-8 rounded-full mx-1 text-center
                     bg-black hover:bg-primary-dark text-white ">
                     <i class="fa-solid fa-phone text-sm align-top pt-1.5"></i>
                     <span class="screen-reader-only">Telefoonnummer</span>
@@ -47,7 +47,7 @@
                 'href' => 'mailto:'. $fields['email'],
                 'alt' => 'Emailadres'
             ])
-                <span class="inline-block h-8 w-8 rounded-full mr-2 text-center
+                <span class="inline-block h-8 w-8 rounded-full mx-1 text-center
                     bg-black hover:bg-primary-dark text-white ">
                     <i class="fa-solid fa-envelope text-sm align-top pt-1.5"></i>
                     <span class="screen-reader-only">Emailadres</span>
@@ -60,7 +60,7 @@
                 'href' => $fields['linkedin'],
                 'alt' => 'LinkedIn'
             ])
-                <span class="inline-block h-8 w-8 rounded-full mr-2 text-center
+                <span class="inline-block h-8 w-8 rounded-full mx-1 text-center
                     bg-black hover:bg-primary-dark text-white ">
                     <i class="fa-brands fa-linkedin-in text-sm align-top pt-1.5"></i>
                     <span class="screen-reader-only">LinkedIn</span>

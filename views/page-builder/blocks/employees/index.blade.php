@@ -29,7 +29,7 @@
             @include('components.slider.slider', [
                 'items' => $postList,
                 'card_type' => 'employee',
-                'card_classes' => 'w-1/3',
+                'card_classes' => 'w-full md:w-1/2 lg:w-1/3',
             ])
         </div>
     @elseif($block->get('display_type') === 'grid')
