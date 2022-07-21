@@ -13,7 +13,11 @@
 
 
 <div class="container mx-auto">
-    <h2 class="mb-12 text-center">{{ $block->get('title') }}</h2>
+    @include('components.headings.normal', [
+	    'type' => '2',
+	    'classes' => 'mb-12 text-center',
+	    'heading' => $block->get('title'),
+    ])
 
     @include('components.content', [
 	    'content' => $block->get('subtitle'),

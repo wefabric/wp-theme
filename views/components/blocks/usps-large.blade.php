@@ -1,8 +1,10 @@
 <div class="">
     @if(!empty($title))
-        <div class="font-bold text-2xl py-2">
-            {{ $title }}
-        </div>
+        @include('components.headings.normal', [
+            'type' => '2',
+            'classes' => 'font-bold text-2xl py-2',
+            'heading' => $title,
+        ])
     @endif
 
     @if(!empty($subtitle))
