@@ -36,7 +36,7 @@
             ])
         </div>
 
-        <div class="absolute bottom-0 right-0 w-full">
+        <div class="absolute bottom-0 right-5 w-full pb-5">
             <div class="text-right text-base text-bold">
                 @include('components.link.opening', [
                     'href' => get_permalink($postId),
