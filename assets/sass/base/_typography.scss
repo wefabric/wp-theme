@@ -9,33 +9,19 @@
   }
 
   h1, .h1 {
-    @apply text-2xl text-primary font-head font-semibold break-words uppercase;
+    @apply text-white text-2xl font-bold break-words text-shadow-lg ;
     line-height: 1.2 !important;
 
-    @media (min-width: 768px) {
-      @apply text-3xl;
-    }
-
     @media (min-width: 1024px) {
-      @apply text-3xl font-bold
-    }
-
-    @media (min-width: 1536px) {
       @apply text-4xl;
     }
   }
 
   h2, .h2 {
-    @apply text-2xl text-primary font-head font-semibold  break-words leading-snug;
-    @media (min-width: 768px) {
-      @apply text-2xl;
-    }
+    @apply text-white text-base font-normal break-words text-shadow-lg ;
 
     @media (min-width: 1024px) {
-      @apply text-2xl font-bold;
-    }
-    @media (min-width: 1536px) {
-      @apply text-3xl;
+      @apply text-lg font-bold;
     }
   }
 

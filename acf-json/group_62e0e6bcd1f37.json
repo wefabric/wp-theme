@@ -1,0 +1,216 @@
+{
+    "key": "group_62e0e6bcd1f37",
+    "title": "Header",
+    "fields": [
+        {
+            "key": "field_62e0ea733c1d5",
+            "label": "Header",
+            "name": "header",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_62e0ea795e9f1": {
+                    "key": "layout_62e0ea795e9f1",
+                    "name": "header-1",
+                    "label": "Header 1",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_62e0ea853c1d6",
+                            "label": "Headerafbeelding",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "preview_size": "thumbnail",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_62e0ea993c1d7",
+                            "label": "Titel",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_62e0ea9f3c1d8",
+                            "label": "Subtitel",
+                            "name": "subtitle",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_62e0eaa83c1d9",
+                            "label": "Call to Actions",
+                            "name": "call_to_actions",
+                            "type": "repeater",
+                            "instructions": "Wil je een call-to-action toevoegen? Vul ze hier in! Maximaal 2.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "collapsed": "",
+                            "min": 0,
+                            "max": 2,
+                            "layout": "table",
+                            "button_label": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_62e0eac93c1da",
+                                    "label": "Tekst",
+                                    "name": "text",
+                                    "type": "text",
+                                    "instructions": "Dit is de tekst die wordt weergegeven.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_62e0ead23c1db",
+                                    "label": "Link (pagina)",
+                                    "name": "link_internal",
+                                    "type": "page_link",
+                                    "instructions": "Hiermee link je naar een bestaande pagina binnen de website.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": "",
+                                    "taxonomy": "",
+                                    "allow_null": 0,
+                                    "allow_archives": 1,
+                                    "multiple": 0
+                                },
+                                {
+                                    "key": "field_62e0eb013c1dc",
+                                    "label": "Link (extern)",
+                                    "name": "link_external",
+                                    "type": "url",
+                                    "instructions": "Hiermee link je naar een URL. Let op: als beide links zijn ingevuld wordt deze URL gebruikt!",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_62e0eb163c1dd",
+                                    "label": "Type",
+                                    "name": "type",
+                                    "type": "select",
+                                    "instructions": "Kies hier de weergave van de CTA.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "button": "Knop",
+                                        "link": "Link"
+                                    },
+                                    "default_value": "button",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "Add Row",
+            "min": 1,
+            "max": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1658927158
+}

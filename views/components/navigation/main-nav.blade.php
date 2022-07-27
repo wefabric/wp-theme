@@ -83,6 +83,7 @@
         @include('components.buttons.default', [
             'href' => '/offerte',
             'text' => 'Offerte aanvragen',
+            'colors' => 'btn-primary-dark text-white'
         ])
 
     </nav>

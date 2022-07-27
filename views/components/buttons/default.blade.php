@@ -5,7 +5,14 @@
     'target' => $target ?? '',
     'class' => $a_class ?? '',
 ])
-    <span class="btn {{ $size ?? 'btn-small' }} btn-{{ $color ?? 'primary-dark' }} {{ $class ?? '' }}">
+
+    @php
+        if(!isset($colors)) {
+            $colors = 'btn-white hover:btn-primary-dark text-black hover:text-white';
+        }
+    @endphp
+
+    <span class="btn {{ $size ?? 'btn-small' }} {{ $colors }} {{ $class ?? 'font-bold' }}">
         {{ $text }}
     </span>
 @include('components.link.closing')
