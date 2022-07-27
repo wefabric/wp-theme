@@ -5,8 +5,7 @@
                 <div class="flex">
                     <input type="text" value="" placeholder="Typ hier je zoekterm in..." name="q" class="w-96 required bg-white rounded-l-lg shadow-lg shadow-slate-200 " id="search">
                     <div class="flex align-center">
-                        <button type="submit" class="w-12 h-12 rounded-r-lg text-center
-                        bg-black text-white text-center text-xl hover:bg-primary-dark shadow shadow-slate-200">
+                        <button type="submit" class="w-12 h-12 rounded-r-lg text-center bg-black text-white text-center text-xl hover:bg-primary-dark shadow shadow-slate-200">
                             <i class="fa-light fa-search "></i>
                             <span class="screen-reader-only">Zoeken</span>
                         </button>
@@ -76,7 +75,7 @@
             ])
 {{--
             @if(!$isLast)
-                <span class="divider"> </span>
+                <span class="divider"> / </span>
             @endif
 --}}
         @endforeach
