@@ -2,18 +2,13 @@
 @if(isset($options['channels']) && $options['channels'])
     <div class="mb-8">
         @foreach($options['channels'] as $social)
-            @include('components.link.opening', [
+            @include('components.buttons.icon', [
 	            'href' => $social['url'],
 	            'alt' => $social['name'],
 	            'rel' => 'noopener',
-	            'target' => '_blank'
+	            'target' => '_blank',
+	            'icon' => $social['icon'],
             ])
-                <span class="inline-block h-12 w-12 lg:h-14 lg:w-14 rounded-full mr-3 text-center pt-1.5 lg:pt-2.5
-                bg-white hover:bg-primary-dark text-black hover:text-white ">
-                    <i class="{{ $social['icon'] }} text-xl"></i>
-                    <span class="screen-reader-only">{{ $social['name'] }}</span>
-                </span>
-            @include('components.link.closing')
         @endforeach
     </div>
 

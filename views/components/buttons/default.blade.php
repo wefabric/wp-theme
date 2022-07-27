@@ -1,3 +1,11 @@
-<a class="btn {{ $classes ?? 'btn-primary' }}" href="{{ $button->get('link_external') ? $button->get('link_external')['url'] : $button->get('link')['url'] }}">
-    {{ $button->get('title') }}
-</a>
+@include('components.link.opening', [
+    'href' => $href,
+    'alt' => $alt ?? $text,
+    'rel' => $rel ?? '',
+    'target' => $target ?? '',
+    'class' => $a_class ?? '',
+])
+    <span class="btn {{ $size ?? 'btn-small' }} btn-{{ $color ?? 'primary-dark' }} {{ $class ?? '' }}">
+        {{ $text }}
+    </span>
+@include('components.link.closing')

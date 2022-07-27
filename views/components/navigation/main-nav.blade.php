@@ -17,36 +17,31 @@
             </form>
         </div>
 
-        @include('components.link.opening', [
+        @include('components.buttons.icon', [
             'href' => '/cart',
-            'alt' => 'Winkelwagen',
-/*            'rel' => 'noopener',
-            'target' => '_blank'
-*/        ])
-            <span class="inline-block h-12 w-12 rounded-full mr-3 text-center pt-1.5
-                bg-black hover:bg-primary-dark text-white relative">
-                <i class="fa-light fa-bag-shopping text-xl"></i>
-                <span class="screen-reader-only">Naar de winkelwagen</span>
+            'alt' => 'Naar de winkelwagen',
+//            'rel' => 'noopener',
+//            'target' => '_blank',
+            'icon' => 'fa-light fa-bag-shopping',
 
-                <span class="h-7 w-7 text-center mr-1 rounded-full bg-zinc-300 text-black absolute pt-0.5 -top-2 -right-2">
-                    {{ $cart ?? 0 }}
-                </span>
-            </span>
-        @include('components.link.closing')
+            'size' => 'h-12 w-12 pt-1.5',
+            'colors' => 'bg-black hover:bg-primary-dark text-white',
+            'class' => 'relative',
 
-        @include('components.link.opening', [
+            'smallIconClass' => 'h-7 w-7 text-center mr-1 rounded-full bg-zinc-300 text-black absolute pt-0.5 -top-2 -right-2',
+            'smallIconContent' => '0', //number of items in shopping cart
+        ])
+
+        @include('components.buttons.icon', [
             'href' => '/profile',
-            'alt' => 'Profiel',
-  /*          'rel' => 'noopener',
-            'target' => '_blank'
-  */      ])
-            <span class="inline-block h-12 w-12 rounded-full mr-3 text-center pt-1.5
-                bg-black hover:bg-primary-dark text-white">
-                <i class="fa-light fa-user text-xl"></i>
-                <span class="screen-reader-only">Naar mijn profiel</span>
-            </span>
-        @include('components.link.closing')
+            'alt' => 'Naar mijn profiel',
+//            'rel' => 'noopener',
+//            'target' => '_blank',
+            'icon' => 'fa-light fa-user',
 
+            'size' => 'h-12 w-12 pt-1.5',
+            'colors' => 'bg-black hover:bg-primary-dark text-white',
+        ])
     </div>
 
     <nav id="site-navigation" class="main-navigation">
@@ -86,14 +81,10 @@
 --}}
         @endforeach
 
-        @include('components.link.opening', [
+        @include('components.buttons.default', [
             'href' => '/offerte',
-            'alt' => 'Offerte aanvragen',
+            'text' => 'Offerte aanvragen',
         ])
-            <span class="btn btn-small btn-primary-dark">
-                Offerte aanvragen
-            </span>
-        @include('components.link.closing')
 
     </nav>
 </div>
