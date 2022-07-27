@@ -1,14 +1,16 @@
 @layer base {
   .btn {
-    @apply relative text-sm transition-all uppercase border-2 font-bold;
-    font-weight: 700;
+    @apply relative text-sm transition-all rounded-full;
     letter-spacing: 0;
     line-height: 50px;
     padding: 0 36px 0 20px;
     position: relative;
     display: inline-block;
-    color: #fff;
+    color: #fff; //text-color white
 
+    :hover {
+      @apply cursor-pointer;
+    }
 
     @screen lg {
       @apply text-md;
@@ -18,26 +20,26 @@
 
     @each $themeColor in $themeColors {
       &.btn-#{$themeColor} {
-        @apply border-#{$themeColor};
+        @apply bg-#{$themeColor};
 
         &:hover {
-          @apply border-#{$themeColor}-dark;
+          @apply bg-#{$themeColor}-dark;
         }
       }
 
       &.btn-#{$themeColor}-light {
-        @apply border-#{$themeColor}-light;
+        @apply bg-#{$themeColor}-light;
 
         &:hover {
-          @apply border-#{$themeColor};
+          @apply bg-#{$themeColor};
         }
       }
 
       &.btn-#{$themeColor}-dark {
-        @apply border-#{$themeColor}-dark;
+        @apply bg-#{$themeColor}-dark;
 
         &:hover {
-          @apply border-#{$themeColor};
+          @apply bg-#{$themeColor};
         }
       }
 
@@ -51,19 +53,21 @@
     }
 
     &.btn-white {
-      @apply border-white;
+      @apply bg-white;
       &:after {
         @apply transition-all;
-        content: '\f054' !important;
+        font-weight: 700;
+        content: '\f0da' !important;
         font-family: $fa-font-family;
       }
     }
 
     &.btn-transparent {
-      @apply border-none;
+      @apply bg-none;
       &:after {
         @apply transition-all;
-        content: '\f054' !important;
+        font-weight: 700;
+        content: '\f0da' !important;
         font-family: $fa-font-family;
         top: 34%;
       }
@@ -72,7 +76,8 @@
     &:after {
       @apply transition-all;
       @extend .far;
-      content: '\f054';
+      font-weight: 700;
+      content: '\f0da';
       font-family: $fa-font-family;
       right: 20px;
       top: 36%;
@@ -180,16 +185,16 @@
 
     &.btn-small {
       @apply text-base;
-      padding: 6px 30px 8px 22px;
+      padding: 12px 30px 14px 22px;
 
       &:after {
         @apply text-sm;
-        line-height: 0;
+        line-height: 0.75rem;
         right: 15px;
       }
 
       &.reversed-chevron {
-        padding: 6px 22px 8px 30px;
+        padding: 12px 22px 14px 30px;
 
         &:after {
           left: 15px;

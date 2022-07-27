@@ -20,20 +20,20 @@
     {!! $options['body_codes'] !!}
 @endif
 @if(isset($options['out_of_office']['active']) && $options['out_of_office']['active'])
-    @if((isset($options['out_of_office']['start_display_date']) && $options['out_of_office']['start_display_date'] <= date('Ymd')) || $options['out_of_office']['start_display_date'])
-        @if((isset($options['out_of_office']['end_display_date']) && $options['out_of_office']['end_display_date'] >= date('Ymd')) || $options['out_of_office']['end_display_date'])
+    @if(empty($options['out_of_office']['start_display_date']) || $options['out_of_office']['start_display_date'] <= date('Ymd')))
+        @if(empty($options['out_of_office']['end_display_date']) || $options['out_of_office']['end_display_date'] >= date('Ymd')))
             @include('components.out-of-office', ['outOfOffice' => $options['out_of_office']])
         @endif
     @endif
 @endif
 <div id="page" class="site">
     @include('components.navigation.header-top')
-    <header id="masthead" class="px-4">
-        <div class="flex flex-row container mx-auto">
+    <header id="masthead" class="px-4 border-2 border-black"> {{-- TODO REMOVE BORDER --}}
+        <div class="flex flex-row container mx-auto py-4">
             <div class="hidden lg:block w-1/6 items-center">
                 @include('components.header.logo')
             </div>
-            <div class="lg:w-5/6 lg:flex items-center justify-end h-12 lg:h-auto">
+            <div class="lg:w-5/6 lg:flex items-center justify-end h-16 lg:h-auto">
                 @include('components.navigation.main-nav')
                 @include('components.navigation.header-mobile')
             </div>

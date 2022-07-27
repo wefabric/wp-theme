@@ -23,6 +23,8 @@
 
     object-contain object-cover object-fill object-none object-scale-down
 
+    md:px-2 md:px-4
+
 ">
 
 </div>

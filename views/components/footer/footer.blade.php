@@ -69,7 +69,7 @@
                     @endforeach {{-- Logos van partners --}}
                 </div>
 
-                <div class="flex flex-row">
+                <div class="lg:flex lg:flex-row">
                     @php
                         $class = 'inline-block hover:underline md:px-2';
 
@@ -89,9 +89,7 @@
                             $last = (in_array($post, $menu) && $post == end($menu));
                         @endphp
                         @if(!$last)
-                            <span class="">
-                                /
-                            </span> {{-- This is the divider --}}
+                            <span class="divider"> / </span>
                         @endif
                     @endforeach
                 </div>
