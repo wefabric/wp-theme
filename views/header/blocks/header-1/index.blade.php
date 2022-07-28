@@ -2,11 +2,8 @@
     $imageId = $block->get('image') ?? get_field('common', 'option')['default_header_image'];
 @endphp
 
-<div class="bg-blue-500 w-full pb-96">
-</div>
-
-<div class="header-1 w-full bg-black"> {{-- -mt-96 vvv --}}
-    <div class="mx-4 lg:mx-20 py-15 lg:py-40  bg-center bg-cover bg-no-repeat rounded-lg z-50" style="background: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
+<div class="header-1 w-full bg-gradient-to-b from-white to-black">
+    <div class="mx-4 lg:mx-20 py-15 lg:py-40  bg-center bg-cover bg-no-repeat rounded-lg z-50" style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
         <div class="container mx-auto w-full lg:w-3/4 text-center ">
             <h1 class="">
                 {{ $block->get('title') }}

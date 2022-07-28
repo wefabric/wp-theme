@@ -28,7 +28,7 @@
 @endif
 <div id="page" class="site">
     @include('components.navigation.header-top')
-    <header id="masthead" class="px-4 border-2 border-black"> {{-- TODO REMOVE BORDER --}}
+    <header id="masthead" class="px-4">
         <div class="flex flex-row container mx-auto py-4">
             <div class="hidden lg:block w-1/6 items-center">
                 @include('components.header.logo')
