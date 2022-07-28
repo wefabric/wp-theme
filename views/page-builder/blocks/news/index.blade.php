@@ -19,21 +19,15 @@
     ])
 
     @if(false)
-        <div class="">
-            @include('components.slider.slider', [
-	            'items' => $postList,
-	            'card_type' => 'newsitem',
-	            'card_classes' => 'w-full md:w-1/2 lg:w-1/3'
-            ])
-        </div>
+        @include('components.slider.smart-slider', [
+            'items' => $postList,
+            'card_type' => 'newsitem',
+        ])
     @else
-        <div class="grid md:grid-cols-2 lg:grid-cols-3">
-            @foreach($postList as $postId)
-                @include('components.cards.newsitem', [
-                    'postId' => $postId,
-                ])
-            @endforeach
-        </div>
+        @include('components.slider.grid', [
+            'items' => $postList,
+            'card_type' => 'newsitem',
+        ])
     @endif
 
 </div>

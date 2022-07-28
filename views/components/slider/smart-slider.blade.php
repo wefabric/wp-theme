@@ -5,7 +5,9 @@
 
     @php
         $count = count($items);
-        $card_classes = 'w-full';
+        if(!isset($card_classes)) {
+            $card_classes = 'w-full md:w-1/2 lg:w-1/3';
+        }
     @endphp
 
     <div class="block lg:hidden"> {{-- This is the mobile block --}}

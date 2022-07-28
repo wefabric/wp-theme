@@ -1,9 +1,4 @@
-@php
-    if(!isset($count)) {
-        $count = count($items);
-    }
-@endphp
-<div class="grid grid-cols-{{ $count }}">
+<div class="grid md:grid-cols-2 lg:grid-cols-3">
     @foreach($items as $item)
         @include('components.cards.'. $card_type, [
             'item' => $item

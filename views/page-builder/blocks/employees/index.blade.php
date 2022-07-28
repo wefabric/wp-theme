@@ -11,7 +11,6 @@
     }
 @endphp
 
-
 <div class="container mx-auto">
     @include('components.headings.normal', [
 	    'type' => '2',
@@ -25,21 +24,15 @@
     ])
 
     @if($block->get('display_type') === 'slider')
-        <div class="">
-            @include('components.slider.slider', [
-                'items' => $postList,
-                'card_type' => 'employee',
-                'card_classes' => 'w-full md:w-1/2 lg:w-1/3',
-            ])
-        </div>
+        @include('components.slider.smart-slider', [
+            'items' => $postList,
+            'card_type' => 'employee',
+        ])
     @elseif($block->get('display_type') === 'grid')
-        <div class="grid md:grid-cols-2 lg:grid-cols-3">
-            @foreach($postList as $employeeId)
-                @include('components.cards.employee', [
-                    'employeeId' => $employeeId,
-                ])
-            @endforeach
-        </div>
+        @include('components.slider.grid', [
+            'items' => $postList,
+            'card_type' => 'employee',
+        ])
     @endif
 </div>
 

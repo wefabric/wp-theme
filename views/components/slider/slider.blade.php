@@ -1,5 +1,10 @@
 <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.js"></script>
 <div>
+{{--
+    BEWARE: This class isn't designed to be used directly.
+    Preferably use smart-slider which shows a grid instead
+    of a slider, when sliding functionality isn't required.
+--}}
 
     <div x-data="{
         skip: 1,
