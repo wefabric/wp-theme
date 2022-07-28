@@ -15,7 +15,7 @@
         ])
     @endif
 
-    <div class="text-6xl font-bold {{ $item->get('icon') }} " style="color: {{ $block->get('icon_color') }};"></div>
+    <div class="text-6xl {{ $item->get('icon') }} " style="color: {{ $block->get('icon_color') }};"></div>
 
     <div>
         <span class="block text-xl font-bold">

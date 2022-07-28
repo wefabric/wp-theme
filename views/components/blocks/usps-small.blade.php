@@ -13,9 +13,9 @@
         </div>
     @endif
 
-    <div class="grid grid-cols-{{ $col_amount }}">
+    <div class="flex flex-row justify-center">
         @foreach($usps as $usp)
-            <div class="text-xl font-bold {{ $usp['icon'] }} " style="color: {{ $block->get('icon_color') }};">
+            <div class="w-1/{{$col_amount}} text-xl flex justify-center items-center font-bold {{ $usp['icon'] }} " style="color: {{ isset($block) ? $block->get('icon_color') : $usp['color'] }};">
                 @php
                     if(!empty($usp['external_url'])) {
                         $link = $usp['external_url'];
@@ -30,10 +30,10 @@
                     @include('components.link.simple', [
                         'href' => $link,
                         'text' => $usp['title'],
-                        'class' => $font,
+                        'class' => $font .' pl-2',
                     ])
                 @else
-                    <span class="{{ $font }}">
+                    <span class="{{ $font }} pl-2">
                         {{ $usp['title'] }}
                     </span>
                 @endif

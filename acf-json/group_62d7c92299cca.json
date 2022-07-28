@@ -84,6 +84,90 @@
                     "maxlength": ""
                 }
             ]
+        },
+        {
+            "key": "field_62e2918be906d",
+            "label": "USP's",
+            "name": "footer_usps",
+            "type": "repeater",
+            "instructions": "Vul hier je USP's in!",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_62e29197e906e",
+                    "label": "Icoon",
+                    "name": "icon",
+                    "type": "font-awesome",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "icon_sets": [
+                        "solid",
+                        "regular",
+                        "brands"
+                    ],
+                    "custom_icon_set": "",
+                    "default_label": "&lt;i class=\"fa-solid fa-check fa-fw\"&gt;&lt;\/i&gt; Check",
+                    "default_value": "{ \"style\" : \"solid\", \"id\" : \"check\", \"label\" : \"Check\", \"unicode\" : \"f00c\" }",
+                    "save_format": "class",
+                    "allow_null": 0,
+                    "show_preview": 1,
+                    "enqueue_fa": 0,
+                    "fa_live_preview": "",
+                    "choices": []
+                },
+                {
+                    "key": "field_62e291bce906f",
+                    "label": "Tekst",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_62e291d3e9070",
+                    "label": "Kleur",
+                    "name": "color",
+                    "type": "Thema Kleur",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "theme_color": "black",
+                    "font_size": 14
+                }
+            ]
         }
     ],
     "location": [
@@ -104,5 +188,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1658309302
+    "modified": 1659015922
 }

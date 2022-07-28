@@ -1,4 +1,15 @@
 <div class="bg-black text-white text-base pb-10 lg:pb-24">
+    <div class="bg-white text-black py-10 lg:py-20 lg:text-lg">
+        @php
+            $usps = get_fields('option')['footer_usps'];
+        @endphp
+
+        @include('components.blocks.usps-small', [
+            'col_amount' => count($usps),
+            'usps' => $usps,
+        ])
+    </div>
+
     <div class="container mx-auto px-8 lg:px-0 relative">
 
         <div class="w-full">
