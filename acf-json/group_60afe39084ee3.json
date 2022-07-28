@@ -69,6 +69,38 @@
                             "toolbar": "full",
                             "media_upload": 1,
                             "delay": 0
+                        },
+                        {
+                            "key": "field_62e2968a052a2",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e29699052a3",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
                         }
                     ],
                     "min": "",
@@ -130,6 +162,22 @@
                             "return_format": "value",
                             "ajax": 0,
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_62e296ab052a4",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
                         }
                     ],
                     "min": "",
@@ -263,6 +311,38 @@
                             "return_format": "value",
                             "ajax": 0,
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_62e296c4052a6",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e296ce052a7",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
                         }
                     ],
                     "min": "",
@@ -462,6 +542,38 @@
                                     "maxlength": ""
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_62e296dc052a8",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e297be95b1b",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
                         }
                     ],
                     "min": "",
@@ -842,6 +954,38 @@
                             "multiple": 1,
                             "return_format": "id",
                             "ui": 1
+                        },
+                        {
+                            "key": "field_62e296ea052a9",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e296f3052aa",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
                         }
                     ],
                     "min": "",
@@ -904,6 +1048,38 @@
                                 "class": "",
                                 "id": ""
                             }
+                        },
+                        {
+                            "key": "field_62e296fd052ab",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e29707052ac",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
                         }
                     ],
                     "min": "",
@@ -959,6 +1135,22 @@
                             "return_format": "value",
                             "ajax": 0,
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_62e29715052ad",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
                         }
                     ],
                     "min": "",
@@ -1017,6 +1209,22 @@
                             "return_format": "value",
                             "ajax": 0,
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_62e29720052ae",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
                         }
                     ],
                     "min": "",
@@ -1154,6 +1362,22 @@
                             "return_format": "value",
                             "ajax": 0,
                             "placeholder": ""
+                        },
+                        {
+                            "key": "field_62e2972c052af",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
                         }
                     ],
                     "min": "",
@@ -1275,6 +1499,38 @@
                             "multiple": 1,
                             "return_format": "id",
                             "ui": 1
+                        },
+                        {
+                            "key": "field_62e29736052b0",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e29740052b1",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
                         }
                     ],
                     "min": "",
@@ -1313,5 +1569,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1659014397
+    "modified": 1659017164
 }
