@@ -734,6 +734,38 @@
                             "allow_null": 0,
                             "allow_archives": 1,
                             "multiple": 0
+                        },
+                        {
+                            "key": "field_62e28caf30936",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": "white",
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e28cd88d4cb",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": "black",
+                            "font_size": 14
                         }
                     ],
                     "min": "",
@@ -1281,5 +1313,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1658931734
+    "modified": 1659014397
 }
