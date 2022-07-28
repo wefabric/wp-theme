@@ -59,8 +59,7 @@
                             @endif
                                 @include('components.image', [
                                     'image_id' => $item['logo'],
-                                    'size' => [0,32],
-                                    'class' => '',
+                                    'size' => 'footer-thumbnail',
                                 ])
                             @if($item['url'])
                                 @include('components.link.closing')
