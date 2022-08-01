@@ -1,7 +1,10 @@
-@php $options = get_fields('option'); @endphp
-@if(isset($options['channels']) && $options['channels'])
+@php
+    $option = get_fields('option');
+@endphp
+
+@if(!empty($option) && array_key_exists('channels', $option))
     <div class="mb-8">
-        @foreach($options['channels'] as $social)
+        @foreach($option['channels'] as $social)
             @include('components.buttons.icon', [
 	            'href' => $social['url'],
 	            'alt' => $social['name'],
@@ -11,6 +14,7 @@
             ])
         @endforeach
     </div>
+@endif
 
     <span class="font-head text-md pt-4 pb-2 pr-6 inline-block">
         Blijf op de hoogte
@@ -18,8 +22,11 @@
     <div>
         <div id="mc_embed_signup">
             @php
-                $mailchimp_code = get_fields('option')['mailchimp_code'];
-                // TODO now what
+                $mailchimp_code = null;
+                if(!empty($option) && array_key_exists('mailchimp_code', $option)) {
+                    $mailchimp_code = get_fields('option')['mailchimp_code'];
+                    // TODO now what
+                }
             @endphp
             <form action="https://wefabric.us16.list-manage.com/subscribe/post?u=97458c1812b52842329db8e54&amp;id=5af5026eaf" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                 <div id="mc_embed_signup_scroll"></div>
@@ -49,4 +56,3 @@
             </div>
         </div>
     </div>
-@endif

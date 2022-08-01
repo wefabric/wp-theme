@@ -1,14 +1,19 @@
 <div class="bg-black text-white text-base pb-10 lg:pb-24">
-    <div class="bg-white text-black py-10 lg:py-20 lg:text-lg">
-        @php
-            $usps = get_fields('option')['footer_usps'];
-        @endphp
+    @php
+        $option = get_fields('option');
 
-        @include('components.blocks.usps-small', [
-            'col_amount' => count($usps),
-            'usps' => $usps,
-        ])
-    </div>
+        if(!empty($option) && array_key_exists('footer_usps', $option)) {
+	        $usps = $option['footer_usps'];
+        }
+    @endphp
+    @if(!empty($usps))
+        <div class="bg-white text-black py-10 lg:py-20 lg:text-lg">
+            @include('components.blocks.usps-small', [
+                'col_amount' => count($usps),
+                'usps' => $usps,
+            ])
+        </div>
+    @endif
 
     <div class="container mx-auto px-8 lg:px-0 relative">
 
@@ -49,15 +54,28 @@
 
         <div class="flex flex-col lg:flex-row">
             <div class="hidden lg:block lg:w-1/4">
-                @if(isset(get_field('common', 'option')['logo_white']) && $logoId = get_field('common', 'option')['logo_white'])
-                    {!! wp_get_attachment_image( $logoId , 'employee-thumbnail', false, ['class' => 'mx-auto lg:mx-0 inline-block']) !!}
+                @php
+                    $settings = get_field('common', 'option');
+                    if(!empty($settings)) {
+						if(array_key_exists('logo_white', $settings)) {
+							$logoId = $settings['logo_white'];
+						} elseif(array_key_exists('logo', $settings)) {
+							$logoId = $settings['logo'];
+						}
+                    }
+                @endphp
+                @if(!empty($logoId))
+                    {!! wp_get_attachment_image($logoId, 'employee-thumbnail', false, ['class' => 'mx-auto lg:mx-0 inline-block']) !!}
                 @endif
             </div>
 
             <div class="w-full lg:w-1/2 flex flex-col self-end">
                 <div class="flex flex-row mb-5">
                     @php
-                        $footer = get_fields('option')['footer_partners'];
+                        $footer = [];
+                        if(!empty($option) && array_key_exists('footer_partners', $option)) {
+                            $footer = $option['footer_partners'];
+                        }
                     @endphp
 
                     @foreach($footer as $item)
