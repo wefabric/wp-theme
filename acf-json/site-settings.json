@@ -1,0 +1,215 @@
+{
+  "key": "group_60b1487e8e987",
+  "title": "Site instellingen",
+  "fields": [
+    {
+      "key": "field_60b243091ee60",
+      "label": "Algemeen",
+      "name": "common",
+      "type": "group",
+      "instructions": "Hier zijn de algemene instellingen van de website te wijzigen.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_60b1488697709",
+          "label": "Logo",
+          "name": "logo",
+          "type": "image",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "return_format": "id",
+          "preview_size": "medium",
+          "library": "all",
+          "min_width": "",
+          "min_height": "",
+          "min_size": "",
+          "max_width": "",
+          "max_height": "",
+          "max_size": "",
+          "mime_types": ""
+        },
+        {
+          "key": "field_60b8da759359c",
+          "label": "Standaard header afbeelding",
+          "name": "default_header_image",
+          "type": "image",
+          "instructions": "Indien er geen headerafbeelding wordt gekozen op de betreffende pagina, wordt deze afbeelding opgepakt",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "return_format": "id",
+          "preview_size": "medium",
+          "library": "all",
+          "min_width": "",
+          "min_height": "",
+          "min_size": "",
+          "max_width": "",
+          "max_height": "",
+          "max_size": "",
+          "mime_types": ""
+        }
+      ]
+    },
+    {
+      "key": "field_61b8922692bdf",
+      "label": "Out of office melding",
+      "name": "out_of_office",
+      "type": "group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_61b89226a0608",
+          "label": "Titel",
+          "name": "title",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        },
+        {
+          "key": "field_61b89226a0612",
+          "label": "Actief",
+          "name": "active",
+          "type": "true_false",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "message": "",
+          "default_value": 0,
+          "ui": 0,
+          "ui_on_text": "",
+          "ui_off_text": ""
+        },
+        {
+          "key": "field_61b89226a061a",
+          "label": "Content",
+          "name": "content",
+          "type": "wysiwyg",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "tabs": "all",
+          "toolbar": "full",
+          "media_upload": 1,
+          "delay": 0
+        },
+        {
+          "key": "field_61b892f7ff356",
+          "label": "Sluitknoptekst",
+          "name": "btn_text",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "maxlength": ""
+        },
+        {
+          "key": "field_61b8a50414030",
+          "label": "Startdatum weergave",
+          "name": "start_display_date",
+          "type": "date_picker",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "display_format": "d\/m\/Y",
+          "return_format": "Ymd",
+          "first_day": 1
+        },
+        {
+          "key": "field_61b8a53f14031",
+          "label": "Einddatum weergave",
+          "name": "end_display_date",
+          "type": "date_picker",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "display_format": "d\/m\/Y",
+          "return_format": "Ymd",
+          "first_day": 1
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "company-settings"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": ""
+}
