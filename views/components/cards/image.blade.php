@@ -3,10 +3,13 @@
     @include('components.image', [
         'image_id' => $item->get('image'),
         'class' => $card_classes ?? '',
+        'size' => 'galery-thumbnail-1/'. $size,
     ])
 
-    <div>{{ $item->get('title') }}</div>
+    {{ $item->get('title') }}
 
-    <div>{{ $item->get('button_text') }}</div>
+    @include('components.buttons.default', [
+        'button' => $item,
+    ])
 
 </div>

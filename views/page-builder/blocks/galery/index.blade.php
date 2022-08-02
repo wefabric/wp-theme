@@ -34,12 +34,13 @@
             @include('components.slider.slider', [
                 'items' => $block->get('photos'),
                 'card_type' => 'image',
-                'card_classes' => '', //'w-full lg:w-1/'. $max .' ',
+                'card_classes' => '',
             ])
         @else
             @include('components.slider.grid', [
                 'items' => $block->get('photos'),
                 'card_type' => 'image',
+				'size' => $max,
                 'grid_class' => 'lg:grid-cols-'. $max .' ',
             ])
         @endif

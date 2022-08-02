@@ -25,7 +25,7 @@
                         {
                             "key": "field_62ce893297c88",
                             "label": "Breedte (desktop)",
-                            "name": "width_copy",
+                            "name": "width",
                             "type": "select",
                             "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
                             "required": 1,
@@ -1663,7 +1663,7 @@
                                     "required": 1,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "25",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -1687,7 +1687,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "25",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -1706,7 +1706,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "25",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -1718,19 +1718,38 @@
                                 },
                                 {
                                     "key": "field_62e8cf5dc0d70",
-                                    "label": "Knop link",
-                                    "name": "button_link",
+                                    "label": "Externe link",
+                                    "name": "external_link",
                                     "type": "url",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
                                     "default_value": "",
                                     "placeholder": ""
+                                },
+                                {
+                                    "key": "field_62e8dbd5da5db",
+                                    "label": "Pagina link",
+                                    "name": "internal_link",
+                                    "type": "page_link",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": "",
+                                    "taxonomy": "",
+                                    "allow_null": 0,
+                                    "allow_archives": 1,
+                                    "multiple": 0
                                 }
                             ]
                         },
@@ -1769,6 +1788,96 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_62e8dd7d33051": {
+                    "key": "layout_62e8dd7d33051",
+                    "name": "button",
+                    "label": "Knop",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_62e8dd8333052",
+                            "label": "Knop tekst",
+                            "name": "button_text",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_62e8dd8b33053",
+                            "label": "Pagina link",
+                            "name": "internal_link",
+                            "type": "page_link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": "",
+                            "taxonomy": "",
+                            "allow_null": 0,
+                            "allow_archives": 1,
+                            "multiple": 0
+                        },
+                        {
+                            "key": "field_62e8dd9533054",
+                            "label": "Externe link",
+                            "name": "external_link",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62e8dfa5c2534",
+                            "label": "Positie",
+                            "name": "position",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "start": "Links uitgelijnd",
+                                "center": "Gecentreerd",
+                                "end": "Rechts uitgelijnd"
+                            },
+                            "default_value": "center",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Nieuw blok",
@@ -1803,5 +1912,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1659426337
+    "modified": 1659428844
 }
