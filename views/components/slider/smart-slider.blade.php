@@ -25,6 +25,8 @@
         @endif
     </div>
 
+    {{-- TODO What about tablet (md: size) ? --}}
+
     <div class="hidden lg:block"> {{-- This is the desktop block --}}
         @if($count > 0 && $count <= 3)
             @include('components.slider.grid', [
