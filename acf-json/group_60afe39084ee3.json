@@ -23,6 +23,87 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_62e8e312f673d",
+                            "label": "Losse titel tonen?",
+                            "name": "show_separate_title",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_62e8e329f673e",
+                            "label": "Titel",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_62e8e312f673d",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_62e8e33bf673f",
+                            "label": "Titel Positie",
+                            "name": "title_position",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_62e8e312f673d",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "above": "Boven tekst",
+                                "left": "Links van tekst",
+                                "right": "Rechts van tekst",
+                                "below": "Onder tekst"
+                            },
+                            "default_value": "left",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_62ce893297c88",
                             "label": "Breedte (desktop)",
                             "name": "width",
@@ -76,7 +157,7 @@
                             "name": "bg_color",
                             "type": "Thema Kleur",
                             "instructions": "",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "50",
@@ -92,7 +173,7 @@
                             "name": "text_color",
                             "type": "Thema Kleur",
                             "instructions": "",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "50",
@@ -1912,5 +1993,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1659428844
+    "modified": 1659429848
 }
