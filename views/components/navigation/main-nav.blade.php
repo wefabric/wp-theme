@@ -1,5 +1,6 @@
 <div class="hidden lg:flex lg:flex-col py-4 text-base">
     <div class="flex justify-end pb-4">
+
         <div class="mr-3">
             <form action="" method="post" id="" name="" class="validate" target="_blank" novalidate>
                 <div class="flex">
@@ -43,7 +44,7 @@
         ])
     </div>
 
-    <nav id="site-navigation" class="main-navigation">
+    <nav id="site-navigation" class="main-navigation flex justify-end items-center">
         {{-- {!! wp_nav_menu([
             'theme_location' => 'menu-1',
             'menu_id' => 'primary-menu',

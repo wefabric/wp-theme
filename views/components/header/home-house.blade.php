@@ -4,7 +4,7 @@
     'alt' => 'Naar de homepagina',
 ])
 
-    <span class="fa-solid fa-house text-primary-dark"></span>
+    <span class="fa-solid fa-house text-primary-dark hover:text-primary"></span>
     <span class="screen-reader-only">
         Naar de homepagina
     </span>
