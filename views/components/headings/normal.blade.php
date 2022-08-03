@@ -12,7 +12,7 @@
     }
 @endphp
 
-@if($show_line) {{-- Hier wordt er zo'n heel leuk stylistisch lijntje boven de titel geprint in dezelfde kleur als de tekst. --}}
+@if($show_line ?? false) {{-- Hier wordt er zo'n heel leuk stylistisch lijntje boven de titel geprint in dezelfde kleur als de tekst. --}}
     <span class="w-[77px] h-[2px] bg-{{ $text_color ?? 'white'}}"></span>
 @endif
 

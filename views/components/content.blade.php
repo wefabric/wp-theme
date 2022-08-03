@@ -1,3 +1,3 @@
 <div class="content text-base font-normal {{ $class ?? '' }}">
-    {!! $content !!}
+    {!! apply_filters('the_content', $content) !!}
 </div>
