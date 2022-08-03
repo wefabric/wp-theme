@@ -1,12 +1,16 @@
+@php
+    $alt = 'Naar de homepagina';
+@endphp
+
 @include('components.link.opening', [
     'href' => get_home_url(),
-    'class' => $class,
-    'alt' => 'Naar de homepagina',
+    'class' => $a_class ?? '',
+    'alt' => $alt,
 ])
 
-    <span class="fa-solid fa-house text-primary-dark hover:text-primary"></span>
+    <span class="fa-solid fa-house {{ $class }}"></span>
     <span class="screen-reader-only">
-        Naar de homepagina
+        {{ $alt }}
     </span>
 
 @include('components.link.closing')

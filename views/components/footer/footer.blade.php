@@ -1,11 +1,22 @@
-<div class="bg-black text-white text-base pb-10 lg:pb-24">
+@php
+    $option = get_fields('option');
+
+    if(!empty($option) && array_key_exists('bg_color', $option)) {
+		$bg_color = $option['bg_color'];
+    }
+    if(!empty($option) && array_key_exists('text_color', $option)) {
+		$text_color = $option['text_color'];
+    }
+@endphp
+
+<div class="bg-{{ $bg_color ?? 'black' }} text-{{ $text_color ?? 'white' }} text-base pb-10 lg:pb-24">
     @php
-        $option = get_fields('option');
 
         if(!empty($option) && array_key_exists('footer_usps', $option)) {
 	        $usps = $option['footer_usps'];
         }
     @endphp
+
     @if(!empty($usps))
         <div class="bg-white text-black py-10 lg:py-20 lg:text-lg">
             @include('components.blocks.usps-small', [

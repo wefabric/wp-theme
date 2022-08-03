@@ -94,7 +94,7 @@
     }
 
     &.disable-chevron {
-      padding: 0 24px 0 24px;
+      padding: 12px 24px;
 
       &:after {
         display: none !important;
@@ -207,6 +207,14 @@
             left: 10px;
             right: auto;
           }
+        }
+      }
+
+      &.disable-chevron {
+        padding: 12px 30px;
+
+        &:after {
+          display: none !important;
         }
       }
 
