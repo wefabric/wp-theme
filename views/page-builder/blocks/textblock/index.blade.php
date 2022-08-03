@@ -1,6 +1,7 @@
 @php
     if($block->get('show_separate_title')) {
-        switch($block->get('title_position')) { //based on the textblock
+        $title = $block->get('title');
+        switch($title->get('title_position')) { //based on the textblock
             case 'above':
                 $div_class = 'flex flex-col gap-y-2';
                 $title_class = 'order-1';
@@ -29,17 +30,28 @@
     }
 @endphp
 
-<div class="container mx-auto w-full lg:{{ $block->get('width') }} {{ $div_class }}">
+<div class="container mx-auto w-full lg:{{ $block->get('width') }} {{ $div_class }} text-{{ $block->get('text_color') }}  flex">
     @if($block->get('show_separate_title'))
-        <div class="{{ $title_class }}">
+        <div class="{{ $title_class }} text-{{$title->get('title_align')}}">
             @include('components.headings.normal', [
 	            'type' => 2,
-	            'heading' => $block->get('title'),
+				'title' => $title,
             ])
         </div>
     @endif
 
-    <div class="{{ $text_class }}">
-        @include('components.content', ['content' => apply_filters('the_content', $block->get('text'))])
+    <div class="{{ $text_class }} flex flex-col">
+        <div class="py-4 lg:py-8">
+            @include('components.content', ['content' => apply_filters('the_content', $block->get('text'))])
+        </div>
+
+        @if($block->get('button'))
+            <div class="flex justify-{{ $block->get('button')->get('position') }}">
+                @include('components.buttons.default', [
+                    'button' => $block->get('button'),
+                    'class' => 'disable-chevron font-bold'
+                ])
+            </div>
+        @endif
     </div>
 </div>

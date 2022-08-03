@@ -1,15 +1,9 @@
 <div class="container mx-auto w-full lg:{{ $block->get('width') }} ">
-    @if(!empty($block->get('title')))
-        @include('components.headings.normal', [
-	        'type' => 2,
-	        'heading' => $block->get('title'),
-        ])
-    @endif
 
-    @if(!empty($block->get('subtitle')))
+    @if($block->get('show_separate_title'))
         @include('components.headings.normal', [
-            'type' => 3,
-            'heading' => $block->get('subtitle'),
+            'type' => 2,
+            'title' => $block->get('title'),
         ])
     @endif
 

@@ -25,6 +25,8 @@
 
     md:px-2 md:px-4
 
+    justify-start justify-center justify-end
+
 ">
 
 </div>
