@@ -26,20 +26,21 @@
     @endif
 
         <div class="flex {{ $flexDir }} items-center">
-            <div class="text-{{ $size }} {{ $item->get('icon') }} pr-4 text-{{ $icon_color ?? 'black' }}"></div>
-
-            <div class="flex flex-col">
-                @if(!empty($item->get('title')))
-                    <span class="block text-xl font-bold">
-                        {{ $item->get('title') }}
-                    </span>
+            <div class="">
+                @if(!empty($item->get('image')))
+                    @include('components.image', [
+	                    'image_id' => $item->get('image'),
+	                    'size' => 'usp-icon',
+                    ])
+                @elseif(!empty($item->get('icon')))
+                    <span class="text-{{ $size }} {{ $item->get('icon') }} text-{{ $icon_color ?? 'black' }}"></span>
                 @endif
+            </div>
 
-                @if(!empty($item->get('subtitle')))
-                    <span class="block text-base font-normal">
-                        {{ $item->get('subtitle') }}
-                    </span>
-                @endif
+            <div class="flex flex-col px-5">
+                <span class="block text-base font-normal">
+                    {{ $item->get('title') }}
+                </span>
             </div>
         </div>
 

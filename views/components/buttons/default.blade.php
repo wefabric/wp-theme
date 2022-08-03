@@ -10,6 +10,16 @@
             $text = $button->get('button_text');
         }
 
+		if(empty($colors)) {
+			$colors = '';
+            if(!empty($button->get('bg_color'))) {
+                $colors .= ' btn-'. $button->get('bg_color');
+            }
+
+            if(!empty($button->get('text_color'))) {
+                $colors .= ' text-'. $button->get('text_color');
+            }
+		}
 	}
 
     if(!isset($colors)) {

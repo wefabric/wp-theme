@@ -132,7 +132,7 @@
                             "collapsed": "",
                             "min": 0,
                             "max": 2,
-                            "layout": "table",
+                            "layout": "block",
                             "button_label": "",
                             "sub_fields": [
                                 {
@@ -144,7 +144,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "25",
+                                        "width": "",
                                         "class": "",
                                         "id": ""
                                     },
@@ -213,6 +213,134 @@
                                     "return_format": "value",
                                     "ajax": 0,
                                     "placeholder": ""
+                                },
+                                {
+                                    "key": "field_62ea6810f5c2a",
+                                    "label": "Call-To-Action",
+                                    "name": "cta",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_62e0eac93c1da",
+                                            "label": "Tekst",
+                                            "name": "button_text",
+                                            "type": "text",
+                                            "instructions": "Dit is de tekst die wordt weergegeven.",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": ""
+                                        },
+                                        {
+                                            "key": "field_62e0eb163c1dd",
+                                            "label": "Type",
+                                            "name": "type",
+                                            "type": "select",
+                                            "instructions": "Kies hier de weergave van de CTA.",
+                                            "required": 1,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "25",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "button": "Knop",
+                                                "link": "Link"
+                                            },
+                                            "default_value": "button",
+                                            "allow_null": 0,
+                                            "multiple": 0,
+                                            "ui": 0,
+                                            "return_format": "value",
+                                            "ajax": 0,
+                                            "placeholder": ""
+                                        },
+                                        {
+                                            "key": "field_62e0ead23c1db",
+                                            "label": "Link (pagina)",
+                                            "name": "internal_link",
+                                            "type": "page_link",
+                                            "instructions": "Hiermee link je naar een bestaande pagina binnen de website.",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "post_type": "",
+                                            "taxonomy": "",
+                                            "allow_null": 0,
+                                            "allow_archives": 1,
+                                            "multiple": 0
+                                        },
+                                        {
+                                            "key": "field_62e0eb013c1dc",
+                                            "label": "Link (extern)",
+                                            "name": "external_link",
+                                            "type": "url",
+                                            "instructions": "Hiermee link je naar een URL. Let op: als beide links zijn ingevuld wordt deze URL gebruikt!",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": ""
+                                        },
+                                        {
+                                            "key": "field_62ea67d94ec81",
+                                            "label": "Achtergrondkleur",
+                                            "name": "bg_color",
+                                            "type": "Thema Kleur",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "theme_color": null,
+                                            "font_size": 14
+                                        },
+                                        {
+                                            "key": "field_62ea67ea4ec82",
+                                            "label": "Tekstkleur",
+                                            "name": "text_color",
+                                            "type": "Thema Kleur",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "theme_color": null,
+                                            "font_size": 14
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -244,5 +372,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1659453339
+    "modified": 1659529319
 }
