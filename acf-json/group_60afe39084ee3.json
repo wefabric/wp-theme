@@ -1173,6 +1173,35 @@
                             "maxlength": ""
                         },
                         {
+                            "key": "field_62ea7c2b51fd7",
+                            "label": "Breedte (desktop)",
+                            "name": "width",
+                            "type": "select",
+                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "w-1\/2": "50%",
+                                "w-3\/5": "60%",
+                                "w-2\/3": "66%",
+                                "w-3\/4": "75%",
+                                "w-4\/5": "80%",
+                                "w-full": "100%"
+                            },
+                            "default_value": "w-full",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_613864551d35a",
                             "label": "Hoeveelheid USP's naast elkaar",
                             "name": "col_amount",
@@ -1181,7 +1210,7 @@
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -1208,7 +1237,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -1224,7 +1253,7 @@
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -1251,7 +1280,7 @@
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -1317,12 +1346,36 @@
                                     "choices": []
                                 },
                                 {
+                                    "key": "field_62ea7a4a07e0f",
+                                    "label": "Afbeelding",
+                                    "name": "image",
+                                    "type": "image",
+                                    "instructions": "Wil je liever een afbeelding als icoon gebruiken? Selecteer dan hier je afbeelding.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "id",
+                                    "preview_size": "thumbnail",
+                                    "library": "all",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": ""
+                                },
+                                {
                                     "key": "field_613865611d35d",
                                     "label": "Titel",
                                     "name": "title",
                                     "type": "text",
                                     "instructions": "",
-                                    "required": 0,
+                                    "required": 1,
                                     "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
@@ -2709,5 +2762,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1659531742
+    "modified": 1659534627
 }

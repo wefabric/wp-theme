@@ -36,6 +36,7 @@
             @include('components.headings.normal', [
 	            'type' => 2,
 				'title' => $title,
+				'show_line' => empty($block->get('button')), //hotfix
             ])
         </div>
     @endif
