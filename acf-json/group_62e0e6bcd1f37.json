@@ -23,6 +23,38 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_62e9372ea6c86",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e9391231bcd",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
                             "key": "field_62e0ea853c1d6",
                             "label": "Headerafbeelding",
                             "name": "image",
@@ -106,7 +138,7 @@
                                 {
                                     "key": "field_62e0eac93c1da",
                                     "label": "Tekst",
-                                    "name": "text",
+                                    "name": "button_text",
                                     "type": "text",
                                     "instructions": "Dit is de tekst die wordt weergegeven.",
                                     "required": 0,
@@ -125,7 +157,7 @@
                                 {
                                     "key": "field_62e0ead23c1db",
                                     "label": "Link (pagina)",
-                                    "name": "link_internal",
+                                    "name": "internal_link",
                                     "type": "page_link",
                                     "instructions": "Hiermee link je naar een bestaande pagina binnen de website.",
                                     "required": 0,
@@ -144,7 +176,7 @@
                                 {
                                     "key": "field_62e0eb013c1dc",
                                     "label": "Link (extern)",
-                                    "name": "link_external",
+                                    "name": "external_link",
                                     "type": "url",
                                     "instructions": "Hiermee link je naar een URL. Let op: als beide links zijn ingevuld wordt deze URL gebruikt!",
                                     "required": 0,
@@ -212,5 +244,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1658927158
+    "modified": 1659453339
 }

@@ -429,14 +429,14 @@
                     "min": "",
                     "max": ""
                 },
-                "layout_613863fa1d357": {
-                    "key": "layout_613863fa1d357",
+                "layout_62e8f3d19ac22": {
+                    "key": "layout_62e8f3d19ac22",
                     "name": "usps_small",
-                    "label": "USP's (klein)",
+                    "label": "USP's (klein) DO NOT USE",
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_6138640f1d358",
+                            "key": "field_62e8f3d19ac23",
                             "label": "Titel",
                             "name": "title",
                             "type": "text",
@@ -455,7 +455,7 @@
                             "maxlength": ""
                         },
                         {
-                            "key": "field_613864221d359",
+                            "key": "field_62e8f3d19ac24",
                             "label": "Subtitel",
                             "name": "subtitle",
                             "type": "text",
@@ -474,7 +474,7 @@
                             "maxlength": ""
                         },
                         {
-                            "key": "field_613864551d35a",
+                            "key": "field_62e8f3d19ac25",
                             "label": "Hoeveelheid USP's naast elkaar",
                             "name": "col_amount",
                             "type": "select",
@@ -496,12 +496,12 @@
                             "allow_null": 0,
                             "multiple": 0,
                             "ui": 0,
-                            "return_format": "value",
                             "ajax": 0,
+                            "return_format": "value",
                             "placeholder": ""
                         },
                         {
-                            "key": "field_62ceb2088c458",
+                            "key": "field_62e8f3d19ac26",
                             "label": "Icoon kleur",
                             "name": "icon_color",
                             "type": "Thema Kleur",
@@ -517,7 +517,7 @@
                             "font_size": 14
                         },
                         {
-                            "key": "field_6138651b1d35b",
+                            "key": "field_62e8f3d19ac27",
                             "label": "USP's",
                             "name": "usps",
                             "type": "repeater",
@@ -536,7 +536,7 @@
                             "button_label": "",
                             "sub_fields": [
                                 {
-                                    "key": "field_613865771d35e",
+                                    "key": "field_62e8f3d19ac28",
                                     "label": "icoon",
                                     "name": "icon",
                                     "type": "font-awesome",
@@ -549,11 +549,11 @@
                                         "id": ""
                                     },
                                     "icon_sets": [
-                                        "fas",
-                                        "far",
-                                        "fal",
-                                        "fad",
-                                        "fab"
+                                        "solid",
+                                        "regular",
+                                        "light",
+                                        "duotone",
+                                        "brands"
                                     ],
                                     "custom_icon_set": "",
                                     "default_label": "",
@@ -566,7 +566,7 @@
                                     "choices": []
                                 },
                                 {
-                                    "key": "field_613865611d35d",
+                                    "key": "field_62e8f3d19ac29",
                                     "label": "Titel",
                                     "name": "title",
                                     "type": "text",
@@ -585,7 +585,7 @@
                                     "maxlength": ""
                                 },
                                 {
-                                    "key": "field_613865941d35f",
+                                    "key": "field_62e8f3d19ac2a",
                                     "label": "Pagina link",
                                     "name": "page_url",
                                     "type": "page_link",
@@ -604,7 +604,7 @@
                                     "multiple": 0
                                 },
                                 {
-                                    "key": "field_613865b01d360",
+                                    "key": "field_62e8f3d19ac2b",
                                     "label": "Vrije invoer link",
                                     "name": "external_url",
                                     "type": "text",
@@ -625,7 +625,7 @@
                             ]
                         },
                         {
-                            "key": "field_62e296dc052a8",
+                            "key": "field_62e8f3d19ac2c",
                             "label": "Achtergrondkleur",
                             "name": "bg_color",
                             "type": "Thema Kleur",
@@ -641,7 +641,7 @@
                             "font_size": 14
                         },
                         {
-                            "key": "field_62e297be95b1b",
+                            "key": "field_62e8f3d19ac2d",
                             "label": "Tekstkleur",
                             "name": "text_color",
                             "type": "Thema Kleur",
@@ -663,7 +663,7 @@
                 "layout_62cebf216b3f9": {
                     "key": "layout_62cebf216b3f9",
                     "name": "usps_large",
-                    "label": "USP's (groot)",
+                    "label": "USP's (groot) DO NOT USE",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -958,6 +958,289 @@
                                 "id": ""
                             },
                             "theme_color": "black",
+                            "font_size": 14
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_613863fa1d357": {
+                    "key": "layout_613863fa1d357",
+                    "name": "usps",
+                    "label": "USP's",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6138640f1d358",
+                            "label": "Titel",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_613864221d359",
+                            "label": "Subtitel",
+                            "name": "subtitle",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_613864551d35a",
+                            "label": "Hoeveelheid USP's naast elkaar",
+                            "name": "col_amount",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "1": "Een",
+                                "2": "Twee",
+                                "3": "Drie",
+                                "4": "Vier"
+                            },
+                            "default_value": 3,
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62ceb2088c458",
+                            "label": "Icoon kleur",
+                            "name": "icon_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e8f3fb9ac2e",
+                            "label": "Icoon grootte",
+                            "name": "icon_size",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "base": "klein",
+                                "2xl": "groot",
+                                "4xl": "groter",
+                                "6xl": "heel groot"
+                            },
+                            "default_value": "2xl",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62e8f49ef72c9",
+                            "label": "Icoon positie",
+                            "name": "position",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "above": "Icoon boven tekst",
+                                "left": "Icoon links van tekst"
+                            },
+                            "default_value": "left",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_6138651b1d35b",
+                            "label": "USP's",
+                            "name": "usps",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "collapsed": "",
+                            "min": 1,
+                            "max": 4,
+                            "layout": "table",
+                            "button_label": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_613865771d35e",
+                                    "label": "icoon",
+                                    "name": "icon",
+                                    "type": "font-awesome",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "icon_sets": [
+                                        "fas",
+                                        "far",
+                                        "fal",
+                                        "fad",
+                                        "fab"
+                                    ],
+                                    "custom_icon_set": "",
+                                    "default_label": "",
+                                    "default_value": "",
+                                    "save_format": "class",
+                                    "allow_null": 0,
+                                    "show_preview": 1,
+                                    "enqueue_fa": 0,
+                                    "fa_live_preview": "",
+                                    "choices": []
+                                },
+                                {
+                                    "key": "field_613865611d35d",
+                                    "label": "Titel",
+                                    "name": "title",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_613865941d35f",
+                                    "label": "Pagina link",
+                                    "name": "page_url",
+                                    "type": "page_link",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": "",
+                                    "taxonomy": "",
+                                    "allow_null": 0,
+                                    "allow_archives": 1,
+                                    "multiple": 0
+                                },
+                                {
+                                    "key": "field_613865b01d360",
+                                    "label": "Vrije invoer link",
+                                    "name": "external_url",
+                                    "type": "text",
+                                    "instructions": "Wanneer de vrije invoer link is ingevuld word deze weergegeven in plaats van de pagina link.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_62e296dc052a8",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e297be95b1b",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
                             "font_size": 14
                         }
                     ],
@@ -1865,6 +2148,103 @@
                             },
                             "theme_color": null,
                             "font_size": 14
+                        },
+                        {
+                            "key": "field_62ea1f2b9917e",
+                            "label": "Knop",
+                            "name": "button",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_62ea1f5c99180",
+                                    "label": "Knop tekst",
+                                    "name": "button_text",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_62ea1f6999181",
+                                    "label": "Pagina link",
+                                    "name": "internal_link",
+                                    "type": "page_link",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": "",
+                                    "taxonomy": "",
+                                    "allow_null": 0,
+                                    "allow_archives": 1,
+                                    "multiple": 0
+                                },
+                                {
+                                    "key": "field_62ea1f7a99182",
+                                    "label": "Externe link",
+                                    "name": "external_link",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_62ea1f8699183",
+                                    "label": "Positie",
+                                    "name": "position",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "start": "Links",
+                                        "center": "Midden",
+                                        "end": "Rechts"
+                                    },
+                                    "default_value": "center",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                }
+                            ]
                         }
                     ],
                     "min": "",
@@ -1993,5 +2373,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1659429848
+    "modified": 1659513017
 }

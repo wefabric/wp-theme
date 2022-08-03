@@ -87,5 +87,17 @@
             'colors' => 'btn-primary-dark text-white'
         ])
 
+        @php
+            $icon_classes = 'text-xl px-1.5 font-normal';
+        @endphp
+
+        @include('components.header.email', [
+            'class' => $icon_classes,
+        ])
+
+        @include('components.header.phone', [
+            'class' => $icon_classes,
+        ])
+
     </nav>
 </div>

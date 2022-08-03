@@ -1,4 +1,4 @@
-<div class="justify-end hidden pt-2 px-4 lg:flex">
+<div class="justify-end hidden pt-2 px-4 lg:flex bg-{{ $bg_color }}">
     @if(isset($options['contact_phone']) && $phone = $options['contact_phone'])
         <a href="tel:{{ str_replace([' ', '-'], '', $phone) }}" target="_blank" class="mr-3">
             <i class="fas fa-phone mr-3"></i><span class="d-none d-lg-inline-block"></span>

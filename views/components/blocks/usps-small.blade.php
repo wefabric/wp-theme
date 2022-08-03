@@ -15,7 +15,7 @@
 
     <div class="flex flex-row justify-center">
         @foreach($usps as $usp)
-            <div class="w-1/{{$col_amount}} text-xl flex justify-center items-center font-bold {{ $usp['icon'] }} " style="color: {{ isset($block) ? $block->get('icon_color') : $usp['color'] }};">
+            <div class="w-1/{{$col_amount}} text-xl flex justify-center items-center font-bold {{ $usp['icon'] }} text-{{ isset($block) ? $block->get('icon_color') : $usp['color'] }} ">
                 @php
                     if(!empty($usp['external_url'])) {
                         $link = $usp['external_url'];

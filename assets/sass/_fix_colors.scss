@@ -16,6 +16,15 @@
 .text-primary-color-dark {
   @apply text-primary-dark
 }
+.btn-primary-color {
+  @apply btn-primary
+}
+.btn-primary-color-light {
+  @apply btn-primary-light
+}
+.btn-primary-color-dark {
+  @apply btn-primary-dark
+}
 
 .bg-secondary-color {
   @apply bg-secondary
@@ -34,6 +43,15 @@
 }
 .text-secondary-color-dark {
   @apply text-secondary-dark
+}
+.btn-secondary-color {
+  @apply btn-secondary
+}
+.btn-secondary-color-light {
+  @apply btn-secondary-light
+}
+.btn-secondary-color-dark {
+  @apply btn-secondary-dark
 }
 
 .bg-tertiary-color {
@@ -54,6 +72,15 @@
 .text-tertiary-color-dark {
   @apply text-tertiary-dark
 }
+//  .btn-tertiary-color {
+//    @apply btn-tertiary
+//  }
+//  .btn-tertiary-color-light {
+//    @apply btn-tertiary-light
+//  }
+//  .btn-tertiary-color-dark {
+//    @apply btn-tertiary-dark
+//  }
 
 //  .bg-success-color {
 //    @apply bg-success
@@ -61,9 +88,15 @@
 //  .text-success-color {
 //    @apply text-success
 //  }
+//  .btn-success-color {
+//    @apply btn-success
+//  }
 //  .bg-danger-color {
 //    @apply bg-danger
 //  }
 //  .text-danger-color {
 //    @apply text-danger
+//  }
+//  .btn-danger-color {
+//    @apply btn-danger
 //  }
