@@ -1,15 +1,19 @@
-<div>
+@php
+    $height = 'h-['. config('wp-support.image_sizes.'. $img_size .'.height') .'px]';
+@endphp
 
-    @include('components.image', [
-        'image_id' => $item->get('image'),
-        'class' => $card_classes ?? '',
-        'size' => 'galery-thumbnail-1/'. $size,
-    ])
+<div class="{{ $height }} {{ $card_classes ?? '' }} flex flex-col items-center justify-center relative "
+    style="background-image: url('{{ wp_get_attachment_image_url($item->get('image'), $img_size) }}')">
 
-    {{ $item->get('title') }}
+    <div class="font-bold text-3xl">
+        {{ $item->get('title') }}
+    </div>
 
-    @include('components.buttons.default', [
-        'button' => $item,
-    ])
+    <div class="absolute bottom-5 right-5">
+        @include('components.buttons.default', [
+            'button' => $item,
+            'colors' => 'btn-primary-light hover:btn-primary-dark text-white disable-chevron',
+        ])
+    </div>
 
 </div>
