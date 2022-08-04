@@ -4,7 +4,7 @@
         style="background-image: url('{{ wp_get_attachment_image_url($block->get('image')->get('image'), 'textblock-image') }}')">
     </div>
 
-    <div class="flex justify-end lg:pt-32  @if($block->get('image')->get('position') === 'left') order-1 @endif ">
+    <div class="flex justify-end pt-4 lg:pt-32 @if($block->get('image')->get('position') === 'left') order-1 @endif ">
         <div class="relative z-50 h-full w-full lg:{{ $block->get('text_width') }} lg:px-16 lg:py-20 bg-white ">
             @if($block->get('show_separate_title'))
                 @include('components.headings.normal', [

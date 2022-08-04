@@ -79,7 +79,7 @@
                 @endif
             </div>
 
-            <div class="w-full lg:w-1/2 flex flex-col self-end">
+            <div class="w-full md:w-1/2 flex flex-col self-end">
                 <div class="flex flex-row mb-5">
                     @php
                         $footer = [];
@@ -133,7 +133,7 @@
                 </div>
             </div>
 
-            <div class="w-full md:w-2/5 xl:w-1/4 flex">
+            <div class="w-full md:w-1/2 xl:w-1/4 flex">
                 <div class="flex w-full pt-8 lg:pt-0 self-end md:text-right md:justify-end">
                     <span class="pr-1">
                         Gerealiseerd door:
