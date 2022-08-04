@@ -1,9 +1,9 @@
 {
-    "key": "group_60b1487e8e987",
+    "key": "group_62ec33a1aaec5",
     "title": "Site instellingen",
     "fields": [
         {
-            "key": "field_60b243091ee60",
+            "key": "field_62ec33a2089c1",
             "label": "Algemeen",
             "name": "common",
             "type": "group",
@@ -18,7 +18,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_60b1488697709",
+                    "key": "field_62ec33a22d50b",
                     "label": "Logo",
                     "name": "logo",
                     "type": "image",
@@ -42,8 +42,8 @@
                     "mime_types": ""
                 },
                 {
-                    "key": "field_62d6a7cc72947",
-                    "label": "Logo wit",
+                    "key": "field_62ec33a22d51c",
+                    "label": "Logo (wit)",
                     "name": "logo_white",
                     "type": "image",
                     "instructions": "",
@@ -66,7 +66,7 @@
                     "mime_types": ""
                 },
                 {
-                    "key": "field_60b8da759359c",
+                    "key": "field_62ec33a22d526",
                     "label": "Standaard header afbeelding",
                     "name": "default_header_image",
                     "type": "image",
@@ -92,7 +92,7 @@
             ]
         },
         {
-            "key": "field_61b8922692bdf",
+            "key": "field_62ec33a2089cf",
             "label": "Out of office melding",
             "name": "out_of_office",
             "type": "group",
@@ -107,7 +107,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_61b89226a0608",
+                    "key": "field_62ec33a24d634",
                     "label": "Titel",
                     "name": "title",
                     "type": "text",
@@ -126,7 +126,7 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_61b89226a0612",
+                    "key": "field_62ec33a24d643",
                     "label": "Actief",
                     "name": "active",
                     "type": "true_false",
@@ -145,7 +145,7 @@
                     "ui_off_text": ""
                 },
                 {
-                    "key": "field_61b89226a061a",
+                    "key": "field_62ec33a24d652",
                     "label": "Content",
                     "name": "content",
                     "type": "wysiwyg",
@@ -164,7 +164,7 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_61b892f7ff356",
+                    "key": "field_62ec33a24d65e",
                     "label": "Sluitknoptekst",
                     "name": "btn_text",
                     "type": "text",
@@ -183,7 +183,7 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_61b8a50414030",
+                    "key": "field_62ec33a24d66a",
                     "label": "Startdatum weergave",
                     "name": "start_display_date",
                     "type": "date_picker",
@@ -200,7 +200,7 @@
                     "first_day": 1
                 },
                 {
-                    "key": "field_61b8a53f14031",
+                    "key": "field_62ec33a24d675",
                     "label": "Einddatum weergave",
                     "name": "end_display_date",
                     "type": "date_picker",
@@ -215,6 +215,45 @@
                     "display_format": "d\/m\/Y",
                     "return_format": "Ymd",
                     "first_day": 1
+                }
+            ]
+        },
+        {
+            "key": "field_62ec33a2089db",
+            "label": "Pagina's",
+            "name": "pages",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_62ec33a2895a4",
+                    "label": "404 pagina",
+                    "name": "not_found",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "id",
+                    "ui": 1
                 }
             ]
         }
@@ -237,5 +276,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1658234843
+    "modified": 1659647218
 }
