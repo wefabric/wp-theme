@@ -43,7 +43,7 @@
         @endphp
 
         <div class="@if(!empty($bg)) {{ $bg }} @endif text-{{ $block->get('text_color') ?? 'black' }}" @if(!empty($gradient)) style="{{ $gradient }}" @endif>
-            <div class="@if($block->get('width') !== 'nomargin') px-8 lg:px-0 @endif pb-20">
+            <div class="@if($block->get('width') !== 'nomargin') px-8 lg:px-0 @endif pt-3 pb-16">
                 @if($debug) <p>Block: {{ $blockName }} @endif
                 <section class="{{ $blockName }} @if($block->get('width') !== 'nomargin') container @endif mx-auto {{ $debug ? 'border-2 border-pink-500' : ''}} ">
                     @include('page-builder.blocks.'. $blockName .'.index', ['block' => $block])

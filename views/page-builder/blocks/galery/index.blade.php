@@ -53,11 +53,13 @@
 
     @endif
 
-    <div class="flex justify-{{ $block->get('button')->get('position') }}">
-        @include('components.buttons.default', [
-            'button' => $block->get('button'),
-            'colors' => 'btn-transparent text-primary-light disable-chevron',
-        ])
-    </div>
+    @if($block->get('show_button'))
+        <div class="flex justify-{{ $block->get('button')->get('position') }}">
+            @include('components.buttons.default', [
+                'button' => $block->get('button'),
+                'colors' => 'btn-transparent text-primary-light disable-chevron',
+            ])
+        </div>
+    @endif
 
 </div>
