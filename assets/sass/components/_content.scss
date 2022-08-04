@@ -4,7 +4,11 @@
   }
 
   a {
-    @apply underline;
+    @apply underline font-bold;
+
+    &:hover {
+      @apply no-underline;
+    }
   }
 
   b, strong {

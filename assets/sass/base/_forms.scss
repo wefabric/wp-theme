@@ -1,5 +1,7 @@
 [type='text'], [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
   @apply md:text-sm border-0 bg-input-background text-black w-full;
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
 
   &:focus{
     @apply shadow-none border-2 outline-none ring-offset-0 ring-offset-primary-light ring-primary-light border-none;

@@ -42,11 +42,11 @@
     &:hover {
 
       .wpcf7-submit {
-        @apply bg-white text-primary-light;
+        @apply bg-primary-dark;
       }
 
       &:before {
-        @apply text-primary-light;
+        @apply bg-primary-dark;
       }
 
     }
