@@ -6,6 +6,10 @@
     @screen lg {
       line-height: 3rem;
     }
+
+    a {
+      @apply underline cursor-pointer;
+    }
   }
 
   h1, .h1 {

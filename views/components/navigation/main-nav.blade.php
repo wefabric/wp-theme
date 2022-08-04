@@ -1,4 +1,6 @@
 <div class="hidden lg:flex lg:flex-col py-4 text-base">
+
+    @if(false) {-- hide webshop parts --}
     <div class="flex justify-end pb-4">
 
         <div class="mr-3">
@@ -43,6 +45,7 @@
             'colors' => 'bg-black hover:bg-primary-dark text-white',
         ])
     </div>
+    @endif
 
     <nav id="site-navigation" class="main-navigation flex justify-end items-center">
         {{-- {!! wp_nav_menu([
@@ -52,40 +55,44 @@
         ]) !!} --}}
 
         @php
-            $class = 'inline-block hover:font-bold hover:underline md:px-4';
+            $class = 'inline-block font-bold hover:underline md:px-4 uppercase';
 
             $menuLocations = get_nav_menu_locations();
             $menuID = $menuLocations['menu-1'];
             $menu = wp_get_nav_menu_items($menuID);
         @endphp
 
-        @include('components.header.home-house', [
-            'class' => $class,
-        ]) {{-- this shows a house icon, as link to the homepage. --}}
+        @if(false)
+            @include('components.header.home-house', [
+                'class' => $class,
+            ]) {{-- this shows a house icon, as link to the homepage. --}}
+        @endif
 
         @foreach($menu as $link)
-{{--
-            @php
-                $isLast = (in_array($link, $menu) && $link == end($menu));
-            @endphp
---}}
+            {{--
+                        @php
+                            $isLast = (in_array($link, $menu) && $link == end($menu));
+                        @endphp
+            --}}
             @include('components.link.simple', [
                 'href' => $link->url,
                 'class' => $class,
                 'text' => __($link->title, 'wefabric')
             ])
-{{--
-            @if(!$isLast)
-                <span class="divider"> / </span>
-            @endif
---}}
+            {{--
+                        @if(!$isLast)
+                            <span class="divider"> / </span>
+                        @endif
+            --}}
         @endforeach
 
+        @if(false) {{-- hide webshop parts --}}
         @include('components.buttons.default', [
             'href' => '/offerte',
             'text' => 'Offerte aanvragen',
             'colors' => 'btn-primary-dark text-white'
         ])
+        @endif
 
         @php
             $icon_classes = 'text-xl px-1.5 font-normal';

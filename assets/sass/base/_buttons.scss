@@ -1,12 +1,15 @@
+@mixin btn {
+  @apply relative text-sm transition-all tracking-wider;
+  line-height: 50px;
+  padding: 0 36px 0 20px;
+  position: relative;
+  display: inline-block;
+  color: #fff; //text-color white
+}
+
 @layer base {
   .btn {
-    @apply relative text-sm transition-all rounded-full;
-    letter-spacing: 0;
-    line-height: 50px;
-    padding: 0 36px 0 20px;
-    position: relative;
-    display: inline-block;
-    color: #fff; //text-color white
+    @include btn;
 
     :hover {
       @apply cursor-pointer;
