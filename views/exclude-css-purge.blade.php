@@ -17,6 +17,7 @@
     h-[600px] lg:h-[600px] max-h-[600px] lg:max-h-[600px]
     h-[700px] lg:h-[700px] max-h-[700px] lg:max-h-[700px]
     h-[800px] lg:h-[800px] max-h-[800px] lg:max-h-[800px]
+    h-[850px] lg:h-[850px] max-h-[850px] lg:max-h-[850px]
     h-[900px] lg:h-[900px] max-h-[900px] lg:max-h-[900px]
 
     grid-cols-1 grid-cols-2 grid-cols-3 grid-cols-4 grid-cols-5 grid-cols-6
