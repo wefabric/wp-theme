@@ -41,7 +41,7 @@
         </div>
     @endif
 
-    <div class="{{ $text_class }} flex flex-col">
+    <div class="{{ $text_class }} flex flex-col lg:{{ $block->get('text_width') }} mx-auto justify-{{ $block->get('text_align') }}"> {{-- TODO deze justify werkt niet. Om het gecentreerd te krijgen staat er nu een mx-auto in maar eignelijk zou de justify het moeten doen. --}}
         <div class=" {{ '' ?? 'py-4 lg:py-8' }}">
             @include('components.content', ['content' => apply_filters('the_content', $block->get('text'))])
         </div>
