@@ -8,6 +8,15 @@
             'content' => apply_filters('the_content', $block->get('text')),
             'class' => 'text-justify'
         ])
+
+        @if($block->get('show_button'))
+            <div class="flex justify-{{ $block->get('button')->get('position') }}">
+                @include('components.buttons.default', [
+                    'button' => $block->get('button'),
+                    'class' => 'disable-chevron font-bold'
+                ])
+            </div>
+        @endif
     </div>
 
     <div class="w-full lg:w-2/6 pt-8 lg:pt-0 @if($block->get('image_position') === 'left') order-2 lg:order-1 @endif @switch($block->get('image_vertical_position'))

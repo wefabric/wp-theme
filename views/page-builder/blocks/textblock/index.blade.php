@@ -46,7 +46,7 @@
             @include('components.content', ['content' => apply_filters('the_content', $block->get('text'))])
         </div>
 
-        @if($block->get('button'))
+        @if($block->get('show_button'))
             <div class="flex justify-{{ $block->get('button')->get('position') }}">
                 @include('components.buttons.default', [
                     'button' => $block->get('button'),
