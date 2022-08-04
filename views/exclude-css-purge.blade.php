@@ -8,6 +8,29 @@
     w-3/4 lg:w-3/4
     w-4/5 lg:w-4/5
 
+{{-- The following are for the specific 'empty space' block. --}}
+    h-[10px] lg:h-[10px]
+    h-[20px] lg:h-[20px]
+    h-[30px] lg:h-[30px]
+    h-[40px] lg:h-[40px]
+    h-[50px] lg:h-[50px]
+    h-[60px] lg:h-[60px]
+    h-[70px] lg:h-[70px]
+    h-[80px] lg:h-[80px]
+    h-[90px] lg:h-[90px]
+    h-[100px] lg:h-[100px]
+    h-[110px] lg:h-[110px]
+    h-[120px] lg:h-[102px]
+    h-[130px] lg:h-[103px]
+    h-[140px] lg:h-[140px]
+    h-[150px] lg:h-[150px]
+    h-[160px] lg:h-[160px]
+    h-[170px] lg:h-[170px]
+    h-[180px] lg:h-[180px]
+    h-[190px] lg:h-[190px]
+    h-[200px] lg:h-[200px]
+
+{{-- The following are for general blocks (#00 values), and some #50 values for images. --}}
     h-[100px] lg:h-[100px] max-h-[100px] lg:max-h-[100px]
     h-[200px] lg:h-[200px] max-h-[200px] lg:max-h-[200px]
     h-[300px] lg:h-[300px] max-h-[300px] lg:max-h-[300px]
