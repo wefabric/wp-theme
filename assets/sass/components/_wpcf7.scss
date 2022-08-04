@@ -10,9 +10,16 @@
   }
 
   // This is to no longer show the "thank you for your message" notification so user doesn't get confused
-  form.sent, .wpcf7-response-output {
+  .form.sent {
     display: none;
   }
+
+  form {
+    .wpcf7-response-output {
+      @apply text-base mx-0;
+    }
+  }
+
 
   .wpcf7-submit {
     @apply btn bg-primary-light;
@@ -49,7 +56,7 @@
     }
 
     .wpcf7-spinner {
-      @apply bg-white top-[25%];
+      @apply bg-white top-[25%] hidden md:inline-block;
       position: absolute;
 
       &:before {
@@ -57,6 +64,10 @@
       }
     }
 
+  }
+
+  .wpcf7-not-valid-tip {
+    @apply bg-red-400 text-white text-sm mt-0 px-2 py-1;
   }
 
 }

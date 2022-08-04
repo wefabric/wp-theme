@@ -1,6 +1,6 @@
 @php $establishment = \Wefabric\WPEstablishments\Establishment::primary(); @endphp
 <div class="text-base mb-6 leading-7">
-    <div class="content pt-2 mb-4">
+    <div class=" pt-2 mb-4">
         <p>{{ $establishment->name }}</p>
         <p>{{ $establishment->getAddress()->street }} {{ $establishment->getAddress()->full_housenumber }}</p>
         <p>{{ $establishment->getAddress()->postcode }} {{ $establishment->getAddress()->city }}</p>
@@ -28,13 +28,7 @@
         @include('components.link.closing')
     @endif
 
-    @include('components.link.opening', [
-	    'href' => $establishment->getAddress()->getGoogleMapsUrl(),
-	    'alt' => 'Adres op Google Maps',
-	    'class' => 'flex mb-2'
-    ])
-        <i class="fa-solid fa-location-dot mr-4 ml-1 text-md pt-1"></i>
-        <span class="inline-block pt-1 cursor-pointer hover:underline">Routebeschrijving</span>
+    @include('components.establishments.directions')
     @include('components.link.closing')
 
 </div>

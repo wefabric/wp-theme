@@ -2,19 +2,7 @@
     $option = get_fields('option');
 @endphp
 
-@if(!empty($option) && array_key_exists('channels', $option))
-    <div class="mb-8">
-        @foreach($option['channels'] as $social)
-            @include('components.buttons.icon', [
-	            'href' => $social['url'],
-	            'alt' => $social['name'],
-	            'rel' => 'noopener',
-	            'target' => '_blank',
-	            'icon' => $social['icon'],
-            ])
-        @endforeach
-    </div>
-@endif
+    @include('components.socials.list')
 
     <span class="font-head text-md pt-4 pb-2 pr-6 inline-block">
         Blijf op de hoogte
@@ -27,6 +15,7 @@
                     $mailchimp_code = get_fields('option')['mailchimp_code'];
                     // TODO now what
                 }
+
             @endphp
             <form action="https://wefabric.us16.list-manage.com/subscribe/post?u=97458c1812b52842329db8e54&amp;id=5af5026eaf" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                 <div id="mc_embed_signup_scroll"></div>

@@ -2954,6 +2954,25 @@
                                     "placeholder": ""
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_62ec2277992f9",
+                            "label": "Adresgegevens tonen",
+                            "name": "show_address",
+                            "type": "true_false",
+                            "instructions": "Toont de adresgegevens naast het contactformulier",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         }
                     ],
                     "min": "",
@@ -3060,5 +3079,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1659623128
+    "modified": 1659642535
 }
