@@ -69,7 +69,7 @@
             <!-- Prev Button -->
             <button
                     x-on:click="prev"
-                    class="text-6xl"
+                    class="text-6xl hidden lg:block"
                     :aria-disabled="atBeginning"
                     :tabindex="atEnd ? -1 : 0"
                     :class="{ 'opacity-50 cursor-not-allowed': atBeginning }"
@@ -101,7 +101,7 @@
             <!-- Next Button -->
             <button
                     x-on:click="next"
-                    class="text-6xl"
+                    class="text-6xl hidden lg:block"
                     :aria-disabled="atEnd"
                     :tabindex="atEnd ? -1 : 0"
                     :class="{ 'opacity-50 cursor-not-allowed': atEnd }"

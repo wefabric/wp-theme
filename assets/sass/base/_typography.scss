@@ -18,7 +18,7 @@
   }
 
   h2, .h2 {
-    @apply text-base font-normal break-words;
+    @apply text-xl font-bold break-words;
 
     @media (min-width: 1024px) {
       @apply text-3xl font-bold;

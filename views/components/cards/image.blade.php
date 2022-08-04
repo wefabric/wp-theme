@@ -9,7 +9,7 @@
         {{ $item->get('title') }}
     </div>
 
-    <div class="absolute bottom-5 right-5">
+    <div class="absolute bottom-5 lg:right-5">
         @include('components.buttons.default', [
             'button' => $item,
             'colors' => 'btn-primary-light hover:btn-primary-dark text-white disable-chevron',

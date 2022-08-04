@@ -9,13 +9,13 @@
                 break;
             case 'left':
                 $div_class = 'flex-row';
-                $title_class = 'w-1/2 order-1';
-                $text_class = 'w-1/2 order-2';
+                $title_class = 'lg:w-1/2 order-1';
+                $text_class = 'lg:w-1/2 order-2';
                 break;
             case 'right':
                 $div_class = 'flex-row';
-                $title_class = 'w-1/2 order-2';
-                $text_class = 'w-1/2 order-1';
+                $title_class = 'lg:w-1/2 order-2';
+                $text_class = 'lg:w-1/2 order-1';
                 break;
             case 'below':
                 $div_class = 'flex-col';
@@ -30,7 +30,7 @@
     }
 @endphp
 
-<div class="container mx-auto w-full lg:{{ $block->get('width') }} flex {{ $div_class }} gap-2 text-{{ $block->get('text_color') }}  flex">
+<div class="container mx-auto w-full lg:{{ $block->get('width') }} flex flex-col lg:{{ $div_class }} gap-2 text-{{ $block->get('text_color') }}  flex">
     @if($block->get('show_separate_title'))
         <div class="{{ $title_class }} text-{{$title->get('title_align')}}">
             @include('components.headings.normal', [
@@ -43,7 +43,11 @@
 
     <div class="{{ $text_class }} flex flex-col lg:{{ $block->get('text_width') }} mx-auto justify-{{ $block->get('text_align') }}"> {{-- TODO deze justify werkt niet. Om het gecentreerd te krijgen staat er nu een mx-auto in maar eignelijk zou de justify het moeten doen. --}}
         <div class=" {{ '' ?? 'py-4 lg:py-8' }}">
-            @include('components.content', ['content' => apply_filters('the_content', $block->get('text'))])
+            @include('components.content', [
+                'content' => apply_filters('the_content', $block->get('text')),
+                'class' => 'text-justify'
+            ])
+
         </div>
 
         @if($block->get('show_button'))

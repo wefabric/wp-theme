@@ -2,7 +2,7 @@
 
     <div class="bg-{{ $block->get('fill_color') }} lg:p-16 lg:pr-64 relative ">
 
-        @if($block->get('title'))
+        @if($block->get('show_separate_title'))
             @include('components.headings.normal', [
                 'type' => 3,
                 'title' => $block->get('title'),
