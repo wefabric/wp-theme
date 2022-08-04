@@ -2,17 +2,19 @@
     if(!function_exists('color_to_rgba')) {
         function color_to_rgba (string $color)
         {
+            $colors = styleCustomizer()->getCustomColors();
+
             switch($color) {
                 case 'white':
                     return 'rgba(255,255,255,1)';
                 case 'black':
                     return 'rgba(0,0,0,1)';
-                case 'primary-color':
-                    return 'rgba(7, 75, 52, 1)';
-                case 'primary-color-light':
-                    return 'rgba(58, 186, 101, 1)';
-                case 'primary-color-dark':
-                    return 'rgba(5, 57, 39, 1)';
+
+                default:
+                    $name = str_replace('-', '_', $color);
+					if($colors->get($name)) {
+                        return $colors->get($name)->get('rgba');
+					}
             }
             dump('undefined gradient color (pagebuilder.render): '. $color);
             return $color; //fallback
