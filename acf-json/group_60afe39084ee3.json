@@ -1435,6 +1435,35 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_62ebd49605bb1",
+                            "label": "Breedte (desktop)",
+                            "name": "width",
+                            "type": "select",
+                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "w-1\/2": "50%",
+                                "w-3\/5": "60%",
+                                "w-2\/3": "66%",
+                                "w-3\/4": "75%",
+                                "w-4\/5": "80%",
+                                "w-full": "100%"
+                            },
+                            "default_value": "w-full",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_610d298d542ca",
                             "label": "Titel",
                             "name": "title",
@@ -1840,6 +1869,35 @@
                     "label": "Werknemers",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_62ebd41a13538",
+                            "label": "Breedte (desktop)",
+                            "name": "width",
+                            "type": "select",
+                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "w-1\/2": "50%",
+                                "w-3\/5": "60%",
+                                "w-2\/3": "66%",
+                                "w-3\/4": "75%",
+                                "w-4\/5": "80%",
+                                "w-full": "100%"
+                            },
+                            "default_value": "w-3\/4",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
                         {
                             "key": "field_60b9e4df5df7c",
                             "label": "Titel",
@@ -2934,5 +2992,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1659618795
+    "modified": 1659622563
 }

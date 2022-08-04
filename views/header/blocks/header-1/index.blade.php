@@ -10,8 +10,8 @@
 
     <div class="mx-4 lg:mx-20 py-15 lg:py-40  bg-center bg-cover bg-no-repeat rounded-lg z-50" style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
 <div class="header-1 w-full" style="{{ $gradient }}">
-        <div class="container mx-auto w-full lg:w-3/4 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
-            <h1 class="w-1/2 text-[58px]">
+        <div class="container mx-auto w-full lg:w-3/4 py-8 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
+            <h1 class="w-4/5 lg:w-1/2 text-2xl lg:text-[58px]">
                 {{ $block->get('title') }}
             </h1>
 

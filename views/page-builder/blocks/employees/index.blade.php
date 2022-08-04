@@ -11,7 +11,7 @@
     }
 @endphp
 
-<div class="container mx-auto">
+<div class="container mx-auto w-full lg:{{ $block->get('width') }}">
     @include('components.headings.normal', [
 	    'type' => '2',
 	    'class' => 'mb-12 text-center',

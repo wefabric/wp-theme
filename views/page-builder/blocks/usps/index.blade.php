@@ -8,7 +8,7 @@
 	$color = $block->get('icon_color');
 @endphp
 
-<div class="container mx-auto {{ $block->get('width') }}">
+<div class="container mx-auto w-full lg:{{ $block->get('width') }}">
 
     @if(!empty($title))
         @include('components.headings.normal', [
