@@ -1,4 +1,4 @@
-<div class="block">
+<div class="flex">
     @php
         switch($position) {
             case 'above':

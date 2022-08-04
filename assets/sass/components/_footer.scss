@@ -27,7 +27,7 @@
       border-style: solid;
       border-width: 2px 2px 0 0;
       content: " ";
-      border-color: black;
+      border-color: white;
       display: inline-block;
       float: right;
       height: 12px;
@@ -46,7 +46,7 @@
     }
 
     .accordion-drawer__title:hover {
-      color: var(--primary-color-dark);
+      color: white;
     }
 
     .accordion-drawer__trigger:checked

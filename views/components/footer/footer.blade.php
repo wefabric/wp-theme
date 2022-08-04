@@ -11,7 +11,6 @@
 
 <div class="bg-{{ $bg_color ?? 'black' }} text-{{ $text_color ?? 'white' }} text-base pb-10 lg:pb-24">
     @php
-
         if(!empty($option) && array_key_exists('footer_usps', $option)) {
 	        $usps = $option['footer_usps'];
         }
@@ -26,7 +25,7 @@
         </div>
     @endif
 
-    <div class="container mx-auto px-8 lg:px-0 relative">
+    <div class="container mx-auto px-8 relative">
 
         <div class="w-full">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-4 pt-12 lg:pt-16 pb-6 lg:pb-0">
@@ -63,7 +62,7 @@
             </div>
         </div>
 
-        <div class="flex flex-col lg:flex-row">
+        <div class="flex flex-col md:flex-row">
             <div class="hidden lg:block lg:w-1/4">
                 @php
                     $settings = get_field('common', 'option');
@@ -134,8 +133,8 @@
                 </div>
             </div>
 
-            <div class="w-full lg:w-1/4 flex">
-                <div class="flex w-full pt-8 lg:pt-0 lg:text-right lg:self-end">
+            <div class="w-full md:w-2/5 xl:w-1/4 flex">
+                <div class="flex w-full pt-8 lg:pt-0 self-end md:text-right md:justify-end">
                     <span class="pr-1">
                         Gerealiseerd door:
                     </span>

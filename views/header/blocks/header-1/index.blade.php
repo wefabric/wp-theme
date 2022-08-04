@@ -8,10 +8,10 @@
     $gradient = ''; //ignore here
 @endphp
 
-    <div class="mx-4 lg:mx-20 py-15 lg:py-40  bg-center bg-cover bg-no-repeat rounded-lg z-50" style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
 <div class="header-1 w-full" style="{{ $gradient }}">
+    <div class="mx-4 lg:mx-20 py-16 md:py-20 xl:py-40 bg-center bg-cover bg-no-repeat rounded-lg z-50" style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
         <div class="container mx-auto w-full lg:w-3/4 py-8 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
-            <h1 class="w-4/5 lg:w-1/2 text-2xl lg:text-[58px]">
+            <h1 class="w-4/5 xl:w-1/2 text-2xl md:text-4xl lx:text-[58px]">
                 {{ $block->get('title') }}
             </h1>
 
