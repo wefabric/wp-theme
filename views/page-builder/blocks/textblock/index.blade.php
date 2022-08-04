@@ -3,22 +3,22 @@
         $title = $block->get('title');
         switch($title->get('title_position')) { //based on the textblock
             case 'above':
-                $div_class = 'flex flex-col gap-y-2';
+                $div_class = 'flex-col';
                 $title_class = 'order-1';
                 $text_class = 'order-2';
                 break;
             case 'left':
-                $div_class = 'flex flex-row gap-x-2';
+                $div_class = 'flex-row';
                 $title_class = 'w-1/2 order-1';
                 $text_class = 'w-1/2 order-2';
                 break;
             case 'right':
-                $div_class = 'flex flex-row gap-x-2';
+                $div_class = 'flex-row';
                 $title_class = 'w-1/2 order-2';
                 $text_class = 'w-1/2 order-1';
                 break;
             case 'below':
-                $div_class = 'flex flex-col gap-y-2';
+                $div_class = 'flex-col';
                 $title_class = 'order-2';
                 $text_class = 'order-1';
                 break;
@@ -30,7 +30,7 @@
     }
 @endphp
 
-<div class="container mx-auto w-full lg:{{ $block->get('width') }} {{ $div_class }} text-{{ $block->get('text_color') }}  flex">
+<div class="container mx-auto w-full lg:{{ $block->get('width') }} flex {{ $div_class }} gap-2 text-{{ $block->get('text_color') }}  flex">
     @if($block->get('show_separate_title'))
         <div class="{{ $title_class }} text-{{$title->get('title_align')}}">
             @include('components.headings.normal', [
@@ -42,7 +42,7 @@
     @endif
 
     <div class="{{ $text_class }} flex flex-col">
-        <div class="py-4 lg:py-8">
+        <div class=" {{ '' ?? 'py-4 lg:py-8' }}">
             @include('components.content', ['content' => apply_filters('the_content', $block->get('text'))])
         </div>
 
