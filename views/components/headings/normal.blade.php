@@ -18,7 +18,7 @@
 
 <{{$hx}} @if($id ?? '') id="{{ $id }}" @endif
     class="font-head inline-block align-text-top z-10 {{ $class ?? '' }} text-{{ $text_color ?? '' }}">
-    {{ $heading }}
+    {!! $heading !!}
 </{{$hx}}>
 
 @if(!empty($title) && !empty($title->get('subtitle')))
