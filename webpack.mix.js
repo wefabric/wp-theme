@@ -24,7 +24,6 @@ mix.js('assets/js/app.js', 'dist/js')
         postCss: [ tailwindcss('./tailwind.config.js') ],
     })
     .copyDirectory('node_modules/@fortawesome/fontawesome-pro/webfonts', 'dist/fonts')
-    .copyDirectory('node_modules/slick-carousel/slick/fonts', 'dist/fonts')
     .copyDirectory('assets/fonts', 'dist/fonts');
 
 
