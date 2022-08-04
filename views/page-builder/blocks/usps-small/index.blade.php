@@ -1,3 +1,5 @@
+{{-- MARKED FOR DELETION. Use pagebuilder.blocks.usps --}}
+
 @include('components.blocks.usps-small', [
 	'title' => $block->get('title'),
 	'subtitle' => $block->get('subtitle'),

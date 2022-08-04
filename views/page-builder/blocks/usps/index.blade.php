@@ -35,4 +35,11 @@
         'icon_color' => $color,
     ])
 
+    @if(!empty($block->get('button')))
+        @include('components.buttons.default', [
+            'button' => $block->get('button'),
+            'colors' => 'btn-primary-light hover:btn-primary-dark text-white disable-chevron',
+        ])
+    @endif
+
 </div>

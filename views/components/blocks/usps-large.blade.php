@@ -1,3 +1,5 @@
+{{-- MARKED FOR DELETION. Use pagebuilder.blocks.usps --}}
+
 <div class="container mx-auto {{ $class ?? '' }}">
     @if(!empty($title))
         @include('components.headings.normal', [
