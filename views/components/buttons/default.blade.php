@@ -35,7 +35,7 @@
         'target' => $target ?? '',
         'class' => $a_class ?? '',
     ])
-        <span class="btn {{ $size ?? 'btn-small' }} {{ $colors }} {{ $class ?? 'font-bold' }}">
+        <span class="btn {{ $size ?? 'btn-small' }} {{ $colors }} font-bold {{ $class ?? '' }}">
             {{ $text }}
         </span>
     @include('components.link.closing')
