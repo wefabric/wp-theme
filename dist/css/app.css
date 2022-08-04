@@ -21058,6 +21058,10 @@ input[type=number]::-webkit-outer-spin-button {
   height: 400px;
 }
 
+.h-\[450px\]{
+  height: 450px;
+}
+
 .h-\[500px\]{
   height: 500px;
 }
@@ -21128,6 +21132,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 .max-h-\[400px\]{
   max-height: 400px;
+}
+
+.max-h-\[450px\]{
+  max-height: 450px;
 }
 
 .max-h-\[500px\]{
@@ -22078,6 +22086,9 @@ input[type=number]::-webkit-outer-spin-button {
   .lg\:h-\[400px\]{
     height: 400px;
   }
+  .lg\:h-\[450px\]{
+    height: 450px;
+  }
   .lg\:h-\[500px\]{
     height: 500px;
   }
@@ -22113,6 +22124,9 @@ input[type=number]::-webkit-outer-spin-button {
   }
   .lg\:max-h-\[400px\]{
     max-height: 400px;
+  }
+  .lg\:max-h-\[450px\]{
+    max-height: 450px;
   }
   .lg\:max-h-\[500px\]{
     max-height: 500px;

@@ -12,6 +12,7 @@
     h-[200px] lg:h-[200px] max-h-[200px] lg:max-h-[200px]
     h-[300px] lg:h-[300px] max-h-[300px] lg:max-h-[300px]
     h-[400px] lg:h-[400px] max-h-[400px] lg:max-h-[400px]
+    h-[450px] lg:h-[450px] max-h-[450px] lg:max-h-[450px]
     h-[500px] lg:h-[500px] max-h-[500px] lg:max-h-[500px]
     h-[600px] lg:h-[600px] max-h-[600px] lg:max-h-[600px]
     h-[700px] lg:h-[700px] max-h-[700px] lg:max-h-[700px]

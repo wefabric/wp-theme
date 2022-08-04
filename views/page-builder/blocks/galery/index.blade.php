@@ -1,4 +1,4 @@
-<div class="container mx-auto w-full lg:{{ $block->get('width') }} ">
+<div class="@if($block->get('width') !== 'nomargin') container @endif mx-auto w-full lg:{{ $block->get('width') === 'nomargin' ? 'w-full' : $block->get('width') }} ">
 
     @if($block->get('show_separate_title'))
         @include('components.headings.normal', [
@@ -15,6 +15,9 @@
 				case 'one-center':
 					$max = 1;
 					$img_size = 'gallery-thumbnail-1/1';
+					if($block->get('width') === 'nomargin') {
+    					$img_size .= '-nomargin';
+					}
 					break;
                 case 'two-inline':
 					$max = 2;
@@ -28,21 +31,23 @@
 					// think of different display options.
             }
 
-            $card_classes = 'm-2';
+			if($block->get('width') !== 'nomargin') {
+                $card_classes = 'm-2';
+			}
         @endphp
 
         @if($count > $max)
             @include('components.slider.slider', [
                 'items' => $block->get('photos'),
                 'card_type' => 'image',
-                'card_classes' => $card_classes,
+                'card_classes' => ($card_classes ?? ''),
             ])
         @else
             @include('components.slider.grid', [
                 'items' => $block->get('photos'),
                 'card_type' => 'image',
 				'img_size' => $img_size,
-                'grid_class' => 'lg:grid-cols-'. $max .' '. $card_classes,
+                'grid_class' => 'lg:grid-cols-'. $max .' '. ($card_classes ?? ''),
             ])
         @endif
 
