@@ -46,8 +46,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Poppins', ...defaultTheme.fontFamily.sans],
-        head: ['Poppins', ...defaultTheme.fontFamily.sans],
+        sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
+        head: ['Open Sans', ...defaultTheme.fontFamily.sans],
       },
       fontSize: theme => ({
         'xs':   ['0.75rem', theme('lineHeight.normal')],  // 12
