@@ -21364,6 +21364,10 @@ input[type=number]::-webkit-outer-spin-button {
   background-size: cover;
 }
 
+.bg-contain {
+  background-size: contain;
+}
+
 .bg-center {
   background-position: center;
 }
@@ -21982,12 +21986,12 @@ input[type=number]::-webkit-outer-spin-button {
 
 @media (min-width: 1024px) {
 
-  .lg\:right-5 {
-    right: 1.25rem;
+  .lg\:absolute {
+    position: absolute;
   }
 
-  .lg\:order-2 {
-    order: 2;
+  .lg\:right-5 {
+    right: 1.25rem;
   }
 
   .lg\:mx-0 {
