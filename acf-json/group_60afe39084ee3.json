@@ -1272,100 +1272,6 @@
                     "min": "",
                     "max": ""
                 },
-                "layout_60c7663851713": {
-                    "key": "layout_60c7663851713",
-                    "name": "contactForm",
-                    "label": "Contactformulier",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_60c7663851714",
-                            "label": "Titel",
-                            "name": "title",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
-                        },
-                        {
-                            "key": "field_60c7665151717",
-                            "label": "Content",
-                            "name": "content",
-                            "type": "textarea",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "maxlength": "",
-                            "rows": "",
-                            "new_lines": ""
-                        },
-                        {
-                            "key": "field_60c7665d51718",
-                            "label": "Formulier",
-                            "name": "form",
-                            "type": "acf_cf7",
-                            "instructions": "",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            }
-                        },
-                        {
-                            "key": "field_62e296fd052ab",
-                            "label": "Achtergrondkleur",
-                            "name": "bg_color",
-                            "type": "Thema Kleur",
-                            "instructions": "",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "theme_color": null,
-                            "font_size": 14
-                        },
-                        {
-                            "key": "field_62e29707052ac",
-                            "label": "Tekstkleur",
-                            "name": "text_color",
-                            "type": "Thema Kleur",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "theme_color": null,
-                            "font_size": 14
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
                 "layout_62cede36d30d4": {
                     "key": "layout_62cede36d30d4",
                     "name": "video",
@@ -2432,8 +2338,8 @@
                 },
                 "layout_62eb75463407d": {
                     "key": "layout_62eb75463407d",
-                    "name": "newsletter",
-                    "label": "Nieuwsbrief",
+                    "name": "contactForm",
+                    "label": "Contactformulier",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -2764,5 +2670,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1659599430
+    "modified": 1659608444
 }
