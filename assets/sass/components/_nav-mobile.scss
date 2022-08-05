@@ -19,7 +19,7 @@
 
 .hamburger-button {
   .hamburger-button-bar {
-    @apply bg-primary;
+    @apply bg-white;
     display: block;
     margin-bottom: 5px;
     border-radius: 10px;
@@ -167,6 +167,7 @@ header.banner {
 
   li {
     position: relative;
+    display: block !important;
 
     &:focus,
     &:hover,
