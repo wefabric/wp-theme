@@ -60,11 +60,15 @@ header.banner {
   //transition: background-color 200ms ease-in-out;
 }
 
+.logo-mobile, .site-title  {
+  opacity: 1;
+  transition: 0.2s;
+}
+
 #nav-mobile-active:checked {
   ~ .logo-mobile {
     .site-title {
-      display: none;
-      transition: 1s;
+      opacity: 0;
     }
   }
 
@@ -139,19 +143,23 @@ header.banner {
 }
 
 .mobile-menu {
+  @apply bg-primary text-white;
   position: fixed;
   width: 260px;
   top: 0;
   bottom: 0;
   right: -260px;
   overflow-y: scroll;
-  z-index: 250;
+  z-index: 1000;
   min-height: 100%;
   transition: right 300ms ease;
-  background: #fff;
   color: #000;
   padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+
+  .menu {
+    display: block;
+  }
 
   .nav {
     display: block;
@@ -162,9 +170,10 @@ header.banner {
 
     &:focus,
     &:hover,
-    &:active {
+    &:active,
+    &.current-menu-item {
       a {
-        color: black;
+        @apply text-primary-light font-bold;
       }
     }
 
@@ -179,8 +188,8 @@ header.banner {
     }
 
     a {
-      color: black !important;
-      padding: 0.5rem 0 !important;
+      @apply text-white;
+      padding: 0.5rem 0;
     }
 
     &:first-child {

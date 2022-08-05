@@ -4,15 +4,17 @@
 	$alt = 'Bel naar '. $phone;
 @endphp
 
-@include('components.link.opening', [
-    'href' => 'tel:'. $phone,
-    'class' => $a_class ?? '',
-    'alt' => $alt,
-])
+@if($phone)
+    @include('components.link.opening', [
+        'href' => 'tel:'. $phone,
+        'class' => $a_class ?? '',
+        'alt' => $alt,
+    ])
 
-    <span class="fa-regular fa-circle-phone {{ $class }}"></span>
-    <span class="screen-reader-only">
-        {{ $alt }}
-    </span>
+        <span class="fa-regular fa-circle-phone {{ $class }}"></span>
+        <span class="screen-reader-only">
+            {{ $alt }}
+        </span>
 
-@include('components.link.closing')
+    @include('components.link.closing')
+@endif

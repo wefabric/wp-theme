@@ -48,11 +48,6 @@
     @endif
 
     <nav id="site-navigation" class="main-navigation flex justify-end items-center">
-        {{-- {!! wp_nav_menu([
-            'theme_location' => 'menu-1',
-            'menu_id' => 'primary-menu',
-            'echo' => false
-        ]) !!} --}}
 
         @php
             $class = 'inline-block font-bold hover:underline md:px-4 uppercase';
@@ -62,29 +57,36 @@
             $menu = wp_get_nav_menu_items($menuID);
         @endphp
 
+        {!! wp_nav_menu([
+            'theme_location' => 'menu-1',
+            'menu_id' => $menuID,
+            'echo' => false
+        ]) !!}
+
+
         @if(false)
             @include('components.header.home-house', [
                 'class' => $class,
             ]) {{-- this shows a house icon, as link to the homepage. --}}
         @endif
 
-        @foreach($menu as $link)
-            {{--
-                        @php
-                            $isLast = (in_array($link, $menu) && $link == end($menu));
-                        @endphp
-            --}}
-            @include('components.link.simple', [
-                'href' => $link->url,
-                'class' => $class,
-                'text' => __($link->title, 'wefabric')
-            ])
-            {{--
-                        @if(!$isLast)
-                            <span class="divider"> / </span>
-                        @endif
-            --}}
-        @endforeach
+{{--        @foreach($menu as $link)--}}
+{{--            --}}{{----}}
+{{--                        @php--}}
+{{--                            $isLast = (in_array($link, $menu) && $link == end($menu));--}}
+{{--                        @endphp--}}
+{{--            --}}
+{{--            @include('components.link.simple', [--}}
+{{--                'href' => $link->url,--}}
+{{--                'class' => $class,--}}
+{{--                'text' => __($link->title, 'wefabric')--}}
+{{--            ])--}}
+{{--            --}}{{----}}
+{{--                        @if(!$isLast)--}}
+{{--                            <span class="divider"> / </span>--}}
+{{--                        @endif--}}
+{{--            --}}
+{{--        @endforeach--}}
 
         @if(false) {{-- hide webshop parts --}}
         @include('components.buttons.default', [

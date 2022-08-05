@@ -12,10 +12,10 @@
 @php
     $contact_information = get_fields('option');
 @endphp
-<header class="banner z-2 absolute left-0 w-full">
+<header class="banner absolute left-0 w-full">
     <div>
         <div class="py-6 flex items-center lg:hidden">
-            <div class="hamburger-menu">
+            <div class="hamburger-menu z-50">
                 <label for="nav-mobile-active" class="mb-0 toggle-mobile-menu hamburger-button">
                     <span class="hamburger-button-bar"></span>
                     <span class="hamburger-button-bar"></span>
@@ -23,17 +23,20 @@
                 </label>
             </div>
         </div>
-        <nav class="mobile-menu">
-            <div class="mb-3 mobile-logo">
-                @include('components.header.logo')
-            </div>
-            <nav id="site-navigation" class="main-navigation">
-                {!! wp_nav_menu([
-                    'theme_location' => 'menu-1',
-                    'menu_id' => 'primary-menu',
-                    'echo' => false
-                ]) !!}
+        <div class="mobile-menu-wrap">
+            <nav class="mobile-menu">
+                <div class="mb-3 mobile-logo">
+                    @include('components.header.logo', ['type' => 'white'])
+                </div>
+                <nav id="site-navigation" class="main-navigation">
+                    {!! wp_nav_menu([
+                        'theme_location' => 'menu-1',
+                        'menu_id' => 'primary-menu',
+                        'echo' => false
+                    ]) !!}
+                </nav>
             </nav>
-        </nav>
+        </div>
+
     </div>
 </header>
