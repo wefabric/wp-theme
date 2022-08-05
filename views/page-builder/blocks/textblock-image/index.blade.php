@@ -1,6 +1,6 @@
 <div class="container mx-auto w-full lg:{{ $block->get('width') }} lg:h-[{{ $block->get('image')->get('height_desktop') }}]">
 
-    <div class="flex lg:absolute z-10 w-full lg:{{ $block->get('image_width') }} h-[400px] lg:h-[{{ $block->get('image')->get('height_desktop') }}] bg-no-repeat bg-contain bg-center @if($block->get('image')->get('position') === 'left') order-2 @endif"
+    <div class="flex lg:absolute z-10 w-full lg:{{ $block->get('image_width') }} h-[400px] lg:h-[{{ $block->get('image')->get('height_desktop') }}] bg-no-repeat bg-center @if($block->get('image')->get('position') === 'left') order-2 @endif"
         style="background-image: url('{{ wp_get_attachment_image_url($block->get('image')->get('image'), 'textblock-image') }}')">
     </div>
 

@@ -1,5 +1,5 @@
 @php
-    $height = 'h-['. config('wp-support.image_sizes.'. $img_size .'.height') .'px]';
+    $height = 'h-['. config('wp-support.image_sizes.'. ((int)$img_size / 2) .'.height') .'px] lg:h-['. config('wp-support.image_sizes.'. $img_size .'.height') .'px]';
 @endphp
 
 <div class="{{ $height }} {{ $card_classes ?? '' }} flex flex-col items-center justify-center relative bg-center bg-cover bg-no-repeat"

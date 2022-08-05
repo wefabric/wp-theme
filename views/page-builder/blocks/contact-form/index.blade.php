@@ -2,12 +2,16 @@
     $options = get_fields('option');
     $establishment = \Wefabric\WPEstablishments\Establishment::primary();
     $fields = collect(get_fields($establishment->post->ID));
+
+    if($block->get('image') && $block->get('image')->get('position'))
+
+
 @endphp
 <div class="container mx-auto w-full lg:{{ $block->get('width') }} @if($block->get('show_address', false)) bg-{{ $block->get('bg_color') }} text-{{ $block->get('text_color') }} @endif pt-4 lg:pt-8">
 
     <div class="mt-6 mt-md-10 container position-relative z-index-2">
-        <div class="relative @if($block->get('fill_color')) bg-{{ $block->get('fill_color') }} p-12 @endif @if($block->get('show_address', false)) md:grid md:grid-cols-2 gap-8 @endif" >
-            <div class="lg:{{ $block->get('width_form') }} bg-{{ str_replace('-color', '', $block->get('background_color', 'bg_color')) }} rounded-lg  text-{{ $block->get('text_color') }}">
+        <div class="relative @if($block->get('show_address', false)) md:grid md:grid-cols-2 gap-8 @endif" >
+            <div class="@if($block->get('show_address', false) === false && $block->get('fill_color')) bg-{{ $block->get('fill_color') }} p-12 @endif @if($block->get('show_address', false) === false) lg:{{ $block->get('width_form') }} @endif bg-{{ str_replace('-color', '', $block->get('background_color', 'bg_color')) }} rounded-lg  text-{{ $block->get('text_color') }}">
                 @if($block->get('show_separate_title'))
                     @include('components.headings.normal', [
                         'type' => 2,

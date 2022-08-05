@@ -1,5 +1,5 @@
 <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.js"></script>
-<div>
+
 {{--
     BEWARE: This class isn't designed to be used directly.
     Preferably use smart-slider which shows a grid instead
@@ -114,4 +114,4 @@
 
         </div>
     </div>
-</div>
+
