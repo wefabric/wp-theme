@@ -12,6 +12,10 @@
     box-shadow: none;
     cursor: default;
   }
+
+  &.required {
+    @apply text-black;
+  }
 }
 
 input[type='number']::-webkit-inner-spin-button,
