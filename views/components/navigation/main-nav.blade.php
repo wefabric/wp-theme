@@ -53,16 +53,16 @@
             $class = 'inline-block font-bold hover:underline md:px-4 uppercase';
 
             $menuLocations = get_nav_menu_locations();
-            $menuID = $menuLocations['menu-1'];
-            $menu = wp_get_nav_menu_items($menuID);
+            $menuID = isset($menuLocations['menu-1']) ?? $menuLocations['menu-1'];
         @endphp
 
-        {!! wp_nav_menu([
-            'theme_location' => 'menu-1',
-            'menu_id' => $menuID,
-            'echo' => false
-        ]) !!}
-
+        @if($menuID)
+            {!! wp_nav_menu([
+                'theme_location' => 'menu-1',
+                'menu_id' => $menuID,
+                'echo' => false
+            ]) !!}
+        @endif
 
         @if(false)
             @include('components.header.home-house', [

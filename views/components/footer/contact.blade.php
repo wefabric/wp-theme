@@ -1,12 +1,14 @@
 @php $establishment = \Wefabric\WPEstablishments\Establishment::primary(); @endphp
 <div class="text-base mb-6 leading-7">
     <div class=" pt-2 mb-4">
-        <p>{{ $establishment->name }}</p>
-        <p>{{ $establishment->getAddress()->street }} {{ $establishment->getAddress()->full_housenumber }}</p>
-        <p>{{ $establishment->getAddress()->postcode }} {{ $establishment->getAddress()->city }}</p>
+        @if($establishment)
+            <p>{{ $establishment->name }}</p>
+            <p>{{ $establishment->getAddress()->street }} {{ $establishment->getAddress()->full_housenumber }}</p>
+            <p>{{ $establishment->getAddress()->postcode }} {{ $establishment->getAddress()->city }}</p>
+        @endif
     </div>
 
-    @if($phone = $establishment->getContactPhone())
+    @if($establishment && $phone = $establishment->getContactPhone())
         @include('components.link.opening', [
             'href' => $phone->uri(), //comes with a 'tel:' already
             'alt' => 'Telefoonnummer',
@@ -17,7 +19,7 @@
         @include('components.link.closing')
     @endif
 
-    @if($email = $establishment->getContactEmailAddress())
+    @if($establishment && $email = $establishment->getContactEmailAddress())
         @include('components.link.opening', [
             'href' => 'mailto:'. $email,
             'alt' => 'E-mailadres',

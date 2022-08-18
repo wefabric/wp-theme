@@ -1,6 +1,6 @@
 @php
     $establishment = \Wefabric\WPEstablishments\Establishment::primary();
-    $email = $establishment->getContactEmailAddress();
+    $email = $establishment !== null ?? $establishment->getContactEmailAddress();
 	$alt = 'Stuur een mail naar '. $email;
 @endphp
 

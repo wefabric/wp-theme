@@ -1,6 +1,6 @@
 @php
     $establishment = \Wefabric\WPEstablishments\Establishment::primary();
-    $phone = $establishment->getContactPhone();
+    $phone = $establishment !== null ?? $establishment->getContactPhone();
 	$alt = 'Bel naar '. $phone;
 @endphp
 

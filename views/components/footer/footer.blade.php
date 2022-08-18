@@ -112,24 +112,29 @@
                         $class = 'inline-block hover:underline md:px-2';
 
                         $menuLocations = get_nav_menu_locations();
-                        $menuID = $menuLocations['footer_menu_three'];
-                        $menu = wp_get_nav_menu_items($menuID);
+                        $menu = null;
+                        if(isset($menuLocations['footer_menu_three']) && $menuID = $menuLocations['footer_menu_three']) {
+                              $menu = wp_get_nav_menu_items($menuID);
+                        }
+
                     @endphp
 
-                    @foreach($menu as $post)
-                        @include('components.link.simple', [
-                            'href' => $post->url,
-                            'class' => $class,
-                            'text' => __($post->title, 'wefabric')
-                        ])
+                    @if($menu)
+                        @foreach($menu as $post)
+                            @include('components.link.simple', [
+                                'href' => $post->url,
+                                'class' => $class,
+                                'text' => __($post->title, 'wefabric')
+                            ])
 
-                        @php
-                            $last = (in_array($post, $menu) && $post == end($menu));
-                        @endphp
-                        @if(!$last)
-                            <span class="divider"> / </span>
-                        @endif
-                    @endforeach
+                            @php
+                                $last = (in_array($post, $menu) && $post == end($menu));
+                            @endphp
+                            @if(!$last)
+                                <span class="divider"> / </span>
+                            @endif
+                        @endforeach
+                    @endif
                 </div>
             </div>
 
