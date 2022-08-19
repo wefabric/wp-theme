@@ -1,6 +1,9 @@
+@php
+    $options = get_fields('option');
+@endphp
 <div class="hidden lg:flex lg:flex-col py-4 text-base">
 
-    @if(false) {-- hide webshop parts --}
+    @if(woocommerce_active()) {-- hide webshop parts --}
     <div class="flex justify-end pb-4">
 
         <div class="mr-3">
@@ -60,6 +63,8 @@
             {!! wp_nav_menu([
                 'theme_location' => 'menu-1',
                 'menu_id' => $menuID,
+                'li_class'  => 'text-'. (isset($options['menu_text_color']) ? $options['menu_text_color'] : 'white'),
+                'li_active_class'  => 'text-'. (isset($options['menu_active_text_color']) ? $options['menu_active_text_color'] : 'white'),
                 'echo' => false
             ]) !!}
         @endif

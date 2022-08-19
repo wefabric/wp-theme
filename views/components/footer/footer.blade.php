@@ -88,23 +88,25 @@
                         }
                     @endphp
 
-                    @foreach($footer as $item)
-                        <div class="pr-5">
-                            @if($item['url'])
-                                @include('components.link.opening', [
-                                    'href' => $item['url'],
-                                    'alt' => $item['alt_text']
-                                ])
-                            @endif
-                                @include('components.image', [
-                                    'image_id' => $item['logo'],
-                                    'size' => 'footer-thumbnail',
-                                ])
-                            @if($item['url'])
-                                @include('components.link.closing')
-                            @endif
-                        </div>
-                    @endforeach {{-- Logos van partners --}}
+                    @if($footer)
+                        @foreach($footer as $item)
+                            <div class="pr-5">
+                                @if($item['url'])
+                                    @include('components.link.opening', [
+                                        'href' => $item['url'],
+                                        'alt' => $item['alt_text']
+                                    ])
+                                @endif
+                                    @include('components.image', [
+                                        'image_id' => $item['logo'],
+                                        'size' => 'footer-thumbnail',
+                                    ])
+                                @if($item['url'])
+                                    @include('components.link.closing')
+                                @endif
+                            </div>
+                        @endforeach {{-- Logos van partners --}}
+                    @endif
                 </div>
 
                 <div class="lg:flex lg:flex-row">
@@ -150,7 +152,7 @@
                         @php
                             $theme = app('wp.theme');
                         @endphp
-                        <img src="{{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }}" max-width="100%" height="100%" class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:18px;"/>
+                        <img src="{{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }}"  height="18" width="100" class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:18px;"/>
                     @include('components.link.closing')
                 </div>
             </div>
