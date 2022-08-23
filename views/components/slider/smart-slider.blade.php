@@ -19,6 +19,8 @@
         @elseif($count > 1)
             @include('components.slider.slider', [
                 'items' => $items,
+                'prevNext' => $prevNext ?? false,
+                'pagination' => $pagination ?? true,
                 'card_type' => $card_type,
                 'card_classes' => $card_classes,
             ])
@@ -28,14 +30,16 @@
     {{-- TODO What about tablet (md: size) ? --}}
 
     <div class="hidden lg:block"> {{-- This is the desktop block --}}
-        @if($count > 0 && $count <= 3)
+        @if($count > 0 && $count <= ($slider_on_items ?? 3))
             @include('components.slider.grid', [
                 'items' => $items,
                 'card_type' => $card_type,
             ])
-        @elseif($count > 3)
+        @elseif($count > ($slider_on_items ?? 3))
             @include('components.slider.slider', [
                 'items' => $items,
+                'prevNext' => $prevNext ?? false,
+                'pagination' => $pagination ?? true,
                 'card_type' => $card_type,
                 'card_classes' => $card_classes,
             ])

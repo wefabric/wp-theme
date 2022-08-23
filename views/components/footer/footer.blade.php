@@ -141,7 +141,7 @@
             </div>
 
             <div class="w-full md:w-1/2 xl:w-1/4 flex">
-                <div class="flex w-full pt-8 lg:pt-0 self-end md:text-right md:justify-end">
+                <div class="flex w-full pt-8 lg:pt-0 self-end md:text-right md:justify-end items-center">
                     <span class="pr-1">
                         Gerealiseerd door:
                     </span>
@@ -152,7 +152,7 @@
                         @php
                             $theme = app('wp.theme');
                         @endphp
-                        <img src="{{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }}"  height="18" width="100" class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:18px;"/>
+                        <img src="{{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }}"  height="13" width="100" class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:13px;"/>
                     @include('components.link.closing')
                 </div>
             </div>

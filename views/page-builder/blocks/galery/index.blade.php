@@ -32,7 +32,7 @@
             }
 
 			if($block->get('width') !== 'nomargin') {
-                $card_classes = 'm-2';
+                $card_classes = 'm-0';
 			}
         @endphp
 
@@ -40,6 +40,9 @@
             @include('components.slider.slider', [
                 'items' => $block->get('photos'),
                 'card_type' => 'image',
+                'img_size' => 'full',
+                'prevNext' => false,
+                'breakPoints' => $breakPoints ?? [],
                 'card_classes' => ($card_classes ?? ''),
             ])
         @else
@@ -47,7 +50,7 @@
                 'items' => $block->get('photos'),
                 'card_type' => 'image',
 				'img_size' => $img_size,
-                'grid_class' => 'lg:grid-cols-'. $max .' '. ($card_classes ?? ''),
+                'grid_class' => 'gap-4 lg:grid-cols-'. $max .' '. ($card_classes ?? ''),
             ])
         @endif
 

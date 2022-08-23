@@ -29,10 +29,13 @@
     @include('components.slider.smart-slider', [
         'items' => $usps,
         'card_type' => 'usp',
-
+        'slider_on_items' => 3,
+        'loop' => false,
         'size' => $size,
         'position' => $position,
         'icon_color' => $color,
+        'pagination' => true,
+        'prevNext' => false
     ])
 
     @if(!empty($block->get('button')))

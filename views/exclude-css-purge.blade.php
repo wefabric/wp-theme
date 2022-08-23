@@ -48,14 +48,19 @@
         h-[800px] lg:h-[800px] max-h-[800px] lg:max-h-[800px]
         h-[850px] lg:h-[850px] max-h-[850px] lg:max-h-[850px]
         h-[900px] lg:h-[900px] max-h-[900px] lg:max-h-[900px]
+        h-full
 
        grid-cols-1 grid-cols-2 grid-cols-3 grid-cols-4 grid-cols-5 grid-cols-6
        grid-cols-7 grid-cols-8 grid-cols-9 grid-cols-10 grid-cols-11 grid-cols-12
+
+       lg:grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 lg:grid-cols-6
+       lg:grid-cols-7 lg:grid-cols-8 lg:grid-cols-9 lg:grid-cols-10 lg:grid-cols-11 lg:grid-cols-12
 
        gap-4 gap-8 gap-12
 
        object-contain object-cover object-fill object-none object-scale-down
 
+       m-0.5 m-0
        md:px-2 md:px-4
 
        justify-start justify-center justify-end justify-self-end
