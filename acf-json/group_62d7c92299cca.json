@@ -124,7 +124,7 @@
                     ],
                     "custom_icon_set": "",
                     "default_label": "&lt;i class=\"fa-solid fa-check fa-fw\"&gt;&lt;\/i&gt; Check",
-                    "default_value": "{ \"style\" : \"solid\", \"id\" : \"check\", \"label\" : \"Check\", \"unicode\" : \"f00c\" }",
+                    "default_value": "{\"style\":\"solid\",\"id\":\"check\",\"label\":\"Check\",\"unicode\":\"f00c\"}",
                     "save_format": "class",
                     "allow_null": 0,
                     "show_preview": 1,
@@ -200,6 +200,99 @@
             },
             "theme_color": null,
             "font_size": 14
+        },
+        {
+            "key": "field_630653a5cd6a5",
+            "label": "Footer titels",
+            "name": "footer_titles",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_630653b7cd6a6",
+                    "label": "Footer titel 1",
+                    "name": "footer_title_1",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_630653cacd6a7",
+                    "label": "Footer titel 2",
+                    "name": "footer_title_2",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_630653cbcd6a8",
+                    "label": "Footer titel 3",
+                    "name": "footer_title_3",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_630653cecd6a9",
+                    "label": "Footer titel 4",
+                    "name": "footer_title_4",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -220,5 +313,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1659435928
+    "modified": 1661359064
 }
