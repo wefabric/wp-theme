@@ -29,6 +29,7 @@
         h-[180px] lg:h-[180px]
         h-[190px] lg:h-[190px]
         h-[200px] lg:h-[200px]
+        h-full
 
 {{-- The following are for general blocks (#00 values), and some #50 values for images. --}}
         h-[50px] lg:h-[50px] max-h-[50px] lg:max-h-[50px]
@@ -48,7 +49,6 @@
         h-[800px] lg:h-[800px] max-h-[800px] lg:max-h-[800px]
         h-[850px] lg:h-[850px] max-h-[850px] lg:max-h-[850px]
         h-[900px] lg:h-[900px] max-h-[900px] lg:max-h-[900px]
-        h-full
 
        grid-cols-1 grid-cols-2 grid-cols-3 grid-cols-4 grid-cols-5 grid-cols-6
        grid-cols-7 grid-cols-8 grid-cols-9 grid-cols-10 grid-cols-11 grid-cols-12
@@ -79,6 +79,12 @@
        opacity-90 opacity-95
 
        sm:flex sm:flex-row md:flex md:flex-row lg:flex lg:flex-row
+
+       lg:grid-cols-2
+
+       text-primary-color-light text-primary text-primary-dark hover:text-primary-light hover:text-primary hover:text-primary-dark
+       text-secondary-light text-secondary text-secondary-dark hover:text-secondary-light hover:text-secondary hover:text-secondary-dark
+       text-tertiary-light text-tertiary text-tertiary-dark hover:text-tertiary-light hover:text-tertiary hover:text-tertiary-dark
 ">
 
 </div>
