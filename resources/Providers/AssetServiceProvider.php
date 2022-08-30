@@ -25,11 +25,21 @@ class AssetServiceProvider extends ServiceProvider
         $theme = $this->app->make('wp.theme');
 
         /** For cache busting **/
+
+
         $version = $theme->getHeader('version');
-        if(App::environment() !== 'production') {
+        $manifestPath = get_template_directory().'/dist/mix-manifest.json';
+        if(file_exists($manifestPath)) {
+            $manifest = json_decode(file_get_contents($manifestPath), true);
+            preg_match('/id=(.*)/m',  $manifest['/js/app.js'] ?? $manifest['/js/css.js'], $matches);
+            if(isset($matches[1])) {
+                $version = $matches[1];
+            }
+        } else {
             $version = substr(md5($theme->getUrl().microtime()), 0, 8);
         }
-        
+
+
         Asset::add('theme_styles', 'css/app.css', [], $version)->to('front');
         Asset::add('theme_woo', 'css/woocommerce.css', ['theme_styles'], $version)->to('front');
         Asset::add('theme_js', 'js/app.js', [], $version)->to('front');
