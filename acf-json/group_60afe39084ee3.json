@@ -1977,7 +1977,7 @@
                 "layout_62e7deb1815b9": {
                     "key": "layout_62e7deb1815b9",
                     "name": "galery",
-                    "label": "Galerij",
+                    "label": "Fotogalerij",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -1996,7 +1996,8 @@
                             "choices": {
                                 "one-center": "Een foto gecentreerd",
                                 "two-inline": "Twee foto's naast elkaar",
-                                "three-inline": "Drie foto's naast elkaar"
+                                "three-inline": "Drie foto's naast elkaar",
+                                "logo-slider": "Logo-Slider"
                             },
                             "default_value": "three-inline",
                             "allow_null": 0,
@@ -3517,5 +3518,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1661949659
+    "modified": 1661956947
 }

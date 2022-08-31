@@ -31,6 +31,13 @@
         h-[200px] lg:h-[200px]
         h-full
 
+{{-- The following are for specific image sizes --}}
+        h-[32px] lg:h-[32px]
+        h-[60px] lg:h-[60px]
+        h-[87px] lg:h-[87px]
+
+        w-[167px] lg:w-[167px]
+
 {{-- The following are for general blocks (#00 values), and some #50 values for images. --}}
         h-[50px] lg:h-[50px] max-h-[50px] lg:max-h-[50px]
         h-[100px] lg:h-[100px] max-h-[100px] lg:max-h-[100px]
@@ -44,7 +51,9 @@
         h-[425px] lg:h-[425px] max-h-[425px] lg:max-h-[425px]
         h-[450px] lg:h-[450px] max-h-[450px] lg:max-h-[450px]
         h-[500px] lg:h-[500px] max-h-[500px] lg:max-h-[500px]
+        h-[550px] lg:h-[550px] max-h-[550px] lg:max-h-[550px]
         h-[600px] lg:h-[600px] max-h-[600px] lg:max-h-[600px]
+        h-[650px] lg:h-[650px] max-h-[650px] lg:max-h-[650px]
         h-[700px] lg:h-[700px] max-h-[700px] lg:max-h-[700px]
         h-[800px] lg:h-[800px] max-h-[800px] lg:max-h-[800px]
         h-[850px] lg:h-[850px] max-h-[850px] lg:max-h-[850px]
