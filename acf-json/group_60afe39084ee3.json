@@ -2508,7 +2508,7 @@
                             "label": "Weergave",
                             "name": "display_type",
                             "type": "select",
-                            "instructions": "Kies hier het weergave-type. IS NIET ZO  >> Als je meer foto's invoegt dan er plek is, wordt het blok automatisch aangepast naar een slider.",
+                            "instructions": "Kies hier het weergave-type.",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -2750,10 +2750,10 @@
                                 },
                                 {
                                     "key": "field_630f285c9fc43",
-                                    "label": "Knop tekst",
-                                    "name": "button_text",
+                                    "label": "Tekst",
+                                    "name": "text",
                                     "type": "text",
-                                    "instructions": "DOET NOG NIKS",
+                                    "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {

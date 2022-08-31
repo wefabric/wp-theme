@@ -30,13 +30,13 @@
     @if(isset($iframe))
         <div>
             <div class="title">
-                {{ $item['title'] }}
+                {{ $item['title'] ?? '' }}
+            </div>
+            <div class="text">
+                {{ $item['text'] ?? '' }}
             </div>
             <div class="iframe-container">
                 <iframe width="100%" height="100%" allowfullscreen {!! $iframe !!} ></iframe>
-            </div>
-            <div class="text">
-                {{ '' }}
             </div>
         </div>
     @endif
