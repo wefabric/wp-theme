@@ -31,7 +31,7 @@
                 case 'logo-slider':
 					$max = 0; //force slider
 					$img_size = 'header_logo';
-					$card_classes .= ' bg-contain';
+					$image_class = 'bg-contain bg-center';
 					$breakPoints = [
 					    1024 => [
                             'slidesPerView' => min($count, 5), // 'auto'
@@ -67,6 +67,7 @@
                 'prevNext' => false,
                 'breakPoints' => $breakPoints ?? [],
                 'card_classes' => ($card_classes ?? ''),
+                'image_class' => $image_class ?? '',
             ])
         @else
             @include('components.slider.grid', [

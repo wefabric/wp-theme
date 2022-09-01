@@ -20,8 +20,8 @@
         $href = empty($item->get('external_link')) ? $item->get('internal_link') : $item->get('external_link');
     }
 
-    if(empty($text) && !empty($item->get('button_text'))) {
-        $text = $item->get('button_text');
+    if(empty($text) && !empty($item->get('title'))) {
+        $text = $item->get('title');
     }
 @endphp
 
@@ -36,10 +36,10 @@
     ])
 @endif
 
-<div class="{{ $height }} {{ $card_classes ?? 'bg-cover' }} flex items-center justify-center relative bg-center bg-no-repeat w-[{{ $size_config ? $size_config['width'] : '200' }}px] "
+<div class="{{ $height }} {{ $card_classes ?? '' }} flex items-center justify-center relative {{ $image_class ?? 'bg-cover bg-center' }} bg-no-repeat w-[{{ $size_config ? $size_config['width'] : '200' }}px] "
     style="background-image: url('{{ wp_get_attachment_image_url($item->get('image'), $img_size) }}')">
 
-{{--
+@if($img_size !== 'header_logo') {{-- If header logo, that means this is part of a logo-slider, then only show the image and no button. --}}
     <div class="w-full h-full mx-0.5">
         <div class="font-bold text-3xl">
             {{ $item->get('title') }}
@@ -53,7 +53,7 @@
         </div>
 
     </div>
---}}
+@endif
 
 </div>
 

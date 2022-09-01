@@ -2220,7 +2220,7 @@
                                     "label": "Titel",
                                     "name": "title",
                                     "type": "text",
-                                    "instructions": "",
+                                    "instructions": "Wordt tevens gebruikt als alt-tekst.",
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
@@ -3518,5 +3518,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1661956947
+    "modified": 1662017332
 }
