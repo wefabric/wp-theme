@@ -30,7 +30,8 @@
         @include('components.link.closing')
     @endif
 
-    @include('components.establishments.directions')
-    @include('components.link.closing')
+    @if($establishment)
+        @include('components.establishments.directions')
+    @endif
 
 </div>
