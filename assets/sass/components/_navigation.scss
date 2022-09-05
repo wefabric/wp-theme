@@ -12,7 +12,7 @@
         }
 
         li {
-            @apply inline-block font-bold hover:underline md:px-4 uppercase;
+            @apply inline-block font-bold hover:underline md:px-4;
             padding-right: 1rem;
             @media only screen and (max-width: 1023px) {
                 padding-bottom: 1rem;
