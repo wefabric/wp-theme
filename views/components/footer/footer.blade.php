@@ -10,20 +10,22 @@
 @endphp
 
 <div class="bg-{{ $bg_color ?? 'black' }} text-{{ $text_color ?? 'white' }} text-base pb-10 lg:pb-24">
-{{--    @php--}}
-{{--        if(!empty($option) && array_key_exists('footer_usps', $option)) {--}}
-{{--	        $usps = $option['footer_usps'];--}}
-{{--        }--}}
-{{--    @endphp--}}
+{{--
+    @php
+        if(!empty($option) && array_key_exists('footer_usps', $option)) {
+	        $usps = $option['footer_usps'];
+        }
+    @endphp
 
-{{--    @if(!empty($usps))--}}
-{{--        <div class="bg-white text-black py-10 lg:py-20 lg:text-lg">--}}
-{{--            @include('components.blocks.usps-small', [--}}
-{{--                'col_amount' => count($usps),--}}
-{{--                'usps' => $usps,--}}
-{{--            ])--}}
-{{--        </div>--}}
-{{--    @endif--}}
+    @if(!empty($usps))
+        <div class="bg-white text-black py-10 lg:py-20 lg:text-lg">
+            @include('components.blocks.usps-small', [
+                'col_amount' => count($usps),
+                'usps' => $usps,
+            ])
+        </div>
+    @endif
+--}}
 
     <div class="container mx-auto px-8 relative">
 
@@ -164,7 +166,7 @@
                         @php
                             $theme = app('wp.theme');
                         @endphp
-                        <img src="{{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }}"  height="30" width="100" class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:13px;"/>
+                        <img src="{{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }}" class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:30px;"/>
                     @include('components.link.closing')
                 </div>
             </div>

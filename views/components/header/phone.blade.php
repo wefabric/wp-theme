@@ -1,7 +1,7 @@
 @php
     $establishment = \Wefabric\WPEstablishments\Establishment::primary();
-    $phone = $establishment !== null ?? $establishment->getContactPhone();
-	$alt = 'Bel naar '. $phone;
+    $phone = $establishment?->getContactPhone();
+	$alt = 'Bel naar '. ($phone ?? '');
 @endphp
 
 @if($phone)
@@ -11,10 +11,10 @@
         'alt' => $alt,
     ])
 
-        <span class="fa-regular fa-circle-phone {{ $class }}"></span>
-        <span class="screen-reader-only">
-            {{ $alt }}
-        </span>
+    <span class="fa-regular fa-circle-phone {{ $class }}"></span>
+    <span class="screen-reader-only">
+        {{ $alt }}
+    </span>
 
     @include('components.link.closing')
 @endif

@@ -1,7 +1,9 @@
-@php $logoKey = 'logo'; @endphp
-@if(isset($type))
-    @php $logoKey .= '_'.$type; @endphp
-@endif
+@php
+    $logoKey = 'logo';
+    if(isset($type)) {
+		$logoKey .= '_'.$type;
+    }
+@endphp
 <div class="py-4">
     @if(is_front_page() && is_home())
         <h1 class="site-title">

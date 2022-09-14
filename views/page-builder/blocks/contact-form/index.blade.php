@@ -3,9 +3,11 @@
     $establishment = \Wefabric\WPEstablishments\Establishment::primary();
     $fields = collect(get_fields($establishment->post->ID));
 
-    if($block->get('image') && $block->get('image')->get('position'))
-
-
+	/*
+    if($block->get('image') && $block->get('image')->get('position')) {
+        //then what?
+    }
+	*/
 @endphp
 <div class="container mx-auto w-full lg:{{ $block->get('width') }} @if($block->get('show_address', false)) bg-{{ $block->get('bg_color') }} text-{{ $block->get('text_color') }} @endif pt-4 lg:pt-8">
 

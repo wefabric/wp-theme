@@ -1,6 +1,6 @@
 @php
 
-if(!isset($breakPoints)) {
+if(empty($breakPoints)) {
     $breakPoints = [
         640 => [
           'slidesPerView' => 1,
@@ -8,11 +8,11 @@ if(!isset($breakPoints)) {
         ],
          768 => [
           'slidesPerView' => 2,
-          'spaceBetween' =>  0,
+          'spaceBetween' =>  10,
         ],
          1024 => [
           'slidesPerView' => 3,
-          'spaceBetween' =>  0,
+          'spaceBetween' =>  10,
         ],
     ];
 }
@@ -36,7 +36,7 @@ if(!isset($breakPoints)) {
         },
       breakpoints: {{ json_encode($breakPoints) }},
     })"
-         class="relative w-10/12 mx-auto flex flex-row"
+         class="relative w-full mx-auto flex flex-row"
     >
         @if(($prevNext ?? true) === true)
             <div class="absolute inset-y-0 left-0 z-10 flex items-center">
