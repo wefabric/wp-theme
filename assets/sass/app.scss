@@ -1,9 +1,7 @@
 @import "variables";
 
 @tailwind base;
-
 @tailwind components;
-@import "components/swiper";
 
 @import "fonts/fontawesome";
 @import "fonts/opensans";
@@ -19,6 +17,7 @@
 @import "components/footer";
 @import "components/video-container";
 @import "components/wpcf7";
+@import "components/swiper";
 @import "components/faq";
 
 @tailwind utilities;

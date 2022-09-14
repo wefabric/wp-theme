@@ -1,6 +1,6 @@
 <div class="@if($block->get('width') !== 'nomargin') container @endif mx-auto w-full lg:{{ $block->get('width') === 'nomargin' ? 'w-full' : $block->get('width') }} ">
 
-    @if($block->get('show_separate_title'))
+    @if($block->get('title')->get('show_separate_title'))
         @include('components.headings.normal', [
             'type' => 2,
             'title' => $block->get('title'),
@@ -10,31 +10,56 @@
     @if(!empty($block->get('photos')))
         @php
             $card_classes = '';
-            $count = count($block->get('photos'));
 
-            switch($block->get('display_type')) {
-				case 'one-center':
-					$max = 1;
-					$img_size = 'gallery-thumbnail-1/1';
-					if($block->get('width') === 'nomargin') {
+            $count = count($block->get('photos'));
+			$columns = $block->get('display_columns');
+
+			switch($block->get('display_type')) {
+				case 'grid':
+					$img_size = 'gallery-thumbnail-1/'. $columns;
+					if($columns == 1 && $block->get('width') === 'nomargin') {
     					$img_size .= '-nomargin';
 					}
 					break;
-                case 'two-inline':
-					$max = 2;
-					$img_size = 'gallery-thumbnail-1/2';
-                    break;
-                case 'three-inline':
-					$max = 3;
-					$img_size = 'gallery-thumbnail-1/3';
-                    break;
-                case 'logo-slider':
-					$max = 0; //force slider
+					
+				case 'logo-slider':
 					$img_size = 'header_logo';
+					// no break;
+				case 'slider':
+					if(!isset($img_size)) {
+						$img_size = 'full'; //TODO test
+					}
 					$image_class = 'bg-contain bg-center';
 					$breakPoints = [
-					    1024 => [
-                            'slidesPerView' => min($count, 5), // 'auto'
+						1 => [ //mobile
+						    'slidesPerView' => 1,
+                            'spaceBetween' => 30,
+                            'centeredSlides' => true,
+                            'autoplay' => [
+                              'delay' => 2500,
+                              'disableOnInteraction' => false,
+                            ],
+						],
+						640 => [ //small tablet
+						    'slidesPerView' => min($count, $columns, 2),
+                            'spaceBetween' => 30,
+                            'centeredSlides' => true,
+                            'autoplay' => [
+                              'delay' => 2500,
+                              'disableOnInteraction' => false,
+                            ],
+						],
+						768 => [ //larger tablet, or small laptop
+						    'slidesPerView' => min($count, $columns, 3),
+                            'spaceBetween' => 30,
+                            'centeredSlides' => true,
+                            'autoplay' => [
+                              'delay' => 2500,
+                              'disableOnInteraction' => false,
+                            ],
+						],
+					    1024 => [ //most self-respecting laptops
+                            'slidesPerView' => min($count, $columns, 5), // 'auto'
                             'spaceBetween' => 30,
                             'centeredSlides' => true,
                             'autoplay' => [
@@ -43,23 +68,15 @@
                             ],
                         ],
                     ];
-                    break;
-                default:
-					// think of different display options.
-            }
+					break;
+			}
 
 			if($block->get('width') !== 'nomargin') {
                 $card_classes .= ' m-0';
 			}
         @endphp
 
-{{--
-    TODO create a switch to force slider when more images uploaded than columns specified.
-    If ! slider, then show specified columns and multiple rows of images.
-    2 columns, 4 photos --> 2x2 grid. Slider switch enabled? Slider of two images side-by-side.
---}}
-
-        @if($count > $max)
+        @if($block->get('display_type') !== 'grid')
             @include('components.slider.slider', [
                 'items' => $block->get('photos'),
                 'card_type' => 'image',
@@ -74,7 +91,7 @@
                 'items' => $block->get('photos'),
                 'card_type' => 'image',
 				'img_size' => $img_size,
-                'grid_class' => 'gap-4 lg:grid-cols-'. $max .' '. ($card_classes ?? ''),
+                'grid_class' => 'gap-4 lg:grid-cols-'. $columns .' '. ($card_classes ?? ''),
             ])
         @endif
 

@@ -1976,7 +1976,7 @@
                 },
                 "layout_62e7deb1815b9": {
                     "key": "layout_62e7deb1815b9",
-                    "name": "galery",
+                    "name": "gallery",
                     "label": "Fotogalerij",
                     "display": "block",
                     "sub_fields": [
@@ -2500,7 +2500,7 @@
                 },
                 "layout_630f285c9fc37": {
                     "key": "layout_630f285c9fc37",
-                    "name": "video_galery",
+                    "name": "video_gallery",
                     "label": "Videogalerij",
                     "display": "block",
                     "sub_fields": [

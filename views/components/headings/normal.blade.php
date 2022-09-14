@@ -13,7 +13,7 @@
 @endphp
 
 <{{$hx}} @if($id ?? '') id="{{ $id }}" @endif
-    class="font-head inline-block align-text-top z-10 @if($show_line ?? false) mt-4 @endif {{ $class ?? '' }} text-{{ $text_color ?? '' }}">
+    class="font-head inline-block align-text-top z-10 {{ $class ?? '' }} text-{{ $text_color ?? '' }}">
     {!! $heading !!}
 </{{$hx}}>
 

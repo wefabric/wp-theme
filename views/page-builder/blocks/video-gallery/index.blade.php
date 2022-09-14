@@ -1,7 +1,7 @@
 <div class="@if($block->get('width') !== 'nomargin') container @endif mx-auto w-full lg:{{ $block->get('width') === 'nomargin' ? 'w-full' : $block->get('width') }} ">
-
-    @if($block->get('show_separate_title'))
-        @include('components.headings.normal', [
+	
+	@if($block->get('title')->get('show_separate_title'))
+		@include('components.headings.normal', [
             'type' => 2,
             'title' => $block->get('title'),
         ])
