@@ -55,6 +55,13 @@
 
        md:grid-cols-1 md:grid-cols-2 md:grid-cols-3 md:grid-cols-4 md:grid-cols-5 md:grid-cols-6
        md:grid-cols-7 md:grid-cols-8 md:grid-cols-9 md:grid-cols-10 md:grid-cols-11 md:grid-cols-12
+    
+    text-primary text-primary-light text-primary-dark bg-primary bg-primary-light bg-primary-dark
+    text-secondairy text-secondairy-light text-secondairy-dark bg-secondairy bg-secondairy-light bg-secondairy-dark
+    text-tertiary text-tertiary-light text-tertiary-dark bg-tertiary bg-tertiary-light bg-tertiary-dark
+    text-basic-success text-basic-danger bg-basic-success bg-basic-danger
+
+    md:px-2 md:px-4
 
        lg:grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 lg:grid-cols-6
        lg:grid-cols-7 lg:grid-cols-8 lg:grid-cols-9 lg:grid-cols-10 lg:grid-cols-11 lg:grid-cols-12
