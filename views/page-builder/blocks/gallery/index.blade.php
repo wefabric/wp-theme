@@ -13,22 +13,19 @@
 
             $count = count($block->get('photos'));
 			$columns = $block->get('display_columns');
+			$img_size = 'gallery-thumbnail-1/'. $columns;
 
 			switch($block->get('display_type')) {
 				case 'grid':
-					$img_size = 'gallery-thumbnail-1/'. $columns;
 					if($columns == 1 && $block->get('width') === 'nomargin') {
     					$img_size .= '-nomargin';
 					}
 					break;
 					
 				case 'logo-slider':
-					$img_size = 'header_logo';
+					$img_size = 'logo-slider';
 					// no break;
 				case 'slider':
-					if(!isset($img_size)) {
-						$img_size = 'full'; //TODO test
-					}
 					$image_class = 'bg-contain bg-center';
 					$breakPoints = [
 						1 => [ //mobile

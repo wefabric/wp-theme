@@ -35,7 +35,11 @@
     h-[32px] lg:h-[32px]
     h-[60px] lg:h-[60px]
     h-[87px] lg:h-[87px]
-
+    h-[120px] lg:h-[120px]
+    h-[260px] lg:h-[260px]
+    h-[325px] lg:h-[325px]
+    h-[430px] lg:h-[430px]
+	
     w-[167px] lg:w-[167px]
 
 {{-- The following are for general blocks (#00 values), and some #50 values for images. --}}

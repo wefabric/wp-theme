@@ -2103,24 +2103,51 @@
                     "sub_fields": [
                         {
                             "key": "field_62e8ce8ac0d6b",
-                            "label": "Weergave",
-                            "name": "display_type",
+                            "label": "Weergave Kolommen",
+                            "name": "display_columns",
                             "type": "select",
-                            "instructions": "Kies hier het weergave-type. Als je meer foto's invoegt dan er plek is, wordt het blok automatisch aangepast naar een slider.",
+                            "instructions": "Kies hier het aantal kolommen dat naast elkaar moet worden weergegeven (op desktop). Geldt voor alle types.",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
                             "choices": {
-                                "one-center": "Een foto gecentreerd",
-                                "two-inline": "Twee foto's naast elkaar",
-                                "three-inline": "Drie foto's naast elkaar",
-                                "logo-slider": "Logo-Slider"
+                                "1": "1",
+                                "2": "2",
+                                "3": "3",
+                                "4": "4",
+                                "5": "5"
                             },
                             "default_value": "three-inline",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_6321db0554b15",
+                            "label": "Weergave Type",
+                            "name": "display_type",
+                            "type": "select",
+                            "instructions": "Kies het weergave-type op desktop.\r\nOp mobiel wordt er, indien meer dan 1 foto, altijd een slider van gemaakt.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "grid": "Blokken",
+                                "slider": "Slider",
+                                "logo-slider": "Logo-slider (slider maar dan kleiner)"
+                            },
+                            "default_value": "grid",
                             "allow_null": 0,
                             "multiple": 0,
                             "ui": 0,
@@ -2137,7 +2164,7 @@
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -2165,15 +2192,7 @@
                             "type": "group",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_62ea71286b938",
-                                        "operator": "==",
-                                        "value": "1"
-                                    }
-                                ]
-                            ],
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -2330,7 +2349,7 @@
                             "label": "Foto's",
                             "name": "photos",
                             "type": "repeater",
-                            "instructions": "",
+                            "instructions": "Kies hieronder de foto's. Een titel wordt over de afbeelding heen weergeven.\r\nJe kunt eventueel een URL + knop op de afbeelding tonen, vul hiervoor de knop tekst in en geef een URL in.\r\nAls zowel de externe link als pagina-link zijn ingevuld, wordt de Externe link gebruikt.",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -2437,7 +2456,7 @@
                                     },
                                     "post_type": "",
                                     "taxonomy": "",
-                                    "allow_null": 0,
+                                    "allow_null": 1,
                                     "allow_archives": 1,
                                     "multiple": 0
                                 }
@@ -2841,6 +2860,36 @@
                                     "placeholder": ""
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_630f285c9fc39",
+                            "label": "Breedte (desktop)",
+                            "name": "width",
+                            "type": "select",
+                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "w-1\/2": "50%",
+                                "w-3\/5": "60%",
+                                "w-2\/3": "66%",
+                                "w-3\/4": "75%",
+                                "w-4\/5": "80%",
+                                "w-full": "100%",
+                                "nomargin": "Paginabreedte zonder marges"
+                            },
+                            "default_value": "w-3\/4",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
                         },
                         {
                             "key": "field_630f285c9fc40",
@@ -3916,5 +3965,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1663156426
+    "modified": 1663166761
 }
