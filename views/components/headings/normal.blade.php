@@ -20,5 +20,6 @@
 @if(!empty($title) && !empty($title->get('subtitle')))
     @include('components.content', [
 	    'content' => $title->get('subtitle'),
+	    'class' => $subtitle_class ?? '',
     ])
 @endif

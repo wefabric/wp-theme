@@ -12,17 +12,16 @@
 @endphp
 
 <div class="container mx-auto w-full lg:{{ $block->get('width') }}">
-    @include('components.headings.normal', [
-	    'type' => '2',
-	    'class' => 'mb-12 text-center',
-	    'heading' => $block->get('title'),
-    ])
-
-    @include('components.content', [
-	    'content' => $block->get('subtitle'),
-	    'class' => 'text-center mb-12'
-    ])
-
+	
+	@if($block->get('title')->get('show_separate_title'))
+		@include('components.headings.normal', [
+			'title' => $block->get('title'),
+			'type' => '2',
+			'class' => 'mb-12 text-center',
+			'subtitle_class' => 'mb-12 text-center',
+		])
+	@endif
+	
     @if($block->get('display_type') === 'slider')
         @include('components.slider.smart-slider', [
             'items' => $postList,
@@ -35,4 +34,3 @@
         ])
     @endif
 </div>
-

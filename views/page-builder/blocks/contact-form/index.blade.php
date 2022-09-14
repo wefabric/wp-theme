@@ -14,7 +14,8 @@
     <div class="mt-6 mt-md-10 container position-relative z-index-2 mx-auto">
         <div class="relative @if($block->get('show_address', false)) md:grid md:grid-cols-2 gap-8 @endif" >
             <div class="@if($block->get('show_address', false) === false && $block->get('fill_color')) bg-{{ $block->get('fill_color') }} p-12 @endif @if($block->get('show_address', false) === false) lg:{{ $block->get('width_form') }} @endif bg-{{ str_replace('-color', '', $block->get('background_color', 'bg_color')) }} rounded-lg  text-{{ $block->get('text_color') }}">
-                @if($block->get('show_separate_title'))
+            
+				@if($block->get('title')->get('show_separate_title'))
                     @include('components.headings.normal', [
                         'type' => 2,
                         'title' => $block->get('title'),
@@ -23,6 +24,7 @@
                         'show_line' => $block->get('show_line')
                     ])
                 @endif
+				
                 {!! $block->get('form') !!}
 
                 @if($block->get('image') && $block->get('image')->get('image'))
