@@ -12,10 +12,6 @@
     }
 @endphp
 
-@if($show_line ?? false) {{-- Hier wordt er zo'n heel leuk stylistisch lijntje boven de titel geprint in dezelfde kleur als de tekst. --}}
-    <span class="w-[77px] h-[3px] inline-block absolute bg-{{ $text_color ?? 'white'}}"></span>
-@endif
-
 <{{$hx}} @if($id ?? '') id="{{ $id }}" @endif
     class="font-head inline-block align-text-top z-10 @if($show_line ?? false) mt-4 @endif {{ $class ?? '' }} text-{{ $text_color ?? '' }}">
     {!! $heading !!}

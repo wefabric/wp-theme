@@ -8,7 +8,12 @@
       "name": "Leo Flapper",
       "email": "leo@wefabric.nl",
       "homepage": "https://wefabric.nl/"
-    }
+    },
+	{
+	  "name": "Kevin Nauta",
+	  "email": "kevin@wefabric.nl",
+	  "homepage": "https://wefabric.nl/"
+	}
   ],
   "type": "wordpress-theme",
   "require": {

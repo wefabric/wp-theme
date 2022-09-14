@@ -4,18 +4,22 @@
 
 @tailwind components;
 @import "components/swiper";
+
 @import "fonts/fontawesome";
 @import "fonts/opensans";
+
 @import "base/global";
 @import "base/typography";
 @import "base/buttons";
 @import "base/forms";
+
 @import "components/content";
 @import "components/navigation";
 @import "components/nav-mobile";
 @import "components/footer";
 @import "components/video-container";
 @import "components/wpcf7";
+@import "components/faq";
 
 @tailwind utilities;
 
