@@ -588,10 +588,10 @@
                                     "maxlength": ""
                                 },
                                 {
-                                    "key": "field_6322f18f102e3",
-                                    "label": "Subtitel",
-                                    "name": "subtitle",
-                                    "type": "textarea",
+                                    "key": "field_63232ebc525ae",
+                                    "label": "Titelkleur",
+                                    "name": "title_color",
+                                    "type": "Thema Kleur",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": [
@@ -604,15 +604,12 @@
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "33",
                                         "class": "",
                                         "id": ""
                                     },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "maxlength": "",
-                                    "rows": 4,
-                                    "new_lines": "br"
+                                    "theme_color": null,
+                                    "font_size": 14
                                 },
                                 {
                                     "key": "field_6322f18f102e4",
@@ -631,7 +628,7 @@
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "50",
+                                        "width": "33",
                                         "class": "",
                                         "id": ""
                                     },
@@ -666,7 +663,7 @@
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "50",
+                                        "width": "33",
                                         "class": "",
                                         "id": ""
                                     },
@@ -4055,5 +4052,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1663247759
+    "modified": 1663250337
 }

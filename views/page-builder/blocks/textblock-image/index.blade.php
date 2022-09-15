@@ -63,12 +63,11 @@
 			@case('bottom') lg:mt-auto lg:mb-0 @break;
         @endswitch ">
 		
-		<div class="relative z-50 h-full w-full @if($overlap) lg:px-16 lg:py-20 @else lg:px-5 lg:py-5 @endif bg-white ">
+		<div class="relative flex flex-col z-50 h-full w-full @if($overlap) lg:px-16 lg:py-20 @else lg:px-5 lg:py-5 @endif bg-white ">
 			@if($block->get('title')->get('show_separate_title'))
 				@include('components.headings.normal', [
 					'type' => 2,
 					'title' => $block->get('title'),
-					'class' => 'pb-4 lg:pb-8'
 				])
 			@endif
 			
