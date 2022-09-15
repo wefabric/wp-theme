@@ -21,17 +21,17 @@
         $href = empty($item->get('external_link')) ? $item->get('internal_link') : $item->get('external_link');
     }
 
-    if(empty($text) && !empty($item->get('title'))) {
-        $text = $item->get('title');
+    if(empty($title) && !empty($item->get('title'))) {
+        $title = $item->get('title');
     }
 @endphp
 
 <div class="">
 	{{-- If a link has been supplied, always display it over the image as well as any buttons. --}}
-	@if(!empty($href) && !empty($text))
+	@if(!empty($href) && !empty($title))
 		@include('components.link.opening', [
 			'href' => $href,
-			'alt' => $alt ?? $text,
+			'alt' => $alt ?? $title,
 			'rel' => $rel ?? '',
 			'target' => $target ?? '',
 			'class' => $a_class ?? '',
@@ -56,7 +56,7 @@
 		
 		</div>
 	
-	@if(!empty($href) && !empty($text))
+	@if(!empty($href) && !empty($title))
 		@include('components.link.closing')
 	@endif
 </div>
