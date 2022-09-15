@@ -480,12 +480,15 @@
                                 "id": ""
                             },
                             "choices": {
-                                "w-2\/5": "40%",
-                                "w-1\/2": "50%",
-                                "w-3\/5": "60%",
-                                "w-2\/3": "66%"
+                                "25": "25%",
+                                "33": "33%",
+                                "40": "40%",
+                                "50": "50%",
+                                "60": "60%",
+                                "66": "66%",
+                                "75": "75%"
                             },
-                            "default_value": "w-1\/2",
+                            "default_value": "50%",
                             "allow_null": 0,
                             "multiple": 0,
                             "ui": 0,
@@ -507,12 +510,15 @@
                                 "id": ""
                             },
                             "choices": {
-                                "w-2\/5": "40%",
-                                "w-1\/2": "50%",
-                                "w-3\/5": "60%",
-                                "w-2\/3": "66%"
+                                "25": "25%",
+                                "33": "33%",
+                                "40": "40%",
+                                "50": "50%",
+                                "60": "60%",
+                                "66": "66%",
+                                "75": "75%"
                             },
-                            "default_value": "w-1\/2",
+                            "default_value": "50%",
                             "allow_null": 0,
                             "multiple": 0,
                             "ui": 0,
@@ -521,40 +527,13 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_62ebc59d84fa6",
-                            "label": "Losse titel tonen?",
-                            "name": "show_separate_title",
-                            "type": "true_false",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 0,
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": ""
-                        },
-                        {
-                            "key": "field_62ebc59f84fa7",
+                            "key": "field_6322f18f102e0",
                             "label": "Titel",
                             "name": "title",
                             "type": "group",
                             "instructions": "",
                             "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_62ebc59d84fa6",
-                                        "operator": "==",
-                                        "value": "1"
-                                    }
-                                ]
-                            ],
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
@@ -563,15 +542,42 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_62ebc59f84fa8",
+                                    "key": "field_6322f18f102e1",
+                                    "label": "Losse titel tonen?",
+                                    "name": "show_separate_title",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 0,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": ""
+                                },
+                                {
+                                    "key": "field_6322f18f102e2",
                                     "label": "Titel",
                                     "name": "title",
                                     "type": "text",
                                     "instructions": "",
                                     "required": 1,
-                                    "conditional_logic": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6322f18f102e1",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "80",
                                         "class": "",
                                         "id": ""
                                     },
@@ -582,15 +588,50 @@
                                     "maxlength": ""
                                 },
                                 {
-                                    "key": "field_62ebc59f84fa9",
-                                    "label": "Titel Positie",
-                                    "name": "title_position",
-                                    "type": "select",
-                                    "instructions": "Waar staat de titel ten opzichte van de tekst?",
+                                    "key": "field_6322f18f102e3",
+                                    "label": "Subtitel",
+                                    "name": "subtitle",
+                                    "type": "textarea",
+                                    "instructions": "",
                                     "required": 0,
-                                    "conditional_logic": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6322f18f102e1",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "wrapper": {
                                         "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "maxlength": "",
+                                    "rows": 4,
+                                    "new_lines": "br"
+                                },
+                                {
+                                    "key": "field_6322f18f102e4",
+                                    "label": "Positie t.o.v. tekst",
+                                    "name": "title_position",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6322f18f102e1",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -600,7 +641,7 @@
                                         "right": "Rechts van tekst",
                                         "below": "Onder tekst"
                                     },
-                                    "default_value": "left",
+                                    "default_value": "above",
                                     "allow_null": 0,
                                     "multiple": 0,
                                     "ui": 0,
@@ -609,15 +650,23 @@
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_62ebc59f84faa",
-                                    "label": "Titel uitlijning",
+                                    "key": "field_6322f18f102e5",
+                                    "label": "Uitlijning",
                                     "name": "title_align",
                                     "type": "select",
                                     "instructions": "",
                                     "required": 0,
-                                    "conditional_logic": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6322f18f102e1",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -630,8 +679,8 @@
                                     "allow_null": 0,
                                     "multiple": 0,
                                     "ui": 0,
-                                    "ajax": 0,
                                     "return_format": "value",
+                                    "ajax": 0,
                                     "placeholder": ""
                                 }
                             ]
@@ -708,9 +757,13 @@
                                         "id": ""
                                     },
                                     "choices": {
-                                        "850px": "850px"
+                                        "500px": "500px",
+                                        "600px": "600px",
+                                        "700px": "700px",
+                                        "800px": "800px",
+                                        "900px": "900px"
                                     },
-                                    "default_value": "850px",
+                                    "default_value": "700px",
                                     "allow_null": 0,
                                     "multiple": 0,
                                     "ui": 0,
@@ -772,28 +825,9 @@
                             ]
                         },
                         {
-                            "key": "field_62eb7129a1e70",
-                            "label": "Knop tonen?",
-                            "name": "show_button",
-                            "type": "true_false",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 0,
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": ""
-                        },
-                        {
                             "key": "field_62eb707ab8e9a",
-                            "label": "Knop",
-                            "name": "button",
+                            "label": "Knoppen",
+                            "name": "buttons",
                             "type": "group",
                             "instructions": "",
                             "required": 0,
@@ -814,34 +848,42 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_62eb707ab8e9b",
-                                    "label": "Knop tekst",
-                                    "name": "button_text",
-                                    "type": "text",
+                                    "key": "field_6322f24c102e6",
+                                    "label": "Knop tonen?",
+                                    "name": "show_button",
+                                    "type": "true_false",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "67",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": ""
+                                    "message": "",
+                                    "default_value": 0,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": ""
                                 },
                                 {
                                     "key": "field_62eb707ab8e9c",
-                                    "label": "Positie",
-                                    "name": "position",
+                                    "label": "Uitlijning",
+                                    "name": "justify",
                                     "type": "select",
                                     "instructions": "",
                                     "required": 0,
-                                    "conditional_logic": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6322f24c102e6",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "40",
                                         "class": "",
                                         "id": ""
                                     },
@@ -854,76 +896,124 @@
                                     "allow_null": 0,
                                     "multiple": 0,
                                     "ui": 0,
-                                    "ajax": 0,
                                     "return_format": "value",
+                                    "ajax": 0,
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_62eb707ab8e9d",
-                                    "label": "Pagina link",
-                                    "name": "internal_link",
-                                    "type": "page_link",
-                                    "instructions": "",
+                                    "key": "field_6322f287102e7",
+                                    "label": "Knoppen",
+                                    "name": "buttons",
+                                    "type": "repeater",
+                                    "instructions": "Maak hier de knoppen aan. Maximaal 2.\r\nAls zowel de externe link als pagina-link zijn ingevuld, wordt de externe link gebruikt.",
                                     "required": 0,
-                                    "conditional_logic": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6322f24c102e6",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "wrapper": {
-                                        "width": "50",
+                                        "width": "100",
                                         "class": "",
                                         "id": ""
                                     },
-                                    "post_type": "",
-                                    "taxonomy": "",
-                                    "allow_null": 0,
-                                    "allow_archives": 1,
-                                    "multiple": 0
-                                },
-                                {
-                                    "key": "field_62eb707ab8e9e",
-                                    "label": "Externe link",
-                                    "name": "external_link",
-                                    "type": "url",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "50",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": ""
-                                },
-                                {
-                                    "key": "field_62eb707ab8e9f",
-                                    "label": "Achtergrondkleur",
-                                    "name": "bg_color",
-                                    "type": "Thema Kleur",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "50",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "theme_color": null,
-                                    "font_size": 14
-                                },
-                                {
-                                    "key": "field_62eb707ab8ea0",
-                                    "label": "Tekstkleur",
-                                    "name": "text_color",
-                                    "type": "Thema Kleur",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "50",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "theme_color": null,
-                                    "font_size": 14
+                                    "collapsed": "field_6322f2a8102e8",
+                                    "min": 0,
+                                    "max": 2,
+                                    "layout": "table",
+                                    "button_label": "",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_6322f2a8102e8",
+                                            "label": "Tekst",
+                                            "name": "button_text",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 1,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": ""
+                                        },
+                                        {
+                                            "key": "field_6322f39c102ea",
+                                            "label": "Pagina Link",
+                                            "name": "internal_link",
+                                            "type": "page_link",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "post_type": "",
+                                            "taxonomy": "",
+                                            "allow_null": 1,
+                                            "allow_archives": 1,
+                                            "multiple": 0
+                                        },
+                                        {
+                                            "key": "field_6322f3b5102eb",
+                                            "label": "Externe Link",
+                                            "name": "external_link",
+                                            "type": "url",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": ""
+                                        },
+                                        {
+                                            "key": "field_6322f3cb102ec",
+                                            "label": "Achtergrondkleur",
+                                            "name": "bg_color",
+                                            "type": "Thema Kleur",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "theme_color": null,
+                                            "font_size": 14
+                                        },
+                                        {
+                                            "key": "field_6322f3d9102ed",
+                                            "label": "Tekstkleur",
+                                            "name": "text_color",
+                                            "type": "Thema Kleur",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "theme_color": null,
+                                            "font_size": 14
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -3965,5 +4055,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1663166761
+    "modified": 1663247759
 }

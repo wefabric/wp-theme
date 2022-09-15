@@ -1,10 +1,10 @@
 <div class="
     w-1/4 lg:w-1/4
     w-1/3 lg:w-1/3
+    w-2/5 lg:w-2/5
     w-1/2 lg:w-1/2
     w-3/5 lg:w-3/5
     w-2/3 lg:w-2/3
-    w-3/4 lg:w-3/4
     w-3/4 lg:w-3/4
     w-4/5 lg:w-4/5
 
@@ -77,7 +77,10 @@
 	object-contain object-cover object-fill object-none object-scale-down
 	
 	m-0.5 m-0
+	px-4
 	md:px-2 md:px-4
+	
+	lg:pt-20 lg:pt-24 lg:pt-28 lg:pt-32 lg:pt-36
 	
 	justify-start justify-center justify-end justify-self-end
 	
