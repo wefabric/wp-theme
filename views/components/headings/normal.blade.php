@@ -13,13 +13,13 @@
 @endphp
 
 <{{$hx}} @if($id ?? '') id="{{ $id }}" @endif
-    class="font-head inline-block align-text-top z-10 {{ $class ?? '' }} text-{{ $text_color ?? '' }}">
+    class="font-head inline-block align-text-top z-10 pb-4 lg:pb-8 {{ $class ?? '' }} text-{{ $text_color ?? '' }}">
     {!! $heading !!}
 </{{$hx}}>
 
 @if(!empty($title) && !empty($title->get('subtitle')))
     @include('components.content', [
 	    'content' => $title->get('subtitle'),
-	    'class' => $subtitle_class ?? '',
+	    'class' => $subtitle_class ?? ' pb-4 lg:pb-8 ',
     ])
 @endif
