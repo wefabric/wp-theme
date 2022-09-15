@@ -1,6 +1,6 @@
 @php
     if(! isset($postId)) {
-        $postId = $item; //in case of slider
+        $postId = $item; //in case of slider, or news page
     }
     $fields = get_fields($postId);
     $service = get_post($postId);
