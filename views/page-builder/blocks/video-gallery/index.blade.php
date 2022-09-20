@@ -10,26 +10,12 @@
     @if(!empty($block->get('videos')))
         @php
             $count = count($block->get('videos'));
+			$columns = $block->get('display_columns');
+			$img_size = 'gallery-thumbnail-1/'. $columns;
 
-            switch($block->get('display_type')) {
-                case 'one':
-                    $columns = 1;
-                    $img_size = 'gallery-thumbnail-1/1';
-                    if($block->get('width') === 'nomargin') {
-                        $img_size .= '-nomargin';
-                    }
-                    break;
-                case 'two':
-                    $columns = 2;
-                    $img_size = 'gallery-thumbnail-1/2';
-                    break;
-                case 'three':
-                    $columns = 3;
-                    $img_size = 'gallery-thumbnail-1/3';
-                    break;
-                default:
-                    // think of different display options.
-            }
+			if($columns == 1 && $block->get('width') === 'nomargin') {
+				$img_size .= '-nomargin';
+			}
 
             if($block->get('width') !== 'nomargin') {
                 $card_classes = 'm-0';
@@ -43,14 +29,17 @@
             'grid_class' => 'gap-4 lg:grid-cols-'. $columns .' '. ($card_classes ?? ''),
         ])
     @endif
-
-    @if($block->get('show_button'))
-        <div class="flex justify-{{ $block->get('button')->get('position') }}">
-            @include('components.buttons.default', [
-                'button' => $block->get('button'),
-                'colors' => 'btn-transparent text-primary-light disable-chevron',
-            ])
-        </div>
-    @endif
-
+		
+	@if($block->get('buttons')->get('show_button'))
+		<div class="flex pt-6 justify-{{ $block->get('buttons')->get('justify') }}">
+			@foreach($block->get('buttons')->get('buttons') as $button)
+				@include('components.buttons.default', [
+					'button' => $button,
+					'class' => 'disable-chevron font-bold',
+					'a_class' => 'px-4',
+				])
+			@endforeach
+		</div>
+	@endif
+	
 </div>

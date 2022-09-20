@@ -93,14 +93,17 @@
         @endif
 
     @endif
-
-    @if($block->get('show_button'))
-        <div class="flex justify-{{ $block->get('button')->get('position') }}">
-            @include('components.buttons.default', [
-                'button' => $block->get('button'),
-                'colors' => 'btn-transparent text-primary-light disable-chevron',
-            ])
-        </div>
-    @endif
+	
+	@if($block->get('buttons')->get('show_button'))
+		<div class="flex pt-6 justify-{{ $block->get('buttons')->get('justify') }}">
+			@foreach($block->get('buttons')->get('buttons') as $button)
+				@include('components.buttons.default', [
+					'button' => $button,
+					'class' => 'disable-chevron font-bold',
+					'a_class' => 'px-4',
+				])
+			@endforeach
+		</div>
+	@endif
 
 </div>
