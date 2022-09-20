@@ -95,7 +95,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "company-settings_marketing_codes"
+                "value": "company-settings_newsletter"
             }
         ]
     ],
@@ -108,5 +108,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1663665828
+    "modified": 1663684899
 }
