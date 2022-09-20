@@ -26,7 +26,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "20",
                         "class": "",
                         "id": ""
                     },
@@ -42,7 +42,7 @@
                     "name": "title",
                     "type": "text",
                     "instructions": "",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": [
                         [
                             {
@@ -53,12 +53,12 @@
                         ]
                     ],
                     "wrapper": {
-                        "width": "",
+                        "width": "80",
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Blijf op de hoogte",
-                    "placeholder": "",
+                    "default_value": "",
+                    "placeholder": "Blijf op de hoogte!",
                     "prepend": "",
                     "append": "",
                     "maxlength": ""
@@ -68,7 +68,7 @@
                     "label": "Inschrijf url",
                     "name": "embed_subscribe_url",
                     "type": "url",
-                    "instructions": "Lees hier meer over de Inschrijf url: https:\/\/www.notion.so\/wefabric\/Nieuwsbriefinschrijving-364fea4b0c6b41c2b32736620bd42f09#bc5fecf9cf2d41b583902bb3566cb92c",
+                    "instructions": "Lees hier meer over de Inschrijf url: https:\/\/www.notion.so\/wefabric\/Nieuwsbriefinschrijving-Mailchimp-364fea4b0c6b41c2b32736620bd42f09",
                     "required": 1,
                     "conditional_logic": [
                         [
@@ -84,7 +84,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
+                    "default_value": "https:\/\/wefabric.us16.list-manage.com\/subscribe\/post?u=97458c1812b52842329db8e54&amp;id=5af5026eaf&amp;f_id=005f67e0f0",
                     "placeholder": ""
                 }
             ]
@@ -95,7 +95,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "company-settings_newsletter"
+                "value": "company-settings_marketing_codes"
             }
         ]
     ],
@@ -108,5 +108,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1661420989
+    "modified": 1663665828
 }
