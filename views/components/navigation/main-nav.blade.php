@@ -2,8 +2,8 @@
     $options = get_fields('option');
 @endphp
 <div class="hidden lg:flex lg:flex-col py-4 text-base">
-
-    @if(woocommerce_active()) {-- webshop parts --}
+	
+	@if(\class_exists( 'WooCommerce' )) {-- webshop parts --}
         <div class="flex justify-end pb-4">
 
             <div class="mr-3">
@@ -52,6 +52,12 @@
 
     <nav id="site-navigation" class="main-navigation flex justify-end items-center">
 
+{{--
+		@include('components.header.home-house', [
+			'class' => $class, //this shows a house icon, as link to the homepage
+		])
+--}}
+		
         @php
             $class = 'inline-block font-bold hover:underline md:px-4 uppercase';
 
@@ -71,32 +77,8 @@
                 'echo' => false
             ]) !!}
         @endif
-
-        @if(false)
-            @include('components.header.home-house', [
-                'class' => $class,
-            ]) {{-- this shows a house icon, as link to the homepage. --}}
-        @endif
-
-{{--
-        @foreach($menu as $link)
-            @php
-                $isLast = (in_array($link, $menu) && $link == end($menu));
-            @endphp
-
-            @include('components.link.simple', [
-                'href' => $link->url,
-                'class' => $class,
-                'text' => __($link->title, 'wefabric')
-            ])
-
-            @if(!$isLast)
-                <span class="divider"> / </span>
-            @endif
-        @endforeach
---}}
-
-        @if(woocommerce_active()) {-- webshop parts --}
+	
+		@if(\class_exists( 'WooCommerce' )) {-- webshop parts --}
             @include('components.buttons.default', [
                 'href' => '/offerte',
                 'text' => 'Offerte aanvragen',
