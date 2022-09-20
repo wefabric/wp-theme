@@ -41,11 +41,10 @@
                 @include('components.link.opening', [
                     'href' => get_permalink($postId),
                     'alt' => 'Lees meer',
+                    'class' => 'no-underline',
                 ])
-                <span>
-                    Lees meer
-                    <i class="fa-solid fa-circle-caret-right "></i>
-                </span>
+					<span class="">Lees meer</span>
+					<i class="fa-solid fa-circle-caret-right ml-2"></i>
                 @include('components.link.closing')
             </div>
         </div>
