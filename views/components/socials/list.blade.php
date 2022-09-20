@@ -11,6 +11,7 @@
 	            'rel' => 'noopener',
 	            'target' => '_blank',
 	            'icon' => $social['icon'],
+	            'a_class' => 'no-underline '
             ])
         @endforeach
     </div>

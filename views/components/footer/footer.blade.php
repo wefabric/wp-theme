@@ -19,7 +19,7 @@
 
     @if(!empty($usps))
         <div class="bg-white text-black py-10 lg:py-20 lg:text-lg">
-            @include('components.blocks.usps-small', [
+            @include('components.blocks.usps-small', [ //TODO FIX THIS ONE
                 'col_amount' => count($usps),
                 'usps' => $usps,
             ])
@@ -77,7 +77,7 @@
         </div>
 
         <div class="flex flex-col md:flex-row">
-            <div class="hidden lg:block lg:w-1/4">
+            <div class="hidden lg:block lg:w-1/4 lg:pr-8">
                 @php
                     $settings = get_field('common', 'option');
                     if(!empty($settings)) {

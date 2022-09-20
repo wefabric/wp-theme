@@ -12,10 +12,10 @@
         @include('components.link.opening', [
             'href' => $phone->uri(), //comes with a 'tel:' already
             'alt' => 'Telefoonnummer',
-            'class' => 'flex mb-2'
+            'class' => 'flex mb-2 no-underline',
         ])
             <i class="fa-solid fa-phone mr-4 text-md pt-1"></i>
-            <span class="inline-block pt-1 cursor-pointer hover:underline">{{ $phone }}</span>
+            <span class="inline-block pt-1 cursor-pointer">{{ $phone }}</span>
         @include('components.link.closing')
     @endif
 
@@ -23,10 +23,10 @@
         @include('components.link.opening', [
             'href' => 'mailto:'. $email,
             'alt' => 'E-mailadres',
-            'class' => 'flex mb-2'
+            'class' => 'flex mb-2 no-underline',
         ])
             <i class="fa-solid fa-envelope mr-4 text-md pt-1"></i>
-            <span class="inline-block pt-1 cursor-pointer hover:underline">{{ $email }}</span>
+            <span class="inline-block pt-1 cursor-pointer">{{ $email }}</span>
         @include('components.link.closing')
     @endif
 
