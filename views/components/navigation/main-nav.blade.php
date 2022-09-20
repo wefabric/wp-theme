@@ -92,10 +92,12 @@
 
         @include('components.header.email', [
             'class' => $icon_classes,
+            'a_class' => 'no-underline'
         ])
 
         @include('components.header.phone', [
             'class' => $icon_classes,
+            'a_class' => 'no-underline'
         ])
 
     </nav>

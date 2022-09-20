@@ -11,7 +11,7 @@
         'alt' => $alt,
     ])
 
-    <span class="fa-regular fa-circle-envelope {{ $class }}"></span>
+    <i class="fa-regular fa-circle-envelope {{ $class }}"></i>
     <span class="screen-reader-only">
         {{ $alt }}
     </span>
