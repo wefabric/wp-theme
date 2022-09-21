@@ -64,7 +64,17 @@
         font-family: $fa-font-family;
       }
     }
-
+	
+	  &.btn-black {
+		  @apply bg-black;
+		  &:after {
+			  @apply transition-all;
+			  font-weight: 700;
+			  content: '\f0da' !important;
+			  font-family: $fa-font-family;
+		  }
+	  }
+	  
     &.btn-transparent {
       @apply bg-none;
       &:after {
