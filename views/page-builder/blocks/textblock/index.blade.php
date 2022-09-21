@@ -1,5 +1,5 @@
 @php
-    if($block->get('show_separate_title')) {
+    if($block->get('title')->get('show_separate_title')) {
         $title = $block->get('title');
         switch($title->get('title_position')) { //based on the textblock
             case 'above':
@@ -31,32 +31,34 @@
 @endphp
 
 <div class="container mx-auto w-full lg:{{ $block->get('width') }} flex flex-col lg:{{ $div_class }} gap-2 text-{{ $block->get('text_color') }}  flex">
-    @if($block->get('show_separate_title'))
-        <div class="{{ $title_class }} text-{{$title->get('title_align')}}">
-            @include('components.headings.normal', [
-	            'type' => 2,
+	@if($block->get('title')->get('show_separate_title'))
+		<div class="{{ $title_class }} text-{{$title->get('title_align')}}">
+			@include('components.headings.normal', [
+				'type' => 2,
 				'title' => $title,
-				'show_line' => empty($block->get('button')), //hotfix
-            ])
-        </div>
-    @endif
-
-    <div class="{{ $text_class }} flex flex-col lg:{{ $block->get('text_width') }} mx-auto justify-{{ $block->get('text_align') }}"> {{-- TODO deze justify werkt niet. Om het gecentreerd te krijgen staat er nu een mx-auto in maar eignelijk zou de justify het moeten doen. --}}
+			])
+		</div>
+	@endif
+	
+    <div class="{{ $text_class }} flex flex-col lg:{{ $block->get('text_width') }}">
         <div class=" {{ '' ?? 'py-4 lg:py-8' }}">
             @include('components.content', [
                 'content' => apply_filters('the_content', $block->get('text')),
-                'class' => 'text-justify'
+                'class' => 'text-'. $block->get('text_align'),
             ])
-
         </div>
-
-        @if($block->get('show_button'))
-            <div class="flex justify-{{ $block->get('button')->get('position') }}">
-                @include('components.buttons.default', [
-                    'button' => $block->get('button'),
-                    'class' => 'disable-chevron font-bold'
-                ])
-            </div>
-        @endif
+		
+		@if($block->get('buttons')->get('show_button'))
+			<div class="flex pt-6 justify-{{ $block->get('buttons')->get('justify') }}">
+				@foreach($block->get('buttons')->get('buttons') as $button)
+					@include('components.buttons.default', [
+						'button' => $button,
+						'class' => 'disable-chevron font-bold',
+						'a_class' => 'px-4',
+					])
+				@endforeach
+			</div>
+		@endif
+		
     </div>
 </div>
