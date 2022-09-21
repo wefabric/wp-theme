@@ -3,7 +3,7 @@
 @endphp
 <div class="hidden lg:flex lg:flex-col py-4 text-base">
 	
-	@if(\class_exists( 'WooCommerce' )) {-- webshop parts --}
+	@if(woocommerce_active()) {-- webshop parts --}
         <div class="flex justify-end pb-4">
 
             <div class="mr-3">
@@ -78,7 +78,7 @@
             ]) !!}
         @endif
 	
-		@if(\class_exists( 'WooCommerce' )) {-- webshop parts --}
+		@if(woocommerce_active()) {-- webshop parts --}
             @include('components.buttons.default', [
                 'href' => '/offerte',
                 'text' => 'Offerte aanvragen',
