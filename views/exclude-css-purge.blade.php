@@ -108,7 +108,7 @@
 	text-secondary-light text-secondary text-secondary-dark hover:text-secondary-light hover:text-secondary hover:text-secondary-darkd bg-secondairy bg-secondairy-light bg-secondairy-dark
 	text-tertiary-light text-tertiary text-tertiary-dark hover:text-tertiary-light hover:text-tertiary hover:text-tertiary-dark bg-tertiary bg-tertiary-light bg-tertiary-dark
 	text-basic-success text-basic-danger bg-basic-success bg-basic-danger
-	
+	text-green-600
 ">
 
 </div>

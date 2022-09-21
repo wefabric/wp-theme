@@ -1,31 +1,36 @@
 @php
     $option = get_fields('option');
-
-    if(!empty($option) && array_key_exists('bg_color', $option)) {
-		$bg_color = $option['bg_color'];
-    }
-    if(!empty($option) && array_key_exists('text_color', $option)) {
-		$text_color = $option['text_color'];
-    }
+	if(!empty($option)) {
+		if(array_key_exists('bg_color', $option)) {
+			$bg_color = $option['bg_color'];
+		}
+		if(array_key_exists('text_color', $option)) {
+			$text_color = $option['text_color'];
+		}
+		if(array_key_exists('footer_usps', $option)) {
+			$usps = $option['footer_usps'];
+		}
+	}
 @endphp
 
 <div class="bg-{{ $bg_color ?? 'black' }} text-{{ $text_color ?? 'white' }} text-base pb-10 lg:pb-24">
-{{--
-    @php
-        if(!empty($option) && array_key_exists('footer_usps', $option)) {
-	        $usps = $option['footer_usps'];
-        }
-    @endphp
-
     @if(!empty($usps))
         <div class="bg-white text-black py-10 lg:py-20 lg:text-lg">
-            @include('components.blocks.usps-small', [ //TODO FIX THIS ONE
-                'col_amount' => count($usps),
-                'usps' => $usps,
-            ])
+			@include('components.slider.smart-slider', [
+				'items' => $usps,
+				'card_type' => 'usp',
+				'slider_on_items' => 3,
+				'loop' => false,
+				'pagination' => false,
+				'prevNext' => false,
+				
+				'size' => '3xl',
+				'icon_color' => 'green-600',
+				'class' => 'mx-auto w-full lg:w-4/5',
+				'usp_class' => 'w-full mx-auto',
+			])
         </div>
     @endif
---}}
 
     <div class="container mx-auto px-8 relative">
 
