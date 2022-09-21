@@ -31,7 +31,23 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_632b3137d85b1",
+                            "label": "Achtergrondkleur 2",
+                            "name": "bg_color_2",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -47,7 +63,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -293,5 +309,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1662364531
+    "modified": 1663775049
 }

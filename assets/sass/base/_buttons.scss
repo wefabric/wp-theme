@@ -1,5 +1,5 @@
 @mixin btn {
-  @apply relative text-sm transition-all tracking-wider;
+  @apply relative text-sm transition-all tracking-wider rounded-full;
   line-height: 50px;
   padding: 0 36px 0 20px;
   position: relative;

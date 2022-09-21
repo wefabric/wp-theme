@@ -47,7 +47,7 @@
   }
 
   h4, .h4 {
-    @apply text-lg text-secondary font-head font-semibold break-words;
+    @apply text-lg font-head font-semibold break-words;
 
     @media (min-width: 768px) {
       @apply text-md;
