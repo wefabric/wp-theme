@@ -20,8 +20,6 @@
                         'type' => 2,
                         'title' => $block->get('title'),
                         'class' => 'mb-8',
-                        'text_color' => $block->get('text_color'),
-                        'show_line' => $block->get('show_line')
                     ])
                 @endif
 				

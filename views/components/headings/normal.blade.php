@@ -14,10 +14,18 @@
 			$title_align = $title->get('title_align');
 		}
     }
+	
+	if(!empty($title_color)) {
+		$title_color = 'text-'. $title_color;
+	}
+	if(!empty($title_align)) {
+		$title_align = 'text-'. $title_align;
+	}
+	
 @endphp
 
 <{{$hx}} @if($id ?? '') id="{{ $id }}" @endif
-    class="font-head inline-block align-text-top z-10 pb-4 lg:pb-8 {{ $class ?? '' }} text-{{ $title_color ?? '' }} text-{{ $title_align ?? '' }} ">
+    class="font-head inline-block w-full align-text-top z-10 pb-4 lg:pb-8 {{ $class ?? '' }} {{ $title_color ?? '' }} {{ $title_align ?? '' }} ">
     {!! $heading !!}
 </{{$hx}}>
 
