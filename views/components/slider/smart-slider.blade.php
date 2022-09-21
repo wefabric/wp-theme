@@ -23,6 +23,7 @@
                 'pagination' => $pagination ?? true,
                 'card_type' => $card_type,
                 'card_classes' => $card_classes,
+                'breakPoints' => $breakPoints ?? null,
             ])
         @endif
     </div>
@@ -42,6 +43,7 @@
                 'pagination' => $pagination ?? true,
                 'card_type' => $card_type,
                 'card_classes' => $card_classes,
+				'breakPoints' => $breakPoints ?? null,
             ])
         @endif
     </div>

@@ -41,6 +41,13 @@
     h-[430px] lg:h-[430px]
 	
     w-[167px] lg:w-[167px]
+    w-[230px] lg:w-[230px]
+    w-[256px] lg:w-[256px]
+    w-[320px] lg:w-[320px]
+    w-[426px] lg:w-[426px]
+    w-[640px] lg:w-[640px]
+    w-[720px] lg:w-[720px]
+    w-[1440px] lg:w-[1440px]
 
 {{-- The following are for general blocks (#00 values), and some #50 values for images. --}}
     h-[50px] lg:h-[50px] max-h-[50px] lg:max-h-[50px]

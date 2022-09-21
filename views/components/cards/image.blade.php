@@ -1,20 +1,11 @@
 @php
 
-    if($img_size === 'full') {
-        $height = 'h-[600px]';
+    if(!empty($size_config)) { // $size_config has been selected at gallery/index.blade.php already.
+        $height = 'h-['. $size_config['height'] .'px] lg:h-['. $size_config['height'] .'px]';
+        $width = 'w-['. $size_config['width'] .'px] lg:w-['. $size_config['width'] .'px]';
     } else {
-	    foreach(config('wp-support.image_sizes') as $key => $size_config) {
-			if(empty($size_config)) { $size_config = $key; }
-		    if($size_config['name'] === $img_size) {
-				$config = $size_config['height'];
-				break;
-		    }
-	    }
-		if(empty($config)) {
-			$config = 600;
-		}
-
-        $height = 'h-['. $config .'px] lg:h-['. $config .'px]';
+        $height = 'h-[600px]';
+		$width = 'w-[200px]';
     }
 
     if(empty($href) && (!empty($item->get('external_link')) || !empty($item->get('internal_link')))) {
@@ -26,9 +17,9 @@
     }
 @endphp
 
-<div class="">
-	{{-- If a link has been supplied, always display it over the image as well as any buttons. --}}
-	@if(!empty($href) && !empty($title))
+<div class="relative">
+	{{-- If a link has been supplied, only display it over the image in case of logo slider, which automatically doesn't contain a button. --}}
+	@if($img_size === 'logo-slider' && !empty($href) && !empty($title))
 		@include('components.link.opening', [
 			'href' => $href,
 			'alt' => $alt ?? $title,
@@ -38,7 +29,7 @@
 		])
 	@endif
 	
-		<div class="{{ $height }} {{ $card_classes ?? '' }} flex items-center justify-center relative {{ $image_class ?? 'bg-cover bg-center' }} bg-no-repeat w-[{{ $size_config ? $size_config['width'] : '200' }}px] "
+		<div class="{{ $height }} {{ $width }} {{ $card_classes ?? '' }} flex items-center justify-center relative {{ $image_class ?? 'bg-cover bg-center' }} bg-no-repeat"
 			style="background-image: url('{{ wp_get_attachment_image_url($item->get('image'), $img_size) }}')">
 		
 			@if($img_size !== 'logo-slider') {{-- If logo-slider, that means this image is part of a logo-slider, then only show the image and no button. --}}
@@ -49,14 +40,14 @@
 				<div class="absolute bottom-5 lg:right-5">
 					@include('components.buttons.default', [
 						'button' => $item,
-						'colors' => 'btn-primary-light hover:btn-primary-dark text-white disable-chevron',
+//						'colors' => 'btn-primary-light hover:btn-primary-dark text-white',
 					])
 				</div>
 			@endif
 		
 		</div>
 	
-	@if(!empty($href) && !empty($title))
+	@if($img_size === 'logo-slider' && !empty($href) && !empty($title))
 		@include('components.link.closing')
 	@endif
 </div>
