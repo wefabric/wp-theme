@@ -65,8 +65,7 @@
 		
 		<div class="relative flex flex-col z-50 h-full w-full @if($overlap) lg:px-16 lg:py-20 @else lg:px-5 lg:py-5 @endif text-{{ $block->get('text_color') }}">
 			@if($block->get('title')->get('show_separate_title'))
-				@include('components.headings.normal', [
-					'type' => 2,
+				@include('components.headings.collection', [
 					'title' => $block->get('title'),
 				])
 			@endif

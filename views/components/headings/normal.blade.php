@@ -1,6 +1,15 @@
-@php
-    $hx = 'h'. ($type ?? '3');
+{{--
+	Use this class to display one heading, e.g. an H1-H6 tag.
+	Want to display a collection of headings (a title followed by a subtitle)? Use 'headings.collection' to display each heading with this class automatically.
+	For the required tags, see the example in 'headings.collection'.
+--}}
 
+@php
+    $hx = $type ?? 'h3';
+	if(is_numeric($hx)) {
+		$hx = 'h'. $hx; //in case someone sends e.g. '2' instead of 'h2'.
+	}
+	
     if(!empty($title)) {
 		if(empty($heading) && !empty($title->get('title'))) {
 			$heading = $title->get('title');
@@ -25,7 +34,7 @@
 
 @if(!empty($heading))
 	<{{$hx}} @if($id ?? '') id="{{ $id }}" @endif
-		class="font-head inline-block w-full align-text-top z-10 pb-4 lg:pb-8 {{ $class ?? '' }} {{ $title_color ?? '' }} {{ $title_align ?? '' }} ">
+		class="{{ $display_type ?? '' }} font-head inline-block w-full align-text-top z-10 pb-4 lg:pb-8 {{ $class ?? '' }} {{ $title_color ?? '' }} {{ $title_align ?? '' }} ">
 		{!! $heading !!}
 	</{{$hx}}>
 	
