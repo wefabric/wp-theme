@@ -29,7 +29,7 @@
 		])
 	@endif
 	
-		<div class="{{ $height }} {{ $width }} {{ $card_classes ?? '' }} flex items-center justify-center relative {{ $image_class ?? 'bg-cover bg-center' }} bg-no-repeat"
+		<div class="image {{ $height }} {{ $width }} {{ $card_classes ?? '' }} flex items-center justify-center relative {{ $image_class ?? 'bg-cover bg-center' }} bg-no-repeat"
 			style="background-image: url('{{ wp_get_attachment_image_url($item->get('image'), $img_size) }}')">
 		
 			@if($img_size !== 'logo-slider') {{-- If logo-slider, that means this image is part of a logo-slider, then only show the image and no button. --}}

@@ -1,3 +1,7 @@
+img, .image {
+	@apply rounded-lg;
+}
+
 .invert-color {
   filter:  brightness(0) invert(1);
 }
