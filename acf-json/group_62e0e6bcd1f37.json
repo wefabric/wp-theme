@@ -79,7 +79,7 @@
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "",
+                                "width": "50",
                                 "class": "",
                                 "id": ""
                             },
@@ -91,6 +91,25 @@
                             "min_size": "",
                             "max_width": "",
                             "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_632c08318a70b",
+                            "label": "Video header",
+                            "name": "video",
+                            "type": "file",
+                            "instructions": "Optioneel, om een video te tonen in plaats van de afbeelding. Bij het gebruik van een videoachtergrond is het afbeelding veld nog steeds verplicht, zodat de header iets heeft om op terug te vallen indien de video niet correct werkt. Op mobiel wordt de video niet getoond.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "min_size": "",
                             "max_size": "",
                             "mime_types": ""
                         },

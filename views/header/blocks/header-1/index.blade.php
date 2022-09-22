@@ -1,6 +1,7 @@
 @php
     $imageId = $block->get('image') ?? get_field('common', 'option')['default_header_image'];
-
+	$videoUrl = $block->get('video');
+	
 	$bg = '';
 	$gradient = '';
 	if($block->get('bg_color')) {
@@ -14,21 +15,35 @@
 	}
 @endphp
 
-<div class="header-1 w-full @if(!empty($bg)) {{ $bg }} @endif" @if(!empty($gradient)) style="{{ $gradient }}" @endif">
-    <div class="py-15 lg:py-36 mx-4 lg:mx-20 bg-center bg-cover bg-no-repeat z-50" style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
+<div class="header-1 w-full @if(!empty($bg)) {{ $bg }} @endif" @if(!empty($gradient)) style="{{ $gradient }}" @endif>
+    <div class="py-15 lg:py-36 mx-4 lg:mx-20 bg-center bg-cover bg-no-repeat z-50 relative" style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
+		<div class="bg-black opacity-20 -z-1 absolute h-full w-full top-0 left-0"></div> {{-- black shade over image. --}}
+	
+		@if(!empty($videoUrl))
+			<div class="hidden lg:block"> {{-- only show on desktop, to prevent data usage when on mobile--}}
+				<video class="header-video" width="100%" height="100%" autoplay loop muted>
+					<source src="{{ $videoUrl }}" type="video/mp4" />
+					Your browser does not support HTML video.
+				</video>
+			</div>
+		@endif
+
         <div class="container mx-auto w-full lg:w-3/4 py-8 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
-    
-            <h1 class="w-4/5 lg:w-11/12 text-2xl md:text-4xl lx:text-[58px]">
-                {{ $block->get('title') }}
-            </h1>
-
-            @if(!empty($block->get('subtitle')))
-                <h2 class="h4 pt-4 lg:pt-11">
-                    {{ $block->get('subtitle') }}
-                </h2>
-            @endif
-
-            @if(!empty($block->get('call_to_actions')))
+			@include('components.headings.normal', [
+				'type' => 1,
+				'heading' => $block->get('title'),
+				'class' => 'w-4/5 xl:w-1/2 text-2xl md:text-4xl lx:text-[58px]',
+			])
+	
+			@if(!empty($block->get('subtitle')))
+				@include('components.headings.normal', [
+					'type' => 2,
+					'heading' => $block->get('subtitle'),
+					'class' => 'pt-4 lg:pt-11',
+				])
+			@endif
+			
+			@if(!empty($block->get('call_to_actions')))
                 @php
                     $classes = 'text-white text-lg';
                 @endphp
@@ -53,6 +68,7 @@
                     @endforeach
                 </div>
             @endif
+			
         </div>
     </div>
 </div>
