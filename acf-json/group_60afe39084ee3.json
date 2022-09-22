@@ -564,7 +564,7 @@
                                 "66": "66%",
                                 "75": "75%"
                             },
-                            "default_value": "50%",
+                            "default_value": 50,
                             "allow_null": 0,
                             "multiple": 0,
                             "ui": 0,
@@ -594,7 +594,7 @@
                                 "66": "66%",
                                 "75": "75%"
                             },
-                            "default_value": "50%",
+                            "default_value": 50,
                             "allow_null": 0,
                             "multiple": 0,
                             "ui": 0,
@@ -1511,6 +1511,40 @@
                             "placeholder": ""
                         },
                         {
+                            "key": "field_632c5b1cc03e3",
+                            "label": "Icoon uitlijning",
+                            "name": "align",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_62e8f49ef72c9",
+                                        "operator": "==",
+                                        "value": "above"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "start": "Links",
+                                "center": "Midden",
+                                "end": "Rechts"
+                            },
+                            "default_value": "center",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_6138651b1d35b",
                             "label": "USP's",
                             "name": "usps",
@@ -1526,28 +1560,27 @@
                             "collapsed": "",
                             "min": 1,
                             "max": 4,
-                            "layout": "table",
+                            "layout": "block",
                             "button_label": "",
                             "sub_fields": [
                                 {
                                     "key": "field_613865771d35e",
-                                    "label": "icoon",
+                                    "label": "Icoon",
                                     "name": "icon",
                                     "type": "font-awesome",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
                                     "icon_sets": [
-                                        "fas",
-                                        "far",
-                                        "fal",
-                                        "fad",
-                                        "fab"
+                                        "solid",
+                                        "regular",
+                                        "light",
+                                        "brands"
                                     ],
                                     "custom_icon_set": "",
                                     "default_label": "",
@@ -1568,7 +1601,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -1592,7 +1625,26 @@
                                     "required": 1,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_632c52d4aeb6e",
+                                    "label": "Subtitel",
+                                    "name": "subtitle",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -1611,7 +1663,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -1630,7 +1682,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -4847,5 +4899,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1663836567
+    "modified": 1663851804
 }

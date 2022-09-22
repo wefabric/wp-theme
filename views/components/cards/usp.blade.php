@@ -4,6 +4,12 @@
 		default => 'flex-row', //left
 	};
 	
+	if($flexDir === 'flex-col') {
+		$align = 'w-full px-5 justify-items-'. $align;
+	} else {
+		$align = '';
+	}
+	
 	if(is_array($item)) {
 		$item = collect($item);
 	}
@@ -27,7 +33,7 @@
 		])
 	@endif
 	
-		<div class="">
+		<div class="{{ $align }}">
 			@if(!empty($item->get('image')))
 				@include('components.image', [
 					'image_id' => $item->get('image'),
@@ -42,6 +48,12 @@
 			<span class="block text-base font-normal">
 				{{ $item->get('title') }}
 			</span>
+			
+			@if(!empty($item->get('subtitle')))
+				<span class="">
+					{{ $item->get('subtitle') }}
+				</span>
+			@endif
 		</div>
 
 	@if(! empty($link))

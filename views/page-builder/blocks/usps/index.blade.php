@@ -24,6 +24,7 @@
         'size' => $block->get('icon_size'),
         'position' => $block->get('position'),
         'icon_color' => $block->get('icon_color'),
+        'align' => $block->get('align')
     ])
 
 	@if($buttons->get('show_button'))
