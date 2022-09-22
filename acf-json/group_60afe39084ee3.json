@@ -778,6 +778,32 @@
                             "delay": 0
                         },
                         {
+                            "key": "field_632c16103703e",
+                            "label": "Tekst uitlijning",
+                            "name": "text_align",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Links",
+                                "center": "Midden",
+                                "right": "Rechts"
+                            },
+                            "default_value": "center",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_62ebbe7107349",
                             "label": "Afbeelding",
                             "name": "image",
@@ -4749,5 +4775,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1663753370
+    "modified": 1663833644
 }
