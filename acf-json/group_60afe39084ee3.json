@@ -270,7 +270,7 @@
                                 "center": "Midden",
                                 "right": "Rechts"
                             },
-                            "default_value": "center",
+                            "default_value": "left",
                             "allow_null": 0,
                             "multiple": 0,
                             "ui": 0,
@@ -867,7 +867,7 @@
                                 "center": "Midden",
                                 "right": "Rechts"
                             },
-                            "default_value": "center",
+                            "default_value": "left",
                             "allow_null": 0,
                             "multiple": 0,
                             "ui": 0,
@@ -4899,5 +4899,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1663851804
+    "modified": 1663854815
 }
