@@ -32,12 +32,14 @@
 @endphp
 
 <div class="container mx-auto w-full lg:{{ $block->get('width') }}">
-    @include('components.headings.normal', [
-	    'type' => '2',
-	    'class' => '',
-	    'title' => $block->get('title'),
-    ])
-
+	@if($block->get('title')->get('show_separate_title'))
+		@include('components.headings.normal', [
+			'type' => '2',
+			'class' => '',
+			'title' => $block->get('title'),
+		])
+	@endif
+	
     @if(false)
         @include('components.slider.smart-slider', [
             'items' => $postList,

@@ -21,17 +21,18 @@
 	if(!empty($title_align)) {
 		$title_align = 'text-'. $title_align;
 	}
-	
 @endphp
 
-<{{$hx}} @if($id ?? '') id="{{ $id }}" @endif
-    class="font-head inline-block w-full align-text-top z-10 pb-4 lg:pb-8 {{ $class ?? '' }} {{ $title_color ?? '' }} {{ $title_align ?? '' }} ">
-    {!! $heading !!}
-</{{$hx}}>
-
-@if(!empty($title) && !empty($title->get('subtitle')))
-    @include('components.content', [
-	    'content' => $title->get('subtitle'),
-	    'class' => $subtitle_class ?? ' pb-4 lg:pb-8 ',
-    ])
+@if(!empty($heading))
+	<{{$hx}} @if($id ?? '') id="{{ $id }}" @endif
+		class="font-head inline-block w-full align-text-top z-10 pb-4 lg:pb-8 {{ $class ?? '' }} {{ $title_color ?? '' }} {{ $title_align ?? '' }} ">
+		{!! $heading !!}
+	</{{$hx}}>
+	
+	@if(!empty($title) && !empty($title->get('subtitle')))
+		@include('components.content', [
+			'content' => $title->get('subtitle'),
+			'class' => $subtitle_class ?? ' pb-4 lg:pb-8 ',
+		])
+	@endif
 @endif
