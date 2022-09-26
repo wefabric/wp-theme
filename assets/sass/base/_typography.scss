@@ -1,16 +1,8 @@
 @layer base {
 	
 	p {
-		@apply text-base ;
-		line-height: 1.875rem;
-		
-		@screen lg {
-			line-height: 3rem;
-		}
-		
-		a {
-			@apply underline cursor-pointer;
-		}
+		@apply text-base font-normal;
+		line-height: 1.625rem;
 	}
 	
 	ul, ol {
@@ -25,26 +17,28 @@
 	
 	h1, .h1 {
 		@apply text-2xl font-bold break-words;
-		line-height: 1.2 !important;
+		line-height: 1.1 !important;
 		
 		@screen lg {
-			@apply text-4xl;
+			@apply text-51;
 		}
 	}
 	
 	h2, .h2 {
 		@apply text-xl font-bold break-words;
+		line-height: 1.25 !important;
 		
 		@screen lg {
-			@apply text-3xl;
+			@apply text-41;
 		}
 	}
 	
 	h3, .h3 {
 		@apply text-xl font-head font-semibold break-words;
+		line-height: 1.3 !important;
 		
 		@screen md {
-			@apply text-lg;
+			@apply text-31;
 		}
 		
 		@screen lg {
@@ -57,37 +51,23 @@
 	}
 	
 	h4, .h4 {
-		@apply text-lg font-head font-semibold break-words;
+		@apply text-lg font-head font-bold break-words;
+		line-height: 1.2 !important;
 		
 		@screen md {
-			@apply text-md;
+			@apply text-26;
 		}
 		@screen xl {
 			@apply text-2xl font-bold;
 		}
 	}
 	
-	h5, .h5 {
-		@apply text-md font-head font-bold break-words;
+	h5, .h5, h6, .h6 {
+		@apply text-lg font-head font-bold break-words;
+		line-height: 1.25 !important;
 		
 		@screen md {
-			@apply text-md;
-		}
-		
-		@screen xl {
-			@apply text-lg;
-		}
-	}
-	
-	h6, .h6 {
-		@apply text-md font-head font-semibold break-words;
-		
-		@screen md {
-			@apply text-md;
-		}
-		
-		@screen xl {
-			@apply text-lg font-bold;
+			@apply text-21;
 		}
 	}
 	

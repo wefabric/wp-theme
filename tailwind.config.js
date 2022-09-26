@@ -60,7 +60,16 @@ module.exports = {
         '3xl':  ['2.25rem', theme('lineHeight.normal')],  // 36
         '4xl':  ['3rem', theme('lineHeight.normal')],     // 48
         '5xl':  ['4rem', theme('lineHeight.normal')],     // 64
-        '6xl':  ['4.5rem', theme('lineHeight.normal')]    // 72
+        '6xl':  ['4.5rem', theme('lineHeight.normal')],   // 72
+
+          //Divide font by 16. Because 1 rem == 16px
+
+          '21': ['1.3125rem', theme('lineHeight.normal')],
+          '26': ['1.625rem', theme('lineHeight.normal')],
+          '31': ['1.9375rem', theme('lineHeight.normal')],
+          '41': ['2.5625rem', theme('lineHeight.normal')],
+          '51': ['3.1875rem', theme('lineHeight.normal')],
+
       }),
       zIndex: {
         '1': '1',
