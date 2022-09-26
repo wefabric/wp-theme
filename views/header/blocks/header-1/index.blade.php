@@ -30,9 +30,9 @@
 
         <div class="container mx-auto w-full lg:w-3/4 py-8 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
 			@include('components.headings.normal', [
-				'type' => 1,
+				'type' => 'h1',
 				'heading' => $block->get('title'),
-				'class' => 'w-4/5 xl:w-1/2 text-2xl md:text-4xl lx:text-[58px]',
+				'class' => 'w-4/5',
 			])
 	
 			@if(!empty($block->get('subtitle')))
