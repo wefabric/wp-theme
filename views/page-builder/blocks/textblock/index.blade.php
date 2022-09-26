@@ -41,7 +41,7 @@
     <div class="{{ $text_class }} flex flex-col lg:{{ $block->get('text_width') }}">
         <div class=" {{ '' ?? 'py-4 lg:py-8' }}">
             @include('components.content', [
-                'content' => apply_filters('the_content', $block->get('text')),
+                'content' => $block->get('text'),
                 'class' => 'text-'. $block->get('text_align'),
             ])
         </div>

@@ -71,7 +71,7 @@
 			@endif
 			
 			@include('components.content', [
-				'content' => apply_filters('the_content', $block->get('text')),
+				'content' => $block->get('text'),
 				'class' => 'text-'. $block->get('text_align'),
 			])
 			

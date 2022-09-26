@@ -29,6 +29,7 @@
 		@endif
 
         <div class="container mx-auto w-full lg:w-3/4 py-8 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
+			{{-- TODO replace this with a components.heading.collection block! 1st = h1, onl allow styling choice. --}}
 			@include('components.headings.normal', [
 				'type' => 'h1',
 				'heading' => $block->get('title'),
@@ -42,12 +43,9 @@
 					'class' => 'h6 pt-4 lg:pt-11',
 				])
 			@endif
+			{{-- Up to here --}}
 			
 			@if(!empty($block->get('call_to_actions')))
-                @php
-                    $classes = 'text-white text-lg';
-                @endphp
-
                 <div class="flex flex-col lg:flex-row justify-center pt-4 lg:pt-7">
                     @foreach($block->get('call_to_actions') as $item)
                         @php

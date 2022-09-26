@@ -1475,6 +1475,7 @@
                                 "base": "klein",
                                 "2xl": "groot",
                                 "4xl": "groter",
+                                "5xl": "nog groter",
                                 "6xl": "heel groot"
                             },
                             "default_value": "2xl",
@@ -4899,5 +4900,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1663854815
+    "modified": 1664201391
 }

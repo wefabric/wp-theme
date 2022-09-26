@@ -13,6 +13,8 @@
     	])
 	@endif
 	
+	{{-- TODO add styling choice for USP texts. --}}
+	
     @include('components.slider.smart-slider', [
         'items' => $block->get('usps'),
         'card_type' => 'usp',
@@ -28,7 +30,7 @@
     ])
 
 	@if($buttons->get('show_button'))
-		<div class="flex pt-6 justify-{{ $buttons->get('justify') }}">
+		<div class="flex pt-6 lg:pt-10 justify-{{ $buttons->get('justify') }}">
 			@foreach($buttons->get('buttons') as $button)
 				@include('components.buttons.default', [
 					'button' => $button,

@@ -45,12 +45,12 @@
 		</div>
 
 		<div class="flex flex-col px-5">
-			<span class="block text-base font-normal">
+			<span class="block {{ null ?? 'h6' }}">
 				{{ $item->get('title') }}
 			</span>
 			
 			@if(!empty($item->get('subtitle')))
-				<span class="">
+				<span class="p ">
 					{{ $item->get('subtitle') }}
 				</span>
 			@endif
