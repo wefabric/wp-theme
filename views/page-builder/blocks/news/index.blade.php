@@ -53,11 +53,11 @@
     @endif
 	
 	@if($block->get('buttons')->get('show_button'))
-		<div class="flex pt-6 justify-{{ $block->get('buttons')->get('justify') }}">
+		<div class="flex pt-6 lg:pt-10 justify-{{ $block->get('buttons')->get('justify') }}">
 			@foreach($block->get('buttons')->get('buttons') as $button)
 				@include('components.buttons.default', [
 					'button' => $button,
-					'class' => 'disable-chevron font-bold',
+					'class' => 'font-bold',
 					'a_class' => 'px-4',
 				])
 			@endforeach

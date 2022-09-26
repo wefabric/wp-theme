@@ -18,15 +18,15 @@
     </div>
 
     <div class="px-5">
-        <div class="text-sm text-gray">
+        <div class="text-base text-gray-400 font-bold leading-relaxed">
             {{ $categories[0]->name }}
         </div>
 
         <div class="">
             @include('components.headings.normal', [
-                'type' => '3',
+                'type' => 'h4',
                 'heading' => get_the_title($postId),
-                'class' => 'text-center'
+                'class' => ''
             ])
         </div>
 
