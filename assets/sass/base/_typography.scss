@@ -1,6 +1,7 @@
 @layer base {
 	
 	p {
+		@apply text-base ;
 		line-height: 1.875rem;
 		
 		@screen lg {
@@ -9,80 +10,6 @@
 		
 		a {
 			@apply underline cursor-pointer;
-		}
-	}
-	
-	h1, .h1 {
-		@apply text-2xl font-bold break-words;
-		line-height: 1.2 !important;
-		
-		@media (min-width: 768px) {
-		}
-		
-		@media (min-width: 1024px) {
-			@apply text-4xl;
-		}
-		
-		@media (min-width: 1536px) {
-			@apply text-[58px];
-		}
-	}
-	
-	h2, .h2 {
-		@apply text-xl font-bold break-words;
-		
-		@media (min-width: 1024px) {
-			@apply text-3xl font-bold;
-		}
-	}
-	
-	h3, .h3 {
-		@apply text-xl text-primary font-head font-semibold break-words;
-		
-		@media (min-width: 768px) {
-			@apply text-lg;
-		}
-		
-		@media (min-width: 1024px) {
-			@apply text-lg font-bold
-		}
-		
-		@media (min-width: 1536px) {
-			@apply text-2xl;
-		}
-		
-	}
-	
-	h4, .h4 {
-		@apply text-lg font-head font-semibold break-words;
-		
-		@media (min-width: 768px) {
-			@apply text-md;
-		}
-		@media (min-width: 1536px) {
-			@apply text-2xl font-bold;
-		}
-	}
-	
-	h5, .h5 {
-		@apply text-md text-primary font-head font-bold  break-words;
-		
-		@media (min-width: 768px) {
-			@apply text-md;
-		}
-		@media (min-width: 1536px) {
-			@apply text-lg;
-		}
-	}
-	
-	h6, .h6 {
-		@apply text-md text-secondary font-head font-semibold break-words;
-		
-		@media (min-width: 768px) {
-			@apply text-md;
-		}
-		@media (min-width: 1536px) {
-			@apply text-lg font-bold;
 		}
 	}
 	
@@ -95,4 +22,73 @@
 			}
 		}
 	}
+	
+	h1, .h1 {
+		@apply text-2xl font-bold break-words;
+		line-height: 1.2 !important;
+		
+		@screen lg {
+			@apply text-4xl;
+		}
+	}
+	
+	h2, .h2 {
+		@apply text-xl font-bold break-words;
+		
+		@screen lg {
+			@apply text-3xl;
+		}
+	}
+	
+	h3, .h3 {
+		@apply text-xl font-head font-semibold break-words;
+		
+		@screen md {
+			@apply text-lg;
+		}
+		
+		@screen lg {
+			@apply text-lg font-bold;
+		}
+		
+		@screen xl {
+			@apply text-2xl;
+		}
+	}
+	
+	h4, .h4 {
+		@apply text-lg font-head font-semibold break-words;
+		
+		@screen md {
+			@apply text-md;
+		}
+		@screen xl {
+			@apply text-2xl font-bold;
+		}
+	}
+	
+	h5, .h5 {
+		@apply text-md font-head font-bold break-words;
+		
+		@screen md {
+			@apply text-md;
+		}
+		
+		@screen xl {
+			@apply text-lg;
+		}
+	}
+	
+	h6, .h6 {
+		@apply text-md font-head font-semibold break-words;
+		
+		@screen md {
+			@apply text-md;
+		}
+		
+		@screen xl {
+			@apply text-lg font-bold;
+		}
+	}
+	
 }
