@@ -8,9 +8,7 @@
     'alt' => $alt,
 ])
 
-<span class="fa-solid fa-house {{ $class }}"></span>
-<span class="screen-reader-only">
-    {{ $alt }}
-</span>
+	<i class="fa-solid fa-house {{ $class ?? ''}}"></i>
+	<span class="screen-reader-only">{{ $alt }}</span>
 
 @include('components.link.closing')

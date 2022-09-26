@@ -1,9 +1,10 @@
 @php
     $options = get_fields('option');
+	$forceWebshop = true;
 @endphp
 <div class="hidden lg:flex lg:flex-col py-4 text-base">
 	
-	@if(woocommerce_active()) {-- webshop parts --}
+	@if($forceWebshop || woocommerce_active()) {{-- webshop parts --}}
         <div class="flex justify-end pb-4">
 
             <div class="mr-3">
@@ -52,15 +53,11 @@
 
     <nav id="site-navigation" class="main-navigation flex justify-end items-center">
 
-{{--
 		@include('components.header.home-house', [
-			'class' => $class, //this shows a house icon, as link to the homepage
+			'class' => 'md:px-4 text-xl text-primary-dark', //this shows a house icon, as link to the homepage
 		])
---}}
 		
         @php
-            $class = 'inline-block font-bold hover:underline md:px-4 uppercase';
-
             $menuLocations = get_nav_menu_locations();
             if(isset($menuLocations['menu-1'])) {
                 $menuID = $menuLocations['menu-1'];
@@ -78,27 +75,30 @@
             ]) !!}
         @endif
 	
-		@if(woocommerce_active()) {-- webshop parts --}
+		@if($forceWebshop || woocommerce_active()) {{-- webshop parts --}}
             @include('components.buttons.default', [
                 'href' => '/offerte',
                 'text' => 'Offerte aanvragen',
-                'colors' => 'btn-primary-dark text-white'
+                'colors' => 'btn-primary-dark text-white',
+                'a_class' => 'md:px-4'
             ])
         @endif
 
+{{--
         @php
             $icon_classes = 'text-xl px-1.5 font-normal';
         @endphp
 
-        @include('components.header.email', [
-            'class' => $icon_classes,
-            'a_class' => 'no-underline'
-        ])
+		@include('components.header.email', [
+			'class' => $icon_classes,
+			'a_class' => 'no-underline'
+		])
 
-        @include('components.header.phone', [
-            'class' => $icon_classes,
-            'a_class' => 'no-underline'
-        ])
-
+		@include('components.header.phone', [
+			'class' => $icon_classes,
+			'a_class' => 'no-underline'
+		])
+--}}
+		
     </nav>
 </div>

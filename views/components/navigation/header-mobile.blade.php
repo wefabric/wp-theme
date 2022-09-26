@@ -10,7 +10,7 @@
 </div>
 <label for="nav-mobile-active" class="nav-mobile-toggle-visibility nav-mobile-toggler nav-mobile-overlay z-0"></label>
 @php
-    $contact_information = get_fields('option');
+//    $contact_information = get_fields('option');
 @endphp
 <header class="banner absolute left-0 w-full">
     <div>
