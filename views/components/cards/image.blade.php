@@ -1,8 +1,12 @@
 @php
 
     if(!empty($size_config)) { // $size_config has been selected at gallery/index.blade.php already.
-        $height = 'h-['. $size_config['height'] .'px] lg:h-['. $size_config['height'] .'px]';
-        $width = 'w-['. $size_config['width'] .'px] lg:w-['. $size_config['width'] .'px]';
+		$height = 'h-['. $size_config['height'] .'px] lg:h-['. $size_config['height'] .'px]';
+		if(array_key_exists('relative', $size_config) && $size_config['relative']) {
+			$width = 'w-full'; //relative to the grid, simply take all the given space.
+		} else {
+			$width = 'w-['. $size_config['width'] .'px] lg:w-['. $size_config['width'] .'px]';
+		}
     } else {
         $height = 'h-[600px]';
 		$width = 'w-[200px]';
@@ -17,7 +21,7 @@
     }
 @endphp
 
-<div class="relative">
+<div class="">
 	{{-- If a link has been supplied, only display it over the image in case of logo slider, which automatically doesn't contain a button. --}}
 	@if($img_size === 'logo-slider' && !empty($href) && !empty($title))
 		@include('components.link.opening', [
@@ -29,19 +33,23 @@
 		])
 	@endif
 	
-		<div class="image {{ $height }} {{ $width }} {{ $card_classes ?? '' }} flex items-center justify-center relative {{ $image_class ?? 'bg-cover bg-center' }} bg-no-repeat"
+		<div class="image {{ $height }} {{ $width }} {{ $card_classes ?? '' }} flex flex-col items-center justify-center relative {{ $image_class ?? 'bg-cover bg-center' }} bg-no-repeat"
 			style="background-image: url('{{ wp_get_attachment_image_url($item->get('image'), $img_size) }}')">
-		
+			
+			@if(true)
+				<div class="bg-black opacity-20 z-1 absolute h-full w-full top-0 left-0 rounded-lg"></div> {{-- black shade over image. --}}
+			@endif
+	
 			@if($img_size !== 'logo-slider') {{-- If logo-slider, that means this image is part of a logo-slider, then only show the image and no button. --}}
-				<div class="w-full h-full mx-0.5 font-bold text-3xl">
+				<div class="w-3/4 h3 text-center z-2">
 					{{ $item->get('title') }}
 				</div>
 				
-				<div class="absolute bottom-5 lg:right-5">
+				<div class="z-2 pt-6 lg:pt-10">
 					@include('components.buttons.default', [
 						'button' => $item,
-//						'colors' => 'btn-primary-light hover:btn-primary-dark text-white',
-					])
+						'class' => 'btn-white text-black',
+ 					])
 				</div>
 			@endif
 		
