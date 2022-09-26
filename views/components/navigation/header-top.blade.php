@@ -1,3 +1,7 @@
+{{--
+No idea what this file does, given the new structure with contact info in the Establishments package instead of the $options.
+--}}
+
 <div class="justify-end hidden pt-2 px-4 lg:flex bg-{{ $bg_color }}">
     @if(isset($options['contact_phone']) && $phone = $options['contact_phone'])
         <a href="tel:{{ str_replace([' ', '-'], '', $phone) }}" target="_blank" class="mr-3">
