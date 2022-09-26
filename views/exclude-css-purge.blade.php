@@ -88,6 +88,7 @@
 	md:px-2 md:px-4
 	
 	lg:pt-20 lg:pt-24 lg:pt-28 lg:pt-32 lg:pt-36
+	lg:py-20 lg:py-36
 	
 	justify-start justify-center justify-end justify-self-start justify-self-center justify-self-end
 	text-left text-center text-right text-justify

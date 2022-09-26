@@ -71,6 +71,31 @@
                             "font_size": 14
                         },
                         {
+                            "key": "field_6331ab1472126",
+                            "label": "Verticale spacing",
+                            "name": "vertical_space",
+                            "type": "select",
+                            "instructions": "Kies hier hoeveel grootte je op desktop boven de titel en onder de (subtitel, knoppen, etc) wilt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "py-20": "klein",
+                                "py-36": "groot"
+                            },
+                            "default_value": "py-36",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
                             "key": "field_62e0ea853c1d6",
                             "label": "Headerafbeelding",
                             "name": "image",
@@ -469,5 +494,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1663833225
+    "modified": 1664200012
 }

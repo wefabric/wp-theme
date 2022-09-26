@@ -1,4 +1,6 @@
 @php
+	//header with pulled-up block, so that breadcrumbs can be displayed 'over' the header image.
+
 	$imageId = $block->get('image') ?? get_field('common', 'option')['default_header_image'];
 	$videoUrl = $block->get('video');
 	

@@ -1,6 +1,6 @@
 @layer base {
 	
-	p {
+	p, .p {
 		@apply text-base font-normal;
 		line-height: 1.625rem;
 	}
