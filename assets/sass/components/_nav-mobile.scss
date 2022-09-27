@@ -21,9 +21,9 @@
   .hamburger-button-bar {
     @apply bg-white;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     border-radius: 10px;
-    width: 25px;
+    width: 20px;
     height: 3px;
     transition-property: transform, opacity, width;
     transition-duration: 0.3s;
@@ -34,13 +34,13 @@
     }
 
     &:nth-child(2) {
+		width: 75%;
+		display: flex;
+		align-self: end;
     }
 
     &:nth-child(3) {
       transform-origin: bottom left;
-    }
-
-    &:last-child {
       margin-bottom: 0;
     }
   }
@@ -96,6 +96,11 @@ header.banner {
     .hamburger-menu {
       right: 270px;
       position: fixed;
+		
+		label {
+			margin-right: -7px;
+			padding-left: 2px;
+		}
     }
 
     .header-logo {
@@ -108,7 +113,7 @@ header.banner {
       }
     }
     .hamburger-button-bar {
-      width: 24px;
+      width: 21px;
 
       &:nth-child(1) {
         transform: rotate(45deg);
@@ -126,6 +131,8 @@ header.banner {
 }
 
 .hamburger-menu {
+	@apply bg-black rounded-full p-2;
+
   position: absolute;
   right: 30px;
   transition: right 300ms ease;

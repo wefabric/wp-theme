@@ -9,19 +9,46 @@
     </div>
 </div>
 <label for="nav-mobile-active" class="nav-mobile-toggle-visibility nav-mobile-toggler nav-mobile-overlay z-0"></label>
-@php
-//    $contact_information = get_fields('option');
-@endphp
 <header class="banner absolute left-0 w-full">
     <div>
-        <div class="py-6 flex items-center lg:hidden">
-            <div class="hamburger-menu z-50">
-                <label for="nav-mobile-active" class="mb-0 toggle-mobile-menu hamburger-button">
-                    <span class="hamburger-button-bar"></span>
-                    <span class="hamburger-button-bar"></span>
-                    <span class="hamburger-button-bar"></span>
-                </label>
-            </div>
+        <div class="py-2 pr-16 flex items-center justify-end relative lg:hidden">
+			@php
+				$icon_size = 'h-8 w-8 pt-1 mr-3';
+			@endphp
+			
+			@include('components.buttons.icon', [
+				'href' => '/cart',
+				'alt' => 'Naar de winkelwagen',
+			//            'rel' => 'noopener',
+			//            'target' => '_blank',
+				'icon' => 'fa-regular fa-bag-shopping text-base',
+			
+				'size' => $icon_size,
+				'colors' => 'bg-black hover:bg-primary-dark text-white',
+				'class' => 'relative',
+			
+				'smallIconClass' => 'h-5 w-5 text-center text-sm mr-1 rounded-full bg-zinc-300 text-black absolute -mt-0.5 -top-2 -right-2',
+				'smallIconContent' => '0', //number of items in shopping cart
+			])
+	
+			@include('components.buttons.icon', [
+				'href' => '/profile',
+				'alt' => 'Naar mijn profiel',
+	//            'rel' => 'noopener',
+	//            'target' => '_blank',
+				'icon' => 'fa-regular fa-user text-base',
+
+				'size' => $icon_size,
+				'colors' => 'bg-black hover:bg-primary-dark text-white',
+			])
+	
+			<div class="hamburger-menu z-50">
+				<label for="nav-mobile-active" class="mb-0 toggle-mobile-menu hamburger-button flex flex-col ">
+					<span class="hamburger-button-bar"></span>
+					<span class="hamburger-button-bar"></span>
+					<span class="hamburger-button-bar"></span>
+				</label>
+			</div>
         </div>
         <div class="mobile-menu-wrap">
             <nav class="mobile-menu">

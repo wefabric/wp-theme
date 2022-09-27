@@ -8,7 +8,7 @@
 
 @php
     if(!isset($size)) {
-	    $size = 'h-12 w-12 lg:h-14 lg:w-14 pt-1.5 lg:pt-2.5';
+	    $size = 'h-12 w-12 lg:h-14 lg:w-14 pt-1.5 lg:pt-2.5 mr-3';
     }
 
     if(!isset($colors)) {
@@ -16,8 +16,12 @@
     }
 @endphp
 
-    <span class="inline-block rounded-full mr-3 text-center {{ $size }} {{ $colors }} {{ $class ?? '' }}">
-        <i class="{{ $icon }} text-xl"></i>
+    <span class="inline-block rounded-full text-center {{ $size }} {{ $colors }} {{ $class ?? '' }}">
+		@if(isset($label_for))
+			<label for="{{ $label_for }}" class="{{ $label_class ?? '' }}">
+		@endif
+		
+        <i class="{{ $icon }}"></i>
         <span class="screen-reader-only">{{ $alt }}</span>
 
         @if(!empty($smallIconClass) && isset($smallIconContent) && $smallIconContent !== '')
@@ -26,5 +30,9 @@
             </span>
 
         @endif
+				
+		@if(isset($label_for))
+			</label>
+		@endif
     </span>
 @include('components.link.closing')

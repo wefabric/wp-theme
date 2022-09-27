@@ -10,7 +10,7 @@
 	            'alt' => $social['name'],
 	            'rel' => 'noopener',
 	            'target' => '_blank',
-	            'icon' => $social['icon'],
+	            'icon' => $social['icon'] .' text-xl',
 	            'a_class' => 'no-underline '
             ])
         @endforeach

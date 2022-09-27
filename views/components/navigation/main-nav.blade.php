@@ -28,9 +28,9 @@
                 'alt' => 'Naar de winkelwagen',
     //            'rel' => 'noopener',
     //            'target' => '_blank',
-                'icon' => 'fa-light fa-bag-shopping',
+                'icon' => 'fa-light fa-bag-shopping text-xl',
 
-                'size' => 'h-12 w-12 pt-1.5',
+                'size' => 'h-12 w-12 pt-1.5 mr-3',
                 'colors' => 'bg-black hover:bg-primary-dark text-white',
                 'class' => 'relative',
 
@@ -43,9 +43,9 @@
                 'alt' => 'Naar mijn profiel',
     //            'rel' => 'noopener',
     //            'target' => '_blank',
-                'icon' => 'fa-light fa-user',
+                'icon' => 'fa-light fa-user text-xl',
 
-                'size' => 'h-12 w-12 pt-1.5',
+                'size' => 'h-12 w-12 pt-1.5 mr-3',
                 'colors' => 'bg-black hover:bg-primary-dark text-white',
             ])
         </div>
