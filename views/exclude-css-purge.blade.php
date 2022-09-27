@@ -93,7 +93,7 @@
 	justify-start justify-center justify-end justify-self-start justify-self-center justify-self-end
 	text-left text-center text-right text-justify
 	
-	text-base text-2xl text-4xl text-5xl text-6xl
+	text-base text-2xl text-3xl text-4xl text-5xl text-6xl
 	
 	float-right float-left
 	

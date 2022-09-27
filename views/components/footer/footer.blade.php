@@ -25,7 +25,6 @@
 				'prevNext' => false,
 				
 				'size' => '3xl',
-				'icon_color' => 'green-600',
 				'class' => 'mx-auto w-full lg:w-4/5',
 				'usp_class' => 'w-full mx-auto',
 			])
@@ -172,6 +171,7 @@
                             $theme = app('wp.theme');
                         @endphp
                         <img src="{{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }}" class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:30px;"/>
+						<span class="screen-reader-only">Wefabric</span>
                     @include('components.link.closing')
                 </div>
             </div>

@@ -22,12 +22,9 @@
 		
 		<div class="mb-10 footer-address">
 			@if($establishment)
-				@if($establishment_config['show_title'])
-					<div class="text-lg font-bold pb-4">
-						{{ $establishment->name }}
-					</div>
-				@endif
-				
+				<p class="leading-8 {{ '' ?? $establishment_config['show_title'] }}">
+					{{ $establishment->name }}
+				</p>
 				<p class="leading-8">
 					{{ $establishment->getAddress()->street }} {{ $establishment->getAddress()->full_housenumber }} <br/>
 					{{ $establishment->getAddress()->postcode }} {{ $establishment->getAddress()->city }}
@@ -37,10 +34,10 @@
 					@include('components.link.opening', [
 						'href' => $phone->uri(), //comes with a 'tel:' already
 						'alt' => 'Telefoonnummer',
-						'class' => 'flex'
+						'class' => 'flex no-underline'
 					])
 					<i class="fa-solid fa-phone mr-4 text-md pt-1"></i>
-					<span class="inline-block pt-1 cursor-pointer hover:underline">{{ $phone }}</span>
+					<span class="inline-block pt-1">{{ $phone }}</span>
 					@include('components.link.closing')
 				@endif
 				
@@ -48,10 +45,10 @@
 					@include('components.link.opening', [
 						'href' => 'mailto:'. $email,
 						'alt' => 'E-mailadres',
-						'class' => 'flex'
+						'class' => 'flex no-underline'
 					])
 					<i class="fa-solid fa-envelope mr-4 text-md pt-1"></i>
-					<span class="inline-block pt-1 cursor-pointer hover:underline">{{ $email }}</span>
+					<span class="inline-block pt-1">{{ $email }}</span>
 					@include('components.link.closing')
 				@endif
 				
