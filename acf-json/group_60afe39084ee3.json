@@ -4866,6 +4866,43 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_6332c40b9e986": {
+                    "key": "layout_6332c40b9e986",
+                    "name": "magic",
+                    "label": "Toverblok",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6332c4139e987",
+                            "label": "Welk blok wil je toveren?",
+                            "name": "magic_block",
+                            "type": "select",
+                            "instructions": "Hiermee kun je een blok op de website toveren, welke nog niet (helemaal) mogelijk is , maar zo kun je toch het design checken ofzo.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "products": "Uitgelichte producten",
+                                "categories": "Uitgelichte Productcategorieen",
+                                "feedbackco": "Feedback Company",
+                                "brand-documentation": "Merkdocumentatie"
+                            },
+                            "default_value": false,
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "array",
+                            "ajax": 0,
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Nieuw blok",
@@ -4900,5 +4937,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1664201391
+    "modified": 1664271901
 }
