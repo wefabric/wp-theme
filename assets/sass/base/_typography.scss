@@ -2,7 +2,7 @@
 	
 	p, .p {
 		@apply text-base font-normal;
-		line-height: 1.625rem;
+		line-height: 1.625rem !important;
 	}
 	
 	ul, ol {

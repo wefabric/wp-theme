@@ -19,8 +19,8 @@
         @elseif($count > 1)
             @include('components.slider.slider', [
                 'items' => $items,
-                'prevNext' => $prevNext ?? false,
-                'pagination' => $pagination ?? true,
+                'prevNext' => $prevNext ?? false, // < buttons >
+                'pagination' => $pagination ?? true, // bolletjes
                 'card_type' => $card_type,
                 'card_classes' => $card_classes,
                 'breakPoints' => $breakPoints ?? null,

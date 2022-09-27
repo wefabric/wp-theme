@@ -58,7 +58,7 @@
 
     @if($block->get('title')->get('show_separate_title'))
         @include('components.headings.normal', [
-            'type' => 2,
+            'type' => 'h2',
             'title' => $block->get('title'),
         ])
     @endif

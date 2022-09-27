@@ -19,7 +19,6 @@
         'items' => $block->get('usps'),
         'card_type' => 'usp',
         'slider_on_items' => 3,
-        'loop' => false,
         'pagination' => true,
         'prevNext' => false,
 		

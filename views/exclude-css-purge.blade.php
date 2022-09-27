@@ -94,6 +94,7 @@
 	text-left text-center text-right text-justify
 	
 	text-base text-2xl text-3xl text-4xl text-5xl text-6xl
+	h1 lg:h1 h2 lg:h2 h3 lg:h3 h4 lg:h4 h5 lg:h5 h6 lg:h6 p lg:p
 	
 	float-right float-left
 	

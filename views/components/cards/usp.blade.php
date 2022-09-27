@@ -45,7 +45,7 @@
 		</div>
 
 		<div class="flex flex-col px-5">
-			<span class="block {{ null ?? 'h6' }}">
+			<span class="block {{ $style ?? 'h6' }}">
 				{{ $item->get('title') }}
 			</span>
 			

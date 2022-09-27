@@ -15,16 +15,14 @@
 
 <div class="bg-{{ $bg_color ?? 'black' }} text-{{ $text_color ?? 'white' }} text-base pb-10 lg:pb-24">
     @if(!empty($usps))
-        <div class="bg-white text-black py-10 lg:py-20 lg:text-lg">
-			@include('components.slider.smart-slider', [
+        <div class="bg-white text-black py-10 lg:py-20">
+			@include('components.slider.grid', [
 				'items' => $usps,
 				'card_type' => 'usp',
-				'slider_on_items' => 3,
-				'loop' => false,
-				'pagination' => false,
-				'prevNext' => false,
+				'grid_class' => 'lg:grid-cols-3',
 				
 				'size' => '3xl',
+				'style' => 'p font-bold lg:h6',
 				'class' => 'mx-auto w-full lg:w-4/5',
 				'usp_class' => 'w-full mx-auto',
 			])

@@ -1,11 +1,15 @@
 @php
 
     if(!empty($size_config)) { // $size_config has been selected at gallery/index.blade.php already.
-		$height = 'h-['. $size_config['height'] .'px] lg:h-['. $size_config['height'] .'px]';
+		$height = 'h-['. $size_config['height'] .'px]';
+		if(array_key_exists('mobile_height', $size_config) && $size_config['mobile_height']) {
+			$height = 'h-['. $size_config['mobile_height'] .'px] lg:'. $height;
+		}
+		
 		if(array_key_exists('relative', $size_config) && $size_config['relative']) {
 			$width = 'w-full'; //relative to the grid, simply take all the given space.
 		} else {
-			$width = 'w-['. $size_config['width'] .'px] lg:w-['. $size_config['width'] .'px]';
+			$width = 'w-['. $size_config['width'] .'px]'; // ' lg:w-['. $size_config['width'] .'px]'
 		}
     } else {
         $height = 'h-[600px]';
@@ -41,7 +45,8 @@
 			@endif
 	
 			@if($img_size !== 'logo-slider') {{-- If logo-slider, that means this image is part of a logo-slider, then only show the image and no button. --}}
-				<div class="w-3/4 h3 text-center z-2">
+				{{-- TODO fix: add style choices --}}
+				<div class="w-3/4 h1 lg:h3 text-center z-2">
 					{{ $item->get('title') }}
 				</div>
 				

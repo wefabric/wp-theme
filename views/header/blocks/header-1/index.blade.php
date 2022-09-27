@@ -28,7 +28,7 @@
 			</div>
 		@endif
 
-        <div class="container mx-auto w-full lg:w-3/4 py-8 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
+        <div class="container mx-auto w-full lg:w-3/4 py-14 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
 			{{-- TODO replace this with a components.heading.collection block! 1st = h1, onl allow styling choice. --}}
 			@include('components.headings.normal', [
 				'type' => 'h1',
@@ -40,7 +40,7 @@
 				@include('components.headings.normal', [
 					'type' => 2,
 					'heading' => $block->get('subtitle'),
-					'class' => 'h6 pt-4 lg:pt-11',
+					'class' => 'p lg:h6 pt-4 lg:pt-11 px-5 lg:px-0',
 				])
 			@endif
 			{{-- Up to here --}}
@@ -55,12 +55,12 @@
                         @if($cta->get('type') === 'button')
                             @include('components.buttons.default', [
 	                            'button' => $cta,
-                                'class' => 'disable-chevron'
+                                'class' => ''
                             ])
                         @elseif($cta->get('type') === 'link')
                             @include('components.buttons.default', [
 	                            'button' => $cta,
-                                'class' => 'btn-transparent disable-chevron'
+                                'class' => 'btn-transparent'
                             ])
                         @endif
                     @endforeach

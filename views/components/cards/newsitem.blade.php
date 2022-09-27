@@ -9,7 +9,7 @@
 @endphp
 
 <div class="hover:shadow-3xl max-w-md flex flex-col mx-auto h-full relative px-2">
-    <div class="mx-auto mb-5 w-full h-52 rounded-lg">
+    <div class="mx-auto mb-5 w-full rounded-lg">
         @include('components.image', [
             'image_id' => $fields['image'],
 			'size' => 'news-thumbnail',

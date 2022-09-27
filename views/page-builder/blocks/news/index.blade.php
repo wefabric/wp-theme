@@ -34,12 +34,14 @@
 <div class="container mx-auto w-full lg:{{ $block->get('width') }}">
 	@if($block->get('title')->get('show_separate_title'))
 		@include('components.headings.normal', [
-			'type' => '2',
-			'class' => '',
+			'type' => 'h2',
+			'class' => 'h1 lg:h2',
 			'title' => $block->get('title'),
 		])
 	@endif
 	
+	{{-- TODO bedenken hoe op mobiel maar 1 tonen. --}}
+		
     @if(false)
         @include('components.slider.smart-slider', [
             'items' => $postList,
