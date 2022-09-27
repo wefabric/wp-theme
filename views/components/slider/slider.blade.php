@@ -53,6 +53,7 @@ if(empty($breakPoints)) {
                     <div class="swiper-slide  @if(($pagination ?? true)) pb-8  @else pb-4  @endif" role="option">
                             @include('components.cards.'. $card_type, [
                                 'item' => $item,
+								'lg_hidden' => isset($mobile_loop_max) && $loop->iteration > $mobile_loop_max,
                             ])
                         </div>
                 @endforeach

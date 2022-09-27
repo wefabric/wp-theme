@@ -40,17 +40,17 @@
 		])
 	@endif
 	
-	{{-- TODO bedenken hoe op mobiel maar 1 tonen. --}}
-		
     @if(false)
         @include('components.slider.smart-slider', [
             'items' => $postList,
             'card_type' => 'newsitem',
+            'mobile_loop_max' => 1,
         ])
     @else
         @include('components.slider.grid', [
             'items' => $postList,
             'card_type' => 'newsitem',
+            'mobile_loop_max' => 1,
         ])
     @endif
 	

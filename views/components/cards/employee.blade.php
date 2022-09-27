@@ -6,7 +6,7 @@
     // $service = get_post($employeeId);
 @endphp
 
-<div class="hover:shadow-3xl max-w-md flex flex-col mx-auto">
+<div class="hover:shadow-3xl max-w-md flex flex-col mx-auto {{ (isset($lg_hidden) && $lg_hidden) ? 'hidden lg:block' : '' }}">
     <div class="mx-auto mb-3 lg:h-80 lg:px-5 rounded-lg">
         @include('components.image', [
             'image_id' => $fields['image'],

@@ -8,7 +8,7 @@
     $categories = get_the_category($postId);
 @endphp
 
-<div class="hover:shadow-3xl max-w-md flex flex-col mx-auto h-full relative px-2">
+<div class="hover:shadow-3xl max-w-md flex flex-col mx-auto h-full relative px-2 {{ (isset($lg_hidden) && $lg_hidden) ? 'hidden lg:block' : '' }}">
     <div class="mx-auto mb-5 w-full rounded-lg">
         @include('components.image', [
             'image_id' => $fields['image'],
