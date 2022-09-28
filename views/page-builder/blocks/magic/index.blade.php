@@ -71,8 +71,29 @@
 			@break
 		
 		@case('feedbackco')
-			<div>
-				<div class="h6 text-center pb-10">Feedback Company reviews</div>
+			<div class="bg-gray-100">
+				<div class="h6 text-center pb-10">
+					Feedback Company reviews
+					<p class="italic text-sm">Dit zijn afbeeldingen, aangezien we mogelijk een widget uit FeedbackCo. halen?</p>
+				</div>
+				@php
+					$reviews = [
+						[
+							'file' => 'review-1.png'
+						],
+						[
+							'file' => 'review-2.png'
+						],
+						[
+							'file' => 'review-3.png'
+						],
+					];
+				@endphp
+				@include('components.slider.smart-slider', [
+					'items'	=> $reviews,
+					'card_type' => 'customer-review',
+				])
+				
 			</div>
 			@break
 		
