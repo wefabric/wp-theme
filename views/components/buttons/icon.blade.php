@@ -3,7 +3,7 @@
     'alt' => $alt,
     'rel' => $rel ?? '',
     'target' => $target ?? '',
-    'class' => $a_class ?? '',
+    'class' => ($a_class ?? ''). ' no-underline', // because we have an icon that is hoverable
 ])
 
 @php

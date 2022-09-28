@@ -34,39 +34,36 @@
 
     <div class="mx-auto mb-3">
         @if(!empty($fields['phonenumber']))
-            @include('components.link.opening', [
+			@include('components.buttons.icon', [
                 'href' => 'tel:'. $fields['phonenumber'],
-                'alt' => 'Telefoonnummer'
-            ])
-                <span class="inline-block h-8 w-8 rounded-full mx-1 text-center bg-black hover:bg-primary-dark text-white ">
-                    <i class="fa-solid fa-phone text-sm align-top pt-1.5"></i>
-                    <span class="screen-reader-only">Telefoonnummer</span>
-                </span>
-            @include('components.link.closing')
-        @endif
+                'alt' => 'Telefoonnummer',
+				'icon' => 'fa-solid fa-phone text-sm align-top pt-1.5',
+				'size' => 'h-8 w-8',
+				'colors' => 'bg-black hover:bg-primary-dark text-white ',
+				'a_class' => 'mx-1',
+			])
+		@endif
 
         @if(!empty($fields['email']))
-            @include('components.link.opening', [
+			@include('components.buttons.icon', [
                 'href' => 'mailto:'. $fields['email'],
-                'alt' => 'Emailadres'
-            ])
-                <span class="inline-block h-8 w-8 rounded-full mx-1 text-center bg-black hover:bg-primary-dark text-white ">
-                    <i class="fa-solid fa-envelope text-sm align-top pt-1.5"></i>
-                    <span class="screen-reader-only">Emailadres</span>
-                </span>
-            @include('components.link.closing')
-        @endif
+                'alt' => 'Emailadres',
+				'icon' => 'fa-solid fa-envelope text-sm align-top pt-1.5',
+				'size' => 'h-8 w-8',
+				'colors' => 'bg-black hover:bg-primary-dark text-white ',
+				'a_class' => 'mx-1',
+			])
+		@endif
 
         @if(!empty($fields['linkedin']))
-            @include('components.link.opening', [
-                'href' => $fields['linkedin'],
-                'alt' => 'LinkedIn'
-            ])
-                <span class="inline-block h-8 w-8 rounded-full mx-1 text-center bg-black hover:bg-primary-dark text-white ">
-                    <i class="fa-brands fa-linkedin-in text-sm align-top pt-1.5"></i>
-                    <span class="screen-reader-only">LinkedIn</span>
-                </span>
-            @include('components.link.closing')
+			@include('components.buttons.icon', [
+				'href' => $fields['linkedin'],
+				'alt' => 'LinkedIn',
+				'icon' => 'fa-brands fa-linkedin-in text-sm align-top pt-1.5',
+				'size' => 'h-8 w-8',
+				'colors' => 'bg-black hover:bg-primary-dark text-white ',
+				'a_class' => 'mx-1',
+			])
         @endif
     </div>
 </div>
