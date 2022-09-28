@@ -4,7 +4,7 @@
 	}
 @endphp
 
-<div class="card flex flex-col p-5 pb-32 bg-white  relative min-h-[465px]"> {{-- max-w-[310px] --}}
+<div class="card flex flex-col p-5 pb-32 bg-white  relative min-h-[488px] lg:min-h-[465px]"> {{-- max-w-[310px] --}}
 	@include('components.image', [
 		'image_id' => $item['image'],
 		'size' => 'product_card',
