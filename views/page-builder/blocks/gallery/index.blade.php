@@ -55,13 +55,12 @@
 @endphp
 
 <div class="@if($block->get('width') !== 'nomargin') container @endif mx-auto w-full lg:{{ $block->get('width') === 'nomargin' ? 'w-full' : $block->get('width') }} ">
-
-    @if($block->get('title')->get('show_separate_title'))
-        @include('components.headings.normal', [
-            'type' => 'h2',
-            'title' => $block->get('title'),
-        ])
-    @endif
+	
+	@if($block->get('title')->get('show_separate_title'))
+		@include('components.headings.collection', [
+			'title' => $block->get('title'),
+		])
+	@endif
 
 	@if($block->get('display_type') !== 'grid')
 		@include('components.slider.smart-slider', [

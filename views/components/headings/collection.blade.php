@@ -7,7 +7,8 @@
 	@include('components.headings.normal', [
 		'type' => $heading->get('type'),
 		'heading' => $heading->get('text'),
-		'display_type' => $heading->get('display_type'),
+		'display_type_mobile' => $heading->get('display_type_mobile'),
+		'display_type_desktop' => $heading->get('display_type_desktop'),
 		'title_align' => $heading->get('align'),
 		'title_color' => $title->get('title_color'),
 	])

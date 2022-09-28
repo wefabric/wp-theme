@@ -20,7 +20,7 @@
 	}
 	
 	h1, .h1 {
-		@apply text-2xl font-bold break-words;
+		@apply font-head text-2xl font-bold break-words;
 		line-height: 1.1 !important;
 		
 		@screen lg {
@@ -29,7 +29,7 @@
 	}
 	
 	h2, .h2 {
-		@apply text-xl font-bold break-words;
+		@apply font-head text-xl font-bold break-words;
 		line-height: 1.25 !important;
 		
 		@screen lg {

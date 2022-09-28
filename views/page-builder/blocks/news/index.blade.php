@@ -33,9 +33,7 @@
 
 <div class="container mx-auto w-full lg:{{ $block->get('width') }}">
 	@if($block->get('title')->get('show_separate_title'))
-		@include('components.headings.normal', [
-			'type' => 'h2',
-			'class' => 'h1 lg:h2',
+		@include('components.headings.collection', [
 			'title' => $block->get('title'),
 		])
 	@endif

@@ -8,11 +8,11 @@
 
 @if($faqs)
     <div class="container mx-auto px-4 lg:px-0">
-        @if($block->get('title')->get('show_separate_title'))
-			@include('components.headings.normal', [
+		@if($block->get('title')->get('show_separate_title'))
+			@include('components.headings.collection', [
 				'title' => $block->get('title'),
 			])
-        @endif
+		@endif
 		
         <div class="faq-drawer lg:px-0">
             @foreach($faqs as $key => $faq)

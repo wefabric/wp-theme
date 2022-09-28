@@ -5,12 +5,10 @@
 
 <div class="container mx-auto w-full lg:{{ $block->get('width') }}">
 	
-	@if($title->get('show_separate_title'))
-		@include('components.headings.normal', [
-			'type' => 2,
-	        'class' => 'font-bold text-2xl py-2',
-            'title' => $title,
-    	])
+	@if($block->get('title')->get('show_separate_title'))
+		@include('components.headings.collection', [
+			'title' => $block->get('title'),
+		])
 	@endif
 	
 	{{-- TODO add styling choice for USP texts. --}}

@@ -30,11 +30,19 @@
 	if(!empty($title_align)) {
 		$title_align = 'text-'. $title_align;
 	}
+	
+	$display = '';
+	if(!empty($display_type_mobile)) {
+		$display .= $display_type_mobile;
+	}
+	if(!empty($display_type_desktop)) {
+		$display .= ' lg:'. $display_type_desktop;
+	}
 @endphp
 
 @if(!empty($heading))
 	<{{$hx}} @if($id ?? '') id="{{ $id }}" @endif
-		class="{{ $display_type ?? '' }} font-head inline-block w-full align-text-top z-10 pb-4 lg:pb-8 {{ $class ?? '' }} {{ $title_color ?? '' }} {{ $title_align ?? '' }} ">
+		class="{{ $display }} inline-block w-full align-text-top z-10 pb-4 lg:pb-8 {{ $class ?? '' }} {{ $title_color ?? '' }} {{ $title_align ?? '' }} ">
 		{!! $heading !!}
 	</{{$hx}}>
 	

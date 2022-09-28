@@ -32,9 +32,8 @@
 
 <div class="container mx-auto w-full lg:{{ $block->get('width') }} flex flex-col lg:{{ $div_class }} gap-2 text-{{ $block->get('text_color') }}  flex">
 	@if($block->get('title')->get('show_separate_title'))
-		@include('components.headings.normal', [
-			'type' => 2,
-			'title' => $title,
+		@include('components.headings.collection', [
+			'title' => $block->get('title'),
 		])
 	@endif
 	
