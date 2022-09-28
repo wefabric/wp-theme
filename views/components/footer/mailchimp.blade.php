@@ -21,6 +21,11 @@
 </form>
 <div>
 	<p class="text-xs mt-2 italic">
-		Door je aan te melden ga je ermee akkoord dat we je maximaal 1x per maand marketingmails sturen. Alles in overeenstemming met onze <a href="{{ get_privacy_policy_url() }}" class="cursor-pointer hover:underline">privacyverklaring</a>. Je kunt je ook altijd weer afmelden voor deze e-mails.
+		Door je aan te melden ga je ermee akkoord dat we je maximaal 1x per maand marketingmails sturen. Alles in overeenstemming met onze
+		@include('components.link.simple', [
+			'href' => get_privacy_policy_url(),
+			'text' => 'privacyverklaring',
+		])
+		. Je kunt je ook altijd weer afmelden voor deze e-mails.
 	</p>
 </div>
