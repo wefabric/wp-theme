@@ -4,6 +4,10 @@
 		@apply text-base font-normal;
 		line-height: 1.625rem !important;
 	}
+
+	.card-category-title {
+		@apply text-base font-bold text-gray-400
+	}
 	
 	ul, ol {
 		li {

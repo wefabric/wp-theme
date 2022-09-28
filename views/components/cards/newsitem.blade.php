@@ -18,7 +18,7 @@
     </div>
 
     <div class="px-5">
-        <div class="text-base text-gray-400 font-bold leading-relaxed">
+        <div class="card-category-title leading-relaxed">
             {{ $categories[0]->name }}
         </div>
 
