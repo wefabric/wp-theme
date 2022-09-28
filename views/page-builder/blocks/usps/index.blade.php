@@ -19,9 +19,7 @@
         'items' => $block->get('usps'),
         'card_type' => 'usp',
         'slider_on_items' => 3,
-        'pagination' => true,
-        'prevNext' => false,
-		
+        
         'size' => $block->get('icon_size'),
         'position' => $block->get('position'),
         'icon_color' => $block->get('icon_color'),

@@ -19,8 +19,8 @@
         @elseif($count > 1)
             @include('components.slider.slider', [
                 'items' => $items,
-                'prevNext' => $prevNext ?? false, // < buttons >
-                'pagination' => $pagination ?? true, // bolletjes
+                'arrows' => $arrows ?? false,
+                'dots' => $dots ?? true,
                 'card_type' => $card_type,
                 'card_classes' => $card_classes,
                 'breakPoints' => $breakPoints ?? null,
@@ -39,8 +39,8 @@
         @elseif($count > ($slider_on_items ?? 3))
             @include('components.slider.slider', [
                 'items' => $items,
-                'prevNext' => $prevNext ?? false,
-                'pagination' => $pagination ?? true,
+                'arrows' => $arrows ?? false,
+                'dots' => $dots ?? true,
                 'card_type' => $card_type,
                 'card_classes' => $card_classes,
 				'breakPoints' => $breakPoints ?? null,

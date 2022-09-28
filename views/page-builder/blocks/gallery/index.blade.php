@@ -67,7 +67,6 @@
 		@include('components.slider.smart-slider', [
 			'items' => $block->get('photos'),
 			'card_type' => 'image',
-			'prevNext' => false,
 			'breakPoints' => $breakPoints ?? [],
 			'card_classes' => ($card_classes ?? ''),
 

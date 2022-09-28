@@ -38,7 +38,7 @@ if(empty($breakPoints)) {
     })"
          class="relative w-full mx-auto flex flex-row"
     >
-        @if(($prevNext ?? true) === true)
+        @if(($arrows ?? true))
             <div class="absolute inset-y-0 left-0 z-10 flex items-center">
                 <button @click="swiper.slidePrev()"
                         class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
@@ -50,7 +50,7 @@ if(empty($breakPoints)) {
         <div class="swiper" x-ref="container">
             <div class="swiper-wrapper">
                 @foreach($items as $item)
-                    <div class="swiper-slide  @if(($pagination ?? true)) pb-8  @else pb-4  @endif" role="option">
+                    <div class="swiper-slide @if(($dots ?? true)) pb-8 @else pb-4 @endif" role="option">
                             @include('components.cards.'. $card_type, [
                                 'item' => $item,
 								'lg_hidden' => isset($mobile_loop_max) && $loop->iteration > $mobile_loop_max,
@@ -58,10 +58,10 @@ if(empty($breakPoints)) {
                         </div>
                 @endforeach
             </div>
-            <div class="swiper-pagination   @if(($pagination ?? true) === false) hidden @endif"></div>
+            <div class="swiper-pagination @if(!($dots ?? true)) hidden @endif"></div>
         </div>
 
-        @if(($prevNext ?? true) === true)
+        @if(($arrows ?? true))
             <div class="absolute inset-y-0 right-0 z-10 flex items-center">
                 <button @click="swiper.slideNext()"
                         class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
