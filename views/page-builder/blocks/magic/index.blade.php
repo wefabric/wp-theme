@@ -25,19 +25,61 @@
 	
 	@switch($value['value'])
 		@case('products')
-			<div class="h6 text-center pb-10">Uitgelichte producten</div>
+			<div class="bg-gray-100">
+				<div class="h6 text-center pb-10">Uitgelichte producten</div>
+				
+				@php
+					$products = [
+						[
+							'brand' => 'ENPC',
+							'title' => 'Geribd hoekijzer met afgesneden hoek',
+							'price' => 1394,
+							'image' => 832,
+						],
+						[
+							'brand' => 'ENPC',
+							'title' => 'Bevestigingsklauw voor warmte-isolatie',
+							'price' => 1394,
+							'image' => 833,
+						],
+						[
+							'brand' => 'ENPC',
+							'title' => 'Heel duur stuk staal met gaatjes',
+							'price' => 1394,
+							'image' => 834,
+						],
+						[
+							'brand' => 'ENPC',
+							'title' => 'Anti-inbreekijzer denk ik?',
+							'price' => 1394,
+							'image' => 835,
+						],
+					];
+				@endphp
+				@include('components.slider.smart-slider', [
+					'items' => $products,
+					'card_type' => 'product',
+					'arrows' => true,
+				])
+			</div>
 			@break
 		
 		@case('categories')
-			<div class="h6 text-center pb-10">Uitgelichte categorieen</div>
+			<div>
+				<div class="h6 text-center pb-10">Uitgelichte categorieen</div>
+			</div>
 			@break
 		
 		@case('feedbackco')
-			<div class="h6 text-center pb-10">Feedback Company reviews</div>
+			<div>
+				<div class="h6 text-center pb-10">Feedback Company reviews</div>
+			</div>
 			@break
 		
 		@case('brand-documentation')
-			<div class="h6 text-center pb-10">Merk documentatie</div>
+			<div>
+				<div class="h6 text-center pb-10">Merk documentatie</div>
+			</div>
 			@break
 		
 		@default

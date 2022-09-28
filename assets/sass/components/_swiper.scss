@@ -13,3 +13,7 @@
 .swiper-pagination-bullet-active {
 	@apply bg-primary opacity-100;
 }
+
+.card {
+	@apply rounded-2xl shadow-lg;
+}
