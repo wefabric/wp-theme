@@ -17,7 +17,7 @@
 
     <div class="mx-auto mb-3">
         @include('components.headings.normal', [
-            'type' => '3',
+            'type' => 'h3',
             'heading' => get_the_title($employeeId),
             'class' => 'text-center',
         ])
