@@ -17,6 +17,6 @@
 		'display_type_desktop' => $heading->get('display_type_desktop'),
 		'title_align' => $heading->get('align'),
 		'title_color' => $title_color ?? $title->get('title_color'),
-		'class' => $loop->last ? '' : ($class ?? 'pb-4 lg:pb-8'),
+		'class' => ($loop->last && ($disable_bottom_padding ?? false)) ? '' : ($class ?? 'pb-4 lg:pb-8'),
 	]) {{-- don't give the last title any bottom-padding --}}
 @endforeach

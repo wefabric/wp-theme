@@ -16,18 +16,19 @@
 	@if($block->get('title')->get('show_separate_title'))
 		@include('components.headings.collection', [
 			'title' => $block->get('title'),
+			'disable_buttom_padding' => true,
 		])
 	@endif
 	
-    @if($block->get('display_type') === 'slider')
-        @include('components.slider.smart-slider', [
-            'items' => $postList,
-            'card_type' => 'employee',
-        ])
-    @elseif($block->get('display_type') === 'grid')
-        @include('components.slider.grid', [
-            'items' => $postList,
-            'card_type' => 'employee',
-        ])
-    @endif
+	@if($block->get('display_type') === 'slider')
+		@include('components.slider.smart-slider', [
+			'items' => $postList,
+			'card_type' => 'employee',
+		])
+	@elseif($block->get('display_type') === 'grid')
+		@include('components.slider.grid', [
+			'items' => $postList,
+			'card_type' => 'employee',
+		])
+	@endif
 </div>
