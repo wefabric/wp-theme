@@ -29,24 +29,14 @@
 		@endif
 
         <div class="container mx-auto w-full lg:w-3/4 py-14 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
-			{{-- TODO replace this with a components.heading.collection block! 1st = h1, onl allow styling choice. --}}
-			@include('components.headings.normal', [
-				'type' => 'h1',
-				'heading' => $block->get('title'),
-				'class' => 'w-4/5',
-			])
 	
-			@if(!empty($block->get('subtitle')))
-				@include('components.headings.normal', [
-					'type' => 2,
-					'heading' => $block->get('subtitle'),
-					'class' => 'p lg:h6 pt-4 lg:pt-11 px-5 lg:px-0',
-				])
-			@endif
-			{{-- Up to here --}}
+			@include('components.headings.collection', [
+				'titles' => $block->get('title'),
+				'title_color' => $block->get('text_color')
+			])
 			
 			@if(!empty($block->get('call_to_actions')))
-                <div class="flex flex-col lg:flex-row justify-center pt-4 lg:pt-7">
+                <div class="flex flex-col lg:flex-row justify-center pt-4 lg:pt-8">
                     @foreach($block->get('call_to_actions') as $item)
                         @php
                             $cta = $item->get('cta');
