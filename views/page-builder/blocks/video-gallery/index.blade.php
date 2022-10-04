@@ -34,7 +34,6 @@
 			@foreach($block->get('buttons')->get('buttons') as $button)
 				@include('components.buttons.default', [
 					'button' => $button,
-					'class' => 'disable-chevron font-bold',
 					'a_class' => 'px-4',
 				])
 			@endforeach

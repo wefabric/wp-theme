@@ -57,7 +57,6 @@
 			@foreach($block->get('buttons')->get('buttons') as $button)
 				@include('components.buttons.default', [
 					'button' => $button,
-					'class' => 'font-bold',
 					'a_class' => 'px-4',
 				])
 			@endforeach
