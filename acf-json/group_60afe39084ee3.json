@@ -3912,7 +3912,7 @@
                                         "20": "20%",
                                         "30": "30%"
                                     },
-                                    "default_value": "20%",
+                                    "default_value": 20,
                                     "allow_null": 0,
                                     "multiple": 0,
                                     "ui": 0,
@@ -5837,5 +5837,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1664876518
+    "modified": 1664892676
 }

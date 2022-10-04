@@ -1,4 +1,4 @@
-img, .image {
+img:not(.disable-rounded), .image:not(.disable-rounded) {
 	@apply rounded-2xl;
 }
 

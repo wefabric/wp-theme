@@ -81,6 +81,7 @@
 
 			'img_size' => $img_size ?? 'full',
 			'size_config' => $size_config,
+			'rounded' => $block->get('width') !== 'nomargin',
 		])
 	@endif
 
