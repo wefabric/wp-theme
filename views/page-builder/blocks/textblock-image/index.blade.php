@@ -23,6 +23,7 @@
 	
 	$image = $block->get('image');
 
+	$text_padding = '';
 	if($overlap) {
 		switch($image->get('height_desktop')) {
 			case '500px': $text_padding = 'lg:pt-20'; break;
@@ -31,6 +32,10 @@
 			case '800px': $text_padding = 'lg:pt-32'; break;
 			case '900px': $text_padding = 'lg:pt-36'; break;
 		}
+	}
+
+	switch ($block->get('styling')) {
+		case 'cta': $text_padding = ''; break; //remove padding-top
 	}
 @endphp
 
@@ -57,7 +62,7 @@
 		<div class="flex grow lg:order-2"></div>
 	@endif
 	
-	<div class="flex pt-4 @if($overlap) {{ $text_padding }} @endif w-full lg:{{ $text_width }} @if($image->get('position') == 'right') lg:order-1 @else lg:order-3 @endif
+	<div class="flex @if($overlap) {{ $text_padding }} @endif w-full lg:{{ $text_width }} @if($image->get('position') == 'right') lg:order-1 @else lg:order-3 @endif
 		@switch($image->get('vertical_position')) {{-- For aligning the text,when shorter than the image. --}}
 			@case('middle') lg:my-auto @break
 			@case('bottom') lg:mt-auto lg:mb-0 @break;

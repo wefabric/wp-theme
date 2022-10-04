@@ -994,7 +994,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -1333,7 +1333,7 @@
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -1349,12 +1349,36 @@
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
                             "theme_color": null,
                             "font_size": 14
+                        },
+                        {
+                            "key": "field_633bff5db7217",
+                            "label": "Styling opties",
+                            "name": "styling",
+                            "type": "select",
+                            "instructions": "Kies hier eventuele extra opties. Voor uitleg, zie Notion.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "cta": "Call to Action"
+                            },
+                            "default_value": false,
+                            "allow_null": 1,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
                         }
                     ],
                     "min": "",
@@ -5813,5 +5837,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1664874823
+    "modified": 1664876518
 }
