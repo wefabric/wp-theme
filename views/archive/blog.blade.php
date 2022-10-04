@@ -6,9 +6,7 @@
     </div>
 
 	@if(!is_front_page())
-		<div class="container mx-auto px-4 md:px-8 lg:px-20 md:mb-9 lg:mb-0">
-			@include('components.breadcrumbs.index', ['classes' => ''])
-		</div>
+		@include('components.breadcrumbs.index', ['classes' => ''])
 	@endif
 
 	<div class="container mx-auto">

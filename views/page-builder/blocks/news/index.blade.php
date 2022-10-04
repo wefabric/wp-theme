@@ -49,6 +49,7 @@
             'items' => $postList,
             'card_type' => 'newsitem',
             'mobile_loop_max' => 1,
+            'grid_spacing' => 'md:gap-8',
         ])
     @endif
 	
