@@ -32,7 +32,8 @@
 	
 			@include('components.headings.collection', [
 				'titles' => $block->get('title'),
-				'title_color' => $block->get('text_color')
+				'title_color' => $block->get('text_color'),
+				'disable_bottom_padding' => 'true'
 			])
 			
 			@if(!empty($block->get('call_to_actions')))

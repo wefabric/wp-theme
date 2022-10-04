@@ -98,8 +98,45 @@
 			@break
 		
 		@case('brand-documentation')
-			<div>
+			<div class="">
 				<div class="h6 text-center pb-10">Merk documentatie</div>
+				@php
+					$brand = [
+						'title' => 'INDEX Fixing Systems',
+						'image' => 1423,
+						'description' => 'KreQ biedt u de industriële bevestigingssystemen van INDEX Fixing Systems. INDEX levert totaaloplossingen aangepast aan de behoeften van de klant. De producten van INDEX Fixing Systems worden door onafhankelijke laboratoria gekeurd en gecertificeerd en staan daarom garant voor kwaliteit.',
+						'files' => [
+							[
+								'type' => 'catalogus',
+								'name' => 'Catalogus 2021',
+								'image' => '1430',
+								'file' => '1429',
+							],
+							[
+								'type' => 'de gids',
+								'name' => 'Constructie-houtschroeven',
+								'image' => '',
+								'file' => '',
+							],
+							[
+								'type' => 'flyer',
+								'name' => 'Brandwerendheid verbinders',
+								'image' => '',
+								'file' => '',
+							],
+							[
+								'type' => 'catalogus',
+								'name' => 'Catalogus 2021',
+								'image' => '',
+								'file' => '',
+							],
+						],
+					];
+				@endphp
+				@include('components.brand-documentation.index', [
+					'brand' => $brand,
+					'bg_color' => 'bg-gray-100',
+				])
 			</div>
 			@break
 		
