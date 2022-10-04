@@ -5,13 +5,12 @@
         {!! themeHeader()->render($page->ID) !!}
     </div>
 
-	@if(!is_front_page())
-		@include('components.breadcrumbs.index', ['classes' => ''])
-	@endif
-
-	<div class="container mx-auto">
-		<h2 class="mx-auto text-center uppercase text-primary-dark my-9">
-			Keep in touch
+	@include('components.breadcrumbs.index', ['classes' => ''])
+	@include('components.news.category-links')
+	
+	<div class="container px-8 mx-auto">
+		<h2 class="my-20">
+			Kennisbank
 		</h2>
 	</div>
 
@@ -36,9 +35,11 @@
 			</div>
 		</div>
 	
+{{--
 		<div class="bg-primary-dark absolute w-full h-96 bottom-0 left-0 -z-50">
 			//bottom colored bar.
 		</div>
+--}}
 	</section>
 	
     <div class="page-builder">
