@@ -67,6 +67,7 @@ module.exports = {
           '21': ['1.3125rem', theme('lineHeight.normal')],
           '26': ['1.625rem', theme('lineHeight.normal')],
           '31': ['1.9375rem', theme('lineHeight.normal')],
+          '36': ['2.25rem', theme('lineHeight.normal')],
           '41': ['2.5625rem', theme('lineHeight.normal')],
           '51': ['3.1875rem', theme('lineHeight.normal')],
 
