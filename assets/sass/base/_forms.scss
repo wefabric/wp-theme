@@ -1,37 +1,68 @@
-[type='text'], [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
-  @apply md:text-sm border-0 bg-input-background text-black w-full;
-  padding-top: 0.65rem;
-  padding-bottom: 0.65rem;
-
-  &:focus{
-    @apply shadow-none border-2 outline-none ring-offset-0 ring-offset-primary-light ring-primary-light border-none;
-  }
-
-  &:read-only {
-    outline: none;
-    box-shadow: none;
-    cursor: default;
-  }
-
-  &.required {
-    @apply text-black;
-  }
+.form {
+	[type='text'], [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
+		@apply border-0 bg-input-background text-black w-full rounded-2xl p-3 px-6 font-normal;
+		
+		&:focus{
+			@apply shadow-none border-2 outline-none ring-offset-0 ring-offset-primary-light ring-primary-light border-none;
+		}
+		
+		&:read-only {
+			outline: none;
+			box-shadow: none;
+			cursor: default;
+		}
+		
+		&.required {
+			@apply text-black;
+		}
+	}
+	
+	input[type='number']::-webkit-inner-spin-button,
+	input[type='number']::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	
+	[type='checkbox'], [type='radio'] {
+		@apply text-secondary ring-offset-0 outline-none;
+	}
+	
+	[type="submit"] {
+		@apply mt-9 h-12;
+		@apply bg-secondary leading-relaxed #{!important};
+	}
+	
+	label {
+		@apply text-base font-bold;
+	}
+	
+	.wpcf7-acceptance {
+		label {
+			@apply font-normal;
+		}
+	}
+	
+	::placeholder {
+		@apply text-base text-primary-color-light italic p-6;
+	}
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-[type='checkbox'], [type='radio'] {
-  @apply text-secondary ring-offset-0 outline-none;
-}
-
-label {
-  @apply text-sm leading-none font-light;
-}
-
-::placeholder {
-  @apply text-sm font-light text-primary-light italic;
+.mailchimp-form {
+	[type='email'] {
+		@apply border-0 text-black w-full text-sm p-4;
+		
+		&:focus{
+			@apply shadow-none outline-none;
+		}
+		
+		&:read-only {
+			outline: none;
+			box-shadow: none;
+			cursor: default;
+		}
+		
+		&.required {
+			@apply text-black;
+		}
+	}
 }

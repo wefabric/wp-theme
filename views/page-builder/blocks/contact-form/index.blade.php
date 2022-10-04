@@ -9,11 +9,13 @@
     }
 	*/
 @endphp
-<div class="container mx-auto w-full lg:{{ $block->get('width') }} @if($block->get('show_address', false)) bg-{{ $block->get('bg_color') }} text-{{ $block->get('text_color') }} @endif pt-4 lg:pt-8">
+<div class="container mx-auto w-full lg:{{ $block->get('width') }} @if($block->get('show_address', false)) bg-{{ $block->get('bg_color') }} text-{{ $block->get('text_color') }} @endif">
 
-    <div class="mt-6 mt-md-10 container position-relative z-index-2 mx-auto">
+    <div class="container position-relative z-index-2 mx-auto">
         <div class="relative @if($block->get('show_address', false)) md:grid md:grid-cols-2 gap-8 @endif" >
-            <div class="@if($block->get('show_address', false) === false && $block->get('fill_color')) bg-{{ $block->get('fill_color') }} p-12 @endif @if($block->get('show_address', false) === false) lg:{{ $block->get('width_form') }} @endif bg-{{ str_replace('-color', '', $block->get('background_color', 'bg_color')) }} rounded-lg  text-{{ $block->get('text_color') }}">
+            <div class="@if(!$block->get('show_address', false) && $block->get('fill_color')) bg-{{ $block->get('fill_color') }} p-12 @endif
+            			@if(!$block->get('show_address', false)) lg:{{ $block->get('width_form') }} @endif
+            			bg-{{ str_replace('-color', '', $block->get('background_color', 'bg_color')) }} rounded-lg  text-{{ $block->get('text_color') }}">
 	
 				@if($block->get('title')->get('show_separate_title'))
 					@include('components.headings.collection', [
@@ -21,7 +23,9 @@
 					])
 				@endif
 				
-                {!! $block->get('form') !!}
+				<div class="form">
+	                {!! $block->get('form') !!}
+				</div>
 
                 @if($block->get('image') && $block->get('image')->get('image'))
                     <div class="absolute -right-2 md:-right-6 md:-bottom-16">

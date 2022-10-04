@@ -79,7 +79,14 @@
 	lg:grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 lg:grid-cols-6
 	lg:grid-cols-7 lg:grid-cols-8 lg:grid-cols-9 lg:grid-cols-10 lg:grid-cols-11 lg:grid-cols-12
 	
+	col-span-3 col-span-4
+	
 	gap-4 gap-8 gap-12
+	md:gap-4 md:gap-8 md:gap-12
+	grid-flow-row-dense
+	
+	flex
+	grow shrink
 	
 	object-contain object-cover object-fill object-none object-scale-down
 	
@@ -89,6 +96,8 @@
 	
 	lg:pt-20 lg:pt-24 lg:pt-28 lg:pt-32 lg:pt-36
 	lg:py-20 lg:py-36
+	
+	mr-16
 	
 	justify-start justify-center justify-end justify-self-start justify-self-center justify-self-end
 	text-left text-center text-right text-justify
