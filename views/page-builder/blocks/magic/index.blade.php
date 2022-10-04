@@ -65,8 +65,37 @@
 			@break
 		
 		@case('categories')
-			<div>
+			<div class="flex flex-col justify-center">
 				<div class="h6 text-center pb-10">Uitgelichte categorieen</div>
+				
+				@php
+					$categories = [
+						[
+							'title' => 'Draadnagels',
+							'image' => '1435',
+						],
+						[
+							'title' => 'Nagelkaas',
+							'image' => '1434',
+						],
+						[
+							'title' => 'Spijkers',
+							'image' => '1433',
+						],
+					];
+				@endphp
+				@include('components.slider.grid', [
+					'items' => $categories,
+					'card_type' => 'category',
+					'grid_spacing' => 'md:gap-12'
+				])
+				
+				@include('components.buttons.default', [
+					'href' => '#',
+					'text' => 'Alles producten',
+					'a_class' => 'mx-auto pt-12',
+					'colors' => 'bg-black text-white',
+				])
 			</div>
 			@break
 		
