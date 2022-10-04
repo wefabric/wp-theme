@@ -40,8 +40,8 @@
 		<div class="image {{ $height }} {{ $width }} {{ $card_classes ?? '' }} flex flex-col items-center justify-center relative {{ $image_class ?? 'bg-cover bg-center' }} bg-no-repeat"
 			style="background-image: url('{{ wp_get_attachment_image_url($item->get('image'), $img_size) }}')">
 			
-			@if(true)
-				<div class="bg-black opacity-20 z-1 absolute h-full w-full top-0 left-0 rounded-lg"></div> {{-- black shade over image. --}}
+			@if($item->get('shadow') > 0)
+				<div class="bg-black opacity-{{ $item->get('shadow') }} z-1 absolute h-full w-full top-0 left-0 rounded-lg"></div> {{-- black shade over image. --}}
 			@endif
 	
 			@if($img_size !== 'logo-slider') {{-- If logo-slider, that means this image is part of a logo-slider, then only show the image and no button. --}}

@@ -3769,7 +3769,7 @@
                             "collapsed": "",
                             "min": 1,
                             "max": 9,
-                            "layout": "table",
+                            "layout": "block",
                             "button_label": "",
                             "sub_fields": [
                                 {
@@ -3781,7 +3781,7 @@
                                     "required": 1,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "20",
+                                        "width": "33",
                                         "class": "",
                                         "id": ""
                                     },
@@ -3805,7 +3805,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "20",
+                                        "width": "33",
                                         "class": "",
                                         "id": ""
                                     },
@@ -3824,7 +3824,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "20",
+                                        "width": "33",
                                         "class": "",
                                         "id": ""
                                     },
@@ -3843,7 +3843,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "20",
+                                        "width": "33",
                                         "class": "",
                                         "id": ""
                                     },
@@ -3859,7 +3859,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "20",
+                                        "width": "33",
                                         "class": "",
                                         "id": ""
                                     },
@@ -3868,6 +3868,33 @@
                                     "allow_null": 1,
                                     "allow_archives": 1,
                                     "multiple": 0
+                                },
+                                {
+                                    "key": "field_633bf8ae52d25",
+                                    "label": "Zwarte schaduw?",
+                                    "name": "shadow",
+                                    "type": "select",
+                                    "instructions": "Wil je een zwarte schaduw over de hele afbeelding, waardoor deze net wat donkerder wordt? Geef hier aan hoeveel procent doorzichtig de schaduw moet zijn.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "0": "0% (geen)",
+                                        "10": "10%",
+                                        "20": "20%",
+                                        "30": "30%"
+                                    },
+                                    "default_value": "20%",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": ""
                                 }
                             ]
                         },
@@ -5786,5 +5813,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1664378115
+    "modified": 1664874823
 }
