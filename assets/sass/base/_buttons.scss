@@ -1,324 +1,324 @@
 @mixin btn {
-  @apply relative text-sm transition-all tracking-wider rounded-full;
+	@apply relative text-sm transition-all tracking-wider rounded-full;
 	
 	@apply no-underline #{!important};
 	
-  line-height: 50px;
-  padding: 0 36px 0 20px;
-  position: relative;
-  display: inline-block;
-  color: #fff; //text-color white
+	line-height: 50px;
+	padding: 0 36px 0 20px;
+	position: relative;
+	display: inline-block;
+	color: #fff; //text-color white
 }
 
 @layer base {
-  .btn {
-    @include btn;
-
-    :hover {
-      @apply cursor-pointer;
-    }
-
-    @screen lg {
-      @apply text-md;
-      line-height: 70px;
-      padding: 0 54px 0 41px;
-    }
-
-    @each $themeColor in $themeColors {
-      &.btn-#{$themeColor} {
-        @apply bg-#{$themeColor};
-
-        &:hover {
-          @apply bg-#{$themeColor}-dark;
-        }
-      }
-
-      &.btn-#{$themeColor}-light {
-        @apply bg-#{$themeColor}-light;
-
-        &:hover {
-          @apply bg-#{$themeColor};
-        }
-      }
-
-      &.btn-#{$themeColor}-dark {
-        @apply bg-#{$themeColor}-dark;
-
-        &:hover {
-          @apply bg-#{$themeColor};
-        }
-      }
-
-      &.btn-#{$themeColor}-full {
-        @apply bg-#{$themeColor};
-
-        &:hover {
-          @apply bg-#{$themeColor}-dark;
-        }
-      }
-    }
-
-    &.btn-white {
-      @apply bg-white;
-      &:after {
-        @apply transition-all;
-        font-weight: 700;
-        content: '\f0da' !important;
-        font-family: $fa-font-family;
-      }
-    }
+	.btn {
+		@include btn;
+		
+		:hover {
+			@apply cursor-pointer;
+		}
+		
+		@screen lg {
+			@apply text-md;
+			line-height: 70px;
+			padding: 0 54px 0 41px;
+		}
+		
+		@each $themeColor in $themeColors {
+			&.btn-#{$themeColor} {
+				@apply bg-#{$themeColor};
+				
+				&:hover {
+					@apply bg-#{$themeColor}-dark;
+				}
+			}
+			
+			&.btn-#{$themeColor}-light {
+				@apply bg-#{$themeColor}-light;
+				
+				&:hover {
+					@apply bg-#{$themeColor};
+				}
+			}
+			
+			&.btn-#{$themeColor}-dark {
+				@apply bg-#{$themeColor}-dark;
+				
+				&:hover {
+					@apply bg-#{$themeColor};
+				}
+			}
+			
+			&.btn-#{$themeColor}-full {
+				@apply bg-#{$themeColor};
+				
+				&:hover {
+					@apply bg-#{$themeColor}-dark;
+				}
+			}
+		}
+		
+		&.btn-white {
+			@apply bg-white;
+			&:after {
+				@apply transition-all;
+				font-weight: 700;
+				content: '\f0da' !important;
+				font-family: $fa-font-family;
+			}
+		}
+		
+		&.btn-black {
+			@apply bg-black;
+			&:after {
+				@apply transition-all;
+				font-weight: 700;
+				content: '\f0da' !important;
+				font-family: $fa-font-family;
+			}
+		}
+		
+		&.btn-transparent {
+			@apply bg-none;
+			&:after {
+				@apply transition-all;
+				font-weight: 700;
+				content: '\f0da' !important;
+				font-family: $fa-font-family;
+				top: 34%;
+			}
+		}
+		
+		&:after {
+			@apply transition-all;
+			@extend .far;
+			font-weight: 700;
+			content: '\f0da';
+			font-family: $fa-font-family;
+			right: 20px;
+			top: 36%;
+			position: absolute;
+			display: block;
+			height: 100%;
+			line-height: 0;
+		}
+		
+		&:hover {
+			&:after {
+				right: 15px;
+			}
+		}
+		
+		&.disable-chevron {
+			padding: 12px 24px;
+			
+			&:after {
+				display: none !important;
+			}
+		}
+		
+		&.search {
+			&:after {
+				content: '\f002' !important;
+			}
+			
+			&.btn-tiny{
+				&:hover {
+					&:after {
+						right: 12px;
+					}
+				}
+			}
+			
+			&.btn-small, &.btn-large{
+				&:hover {
+					&:after {
+						right: 15px;
+					}
+				}
+			}
+			
+			
+		}
+		
+		&.reversed-chevron {
+			padding: 0 20px 0 36px;
+			
+			@screen lg {
+				padding: 0 41px 0 54px;
+			}
+			
+			&:after {
+				left: 20px;
+				right: auto;
+				transform: scaleX(-1);
+			}
+			
+			&:hover {
+				&:after {
+					left: 15px;
+					right: auto;
+				}
+			}
+		}
+		
+		
+		&.btn-tiny {
+			@apply text-xs;
+			padding: 3px 25px 4px 18px;
+			
+			&:after {
+				@apply text-xs;
+				line-height: 0;
+				right: 12px;
+			}
+			
+			&.reversed-chevron {
+				padding: 3px 18px 4px 25px;
+				
+				&:after {
+					left: 12px;
+					right: auto;
+					transform: scaleX(-1);
+				}
+				
+				&:hover {
+					&:after {
+						left: 7px;
+						right: auto;
+					}
+				}
+			}
+			
+			&:hover {
+				&:after {
+					right: 7px;
+				}
+				
+			}
+		}
+		
+		
+		&.btn-small {
+			@apply text-base;
+			padding: 12px 30px 14px 22px;
+			
+			&:after {
+				@apply text-sm;
+				line-height: 0.75rem;
+				right: 15px;
+			}
+			
+			&.reversed-chevron {
+				padding: 12px 22px 14px 30px;
+				
+				&:after {
+					left: 15px;
+					right: auto;
+					transform: scaleX(-1);
+				}
+				
+				&:hover {
+					&:after {
+						left: 10px;
+						right: auto;
+					}
+				}
+			}
+			
+			&.disable-chevron {
+				padding: 12px 30px;
+				
+				&:after {
+					display: none !important;
+				}
+			}
+			
+			&:hover {
+				&:after {
+					right: 10px;
+				}
+			}
+		}
+		
+		
+		
+		&.btn-large {
+			
+			@apply text-md;
+			padding: 12px 37px 13px 24px;
+			border-radius: 28px;
+			
+			@screen lg {
+				@apply text-lg;
+				padding: 16px 50px 17px 32px;
+				border-radius: 37px;
+				
+				&.reversed-chevron {
+					padding: 16px 32px 17px 50px;
+				}
+				
+			}
+			
+			
+			&:after {
+				@apply text-lg;
+				line-height: 0;
+				right: 15px;
+			}
+			
+			&:hover {
+				&:after {
+					right: 10px;
+				}
+			}
+			
+			&.reversed-chevron {
+				padding: 12px 24px 13px 37px;
+				
+				&:after {
+					left: 15px;
+					right: auto;
+					transform: scaleX(-1);
+				}
+				
+				&:hover {
+					&:after {
+						left: 10px;
+						right: auto;
+					}
+				}
+			}
+		}
+		
+	}
 	
-	  &.btn-black {
-		  @apply bg-black;
-		  &:after {
-			  @apply transition-all;
-			  font-weight: 700;
-			  content: '\f0da' !important;
-			  font-family: $fa-font-family;
-		  }
-	  }
-	  
-    &.btn-transparent {
-      @apply bg-none;
-      &:after {
-        @apply transition-all;
-        font-weight: 700;
-        content: '\f0da' !important;
-        font-family: $fa-font-family;
-        top: 34%;
-      }
-    }
-
-    &:after {
-      @apply transition-all;
-      @extend .far;
-      font-weight: 700;
-      content: '\f0da';
-      font-family: $fa-font-family;
-      right: 20px;
-      top: 36%;
-      position: absolute;
-      display: block;
-      height: 100%;
-      line-height: 0;
-    }
-
-    &:hover {
-      &:after {
-        right: 15px;
-      }
-    }
-
-    &.disable-chevron {
-      padding: 12px 24px;
-
-      &:after {
-        display: none !important;
-      }
-    }
-
-    &.search {
-      &:after {
-        content: '\f002' !important;
-      }
-
-      &.btn-tiny{
-        &:hover {
-          &:after {
-            right: 12px;
-          }
-        }
-      }
-
-      &.btn-small, &.btn-large{
-        &:hover {
-          &:after {
-            right: 15px;
-          }
-        }
-      }
-
-
-    }
-
-    &.reversed-chevron {
-      padding: 0 20px 0 36px;
-
-      @screen lg {
-        padding: 0 41px 0 54px;
-      }
-
-      &:after {
-        left: 20px;
-        right: auto;
-        transform: scaleX(-1);
-      }
-
-      &:hover {
-        &:after {
-          left: 15px;
-          right: auto;
-        }
-      }
-    }
-
-
-    &.btn-tiny {
-      @apply text-xs;
-      padding: 3px 25px 4px 18px;
-
-      &:after {
-        @apply text-xs;
-        line-height: 0;
-        right: 12px;
-      }
-
-      &.reversed-chevron {
-        padding: 3px 18px 4px 25px;
-
-        &:after {
-          left: 12px;
-          right: auto;
-          transform: scaleX(-1);
-        }
-
-        &:hover {
-          &:after {
-            left: 7px;
-            right: auto;
-          }
-        }
-      }
-
-      &:hover {
-        &:after {
-          right: 7px;
-        }
-
-      }
-    }
-
-
-    &.btn-small {
-      @apply text-base;
-      padding: 12px 30px 14px 22px;
-
-      &:after {
-        @apply text-sm;
-        line-height: 0.75rem;
-        right: 15px;
-      }
-
-      &.reversed-chevron {
-        padding: 12px 22px 14px 30px;
-
-        &:after {
-          left: 15px;
-          right: auto;
-          transform: scaleX(-1);
-        }
-
-        &:hover {
-          &:after {
-            left: 10px;
-            right: auto;
-          }
-        }
-      }
-
-      &.disable-chevron {
-        padding: 12px 30px;
-
-        &:after {
-          display: none !important;
-        }
-      }
-
-      &:hover {
-        &:after {
-          right: 10px;
-        }
-      }
-    }
-
-
-
-    &.btn-large {
-
-      @apply text-md;
-      padding: 12px 37px 13px 24px;
-      border-radius: 28px;
-
-      @screen lg {
-        @apply text-lg;
-        padding: 16px 50px 17px 32px;
-        border-radius: 37px;
-
-        &.reversed-chevron {
-          padding: 16px 32px 17px 50px;
-        }
-
-      }
-
-
-      &:after {
-        @apply text-lg;
-        line-height: 0;
-        right: 15px;
-      }
-
-      &:hover {
-        &:after {
-          right: 10px;
-        }
-      }
-
-      &.reversed-chevron {
-        padding: 12px 24px 13px 37px;
-
-        &:after {
-          left: 15px;
-          right: auto;
-          transform: scaleX(-1);
-        }
-
-        &:hover {
-          &:after {
-            left: 10px;
-            right: auto;
-          }
-        }
-      }
-    }
-
-  }
-
-  select, input {
-    &.input-lg {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      -o-appearance: none;
-      appearance: none;
-      padding-right: 37px;
-    }
-
-    + i.fa {
-      float: right;
-      /* margin-top: -37px; */
-      transform: translateY(-150%);
-      margin-right: 15px;
-      pointer-events: none;
-      font-size: 25px !important;
-      color: #d2d3d5;
-    }
-
-    + button.fa-search {
-      float: right;
-      transform: translateY(-46px);
-      margin-right: 15px;
-      font-size: 25px !important;
-      color: #d2d3d5;
-      background-color: transparent;
-    }
-  }
+	select, input {
+		&.input-lg {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			-o-appearance: none;
+			appearance: none;
+			padding-right: 37px;
+		}
+		
+		+ i.fa {
+			float: right;
+			/* margin-top: -37px; */
+			transform: translateY(-150%);
+			margin-right: 15px;
+			pointer-events: none;
+			font-size: 25px !important;
+			color: #d2d3d5;
+		}
+		
+		+ button.fa-search {
+			float: right;
+			transform: translateY(-46px);
+			margin-right: 15px;
+			font-size: 25px !important;
+			color: #d2d3d5;
+			background-color: transparent;
+		}
+	}
 }
