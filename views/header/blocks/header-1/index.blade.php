@@ -16,7 +16,7 @@
 @endphp
 
 <div class="header header-1 w-full @if(!empty($bg)) {{ $bg }} @endif" @if(!empty($gradient)) style="{{ $gradient }}" @endif>
-    <div class="image py-15 lg:{{ $block->get('vertical_space') }} mx-4 lg:mx-20 bg-center bg-cover bg-no-repeat z-50 relative rounded-lg" style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
+    <div class="image py-15 lg:{{ $block->get('vertical_space') }} mx-4 lg:mx-20 bg-center bg-cover bg-no-repeat z-50 relative" style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
 		<div class="bg-black opacity-20 -z-1 absolute h-full w-full top-0 left-0 rounded-lg"></div> {{-- black shade over image. --}}
 	
 		@if(!empty($videoUrl))
@@ -51,7 +51,7 @@
                         @elseif($cta->get('type') === 'link')
                             @include('components.buttons.default', [
 	                            'button' => $cta,
-                                'class' => 'btn-transparent'
+                                'class' => 'btn-transparent text-white'
                             ])
                         @endif
                     @endforeach

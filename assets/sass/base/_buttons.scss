@@ -71,7 +71,7 @@
 		}
 		
 		&.btn-transparent {
-			@apply bg-none text-black;
+			@apply bg-none;
 			&:after {
 				top: 34%;
 			}
