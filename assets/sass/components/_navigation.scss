@@ -11,44 +11,56 @@
             }
         }
 	
-		.sub-menu:hover { //todo group-hover
-			@apply bg-white shadow-lg rounded-xl p-3 flex-col;
-			@apply flex #{!important};
-			z-index: 66;
-			
-			.menu-item {
-				width: max-content;
-			}
-		}
-	
 		li {
-            @apply inline-block hover:underline md:px-4; //font-bold
+            @apply inline-block md:px-4;
             padding-right: 1rem;
             @media only screen and (max-width: 1023px) {
                 padding-bottom: 1rem;
             }
         }
+		
+		.current_page_item {
+			@apply font-bold text-primary-dark;
+			
+			.sub-menu {
+				@apply font-normal;
+			}
+		}
 
         .menu-item-has-children {
             position: relative;
 
             > .sub-menu {
-                display: none;
-                position: absolute;
-
-                .menu-item-has-children {
-                    .sub-menu {
-                        right: -100%;
-                        top: 0;
-                    }
-                }
+				
+				li {
+					display: list-item !important;
+					list-style-type: disc;
+					margin-left: 20px;
+				}
+				
+				@screen lg {
+					display: none;
+					position: absolute;
+	
+					.menu-item-has-children {
+						.sub-menu {
+							right: -100%;
+							top: 0;
+						}
+					}
+				}
             }
 
-            &:hover {
-                > .sub-menu {
-                    display: block;
-                }
-            }
+            &:hover > .sub-menu {
+				@screen md {
+					@apply bg-white shadow-lg rounded-xl p-3 flex flex-col;
+					z-index: 66;
+	
+					.menu-item {
+						width: max-content;
+					}
+				}
+			}
         }
     }
 }
