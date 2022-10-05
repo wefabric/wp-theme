@@ -6,12 +6,15 @@
     </div>
 
 	@include('components.breadcrumbs.index', ['classes' => ''])
-	@include('components.news.category-links')
 	
-	<div class="container px-8 mx-auto">
-		<h2 class="my-20">
-			Kennisbank
-		</h2>
+	<div class="container px-8 py-12 lg:py-24 mx-auto">
+		@include('components.headings.normal', [
+			'type' => 'h2',
+			'heading' => 'Kennisbank',
+			'class' => 'pb-10 lg:pb-24',
+		])
+		
+		@include('components.news.category-links')
 	</div>
 
 	<section class="news-archive-grid relative pb-12">

@@ -96,6 +96,7 @@
 	
 	lg:pt-20 lg:pt-24 lg:pt-28 lg:pt-32 lg:pt-36
 	lg:py-20 lg:py-36
+	pb-10 lg:pb-24
 	
 	mr-16
 	
