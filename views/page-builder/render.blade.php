@@ -1,5 +1,5 @@
 @php
-	$debug = true;
+	$debug = false;
 @endphp
 
 @foreach($blocks as $block)
