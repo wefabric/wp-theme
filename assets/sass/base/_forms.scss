@@ -23,6 +23,10 @@
 		margin: 0;
 	}
 	
+	textarea {
+		height: 9rem !important;
+	}
+	
 	[type='checkbox'], [type='radio'] {
 		@apply text-secondary ring-offset-0 outline-none;
 	}
@@ -36,14 +40,18 @@
 		@apply text-base font-bold;
 	}
 	
-	.wpcf7-acceptance {
+	.wpcf7-acceptance { //, .wpcf7-checkbox
 		label {
 			@apply font-normal;
 		}
 	}
 	
+	.wpcf7-spinner { //strip the mx-6 from it, so that the send-button can be moved almost(*) entirely to the right border.
+		margin: 0;
+	}
+	
 	::placeholder {
-		@apply text-base text-primary-color-light italic p-6;
+		@apply text-base text-gray-400;
 	}
 }
 

@@ -7,6 +7,8 @@
     w-2/3 lg:w-2/3
     w-3/4 lg:w-3/4
     w-4/5 lg:w-4/5
+	w-[86%] lg:w-[86%]
+	w-11/12 lg:w-11/12
 
 {{-- The following are for the specific 'empty space' block. --}}
     h-[10px] lg:h-[10px]
@@ -79,7 +81,7 @@
 	lg:grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 lg:grid-cols-6
 	lg:grid-cols-7 lg:grid-cols-8 lg:grid-cols-9 lg:grid-cols-10 lg:grid-cols-11 lg:grid-cols-12
 	
-	col-span-3 col-span-4
+	col-span-2 col-span-3 col-span-4
 	
 	gap-4 gap-8 gap-12
 	md:gap-4 md:gap-8 md:gap-12

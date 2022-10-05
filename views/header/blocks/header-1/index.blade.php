@@ -28,11 +28,11 @@
 			</div>
 		@endif
 
-        <div class="container mx-auto w-full lg:w-3/4 py-14 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
+        <div class="container mx-auto w-full @if($block->get('vertical_space') == 'py-36') lg:w-3/4 @else px-20 @endif py-14 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
 	
 			@include('components.headings.collection', [
 				'titles' => $block->get('title'),
-				'title_color' => $block->get('text_color'),
+				'title_color' => $block->get('text_color') ?? '',
 				'disable_bottom_padding' => 'true'
 			])
 			
