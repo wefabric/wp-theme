@@ -7,7 +7,7 @@
 
 	@include('components.breadcrumbs.index', ['classes' => ''])
 	
-	<div class="container px-8 py-12 lg:py-24 mx-auto">
+	<div class="container px-8 pt-12 lg:pt-24 mx-auto">
 		@include('components.headings.normal', [
 			'type' => 'h2',
 			'heading' => 'Kennisbank',
@@ -17,8 +17,8 @@
 		@include('components.news.category-links')
 	</div>
 
-	<section class="news-archive-grid relative pb-12">
-		<div class="container mx-auto my-9">
+	<section class="news-archive-grid relative">
+		<div class="container mx-auto my-12 lg:my-24">
 			<div class="md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
 				@loop
 					@include('components.cards.newsitem', [
@@ -27,12 +27,13 @@
 				@endloop
 			</div>
 		
-			<div class="pagination text-center mt-12">
+			<div class="pagination text-center mt-12 lg:mt-24">
 				@php
 					the_posts_pagination( [
-						'mid_size'  => 2,
-						'prev_text' => __( '<', 'textdomain' ),
-						'next_text' => __( '>', 'textdomain' ),
+						'mid_size'  => 1,
+						'prev_next' => false,
+//						'prev_text' => __( '<', 'textdomain' ),
+//						'next_text' => __( '>', 'textdomain' ),
 					]);
 				@endphp
 			</div>

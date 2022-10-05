@@ -42,3 +42,28 @@
         }
     }
 }
+
+.nav-links { //pagenumbers at the bottom of the news (posts) page
+
+	a, span {
+		@apply rounded-full inline-block w-12 h-12 pt-3 mr-3 text-base font-bold;
+	}
+	
+	span.current {
+		@apply bg-primary-dark text-white;
+	}
+	
+	span.dots {
+		@apply bg-gray-100 text-black;
+	}
+	
+	a.page-numbers {
+		@apply bg-gray-100 text-black hover:bg-primary-dark hover:text-white;
+		@apply no-underline #{!important};
+	}
+	
+	a.next, a.prev {
+		@apply rounded-full bg-gray-100 hover:bg-primary-dark hover:text-white;
+	}
+	
+}
