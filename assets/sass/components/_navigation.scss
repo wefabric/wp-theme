@@ -11,7 +11,7 @@
             }
         }
 	
-		.sub-menu {
+		.sub-menu:hover { //todo group-hover
 			@apply bg-white shadow-lg rounded-xl p-3 flex-col;
 			@apply flex #{!important};
 			z-index: 66;
