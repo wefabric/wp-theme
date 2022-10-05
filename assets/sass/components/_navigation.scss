@@ -10,8 +10,18 @@
                 flex-direction: column;
             }
         }
-
-        li {
+	
+		.sub-menu {
+			@apply bg-white shadow-lg rounded-xl p-3 flex-col;
+			@apply flex #{!important};
+			z-index: 66;
+			
+			.menu-item {
+				width: max-content;
+			}
+		}
+	
+		li {
             @apply inline-block hover:underline md:px-4; //font-bold
             padding-right: 1rem;
             @media only screen and (max-width: 1023px) {
