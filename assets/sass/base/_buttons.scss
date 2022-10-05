@@ -59,32 +59,20 @@
 		}
 		
 		&.btn-white {
-			@apply bg-white;
-			&:after {
-				@apply transition-all;
-				font-weight: 700;
-				content: '\f0da' !important;
-				font-family: $fa-font-family;
-			}
+			@apply bg-white text-black;
 		}
 		
 		&.btn-black {
-			@apply bg-black;
-			&:after {
-				@apply transition-all;
-				font-weight: 700;
-				content: '\f0da' !important;
-				font-family: $fa-font-family;
-			}
+			@apply bg-black text-white;
+		}
+		
+		&.btn-gray {
+			@apply bg-gray-100 text-white;
 		}
 		
 		&.btn-transparent {
-			@apply bg-none;
+			@apply bg-none text-black;
 			&:after {
-				@apply transition-all;
-				font-weight: 700;
-				content: '\f0da' !important;
-				font-family: $fa-font-family;
 				top: 34%;
 			}
 		}
@@ -92,8 +80,8 @@
 		&:after {
 			@apply transition-all;
 			@extend .far;
-			font-weight: 700;
-			content: '\f0da';
+			font-weight: 700 !important;
+			content: '\f0da' !important;
 			font-family: $fa-font-family;
 			right: 20px;
 			top: 36%;
@@ -241,8 +229,6 @@
 			}
 		}
 		
-		
-		
 		&.btn-large {
 			
 			@apply text-md;
@@ -257,9 +243,7 @@
 				&.reversed-chevron {
 					padding: 16px 32px 17px 50px;
 				}
-				
 			}
-			
 			
 			&:after {
 				@apply text-lg;
