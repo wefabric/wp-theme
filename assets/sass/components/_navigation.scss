@@ -14,15 +14,13 @@
         }
 	
 		li {
-            @apply inline-block md:px-4;
-            padding-right: 1rem;
-            @media only screen and (max-width: 1023px) {
-                padding-bottom: 1rem;
-            }
+            @apply inline-block pr-1 pb-1;
         }
 		
 		.current_page_item {
-			@apply font-bold text-primary-dark;
+			>a {
+				@apply font-bold text-primary-dark;
+			}
 			
 			.sub-menu {
 				@apply font-normal;
@@ -31,14 +29,16 @@
 
         .menu-item-has-children {
             position: relative;
-			padding-bottom: 25px; // to allow someone to hover the menu, and then go down to the submenu without the latter closing
+			
+			@screen lg {
+				padding-bottom: 25px; // to allow someone to hover the menu, and then go down to the submenu without the latter closing
+			}
 			
             > .sub-menu {
 				// Do something to add the triangle pointing up
 				
 				li {
 					display: list-item !important;
-					list-style-type: disc;
 					margin-left: 20px;
 				}
 				
