@@ -1,12 +1,14 @@
 .main-navigation {
     .menu {
         @apply flex flex-row w-full;
+		margin-bottom: -25px; // to negate the .menu-item-has-children { padding-bottom }
 
         > ul {
             display: flex;
-            flex-direction: row;
             justify-content: center;
-            @media only screen and (max-width: 1023px) {
+            flex-direction: row;
+			
+			@media only screen and (max-width: 1023px) {
                 flex-direction: column;
             }
         }
@@ -29,8 +31,10 @@
 
         .menu-item-has-children {
             position: relative;
-
+			padding-bottom: 25px; // to allow someone to hover the menu, and then go down to the submenu without the latter closing
+			
             > .sub-menu {
+				// Do something to add the triangle pointing up
 				
 				li {
 					display: list-item !important;
@@ -39,26 +43,36 @@
 				}
 				
 				@screen lg {
-					display: none;
-					position: absolute;
-	
-					.menu-item-has-children {
-						.sub-menu {
-							right: -100%;
-							top: 0;
-						}
+					@apply shadow-lg shadow-gray-400;
+					display: none; //hide when not hovered.
+				
+					li {
+						list-style-type: none;
+						margin-left: 0;
 					}
 				}
             }
 
             &:hover > .sub-menu {
-				@screen md {
-					@apply bg-white shadow-lg rounded-xl p-3 flex flex-col;
+				@screen lg {
+					@apply bg-white rounded-xl p-3 flex flex-col;
 					z-index: 66;
+					width: calc(100% + 100px); // https://stackoverflow.com/questions/899107/ - This is to allow enough space for items to become bold when hovered, without it expanding the submenu width. (remove it and see what happens)
+					position: absolute;
+					left: -50%;
+					top: 65px;
 	
 					.menu-item {
 						width: max-content;
 					}
+					
+					//.menu-item-has-children {
+					//	.sub-menu {
+					//		right: -100%;
+					//		top: 0;
+					//	}
+					//}
+					
 				}
 			}
         }
