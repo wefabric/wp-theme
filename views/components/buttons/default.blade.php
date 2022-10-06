@@ -33,7 +33,7 @@
         'alt' => $alt ?? $text,
         'rel' => $rel ?? '',
         'target' => $target ?? '',
-        'class' => $a_class ?? '',
+        'class' => ($a_class ?? ''). ' no-underline', //button should by default not have underline.
     ])
         <span class="btn {{ $size ?? 'btn-small' }} {{ $colors }} font-bold {{ $class ?? '' }}">
             {{ $text }}

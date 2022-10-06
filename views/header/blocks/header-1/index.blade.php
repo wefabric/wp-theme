@@ -28,7 +28,7 @@
 			</div>
 		@endif
 
-        <div class="container mx-auto w-full @if($block->get('vertical_space') == 'py-36') lg:w-3/4 @else px-20 @endif py-14 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
+        <div class="container mx-auto px-4 w-full @if($block->get('vertical_space') == 'py-36') lg:w-3/4 @else lg:px-20 @endif py-14 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
 	
 			@include('components.headings.collection', [
 				'titles' => $block->get('title'),

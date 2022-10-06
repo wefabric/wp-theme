@@ -34,7 +34,7 @@
 			</div>
 
             @if(!empty($info->get('display_type')))
-				<div class="@if($info->get('info_position') === 'left') order-1 @endif">
+				<div class="@if($info->get('info_position') === 'left') order-1 pt-8 lg:pt-0 @else pb-8 lg:pb-0 @endif">
 					@if($info->get('display_type') === 'column')
 						@include('page-builder.blocks.contact-form.address', [
 							'establishment_id' => $block->get('establishment'),

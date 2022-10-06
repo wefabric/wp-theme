@@ -84,7 +84,7 @@
 						],
 					];
 				@endphp
-				@include('components.slider.grid', [
+				@include('components.slider.smart-slider', [
 					'items' => $categories,
 					'card_type' => 'category',
 					'grid_spacing' => 'md:gap-12'

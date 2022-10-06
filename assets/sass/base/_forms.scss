@@ -53,6 +53,11 @@
 	::placeholder {
 		@apply text-base text-gray-400;
 	}
+	
+	div {
+		@apply mb-4 md:mb-0;
+	}
+	
 }
 
 .mailchimp-form {

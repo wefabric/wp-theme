@@ -82,6 +82,7 @@
 	lg:grid-cols-7 lg:grid-cols-8 lg:grid-cols-9 lg:grid-cols-10 lg:grid-cols-11 lg:grid-cols-12
 	
 	col-span-2 col-span-3 col-span-4
+	md:col-span-2 md:col-span-3 md:col-span-4
 	
 	gap-4 gap-8 gap-12
 	md:gap-4 md:gap-8 md:gap-12
@@ -100,6 +101,7 @@
 	lg:py-20 lg:py-36
 	pb-10 lg:pb-24
 	
+	mb-4 lg:mb-0
 	mr-16
 	
 	justify-start justify-center justify-end justify-self-start justify-self-center justify-self-end
