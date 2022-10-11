@@ -116,6 +116,7 @@
                                     @include('components.image', [
                                         'image_id' => $item['logo'],
                                         'size' => 'footer-thumbnail',
+                                        'class' => 'disable-rounded',
                                     ])
                                 @if($item['url'])
                                     @include('components.link.closing')
