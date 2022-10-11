@@ -14,7 +14,7 @@
 			'href' => get_permalink(get_option('page_for_posts')),
 			'text' => 'Alles weergeven',
 			'alt' => __('Filter alle categoriën'),
-			'colors' => (empty($currentCategory) ? 'btn-primary' : 'btn-gray') .' '. $mb,
+			'colors' => 'btn-'. (empty($currentCategory) ? 'primary' : 'gray text-black') .' '. $mb,
 			'a_class' => 'mr-3',
 		])
 		
@@ -23,7 +23,7 @@
 			@include('components.buttons.default', [
 				'href' => get_category_link($category),
 				'text' => $category->name,
-				'colors' => $mb .' btn-'. (!empty($currentCategory) && $currentCategory->cat_ID === $category->cat_ID ? 'primary' : 'gray'),
+				'colors' => $mb .' btn-'. (!empty($currentCategory) && $currentCategory->cat_ID === $category->cat_ID ? 'primary' : 'gray text-black'),
 				'a_class' => ' '. (!$loop->last ? 'mr-3' : ''),
 			])
 		@endforeach

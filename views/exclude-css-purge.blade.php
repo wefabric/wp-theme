@@ -103,7 +103,7 @@
 	pb-10 lg:pb-24
 	
 	mb-4 lg:mb-0
-	mr-16
+	mr-5
 	
 	justify-start justify-center justify-end justify-self-start justify-self-center justify-self-end
 	text-left text-center text-right text-justify
