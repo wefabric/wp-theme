@@ -17,12 +17,15 @@
     @include('components.slider.smart-slider', [
         'items' => $block->get('usps'),
         'card_type' => 'usp',
+		
 		'slider_on_items' => $columns,
 		'breakPoints' => [
 			768 => [ // md:
 				'slidesPerView' => $columns,
 			],
 		],
+		
+		'grid_class' => 'flex justify-center',
 		
         'size' => $block->get('icon_size'),
         'position' => $block->get('position'),
