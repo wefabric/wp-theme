@@ -87,7 +87,7 @@
         },
         {
             "key": "field_62e2918be906d",
-            "label": "Call to Action",
+            "label": "USP's",
             "name": "footer_usps",
             "type": "repeater",
             "instructions": "Vul hier je USP's in!",
@@ -375,5 +375,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1665390839
+    "modified": 1665484220
 }
