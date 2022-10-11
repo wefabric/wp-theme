@@ -15,11 +15,11 @@
 
 <div class="bg-{{ $bg_color ?? 'black' }} text-{{ $text_color ?? 'white' }} text-base pb-10 lg:pb-24">
     @if(!empty($usps))
-        <div class="bg-white text-black py-10 lg:py-20">
+        <div class="bg-white text-black py-10 lg:py-20 lg:px-36">
 			@include('components.slider.grid', [
 				'items' => $usps,
 				'card_type' => 'usp',
-				'grid_class' => 'lg:grid-cols-3',
+				'grid_class' => 'flex justify-center',
 				
 				'size' => '3xl',
 				'style' => 'p font-bold lg:h6',
@@ -91,7 +91,7 @@
                     }
                 @endphp
                 @if(!empty($logoId))
-                    {!! wp_get_attachment_image($logoId, 'employee-thumbnail', false, ['class' => 'mx-auto lg:mx-0 inline-block']) !!}
+                    {!! wp_get_attachment_image($logoId, 'footer_logo', false, ['class' => 'mx-auto lg:mx-0 inline-block']) !!}
                 @endif
             </div>
 

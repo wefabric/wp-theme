@@ -15,11 +15,22 @@
 	
 		li {
             @apply inline-block pr-1 pb-1 md:px-4;
+			
+			&:hover {
+				@apply text-primary-dark
+			}
         }
+	
+		.menu-item:not(.current_page_item) {
+		 	>a {
+				@apply font-normal no-underline #{!important};
+			
+			}
+		}
 		
 		.current_page_item {
 			>a {
-				@apply font-bold text-primary-dark;
+				@apply font-bold no-underline #{!important};
 			}
 			
 			.sub-menu {

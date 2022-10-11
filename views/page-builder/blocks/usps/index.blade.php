@@ -1,6 +1,7 @@
 @php
     $title = $block->get('title');
 	$buttons = $block->get('buttons');
+	$columns = $block->get('col_amount');
 @endphp
 
 <div class="container mx-auto w-full lg:{{ $block->get('width') }}">
@@ -16,8 +17,13 @@
     @include('components.slider.smart-slider', [
         'items' => $block->get('usps'),
         'card_type' => 'usp',
-        'slider_on_items' => 3,
-        
+		'slider_on_items' => $columns,
+		'breakPoints' => [
+			768 => [ // md:
+				'slidesPerView' => $columns,
+			],
+		],
+		
         'size' => $block->get('icon_size'),
         'position' => $block->get('position'),
         'icon_color' => $block->get('icon_color'),

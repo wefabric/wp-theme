@@ -25,7 +25,8 @@
             'items' => $block->get('videos'),
             'card_type' => 'video',
             'img_size' => $img_size,
-            'grid_class' => 'gap-4 lg:grid-cols-'. $columns .' '. ($card_classes ?? ''),
+            'grid_class' => 'grid lg:grid-cols-'. $columns .' '. ($card_classes ?? ''),
+            'grid_spacing' => 'gap-4',
         ])
     @endif
 		

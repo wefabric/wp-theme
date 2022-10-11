@@ -3083,25 +3083,6 @@
                             "save_other_choice": 0
                         },
                         {
-                            "key": "field_60b9e5955df7d",
-                            "label": "Alle werknemers tonen?",
-                            "name": "show_all",
-                            "type": "true_false",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "33",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 1,
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": ""
-                        },
-                        {
                             "key": "field_6334641b71a4c",
                             "label": "Titel",
                             "name": "title",
@@ -3362,6 +3343,25 @@
                             ]
                         },
                         {
+                            "key": "field_60b9e5955df7d",
+                            "label": "Alle werknemers tonen?",
+                            "name": "show_all",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
                             "key": "field_60b9e5b35df7e",
                             "label": "Werknemers",
                             "name": "employees",
@@ -3378,7 +3378,7 @@
                                 ]
                             ],
                             "wrapper": {
-                                "width": "",
+                                "width": "75",
                                 "class": "",
                                 "id": ""
                             },
@@ -5952,5 +5952,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1664963304
+    "modified": 1665410098
 }

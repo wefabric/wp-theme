@@ -45,7 +45,7 @@
 				@apply bg-#{$themeColor}-dark;
 				
 				&:hover {
-					@apply bg-#{$themeColor};
+					@apply bg-black; //bg-#{$themeColor};
 				}
 			}
 			
@@ -60,14 +60,26 @@
 		
 		&.btn-white {
 			@apply bg-white text-black;
+			
+			&:hover {
+				@apply bg-primary-dark;
+			}
 		}
 		
 		&.btn-black {
 			@apply bg-black text-white;
+			
+			&:hover {
+				@apply bg-primary-dark;
+			}
 		}
 		
 		&.btn-gray {
 			@apply bg-gray-100 text-black;
+			
+			&:hover {
+				@apply bg-primary-dark;
+			}
 		}
 		
 		&.btn-transparent {

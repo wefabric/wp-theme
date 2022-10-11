@@ -7,7 +7,7 @@
 @endphp
 
 <div class="">
-	@if(true)
+	@if(false)
 		<div class="h2 w-full text-center">
 			<span class="text-purple-500">T</span>
 			<span class="text-blue-500">O</span>
@@ -44,13 +44,13 @@
 						],
 						[
 							'brand' => 'ENPC',
-							'title' => 'Heel duur stuk staal met gaatjes',
+							'title' => 'Geribd hoekijzer met afgesneden hoek',
 							'price' => 1394,
 							'image' => 834,
 						],
 						[
 							'brand' => 'ENPC',
-							'title' => 'Anti-inbreekijzer denk ik?',
+							'title' => 'Bevestigingsklauw voor warmte-isolatie',
 							'price' => 1394,
 							'image' => 835,
 						],

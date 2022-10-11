@@ -29,7 +29,7 @@
 			@include('components.buttons.default', [
 				'href' => '#',
 				'text' => 'Meer info',
-				'colors' => 'bg-black text-white hover:btn-primary-dark '
+				'colors' => 'btn-black text-white'
 			])
 			
 			<div class="flex grow"></div> {{-- TODO fix below so this isn't required. --}}

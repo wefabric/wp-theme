@@ -77,7 +77,7 @@
 		@include('components.slider.grid', [
 			'items' => $block->get('photos'),
 			'card_type' => 'image',
-			'grid_class' => 'lg:grid-cols-'. $columns .' '. ($card_classes ?? '') .' '. ($grid_class ?? ''),
+			'grid_class' => 'grid lg:grid-cols-'. $columns .' '. ($card_classes ?? '') .' '. ($grid_class ?? ''),
 			'grid_spacing' => ($block->get('width') === 'nomargin' ? '' : null),
 			
 			'img_size' => $img_size ?? 'full',

@@ -1,6 +1,10 @@
 //img:not(.disable-rounded),
 .image:not(.disable-rounded) {
 	@apply rounded-2xl;
+	
+	img {
+		@apply rounded-2xl;
+	}
 }
 
 .invert-color {
