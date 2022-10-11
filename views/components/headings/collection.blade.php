@@ -4,19 +4,26 @@
 --}}
 
 @php
-	if(!isset($titles)) {
-		$titles = $title->get('titles');
+	if(isset($title)) {
+		if(!isset($titles)) {
+			$titles = $title->get('titles');
+		}
+		if($title->get('title_width') !== 'w-full') {
+			$width = 'lg:'. $title->get('title_width');
+		}
 	}
 @endphp
 
-@foreach($titles as $heading)
-	@include('components.headings.normal', [
-		'type' => $heading->get('type'),
-		'heading' => $heading->get('text'),
-		'display_type_mobile' => $heading->get('display_type_mobile'),
-		'display_type_desktop' => $heading->get('display_type_desktop'),
-		'title_align' => $heading->get('align'),
-		'title_color' => $title_color ?? $title->get('title_color'),
-		'class' => ($loop->last && ($disable_bottom_padding ?? false)) ? '' : ($class ?? 'pb-4 lg:pb-8'),
-	]) {{-- don't give the last title any bottom-padding --}}
-@endforeach
+<div class="mx-auto w-full {{ $width ?? '' }}">
+	@foreach($titles as $heading)
+		@include('components.headings.normal', [
+			'type' => $heading->get('type'),
+			'heading' => $heading->get('text'),
+			'display_type_mobile' => $heading->get('display_type_mobile'),
+			'display_type_desktop' => $heading->get('display_type_desktop'),
+			'title_align' => $heading->get('align'),
+			'title_color' => $title_color ?? $title->get('title_color'),
+			'class' => ($loop->last && ($disable_bottom_padding ?? false)) ? '' : ($class ?? 'pb-4 lg:pb-8'),
+		]) {{-- don't give the last title any bottom-padding --}}
+	@endforeach
+</div>
