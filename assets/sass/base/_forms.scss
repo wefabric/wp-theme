@@ -33,9 +33,17 @@
 	}
 	
 	[type="submit"] {
-		@apply mt-9;
-		@apply bg-secondary leading-relaxed py-6 #{!important};
+		@apply rounded-full; //just in case
+		@apply bg-secondary leading-relaxed #{!important};
 	}
+	
+	span.btn {
+		@apply mt-9 h-[4.5rem] flex justify-items-center;
+		
+		&:hover {
+			@apply bg-secondary #{!important};
+		} //to disable the hover when the submit-input itself doesn't change color when hovered.
+ 	}
 	
 	label {
 		@apply text-base font-bold;

@@ -20,39 +20,21 @@
 		}
 	}
 	
-	
-	.wpcf7-submit {
-		@apply btn bg-primary-light;
-	}
-	
 	.wpc7-submit-holder {
 		position: relative;
 		
 		&:before {
-			@apply text-md text-white left-4;
-			font-family: $fa-font-family;
-			content: '\f1d8';
-			display: inline-block;
-			position: absolute;
-			top: 20%;
-			font-weight: bold;
-			z-index: 1;
-		}
-		
-		&:hover {
-			
-			.wpcf7-submit {
-				@apply bg-primary;
+			&:hover {
+				//@apply bg-primary;
 			}
-			
-			&:before {
-				@apply bg-primary;
-			}
-			
 		}
 		
 		.wpcf7-submit {
-			@apply pl-12 pr-6 py-2 font-bold leading-normal cursor-pointer transition-colors uppercase;
+			@apply pl-12 pr-6 py-2;
+			
+			&:hover {
+				//@apply bg-primary;
+			}
 		}
 		
 		.wpcf7-spinner {

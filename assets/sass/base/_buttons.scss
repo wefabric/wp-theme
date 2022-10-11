@@ -1,11 +1,8 @@
 @mixin btn {
 	@apply relative text-sm transition-all tracking-wider rounded-full;
-	
 	@apply no-underline #{!important};
 	
-	line-height: 50px;
 	padding: 0 36px 0 20px;
-	position: relative;
 	display: inline-block;
 	color: #fff; //text-color white
 }
@@ -70,18 +67,11 @@
 		}
 	}
 	
-	
-	
 	.btn {
 		@include btn;
 		
-		:hover {
-			@apply cursor-pointer;
-		}
-		
 		@screen lg {
 			@apply text-md;
-			line-height: 70px;
 			padding: 0 54px 0 41px;
 		}
 		
@@ -94,7 +84,7 @@
 		
 		&:after {
 			@apply transition-all;
-			@extend .far;
+			@extend .fa-solid;
 			font-weight: 700 !important;
 			content: '\f0da' !important;
 			font-family: $fa-font-family;
@@ -103,10 +93,11 @@
 			position: absolute;
 			display: block;
 			height: 100%;
-			line-height: 0;
 		}
 		
 		&:hover {
+			@apply cursor-pointer;
+			
 			&:after {
 				right: 15px;
 			}
