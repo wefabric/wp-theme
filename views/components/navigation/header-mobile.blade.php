@@ -24,7 +24,7 @@
 				'icon' => 'fa-regular fa-bag-shopping text-base',
 			
 				'size' => $icon_size,
-				'colors' => 'bg-black hover:bg-primary-dark text-white',
+				'colors' => 'btn-black text-white',
 				'class' => 'relative',
 			
 				'smallIconClass' => 'h-5 w-5 text-center text-sm mr-1 rounded-full bg-zinc-300 text-black absolute -mt-0.5 -top-2 -right-2',
@@ -39,7 +39,7 @@
 				'icon' => 'fa-regular fa-user text-base',
 
 				'size' => $icon_size,
-				'colors' => 'bg-black hover:bg-primary-dark text-white',
+				'colors' => 'btn-black text-white',
 			])
 	
 			<div class="hamburger-menu z-50">

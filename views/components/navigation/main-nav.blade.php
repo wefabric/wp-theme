@@ -12,7 +12,7 @@
                     <div class="flex">
                         <input type="text" value="" placeholder="Typ hier je zoekterm in..." name="q" class="w-96 required bg-white rounded-l-lg shadow-lg shadow-slate-200 " id="search">
                         <div class="flex align-center">
-                            <button type="submit" class="w-12 h-12 rounded-r-lg text-center bg-black text-white text-center text-xl hover:bg-primary-dark shadow shadow-slate-200">
+                            <button type="submit" class="w-12 h-12 rounded-r-lg text-center btn-black text-white text-center text-xl shadow shadow-slate-200">
                                 <i class="fa-light fa-search "></i>
                                 <span class="screen-reader-only">Zoeken</span>
                             </button>
@@ -31,7 +31,7 @@
                 'icon' => 'fa-light fa-bag-shopping text-xl',
 
                 'size' => 'h-12 w-12 pt-1.5 mr-3',
-                'colors' => 'bg-black hover:bg-primary-dark text-white',
+                'colors' => 'btn-black text-white',
                 'class' => 'relative',
 
                 'smallIconClass' => 'h-7 w-7 text-center mr-1 rounded-full bg-zinc-300 text-black absolute pt-0.5 -top-2 -right-2',
@@ -46,7 +46,7 @@
                 'icon' => 'fa-light fa-user text-xl',
 
                 'size' => 'h-12 w-12 pt-1.5 mr-3',
-                'colors' => 'bg-black hover:bg-primary-dark text-white',
+                'colors' => 'btn-black text-white',
             ])
         </div>
     @endif
@@ -54,7 +54,7 @@
     <nav id="site-navigation" class="main-navigation flex justify-end items-center">
 
 		@include('components.header.home-house', [
-			'class' => 'md:px-4 text-xl text-primary-dark', //this shows a house icon, as link to the homepage
+			'class' => 'md:px-4 text-xl text-primary', //this shows a house icon, as link to the homepage
 		])
 		
         @php
@@ -79,7 +79,7 @@
             @include('components.buttons.default', [
                 'href' => '/offerte',
                 'text' => 'Offerte aanvragen',
-                'colors' => 'btn-primary-dark text-white',
+                'colors' => 'btn-primary text-white',
                 'a_class' => 'md:px-4'
             ])
         @endif

@@ -40,7 +40,7 @@
 		</div>
 	
 {{--
-		<div class="bg-primary-dark absolute w-full h-96 bottom-0 left-0 -z-50">
+		<div class="bg-primary absolute w-full h-96 bottom-0 left-0 -z-50">
 			//bottom colored bar.
 		</div>
 --}}

@@ -39,7 +39,7 @@
                 'alt' => 'Telefoonnummer',
 				'icon' => 'fa-solid fa-phone text-sm align-top pt-1.5',
 				'size' => 'h-8 w-8',
-				'colors' => 'bg-black hover:bg-primary-dark text-white ',
+				'colors' => 'btn-black text-white ',
 				'a_class' => 'mx-1',
 			])
 		@endif
@@ -50,7 +50,7 @@
                 'alt' => 'Emailadres',
 				'icon' => 'fa-solid fa-envelope text-sm align-top pt-1.5',
 				'size' => 'h-8 w-8',
-				'colors' => 'bg-black hover:bg-primary-dark text-white ',
+				'colors' => 'btn-black text-white ',
 				'a_class' => 'mx-1',
 			])
 		@endif
@@ -61,7 +61,7 @@
 				'alt' => 'LinkedIn',
 				'icon' => 'fa-brands fa-linkedin-in text-sm align-top pt-1.5',
 				'size' => 'h-8 w-8',
-				'colors' => 'bg-black hover:bg-primary-dark text-white ',
+				'colors' => 'btn-black text-white ',
 				'a_class' => 'mx-1',
 			])
         @endif

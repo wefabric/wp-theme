@@ -10,7 +10,7 @@
 			<input type="text" name="b_97458c1812b52842329db8e54_5af5026eaf" tabindex="-1" value="">
 		</div>
 		<div class="flex align-center">
-			<button type="submit" class="h-full w-10 bg-white text-primary-dark text-center text-sm hover:text-primary rounded-r-lg">
+			<button type="submit" class="h-full w-10 btn-white text-primary text-center text-sm rounded-r-lg">
 				<i class="fa-solid fa-paper-plane "></i>
 				<span class="screen-reader-only">Aanmelden</span>
 			</button>
