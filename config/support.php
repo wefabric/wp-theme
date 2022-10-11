@@ -84,4 +84,16 @@ return [
     //    'admin-head-callback' => '',
     //    'admin-preview-callback' => '',
     //]
+	
+	/* ----------------------------------------------------------------------------------------------- */
+	// Woocommerce support
+	/* ----------------------------------------------------------------------------------------------- */
+	
+	'woocommerce',
+	'wc-product-gallery-zoom',
+    'wc-product-gallery-lightbox',
+    'wc-product-gallery-slider',
+	
+	
+	
 ];
