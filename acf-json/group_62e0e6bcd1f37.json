@@ -8,7 +8,7 @@
             "name": "header",
             "type": "flexible_content",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -590,7 +590,7 @@
                 }
             },
             "button_label": "Add Row",
-            "min": 1,
+            "min": 0,
             "max": 1
         }
     ],
@@ -612,5 +612,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1665414648
+    "modified": 1665505265
 }

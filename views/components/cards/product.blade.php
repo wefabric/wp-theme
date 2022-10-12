@@ -21,7 +21,7 @@
 	</div>
 	
 	<div class="absolute bottom-0 flex flex-col w-full pt-2.5 pb-5">
-		<div class="h5 text-primary-dark pb-6">
+		<div class="h5 text-primary pb-6">
 			€ {{ $product['price'] }},-
 		</div>
 
@@ -29,7 +29,7 @@
 			@include('components.buttons.default', [
 				'href' => '#',
 				'text' => 'Meer info',
-				'colors' => 'bg-black text-white hover:btn-primary-dark '
+				'colors' => 'btn-black text-white'
 			])
 			
 			<div class="flex grow"></div> {{-- TODO fix below so this isn't required. --}}
@@ -40,7 +40,7 @@
 				'a_class' => '', //TODO fix this with e.g. 'justify-self-end'
 				'size' => 'h-12 w-12 pt-1.5 mr-9',
 				'icon' => 'fa-solid fa-cart-shopping text-xl',
-				'colors' => 'bg-green-600 text-white'
+				'colors' => 'btn-secondary text-white'
 			])
 		</div>
 	</div>

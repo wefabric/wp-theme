@@ -23,7 +23,7 @@
 	}
 
     if(!isset($colors)) {
-        $colors = 'btn-white hover:btn-primary-dark text-black hover:text-white';
+        $colors = 'btn-white text-black hover:text-white';
     }
 @endphp
 

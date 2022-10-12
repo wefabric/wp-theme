@@ -15,11 +15,22 @@
 	
 		li {
             @apply inline-block pr-1 pb-1 md:px-4;
+			
+			&:hover {
+				@apply text-primary
+			}
         }
+	
+		.menu-item:not(.current_page_item) {
+		 	>a {
+				@apply font-normal no-underline #{!important};
+			
+			}
+		}
 		
 		.current_page_item {
 			>a {
-				@apply font-bold text-primary-dark;
+				@apply font-bold no-underline #{!important};
 			}
 			
 			.sub-menu {
@@ -86,7 +97,7 @@
 	}
 	
 	span.current {
-		@apply bg-primary-dark text-white;
+		@apply bg-primary text-white;
 	}
 	
 	span.dots {
@@ -94,12 +105,12 @@
 	}
 	
 	a.page-numbers {
-		@apply bg-gray-100 text-black hover:bg-primary-dark hover:text-white;
+		@apply bg-gray-100 text-black hover:bg-primary hover:text-white;
 		@apply no-underline #{!important};
 	}
 	
 	a.next, a.prev {
-		@apply rounded-full bg-gray-100 hover:bg-primary-dark hover:text-white;
+		@apply rounded-full bg-gray-100 hover:bg-primary hover:text-white;
 	}
 	
 }

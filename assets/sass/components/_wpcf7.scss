@@ -1,73 +1,55 @@
 .wpcf7 {
-
-  p {
-    @apply leading-normal;
-  }
-
-  br {
-    display: block;
-    height: 1px;
-  }
-
-  // This is to no longer show the "thank you for your message" notification so user doesn't get confused
-  .form.sent {
-    display: none;
-  }
-
-  form {
-    .wpcf7-response-output {
-      @apply text-base mx-0;
-    }
-  }
-
-
-  .wpcf7-submit {
-    @apply btn bg-primary-light;
-  }
-
-  .wpc7-submit-holder {
-    position: relative;
-
-    &:before {
-      @apply text-md text-white left-4;
-      font-family: $fa-font-family;
-      content: '\f1d8';
-      display: inline-block;
-      position: absolute;
-      top: 20%;
-      font-weight: bold;
-      z-index: 1;
-    }
-
-    &:hover {
-
-      .wpcf7-submit {
-        @apply bg-primary-dark;
-      }
-
-      &:before {
-        @apply bg-primary-dark;
-      }
-
-    }
-
-    .wpcf7-submit {
-      @apply pl-12 pr-6 py-2 font-bold leading-normal cursor-pointer transition-colors uppercase;
-    }
-
-    .wpcf7-spinner {
-      @apply bg-white top-[25%] hidden md:inline-block;
-      position: absolute;
-
-      &:before {
-        @apply bg-primary;
-      }
-    }
-
-  }
-
-  .wpcf7-not-valid-tip {
-    @apply bg-red-400 text-white text-sm mt-0 px-2 py-1;
-  }
-
+	
+	p {
+		@apply leading-normal;
+	}
+	
+	br {
+		display: block;
+		height: 1px;
+	}
+	
+	// This is to no longer show the "thank you for your message" notification so user doesn't get confused
+	.form.sent {
+		display: none;
+	}
+	
+	form {
+		.wpcf7-response-output {
+			@apply text-base mx-0;
+		}
+	}
+	
+	.wpc7-submit-holder {
+		position: relative;
+		
+		&:before {
+			&:hover {
+				//@apply bg-primary;
+			}
+		}
+		
+		.wpcf7-submit {
+			@apply pl-12 pr-6 py-2;
+			
+			&:hover {
+				//@apply bg-primary;
+			}
+		}
+		
+		.wpcf7-spinner {
+			@apply bg-white top-[25%] hidden md:inline-block;
+			position: absolute;
+			
+			&:before {
+				@apply bg-primary;
+			}
+		}
+		
+	}
+	
+	.wpcf7-not-valid-tip {
+		@apply bg-red-400 text-white text-sm mt-0 px-2 py-1;
+	}
+	
 }

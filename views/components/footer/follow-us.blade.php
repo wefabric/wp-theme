@@ -11,7 +11,7 @@
 	
 		$url = $option['newsletter_footer']['embed_subscribe_url'] ?? '';
 	@endphp
-	<span class="font-head text-md pt-4 pb-2 pr-6 inline-block">
+	<span class="h5 pt-4 pb-2 pr-6 inline-block">
 		{{ $title }}
 	</span>
     <div>

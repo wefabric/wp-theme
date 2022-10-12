@@ -44,7 +44,7 @@
 			@endif
 		</div>
 
-		<div class="flex flex-col px-5">
+		<div class="flex flex-col px-5 w-full"> {{-- text-left (center/right) --}}
 			<span class="block {{ $style ?? 'h6' }}">
 				{{ $item->get('title') }}
 			</span>

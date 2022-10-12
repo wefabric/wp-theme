@@ -75,7 +75,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -84,6 +84,43 @@
                                     "ui": 0,
                                     "ui_on_text": "",
                                     "ui_off_text": ""
+                                },
+                                {
+                                    "key": "field_63452bdd04314",
+                                    "label": "Breedte",
+                                    "name": "title_width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de breedte van de titels binnen het blok. Geldt alleen op desktop.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_63345f0647280",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-full": "100%"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": ""
                                 },
                                 {
                                     "key": "field_63345f0647281",
@@ -102,7 +139,7 @@
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -126,7 +163,7 @@
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -140,8 +177,8 @@
                                     "allow_null": 0,
                                     "multiple": 0,
                                     "ui": 0,
-                                    "ajax": 0,
                                     "return_format": "value",
+                                    "ajax": 0,
                                     "placeholder": ""
                                 },
                                 {
@@ -707,7 +744,7 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_6322f18f102e0",
+                            "key": "field_63452fc89dc02",
                             "label": "Titel",
                             "name": "title",
                             "type": "group",
@@ -722,7 +759,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_6322f18f102e1",
+                                    "key": "field_63452fc89dc03",
                                     "label": "Losse titel tonen?",
                                     "name": "show_separate_title",
                                     "type": "true_false",
@@ -730,7 +767,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -741,7 +778,44 @@
                                     "ui_off_text": ""
                                 },
                                 {
-                                    "key": "field_63232ebc525ae",
+                                    "key": "field_63452fc89dc04",
+                                    "label": "Breedte",
+                                    "name": "title_width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de breedte van de titels binnen het blok. Geldt alleen op desktop.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_63452fc89dc03",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-full": "100%"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_63452fc89dc05",
                                     "label": "Titelkleur",
                                     "name": "title_color",
                                     "type": "Thema Kleur",
@@ -750,14 +824,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_6322f18f102e1",
+                                                "field": "field_63452fc89dc03",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -765,7 +839,7 @@
                                     "font_size": 14
                                 },
                                 {
-                                    "key": "field_6322f18f102e4",
+                                    "key": "field_63452fc89dc06",
                                     "label": "Positie t.o.v. tekst",
                                     "name": "title_position",
                                     "type": "select",
@@ -774,14 +848,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_6322f18f102e1",
+                                                "field": "field_63452fc89dc03",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -795,12 +869,12 @@
                                     "allow_null": 0,
                                     "multiple": 0,
                                     "ui": 0,
-                                    "return_format": "value",
                                     "ajax": 0,
+                                    "return_format": "value",
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_632c1e18571c8",
+                                    "key": "field_63452fc89dc07",
                                     "label": "Titels",
                                     "name": "titles",
                                     "type": "repeater",
@@ -809,7 +883,7 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_6322f18f102e1",
+                                                "field": "field_63452fc89dc03",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
@@ -827,7 +901,7 @@
                                     "button_label": "",
                                     "sub_fields": [
                                         {
-                                            "key": "field_632c1e2c571c9",
+                                            "key": "field_63452fc89dc08",
                                             "label": "Tekst",
                                             "name": "text",
                                             "type": "text",
@@ -846,7 +920,7 @@
                                             "maxlength": ""
                                         },
                                         {
-                                            "key": "field_632c1e39571ca",
+                                            "key": "field_63452fc89dc09",
                                             "label": "Type",
                                             "name": "type",
                                             "type": "select",
@@ -870,12 +944,12 @@
                                             "allow_null": 0,
                                             "multiple": 0,
                                             "ui": 0,
-                                            "return_format": "value",
                                             "ajax": 0,
+                                            "return_format": "value",
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_632c1e90571cb",
+                                            "key": "field_63452fc89dc0a",
                                             "label": "Weergave (mobiel)",
                                             "name": "display_type_mobile",
                                             "type": "select",
@@ -901,12 +975,12 @@
                                             "allow_null": 1,
                                             "multiple": 0,
                                             "ui": 0,
-                                            "return_format": "value",
                                             "ajax": 0,
+                                            "return_format": "value",
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_63345e455f7d9",
+                                            "key": "field_63452fc89dc0b",
                                             "label": "Weergave (desktop)",
                                             "name": "display_type_desktop",
                                             "type": "select",
@@ -932,12 +1006,12 @@
                                             "allow_null": 1,
                                             "multiple": 0,
                                             "ui": 0,
-                                            "return_format": "value",
                                             "ajax": 0,
+                                            "return_format": "value",
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_632c1ec1571cc",
+                                            "key": "field_63452fc89dc0c",
                                             "label": "Uitlijning",
                                             "name": "align",
                                             "type": "select",
@@ -958,8 +1032,8 @@
                                             "allow_null": 0,
                                             "multiple": 0,
                                             "ui": 0,
-                                            "return_format": "value",
                                             "ajax": 0,
+                                            "return_format": "value",
                                             "placeholder": ""
                                         }
                                     ]
@@ -1420,7 +1494,7 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_633463b18c4ff",
+                            "key": "field_63452fd99dc0d",
                             "label": "Titel",
                             "name": "title",
                             "type": "group",
@@ -1435,7 +1509,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_633463b18c500",
+                                    "key": "field_63452fd99dc0e",
                                     "label": "Losse titel tonen?",
                                     "name": "show_separate_title",
                                     "type": "true_false",
@@ -1443,7 +1517,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -1454,7 +1528,44 @@
                                     "ui_off_text": ""
                                 },
                                 {
-                                    "key": "field_633463b18c501",
+                                    "key": "field_63452fd99dc0f",
+                                    "label": "Breedte",
+                                    "name": "title_width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de breedte van de titels binnen het blok. Geldt alleen op desktop.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_63452fd99dc0e",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-full": "100%"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_63452fd99dc10",
                                     "label": "Titelkleur",
                                     "name": "title_color",
                                     "type": "Thema Kleur",
@@ -1463,14 +1574,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_633463b18c500",
+                                                "field": "field_63452fd99dc0e",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -1478,7 +1589,7 @@
                                     "font_size": 14
                                 },
                                 {
-                                    "key": "field_633463b18c502",
+                                    "key": "field_63452fd99dc11",
                                     "label": "Positie t.o.v. tekst",
                                     "name": "title_position",
                                     "type": "select",
@@ -1487,14 +1598,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_633463b18c500",
+                                                "field": "field_63452fd99dc0e",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -1513,7 +1624,7 @@
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_633463b18c503",
+                                    "key": "field_63452fd99dc12",
                                     "label": "Titels",
                                     "name": "titles",
                                     "type": "repeater",
@@ -1522,7 +1633,7 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_633463b18c500",
+                                                "field": "field_63452fd99dc0e",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
@@ -1540,7 +1651,7 @@
                                     "button_label": "",
                                     "sub_fields": [
                                         {
-                                            "key": "field_633463b18c504",
+                                            "key": "field_63452fd99dc13",
                                             "label": "Tekst",
                                             "name": "text",
                                             "type": "text",
@@ -1559,7 +1670,7 @@
                                             "maxlength": ""
                                         },
                                         {
-                                            "key": "field_633463b18c505",
+                                            "key": "field_63452fd99dc14",
                                             "label": "Type",
                                             "name": "type",
                                             "type": "select",
@@ -1588,7 +1699,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_633463b18c506",
+                                            "key": "field_63452fd99dc15",
                                             "label": "Weergave (mobiel)",
                                             "name": "display_type_mobile",
                                             "type": "select",
@@ -1619,7 +1730,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_633463b18c507",
+                                            "key": "field_63452fd99dc16",
                                             "label": "Weergave (desktop)",
                                             "name": "display_type_desktop",
                                             "type": "select",
@@ -1650,7 +1761,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_633463b18c508",
+                                            "key": "field_63452fd99dc17",
                                             "label": "Uitlijning",
                                             "name": "align",
                                             "type": "select",
@@ -2223,7 +2334,7 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_633463e53cd49",
+                            "key": "field_63453014b485b",
                             "label": "Titel",
                             "name": "title",
                             "type": "group",
@@ -2238,7 +2349,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_633463e53cd4a",
+                                    "key": "field_63453014b485c",
                                     "label": "Losse titel tonen?",
                                     "name": "show_separate_title",
                                     "type": "true_false",
@@ -2246,7 +2357,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -2257,7 +2368,44 @@
                                     "ui_off_text": ""
                                 },
                                 {
-                                    "key": "field_633463e53cd4b",
+                                    "key": "field_63453014b485d",
+                                    "label": "Breedte",
+                                    "name": "title_width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de breedte van de titels binnen het blok. Geldt alleen op desktop.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_63453014b485c",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-full": "100%"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_63453014b485e",
                                     "label": "Titelkleur",
                                     "name": "title_color",
                                     "type": "Thema Kleur",
@@ -2266,14 +2414,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_633463e53cd4a",
+                                                "field": "field_63453014b485c",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -2281,7 +2429,7 @@
                                     "font_size": 14
                                 },
                                 {
-                                    "key": "field_633463e53cd4c",
+                                    "key": "field_63453014b485f",
                                     "label": "Positie t.o.v. tekst",
                                     "name": "title_position",
                                     "type": "select",
@@ -2290,14 +2438,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_633463e53cd4a",
+                                                "field": "field_63453014b485c",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -2316,7 +2464,7 @@
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_633463e53cd4d",
+                                    "key": "field_63453014b4860",
                                     "label": "Titels",
                                     "name": "titles",
                                     "type": "repeater",
@@ -2325,7 +2473,7 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_633463e53cd4a",
+                                                "field": "field_63453014b485c",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
@@ -2343,7 +2491,7 @@
                                     "button_label": "",
                                     "sub_fields": [
                                         {
-                                            "key": "field_633463e53cd4e",
+                                            "key": "field_63453014b4861",
                                             "label": "Tekst",
                                             "name": "text",
                                             "type": "text",
@@ -2362,7 +2510,7 @@
                                             "maxlength": ""
                                         },
                                         {
-                                            "key": "field_633463e53cd4f",
+                                            "key": "field_63453014b4862",
                                             "label": "Type",
                                             "name": "type",
                                             "type": "select",
@@ -2391,7 +2539,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_633463e53cd50",
+                                            "key": "field_63453014b4863",
                                             "label": "Weergave (mobiel)",
                                             "name": "display_type_mobile",
                                             "type": "select",
@@ -2422,7 +2570,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_633463e53cd51",
+                                            "key": "field_63453014b4864",
                                             "label": "Weergave (desktop)",
                                             "name": "display_type_desktop",
                                             "type": "select",
@@ -2453,7 +2601,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_633463e53cd52",
+                                            "key": "field_63453014b4865",
                                             "label": "Uitlijning",
                                             "name": "align",
                                             "type": "select",
@@ -3083,26 +3231,7 @@
                             "save_other_choice": 0
                         },
                         {
-                            "key": "field_60b9e5955df7d",
-                            "label": "Alle werknemers tonen?",
-                            "name": "show_all",
-                            "type": "true_false",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "33",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 1,
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": ""
-                        },
-                        {
-                            "key": "field_6334641b71a4c",
+                            "key": "field_63453022b4866",
                             "label": "Titel",
                             "name": "title",
                             "type": "group",
@@ -3117,7 +3246,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_6334641b71a4d",
+                                    "key": "field_63453022b4867",
                                     "label": "Losse titel tonen?",
                                     "name": "show_separate_title",
                                     "type": "true_false",
@@ -3125,7 +3254,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -3136,7 +3265,44 @@
                                     "ui_off_text": ""
                                 },
                                 {
-                                    "key": "field_6334641b71a4e",
+                                    "key": "field_63453022b4868",
+                                    "label": "Breedte",
+                                    "name": "title_width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de breedte van de titels binnen het blok. Geldt alleen op desktop.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_63453022b4867",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-full": "100%"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_63453022b4869",
                                     "label": "Titelkleur",
                                     "name": "title_color",
                                     "type": "Thema Kleur",
@@ -3145,14 +3311,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_6334641b71a4d",
+                                                "field": "field_63453022b4867",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -3160,7 +3326,7 @@
                                     "font_size": 14
                                 },
                                 {
-                                    "key": "field_6334641b71a4f",
+                                    "key": "field_63453022b486a",
                                     "label": "Positie t.o.v. tekst",
                                     "name": "title_position",
                                     "type": "select",
@@ -3169,14 +3335,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_6334641b71a4d",
+                                                "field": "field_63453022b4867",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -3195,7 +3361,7 @@
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_6334641b71a50",
+                                    "key": "field_63453022b486b",
                                     "label": "Titels",
                                     "name": "titles",
                                     "type": "repeater",
@@ -3204,7 +3370,7 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_6334641b71a4d",
+                                                "field": "field_63453022b4867",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
@@ -3222,7 +3388,7 @@
                                     "button_label": "",
                                     "sub_fields": [
                                         {
-                                            "key": "field_6334641b71a51",
+                                            "key": "field_63453022b486c",
                                             "label": "Tekst",
                                             "name": "text",
                                             "type": "text",
@@ -3241,7 +3407,7 @@
                                             "maxlength": ""
                                         },
                                         {
-                                            "key": "field_6334641b71a52",
+                                            "key": "field_63453022b486d",
                                             "label": "Type",
                                             "name": "type",
                                             "type": "select",
@@ -3270,7 +3436,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_6334641b71a53",
+                                            "key": "field_63453022b486e",
                                             "label": "Weergave (mobiel)",
                                             "name": "display_type_mobile",
                                             "type": "select",
@@ -3301,7 +3467,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_6334641b71a54",
+                                            "key": "field_63453022b486f",
                                             "label": "Weergave (desktop)",
                                             "name": "display_type_desktop",
                                             "type": "select",
@@ -3332,7 +3498,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_6334641b71a55",
+                                            "key": "field_63453022b4870",
                                             "label": "Uitlijning",
                                             "name": "align",
                                             "type": "select",
@@ -3362,6 +3528,25 @@
                             ]
                         },
                         {
+                            "key": "field_60b9e5955df7d",
+                            "label": "Alle werknemers tonen?",
+                            "name": "show_all",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
                             "key": "field_60b9e5b35df7e",
                             "label": "Werknemers",
                             "name": "employees",
@@ -3378,7 +3563,7 @@
                                 ]
                             ],
                             "wrapper": {
-                                "width": "",
+                                "width": "75",
                                 "class": "",
                                 "id": ""
                             },
@@ -3518,7 +3703,7 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_6334645f94d27",
+                            "key": "field_634536704680c",
                             "label": "Titel",
                             "name": "title",
                             "type": "group",
@@ -3533,7 +3718,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_6334645f94d28",
+                                    "key": "field_634536704680d",
                                     "label": "Losse titel tonen?",
                                     "name": "show_separate_title",
                                     "type": "true_false",
@@ -3541,7 +3726,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -3552,7 +3737,44 @@
                                     "ui_off_text": ""
                                 },
                                 {
-                                    "key": "field_6334645f94d29",
+                                    "key": "field_634536704680e",
+                                    "label": "Breedte",
+                                    "name": "title_width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de breedte van de titels binnen het blok. Geldt alleen op desktop.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_634536704680d",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-full": "100%"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_634536704680f",
                                     "label": "Titelkleur",
                                     "name": "title_color",
                                     "type": "Thema Kleur",
@@ -3561,14 +3783,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_6334645f94d28",
+                                                "field": "field_634536704680d",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -3576,7 +3798,7 @@
                                     "font_size": 14
                                 },
                                 {
-                                    "key": "field_6334645f94d2a",
+                                    "key": "field_6345367046810",
                                     "label": "Positie t.o.v. tekst",
                                     "name": "title_position",
                                     "type": "select",
@@ -3585,14 +3807,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_6334645f94d28",
+                                                "field": "field_634536704680d",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -3611,7 +3833,7 @@
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_6334645f94d2b",
+                                    "key": "field_6345367046811",
                                     "label": "Titels",
                                     "name": "titles",
                                     "type": "repeater",
@@ -3620,7 +3842,7 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_6334645f94d28",
+                                                "field": "field_634536704680d",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
@@ -3638,7 +3860,7 @@
                                     "button_label": "",
                                     "sub_fields": [
                                         {
-                                            "key": "field_6334645f94d2c",
+                                            "key": "field_6345367046812",
                                             "label": "Tekst",
                                             "name": "text",
                                             "type": "text",
@@ -3657,7 +3879,7 @@
                                             "maxlength": ""
                                         },
                                         {
-                                            "key": "field_6334645f94d2d",
+                                            "key": "field_6345367046813",
                                             "label": "Type",
                                             "name": "type",
                                             "type": "select",
@@ -3686,7 +3908,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_6334645f94d2e",
+                                            "key": "field_6345367046814",
                                             "label": "Weergave (mobiel)",
                                             "name": "display_type_mobile",
                                             "type": "select",
@@ -3717,7 +3939,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_6334645f94d2f",
+                                            "key": "field_6345367046815",
                                             "label": "Weergave (desktop)",
                                             "name": "display_type_desktop",
                                             "type": "select",
@@ -3748,7 +3970,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_6334645f94d30",
+                                            "key": "field_6345367046816",
                                             "label": "Uitlijning",
                                             "name": "align",
                                             "type": "select",
@@ -4229,7 +4451,7 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_6334648ba4fd7",
+                            "key": "field_634536a1e8a1f",
                             "label": "Titel",
                             "name": "title",
                             "type": "group",
@@ -4244,7 +4466,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_6334648ba4fd8",
+                                    "key": "field_634536a1e8a20",
                                     "label": "Losse titel tonen?",
                                     "name": "show_separate_title",
                                     "type": "true_false",
@@ -4252,7 +4474,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -4263,7 +4485,44 @@
                                     "ui_off_text": ""
                                 },
                                 {
-                                    "key": "field_6334648ba4fd9",
+                                    "key": "field_634536a1e8a21",
+                                    "label": "Breedte",
+                                    "name": "title_width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de breedte van de titels binnen het blok. Geldt alleen op desktop.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_634536a1e8a20",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-full": "100%"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_634536a1e8a22",
                                     "label": "Titelkleur",
                                     "name": "title_color",
                                     "type": "Thema Kleur",
@@ -4272,14 +4531,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_6334648ba4fd8",
+                                                "field": "field_634536a1e8a20",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -4287,7 +4546,7 @@
                                     "font_size": 14
                                 },
                                 {
-                                    "key": "field_6334648ba4fda",
+                                    "key": "field_634536a1e8a23",
                                     "label": "Positie t.o.v. tekst",
                                     "name": "title_position",
                                     "type": "select",
@@ -4296,14 +4555,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_6334648ba4fd8",
+                                                "field": "field_634536a1e8a20",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -4322,7 +4581,7 @@
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_6334648ba4fdb",
+                                    "key": "field_634536a1e8a24",
                                     "label": "Titels",
                                     "name": "titles",
                                     "type": "repeater",
@@ -4331,7 +4590,7 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_6334648ba4fd8",
+                                                "field": "field_634536a1e8a20",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
@@ -4349,7 +4608,7 @@
                                     "button_label": "",
                                     "sub_fields": [
                                         {
-                                            "key": "field_6334648ba4fdc",
+                                            "key": "field_634536a1e8a25",
                                             "label": "Tekst",
                                             "name": "text",
                                             "type": "text",
@@ -4368,7 +4627,7 @@
                                             "maxlength": ""
                                         },
                                         {
-                                            "key": "field_6334648ba4fdd",
+                                            "key": "field_634536a1e8a26",
                                             "label": "Type",
                                             "name": "type",
                                             "type": "select",
@@ -4397,7 +4656,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_6334648ba4fde",
+                                            "key": "field_634536a1e8a27",
                                             "label": "Weergave (mobiel)",
                                             "name": "display_type_mobile",
                                             "type": "select",
@@ -4428,7 +4687,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_6334648ba4fdf",
+                                            "key": "field_634536a1e8a28",
                                             "label": "Weergave (desktop)",
                                             "name": "display_type_desktop",
                                             "type": "select",
@@ -4459,7 +4718,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_6334648ba4fe0",
+                                            "key": "field_634536a1e8a29",
                                             "label": "Uitlijning",
                                             "name": "align",
                                             "type": "select",
@@ -4900,7 +5159,7 @@
                 "layout_62eb75463407d": {
                     "key": "layout_62eb75463407d",
                     "name": "contactForm",
-                    "label": "Contactformulier",
+                    "label": "CTA \/ Contactformulier",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -5026,7 +5285,7 @@
                             "font_size": 14
                         },
                         {
-                            "key": "field_633464ac25ead",
+                            "key": "field_634536c8817ec",
                             "label": "Titel",
                             "name": "title",
                             "type": "group",
@@ -5041,7 +5300,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_633464ac25eae",
+                                    "key": "field_634536c8817ed",
                                     "label": "Losse titel tonen?",
                                     "name": "show_separate_title",
                                     "type": "true_false",
@@ -5049,7 +5308,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -5060,7 +5319,44 @@
                                     "ui_off_text": ""
                                 },
                                 {
-                                    "key": "field_633464ac25eaf",
+                                    "key": "field_634536c8817ee",
+                                    "label": "Breedte",
+                                    "name": "title_width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de breedte van de titels binnen het blok. Geldt alleen op desktop.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_634536c8817ed",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-full": "100%"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_634536c8817ef",
                                     "label": "Titelkleur",
                                     "name": "title_color",
                                     "type": "Thema Kleur",
@@ -5069,14 +5365,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_633464ac25eae",
+                                                "field": "field_634536c8817ed",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -5084,7 +5380,7 @@
                                     "font_size": 14
                                 },
                                 {
-                                    "key": "field_633464ac25eb0",
+                                    "key": "field_634536c8817f0",
                                     "label": "Positie t.o.v. tekst",
                                     "name": "title_position",
                                     "type": "select",
@@ -5093,14 +5389,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_633464ac25eae",
+                                                "field": "field_634536c8817ed",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -5119,7 +5415,7 @@
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_633464ad25eb1",
+                                    "key": "field_634536c8817f1",
                                     "label": "Titels",
                                     "name": "titles",
                                     "type": "repeater",
@@ -5128,7 +5424,7 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_633464ac25eae",
+                                                "field": "field_634536c8817ed",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
@@ -5146,7 +5442,7 @@
                                     "button_label": "",
                                     "sub_fields": [
                                         {
-                                            "key": "field_633464ad25eb2",
+                                            "key": "field_634536c8817f2",
                                             "label": "Tekst",
                                             "name": "text",
                                             "type": "text",
@@ -5165,7 +5461,7 @@
                                             "maxlength": ""
                                         },
                                         {
-                                            "key": "field_633464ad25eb3",
+                                            "key": "field_634536c8817f3",
                                             "label": "Type",
                                             "name": "type",
                                             "type": "select",
@@ -5194,7 +5490,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_633464ad25eb4",
+                                            "key": "field_634536c8817f4",
                                             "label": "Weergave (mobiel)",
                                             "name": "display_type_mobile",
                                             "type": "select",
@@ -5225,7 +5521,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_633464ad25eb5",
+                                            "key": "field_634536c8817f5",
                                             "label": "Weergave (desktop)",
                                             "name": "display_type_desktop",
                                             "type": "select",
@@ -5256,7 +5552,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_633464ad25eb6",
+                                            "key": "field_634536c8817f6",
                                             "label": "Uitlijning",
                                             "name": "align",
                                             "type": "select",
@@ -5590,7 +5886,7 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_633464e4d6895",
+                            "key": "field_634537601d948",
                             "label": "Titel",
                             "name": "title",
                             "type": "group",
@@ -5605,7 +5901,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_633464e4d6896",
+                                    "key": "field_634537601d949",
                                     "label": "Losse titel tonen?",
                                     "name": "show_separate_title",
                                     "type": "true_false",
@@ -5613,7 +5909,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -5624,7 +5920,44 @@
                                     "ui_off_text": ""
                                 },
                                 {
-                                    "key": "field_633464e4d6897",
+                                    "key": "field_634537601d94a",
+                                    "label": "Breedte",
+                                    "name": "title_width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de breedte van de titels binnen het blok. Geldt alleen op desktop.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_634537601d949",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-full": "100%"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_634537601d94b",
                                     "label": "Titelkleur",
                                     "name": "title_color",
                                     "type": "Thema Kleur",
@@ -5633,14 +5966,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_633464e4d6896",
+                                                "field": "field_634537601d949",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -5648,7 +5981,7 @@
                                     "font_size": 14
                                 },
                                 {
-                                    "key": "field_633464e4d6898",
+                                    "key": "field_634537601d94c",
                                     "label": "Positie t.o.v. tekst",
                                     "name": "title_position",
                                     "type": "select",
@@ -5657,14 +5990,14 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_633464e4d6896",
+                                                "field": "field_634537601d949",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
                                         ]
                                     ],
                                     "wrapper": {
-                                        "width": "33",
+                                        "width": "20",
                                         "class": "",
                                         "id": ""
                                     },
@@ -5683,7 +6016,7 @@
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_633464e4d6899",
+                                    "key": "field_634537601d94d",
                                     "label": "Titels",
                                     "name": "titles",
                                     "type": "repeater",
@@ -5692,7 +6025,7 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_633464e4d6896",
+                                                "field": "field_634537601d949",
                                                 "operator": "==",
                                                 "value": "1"
                                             }
@@ -5710,7 +6043,7 @@
                                     "button_label": "",
                                     "sub_fields": [
                                         {
-                                            "key": "field_633464e4d689a",
+                                            "key": "field_634537601d94e",
                                             "label": "Tekst",
                                             "name": "text",
                                             "type": "text",
@@ -5729,7 +6062,7 @@
                                             "maxlength": ""
                                         },
                                         {
-                                            "key": "field_633464e4d689b",
+                                            "key": "field_634537601d94f",
                                             "label": "Type",
                                             "name": "type",
                                             "type": "select",
@@ -5758,7 +6091,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_633464e4d689c",
+                                            "key": "field_634537601d950",
                                             "label": "Weergave (mobiel)",
                                             "name": "display_type_mobile",
                                             "type": "select",
@@ -5789,7 +6122,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_633464e4d689d",
+                                            "key": "field_634537601d951",
                                             "label": "Weergave (desktop)",
                                             "name": "display_type_desktop",
                                             "type": "select",
@@ -5820,7 +6153,7 @@
                                             "placeholder": ""
                                         },
                                         {
-                                            "key": "field_633464e4d689e",
+                                            "key": "field_634537601d952",
                                             "label": "Uitlijning",
                                             "name": "align",
                                             "type": "select",
@@ -5950,5 +6283,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1665414627
+    "modified": 1665484253
 }

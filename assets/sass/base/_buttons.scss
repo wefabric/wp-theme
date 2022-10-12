@@ -1,73 +1,78 @@
 @mixin btn {
 	@apply relative text-sm transition-all tracking-wider rounded-full;
-	
 	@apply no-underline #{!important};
 	
-	line-height: 50px;
 	padding: 0 36px 0 20px;
-	position: relative;
 	display: inline-block;
 	color: #fff; //text-color white
 }
 
 @layer base {
+	
+	@each $themeColor in $themeColors {
+		.btn-#{$themeColor} {
+			@apply bg-#{$themeColor};
+			
+			&:hover {
+				@apply bg-black; //bg-#{$themeColor}-dark;
+			}
+		}
+		
+		.btn-#{$themeColor}-light {
+			@apply bg-#{$themeColor}-light;
+			
+			&:hover {
+				@apply bg-#{$themeColor};
+			}
+		}
+		
+		.btn-#{$themeColor}-dark {
+			@apply bg-#{$themeColor}-dark;
+			
+			&:hover {
+				@apply bg-black; //bg-#{$themeColor};
+			}
+		}
+		
+		.btn-#{$themeColor}-full {
+			@apply bg-#{$themeColor};
+			
+			&:hover {
+				@apply bg-#{$themeColor}-dark;
+			}
+		}
+	}
+	
+	.btn-white {
+		@apply bg-white text-black;
+		
+		&:hover {
+			@apply bg-primary;
+		}
+	}
+	
+	.btn-black {
+		@apply bg-black text-white;
+		
+		&:hover {
+			@apply bg-primary;
+		}
+	}
+	
+	.btn-gray {
+		@apply bg-gray-100 text-black;
+		
+		&:hover {
+			@apply bg-primary;
+		}
+	}
+	
 	.btn {
 		@include btn;
 		
-		:hover {
-			@apply cursor-pointer;
-		}
-		
 		@screen lg {
 			@apply text-md;
-			line-height: 70px;
 			padding: 0 54px 0 41px;
-		}
-		
-		@each $themeColor in $themeColors {
-			&.btn-#{$themeColor} {
-				@apply bg-#{$themeColor};
-				
-				&:hover {
-					@apply bg-#{$themeColor}-dark;
-				}
-			}
-			
-			&.btn-#{$themeColor}-light {
-				@apply bg-#{$themeColor}-light;
-				
-				&:hover {
-					@apply bg-#{$themeColor};
-				}
-			}
-			
-			&.btn-#{$themeColor}-dark {
-				@apply bg-#{$themeColor}-dark;
-				
-				&:hover {
-					@apply bg-#{$themeColor};
-				}
-			}
-			
-			&.btn-#{$themeColor}-full {
-				@apply bg-#{$themeColor};
-				
-				&:hover {
-					@apply bg-#{$themeColor}-dark;
-				}
-			}
-		}
-		
-		&.btn-white {
-			@apply bg-white text-black;
-		}
-		
-		&.btn-black {
-			@apply bg-black text-white;
-		}
-		
-		&.btn-gray {
-			@apply bg-gray-100 text-black;
 		}
 		
 		&.btn-transparent {
@@ -79,7 +84,7 @@
 		
 		&:after {
 			@apply transition-all;
-			@extend .far;
+			@extend .fa-solid;
 			font-weight: 700 !important;
 			content: '\f0da' !important;
 			font-family: $fa-font-family;
@@ -88,10 +93,11 @@
 			position: absolute;
 			display: block;
 			height: 100%;
-			line-height: 0;
 		}
 		
 		&:hover {
+			@apply cursor-pointer;
+			
 			&:after {
 				right: 15px;
 			}

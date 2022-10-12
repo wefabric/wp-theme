@@ -1,6 +1,6 @@
 .form {
 	[type='text'], [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
-		@apply border-0 bg-input-background text-black w-full rounded-2xl p-3 px-6 font-normal;
+		@apply border-0 bg-input-background text-black w-full rounded-2xl p-6 font-normal mt-1;
 		
 		&:focus{
 			@apply shadow-none border-2 outline-none ring-offset-0 ring-offset-primary-light ring-primary-light border-none;
@@ -24,6 +24,7 @@
 	}
 	
 	textarea {
+		@apply mt-1;
 		height: 9rem !important;
 	}
 	
@@ -32,9 +33,17 @@
 	}
 	
 	[type="submit"] {
-		@apply mt-9 h-12;
+		@apply rounded-full; //just in case
 		@apply bg-secondary leading-relaxed #{!important};
 	}
+	
+	span.btn {
+		@apply mt-9 h-[4.5rem] flex justify-items-center;
+		
+		&:hover {
+			@apply bg-secondary #{!important};
+		} //to disable the hover when the submit-input itself doesn't change color when hovered.
+ 	}
 	
 	label {
 		@apply text-base font-bold;

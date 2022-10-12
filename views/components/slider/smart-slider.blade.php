@@ -8,6 +8,11 @@
         if(!isset($card_classes)) {
             $card_classes = 'w-full md:w-1/2 lg:w-1/3';
         }
+		if(!isset($slider_on_items) || !is_numeric($slider_on_items)) {
+			$slider_on_items = 3;
+		} elseif(is_string($slider_on_items)) {
+			$slider_on_items = (int)$slider_on_items;
+		}
     @endphp
 
     <div class="block lg:hidden"> {{-- This is the mobile block --}}
@@ -31,12 +36,14 @@
     {{-- TODO What about tablet (md: size) ? --}}
 
     <div class="hidden lg:block"> {{-- This is the desktop block --}}
-        @if($count > 0 && $count <= ($slider_on_items ?? 3))
+        @if($count > 0 && $count <= $slider_on_items)
             @include('components.slider.grid', [
                 'items' => $items,
                 'card_type' => $card_type,
+				'grid_class' => $grid_class ?? ('grid lg:grid-cols-'. $slider_on_items),
+                'grid_spacing' => $grid_spacing ?? null,
             ])
-        @elseif($count > ($slider_on_items ?? 3))
+        @elseif($count > $slider_on_items)
             @include('components.slider.slider', [
                 'items' => $items,
                 'arrows' => $arrows ?? false,
