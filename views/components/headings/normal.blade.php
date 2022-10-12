@@ -36,6 +36,9 @@
 		$display .= $display_type_mobile;
 	}
 	if(!empty($display_type_desktop)) {
+		if(!empty($display_type_mobile) && $display_type_mobile == 'hidden') {
+			$display .= ' lg:block'; //to unset the mobile hidden.
+		}
 		$display .= ' lg:'. $display_type_desktop;
 	}
 @endphp
