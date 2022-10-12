@@ -15,11 +15,11 @@
 
 <div class="bg-{{ $bg_color ?? 'black' }} text-{{ $text_color ?? 'white' }} text-base pb-10 lg:pb-24">
     @if(!empty($usps))
-        <div class="bg-white text-black py-10 lg:py-20 lg:px-36">
+        <div class="bg-white text-black py-10 lg:py-20 px-4 md:px-8 lg:px-36">
 			@include('components.slider.grid', [
 				'items' => $usps,
 				'card_type' => 'usp',
-				'grid_class' => 'flex justify-center',
+				'grid_class' => 'flex flex-col lg:flex-row justify-center',
 				
 				'size' => '3xl',
 				'style' => 'p font-bold lg:h6',
