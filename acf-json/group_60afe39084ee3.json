@@ -6272,6 +6272,20 @@
                 "operator": "==",
                 "value": "post"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ],
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "product_cat"
+            }
         ]
     ],
     "menu_order": 0,
@@ -6283,5 +6297,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1665484253
+    "modified": 1665649603
 }

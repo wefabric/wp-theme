@@ -16,7 +16,7 @@
                                 <i class="fa-light fa-search "></i>
                                 <span class="screen-reader-only">Zoeken</span>
                             </button>
-                            <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" class="button">
+                            <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe">
                         </div>
 
                     </div>

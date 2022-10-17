@@ -5,5 +5,9 @@
 	'rel' => $rel ?? '',
 	'target' => $target ?? ''
 ])
-    {{ $text }}
+@if($span ?? true)
+	<span>{{ $text }}</span>
+@else
+	{{ $text }}
+@endif
 @include('components.link.closing')
