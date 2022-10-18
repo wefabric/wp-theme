@@ -24,10 +24,10 @@
 		}
     }
 	
-	if(!empty($title_color)) {
+	if(!empty($title_color) && !str_starts_with($title_color, 'text-')) {
 		$title_color = 'text-'. $title_color;
 	}
-	if(!empty($title_align)) {
+	if(!empty($title_align) && !str_starts_with($title_align, 'text-')) {
 		$title_align = 'text-'. $title_align;
 	}
 	
