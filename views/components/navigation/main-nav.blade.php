@@ -23,8 +23,13 @@
                 </form>
             </div>
 
+			@php
+				$cart_items = WC()->cart->get_cart_contents_count();
+				$cart_total = WC()->cart->get_cart_total(); //price?
+			@endphp
+			
             @include('components.buttons.icon', [
-                'href' => '/cart',
+                'href' => wc_get_cart_url(),
                 'alt' => 'Naar de winkelwagen',
     //            'rel' => 'noopener',
     //            'target' => '_blank',
@@ -35,11 +40,11 @@
                 'class' => 'relative',
 
                 'smallIconClass' => 'h-7 w-7 text-center mr-1 rounded-full bg-zinc-300 text-black absolute pt-0.5 -top-2 -right-2',
-                'smallIconContent' => '0', //number of items in shopping cart
+                'smallIconContent' => $cart_items, //sprintf(_n('%d item', '%d items', $cart_items), $cart_items) .' - '. $cart_total, //number of items in shopping cart
             ])
 
             @include('components.buttons.icon', [
-                'href' => '/profile',
+                'href' => get_permalink(get_option('woocommerce_myaccount_page_id')),
                 'alt' => 'Naar mijn profiel',
     //            'rel' => 'noopener',
     //            'target' => '_blank',

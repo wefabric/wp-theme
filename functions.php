@@ -143,7 +143,6 @@ add_theme_support( 'post-thumbnails' );
 
 add_action( 'woocommerce_before_shop_loop', 'show_subcategories_of_current', 50 );
 function show_subcategories_of_current() {
-
 	$terms = get_terms( 'product_cat', [
 		'parent' => get_queried_object_id(),
 		'exclude' => [
@@ -155,10 +154,46 @@ function show_subcategories_of_current() {
 		echo view('components.slider.grid', [
 			'items' => $terms,
 			'card_type' => 'category',
-			'grid_class' => 'hidden md:grid md:grid-cols-3 w-full',
+			'grid_class' => 'product-cats hidden md:grid md:grid-cols-3 w-full',
 //			'grid_spacing' => 'gap-12',
 		])->render();
 
 		echo '<h2 class="text-36 font-head lg:pt-20 lg:pb-12">Alle producten</h2>';
 	}
 }
+
+add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
+function new_loop_shop_per_page($number_of_posts) {
+	return 9; //products per page
+}
+add_filter('loop_shop_columns', 'loop_columns', 1);
+function loop_columns() {
+	return 3; //product-columns per page
+}
+
+//Doesnt work > homepage is Shop / Shop...
+//add_filter( 'woocommerce_breadcrumb_defaults', 'wcc_change_breadcrumb_home_text' );
+function wcc_change_breadcrumb_home_text( $defaults ) {
+	$defaults['home'] = 'Shop';
+	return $defaults;
+}
+add_filter( 'woocommerce_breadcrumb_home_url', 'woo_custom_breadrumb_home_url' );
+function woo_custom_breadrumb_home_url() {
+	return get_permalink(wc_get_page_id('shop'));
+}
+
+
+// https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
+
+/*
+// Remove each style one by one
+add_filter( 'woocommerce_enqueue_styles', '_dequeue_styles' );
+function _dequeue_styles( $enqueue_styles ) {
+	unset( $enqueue_styles['woocommerce-general'] );	// Remove the gloss
+	unset( $enqueue_styles['woocommerce-layout'] );		// Remove the layout
+	unset( $enqueue_styles['woocommerce-smallscreen'] );	// Remove the smallscreen optimisation
+	return $enqueue_styles;
+}
+// Or just remove them all in one line
+add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+*/

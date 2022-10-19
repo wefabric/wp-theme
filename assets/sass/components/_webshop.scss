@@ -59,13 +59,17 @@
 				max-height: 3500px;
 			}
 			
+			//.product-category__trigger:checked + &.product-category {
+			//	@apply rounded-b-3xl;
+			//}
+			
 			.product-category__trigger:checked + .product-category__title::after {
 				transform: rotate(-45deg);
 				transition: 0.25s ease-in-out;
 			}
 			
 			.product-category {
-				@apply rounded-t-2xl rounded-b-3xl bg-black text-white mb-4 pt-4;
+				@apply rounded-t-2xl rounded-b-2xl bg-black text-white mb-4 pt-4;
 				
 				> a {
 					@apply inline-block pb-4 px-6;
@@ -146,22 +150,4 @@
 		}
 		
 	}
-
-}
-
-.product-cats {
-	@apply w-full grid lg:grid-cols-3;
-}
-
-.products {
-	@apply w-full lg:grid-cols-3;
-	@apply grid #{!important};
-	
-	&::before {
-		@apply hidden #{!important};
-	}
-}
-
-.product {
-	@apply w-full #{!important};
 }
