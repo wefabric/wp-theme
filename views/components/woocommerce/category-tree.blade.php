@@ -24,8 +24,6 @@
 	foreach($categories as $category) {
 		$category->subcategory_count = count($category->subcategories);
 	}
-	
-	$prefix = '/product-category/';
 @endphp
 
 <div class="sidebar-widget sidebar-widget--category-tree">
@@ -33,7 +31,7 @@
 		<div class="product-category @if($category->subcategory_count == 0) no-subcategories @endif">
 			
 			 @include('components.link.simple', [
-				'href' => $prefix . $category->slug,
+				'href' => get_category_link($category->term_taxonomy_id),
 				'text' => $category->name,
 			])
 			
@@ -46,7 +44,7 @@
 						<div class="product-subcategory">
 							
 							@include('components.link.simple', [
-								'href' => $prefix . $category->slug .'/'. $subcategory->slug,
+								'href' => get_category_link($subcategory->term_taxonomy_id),
 								'text' => $subcategory->name,
 							])
 							

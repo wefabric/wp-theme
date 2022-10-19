@@ -70,18 +70,9 @@
 				
 				@php
 					$categories = [
-						[
-							'title' => 'Draadnagels',
-							'image' => '1435',
-						],
-						[
-							'title' => 'Nagelkaas',
-							'image' => '1434',
-						],
-						[
-							'title' => 'Spijkers',
-							'image' => '1433',
-						],
+						get_term_by('term_taxonomy_id', 34),
+						get_term_by('term_taxonomy_id', 35),
+						get_term_by('term_taxonomy_id', 27),
 					];
 				@endphp
 				@include('components.slider.smart-slider', [

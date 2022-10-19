@@ -1,5 +1,5 @@
 .sidebar {
-	@apply bg-blue-100 lg:w-1/4 lg:mt-12;
+	@apply lg:w-1/4 lg:mt-12;
 
 	.sidebar-widget {
 		@apply lg:my-8;
@@ -65,13 +65,15 @@
 			}
 			
 			.product-category {
-				@apply rounded-2xl bg-black text-white mb-4 pt-4;
+				@apply rounded-t-2xl rounded-b-3xl bg-black text-white mb-4 pt-4;
 				
 				> a {
 					@apply inline-block pb-4 px-6;
 				}
 				
 				&.no-subcategories {
+					@apply rounded-b-2xl;
+					
 					.product-category__title::after {
 						display: none !important; //hide arrow if no subcategories exist for this category
 					}
@@ -154,6 +156,10 @@
 .products {
 	@apply w-full lg:grid-cols-3;
 	@apply grid #{!important};
+	
+	&::before {
+		@apply hidden #{!important};
+	}
 }
 
 .product {

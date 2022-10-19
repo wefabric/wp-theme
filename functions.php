@@ -136,3 +136,29 @@ $theme->support($theme->config('support', []));
 |
 */
 $theme->templates($theme->config('templates', []));
+
+//Woocommerce actions
+
+add_theme_support( 'post-thumbnails' );
+
+add_action( 'woocommerce_before_shop_loop', 'show_subcategories_of_current', 50 );
+function show_subcategories_of_current() {
+
+	$terms = get_terms( 'product_cat', [
+		'parent' => get_queried_object_id(),
+		'exclude' => [
+			'24', //term id of 'uncategorized'
+		],
+	]);
+
+	if ($terms) {
+		echo view('components.slider.grid', [
+			'items' => $terms,
+			'card_type' => 'category',
+			'grid_class' => 'hidden md:grid md:grid-cols-3 w-full',
+//			'grid_spacing' => 'gap-12',
+		])->render();
+
+		echo '<h2 class="text-36 font-head lg:pt-20 lg:pb-12">Alle producten</h2>';
+	}
+}
