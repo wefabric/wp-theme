@@ -46,7 +46,7 @@
 			 style="background-image: url('{{ wp_get_attachment_image_url($image->get('image'), 'textblock-image') }}')">
 		</div>
 	@else
-		<div class="w-full lg:{{ $image_width }} py-8 lg:py-0 @if($image->get('position') == 'right') lg:order-3 @else lg:order-1 @endif @switch($image->get('vertical_position'))
+		<div class="w-full lg:{{ $image_width }} py-8 lg:py-0 flex @if($image->get('position') == 'right') lg:order-3 @else lg:order-1 @endif @switch($image->get('vertical_position'))
 				@case('middle') lg:my-auto @break
 				@case('bottom') lg:mt-auto lg:mb-0 @break;
 			@endswitch ">
