@@ -1,19 +1,20 @@
-<div class="card bg-white p-12 flex justify-center">
+<div class="card bg-white px-4 py-12 flex justify-center">
 	@include('components.link.opening', [
 		'href' => '#',
 		'alt' => $item['title'],
-		'a_class' => 'flex justify-center'
+		'a_class' => 'flex h-full justify-center'
 	])
+
 		@include('components.image', [
 			'image_id' => $item['image'],
 			'size' => 'brand_logo',
-			'class' => ' mx-auto h-[200px]',
-			'img_class' => 'bg-center bg-no-repeat',
+			'class' => 'block h-4/5 max-h-[200px] disable-rounded align-center',
+			'img_class' => 'mx-auto bg-center bg-no-repeat',
 		])
 	
-		<div class="h5 text-center pt-10">
+		<span class="block h5 h-1/5 text-center mt-8">
 			{{ $item['title'] }}
-		</div>
+		</span>
 	
 	@include('components.link.closing')
 </div>
