@@ -21,7 +21,7 @@
 			
 		<div class="relative @if(!empty($info->get('display_type'))) md:grid md:grid-cols-2 gap-24 @endif" >
 			
-            <div class="bg-{{ str_replace('-color', '', $block->get('background_color', 'bg_color')) }} rounded-lg  text-{{ $block->get('text_color') }}
+            <div class="bg-{{ str_replace('-color', '', $block->get('background_color', '')) }} rounded-lg  text-{{ $block->get('text_color') }} -mt-2
 	            @if(empty($info->get('display_type')))
 	            	w-full lg:{{ $block->get('width_form') }}
 	            	@if($block->get('fill_color')) bg-{{ $block->get('fill_color') }} p-12 @endif
