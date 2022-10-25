@@ -157,8 +157,22 @@ ins {
 	@apply no-underline #{!important};
 }
 
+.price {
+	@apply font-bold text-primary #{!important};
+}
+
+.woocommerce-product-details__short-description {
+	@apply pb-8;
+}
+
+.related {
+	h2 {
+		@apply pt-24 pb-12 ;
+	}
+}
+
 //hacky fix.
-.products {
+ul.products {
 	@apply grid grid-cols-3 gap-4 #{!important};
 	
 	&:before {

@@ -202,12 +202,33 @@ add_filter('woocommerce_product_class', function ($class) {
 	return $class .' lg:pt-24 ';
 });
 
+// See content-single-product.php # 49
 add_action('woocommerce_single_product_summary', function() {
-	echo '<h5 class="pb-2">Brand/Merk</h5>';
+	global $product;
+	echo '<h5 class="pb-2">'. $product->get_attribute('brand') .'</h5>';
 }, 3);
 add_action('woocommerce_single_product_summary', function() {
-	echo '<div class="text-base pt-3 pb-8"><span class="font-bold">Artikelnummer:</span> 123456</div>';
+	global $product;
+	echo '<div class="text-base pt-3 pb-8"><span class="font-bold">Artikelnummer:</span> '. $product->get_sku() .'</div>';
 }, 8);
+add_action('woocommerce_single_product_summary', function() {
+	global $product;
+	echo '<div class="text-xs font-bold pt-2 pb-8">'. wc_price(wc_get_price_excluding_tax($product)) .' excl. BTW</div>';
+}, 11);
+remove_action('woocommerce_single_product_summary','woocommerce_template_single_meta', 40);
+add_action('woocommerce_single_product_summary', function() {
+	echo '<div class="text-right">';
+	echo '<h4 class="pb-4">Zakelijk bestellen</h4>';
+	echo view('components.buttons.default', [
+		'href' => '/offerte',
+		'text' => 'Offerte opvragen',
+		'a_class' => '',
+		'colors' => 'btn-black text-white',
+	])->render();
+	
+	echo'</div>';
+}, 60);
+
 
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
 
