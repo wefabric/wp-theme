@@ -41,6 +41,7 @@ img {
 a:not(.no-underline), a>span {
 	@apply underline hover:font-bold cursor-pointer;
 }
-a.no-underline {
+a.no-underline,
+	.woocommerce-LoopProduct-link {
 	text-decoration-line: none !important;
 }

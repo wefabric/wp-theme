@@ -47,7 +47,13 @@
 		</div>
 		
 		<div class="page-builder">
-			{!! pageBuilder()->render(get_the_ID()) !!}
+			@php
+				$obj = get_queried_object(); //category
+				if($obj instanceof WP_Post_Type && $obj->name === 'product') {
+					$obj = get_option('woocommerce_shop_page_id');
+				} //if shop, get the page ID instead
+			@endphp
+			{!! pageBuilder()->render($obj) !!}
 		</div>
 	</div>
 @endsection

@@ -20,48 +20,86 @@ defined( 'ABSPATH' ) || exit;
 global $product;
 
 // Ensure visibility.
-if ( empty( $product ) || ! $product->is_visible() ) {
+/**
+ * @var WC_Product $product
+ */
+if(empty($product) || !$product->is_visible()) {
 	return;
 }
 ?>
-<li <?php wc_product_class( '', $product ); ?>>
-	<?php
+
+<div <?php wc_product_class( 'card flex flex-col p-5 bg-white ', $product );  ?> >
+	<?php //min-h-[488px] lg:min-h-[465px]      pb-32 relative
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
 	 *
 	 * @hooked woocommerce_template_loop_product_link_open - 10
 	 */
 	do_action( 'woocommerce_before_shop_loop_item' );
-
-	/**
-	 * Hook: woocommerce_before_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_show_product_loop_sale_flash - 10
-	 * @hooked woocommerce_template_loop_product_thumbnail - 10
-	 */
-	do_action( 'woocommerce_before_shop_loop_item_title' );
-
-	/**
-	 * Hook: woocommerce_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_template_loop_product_title - 10
-	 */
-	do_action( 'woocommerce_shop_loop_item_title' );
-
-	/**
-	 * Hook: woocommerce_after_shop_loop_item_title.
-	 *
-	 * @hooked woocommerce_template_loop_rating - 5
-	 * @hooked woocommerce_template_loop_price - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop_item_title' );
-
-	/**
-	 * Hook: woocommerce_after_shop_loop_item.
-	 *
-	 * @hooked woocommerce_template_loop_product_link_close - 5
-	 * @hooked woocommerce_template_loop_add_to_cart - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop_item' );
 	?>
-</li>
+	
+	<h3 class="h5 py-2">
+		<?php
+		/**
+		 * Hook: woocommerce_before_shop_loop_item_title.
+		 *
+		 * @hooked woocommerce_show_product_loop_sale_flash - 10
+		 * @hooked woocommerce_template_loop_product_thumbnail - 10
+		 */
+		do_action( 'woocommerce_before_shop_loop_item_title' );
+		
+		echo view('components.image', [
+			'image_id' => $product->get_image_id(),
+			'size' => 'product_card',
+			'class' => ' mx-auto h-[225px]',
+			'img_class' => 'bg-center bg-no-repeat',
+		])->render();
+		
+		?>
+	</h3>
+	
+	<div class="flex flex-col w-full pt-2.5 pb-5">
+		
+		<div class="card-category-title w-full pb-2">
+			<?php echo $product->get_attribute('brand'); ?>
+		</div>
+		
+		<?php //absolute bottom-0
+		/**
+		* Hook: woocommerce_shop_loop_item_title.
+		*
+		* @hooked woocommerce_template_loop_product_title - 10
+		*/
+		do_action( 'woocommerce_shop_loop_item_title' );
+	
+		/**
+		* Hook: woocommerce_after_shop_loop_item_title.
+		*
+		* @hooked woocommerce_template_loop_rating - 5
+		* @hooked woocommerce_template_loop_price - 10
+		*/
+		do_action( 'woocommerce_after_shop_loop_item_title' );
+		?>
+		
+		<div class="flex flex-row">
+			<?php echo view('components.buttons.default', [
+				'href' => $product->get_permalink(),
+				'text' => 'Meer info',
+				'colors' => 'btn-black text-white'
+			])->render(); ?>
+			
+			<div class="flex grow"></div>
+			
+			<?php
+			/**
+			 * Hook: woocommerce_after_shop_loop_item.
+			 *
+			 * @hooked woocommerce_template_loop_product_link_close - 5
+			 * @hooked woocommerce_template_loop_add_to_cart - 10
+			 */
+			do_action( 'woocommerce_after_shop_loop_item' );
+			?>
+		</div>
+	</div>
+
+</div>

@@ -169,7 +169,7 @@ function new_loop_shop_per_page($number_of_posts) {
 add_filter('loop_shop_columns', 'loop_columns', 1);
 function loop_columns() {
 	return 3; //product-columns per page
-}
+} //DOESNT work, see the _webshop.scss styling for .produccts as temp fix.
 
 //Doesnt work > homepage is Shop / Shop...
 //add_filter( 'woocommerce_breadcrumb_defaults', 'wcc_change_breadcrumb_home_text' );
@@ -181,6 +181,11 @@ add_filter( 'woocommerce_breadcrumb_home_url', 'woo_custom_breadrumb_home_url' )
 function woo_custom_breadrumb_home_url() {
 	return get_permalink(wc_get_page_id('shop'));
 }
+
+remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail');
+add_filter('woocommerce_product_loop_title_classes', function ($class) {
+	return $class .' h5 text-black pb-6';
+});
 
 
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?

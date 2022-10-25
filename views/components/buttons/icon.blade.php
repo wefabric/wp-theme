@@ -4,6 +4,7 @@
     'rel' => $rel ?? '',
     'target' => $target ?? '',
     'class' => ($a_class ?? ''). ' no-underline', // because we have an icon that is hoverable
+	'attributes' => ($attributes ?? ''),
 ])
 
 @php

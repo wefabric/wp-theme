@@ -21,6 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
+/**
 echo apply_filters(
 	'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
 	sprintf(
@@ -34,3 +35,21 @@ echo apply_filters(
 	$product,
 	$args
 );
+ */
+
+$attributes = $args['attributes'] ?? [];
+$attributes['data-quantity'] = esc_attr($args['quantity'] ?? 1);
+
+echo view('components.buttons.icon', [
+	'href' => esc_url( $product->add_to_cart_url() ),
+	'alt' => esc_html( $product->add_to_cart_text() ),
+	'a_class' => '',
+	'size' => 'h-12 w-12 pt-1.5',
+	'icon' => 'fa-solid fa-cart-shopping text-xl',
+	'colors' => 'btn-secondary text-white',
+	'attributes' => [
+		'data-quantity' => $attributes['data-quantity'],
+	]
+])->render();
+
+
