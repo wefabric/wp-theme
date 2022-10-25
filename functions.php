@@ -157,8 +157,7 @@ add_filter('woocommerce_gallery_image_size', function($size) {
 */
 
 
-add_action( 'woocommerce_before_shop_loop', 'show_subcategories_of_current', 50 );
-function show_subcategories_of_current() {
+add_action( 'woocommerce_before_shop_loop', function () {
 	$terms = get_terms( 'product_cat', [
 		'parent' => get_queried_object_id(),
 		'exclude' => [
@@ -176,27 +175,23 @@ function show_subcategories_of_current() {
 
 		echo '<h2 class="text-36 font-head lg:pt-20 lg:pb-12">Alle producten</h2>';
 	}
-}
+}, 50);
 
-add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
-function new_loop_shop_per_page($number_of_posts) {
+add_filter( 'loop_shop_per_page', function ($number_of_posts) {
 	return 9; //products per page
-}
-add_filter('loop_shop_columns', 'loop_columns', 1);
-function loop_columns() {
+}, 20);
+add_filter('loop_shop_columns', function () {
 	return 3; //product-columns per page
-} //DOESNT work, see the _webshop.scss styling for .produccts as temp fix.
+}, 1); //DOESNT work, see the _webshop.scss styling for .produccts as temp fix.
 
 //Doesnt work > homepage is Shop / Shop...
-//add_filter( 'woocommerce_breadcrumb_defaults', 'wcc_change_breadcrumb_home_text' );
-function wcc_change_breadcrumb_home_text( $defaults ) {
-	$defaults['home'] = 'Shop';
-	return $defaults;
-}
-add_filter( 'woocommerce_breadcrumb_home_url', 'woo_custom_breadrumb_home_url' );
-function woo_custom_breadrumb_home_url() {
+//add_filter( 'woocommerce_breadcrumb_defaults', function ( $defaults ) {
+//	$defaults['home'] = 'Shop';
+//	return $defaults;
+//});
+add_filter( 'woocommerce_breadcrumb_home_url', function () {
 	return get_permalink(wc_get_page_id('shop'));
-}
+});
 
 remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail');
 add_filter('woocommerce_product_loop_title_classes', function ($class) {
