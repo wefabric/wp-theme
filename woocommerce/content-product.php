@@ -51,15 +51,14 @@ if(empty($product) || !$product->is_visible()) {
 		echo view('components.image', [
 			'image_id' => $product->get_image_id(),
 			'size' => 'product_card',
-			'class' => ' mx-auto h-[225px]',
-			'img_class' => 'bg-center bg-no-repeat',
+			'class' => ' flex justify-center',
+			'img_class' => '',
 		])->render();
 		
 		?>
 	</h3>
 	
-	<div class="flex flex-col w-full pt-2.5 pb-5">
-		
+	<div class="pt-2.5 pb-5">
 		<div class="card-category-title w-full pb-2">
 			<?php echo $product->get_attribute('brand'); ?>
 		</div>

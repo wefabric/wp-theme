@@ -141,6 +141,22 @@ $theme->templates($theme->config('templates', []));
 
 add_theme_support( 'post-thumbnails' );
 
+/*
+add_filter('woocommerce_gallery_thumbnail_size', function($size) {
+	return 'woocommerce_gallery_thumbnail';
+});
+add_filter('single_product_archive_thumbnail_size', function($size) {
+	return 'woocommerce_product_thumbnail';
+});
+add_filter('subcategory_archive_thumbnail_size', function($size) {
+	return 'woocommerce_product_thumbnail';
+});
+add_filter('woocommerce_gallery_image_size', function($size) {
+	return 'woocommerce_single';
+});
+*/
+
+
 add_action( 'woocommerce_before_shop_loop', 'show_subcategories_of_current', 50 );
 function show_subcategories_of_current() {
 	$terms = get_terms( 'product_cat', [
