@@ -28,6 +28,12 @@
 			<div class="bg-gray-100">
 				<div class="h6 text-center pb-10">Uitgelichte producten</div>
 				
+{{--
+				@include('components.content', [
+					'content' => '[products limit="4"]',
+				])
+--}}
+				
 				@php
 					$products = [
 						[
@@ -67,6 +73,12 @@
 		@case('categories')
 			<div class="flex flex-col justify-center">
 				<div class="h6 text-center pb-10">Uitgelichte categorieen</div>
+				
+{{--
+				@include('components.content', [
+					'content' => '[product_categories parent="0"]',
+				])
+--}}
 				
 				@php
 					$categories = [
