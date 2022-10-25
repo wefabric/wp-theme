@@ -198,6 +198,16 @@ add_filter('woocommerce_product_loop_title_classes', function ($class) {
 	return $class .' h5 text-black pb-6';
 });
 
+add_filter('woocommerce_product_class', function ($class) {
+	return $class .' lg:pt-24 ';
+});
+
+add_action('woocommerce_single_product_summary', function() {
+	echo '<h5 class="pb-2">Brand/Merk</h5>';
+}, 3);
+add_action('woocommerce_single_product_summary', function() {
+	echo '<div class="text-base pt-3 pb-8"><span class="font-bold">Artikelnummer:</span> 123456</div>';
+}, 8);
 
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
 

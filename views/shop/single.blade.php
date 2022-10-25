@@ -7,7 +7,7 @@
 		<div class="">
 			@loop
 			@php(do_action('woocommerce_before_single_product'))
-			<div id="product-{{ Loop::id() }}" {{ wc_product_class() }}>
+			<div id="product-{{ Loop::id() }}" {{ wc_product_class('lg:mt-24') }}>
 				@php(do_action('woocommerce_before_single_product_summary'))
 				
 				<div class="summary entry-summary">

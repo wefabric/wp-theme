@@ -98,9 +98,9 @@
 	px-4
 	md:px-2 md:px-4
 	
-	lg:pt-20 lg:pt-24 lg:pt-28 lg:pt-32 lg:pt-36
+	pt-3 lg:pt-20 lg:pt-24 lg:pt-28 lg:pt-32 lg:pt-36
 	lg:py-20 lg:py-36
-	pb-10 lg:pb-24
+	pb-2 pb-8 pb-10 lg:pb-24
 	
 	mb-4 lg:mb-0
 	mr-5
