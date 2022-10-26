@@ -88,3 +88,13 @@
 		}
 	}
 }
+
+[type="checkbox"] {
+	@apply checked:bg-primary;
+}
+
+[type="checkbox"], label.checkbox {
+	&:hover {
+		@apply checked:bg-primary cursor-pointer;
+	}
+}

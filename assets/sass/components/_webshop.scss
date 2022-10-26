@@ -233,7 +233,32 @@ ins {
 	}
 }
 
+.checkout-button {
+	@apply btn-secondary;
+	
+	br {
+		display: none;
+	}
+}
 
+.woocommerce_checkout_place_order {
+	@apply btn-secondary;
+}
+
+#ship-to-different-address {
+	@apply h5 pb-6;
+	
+	label br {
+		display:none;
+	}
+}
+
+.woocommerce-info { //messages on checkoutpage, blue
+//	@apply bg-secondary-light;
+}
+.woocommerce-message { //added to cart, green
+//	@apply bg-secondary-light;
+}
 
 //hacky fix.
 ul.products {
