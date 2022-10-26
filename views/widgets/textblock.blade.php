@@ -5,7 +5,7 @@
 	
 @endphp
 
-<div class="widget-content {{ $bg_color }} {{ $title_color }} flex flex-col justify-items-center">
+<div class="widget-content {{ $bg_color }} {{ $title_color }} flex flex-col text-center">
 	
 	@if(!empty($instance['title']))
 		@include('components.headings.normal', [

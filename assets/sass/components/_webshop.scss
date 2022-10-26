@@ -149,6 +149,30 @@
 			
 		}
 		
+		.wp-block-woocommerce-attribute-filter {
+			.wc-block-attribute-filter__title {
+				@apply text-base text-white bg-black p-6 rounded-2xl;
+			}
+			
+			.wc-block-checkbox-list {
+				@apply text-base px-6 pt-2;
+			 
+				li {
+					[type="checkbox"] {
+						@apply mr-5 checked:bg-primary; //peer
+					}
+					
+					[type="checkbox"]:checked + label {
+						@apply font-bold;
+					}
+					
+					//label {
+					//	@apply peer-checked:font-bold;
+					//}
+				}
+			}
+		}
+		
 	}
 }
 
@@ -165,11 +189,49 @@ ins {
 	@apply pb-8;
 }
 
-.related {
+.related, .upsells {
 	h2 {
 		@apply pt-24 pb-12 ;
 	}
 }
+
+.wc_add_to_cart_button {
+	@apply btn-secondary text-white py-2 font-bold;
+}
+
+.wc-tabs-wrapper {
+	ul.tabs {
+		&::before, ::before, ::after, li { //first is ul
+			@apply border-0 shadow-none #{!important};
+		}
+
+		li {
+			@apply rounded-2xl mr-4 #{!important};
+			
+			a {
+				@apply h5;
+				@apply no-underline #{!important};
+			}
+			
+			&.active {
+				@apply bg-primary text-white #{!important};
+			}
+		}
+	}
+}
+
+.woocommerce-product-attributes {
+
+	th {
+		text-align: left;
+	}
+	
+	.woocommerce-product-attributes-item__label, .woocommerce-product-attributes-item__value {
+		@apply text-base font-normal not-italic #{!important};
+	}
+}
+
+
 
 //hacky fix.
 ul.products {

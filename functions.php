@@ -229,6 +229,9 @@ add_action('woocommerce_single_product_summary', function() {
 	echo'</div>';
 }, 60);
 
+add_filter('woocommerce_product_single_add_to_cart_text', function () {
+	return 'In winkelwagen plaatsen';
+});
 
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
 
