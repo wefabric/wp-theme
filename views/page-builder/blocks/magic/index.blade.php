@@ -25,8 +25,8 @@
 	
 	@switch($value['value'])
 		@case('products')
-			<div class="bg-gray-100">
-				<div class="h6 text-center pb-10">Uitgelichte producten</div>
+			<div class="bg-gray-100 py-8 lg:py-24">
+				<div class="h4 text-center pb-10">Uitgelichte producten</div>
 				
 				@php
 					$products = [
@@ -65,8 +65,8 @@
 			@break
 		
 		@case('categories')
-			<div class="flex flex-col justify-center">
-				<div class="h6 text-center pb-10">Uitgelichte categorieen</div>
+			<div class="flex flex-col justify-center py-8 lg:py-24">
+				<div class="h4 text-center pb-10">Uitgelichte categorieen</div>
 				
 				@php
 					$categories = [
@@ -100,8 +100,8 @@
 			@break
 		
 		@case('feedbackco')
-			<div class="bg-gray-100">
-				<div class="h6 text-center pb-10">
+			<div class="bg-gray-100 py-8 lg:py-24">
+				<div class="h4 text-center pb-10">
 					Feedback Company reviews
 					<p class="italic text-sm">Dit zijn afbeeldingen, aangezien we mogelijk een widget uit FeedbackCo. halen?</p>
 				</div>
@@ -127,8 +127,8 @@
 			@break
 		
 		@case('brand-documentation')
-			<div class="">
-				<div class="h6 text-center pb-10">Merk documentatie</div>
+			<div class="py-8 lg:py-24">
+				<div class="h4 text-center pb-10">Merk documentatie</div>
 				@php
 					$brand = [
 						'title' => 'INDEX Fixing Systems',
@@ -170,7 +170,7 @@
 			@break
 		
 		@default
-			<div class="h6 text-center text-red-500"> Value {{ $value['value'] }} is not supported!</div>
+			<div class="py-8 lg:py-24 h4 text-center text-red-500"> Value {{ $value['value'] }} is not supported!</div>
 	@endswitch
 	
 </div>
