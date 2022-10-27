@@ -39,7 +39,7 @@
 	}
 @endphp
 
-<div class="container mx-auto w-full lg:{{ $block->get('width') }} @if($overlap) lg:h-[{{ $image->get('height_desktop') }}] relative @else lg:flex @endif ">
+<div class="@if($overlap) lg:h-[{{ $image->get('height_desktop') }}] relative @else lg:flex @endif ">
 	
 	@if($overlap)
 		<div class="flex lg:absolute z-10 w-full lg:{{ $image_width }} h-[400px] lg:h-full bg-no-repeat bg-contain bg-center @if($image->get('position') == 'right') lg:order-2 lg:bg-right lg:right-0 @else lg:bg-left @endif"

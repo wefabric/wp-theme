@@ -1,4 +1,4 @@
-<div class="@if($block->get('width') !== 'nomargin') container @endif mx-auto w-full lg:{{ $block->get('width') === 'nomargin' ? 'w-full' : $block->get('width') }} ">
+<div class="">
 	
 	@if($block->get('title')->get('show_separate_title'))
 		@include('components.headings.collection', [
@@ -12,11 +12,11 @@
 			$columns = $block->get('display_columns');
 			$img_size = 'gallery-thumbnail-1/'. $columns;
 
-			if($columns == 1 && $block->get('width') === 'nomargin') {
+			if($columns == 1 && $block->get('sizes')->get('width') === 'nomargin') {
 				$img_size .= '-nomargin';
 			}
 
-            if($block->get('width') !== 'nomargin') {
+            if($block->get('sizes')->get('width') !== 'nomargin') {
                 $card_classes = 'm-0';
             }
         @endphp

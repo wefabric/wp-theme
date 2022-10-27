@@ -1,4 +1,4 @@
-<div class="container mx-auto {{ $class ?? '' }} w-full lg:{{ $block->get('width') }}">
+<div class="{{ $class ?? '' }}">
     @include('components.iframe.html', [
 		'html' => $block->get('iframe-html'),
 	])
