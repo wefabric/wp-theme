@@ -8,9 +8,9 @@
         <div class="flex justify-end pb-4">
 
             <div class="mr-3">
-                <form action="" method="post" id="" name="" class="validate" target="_blank" novalidate>
+                <form action="/shop" method="get" id="" name="" class="validate" target="" novalidate>
                     <div class="flex">
-                        <input type="text" value="" placeholder="Typ hier je zoekterm in..." name="q" class="w-96 required bg-white rounded-l-lg shadow-lg shadow-slate-200 " id="search">
+                        <input type="text" value="" placeholder="Typ hier je zoekterm in..." name="s" class="w-96 bg-white rounded-l-lg shadow-lg shadow-slate-200 " id="search">
                         <div class="flex align-center">
                             <button type="submit" class="w-12 h-12 rounded-r-lg text-center btn-black text-white text-center text-xl shadow shadow-slate-200">
                                 <i class="fa-light fa-search "></i>
