@@ -189,9 +189,9 @@ add_filter('loop_shop_columns', function () {
 //	$defaults['home'] = 'Shop';
 //	return $defaults;
 //});
-add_filter( 'woocommerce_breadcrumb_home_url', function () {
-	return get_permalink(wc_get_page_id('shop'));
-});
+//add_filter( 'woocommerce_breadcrumb_home_url', function () {
+//	return get_permalink(wc_get_page_id('shop'));
+//});
 
 remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail');
 add_filter('woocommerce_product_loop_title_classes', function ($class) {
