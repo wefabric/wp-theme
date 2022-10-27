@@ -47,7 +47,7 @@ if(empty($breakPoints)) {
             </div>
         @endif
 
-        <div class="swiper" x-ref="container">
+        <div class="swiper " x-ref="container">
             <div class="swiper-wrapper">
                 @foreach($items as $item)
                     <div class="swiper-slide @if(($dots ?? true)) pb-8 @else pb-4 @endif" role="option">
@@ -58,7 +58,7 @@ if(empty($breakPoints)) {
                         </div>
                 @endforeach
             </div>
-            <div class="swiper-pagination @if(!($dots ?? true)) hidden @endif"></div>
+            <div class="swiper-pagination lg:pr-14 @if(!($dots ?? true)) hidden @endif"></div>
         </div>
 
         @if(($arrows ?? true))
