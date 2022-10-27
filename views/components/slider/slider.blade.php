@@ -23,7 +23,7 @@ if(empty($breakPoints)) {
     Preferably use smart-slider which shows a grid instead
     of a slider, when sliding functionality isn't required.
 --}}
-<div class="container">
+<div class="container mx-auto">
     <div x-data="{swiper: null}"
          x-init="swiper = new Swiper($refs.container, {
          modules: [SwiperNavigation, SwiperPagination],

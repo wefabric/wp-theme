@@ -1,4 +1,4 @@
-<div class="{{ $grid_class ?? 'grid md:grid-cols-2 lg:grid-cols-3' }} {{ $grid_spacing ?? 'md:gap-4' }}">
+<div class="mx-auto {{ $grid_class ?? 'grid md:grid-cols-2 lg:grid-cols-3' }} {{ $grid_spacing ?? 'md:gap-4' }}">
     @foreach($items as $item)
         @include('components.cards.'. $card_type, [
             'item' => $item,
