@@ -106,6 +106,7 @@
 	mr-5
 	
 	justify-start justify-center justify-end justify-self-start justify-self-center justify-self-end
+	items-start items-center items-end
 	text-left text-center text-right text-justify
 	
 	text-base text-2xl text-3xl text-4xl text-5xl text-6xl
@@ -127,7 +128,7 @@
 	text-secondary-light text-secondary text-secondary-dark hover:text-secondary-light hover:text-secondary hover:text-secondary-darkd bg-secondairy bg-secondairy-light bg-secondairy-dark
 	text-tertiary-light text-tertiary text-tertiary-dark hover:text-tertiary-light hover:text-tertiary hover:text-tertiary-dark bg-tertiary bg-tertiary-light bg-tertiary-dark
 	text-basic-success text-basic-danger bg-basic-success bg-basic-danger
-	text-green-600
+	text-green-600 text-red-500
 ">
 
 </div>
