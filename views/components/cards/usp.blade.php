@@ -5,7 +5,7 @@
 	};
 	
 	if($flexDir === 'flex-col') {
-		$align = 'px-5 justify-items-'. $align;
+		$align = 'items-'. $align;
 	} else {
 		$align = '';
 	}
@@ -25,7 +25,7 @@
 	}
 @endphp
 
-<div class="flex {{ $flexDir }} justify-center items-center">
+<div class="flex {{ $flexDir }} {{ $align ?? 'center'}}">
 	@if(! empty($link))
 		@include('components.link.opening', [
 			'href' => $link,
@@ -33,7 +33,7 @@
 		])
 	@endif
 	
-		<div class="{{ $align }}">
+		<div class="px-5">
 			@if(!empty($item->get('image')))
 				@include('components.image', [
 					'image_id' => $item->get('image'),
