@@ -233,6 +233,13 @@ add_filter('woocommerce_product_single_add_to_cart_text', function () {
 	return 'In winkelwagen plaatsen';
 });
 
+add_filter( 'woocommerce_page_title', function ( $page_title ) {
+	$page_title = str_replace('&ldquo;', '"', $page_title);
+	$page_title = str_replace('&rdquo;', '"', $page_title);
+	return $page_title;
+}, 10, 2 ); //Fix quotes on search page title. Would otherwise show the literal strings.
+
+
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
 
 /*
