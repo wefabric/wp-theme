@@ -4,7 +4,7 @@
 	$columns = $block->get('col_amount');
 @endphp
 
-<div class="container mx-auto w-full lg:{{ $block->get('width') }}">
+<div class="">
 	
 	@if($block->get('title')->get('show_separate_title'))
 		@include('components.headings.collection', [

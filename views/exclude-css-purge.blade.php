@@ -99,7 +99,7 @@
 	md:px-2 md:px-4
 	
 	pt-3 lg:pt-20 lg:pt-24 lg:pt-28 lg:pt-32 lg:pt-36
-	lg:py-20 lg:py-36
+	py-0 py-4 py-8 py-16 lg:py-8 lg:py-16 lg:py-20 lg:py-24 lg:py-36
 	pb-2 pb-8 pb-10 lg:pb-24
 	
 	mb-4 lg:mb-0
@@ -129,6 +129,11 @@
 	text-tertiary-light text-tertiary text-tertiary-dark hover:text-tertiary-light hover:text-tertiary hover:text-tertiary-dark bg-tertiary bg-tertiary-light bg-tertiary-dark
 	text-basic-success text-basic-danger bg-basic-success bg-basic-danger
 	text-green-600 text-red-500
+	
+{{--	debug 	--}}
+	border-2 border-green-500 border-pink-500
+{{--	debug 	--}}
+
 ">
 
 </div>

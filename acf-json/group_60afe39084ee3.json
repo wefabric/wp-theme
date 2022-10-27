@@ -23,33 +23,107 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_62ce893297c88",
-                            "label": "Breedte (desktop)",
-                            "name": "width",
-                            "type": "select",
-                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "key": "field_635a8905ab264",
+                            "label": "Blok grootte",
+                            "name": "sizes",
+                            "type": "group",
+                            "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": {
-                                "w-1\/2": "50%",
-                                "w-3\/5": "60%",
-                                "w-2\/3": "66%",
-                                "w-3\/4": "75%",
-                                "w-4\/5": "80%",
-                                "w-full": "100%"
-                            },
-                            "default_value": "w-3\/4",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "return_format": "value",
-                            "ajax": 0,
-                            "placeholder": ""
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_635a8905ab265",
+                                    "label": "Breedte (desktop)",
+                                    "name": "width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-2\/5": "40%",
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-11\/12": "90%",
+                                        "w-full": "100%",
+                                        "nomargin": "Paginabreedte zonder marges"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a8905ab266",
+                                    "label": "Hoogte (mobiel)",
+                                    "name": "height_mobile",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale breedte (gelijk verdeeld over boven en onder het blok) je wilt op mobiel. Kan worden overschreven op desktop via de desktop-hoogte optie.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a8905ab267",
+                                    "label": "Hoogte (desktop)",
+                                    "name": "height_desktop",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale breedte (gelijk verdeeld over boven en onder het blok) je wilt op desktop. Overschrijft de mobiele hoogte.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                }
+                            ]
                         },
                         {
                             "key": "field_63345f064727f",
@@ -654,34 +728,107 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_62ce872d1c517",
-                            "label": "Breedte (desktop)",
-                            "name": "width",
-                            "type": "select",
-                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "key": "field_635a7fe6984bb",
+                            "label": "Blok grootte",
+                            "name": "sizes",
+                            "type": "group",
+                            "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "33",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": {
-                                "w-2\/5": "40%",
-                                "w-1\/2": "50%",
-                                "w-3\/5": "60%",
-                                "w-2\/3": "66%",
-                                "w-3\/4": "75%",
-                                "w-4\/5": "80%",
-                                "w-full": "100%"
-                            },
-                            "default_value": "w-full",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "return_format": "value",
-                            "ajax": 0,
-                            "placeholder": ""
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_635a8007984bc",
+                                    "label": "Breedte (desktop)",
+                                    "name": "width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-2\/5": "40%",
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-11\/12": "90%",
+                                        "w-full": "100%",
+                                        "nomargin": "Paginabreedte zonder marges"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a80a4984bd",
+                                    "label": "Hoogte (mobiel)",
+                                    "name": "height_mobile",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale breedte (gelijk verdeeld over boven en onder het blok) je wilt op mobiel. Kan worden overschreven op desktop via de desktop-hoogte optie.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a81d1984bf",
+                                    "label": "Hoogte (desktop)",
+                                    "name": "height_desktop",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale breedte (gelijk verdeeld over boven en onder het blok) je wilt op desktop. Overschrijft de mobiele hoogte.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                }
+                            ]
                         },
                         {
                             "key": "field_62ebc07291a42",
@@ -1465,33 +1612,107 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_62ea7c2b51fd7",
-                            "label": "Breedte (desktop)",
-                            "name": "width",
-                            "type": "select",
-                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "key": "field_635a891dde840",
+                            "label": "Blok grootte",
+                            "name": "sizes",
+                            "type": "group",
+                            "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "33",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": {
-                                "w-1\/2": "50%",
-                                "w-3\/5": "60%",
-                                "w-2\/3": "66%",
-                                "w-3\/4": "75%",
-                                "w-4\/5": "80%",
-                                "w-full": "100%"
-                            },
-                            "default_value": "w-full",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "return_format": "value",
-                            "ajax": 0,
-                            "placeholder": ""
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_635a891dde841",
+                                    "label": "Breedte (desktop)",
+                                    "name": "width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-2\/5": "40%",
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-11\/12": "90%",
+                                        "w-full": "100%",
+                                        "nomargin": "Paginabreedte zonder marges"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a891dde842",
+                                    "label": "Hoogte (mobiel)",
+                                    "name": "height_mobile",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale breedte (gelijk verdeeld over boven en onder het blok) je wilt op mobiel. Kan worden overschreven op desktop via de desktop-hoogte optie.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a891dde843",
+                                    "label": "Hoogte (desktop)",
+                                    "name": "height_desktop",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale breedte (gelijk verdeeld over boven en onder het blok) je wilt op desktop. Overschrijft de mobiele hoogte.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                }
+                            ]
                         },
                         {
                             "key": "field_63452fd99dc0d",
@@ -2305,33 +2526,107 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_62ebd49605bb1",
-                            "label": "Breedte (desktop)",
-                            "name": "width",
-                            "type": "select",
-                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "key": "field_635a899954e3c",
+                            "label": "Blok grootte",
+                            "name": "sizes",
+                            "type": "group",
+                            "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "33",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": {
-                                "w-1\/2": "50%",
-                                "w-3\/5": "60%",
-                                "w-2\/3": "66%",
-                                "w-3\/4": "75%",
-                                "w-4\/5": "80%",
-                                "w-full": "100%"
-                            },
-                            "default_value": "w-full",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "return_format": "value",
-                            "ajax": 0,
-                            "placeholder": ""
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_635a899954e3d",
+                                    "label": "Breedte (desktop)",
+                                    "name": "width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-2\/5": "40%",
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-11\/12": "90%",
+                                        "w-full": "100%",
+                                        "nomargin": "Paginabreedte zonder marges"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a899954e3e",
+                                    "label": "Hoogte (mobiel)",
+                                    "name": "height_mobile",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale breedte (gelijk verdeeld over boven en onder het blok) je wilt op mobiel. Kan worden overschreven op desktop via de desktop-hoogte optie.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a899a54e3f",
+                                    "label": "Hoogte (desktop)",
+                                    "name": "height_desktop",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale breedte (gelijk verdeeld over boven en onder het blok) je wilt op desktop. Overschrijft de mobiele hoogte.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                }
+                            ]
                         },
                         {
                             "key": "field_63453014b485b",
@@ -2951,6 +3246,109 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_635a89b628a52",
+                            "label": "Blok grootte",
+                            "name": "sizes",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_635a89b628a53",
+                                    "label": "Breedte (desktop)",
+                                    "name": "width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-2\/5": "40%",
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-11\/12": "90%",
+                                        "w-full": "100%",
+                                        "nomargin": "Paginabreedte zonder marges"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a89b628a54",
+                                    "label": "Hoogte (mobiel)",
+                                    "name": "height_mobile",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale breedte (gelijk verdeeld over boven en onder het blok) je wilt op mobiel. Kan worden overschreven op desktop via de desktop-hoogte optie.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a89b628a55",
+                                    "label": "Hoogte (desktop)",
+                                    "name": "height_desktop",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale breedte (gelijk verdeeld over boven en onder het blok) je wilt op desktop. Overschrijft de mobiele hoogte.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                }
+                            ]
+                        },
+                        {
                             "key": "field_62cfc09459fd1",
                             "label": "Iframe HTML",
                             "name": "iframe-html",
@@ -2968,35 +3366,6 @@
                             "maxlength": "",
                             "rows": 6,
                             "new_lines": ""
-                        },
-                        {
-                            "key": "field_62cfc0c859fd2",
-                            "label": "Breedte (desktop)",
-                            "name": "width",
-                            "type": "select",
-                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "25",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "w-1\/2": "50%",
-                                "w-3\/5": "60%",
-                                "w-2\/3": "66%",
-                                "w-3\/4": "75%",
-                                "w-4\/5": "80%",
-                                "w-full": "100%"
-                            },
-                            "default_value": "w-3\/4",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "return_format": "value",
-                            "ajax": 0,
-                            "placeholder": ""
                         },
                         {
                             "key": "field_62e29720052ae",
@@ -3024,6 +3393,109 @@
                     "label": "Iframe URL",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_635a89d3cb5e8",
+                            "label": "Blok grootte",
+                            "name": "sizes",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_635a89d3cb5e9",
+                                    "label": "Breedte (desktop)",
+                                    "name": "width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-2\/5": "40%",
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-11\/12": "90%",
+                                        "w-full": "100%",
+                                        "nomargin": "Paginabreedte zonder marges"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a89d3cb5ea",
+                                    "label": "Hoogte (mobiel)",
+                                    "name": "height_mobile",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale padding (gelijk verdeeld over boven en onder het blok) je wilt op mobiel. Kan worden overschreven op desktop via de desktop-padding optie.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a89d3cb5eb",
+                                    "label": "Hoogte (desktop)",
+                                    "name": "height_desktop",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale padding (gelijk verdeeld over boven en onder het blok) je wilt op desktop. Overschrijft de mobiele padding.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                }
+                            ]
+                        },
                         {
                             "key": "field_62cfc182d4cbc",
                             "label": "Iframe-url",
@@ -3063,44 +3535,15 @@
                             "maxlength": ""
                         },
                         {
-                            "key": "field_62cfc27855d77",
-                            "label": "Breedte (desktop)",
-                            "name": "width",
+                            "key": "field_62cfc37955d7a",
+                            "label": "Hoogte (mobiel)",
+                            "name": "height_mobile",
                             "type": "select",
-                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "instructions": "Kies hier de totale hoogte van het blok op mobiele weergave.",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "33",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "w-1\/2": "50%",
-                                "w-3\/5": "60%",
-                                "w-2\/3": "66%",
-                                "w-3\/4": "75%",
-                                "w-4\/5": "80%",
-                                "w-full": "100%"
-                            },
-                            "default_value": "w-3\/4",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "return_format": "value",
-                            "ajax": 0,
-                            "placeholder": ""
-                        },
-                        {
-                            "key": "field_62cfc2dd55d79",
-                            "label": "Hoogte (desktop)",
-                            "name": "height_desktop",
-                            "type": "select",
-                            "instructions": "Kies hier de totale hoogte van het blok op desktop-weergave.",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "33",
+                                "width": "34",
                                 "class": "",
                                 "id": ""
                             },
@@ -3122,15 +3565,15 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_62cfc37955d7a",
-                            "label": "Hoogte (mobiel)",
-                            "name": "height_mobile",
+                            "key": "field_62cfc2dd55d79",
+                            "label": "Hoogte (desktop)",
+                            "name": "height_desktop",
                             "type": "select",
-                            "instructions": "Kies hier de totale hoogte van het blok op mobiele weergave.",
+                            "instructions": "Kies hier de totale hoogte van het blok op desktop-weergave.",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "34",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -3178,33 +3621,107 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_62ebd41a13538",
-                            "label": "Breedte (desktop)",
-                            "name": "width",
-                            "type": "select",
-                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "key": "field_635a8a3220c8c",
+                            "label": "Blok grootte",
+                            "name": "sizes",
+                            "type": "group",
+                            "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "33",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": {
-                                "w-1\/2": "50%",
-                                "w-3\/5": "60%",
-                                "w-2\/3": "66%",
-                                "w-3\/4": "75%",
-                                "w-4\/5": "80%",
-                                "w-full": "100%"
-                            },
-                            "default_value": "w-3\/4",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "return_format": "value",
-                            "ajax": 0,
-                            "placeholder": ""
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_635a8a3220c8d",
+                                    "label": "Breedte (desktop)",
+                                    "name": "width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-2\/5": "40%",
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-11\/12": "90%",
+                                        "w-full": "100%",
+                                        "nomargin": "Paginabreedte zonder marges"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a8a3220c8e",
+                                    "label": "Hoogte (mobiel)",
+                                    "name": "height_mobile",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale padding (gelijk verdeeld over boven en onder het blok) je wilt op mobiel. Kan worden overschreven op desktop via de desktop-padding optie.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a8a3220c8f",
+                                    "label": "Hoogte (desktop)",
+                                    "name": "height_desktop",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale padding (gelijk verdeeld over boven en onder het blok) je wilt op desktop. Overschrijft de mobiele padding.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                }
+                            ]
                         },
                         {
                             "key": "field_60ce431d19eac",
@@ -3619,6 +4136,109 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_635a8a553f000",
+                            "label": "Blok grootte",
+                            "name": "sizes",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_635a8a553f001",
+                                    "label": "Breedte (desktop)",
+                                    "name": "width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-2\/5": "40%",
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-11\/12": "90%",
+                                        "w-full": "100%",
+                                        "nomargin": "Paginabreedte zonder marges"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a8a553f002",
+                                    "label": "Hoogte (mobiel)",
+                                    "name": "height_mobile",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale padding (gelijk verdeeld over boven en onder het blok) je wilt op mobiel. Kan worden overschreven op desktop via de desktop-padding optie.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a8a553f003",
+                                    "label": "Hoogte (desktop)",
+                                    "name": "height_desktop",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale padding (gelijk verdeeld over boven en onder het blok) je wilt op desktop. Overschrijft de mobiele padding.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                }
+                            ]
+                        },
+                        {
                             "key": "field_62e8ce8ac0d6b",
                             "label": "Weergave Kolommen",
                             "name": "display_columns",
@@ -3665,36 +4285,6 @@
                                 "logo-slider": "Logo-slider (slider maar dan kleiner)"
                             },
                             "default_value": "grid",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "return_format": "value",
-                            "ajax": 0,
-                            "placeholder": ""
-                        },
-                        {
-                            "key": "field_62e8d0289b197",
-                            "label": "Breedte (desktop)",
-                            "name": "width",
-                            "type": "select",
-                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "33",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "w-1\/2": "50%",
-                                "w-3\/5": "60%",
-                                "w-2\/3": "66%",
-                                "w-3\/4": "75%",
-                                "w-4\/5": "80%",
-                                "w-full": "100%",
-                                "nomargin": "Paginabreedte zonder marges"
-                            },
-                            "default_value": "w-3\/4",
                             "allow_null": 0,
                             "multiple": 0,
                             "ui": 0,
@@ -4395,6 +4985,109 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_635a8a70d0112",
+                            "label": "Blok grootte",
+                            "name": "sizes",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_635a8a70d0113",
+                                    "label": "Breedte (desktop)",
+                                    "name": "width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-2\/5": "40%",
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-11\/12": "90%",
+                                        "w-full": "100%",
+                                        "nomargin": "Paginabreedte zonder marges"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a8a70d0114",
+                                    "label": "Hoogte (mobiel)",
+                                    "name": "height_mobile",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale padding (gelijk verdeeld over boven en onder het blok) je wilt op mobiel. Kan worden overschreven op desktop via de desktop-padding optie.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a8a70d0115",
+                                    "label": "Hoogte (desktop)",
+                                    "name": "height_desktop",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale padding (gelijk verdeeld over boven en onder het blok) je wilt op desktop. Overschrijft de mobiele padding.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                }
+                            ]
+                        },
+                        {
                             "key": "field_630f285c9fc38",
                             "label": "Weergave",
                             "name": "display_columns",
@@ -4418,36 +5111,6 @@
                             "ui": 0,
                             "return_format": "value",
                             "ajax": 0,
-                            "placeholder": ""
-                        },
-                        {
-                            "key": "field_630f285c9fc39",
-                            "label": "Breedte (desktop)",
-                            "name": "width",
-                            "type": "select",
-                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "w-1\/2": "50%",
-                                "w-3\/5": "60%",
-                                "w-2\/3": "66%",
-                                "w-3\/4": "75%",
-                                "w-4\/5": "80%",
-                                "w-full": "100%",
-                                "nomargin": "Paginabreedte zonder marges"
-                            },
-                            "default_value": "w-3\/4",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "ajax": 0,
-                            "return_format": "value",
                             "placeholder": ""
                         },
                         {
@@ -5163,35 +5826,107 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_62eb75d434082",
-                            "label": "Breedte (desktop)",
-                            "name": "width",
-                            "type": "select",
-                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "key": "field_635a8a909d1a0",
+                            "label": "Blok grootte",
+                            "name": "sizes",
+                            "type": "group",
+                            "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "33",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": {
-                                "w-1\/2": "50%",
-                                "w-3\/5": "60%",
-                                "w-2\/3": "66%",
-                                "w-3\/4": "75%",
-                                "w-4\/5": "80%",
-                                "w-[86%]": "86%",
-                                "w-11\/12": "90%",
-                                "w-full": "100%"
-                            },
-                            "default_value": "w-3\/4",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "return_format": "value",
-                            "ajax": 0,
-                            "placeholder": ""
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_635a8a909d1a1",
+                                    "label": "Breedte (desktop)",
+                                    "name": "width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-2\/5": "40%",
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-11\/12": "90%",
+                                        "w-full": "100%",
+                                        "nomargin": "Paginabreedte zonder marges"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a8a909d1a2",
+                                    "label": "Hoogte (mobiel)",
+                                    "name": "height_mobile",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale padding (gelijk verdeeld over boven en onder het blok) je wilt op mobiel. Kan worden overschreven op desktop via de desktop-padding optie.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a8a909d1a3",
+                                    "label": "Hoogte (desktop)",
+                                    "name": "height_desktop",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale padding (gelijk verdeeld over boven en onder het blok) je wilt op desktop. Overschrijft de mobiele padding.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                }
+                            ]
                         },
                         {
                             "key": "field_62ec30b49de76",
@@ -5857,33 +6592,107 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_6321bfe47990a",
-                            "label": "Breedte (desktop)",
-                            "name": "width",
-                            "type": "select",
-                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "key": "field_635a8ac59b618",
+                            "label": "Blok grootte",
+                            "name": "sizes",
+                            "type": "group",
+                            "instructions": "",
                             "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "",
                                 "class": "",
                                 "id": ""
                             },
-                            "choices": {
-                                "w-1\/2": "50%",
-                                "w-3\/5": "60%",
-                                "w-2\/3": "66%",
-                                "w-3\/4": "75%",
-                                "w-4\/5": "80%",
-                                "w-full": "100%"
-                            },
-                            "default_value": "w-3\/4",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "ui": 0,
-                            "return_format": "value",
-                            "ajax": 0,
-                            "placeholder": ""
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_635a8ac59b619",
+                                    "label": "Breedte (desktop)",
+                                    "name": "width",
+                                    "type": "select",
+                                    "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-2\/5": "40%",
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-11\/12": "90%",
+                                        "w-full": "100%",
+                                        "nomargin": "Paginabreedte zonder marges"
+                                    },
+                                    "default_value": "w-full",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a8ac59b61a",
+                                    "label": "Hoogte (mobiel)",
+                                    "name": "height_mobile",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale padding (gelijk verdeeld over boven en onder het blok) je wilt op mobiel. Kan worden overschreven op desktop via de desktop-padding optie.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_635a8ac59b61b",
+                                    "label": "Hoogte (desktop)",
+                                    "name": "height_desktop",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale padding (gelijk verdeeld over boven en onder het blok) je wilt op desktop. Overschrijft de mobiele padding.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "return_format": "value",
+                                    "placeholder": ""
+                                }
+                            ]
                         },
                         {
                             "key": "field_634537601d948",

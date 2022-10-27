@@ -10,7 +10,7 @@
 	$info = $block->get('show_information')
 
 @endphp
-<div class="container mx-auto w-full lg:{{ $block->get('width') }} @if(empty($info->get('display_type'))) bg-{{ $block->get('bg_color') }} text-{{ $block->get('text_color') }} @endif">
+<div class="@if(empty($info->get('display_type'))) bg-{{ $block->get('bg_color') }} text-{{ $block->get('text_color') }} @endif">
 
     <div class="position-relative z-index-2 mx-auto">
 		@if($block->get('title')->get('show_separate_title'))

@@ -11,7 +11,7 @@
 			// no break;
 		case 'slider':
 			$image_class = 'bg-contain bg-center';
-			$spaceBetween = $block->get('width') === 'nomargin' ? 0 : 30;
+			$spaceBetween = $block->get('sizes')->get('width') === 'nomargin' ? 0 : 30;
 			
 			$standard = [
 				'spaceBetween' => $spaceBetween,
@@ -41,20 +41,20 @@
 	foreach(config('wp-support.image_sizes') as $key => $image_size_config) {
 		if($image_size_config['name'] == $img_size) {
 			$size_config = $image_size_config; //found the base config. but keep looking just in case.
-		} elseif ($block->get('width') === 'nomargin' && $image_size_config['name'] == $img_size .'-nomargin') {
+		} elseif ($block->get('sizes')->get('width') === 'nomargin' && $image_size_config['name'] == $img_size .'-nomargin') {
 			$size_config = $image_size_config;
 			$img_size .= '-nomargin';
 			break; //found the exact config.
 		}
 	}
 	
-	if($block->get('width') !== 'nomargin') {
+	if($block->get('sizes')->get('width') !== 'nomargin') {
 		$card_classes .= ' m-0';
 		$grid_class = 'gap-4';
 	}
 @endphp
 
-<div class="@if($block->get('width') !== 'nomargin') container @endif mx-auto w-full lg:{{ $block->get('width') === 'nomargin' ? 'w-full' : $block->get('width') }} ">
+<div class="">
 	
 	@if($block->get('title')->get('show_separate_title'))
 		@include('components.headings.collection', [
@@ -78,11 +78,11 @@
 			'items' => $block->get('photos'),
 			'card_type' => 'image',
 			'grid_class' => 'grid lg:grid-cols-'. $columns .' '. ($card_classes ?? '') .' '. ($grid_class ?? ''),
-			'grid_spacing' => ($block->get('width') === 'nomargin' ? '' : null),
+			'grid_spacing' => ($block->get('sizes')->get('width') === 'nomargin' ? '' : null),
 			
 			'img_size' => $img_size ?? 'full',
 			'size_config' => $size_config,
-			'rounded' => $block->get('width') !== 'nomargin',
+			'rounded' => $block->get('sizes')->get('width') !== 'nomargin',
 		])
 	@endif
 
