@@ -9,11 +9,9 @@
        ])
     </div>
 
-
     <div class="h5 py-5 text-center">
         {{ $item->get('title') }}
     </div>
-
 
     <div class="pb-8 flex flex-col">
         @include('components.buttons.default', [

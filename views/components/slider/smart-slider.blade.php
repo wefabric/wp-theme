@@ -41,6 +41,7 @@
                 'items' => $items,
                 'card_type' => $card_type,
 				'grid_class' => $grid_class ?? ('grid lg:grid-cols-'. $slider_on_items),
+                'grid_items_class' => $grid_items_class ?? '',
                 'grid_spacing' => $grid_spacing ?? null,
             ])
         @elseif($count > $slider_on_items)

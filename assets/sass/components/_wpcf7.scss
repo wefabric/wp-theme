@@ -50,6 +50,11 @@
 	
 	.wpcf7-not-valid-tip {
 		@apply bg-red-400 text-white text-sm mt-0 px-2 py-1;
+		margin-top: -14px;
+		display: block;
+		padding-top: 18px;
+		border-bottom-left-radius: 0.5rem;
+		border-bottom-right-radius: 0.5rem;
 	}
 	
 }

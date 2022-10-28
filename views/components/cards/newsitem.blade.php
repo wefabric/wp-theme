@@ -8,7 +8,7 @@
     $categories = get_the_category($postId);
 @endphp
 
-<div class="card hover:shadow-3xl max-w-md {{ (isset($lg_hidden) && $lg_hidden) ? 'hidden lg:flex' : 'flex' }} flex-col mx-auto h-full relative px-2 ">
+<div onclick="window.location.href = '{{ get_permalink($postId) }}'" class="cursor-pointer card hover:shadow-3xl max-w-md {{ (isset($lg_hidden) && $lg_hidden) ? 'hidden lg:flex' : 'flex' }} flex-col mx-auto h-full relative px-2 ">
     <div class="mx-auto mb-5 w-full rounded-lg">
         @include('components.image', [
             'image_id' => $fields['image'],

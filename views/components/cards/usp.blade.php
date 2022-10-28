@@ -27,7 +27,7 @@
 	}
 @endphp
 
-<div class="flex {{ $flexDir }} {{ $align }}">
+<div class="flex {{ $flexDir }} {{ $align }} {{ $class ?? '' }}">
 	@if(! empty($link))
 		@include('components.link.opening', [
 			'href' => $link,
