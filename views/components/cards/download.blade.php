@@ -4,8 +4,8 @@
         @include('components.image', [
            'image_id' => $item->get('image'),
            'size' => 'brand_logo',
-           'class' => ' mx-auto h-[200px]',
-           'img_class' => 'bg-center bg-no-repeat relative top-1/2',
+           'class' => ' mx-auto h-[200px] flex items-center',
+           'img_class' => 'bg-center bg-no-repeat relative ',
        ])
     </div>
 
