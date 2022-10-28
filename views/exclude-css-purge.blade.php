@@ -101,6 +101,7 @@
 	pt-3 lg:pt-20 lg:pt-24 lg:pt-28 lg:pt-32 lg:pt-36
 	py-0 py-4 py-8 py-16 lg:py-8 lg:py-16 lg:py-20 lg:py-24 lg:py-36
 	pb-2 pb-8 pb-10 lg:pb-24
+	pl-0.5
 	
 	mb-4 lg:mb-0
 	mr-5

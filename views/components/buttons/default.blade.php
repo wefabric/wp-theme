@@ -35,8 +35,11 @@
         'target' => $target ?? '',
         'class' => ($a_class ?? ''). ' no-underline', //button should by default not have underline.
     ])
-        <span class="btn {{ $size ?? 'btn-small' }} {{ $colors }} font-bold {{ $class ?? '' }}">
+        <span class="btn {{ $size ?? 'btn-small' }} {{ $colors }} font-bold {{ $class ?? '' }} @if($icon ?? '') disable-chevron @endif">
             {{ $text }}
+            @if($icon ?? '')
+                <i class="{{ $icon }}"></i>
+            @endif
         </span>
     @include('components.link.closing')
 @endif
