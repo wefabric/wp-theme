@@ -7137,7 +7137,7 @@
                                 "id": ""
                             },
                             "return_format": "id",
-                            "preview_size": "medium",
+                            "preview_size": "thumbnail",
                             "library": "all",
                             "min_width": "",
                             "min_height": "",
@@ -7199,7 +7199,7 @@
                                         "id": ""
                                     },
                                     "return_format": "id",
-                                    "preview_size": "medium",
+                                    "preview_size": "thumbnail",
                                     "library": "all",
                                     "min_width": "",
                                     "min_height": "",
@@ -7234,7 +7234,7 @@
                                     "name": "file",
                                     "type": "file",
                                     "instructions": "",
-                                    "required": 0,
+                                    "required": 1,
                                     "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
@@ -7253,7 +7253,7 @@
                                     "name": "download_button_text",
                                     "type": "text",
                                     "instructions": "",
-                                    "required": 0,
+                                    "required": 1,
                                     "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
@@ -7317,5 +7317,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1667210908
+    "modified": 1667211205
 }

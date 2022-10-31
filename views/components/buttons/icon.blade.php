@@ -17,7 +17,7 @@
     }
 @endphp
 
-    <span class="inline-block rounded-full text-center {{ $size }} {{ $colors }} {{ $class ?? '' }}">
+    <span class="icon inline-block rounded-full text-center {{ $size }} {{ $colors }} {{ $class ?? '' }}">
 		@if(isset($label_for))
 			<label for="{{ $label_for }}" class="{{ $label_class ?? '' }}">
 		@endif
