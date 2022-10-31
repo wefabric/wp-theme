@@ -1,71 +1,64 @@
 .faq-drawer {
-  margin-bottom: 30px;
-
-	.faq-drawer__block {
-		@apply bg-black text-white rounded-2xl mb-6 p-6;
+	margin-bottom: 30px;
+	
+	input[type="checkbox"] {
+		display: none;
 	}
 	
-	:first-child .faq-drawer__block {
-		@apply bg-primary;
+	.faq-drawer__content-wrapper {
+		max-height: 0;
+		overflow: hidden;
+		transition: 0.25s ease-in-out;
 	}
 	
-  input[type="checkbox"] {
-    display: none;
-  }
-
-  .faq-drawer__content-wrapper {
-    max-height: 0;
-    overflow: hidden;
-    transition: 0.25s ease-in-out;
-  }
-
 	.faq-drawer__content {
-		@apply mt-4;
+		@apply pb-12;
 	}
 	
-  .faq-drawer__title {
-	  @apply cursor-pointer text-base font-bold p-6;
-	  
-    transition: all 0.25s ease-out;
-
-    &::after {
-      @apply border-primary m-2;
-      border-style: solid;
-      border-width: 5px 5px 0 0;
-      content: " ";
-      display: inline-block;
-      float: right;
-      height: 15px;
-      position: relative;
-      right: 20px;
-      top: 5px;
-      transform: rotate(135deg);
-      transition: 0.35s ease-in-out;
-      vertical-align: top;
-      width: 15px;
-
-      @media only screen and (max-width: 600px) {
-        right: -8px;
-        top: -15px;
-      }
-
-    }
-
-    //&:hover {
-    //  @apply text-primary;
-    //}
-  }
-
-  .faq-drawer__trigger:checked + .faq-drawer__title + .faq-drawer__content-wrapper {
-    max-height: 350px;
-  }
-
-  .faq-drawer__trigger:checked + .faq-drawer__title::after {
-    transform: rotate(-45deg);
-    transition: 0.25s ease-in-out;
-  }
+	.faq-drawer__title {
+		@apply block w-full bg-black text-base text-white font-bold cursor-pointer rounded-2xl mt-6;
+		
+		:first-of-type {
+			@apply mt-0;
+		}
+		
+		transition: all 0.25s ease-out;
+		
+		&::after {
+			@apply border-primary m-2;
+			border-style: solid;
+			border-width: 5px 5px 0 0;
+			content: " ";
+			display: inline-block;
+			float: right;
+			height: 15px;
+			position: relative;
+			right: 20px;
+			//top: 5px;
+			transform: rotate(135deg);
+			transition: 0.35s ease-in-out;
+			vertical-align: top;
+			width: 15px;
+			
+			@media only screen and (max-width: 600px) {
+				right: -8px;
+				top: -15px;
+			}
+			
+		}
+	}
 	
-	.faq-drawer__trigger:checked + &.faq-drawer__block {
+	.faq-drawer__trigger:checked + .faq-drawer__title + .faq-drawer__content-wrapper {
+		max-height: 350px;
+	}
+	
+	.faq-drawer__trigger:checked + .faq-drawer__title::after {
+		transform: rotate(-45deg);
+		transition: 0.25s ease-in-out;
+		@apply border-white;
+	}
+	
+	.faq-drawer__trigger:checked + .faq-drawer__title {
 		@apply bg-primary;
 	}
 
