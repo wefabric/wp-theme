@@ -38,9 +38,7 @@ img {
 
 // Disable the underline on an a-class when only requiring the underline on an inner element, such as a span, instead of the a-tag itself which may contain e.g. an icon.
 // The name "no-underline" with dash is the same as the Tailwind class with the same effect.
-a:not(.no-underline), a>span {
-	@apply underline hover:font-bold cursor-pointer;
-}
-a.no-underline {
+a.no-underline,
+	.woocommerce-LoopProduct-link {
 	text-decoration-line: none !important;
 }
