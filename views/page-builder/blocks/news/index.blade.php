@@ -1,13 +1,19 @@
 @php
+
+	$limit = 9;
 	switch ($block->get('show_type')) {
+		case 'all-3':
+		case 'type-3':
+			$limit = 3;
+			
 		case 'all':
 		case 'type':
 			$args = [
-				'posts_per_page' => 9, // LIMIT argument for query. Won't return more than this amount.
+				'posts_per_page' => $limit, // LIMIT argument for query. Won't return more than this amount.
 				'post_type' => 'post',
 			];
 		
-			if($block->get('show_type') == 'type') {
+			if($block->get('show_type') == 'type' || $block->get('show_type') == 'type-3') {
 				$args['tax_query'] = [
 					'relation' => 'OR'
 				];

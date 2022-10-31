@@ -1,5 +1,14 @@
 {{--
 	This block is intended to be used only in development. When a block cannot be (yet) developed, use this block to create a sort of placeholder so that the design as a whole can be checked.
+
+	ACF structure:
+		- name = 'magic'
+		
+	Block:
+		- name = 'magic_block'
+		- type = 'selector'
+		- required = yes
+
 --}}
 
 @php
@@ -24,154 +33,14 @@
 	@endif
 	
 	@switch($value['value'])
-		@case('products')
+		@case('Test')
 			<div class="bg-gray-100 py-8 lg:py-24">
-				<div class="h4 text-center pb-10">Uitgelichte producten</div>
+				<div class="h4 text-center pb-10">Test</div>
 				
-{{--
-				@include('components.content', [
-					'content' => '[products limit="4"]',
-				])
---}}
-				
-				@php
-					$products = [
-						[
-							'brand' => 'ENPC',
-							'title' => 'Geribd hoekijzer met afgesneden hoek',
-							'price' => 1394,
-							'image' => 832,
-						],
-						[
-							'brand' => 'ENPC',
-							'title' => 'Bevestigingsklauw voor warmte-isolatie',
-							'price' => 1394,
-							'image' => 833,
-						],
-						[
-							'brand' => 'ENPC',
-							'title' => 'Geribd hoekijzer met afgesneden hoek',
-							'price' => 1394,
-							'image' => 834,
-						],
-						[
-							'brand' => 'ENPC',
-							'title' => 'Bevestigingsklauw voor warmte-isolatie',
-							'price' => 1394,
-							'image' => 835,
-						],
-					];
-				@endphp
-				@include('components.slider.smart-slider', [
-					'items' => $products,
-					'card_type' => 'product',
-					'arrows' => true,
-				])
+				{{-- Insert the rest of the design here. --}}
 			</div>
 			@break
-		
-		@case('categories')
-			<div class="flex flex-col justify-center py-8 lg:py-24">
-				<div class="h4 text-center pb-10">Uitgelichte categorieen</div>
-				
-{{--
-				@include('components.content', [
-					'content' => '[product_categories parent="0"]',
-				])
---}}
-				
-				@php
-					$categories = [
-						get_term_by('term_taxonomy_id', 34),
-						get_term_by('term_taxonomy_id', 35),
-						get_term_by('term_taxonomy_id', 27),
-					];
-				@endphp
-				@include('components.slider.smart-slider', [
-					'items' => $categories,
-					'card_type' => 'category',
-					'grid_spacing' => 'md:gap-12'
-				])
-				
-				@include('components.buttons.default', [
-					'href' => '#',
-					'text' => 'Alles producten',
-					'a_class' => 'mx-auto pt-12',
-					'colors' => 'bg-black text-white',
-				])
-			</div>
-			@break
-		
-		@case('feedbackco')
-			<div class="bg-gray-100 py-8 lg:py-24">
-				<div class="h4 text-center pb-10">
-					Feedback Company reviews
-					<p class="italic text-sm">Dit zijn afbeeldingen, aangezien we mogelijk een widget uit FeedbackCo. halen?</p>
-				</div>
-				@php
-					$reviews = [
-						[
-							'file' => 'review-1.png'
-						],
-						[
-							'file' => 'review-2.png'
-						],
-						[
-							'file' => 'review-3.png'
-						],
-					];
-				@endphp
-				@include('components.slider.smart-slider', [
-					'items'	=> $reviews,
-					'card_type' => 'customer-review',
-				])
-				
-			</div>
-			@break
-		
-		@case('brand-documentation')
-			<div class="py-8 lg:py-24">
-				<div class="h4 text-center pb-10">Merk documentatie</div>
-				@php
-					$brand = [
-						'title' => 'INDEX Fixing Systems',
-						'image' => 1423,
-						'description' => 'KreQ biedt u de industriële bevestigingssystemen van INDEX Fixing Systems. INDEX levert totaaloplossingen aangepast aan de behoeften van de klant. De producten van INDEX Fixing Systems worden door onafhankelijke laboratoria gekeurd en gecertificeerd en staan daarom garant voor kwaliteit.',
-						'files' => [
-							[
-								'type' => 'catalogus',
-								'name' => 'Catalogus 2021',
-								'image' => '1430',
-								'file' => '1429',
-							],
-							[
-								'type' => 'de gids',
-								'name' => 'Constructie-houtschroeven',
-								'image' => '',
-								'file' => '',
-							],
-							[
-								'type' => 'flyer',
-								'name' => 'Brandwerendheid verbinders',
-								'image' => '',
-								'file' => '',
-							],
-							[
-								'type' => 'catalogus',
-								'name' => 'Catalogus 2021',
-								'image' => '',
-								'file' => '',
-							],
-						],
-					];
-				@endphp
-				@include('components.brand-documentation.index', [
-					'brand' => $brand,
-					'bg_color' => 'bg-gray-100',
-				])
-			</div>
-			@break
-		
+
 		@default
 			<div class="py-8 lg:py-24 h4 text-center text-red-500"> Value {{ $value['value'] }} is not supported!</div>
 	@endswitch
