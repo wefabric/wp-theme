@@ -57,7 +57,10 @@
     @endif
 
     <nav id="site-navigation" class="main-navigation flex justify-end items-center">
-		
+        @include('components.header.home-house', [
+            'class' => 'md:px-4 text-xl text-primary', //this shows a house icon, as link to the homepage
+        ])
+
         @php
             $menuLocations = get_nav_menu_locations();
             if(isset($menuLocations['menu-1'])) {
