@@ -57,10 +57,6 @@
     @endif
 
     <nav id="site-navigation" class="main-navigation flex justify-end items-center">
-
-		@include('components.header.home-house', [
-			'class' => 'md:px-4 text-xl text-primary', //this shows a house icon, as link to the homepage
-		])
 		
         @php
             $menuLocations = get_nav_menu_locations();
@@ -79,16 +75,7 @@
                 'echo' => false
             ]) !!}
         @endif
-	
-		@if($forceWebshop || woocommerce_active()) {{-- webshop parts --}}
-            @include('components.buttons.default', [
-                'href' => '/offerte',
-                'text' => 'Offerte aanvragen',
-                'colors' => 'btn-primary text-white',
-                'a_class' => 'md:px-4'
-            ])
-        @endif
-
+		
 {{--
         @php
             $icon_classes = 'text-xl px-1.5 font-normal';

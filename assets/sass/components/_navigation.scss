@@ -38,6 +38,20 @@
 			}
 		}
 
+		.home-icon {
+			@screen lg {
+				::before {
+					@apply fa-solid fa-house #{!important};
+				}
+			}
+		}
+		
+		.menu-btn {
+			@screen lg {
+				@apply btn btn-small btn-primary text-white hover:text-white #{!important};
+			}
+		}
+		
         .menu-item-has-children {
             position: relative;
 			
