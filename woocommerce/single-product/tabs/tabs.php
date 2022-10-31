@@ -36,10 +36,10 @@ if ( ! empty( $product_tabs ) ) : ?>
 			<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
 				<div class="faq-drawer__block <?php echo esc_attr( $key ); ?>_tab" id="tab-title-<?php echo esc_attr( $key ); ?>" role="tab" aria-controls="tab-<?php echo esc_attr( $key ); ?>">
 					<input class="faq-drawer__trigger" id="faq-drawer-<?php echo esc_attr( $key ); ?>" type="checkbox" />
-					<label class="faq-drawer__title " for="faq-drawer-<?php echo esc_attr( $key ); ?>"><?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?></label>
+					<label class="faq-drawer__title p-6" for="faq-drawer-<?php echo esc_attr( $key ); ?>"><?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?></label>
 					
 					<div class="faq-drawer__content-wrapper">
-						<div class="faq-drawer__content rounded-lg bg-gray-100 text-black z-20 p-6">
+						<div class="faq-drawer__content z-20 p-6">
 							<?php
 							if ( isset( $product_tab['callback'] ) ) {
 								call_user_func( $product_tab['callback'], $key, $product_tab );
