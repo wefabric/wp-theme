@@ -46,11 +46,11 @@
 	
 			@if($img_size !== 'logo-slider') {{-- If logo-slider, that means this image is part of a logo-slider, then only show the image and no button. --}}
 				{{-- TODO fix: add style choices --}}
-				<div class="w-3/4 h1 lg:h3 text-center z-2">
+				<div class="z-2 w-3/4 h-1/2 pb-3 lg:pb-5 h1 lg:h3 text-center flex items-end">
 					{{ $item->get('title') }}
 				</div>
 				
-				<div class="z-2 pt-6 lg:pt-10">
+				<div class="z-2 h-1/2 pt-3 lg:pt-5">
 					@include('components.buttons.default', [
 						'button' => $item,
 						'class' => 'btn-white text-black',
