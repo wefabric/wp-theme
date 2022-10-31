@@ -58,7 +58,7 @@ if(empty($breakPoints)) {
                         </div>
                 @endforeach
             </div>
-            <div class="swiper-pagination lg:pr-14 @if(!($dots ?? true)) hidden @endif"></div>
+            <div class="swiper-pagination @if(($arrows ?? true)) lg:pr-14 @endif @if(!($dots ?? true)) hidden @endif"></div>
         </div>
 
         @if(($arrows ?? true))
