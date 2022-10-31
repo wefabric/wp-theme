@@ -13,7 +13,7 @@
 	}
 @endphp
 
-<div class="bg-{{ $bg_color ?? 'black' }} text-{{ $text_color ?? 'white' }} text-base pb-10 lg:pb-24">
+<div class="footer bg-{{ $bg_color ?? 'black' }} text-{{ $text_color ?? 'white' }} text-base pb-10 lg:pb-24">
     @if(!empty($usps))
         <div class="bg-white text-black py-10 lg:py-20 px-4 md:px-8 lg:px-36">
 			@include('components.slider.grid', [
@@ -32,7 +32,7 @@
     <div class="container mx-auto px-8 relative">
 
         <div class="w-full">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-4 pt-12 lg:pt-16 pb-6 lg:pb-0">
+            <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-4 pt-12 lg:pt-16 pb-6 lg:pb-0">
                 <div class="lg:pb-6">
                     @php
                         $menu = wp_nav_menu([
@@ -139,20 +139,22 @@
                     @endphp
 
                     @if($menu)
-                        @foreach($menu as $post)
-                            @include('components.link.simple', [
-                                'href' => $post->url,
-                                'class' => $class,
-                                'text' => __($post->title, 'wefabric')
-                            ])
-
-                            @php
-                                $last = (in_array($post, $menu) && $post == end($menu));
-                            @endphp
-                            @if(!$last)
-                                <span class="divider"> / </span>
-                            @endif
-                        @endforeach
+						<div id="footer_menu_three" class="">
+							@foreach($menu as $post)
+								@include('components.link.simple', [
+									'href' => $post->url,
+									'class' => $class,
+									'text' => __($post->title, 'wefabric')
+								])
+	
+								@php
+									$last = (in_array($post, $menu) && $post == end($menu));
+								@endphp
+								@if(!$last)
+									<span class="divider"> / </span>
+								@endif
+							@endforeach
+						</div>
                     @endif
                 </div>
             </div>

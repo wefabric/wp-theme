@@ -109,6 +109,12 @@
     }
 }
 
+.footer {
+	a:hover {
+		@apply no-underline text-primary;
+	}
+}
+
 .nav-links { //pagenumbers at the bottom of the news (posts) page
 
 	a, span {

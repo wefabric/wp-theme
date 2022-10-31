@@ -8,11 +8,13 @@
 	@include('components.breadcrumbs.index', ['classes' => ''])
 	
 	<div class="container px-8 pt-12 lg:pt-24 mx-auto">
+{{--
 		@include('components.headings.normal', [
 			'type' => 'h2',
-			'heading' => 'Kennisbank',
+			'heading' => 'Nieuws',
 			'class' => 'pb-10 lg:pb-24',
 		])
+--}}
 		
 		@include('components.news.category-links')
 	</div>
