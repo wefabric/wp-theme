@@ -1,7 +1,6 @@
 @php
     $imageId = $block->get('image') ?? get_field('common', 'option')['default_header_image'];
 	$videoUrl = $block->get('video');
-	
 	$bg = '';
 	$gradient = '';
 	if($block->get('bg_color')) {
@@ -29,10 +28,10 @@
 		@endif
 
         <div class="container mx-auto px-4 w-full @if($block->get('vertical_space') == 'py-36') lg:w-3/4 @else lg:px-20 @endif py-14 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
-	
+
 			@include('components.headings.collection', [
 				'titles' => $block->get('title'),
-				'title_color' => $block->get('text_color') ?? '',
+				'title_color' => $block->get('text_color') ?? 'white',
 				'disable_bottom_padding' => 'true'
 			])
 			
