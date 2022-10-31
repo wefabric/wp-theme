@@ -193,7 +193,7 @@ ins {
 
 .related, .upsells {
 	h2 {
-		@apply pt-24 pb-12 ;
+		@apply pb-12;
 	}
 }
 
@@ -218,6 +218,16 @@ ins {
 			&.active {
 				@apply bg-primary text-white #{!important};
 			}
+		}
+	}
+}
+
+.woocommerce-product-container {
+	.product {
+		@apply grid #{!important};
+	
+		div.images, div.summary {
+			@apply w-full #{!important};
 		}
 	}
 }

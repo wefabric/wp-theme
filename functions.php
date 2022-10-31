@@ -239,6 +239,17 @@ add_filter( 'woocommerce_page_title', function ( $page_title ) {
 	return $page_title;
 }, 10, 2 ); //Fix quotes on search page title. Would otherwise show the literal strings.
 
+//Move the description tabs from <after the summary> to <after the thumbnails>
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs');
+add_action( 'woocommerce_before_single_product_summary', 'woocommerce_output_product_data_tabs', 99 );
+
+// Align the 'add to cart' button on the right
+add_action('woocommerce_before_add_to_cart_form', function() {
+	echo '<div class="flex justify-end">';
+});
+add_action('woocommerce_after_add_to_cart_form', function() {
+	echo '</div>';
+});
 
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
 

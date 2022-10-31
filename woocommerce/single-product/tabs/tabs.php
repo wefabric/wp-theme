@@ -30,7 +30,7 @@ $product_tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
 if ( ! empty( $product_tabs ) ) : ?>
 	
-	<div class="container mx-auto w-full"  style="clear:both">
+	<div style="clear:both">
 		
 		<div class="faq-drawer lg:px-0">
 			<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
