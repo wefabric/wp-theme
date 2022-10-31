@@ -222,6 +222,16 @@ ins {
 	}
 }
 
+.woocommerce-product-container {
+	.product {
+		@apply grid #{!important};
+	
+		div.images, div.summary {
+			@apply w-full #{!important};
+		}
+	}
+}
+
 .woocommerce-product-attributes {
 
 	th {
