@@ -31,18 +31,20 @@
 			<i class="fa-regular fa-face-smile-beam text-amber-900"></i>
 		</div>
 	@endif
-	
-	@switch($value['value'])
-		@case('Test')
-			<div class="bg-gray-100 py-8 lg:py-24">
-				<div class="h4 text-center pb-10">Test</div>
-				
-				{{-- Insert the rest of the design here. --}}
-			</div>
-			@break
 
-		@default
-			<div class="py-8 lg:py-24 h4 text-center text-red-500"> Value {{ $value['value'] }} is not supported!</div>
-	@endswitch
+	@if(!empty($value['value']))
+		@switch($value['value'])
+			@case('Test')
+				<div class="bg-gray-100 py-8 lg:py-24">
+					<div class="h4 text-center pb-10">Test</div>
+
+					{{-- Insert the rest of the design here. --}}
+				</div>
+				@break
+
+			@default
+				<div class="py-8 lg:py-24 h4 text-center text-red-500"> Value {{ $value['value'] }} is not supported!</div>
+		@endswitch
+	@endif
 	
 </div>
