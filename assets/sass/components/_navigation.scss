@@ -38,11 +38,9 @@
 			}
 		}
 
-		.home-icon {
+		.home-icon { //this is the menu item
 			@screen lg {
-				::before {
-					@apply fa-solid fa-house #{!important};
-				}
+				@apply hidden;
 			}
 		}
 		
