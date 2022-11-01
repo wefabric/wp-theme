@@ -4,13 +4,21 @@
 	li {
 		@apply text-21;
 	}
+	
+	.button {
+		@apply bg-primary text-white text-base font-normal ml-4 #{!important};
+	}
+	
 }
 
 .woocommerce-info { //messages on checkoutpage, blue
+	@apply bg-blue-200 #{!important};
 }
 
 .woocommerce-message { //added to cart, green
+	@apply bg-green-200 #{!important};
 }
 
 .woocommerce-error { //error, red
+	@apply bg-red-300 #{!important};
 }

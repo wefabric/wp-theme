@@ -88,8 +88,28 @@ form.checkout {
 			content: "3";
 		}
 	}
-	
 }
+
+#payment {
+	@apply bg-white #{!important};
+	
+	.payment_box {
+		@apply bg-green-50 #{!important};
+
+		&::before {
+			@apply border-b-green-50 #{!important};
+		}
+	}
+}
+
 body > span.select2-container { //This holds the searchable select field.
 	@apply text-base;
+	
+	.select2-results {
+		ul {
+			.select2-results__option--highlighted {
+				@apply bg-primary;
+			}
+		}
+	}
 }
