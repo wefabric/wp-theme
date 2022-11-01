@@ -10,6 +10,9 @@
 	@apply btn-secondary;
 }
 
+a.remove {
+	@apply text-center #{!important};
+}
 
 form.checkout {
 	
@@ -17,7 +20,12 @@ form.checkout {
 		@include form-field;
 	}
 	
+	.select2-selection {
+		@apply relative h-auto;
 		
+		.select2-selection__arrow {
+			top: 17px;
+			right: 4px;
 		}
 	}
 	
@@ -30,7 +38,7 @@ form.checkout {
 		@apply text-base text-gray-400;
 	}
 	
-	input[type="checkbox"] {
+	[type="checkbox"], [type="radio"] {
 		&:checked, &:hover {
 			@apply bg-primary;
 		}
@@ -62,12 +70,26 @@ form.checkout {
 		content: "1"
 	}
 	
-	h3#order_review_heading {
-		@apply mb-8;
-		
+	h3#ship-to-different-address,
+	.woocommerce-additional-fields > h3 {
 		&::before {
 			content: "2";
 		}
 	}
 	
+	.woocommerce-additional-fields > h3 {
+		@apply mb-3;
+	}
+	
+	h3#order_review_heading {
+		@apply mb-8;
+		
+		&::before {
+			content: "3";
+		}
+	}
+	
+}
+body > span.select2-container { //This holds the searchable select field.
+	@apply text-base;
 }
