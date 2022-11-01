@@ -15,32 +15,26 @@ a.remove {
 }
 
 form.checkout {
-	
-	input[type="text"], input[type="tel"], input[type="email"], textarea, .select2-selection {
-		@include form-field;
+	.woocommerce-billing-fields > h3::before {
+		content: "1"
 	}
 	
-	.select2-selection {
-		@apply relative h-auto;
-		
-		.select2-selection__arrow {
-			top: 17px;
-			right: 4px;
+	h3#ship-to-different-address,
+	.woocommerce-additional-fields > h3 {
+		&::before {
+			content: "2";
 		}
 	}
 	
-	textarea {
-		@apply mt-1;
-		height: 9rem !important;
+	.woocommerce-additional-fields > h3 {
+		@apply mb-3;
 	}
 	
-	::placeholder {
-		@apply text-base text-gray-400;
-	}
-	
-	[type="checkbox"], [type="radio"] {
-		&:checked, &:hover {
-			@apply bg-primary;
+	h3#order_review_heading {
+		@apply mb-8;
+		
+		&::before {
+			content: "3";
 		}
 	}
 	
@@ -63,29 +57,6 @@ form.checkout {
 		
 		label br {
 			display: none;
-		}
-	}
-
-	.woocommerce-billing-fields > h3::before {
-		content: "1"
-	}
-	
-	h3#ship-to-different-address,
-	.woocommerce-additional-fields > h3 {
-		&::before {
-			content: "2";
-		}
-	}
-	
-	.woocommerce-additional-fields > h3 {
-		@apply mb-3;
-	}
-	
-	h3#order_review_heading {
-		@apply mb-8;
-		
-		&::before {
-			content: "3";
 		}
 	}
 }

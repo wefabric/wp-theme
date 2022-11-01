@@ -1,0 +1,33 @@
+form.checkout,
+form.woocommerce-form-login,
+.woocommerce-MyAccount-content>form {
+	
+	input[type="text"], input[type="tel"], input[type="email"], input[type="password"], textarea, .select2-selection {
+		@include form-field;
+	}
+	
+	.select2-selection {
+		@apply relative h-auto;
+		
+		.select2-selection__arrow {
+			top: 17px;
+			right: 4px;
+		}
+	}
+	
+	textarea {
+		@apply mt-1;
+		height: 9rem !important;
+	}
+	
+	::placeholder {
+		@apply text-base text-gray-400;
+	}
+	
+	[type="checkbox"], [type="radio"] {
+		&:checked, &:hover {
+			@apply bg-primary;
+		}
+	}
+
+}
