@@ -2,7 +2,8 @@
 
 .woocommerce-MyAccount-content,
 .woocommerce-MyAccount-navigation,
-.woocommerce-form-login {
+.woocommerce-form-login,
+.woocommerce-form-register {
 	a {
 		@apply font-normal;
 
@@ -36,7 +37,8 @@ h2, h3 {
 }
 
 .woocommerce-EditAccountForm,
-.woocommerce-form-login {
+.woocommerce-form-login,
+.woocommerce-form-register {
 	br {
 		@apply hidden;
 	}

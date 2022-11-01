@@ -38,12 +38,6 @@ form.checkout {
 		}
 	}
 	
-	.woocommerce-terms-and-conditions-wrapper {
-		input[type="checkbox"] { // [name="terms"]
-			display: inline-block;
-		}
-	}
-	
 	h3 {
 		@apply h5;
 		
@@ -60,6 +54,22 @@ form.checkout {
 		}
 	}
 }
+
+.woocommerce-account-fields {
+	@apply pb-2;
+	
+	label br {
+		display: none;
+	}
+}
+
+.woocommerce-terms-and-conditions-wrapper,
+.woocommerce-account-fields {
+	input[type="checkbox"] {
+		display: inline-block !important;
+	}
+}
+
 
 #payment {
 	@apply bg-white #{!important};
