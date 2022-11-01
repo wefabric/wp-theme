@@ -10,10 +10,70 @@
 	@apply btn-secondary;
 }
 
-#ship-to-different-address {
-	@apply h5 pb-6;
+
+form.checkout {
 	
-	label br {
-		display:none;
+	input[type="text"], input[type="tel"], input[type="email"], textarea {
+		@apply border-0 bg-input-background text-black w-full rounded-lg p-4 font-normal mt-2;
+		
+		&:focus{
+			@apply shadow-none border-2 outline-none ring-offset-0 ring-offset-primary-light ring-primary-light border-none;
+		}
+		
+		&:read-only {
+			outline: none;
+			box-shadow: none;
+			cursor: default;
+		}
 	}
+	
+	textarea {
+		@apply mt-1;
+		height: 9rem !important;
+	}
+	
+	::placeholder {
+		@apply text-base text-gray-400;
+	}
+	
+	input[type="checkbox"] {
+		&:checked, &:hover {
+			@apply bg-primary;
+		}
+	}
+	
+	.woocommerce-terms-and-conditions-wrapper {
+		input[name="terms-field"] {
+		
+		}
+	}
+	
+	h3 {
+		@apply h5;
+		
+		&::before {
+			@apply bg-black text-white rounded-full px-4 py-2 mr-4;
+		}
+	}
+	
+	#ship-to-different-address {
+		@apply pb-3;
+		
+		label br {
+			display: none;
+		}
+	}
+
+	.woocommerce-billing-fields > h3::before {
+		content: "1"
+	}
+	
+	h3#order_review_heading {
+		@apply mb-8;
+		
+		&::before {
+			content: "2";
+		}
+	}
+	
 }

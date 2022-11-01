@@ -1,6 +1,16 @@
-.woocommerce-info { //messages on checkoutpage, blue
-	//	@apply bg-secondary-light;
+.woocommerce-info, .woocommerce-message, .woocommerce-error { // is an ul
+	@apply rounded-lg;
+	
+	li {
+		@apply text-21;
+	}
 }
+
+.woocommerce-info { //messages on checkoutpage, blue
+}
+
 .woocommerce-message { //added to cart, green
-	//	@apply bg-secondary-light;
+}
+
+.woocommerce-error { //error, red
 }
