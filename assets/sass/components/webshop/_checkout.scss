@@ -1,0 +1,19 @@
+.checkout-button {
+	@apply btn-secondary;
+	
+	br {
+		display: none;
+	}
+}
+
+.woocommerce_checkout_place_order {
+	@apply btn-secondary;
+}
+
+#ship-to-different-address {
+	@apply h5 pb-6;
+	
+	label br {
+		display:none;
+	}
+}

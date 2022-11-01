@@ -1,0 +1,65 @@
+
+//for sale prices: <del>old price</del> is striketrough, <ins>new price</ins> is underlined
+ins {
+	@apply no-underline #{!important};
+}
+
+.price {
+	@apply font-bold text-primary #{!important};
+}
+
+.woocommerce-product-details__short-description {
+	@apply pb-8;
+}
+
+.related, .upsells {
+	h2 {
+		@apply pb-12;
+	}
+}
+
+.wc_add_to_cart_button {
+	@apply btn-secondary text-white py-2 font-bold;
+}
+
+.wc-tabs-wrapper {
+	ul.tabs {
+		&::before, ::before, ::after, li { //first is ul
+			@apply border-0 shadow-none #{!important};
+		}
+		
+		li {
+			@apply rounded-2xl mr-4 #{!important};
+			
+			a {
+				@apply h5;
+				@apply no-underline #{!important};
+			}
+			
+			&.active {
+				@apply bg-primary text-white #{!important};
+			}
+		}
+	}
+}
+
+.woocommerce-product-container {
+	.product {
+		@apply grid #{!important};
+		
+		div.images, div.summary {
+			@apply w-full #{!important};
+		}
+	}
+}
+
+.woocommerce-product-attributes {
+	
+	th {
+		text-align: left;
+	}
+	
+	.woocommerce-product-attributes-item__label, .woocommerce-product-attributes-item__value {
+		@apply text-base font-normal not-italic #{!important};
+	}
+}
