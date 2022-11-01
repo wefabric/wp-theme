@@ -14,6 +14,10 @@ a.remove {
 	@apply text-center #{!important};
 }
 
+#coupon_code {
+	width: 160px !important;
+}
+
 form.checkout {
 	.woocommerce-billing-fields > h3::before {
 		content: "1"
@@ -46,19 +50,14 @@ form.checkout {
 		}
 	}
 	
-	#ship-to-different-address {
-		@apply pb-3;
-		
-		label br {
-			display: none;
-		}
-	}
 }
 
-.woocommerce-account-fields {
-	@apply pb-2;
+.woocommerce-form-coupon,
+.woocommerce-account-fields,
+#ship-to-different-address {
+	@apply pb-3;
 	
-	label br {
+	br {
 		display: none;
 	}
 }
