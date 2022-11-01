@@ -45,8 +45,8 @@ form.checkout {
 	}
 	
 	.woocommerce-terms-and-conditions-wrapper {
-		input[name="terms-field"] {
-		
+		input[type="checkbox"] { // [name="terms"]
+			display: inline-block;
 		}
 	}
 	
