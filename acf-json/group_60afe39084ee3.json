@@ -6526,74 +6526,6 @@
                     "min": "",
                     "max": ""
                 },
-                "layout_62ebd65b47d98": {
-                    "key": "layout_62ebd65b47d98",
-                    "name": "empty_space",
-                    "label": "Lege ruimte",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_62ebd65b47da0",
-                            "label": "Hoogte (desktop)",
-                            "name": "height_desktop",
-                            "type": "number",
-                            "instructions": "Kies hier de totale hoogte van het blok op desktop-weergave.",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "33",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": 50,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "px",
-                            "min": 10,
-                            "max": 200,
-                            "step": 10
-                        },
-                        {
-                            "key": "field_62ebd6b047da7",
-                            "label": "Hoogte (mobiel)",
-                            "name": "height_mobile",
-                            "type": "number",
-                            "instructions": "Kies hier de totale breedte van het blok op mobiele weergave.",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "33",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": 50,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "px",
-                            "min": 10,
-                            "max": 200,
-                            "step": 10
-                        },
-                        {
-                            "key": "field_62ebd65b47da1",
-                            "label": "Achtergrondkleur",
-                            "name": "bg_color",
-                            "type": "Thema Kleur",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "theme_color": null,
-                            "font_size": 14
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
                 "layout_60f1906ff9fa1": {
                     "key": "layout_60f1906ff9fa1",
                     "name": "faq",
@@ -7317,5 +7249,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1667211205
+    "modified": 1667290293
 }
