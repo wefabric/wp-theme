@@ -93,3 +93,20 @@ body > span.select2-container { //This holds the searchable select field.
 		}
 	}
 }
+
+//Not really part of the checkout, but you can only visit this page after completing an order.
+.woocommerce-thankyou-order-details {
+	@apply ml-4 mb-8 #{!important};
+	
+	&::before {
+		@apply pl-4;
+	}
+	
+	li {
+		@apply text-base normal-case #{!important};
+		
+		strong {
+			@apply text-21 #{!important};
+		}
+	}
+}
