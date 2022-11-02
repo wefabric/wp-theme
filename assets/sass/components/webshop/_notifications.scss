@@ -1,20 +1,30 @@
-.woocommerce-info, .woocommerce-message, .woocommerce-error { // is an ul
-	@apply rounded-lg text-21;
+.woocommerce-info, .woocommerce-message, .woocommerce-error {
+	@apply text-base w-full border-t-4 border-t-primary;
+	@apply bg-tertiary pl-20 pr-8 py-8 mb-8 #{!important};
 	
-	li {
-		@apply text-21;
+	@apply align-middle #{!important};
+	
+	&::before {
+		@apply fa-solid text-primary text-21 top-9 left-8 #{!important}; //icon
+		content: "\f07a" !important; // basic icon = cart
 	}
 	
+	.button {
+		@apply bg-black hover:bg-primary -mt-3 #{!important};
+	}
 }
 
-.woocommerce-info { //messages on checkoutpage, blue
-	@apply bg-blue-200 #{!important};
+.woocommerce-info {
 }
 
-.woocommerce-message { //added to cart, green
-	@apply bg-green-200 #{!important};
+.woocommerce-message {
 }
 
-.woocommerce-error { //error, red
-	@apply bg-red-300 #{!important};
+.woocommerce-error {
+	@apply bg-primary border-t-black text-white #{!important};
+	
+	&::before {
+		@apply rounded-full px-4 py-2 bg-white #{!important};
+		content: "\21" !important; //exclamation icon
+	}
 }

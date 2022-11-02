@@ -251,6 +251,13 @@ add_action('woocommerce_after_add_to_cart_form', function() {
 	echo '</div>';
 });
 
+add_action('woocommerce_before_cart_table', function() {
+	echo '<h2 class="cart-title">'. __('Cart', 'woocommerce') .'</h2>';
+});
+add_action('woocommerce_cart_is_empty', function() {
+	echo '<h2 class="cart-title">'. __('Cart', 'woocommerce') .'</h2>';
+}, 1);
+
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
 
 /*
