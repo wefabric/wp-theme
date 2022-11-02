@@ -18,6 +18,20 @@ ins {
 	}
 }
 
+form.variations_form.cart {
+	@apply w-full mb-4 #{!important};
+	
+	table.variations {
+		label {
+			@apply mr-4;
+		}
+	}
+}
+
+.woocommerce-variation-add-to-cart {
+	@apply float-right;
+}
+
 .wc_add_to_cart_button {
 	@apply btn-secondary text-white py-2 font-bold;
 }

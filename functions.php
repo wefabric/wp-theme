@@ -198,10 +198,6 @@ add_filter('woocommerce_product_loop_title_classes', function ($class) {
 	return $class .' h5 text-black pb-6';
 });
 
-add_filter('woocommerce_product_class', function ($class) {
-	return $class .' lg:pt-24 ';
-});
-
 // See content-single-product.php # 49
 add_action('woocommerce_single_product_summary', function() {
 	global $product;
