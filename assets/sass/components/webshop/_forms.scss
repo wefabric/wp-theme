@@ -1,10 +1,11 @@
 form.checkout,
+form.cart,
 form.woocommerce-form-login,
 form.woocommerce-form-register,
 .woocommerce-shipping-totals,
 .woocommerce-MyAccount-content>form {
 	
-	input[type="text"], input[type="tel"], input[type="email"], input[type="password"], textarea, .select2-selection {
+	input[type="text"], input[type="tel"], input[type="email"], input[type="password"], input[type="number"], textarea, select, .select2-selection {
 		@include form-field;
 	}
 	
@@ -26,7 +27,7 @@ form.woocommerce-form-register,
 		@apply text-base text-gray-400;
 	}
 	
-	[type="checkbox"], [type="radio"] {
+	input[type="checkbox"], input[type="radio"] {
 		&:checked, &:hover {
 			@apply bg-primary;
 		}
