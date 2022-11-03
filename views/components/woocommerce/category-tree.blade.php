@@ -17,13 +17,10 @@
 			$categories[$cat->term_id]->subcategories = [];
 
 			$active = false;
-			$activeClass = '';
 			if(get_queried_object() instanceof WP_Term && get_queried_object()->slug === $cat->slug) {
 				 $active = true;
-				 $activeClass = 'text-primary';
 			}
 			$categories[$cat->term_id]->active = $active;
-			$categories[$cat->term_id]->activeClass = $activeClass;
 
 
 		} elseif(array_key_exists($cat->parent, $categories)) {
@@ -37,8 +34,7 @@
             $cat->activeClass = $activeClass;
 			$categories[$cat->parent]->subcategories[] = $cat;
             if($active) {
-                   $categories[$cat->parent]->active = $active;
-				   $categories[$cat->parent]->activeClass = $activeClass;
+                   $categories[$cat->parent]->active = true;
             }
 
 //		} else {
@@ -55,12 +51,12 @@
 
 <div class="sidebar-widget sidebar-widget--category-tree">
 	@foreach($categories as $category)
-		<div class="product-category @if($category->subcategory_count == 0) no-subcategories @endif">
+		<div class="product-category @if($category->subcategory_count == 0) no-subcategories @endif @if($category->active) bg-primary @else bg-black @endif">
 
 			 @include('components.link.simple', [
 				'href' => get_category_link($category->term_taxonomy_id),
 				'text' => $category->name,
-				'class' => 'inline-block w-[90%] '. $category->activeClass
+				'class' => 'inline-block w-[90%]'
 			])
 			
 			<input class="product-category__trigger" @if($category->active) checked="checked" @endif id="product-category-{{ $category->slug }}" type="checkbox" />
