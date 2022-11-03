@@ -6,3 +6,7 @@ ul.products {
 		@apply hidden #{!important};
 	}
 }
+
+.woocommerce-products-header {
+	@apply w-full bg-black text-white text-center py-12 mt-8 mb-16;
+}
