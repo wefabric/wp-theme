@@ -1,5 +1,5 @@
 .sidebar {
-	@apply lg:w-1/4;
+	@apply hidden lg:block lg:w-1/4;
 	
 	.sidebar-widget {
 		@apply lg:my-8;

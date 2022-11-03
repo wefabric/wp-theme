@@ -1,9 +1,15 @@
 //hacky fix.
 ul.products {
-	@apply grid grid-cols-3 gap-4 #{!important};
+	@apply grid lg:grid-cols-3 gap-4 #{!important};
 	
 	&:before {
 		@apply hidden #{!important};
+	}
+}
+
+.shop_content {
+	h2 {
+		clear: both;
 	}
 }
 
