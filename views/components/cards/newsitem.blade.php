@@ -25,7 +25,8 @@
 
         <div class="">
             @include('components.headings.normal', [
-                'type' => 'h4',
+                'type' => 'h3',
+				'display' => 'h4',
                 'heading' => get_the_title($postId),
             ])
         </div>
