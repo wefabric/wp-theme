@@ -16,3 +16,11 @@ ul.products, .product-cats {
 .woocommerce-products-header {
 	@apply w-full bg-black text-white text-center py-12 mt-8 mb-16;
 }
+
+.wc-block-components-checkbox .wc-block-components-checkbox__mark {
+	fill: #fff;
+}
+
+.sidebar .sidebar-widget .wp-block-woocommerce-attribute-filter .wc-block-checkbox-list li [type=checkbox]:checked {
+	@apply border-primary;
+}
