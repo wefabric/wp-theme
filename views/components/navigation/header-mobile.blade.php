@@ -14,10 +14,13 @@
         <div class="py-2 pr-16 flex items-center justify-end relative lg:hidden">
 			@php
 				$icon_size = 'h-8 w-8 pt-1 mr-3';
+
+				$cart_items = WC()->cart->get_cart_contents_count();
+				$cart_total = WC()->cart->get_cart_total(); //price?
 			@endphp
 			
 			@include('components.buttons.icon', [
-				'href' => '/cart',
+				'href' => wc_get_cart_url(),
 				'alt' => 'Naar de winkelwagen',
 			//            'rel' => 'noopener',
 			//            'target' => '_blank',
@@ -28,11 +31,11 @@
 				'class' => 'relative',
 			
 				'smallIconClass' => 'h-5 w-5 text-center text-sm mr-1 rounded-full bg-zinc-300 text-black absolute -mt-0.5 -top-2 -right-2',
-				'smallIconContent' => '0', //number of items in shopping cart
+				'smallIconContent' => $cart_items, //number of items in shopping cart
 			])
 	
 			@include('components.buttons.icon', [
-				'href' => '/profile',
+				'href' => get_permalink(get_option('woocommerce_myaccount_page_id')),
 				'alt' => 'Naar mijn profiel',
 	//            'rel' => 'noopener',
 	//            'target' => '_blank',

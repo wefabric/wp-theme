@@ -20,7 +20,7 @@
 				</div>
 			@endif
 			
-			<div class="w-full lg:w-3/4">
+			<div class="px-4 md:px-8 lg:px-0 w-full lg:w-3/4 shop_content">
 				@if(woocommerce_product_loop())
 					@php do_action('woocommerce_before_shop_loop') @endphp
 					

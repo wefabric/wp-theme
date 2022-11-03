@@ -18,9 +18,7 @@ ins {
 	}
 }
 
-form.variations_form.cart {
-	@apply w-full #{!important};
-	
+form.cart {
 	input, select {
 		@apply mt-0 mb-2 #{!important}; //to override the default margin-y;
 		
@@ -29,9 +27,13 @@ form.variations_form.cart {
 		}
 	}
 	
-	table.variations {
-		label {
-			@apply mr-4;
+	&.variations_form {
+		@apply w-full #{!important};
+		
+		table.variations {
+			label {
+				@apply mr-4;
+			}
 		}
 	}
 }
