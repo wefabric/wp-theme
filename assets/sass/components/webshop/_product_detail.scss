@@ -23,7 +23,7 @@ form.cart {
 		@apply mt-0 mb-2 #{!important}; //to override the default margin-y;
 		
 		&.qty {
-			@apply mr-4;
+			@apply mr-4 w-24 max-w-xs #{!important};
 		}
 	}
 	

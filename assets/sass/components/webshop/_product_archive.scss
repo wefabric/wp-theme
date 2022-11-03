@@ -1,5 +1,5 @@
 //hacky fix.
-ul.products {
+ul.products, .product-cats {
 	@apply grid lg:grid-cols-3 gap-4 #{!important};
 	
 	&:before {
