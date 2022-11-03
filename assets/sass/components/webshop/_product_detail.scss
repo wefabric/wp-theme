@@ -71,6 +71,10 @@ form.variations_form.cart {
 		
 		div.images, div.summary {
 			@apply w-full #{!important};
+			
+			img {
+				@apply w-auto mx-auto max-h-[500px] #{!important};
+			}
 		}
 	}
 }
