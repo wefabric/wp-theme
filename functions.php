@@ -216,7 +216,7 @@ add_action('woocommerce_single_product_summary', function() {
 	echo '<div class="text-right">';
 	echo '<h4 class="pb-4">Zakelijk bestellen</h4>';
 	echo view('components.buttons.default', [
-		'href' => '/offerte',
+		'href' => '/offerte', //todo optie van maken?
 		'text' => 'Offerte opvragen',
 		'a_class' => '',
 		'colors' => 'btn-black text-white',
@@ -253,6 +253,11 @@ add_action('woocommerce_before_cart_table', function() {
 add_action('woocommerce_cart_is_empty', function() {
 	echo '<h2 class="cart-title">'. __('Cart', 'woocommerce') .'</h2>';
 }, 1);
+
+add_action('woocommerce_before_add_to_cart_button', function() {
+	echo '<input type="hidden" name="_token" value="'. csrf_token() .'">';
+});
+
 
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
 
