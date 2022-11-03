@@ -258,6 +258,26 @@ add_action('woocommerce_before_add_to_cart_button', function() {
 	echo '<input type="hidden" name="_token" value="'. csrf_token() .'">';
 });
 
+add_action('init', function () {
+	remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+});
+add_filter( 'woocommerce_breadcrumb_defaults', function () {
+	return array(
+		'delimiter'   => '<span class="breadcrumb-separator">/</span>',
+		'wrap_before' => '<nav class="woocommerce-breadcrumb" itemprop="breadcrumb">',
+		'wrap_after'  => '</nav>',
+		'before'      => '',
+		'after'       => '',
+		'home'        => _x( 'Home', 'breadcrumb', 'woocommerce' ),
+	);
+});
+add_action('woocommerce_archive_description', function() {
+	woocommerce_breadcrumb();
+}, 1);
+
+add_action('wp', function () {
+	remove_theme_support( 'wc-product-gallery-zoom' ); //also removes zoom icon on main image.
+}, 99 );
 
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
 
