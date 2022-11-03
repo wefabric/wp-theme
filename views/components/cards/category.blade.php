@@ -12,7 +12,7 @@
 			'img_class' => 'mx-auto bg-center bg-no-repeat',
 		])
 	
-		<span class="block h5 h-1/5 text-center mt-8">
+		<span class="block h5 text-center mt-8">
 			{{ $item->name }}
 		</span>
 	

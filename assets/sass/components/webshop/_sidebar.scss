@@ -94,7 +94,7 @@
 						@apply bg-gray-200 text-black py-2;
 						
 						a, span {
-							@apply no-underline #{!important};
+							@apply no-underline block #{!important} ;
 						}
 						span {
 							@apply px-6;
