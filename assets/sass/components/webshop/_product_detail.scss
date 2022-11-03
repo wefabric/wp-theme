@@ -19,7 +19,15 @@ ins {
 }
 
 form.variations_form.cart {
-	@apply w-full mb-4 #{!important};
+	@apply w-full #{!important};
+	
+	input, select {
+		@apply mt-0 mb-2 #{!important}; //to override the default margin-y;
+		
+		&.qty {
+			@apply mr-4;
+		}
+	}
 	
 	table.variations {
 		label {

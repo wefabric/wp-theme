@@ -30,7 +30,11 @@
 }
 
 table.shop_table {
-	@apply border-0 rounded-none shadow-none #{!important};
+	@apply border-collapse border-0 rounded-none shadow-none #{!important};
+
+	a, strong, td {
+		@apply text-base;
+	}
 	
 	th, td {
 		@apply border-r-0 border-t-0 #{!important};
@@ -40,7 +44,7 @@ table.shop_table {
 		@apply bg-white;
 	}
 	
-	tbody {
+	tbody, tfoot {
 		tr:nth-child(even) { //2,4, etc (0 is not a row)
 		}
 		tr:nth-child(odd) { //1,3, etc
@@ -49,7 +53,7 @@ table.shop_table {
 	}
 	
 	tfoot {
-		@apply bg-white #{!important}; //bg-tertiary
+		//@apply bg-white #{!important}; //bg-tertiary
 		
 		tr:first-of-type {
 			@apply border-t border-t-primary #{!important};
@@ -134,7 +138,8 @@ form.checkout {
 }
 
 #payment,
-table.shop_table {
+table.shop_table,
+.woocommerce-thankyou-order-details {
 	li::before { //hide the list dots.
 		display:none;
 	}
