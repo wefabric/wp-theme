@@ -69,7 +69,7 @@
 			}
 			
 			.product-category {
-				@apply rounded-t-2xl rounded-b-2xl bg-black text-white mb-4 pt-4;
+				@apply rounded-t-2xl rounded-b-2xl bg-black text-white mb-4 pt-4 cursor-pointer;
 				
 				> a {
 					@apply inline-block pb-4 px-6;

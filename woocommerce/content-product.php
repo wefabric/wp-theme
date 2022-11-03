@@ -28,7 +28,7 @@ if(empty($product) || !$product->is_visible()) {
 }
 ?>
 
-<div <?php wc_product_class( 'card flex flex-col p-5 bg-white ', $product );  ?> >
+<div <?php wc_product_class( 'card flex flex-col justify-between p-5 bg-white ', $product );  ?> >
 	<?php //min-h-[488px] lg:min-h-[465px]      pb-32 relative
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
