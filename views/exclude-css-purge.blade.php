@@ -106,7 +106,7 @@
 	mb-4 lg:mb-0
 	mr-5
 	
-	justify-start justify-center justify-end justify-self-start justify-self-center justify-self-end
+	justify-start justify-between justify-center justify-end justify-self-start justify-self-center justify-self-end
 	items-start items-center items-end
 	text-left text-center text-right text-justify
 	
