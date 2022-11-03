@@ -76,3 +76,20 @@ form.variations_form.cart {
 		@apply text-base font-normal not-italic #{!important};
 	}
 }
+
+
+.description_tab .faq-drawer__content-wrapper {
+	h3 {
+		@apply pb-4;
+	}
+	h4 {
+		@apply pb-1;
+	}
+	.content {
+		@apply mb-8;
+	}
+	.description-block {
+		@apply bg-tertiary p-4 rounded-lg;
+	}
+
+}

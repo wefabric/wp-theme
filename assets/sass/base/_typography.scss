@@ -64,15 +64,9 @@
 	}
 	
 	h4, .h4 {
-		@apply text-lg font-head font-bold break-words;
+		@apply text-md font-head font-bold break-words;
 		line-height: 1.2 !important;
-		
-		@screen md {
-			@apply text-26;
-		}
-		@screen xl {
-			@apply text-2xl font-bold;
-		}
+
 	}
 	
 	h5, .h5, h6, .h6 {

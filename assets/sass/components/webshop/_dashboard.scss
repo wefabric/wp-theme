@@ -8,10 +8,6 @@ mark {
 	@apply bg-transparent font-bold;
 }
 
-h2, h3 {
-	@apply h4 #{!important};
-}
-
 .woocommerce-columns--addresses, .woocommerce-Addresses {
 	p:empty {
 		@apply hidden;
