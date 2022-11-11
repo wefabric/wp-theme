@@ -26,7 +26,7 @@
 		],
 		
 		'grid_class' => 'flex justify-center',
-        'grid_items_class' => 'w-1/4',
+        'grid_items_class' => '',
 		
         'size' => $block->get('icon_size'),
         'position' => $block->get('position'),
