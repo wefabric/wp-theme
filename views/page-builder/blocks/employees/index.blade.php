@@ -1,7 +1,7 @@
 @php
     if($block->get('show_all') === true) {
         $args = [
-            'posts_per_page'   => 8,
+            'posts_per_page'   => 99,
             'post_type'        => 'employees',
         ];
         $query = new WP_Query( $args );

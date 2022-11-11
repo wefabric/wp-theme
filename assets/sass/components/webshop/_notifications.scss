@@ -10,7 +10,7 @@
 	}
 	
 	.button {
-		@apply bg-black hover:bg-primary -mt-3 #{!important};
+		@apply bg-black hover:bg-primary w-full lg:w-auto ml-0 lg:ml-4 -mt-3 float-none lg:float-right #{!important};
 	}
 }
 

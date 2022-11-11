@@ -141,21 +141,6 @@ $theme->templates($theme->config('templates', []));
 
 add_theme_support( 'post-thumbnails' );
 
-/*
-add_filter('woocommerce_gallery_thumbnail_size', function($size) {
-	return 'woocommerce_gallery_thumbnail';
-});
-add_filter('single_product_archive_thumbnail_size', function($size) {
-	return 'woocommerce_product_thumbnail';
-});
-add_filter('subcategory_archive_thumbnail_size', function($size) {
-	return 'woocommerce_product_thumbnail';
-});
-add_filter('woocommerce_gallery_image_size', function($size) {
-	return 'woocommerce_single';
-});
-*/
-
 
 add_action( 'woocommerce_before_shop_loop', function () {
 	$terms = get_terms( 'product_cat', [
@@ -169,8 +154,7 @@ add_action( 'woocommerce_before_shop_loop', function () {
 		echo view('components.slider.grid', [
 			'items' => $terms,
 			'card_type' => 'category',
-			'grid_class' => 'product-cats hidden md:grid md:grid-cols-3 w-full',
-//			'grid_spacing' => 'gap-12',
+			'grid_class' => 'product-cats w-full',
 		])->render();
 
 		echo '<h2 class="text-36 font-head lg:pt-20 lg:pb-12">Alle producten</h2>';
@@ -182,16 +166,7 @@ add_filter( 'loop_shop_per_page', function ($number_of_posts) {
 }, 20);
 add_filter('loop_shop_columns', function () {
 	return 3; //product-columns per page
-}, 1); //DOESNT work, see the _webshop.scss styling for .produccts as temp fix.
-
-//Doesnt work > homepage is Shop / Shop...
-//add_filter( 'woocommerce_breadcrumb_defaults', function ( $defaults ) {
-//	$defaults['home'] = 'Shop';
-//	return $defaults;
-//});
-//add_filter( 'woocommerce_breadcrumb_home_url', function () {
-//	return get_permalink(wc_get_page_id('shop'));
-//});
+}, 1); //DOESNT work, see the _product_archive.scss styling for .products as temp fix.
 
 remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail');
 add_filter('woocommerce_product_loop_title_classes', function ($class) {
@@ -280,16 +255,3 @@ add_action('wp', function () {
 }, 99 );
 
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
-
-/*
-// Remove each style one by one
-add_filter( 'woocommerce_enqueue_styles', '_dequeue_styles' );
-function _dequeue_styles( $enqueue_styles ) {
-	unset( $enqueue_styles['woocommerce-general'] );	// Remove the gloss
-	unset( $enqueue_styles['woocommerce-layout'] );		// Remove the layout
-	unset( $enqueue_styles['woocommerce-smallscreen'] );	// Remove the smallscreen optimisation
-	return $enqueue_styles;
-}
-// Or just remove them all in one line
-add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
-*/
