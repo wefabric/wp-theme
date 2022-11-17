@@ -46,7 +46,7 @@
 		
 		.menu-btn {
 			@screen lg {
-				@apply btn btn-small btn-primary hover:text-white h-12 flex items-center;
+				@apply btn btn-small btn-primary hover:text-white h-12 flex items-center -mt-1;
 				@apply text-white  #{!important};
 			}
 		}

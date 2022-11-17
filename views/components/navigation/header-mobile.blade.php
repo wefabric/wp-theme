@@ -30,7 +30,7 @@
 				'colors' => 'btn-black text-white',
 				'class' => 'relative',
 			
-				'smallIconClass' => 'h-5 w-5 text-center text-sm mr-1 rounded-full bg-zinc-300 text-black absolute -mt-0.5 -top-2 -right-2',
+				'smallIconClass' => 'min-h-[1.25rem] min-w-[1.25rem] p-1 text-center text-sm mr-1 rounded-full bg-zinc-300 text-xs text-black absolute -mt-0.5 -top-2 -right-2',
 				'smallIconContent' => $cart_items, //number of items in shopping cart
 			])
 	

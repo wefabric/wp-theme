@@ -10,9 +10,9 @@
             <div class="mr-3">
                 <form action="/shop" method="get" id="" name="" class="validate" target="" novalidate>
                     <div class="flex">
-                        <input type="text" value="" placeholder="Typ hier je zoekterm in..." name="s" class="w-96 bg-white rounded-l-lg shadow-lg shadow-slate-200 " id="search">
+                        <input type="text" value="" placeholder="Typ hier je zoekterm in..." name="s" class="hidden w-96 bg-white rounded-l-lg shadow-lg shadow-slate-200 " id="search">
                         <div class="flex align-center">
-                            <button type="submit" class="w-12 h-12 rounded-r-lg text-center btn-black text-white text-center text-xl shadow shadow-slate-200">
+                            <button type="submit" class="w-12 h-12 rounded-full text-center btn-black text-white text-center text-xl shadow shadow-slate-200">
                                 <i class="fa-light fa-search "></i>
                                 <span class="screen-reader-only">Zoeken</span>
                             </button>
@@ -39,7 +39,7 @@
                 'colors' => 'btn-black text-white',
                 'class' => 'relative',
 
-                'smallIconClass' => 'h-7 w-7 text-center mr-1 rounded-full bg-zinc-300 text-black absolute pt-0.5 -top-2 -right-2',
+                'smallIconClass' => 'min-h-7 min-w-7 p-1 text-center mr-1 rounded-full bg-zinc-300 text-black text-xs absolute pt-0.5 -top-2 -right-2',
                 'smallIconContent' => $cart_items, //sprintf(_n('%d item', '%d items', $cart_items), $cart_items) .' - '. $cart_total, //number of items in shopping cart
             ])
 
@@ -56,7 +56,7 @@
         </div>
     @endif
 
-    <nav id="site-navigation" class="main-navigation flex justify-end items-center">
+    <nav id="site-navigation" class="main-navigation flex justify-end items-center mt-2">
         @include('components.header.home-house', [
             'class' => 'md:px-4 text-xl text-primary', //this shows a house icon, as link to the homepage
         ])

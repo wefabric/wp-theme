@@ -1,5 +1,5 @@
 
-<div class="card bg-white flex flex-col justify-center">
+<div class="card bg-white flex flex-col justify-center h-full">
     <div class="bg-[#F9F9F9] rounded-tl-lg rounded-tr-lg flex flex-col justify-center p-8">
         @include('components.image', [
            'image_id' => $item->get('image'),

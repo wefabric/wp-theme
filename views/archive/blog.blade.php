@@ -7,18 +7,12 @@
 
 	@include('components.breadcrumbs.index', ['classes' => ''])
 	
-	<div class="container px-8 pt-12 lg:pt-24 mx-auto">
-		@include('components.headings.normal', [
-			'type' => 'h2',
-			'heading' => get_the_title($page->ID),
-			'class' => 'pb-10 lg:pb-24',
-		])
-		
+	<div class="container px-8 pt-6 lg:pt-12 mx-auto">
 		@include('components.news.category-links')
 	</div>
 
 	<section class="news-archive-grid relative">
-		<div class="container mx-auto my-12 lg:my-24">
+		<div class="container mx-auto my-12 lg:my-12">
 			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
 				@loop
 					@include('components.cards.newsitem', [

@@ -19,7 +19,7 @@
         @include('components.headings.normal', [
             'type' => 'h3',
             'heading' => get_the_title($employeeId),
-            'class' => 'text-center',
+            'class' => 'text-center text-xl',
         ])
     </div>
 
