@@ -18,16 +18,16 @@
 				'title' => $block->get('title'),
 			])
 		@endif
-			
+
 		<div class="relative @if(!empty($info->get('display_type'))) md:grid md:grid-cols-2 gap-24 @endif" >
-			
+
             <div class="bg-{{ str_replace('-color', '', $block->get('background_color', '')) }} rounded-lg  text-{{ $block->get('text_color') }} -mt-2
 	            @if(empty($info->get('display_type')))
 	            	w-full lg:{{ $block->get('width_form') }}
 	            	@if($block->get('fill_color')) bg-{{ $block->get('fill_color') }} p-12 @endif
 				@endif
 				@if($info->get('info_position') === 'left') order-2 @endif ">
-				
+
 				<div class="form">
 	                {!! $block->get('form') !!}
 				</div>
@@ -41,16 +41,24 @@
 						])
 					@elseif($info->get('display_type') === 'textbox')
 						{!! $info->get('info') !!}
+						<div class="mt-4">
+							@include('page-builder.blocks.contact-form.address', [
+                                'establishment_id' => $block->get('establishment'),
+                                'show_title' => false
+                            ])
+						</div>
+
 					@endif
 				</div>
             @endif
-		
+
 			@if(false)
 				<div class="offset-md-1 mt-12 md:mt-0 col-md-4 text-base">
 				</div>
 			@endif
 		</div>
-			
+
+
 		@if($block->get('image') && $block->get('image')->get('image'))
 			<div class="absolute -right-2 md:-right-6 md:-bottom-16">
 				@include('components.image', [
@@ -60,7 +68,7 @@
 				])
 			</div>
 		@endif
-		
+
 	</div>
 
 </div>

@@ -2,14 +2,6 @@
   transform: scaleX(-1);
 }
 
-body {
-
-  @screen lg {
-    @apply text-xl;
-  }
-
-}
-
 img {
   max-width: 100%;
   height: auto;

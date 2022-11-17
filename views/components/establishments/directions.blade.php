@@ -6,9 +6,9 @@
 	@include('components.link.opening', [
 		   'href' => $address->getGoogleMapsUrl(),
 		   'alt' => 'Adres op Google Maps',
-		   'class' => 'flex no-underline'
+		   'class' => 'flex no-underline items-center'
 	   ])
-	<i class="fa-solid fa-location-dot mr-4 ml-1 text-md pt-1"></i>
+	<i class="fa-solid fa-location-dot mr-4 ml-1 pt-1"></i>
 	<span class="inline-block pt-1">Routebeschrijving</span>
 	@include('components.link.closing')
 @endif

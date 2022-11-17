@@ -3,7 +3,7 @@
 
 @endphp
 
-@include('components.socials.list')
+@include('components.socials.list', ['icon_class' => 'text-xl'])
 
 @if(isset($option['newsletter_footer'], $option['newsletter_footer']['show']) && $option['newsletter_footer']['show'] === true)
 	@php
