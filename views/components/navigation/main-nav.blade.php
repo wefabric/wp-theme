@@ -12,7 +12,7 @@
                     @include('woocommerce.search.search')
                 </div>
 
-                <button onclick="toggleSearch('searchMainNav')" type="submit" class="w-12 h-12 rounded-full text-center btn-black text-white text-center text-xl shadow shadow-slate-200">
+                <button onclick="window.toggleSearch('searchMainNav')" type="submit" class="w-12 h-12 rounded-full text-center btn-black text-white text-center text-xl shadow shadow-slate-200">
                     <i class="fa-light fa-search "></i>
                     <span class="screen-reader-only">Zoeken</span>
                 </button>

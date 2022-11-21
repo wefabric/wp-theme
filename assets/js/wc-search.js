@@ -1,4 +1,4 @@
-function toggleSearch(id) {
+window.toggleSearch = function (id) {
     let element = document.getElementById(id);
     element.classList.toggle("hidden");
     if(!element.classList.contains('hidden')) {
