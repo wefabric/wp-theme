@@ -103,7 +103,15 @@ form.cart {
 		@apply mb-8;
 	}
 	.description-block {
-		@apply bg-tertiary p-4 rounded-lg;
+		@apply bg-tertiary p-4 mb-4 rounded-lg;
 	}
 
+}
+
+.single-product div.product .woocommerce-product-gallery.woocommerce-product-gallery--columns-4 .flex-control-thumbs li {
+	@apply mx-4;
+
+	&:first-child {
+		@apply ml-0;
+	}
 }

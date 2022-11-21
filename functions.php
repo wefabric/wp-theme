@@ -179,8 +179,8 @@ add_action('woocommerce_single_product_summary', function() {
 	echo '<h5 class="pb-2">'. $product->get_attribute('brand') .'</h5>';
 }, 3);
 add_action('woocommerce_single_product_summary', function() {
-	global $product;
-	echo '<div class="text-base pt-3 pb-8"><span class="font-bold">Artikelnummer:</span> '. $product->get_sku() .'</div>';
+    global $product;
+	echo view('woocommerce.single-product.additional-summary', ['product' => $product])->render();
 }, 8);
 add_action('woocommerce_single_product_summary', function() {
 	global $product;
@@ -188,10 +188,11 @@ add_action('woocommerce_single_product_summary', function() {
 }, 11);
 remove_action('woocommerce_single_product_summary','woocommerce_template_single_meta', 40);
 add_action('woocommerce_single_product_summary', function() {
+    global $product;
 	echo '<div class="text-right">';
 	echo '<h4 class="pb-4">Zakelijk bestellen</h4>';
 	echo view('components.buttons.default', [
-		'href' => '/offerte', //todo optie van maken?
+		'href' => \App\Helpers\Offer::getUrl($product), //todo optie van maken?
 		'text' => 'Offerte opvragen',
 		'a_class' => '',
 		'colors' => 'btn-black text-white',
@@ -232,6 +233,15 @@ add_action('woocommerce_cart_is_empty', function() {
 add_action('woocommerce_before_add_to_cart_button', function() {
 	echo '<input type="hidden" name="_token" value="'. csrf_token() .'">';
 });
+
+add_filter('woocommerce_dropdown_variation_attribute_options_args',function ( $args)
+{
+
+    if(count($args['options']) > 0) //Check the count of available options in dropdown
+        $args['selected'] = $args['options'][0];
+    return $args;
+},10,1);
+
 
 add_action('init', function () {
 	remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
