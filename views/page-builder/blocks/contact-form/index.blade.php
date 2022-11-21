@@ -47,8 +47,8 @@
                                 'show_title' => false
                             ])
 						</div>
-
 					@endif
+					@include('components.contact.employees')
 				</div>
             @endif
 

@@ -6464,6 +6464,33 @@
                                     "placeholder": ""
                                 },
                                 {
+                                    "key": "field_633d47795e916",
+                                    "label": "Informatie",
+                                    "name": "info",
+                                    "type": "wysiwyg",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_633d474a5e915",
+                                                "operator": "==",
+                                                "value": "textbox"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "tabs": "all",
+                                    "toolbar": "full",
+                                    "media_upload": 0,
+                                    "delay": 0
+                                },
+                                {
                                     "key": "field_633d4ae8ea681",
                                     "label": "Vestiging",
                                     "name": "establishment",
@@ -6494,31 +6521,26 @@
                                     "ui": 1
                                 },
                                 {
-                                    "key": "field_633d47795e916",
-                                    "label": "Informatie",
-                                    "name": "info",
-                                    "type": "wysiwyg",
-                                    "instructions": "",
+                                    "key": "field_637bc4a02f83c",
+                                    "label": "Werknemers",
+                                    "name": "employees",
+                                    "type": "post_object",
+                                    "instructions": "Selecteer de werknemers die getoond moeten worden in dit blok.",
                                     "required": 0,
-                                    "conditional_logic": [
-                                        [
-                                            {
-                                                "field": "field_633d474a5e915",
-                                                "operator": "==",
-                                                "value": "textbox"
-                                            }
-                                        ]
-                                    ],
+                                    "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
                                         "id": ""
                                     },
-                                    "default_value": "",
-                                    "tabs": "all",
-                                    "toolbar": "full",
-                                    "media_upload": 0,
-                                    "delay": 0
+                                    "post_type": [
+                                        "employees"
+                                    ],
+                                    "taxonomy": "",
+                                    "allow_null": 0,
+                                    "multiple": 1,
+                                    "return_format": "id",
+                                    "ui": 1
                                 }
                             ]
                         }
@@ -7249,5 +7271,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1667290293
+    "modified": 1669056178
 }
