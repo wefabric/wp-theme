@@ -108,10 +108,16 @@ form.cart {
 
 }
 
-.single-product div.product .woocommerce-product-gallery.woocommerce-product-gallery--columns-4 .flex-control-thumbs li {
-	@apply mx-4;
+.single-product div.product .woocommerce-product-gallery.woocommerce-product-gallery--columns-4 .flex-control-thumbs  {
 
-	&:first-child {
-		@apply ml-0;
+	display: flex;
+
+	li {
+		@apply mx-4;
+
+		&:first-child {
+			@apply ml-0;
+		}
 	}
+
 }

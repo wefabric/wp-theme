@@ -58,6 +58,9 @@
                 <div class="mb-3 mobile-logo">
                     @include('components.header.logo', ['type' => 'white'])
                 </div>
+                <div class="mb-4">
+                    @include('woocommerce.search.search')
+                </div>
                 <nav id="site-navigation" class="main-navigation">
                     {!! wp_nav_menu([
                         'theme_location' => 'menu-1',
