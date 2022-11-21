@@ -1,1 +1,1 @@
-{!! do_shortcode('[woocommerce_product_search show_description="no" height="240px"  show_add_to_cart="no" characters="3"]') !!}
+{!! do_shortcode('[woocommerce_product_search placeholder="Zoeken" show_description="no" height="240px"  show_add_to_cart="no" characters="3"]') !!}
