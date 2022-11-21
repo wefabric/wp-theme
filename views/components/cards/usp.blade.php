@@ -28,10 +28,11 @@
 @endphp
 
 <div class="flex {{ $flexDir }} {{ $align }} {{ $class ?? '' }}">
-	@if(! empty($link))
+	@if(!empty($link))
 		@include('components.link.opening', [
 			'href' => $link,
 			'alt' => $item->get('title'),
+			'class' => 'flex flex-col h-full justify-between group'
 		])
 	@endif
 	
@@ -56,7 +57,15 @@
 					{{ $item->get('subtitle') }}
 				</span>
 			@endif
+
 		</div>
+
+		@if(!empty($link))
+			<div class="text-right mt-4">
+				<span class="group-hover:underline">Lees meer</span>
+				<i class="fa-solid fa-circle-caret-right ml-2"></i>
+			</div>
+		@endif
 
 	@if(! empty($link))
 		@include('components.link.closing')
