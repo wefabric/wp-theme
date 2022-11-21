@@ -8,19 +8,41 @@
         <div class="flex justify-end pb-4">
 
             <div class="mr-3">
-                <form action="/shop" method="get" id="" name="" class="validate" target="" novalidate>
-                    <div class="flex">
-                        <input type="text" value="" placeholder="Typ hier je zoekterm in..." name="s" class="hidden w-96 bg-white rounded-l-lg shadow-lg shadow-slate-200 " id="search">
-                        <div class="flex align-center">
-                            <button type="submit" class="w-12 h-12 rounded-full text-center btn-black text-white text-center text-xl shadow shadow-slate-200">
-                                <i class="fa-light fa-search "></i>
-                                <span class="screen-reader-only">Zoeken</span>
-                            </button>
-                            <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe">
-                        </div>
+                <div id="searchMainNav" class="inline-block main-nav-search hidden">
+                    {!! do_shortcode('[woocommerce_product_search show_description="no" height="240px"  show_add_to_cart="no" characters="3"]') !!}
+                </div>
 
-                    </div>
-                </form>
+                <button onclick="toggleSearch('searchMainNav')" type="submit" class="w-12 h-12 rounded-full text-center btn-black text-white text-center text-xl shadow shadow-slate-200">
+                    <i class="fa-light fa-search "></i>
+                    <span class="screen-reader-only">Zoeken</span>
+                </button>
+
+                <script>
+                    function toggleSearch(id) {
+                        var element = document.getElementById(id);
+                        element.classList.toggle("hidden");
+                        if(!element.classList.contains('hidden')) {
+                            var inputElements = element.getElementsByClassName('product-search-field');
+                            if(inputElements[0] !== 'undefined') {
+                                inputElements[0].focus();
+                            }
+                        }
+
+                    }
+                </script>
+{{--                <form action="/shop" method="get" id="" name="" class="validate" target="" novalidate>--}}
+{{--                    <div class="flex">--}}
+{{--                        <input type="text" value="" placeholder="Typ hier je zoekterm in..." name="s" class="hidden w-96 bg-white rounded-l-lg shadow-lg shadow-slate-200 " id="search">--}}
+{{--                        <div class="flex align-center">--}}
+{{--                            <button type="submit" class="w-12 h-12 rounded-full text-center btn-black text-white text-center text-xl shadow shadow-slate-200">--}}
+{{--                                <i class="fa-light fa-search "></i>--}}
+{{--                                <span class="screen-reader-only">Zoeken</span>--}}
+{{--                            </button>--}}
+{{--                            <input type="submit" value="" name="subscribe" id="mc-embedded-subscribe">--}}
+{{--                        </div>--}}
+
+{{--                    </div>--}}
+{{--                </form>--}}
             </div>
 
 			@php
