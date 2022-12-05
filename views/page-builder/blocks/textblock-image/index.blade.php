@@ -62,13 +62,18 @@
 		<div class="flex grow lg:order-2"></div>
 	@endif
 	
-	<div class="flex @if($overlap) {{ $text_padding }} @endif w-full lg:{{ $text_width }} @if($image->get('position') == 'right') lg:order-1 @else lg:order-3 @endif
+	<div class="flex w-full lg:{{ $text_width }}
+		@if($overlap)
+			{{ $text_padding }} @if($image->get('position') == 'right') lg:mr-auto lg:ml-0 @else lg:ml-auto lg:mr-0 @endif
+		@else
+			@if($image->get('position') == 'right') lg:order-1 @else lg:order-3 @endif
+		@endif
 		@switch($image->get('vertical_position')) {{-- For aligning the text,when shorter than the image. --}}
 			@case('middle') lg:my-auto @break
 			@case('bottom') lg:mt-auto lg:mb-0 @break;
-        @endswitch ">
+        @endswitch">
 		
-		<div class="relative flex flex-col z-50 h-full w-full @if($overlap) lg:px-16 lg:py-20 @else lg:px-5 lg:py-5 @endif text-{{ $block->get('text_color') }}">
+		<div class="relative flex flex-col z-50 h-full w-full @if($overlap) lg:px-16 lg:py-20 @else lg:px-5 lg:py-5 @endif text-{{ $block->get('text_color') }} bg-white">
 			@if($block->get('title')->get('show_separate_title'))
 				@include('components.headings.collection', [
 					'title' => $block->get('title'),
