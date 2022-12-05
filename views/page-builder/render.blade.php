@@ -9,7 +9,7 @@
 
 			$py = ''; //vertical padding for mobile
 			$py_lg = ''; //vertical padding for desktop
-			$px = ''; //horizontal padding
+			$px = 'container px-4 md:px-8 lg:px-0'; //horizontal padding
 
 			if($block->get('sizes')) {
 				switch($block->get('sizes')->get('height_mobile')) {
@@ -30,9 +30,10 @@
 				$width = $block->get('sizes')->get('width');
 				if($width === 'nomargin') {
 					$width = 'w-full';
-				} else {
-					$px = 'container px-4 md:px-8 lg:px-0';
 				}
+			} else {
+			    $py = 'py-8';
+				$py_lg = 'lg:py-16';
 			}
 			
             $bg = '';
