@@ -42,6 +42,10 @@ form.cart {
 	@apply float-right;
 }
 
+.woocommerce div.product form.cart {
+	@apply  mb-0;
+}
+
 .wc_add_to_cart_button {
 	@apply btn-secondary text-white py-2 font-bold;
 }

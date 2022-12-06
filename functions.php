@@ -189,20 +189,17 @@ add_action('woocommerce_single_product_summary', function() {
 remove_action('woocommerce_single_product_summary','woocommerce_template_single_meta', 40);
 add_action('woocommerce_single_product_summary', function() {
     global $product;
-	echo '<div class="text-right">';
-	echo '<h4 class="pb-4">Zakelijk bestellen</h4>';
-	echo view('components.buttons.default', [
-		'href' => \App\Helpers\Offer::getUrl($product), //todo optie van maken?
-		'text' => 'Offerte opvragen',
-		'a_class' => '',
-		'colors' => 'btn-black text-white',
-	])->render();
-	
-	echo'</div>';
+    echo view('woocommerce.single-product.technical-sheet', ['product' => $product])->render();
+}, 20);
+
+
+add_action('woocommerce_single_product_summary', function() {
+    global $product;
+    echo view('woocommerce.single-product.quote', ['product' => $product])->render();
 }, 60);
 
 add_filter('woocommerce_product_single_add_to_cart_text', function () {
-	return 'In winkelwagen plaatsen';
+	return 'In winkelwagen';
 });
 
 add_filter( 'woocommerce_page_title', function ( $page_title ) {

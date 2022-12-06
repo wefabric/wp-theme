@@ -3,7 +3,18 @@
 </div>
 
 @if($product->get_type() === 'simple')
-    <div class="text-base pt-2 pb-8">
+    <div class="text-base pt-2 ">
         <span class="font-bold">Afmetingen: </span> {{ $product->get_length() }} x {{  $product->get_width() }} x {{ $product->get_height() }} mm
+    </div>
+@endif
+
+@if($product->get_attribute('eenheid'))
+    <div class="text-base pt-2 pb-8">
+        <span class="font-bold">Afname: </span> @if($product->get_attribute('aantal-eenheid'))
+            {{ $product->get_attribute('aantal-eenheid') }} per{{ $product->get_attribute('eenheid') }}
+        @else
+            Per {{ $product->get_attribute('eenheid') }}
+
+        @endif
     </div>
 @endif

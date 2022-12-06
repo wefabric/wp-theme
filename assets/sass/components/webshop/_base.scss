@@ -1,9 +1,9 @@
 .woocommerce {
 	a {
 		@apply font-normal;
-		
-		&:hover {
-			@apply text-primary underline;
-		}
+
+		//&:hover {
+		//	@apply text-primary underline;
+		//}
 	}
 }
