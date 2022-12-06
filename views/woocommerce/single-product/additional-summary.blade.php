@@ -5,7 +5,10 @@
 
     @if($product->get_type() === 'simple')
         <div class="text-base">
-            <span class="font-bold">Afmetingen: </span> {{ $product->get_length() }} x {{  $product->get_width() }} x {{ $product->get_height() }} mm
+            @php
+                $sizes = [$product->get_length().'L',  $product->get_width().'B', $product->get_height().'H']
+            @endphp
+            <span class="font-bold">Afmetingen: </span> {{ implode('x ', $sizes) }} mm
         </div>
     @endif
 
