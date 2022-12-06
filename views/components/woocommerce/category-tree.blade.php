@@ -2,7 +2,6 @@
 	$cats = get_terms([
 		'taxonomy' => 'product_cat', // meow
 		'hide_empty' => false,
-		'orderby' => 'term_id',
 	]);
 //	dd($cats);
 
