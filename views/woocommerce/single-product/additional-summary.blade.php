@@ -10,11 +10,7 @@
 
 @if($product->get_attribute('eenheid'))
     <div class="text-base pt-2 pb-8">
-        <span class="font-bold">Afname: </span> @if($product->get_attribute('aantal-eenheid'))
-            {{ $product->get_attribute('aantal-eenheid') }} per{{ $product->get_attribute('eenheid') }}
-        @else
-            Per {{ $product->get_attribute('eenheid') }}
-
-        @endif
+        <span class="font-bold">Afname: </span>
+        {{ \App\Helpers\Product::getQuantityUnit($product) }}
     </div>
 @endif
