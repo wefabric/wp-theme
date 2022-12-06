@@ -109,6 +109,8 @@
 }
 
 .footer {
+
+	li.current-menu-item a,
 	a:hover {
 		@apply no-underline text-primary;
 	}

@@ -43,7 +43,8 @@
 	}
 	
 	span.btn {
-		@apply mt-11 flex justify-items-center h-[56px];
+		@apply flex justify-items-center h-[56px];
+		margin-top: 1.95rem;
 
 		&:hover {
 		} //to disable the hover when the submit-input itself doesn't change color when hovered.
