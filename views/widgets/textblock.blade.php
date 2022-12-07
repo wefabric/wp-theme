@@ -2,7 +2,7 @@
 
 	$bg_color = ($instance['bg_color'] ?? '') <> '' ? 'bg-'. $instance['bg_color'] : '';
 	$title_color = ($instance['title_color'] ?? '') <> '' ? 'text-'. $instance['title_color'] : '';
-	
+
 @endphp
 
 <div class="widget-content {{ $bg_color }} {{ $title_color }} flex flex-col text-center">
@@ -16,14 +16,14 @@
 	@endif
 	
 	@include('components.content', [
-		'content' => "Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.",
+		'content' => $instance['text'],
 		'class' => 'text-center pb-8',
 	])
 	
 	@include('components.buttons.default', [
-		'href' => '/contact',
-		'text' => 'Meer informatie',
+		'href' =>	$instance['button_link'],
+		'text' => $instance['button_text'],
 		'a_class' => 'px-4',
-		'colors' => 'btn-white text-black'
+		'colors' => 'btn-'.  $instance['button_color'].' text-'. $instance['button_text_color']
 	])
 </div>
