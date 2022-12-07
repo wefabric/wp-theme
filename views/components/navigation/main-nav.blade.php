@@ -1,10 +1,9 @@
 @php
     $options = get_fields('option');
-	$forceWebshop = true;
 @endphp
 <div class="hidden lg:flex lg:flex-col py-4 text-base">
 	
-	@if($forceWebshop || woocommerce_active()) {{-- webshop parts --}}
+	@if(woocommerce_active()) {{-- webshop parts --}}
         <div class="flex justify-end pb-4">
 
             <div class="mr-3">
@@ -75,7 +74,7 @@
             ]) !!}
         @endif
 	
-		@if($forceWebshop || woocommerce_active()) {{-- webshop parts --}}
+		@if(woocommerce_active()) {{-- webshop parts --}}
             @include('components.buttons.default', [
                 'href' => '/offerte',
                 'text' => 'Offerte aanvragen',
