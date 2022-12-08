@@ -13,7 +13,7 @@
 
 		<div class="flex flex-row w-full gap-4 lg:gap-32">
 			@if(function_exists('dynamic_sidebar'))
-				<div class="sidebar">
+				<div class="sidebar mb-8">
 					@include('components.woocommerce.category-tree')
 					
 					@php dynamic_sidebar('sidebar-shop') @endphp

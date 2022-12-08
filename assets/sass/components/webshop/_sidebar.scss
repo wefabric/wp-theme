@@ -35,10 +35,7 @@
 				&::after {
 					font-family: $fa-font-family;
 					content: "\f13a";
-
-
 					border-style: solid;
-
 					display: inline-block;
 					float: right;
 					position: relative;
@@ -46,10 +43,12 @@
 					top: 20%;
 					transform: scaleY(1);
 					transition: 0.35s ease-in-out;
+					transition-property: transform;
 					vertical-align: top;
 					cursor: pointer;
 					font-size: 1.25rem;
 					margin-top: -2px;
+					color: #000;
 					
 					@media only screen and (max-width: 600px) {
 						right: -8px;
@@ -75,10 +74,16 @@
 				@apply rounded-t-2xl rounded-b-2xl text-white mb-4 pt-4 cursor-pointer;
 
 				&:hover {
-					@apply bg-primary;
+					@apply bg-black;
 
 					> a {
 						@apply text-white;
+					}
+
+					.product-category__title {
+						&:after {
+							@apply text-white;
+						}
 					}
 				}
 				
@@ -93,6 +98,14 @@
 						display: none !important; //hide arrow if no subcategories exist for this category
 					}
 				}
+
+				&.active {
+					.product-category__title {
+						&:after {
+							@apply text-white;
+						}
+					}
+				}
 				
 				.product-subcategories {
 					@apply w-full;
@@ -102,7 +115,7 @@
 					transition: 0.25s ease-in-out;
 					
 					.product-subcategory {
-						@apply bg-gray-200 text-black py-2;
+						@apply bg-[#F5F3F3] text-black py-2;
 						
 						a, span {
 							@apply no-underline block #{!important} ;

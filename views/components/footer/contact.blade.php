@@ -34,7 +34,7 @@
 					@include('components.link.opening', [
 						'href' => $phone->uri(), //comes with a 'tel:' already
 						'alt' => 'Telefoonnummer',
-						'class' => 'flex no-underline'
+						'class' => 'flex'
 					])
 					<i class="fa-solid fa-phone mr-4 text-md pt-1"></i>
 					<span class="inline-block pt-1">{{ $phone }}</span>
@@ -45,7 +45,7 @@
 					@include('components.link.opening', [
 						'href' => 'mailto:'. $email,
 						'alt' => 'E-mailadres',
-						'class' => 'flex no-underline'
+						'class' => 'flex'
 					])
 					<i class="fa-solid fa-envelope mr-4 text-md pt-1"></i>
 					<span class="inline-block pt-1">{{ $email }}</span>

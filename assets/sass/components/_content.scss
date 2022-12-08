@@ -70,10 +70,15 @@
   }
 
 
+  ul {
+    @apply ml-4;
+  }
+
   li {
     line-height: 1.6;
+    list-style: disc;
     &:before {
-      @apply inline-block mr-3;
+      @apply inline-block pl-2;
     }
   }
 

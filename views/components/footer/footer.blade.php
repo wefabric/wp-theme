@@ -32,7 +32,7 @@
     <div class="container mx-auto px-8 relative">
 
         <div class="w-full">
-            <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-4 pt-12 lg:pt-16 pb-6 lg:pb-0">
+            <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 pt-12 lg:pt-16 pb-6 lg:pb-0">
                 <div class="lg:pb-6">
                     @php
                         $menu = wp_nav_menu([
@@ -139,7 +139,7 @@
                     @endphp
 
                     @if($menu)
-						<div id="footer_menu_three" class="">
+						<div id="footer_menu_three" class="bottom-footer">
 							@foreach($menu as $post)
 								@include('components.link.simple', [
 									'href' => $post->url,

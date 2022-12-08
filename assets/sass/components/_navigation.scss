@@ -46,8 +46,13 @@
 		
 		.menu-btn {
 			@screen lg {
-				@apply btn btn-small btn-primary hover:text-white h-12 flex items-center -mt-1;
+				@apply btn btn-small btn-primary hover:text-white h-10 flex items-center text-sm;
 				@apply text-white  #{!important};
+			}
+
+
+			&:after {
+				line-height: 0.9;
 			}
 		}
 		
@@ -113,6 +118,36 @@
 	li.current-menu-item a,
 	a:hover {
 		@apply no-underline text-primary;
+	}
+
+	.menu {
+		li {
+			a {
+				@apply inline-block relative w-full;
+
+
+				&:after {
+					@apply pl-2 text-xs;
+					content: '\f054';
+					font-family: $fa-font-family;
+				}
+
+			}
+		}
+	}
+
+	.footer-address {
+		a {
+			span {
+				@apply underline;
+			}
+		}
+	}
+
+	.bottom-footer {
+		a {
+			@apply underline;
+		}
 	}
 }
 

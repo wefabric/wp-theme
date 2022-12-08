@@ -50,12 +50,20 @@
 
 <div class="sidebar-widget sidebar-widget--category-tree">
 	@foreach($categories as $category)
-		<div class="product-category @if($category->subcategory_count == 0) no-subcategories @endif @if($category->active) bg-primary @else bg-black @endif">
+		<div class="product-category @if($category->subcategory_count == 0) no-subcategories @endif @if($category->active) bg-black active @else bg-[#F5F3F3] @endif">
 
+			@php
+
+			$linkClass =  'inline-block w-[90%]';
+			if(!$category->active):
+                $linkClass .= ' text-black';
+			endif;
+
+			@endphp
 			 @include('components.link.simple', [
 				'href' => get_category_link($category->term_taxonomy_id),
 				'text' => $category->name,
-				'class' => 'inline-block w-[90%]'
+				'class' => $linkClass
 			])
 			
 			<input class="product-category__trigger" @if($category->active) checked="checked" @endif id="product-category-{{ $category->slug }}" type="checkbox" />
