@@ -234,7 +234,7 @@ add_action('woocommerce_before_add_to_cart_button', function() {
 add_filter('woocommerce_dropdown_variation_attribute_options_args',function ( $args)
 {
 
-    if(count($args['options']) > 0) //Check the count of available options in dropdown
+    if(count($args['options']) === 1) //Check the count of available options in dropdown
         $args['selected'] = $args['options'][0];
     return $args;
 },10,1);
