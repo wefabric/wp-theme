@@ -79,6 +79,23 @@
 								'text' => $subcategory->name,
 								'class' => 'inline-block '. $subcategory->activeClass
 							])
+
+
+							@if($subcategory->subcategory_count > 0)
+								<div class="product-subcategories">
+									@foreach($subcategory->subcategories as $subSubcategory)
+										<div class="product-subcategory">
+
+											@include('components.link.simple', [
+                                                'href' => get_category_link($subSubcategory->term_taxonomy_id),
+                                                'text' => '-'. $subcategory->name,
+                                                'class' => 'inline-block '. $subSubcategory->activeClass
+                                            ])
+
+										</div>
+									@endforeach
+								</div>
+							@endif
 							
 						</div>
 					@endforeach

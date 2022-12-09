@@ -28,11 +28,12 @@
 	@if(!empty($instance['title']))
 		@include('components.headings.normal', [
 			'heading' => $instance['title'],
-			'type' => 'h4',
+			'type' => 'h3',
 			'title_align' => 'center',
+			'class' => 'pb-4',
 		])
 	@endif
-	
+
 	{{-- TODO dit blok neemt teveel breedte in --}}
 	@include('components.slider.smart-slider', [
 		'items' => $usps,
@@ -46,6 +47,7 @@
 		'icon_color' => $icon_color,
 		'display' => 'inline-block',
 		'size' => '4xl',
+		'style' => 'h4'
 	])
 
 </div>

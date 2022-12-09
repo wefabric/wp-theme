@@ -20,8 +20,23 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+$showAllProductsLink = false;
+if($queriedObject = get_queried_object()) {
+    if($queriedObject instanceof WP_Term) {
+        if($queriedObject->taxonomy === 'product_cat') {
+            $showAllProductsLink = true;
+        }
+    }
+}
+
 ?>
-<p class="woocommerce-result-count">
+<?php if($showAllProductsLink) : ?>
+<div class="mb-4 text-sm">
+    <a class="hover:underline" href="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>">Ga naar alle producten <i class="fa-solid fa-circle-chevron-right pl-1"></i></a>
+</div>
+<?php endif; ?>
+<p class="woocommerce-result-count text-sm">
 	<?php
 	// phpcs:disable WordPress.Security
 	if ( 1 === intval( $total ) ) {

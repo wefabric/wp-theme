@@ -8,7 +8,10 @@
 			@if(apply_filters('woocommerce_show_page_title', true))
 				<h1 class="woocommerce-products-header__title page-title">{{ woocommerce_page_title(false) }}</h1>
 			@endif
-			@php do_action('woocommerce_archive_description') @endphp
+            <div class="mx-auto lg:max-w-4xl px-4 lg:px-0">
+					@php do_action('woocommerce_archive_description') @endphp
+			</div>
+
 		</header>
 
 		<div class="flex flex-row w-full gap-4 lg:gap-32">

@@ -24,3 +24,11 @@ ul.products, .product-cats {
 .sidebar .sidebar-widget .wp-block-woocommerce-attribute-filter .wc-block-checkbox-list li [type=checkbox]:checked {
 	@apply border-primary;
 }
+
+.woocommerce .woocommerce-ordering {
+	@apply -mt-2;
+}
+
+.woocommerce .product-cats .card img {
+	height: 100%;
+}

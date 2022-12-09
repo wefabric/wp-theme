@@ -10,7 +10,8 @@
 	@if(!empty($instance['title']))
 		@include('components.headings.normal', [
 			'heading' => $instance['title'],
-			'type' => 'h4',
+			'type' => 'h3',
+            'class' => 'pb-4',
 			'title_align' => 'center',
 		])
 	@endif

@@ -262,6 +262,11 @@
 				[type="checkbox"]:checked + label {
 					@apply font-bold;
 				}
+
+				//&:nth-child(n+3) {
+				//	display: none;
+				//}
+
 			}
 		}
 	}
