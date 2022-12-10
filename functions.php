@@ -261,4 +261,35 @@ add_action('wp', function () {
 	remove_theme_support( 'wc-product-gallery-zoom' ); //also removes zoom icon on main image.
 }, 99 );
 
+add_filter( 'woocommerce_checkout_fields' , function ( $fields ) {
+
+    unset($fields['billing']['billing_address_2']);
+    unset($fields['shipping']['shipping_address_2']);
+    return $fields;
+
+//    unset($fields['billing']['billing_first_name']);
+//    unset($fields['billing']['billing_last_name']);
+//    unset($fields['billing']['billing_company']);
+//    unset($fields['billing']['billing_address_1']);
+//
+//    unset($fields['billing']['billing_city']);
+//    unset($fields['billing']['billing_postcode']);
+//    unset($fields['billing']['billing_country']);
+//    unset($fields['billing']['billing_state']);
+//    unset($fields['billing']['billing_phone']);
+//    unset($fields['order']['order_comments']);
+//    unset($fields['billing']['billing_email']);
+//    unset($fields['account']['account_username']);
+//    unset($fields['account']['account_password']);
+//    unset($fields['account']['account_password-2']);
+} );
+
+add_filter( 'woocommerce_reset_variations_link', function ($html){
+    return '<a class="reset_variations" href="#">' . esc_html__( 'Selectie wissen', 'woocommerce' ) . '</a>';
+});
+
+add_filter( 'woocommerce_ajax_variation_threshold', function() { return 200; } );
+
+
+
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?

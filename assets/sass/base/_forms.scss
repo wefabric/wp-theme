@@ -1,8 +1,8 @@
 @mixin form-field {
-	@apply border-0 bg-input-background text-black w-full rounded-lg p-4 font-normal mt-2;
+	@apply bg-input-background border border-[#b3b3b3] text-black w-full rounded-lg p-4 font-normal mt-2;
 	
 	&:focus{
-		@apply shadow-none border-2 outline-none ring-offset-0 ring-offset-primary-light ring-primary-light border-none;
+		@apply shadow-none outline-none border-black ring-0 ring-offset-0 ring-offset-primary-light ring-primary-light;
 	}
 	
 	&:read-only {
@@ -65,7 +65,7 @@
 	}
 	
 	::placeholder {
-		@apply text-base text-gray-400;
+		@apply text-base text-input-placeholder;
 	}
 	
 	div {

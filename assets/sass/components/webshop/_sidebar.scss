@@ -219,22 +219,46 @@
 					display: none;
 				}
 
-				&:hover {
-					@apply text-primary;
-				}
-
 				&:before {
-					@apply inline-block mr-4 text-center;
+					@apply inline-block mr-2 text-center;
 					content: '';
-					width: 24px;
-					height: 24px;
-					line-height: 22px;
-					border: 2px solid #50575e;
+					width: 21px;
+					height: 21px;
+					line-height: 20px;
+					border: 2px solid #E2E6ED;
 					border-radius: 2px;
 					vertical-align: middle;
 					font-family: $fa-font-family;
 				}
 
+				&:hover {
+					@apply text-primary;
+
+					&:before {
+						@apply border-primary;
+					}
+				}
+
+				&.show-toggle {
+					padding-left: 0.15rem;
+					&:before {
+						@apply hidden;
+					}
+				}
+
+				> a {
+					padding-left: 30px;
+					margin-left: -30px;
+				}
+
+				.count {
+					@apply text-sm;
+					color: #ababab;
+				}
+
+				.term-name {
+					line-height: 1;
+				}
 				&.current-attribute {
 
 					@apply text-primary;

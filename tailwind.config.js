@@ -41,8 +41,8 @@ module.exports = {
           danger: 'var(--basic-color-danger)'
         },
         input: {
-          background: '#F0F5FC',
-          placeholder: '#D0D6DF'
+          background: '#F5F3F3',
+          placeholder: '#a1a1a1'
         }
       },
       fontFamily: {

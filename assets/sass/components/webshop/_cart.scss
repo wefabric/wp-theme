@@ -1,0 +1,12 @@
+.woocommerce  {
+  div.product  {
+    form.cart  {
+      .reset_variations{
+        @apply border border-black rounded-xl py-1 px-2;
+        &:hover {
+          @apply text-primary border-primary;
+        }
+      }
+    }
+  }
+}

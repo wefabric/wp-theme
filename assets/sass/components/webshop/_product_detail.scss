@@ -31,8 +31,17 @@ form.cart {
 		@apply w-full #{!important};
 		
 		table.variations {
-			label {
-				@apply mr-4;
+			th.label {
+				@apply text-left;
+				vertical-align: top;
+				line-height: 3.7;
+
+			}
+
+			td.value {
+				select {
+					@apply m-0 mb-0;
+				}
 			}
 		}
 	}
