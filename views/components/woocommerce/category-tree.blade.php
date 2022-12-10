@@ -50,6 +50,8 @@
 
 <div class="sidebar-widget sidebar-widget--category-tree">
 	@foreach($categories as $category)
+		@continue($category->count === 0 && $category->subcategory_count == 0)
+
 		<div class="product-category @if($category->subcategory_count == 0) no-subcategories @endif @if($category->active) bg-black active @else bg-[#F5F3F3] @endif">
 
 			@php
