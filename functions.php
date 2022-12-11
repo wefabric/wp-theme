@@ -290,6 +290,8 @@ add_filter( 'woocommerce_reset_variations_link', function ($html){
 
 add_filter( 'woocommerce_ajax_variation_threshold', function() { return 200; } );
 
-
+add_action('woocommerce_before_cart', function (){
+   echo sprintf('<a href="%s" class="no-underline text-sm hover:text-primary mb-4 inline-block"><i class="fa-solid fa-chevron-left pr-2 text-xs"></i> Verder winkelen</a>', get_permalink( wc_get_page_id( 'shop' ) ));
+});
 
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?

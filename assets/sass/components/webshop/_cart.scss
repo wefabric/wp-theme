@@ -9,4 +9,140 @@
       }
     }
   }
+
+  .proceed-to-checkout {
+    @apply inline-block;
+  }
+
+  .cart_item {
+    td.product-remove {
+      a.remove {
+        @apply text-center text-white #{!important};
+        @apply text-xl w-6 h-6 leading-6 no-underline bg-primary;
+
+        &:hover {
+          @apply bg-black #{!important};
+        }
+      }
+    }
+
+    td.product-thumbnail {
+      img {
+        width: 100px;
+      }
+    }
+    td.product-name {
+      a {
+        @apply no-underline font-bold;
+      }
+      .variation {
+
+        @apply pt-2;
+
+        dd, dt{
+          @apply lg:inline-block lg:float-none text-sm;
+
+          p {
+            @apply text-sm;
+          }
+        }
+
+        dt {
+          @apply mr-1;
+        }
+
+        dd {
+          @apply mr-3;
+        }
+      }
+    }
+
+  }
+
+  table.shop_table {
+    @apply border-collapse border-0 rounded-none shadow-none;
+
+    a, strong, td {
+      @apply text-base;
+    }
+
+    th, td {
+      @apply border-r-0 border-t-0 py-4;
+    }
+
+    thead {
+      @apply bg-white;
+    }
+
+    tbody, tfoot {
+      tr {
+        @apply border-none;
+      }
+      tr:nth-child(even) { //2,4, etc (0 is not a row)
+      }
+      tr:nth-child(odd) { //1,3, etc
+        @apply bg-[#F9F9F9];
+      }
+    }
+
+    tfoot {
+      //@apply bg-white #{!important}; //bg-tertiary
+
+      tr:first-of-type {
+        @apply border-t border-t-primary #{!important};
+      }
+    }
+
+    .woocommerce-cart-form__cart-item {
+      .product-quantity {
+        br {
+          display: none;
+        }
+      }
+    }
+
+    li label {
+      @apply font-normal;
+    }
+  }
+}
+
+.woocommerce-cart     {
+  table.cart {
+    td.actions {
+      @apply mt-6;
+
+      .coupon {
+        .input-text {
+          @apply float-none block;
+          @apply w-full #{!important};
+        }
+
+        .button {
+          @apply mx-0 mt-2 float-none bg-white text-primary border border-solid text-sm #{!important};
+        }
+
+      }
+
+      button[name="update_cart"] {
+        @apply text-sm #{!important};
+      }
+    }
+
+  }
+
+  .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals {
+    h2 {
+      @apply text-xl;
+    }
+
+    .checkout-button {
+      @apply btn inline-block float-right;
+      @apply text-lg #{!important};
+
+      &:after {
+        display: none;
+      }
+    }
+  }
 }

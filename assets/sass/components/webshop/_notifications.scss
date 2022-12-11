@@ -1,6 +1,6 @@
 .woocommerce-info, .woocommerce-message, .woocommerce-error {
 	@apply text-base w-full border-t-4 border-t-primary;
-	@apply bg-tertiary pl-20 pr-8 py-8 mb-8 #{!important};
+	@apply bg-[#f9f9f9] pl-20 pr-8 py-8 mb-8 #{!important};
 	
 	@apply align-middle #{!important};
 	
