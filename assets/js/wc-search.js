@@ -12,8 +12,8 @@ window.toggleSearch = function (id) {
 
 jQuery( document ).ready(function($) {
     $('.product-search-filter-terms ul').each(function(){
-        var max = 10
-        var showMoreHtml = '<li class="show-toggle cursor-pointer"><i class="fa-solid fa-chevron-down pr-2"></i> Bekijk meer...</li>';
+        let max = 5;
+        let showMoreHtml = '<li class="show-toggle cursor-pointer"><i class="fa-solid fa-chevron-down pr-2"></i> Bekijk meer...</li>';
         if ($(this).find("li").length > max) {
             let item = $(this);
             item
