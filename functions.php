@@ -294,4 +294,12 @@ add_action('woocommerce_before_cart', function (){
    echo sprintf('<a href="%s" class="no-underline text-sm hover:text-primary mb-4 inline-block"><i class="fa-solid fa-chevron-left pr-2 text-xs"></i> Verder winkelen</a>', get_permalink( wc_get_page_id( 'shop' ) ));
 });
 
+// Fix for redirection adding two slashes in front of redirect.
+add_action('redirection_url_target', function ($url){
+   if(str_starts_with($url, '//')) {
+       return str_replace(substr($url, 0, 2), '', $url);
+   }
+   return $url;
+}, 999);
+
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
