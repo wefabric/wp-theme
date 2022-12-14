@@ -21,6 +21,7 @@
           'class' => 'hover:bg-primary hover:text-white',
           'a_class' => 'self-center ',
           'alt' => $item->get('download_button_text'),
+          'target' => '_blank',
           'icon' => 'fa-solid text-sm align-top pt-0.5 pl-1 ' . \App\Helpers\Fontawesome::getFileTypeIconClass($item->get('file')->get('mime_type')),
       ])
     </div>
