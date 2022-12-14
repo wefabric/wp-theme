@@ -5,9 +5,8 @@
         <!doctype html>
 <html {!! get_language_attributes() !!}>
 <head>
-	@csrf
     <meta charset="{{ get_bloginfo('charset') }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <link rel="profile" href="https://gmpg.org/xfn/11">
     @head
     @if(isset($options['header_codes']) && $options['header_codes'])
