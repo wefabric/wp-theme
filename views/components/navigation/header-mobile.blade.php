@@ -1,5 +1,5 @@
 <input type="checkbox" class="hidden" id="nav-mobile-active">
-<div class="logo-mobile float-left lg:hidden">
+<div class="logo-mobile float-left lg:hidden z-10 relative">
     <div class="site-title">
         <a href="{{ esc_url( home_url('/')) }}" class="block" aria-label="home" rel="home">
             @if(isset(get_field('common', 'option')['logo']) && $logoId = get_field('common', 'option')['logo'])
