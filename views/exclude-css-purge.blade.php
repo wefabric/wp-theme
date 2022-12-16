@@ -138,6 +138,8 @@
 	border-2 border-green-500 border-pink-500
 {{--	debug 	--}}
 
+		text-sm
+
 ">
 
 </div>

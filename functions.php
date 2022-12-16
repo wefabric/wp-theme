@@ -308,4 +308,38 @@ add_filter( 'woocommerce_email_order_items_args', function ($args){
     return $args;
 }, 10, 2 );
 
+/**
+ * @snippet       Show SKU @ WooCommerce Cart
+ * @how-to        Get CustomizeWoo.com FREE
+ * @author        Rodolfo Melogli
+ * @testedwith    WooCommerce 5
+ * @donate $9     https://businessbloomer.com/bloomer-armada/
+ */
+
+// First, let's write the function that returns a given product SKU
+function renderSku( $product ) {
+    $sku = $product->get_sku();
+    if ( ! empty( $sku ) ) {
+        return '<span class="inline-block pl-2"> - ' . $sku . '</span>';
+    } else {
+        return '';
+    }
+}
+
+// This adds the SKU under cart/checkout item name
+add_filter( 'woocommerce_cart_item_name', 'sku_cart_checkout_pages', 9999, 3 );
+
+function sku_cart_checkout_pages( $item_name, $cart_item, $cart_item_key  ) {
+    $product = $cart_item['data'];
+    $item_name .= renderSku( $product );
+    return $item_name;
+}
+
+add_filter('woocommerce_product_variation_get_sku', function ($sku){
+    preg_match_all('/\.(.*)/m', $sku, $matches, PREG_SET_ORDER, 0);
+    if(isset($matches[0], $matches[0][1])) {
+        return $matches[0][1];
+    }
+    return $sku;
+});
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
