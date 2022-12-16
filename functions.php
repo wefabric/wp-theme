@@ -302,4 +302,10 @@ add_action('redirection_url_target', function ($url){
    return $url;
 }, 999);
 
+// Always show sku of product in mail
+add_filter( 'woocommerce_email_order_items_args', function ($args){
+    $args['show_sku'] = true;
+    return $args;
+}, 10, 2 );
+
 // https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
