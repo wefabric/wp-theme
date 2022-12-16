@@ -11,7 +11,11 @@ jQuery.ajax({
         if(typeof response.cart !== 'undefined') {
 
             if(typeof response.cart.items_count !== 'undefined') {
-                $('.cart-items-count').html(response.cart.items_count);
+                var cartItemsAmount = parseInt(response.cart.items_count);
+                if(cartItemsAmount > 0) {
+                    $('.cart-items-count').show().html(cartItemsAmount);
+                }
+
             }
 
             if(typeof response.cart.amount !== 'undefined') {
