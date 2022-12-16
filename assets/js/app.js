@@ -11,7 +11,7 @@ window.$ = window.jQuery = require('jquery');
 import './outOfOffice';
 import './forms';
 import './wc-search';
-import './tokens';
+import './dynamic';
 
 window.Alpine = Alpine
 window.Swiper = Swiper;

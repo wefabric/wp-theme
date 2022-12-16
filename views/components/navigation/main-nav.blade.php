@@ -30,11 +30,6 @@
 {{--                    </div>--}}
 {{--                </form>--}}
             </div>
-
-			@php
-				$cart_items = WC()->cart->get_cart_contents_count();
-				$cart_total = WC()->cart->get_cart_total(); //price?
-			@endphp
 			
             @include('components.buttons.icon', [
                 'href' => wc_get_cart_url(),
@@ -47,8 +42,8 @@
                 'colors' => 'btn-black text-white',
                 'class' => 'relative',
 
-                'smallIconClass' => 'min-h-7 min-w-7 p-1 text-center mr-1 rounded-full bg-zinc-300 text-black text-xs absolute pt-0.5 -top-2 -right-2',
-                'smallIconContent' => $cart_items, //sprintf(_n('%d item', '%d items', $cart_items), $cart_items) .' - '. $cart_total, //number of items in shopping cart
+                'smallIconClass' => 'cart-items-count min-h-7 min-w-7 p-1 text-center mr-1 rounded-full bg-zinc-300 text-black text-xs absolute pt-0.5 -top-2 -right-2',
+                'smallIconContent' => ' ', //sprintf(_n('%d item', '%d items', $cart_items), $cart_items) .' - '. $cart_total, //number of items in shopping cart
             ])
 
             @include('components.buttons.icon', [
