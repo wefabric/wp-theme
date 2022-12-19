@@ -37,7 +37,7 @@
 						'class' => 'flex'
 					])
 					<i class="fa-solid fa-phone mr-4 text-md pt-1"></i>
-					<span class="inline-block pt-1">{{ $phone }}</span>
+					<span class="inline-block pt-1">{{ $phone->national() }}</span>
 					@include('components.link.closing')
 				@endif
 

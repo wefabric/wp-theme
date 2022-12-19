@@ -8,6 +8,7 @@
 //	$establishment = new \Wefabric\WPEstablishments\Establishment($establishment_id);
 //
 //
+
 @endphp
 
 <div class="widget widget-address">
@@ -30,14 +31,15 @@
 		<div class="border-b-[1px] py-6 border-[#DED8FF]">
 			@if($fields->get('contact_email'))
 				<a href="mailto:{{ $fields->get('contact_email') }}" class="block group flex align-middle">
-					<i class="fa-solid fa-envelope-open mr-4"></i>
+					<i class="fa-solid fa-envelope-open mr-4 mt-1"></i>
 					<span class="group-hover:underline self-center">{{ $fields->get('contact_email') }}</span>
 				</a>
 			@endif
+
 			@if($fields->get('contact_phone'))
-				<a href="tel:{{ $fields->get('contact_phone') }}" class=" block group flex align-middle @if($fields->get('contact_email')) mt-1 @endif">
-					<i class="fa-solid fa-circle-phone mr-4"></i>
-					<span class="group-hover:underline self-center">{{ $fields->get('contact_phone') }}</span>
+				<a href="{{ $fields->get('contact_phone')->uri() }}" class=" block group flex align-middle @if($fields->get('contact_email')) mt-1 @endif">
+					<i class="fa-solid fa-circle-phone mr-4 mt-1"></i>
+					<span class="group-hover:underline self-center">{{ $fields->get('contact_phone')->national() }}</span>
 				</a>
 			@endif
 		</div>

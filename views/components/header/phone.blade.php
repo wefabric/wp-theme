@@ -6,7 +6,7 @@
 
 @if($phone)
     @include('components.link.opening', [
-        'href' => 'tel:'. $phone,
+        'href' => $phone->uri(),
         'class' => $a_class ?? '',
         'alt' => $alt,
     ])
