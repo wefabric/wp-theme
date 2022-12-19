@@ -5,11 +5,10 @@
         </div>
         <h4 class="pb-4">Zakelijk bestellen</h4>
         @include('components.buttons.default', [
-            'href' => \App\Helpers\Offer::getUrl($product), //todo optie van maken?
+            'href' => \App\Helpers\Offer::getUrl($product, $dynamic = true),
             'text' => 'Offerte opvragen',
-            'a_class' => '',
+            'a_class' => 'offer-dynamic-url',
             'colors' => 'btn-black text-white',
         ])
     </div>
-
 </div>

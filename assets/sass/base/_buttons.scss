@@ -1,7 +1,7 @@
 @mixin btn {
 	@apply relative text-sm transition-all tracking-wider rounded-full;
 	@apply no-underline #{!important};
-	
+
 	padding: 0 36px 0 20px;
 	display: inline-block;
 	color: #fff; //text-color white
@@ -69,10 +69,11 @@
 	
 	.btn {
 		@include btn;
-		
+		padding: 12px 22px 14px 22px;
+
 		@screen lg {
 			@apply text-md;
-			padding: 12px 22px 14px 22px;
+
 		}
 		
 		&.btn-transparent {

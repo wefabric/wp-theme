@@ -32,11 +32,11 @@
 		@include('components.link.opening', [
 			'href' => $link,
 			'alt' => $item->get('title'),
-			'class' => 'flex flex-col h-full justify-between group'
+			'class' => 'flex flex-col h-full justify-between group w-full'
 		])
 	@endif
 	
-		<div class="{{ $px }}">
+		<div class="{{ $px }} text-center">
 			@if(!empty($item->get('image')))
 				@include('components.image', [
 					'image_id' => $item->get('image'),
