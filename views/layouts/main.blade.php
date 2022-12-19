@@ -17,19 +17,8 @@
 @if(isset($options['body_codes']) && $options['body_codes'])
     {!! $options['body_codes'] !!}
 @endif
-
-@if(isset($options['out_of_office']['active']) && $options['out_of_office']['active'])
-    @if(empty($options['out_of_office']['start_display_date']) || (new \Carbon\Carbon()) >= new \Carbon\Carbon($options['out_of_office']['start_display_date'])))
-        @if(empty($options['out_of_office']['end_display_date']) ||  (new \Carbon\Carbon()) <= new \Carbon\Carbon($options['out_of_office']['end_display_date']))
-            @include('components.out-of-office', ['outOfOffice' => $options['out_of_office']])
-        @endif
-    @endif
-@endif
 <div id="page" class="site">
     @if(isset($options['show_menu']) && $options['show_menu'])
-{{--
-        @include('components.navigation.header-top', [ 'bg_color' => 'primary-color-dark' ])
---}}
         <header id="masthead" class="px-4 bg-{{ $options['menu_background_color'] ?? 'primary-color-dark' }} text-{{ $options['menu_text_color'] ?? 'white' }}">
             <div class="flex flex-row container mx-auto py-4">
                 <div class="hidden lg:block w-1/6 items-center">

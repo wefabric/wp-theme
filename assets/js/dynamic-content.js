@@ -25,6 +25,15 @@ jQuery.ajax({
 
         if(typeof response.out_of_office !== 'undefined' && response.out_of_office) {
             $('body').append(response.out_of_office);
+
+            if(sessionStorage.getItem("outOfOfficeStatus") !== "closed") {
+                $("#popup").delay(500).fadeIn();
+            }
+
+            $('#popup-close').click(function(e) {
+                $('#popup').fadeOut();
+                sessionStorage.setItem("outOfOfficeStatus", "closed")
+            });
         }
 
     },
