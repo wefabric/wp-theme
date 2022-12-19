@@ -6,7 +6,7 @@ if(isset($outOfOffice['content']) && $outOfOffice['content']) {
 }
 @endphp
 
-<div class="fixed right-2 top-1/2 transform -translate-y-1/2 w-96 shadow-3xl rounded-md hidden z-[100]" id="popup">
+<div class="fixed px-2 lg:px-0 lg:right-2 top-1/4 transform translate-y-1/4  lg:top-1/2 lg:transform translate-y-1/2 w-full lg:w-96 shadow-xl rounded-md hidden z-[100]" id="popup">
     <div class="bg-primary p-3 rounded-t-md">
         <h2 class="text-md text-white">{!! $outOfOffice['title'] !!}</h2>
     </div>
