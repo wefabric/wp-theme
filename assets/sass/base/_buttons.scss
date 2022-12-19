@@ -72,7 +72,7 @@
 		
 		@screen lg {
 			@apply text-md;
-			padding: 0 54px 0 41px;
+			padding: 12px 22px 14px 22px;
 		}
 		
 		&.btn-transparent {
@@ -80,19 +80,6 @@
 			&:after {
 				top: 34%;
 			}
-		}
-		
-		&:after {
-			@apply transition-all;
-			@extend .fa-solid;
-			font-weight: 700 !important;
-			content: '\f0da' !important;
-			font-family: $fa-font-family;
-			right: 20px;
-			top: 38%;
-			position: absolute;
-			display: block;
-			height: 100%;
 		}
 		
 		&:hover {
@@ -194,8 +181,8 @@
 		
 		
 		&.btn-small {
-			@apply text-base;
-			padding: 12px 30px 14px 22px;
+			@apply text-sm;
+			padding: 9px 17px;
 			
 			&:after {
 				@apply text-sm;

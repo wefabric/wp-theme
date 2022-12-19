@@ -186,7 +186,7 @@
                     "key": "field_62ec33a24d66a",
                     "label": "Startdatum weergave",
                     "name": "start_display_date",
-                    "type": "date_picker",
+                    "type": "date_time_picker",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -195,15 +195,15 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "d\/m\/Y",
-                    "return_format": "Ymd",
+                    "display_format": "d-m-Y H:i:s",
+                    "return_format": "Y-m-d H:i:s",
                     "first_day": 1
                 },
                 {
                     "key": "field_62ec33a24d675",
                     "label": "Einddatum weergave",
                     "name": "end_display_date",
-                    "type": "date_picker",
+                    "type": "date_time_picker",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -212,8 +212,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "d\/m\/Y",
-                    "return_format": "Ymd",
+                    "display_format": "d-m-Y H:i:s",
+                    "return_format": "Y-m-d H:i:s",
                     "first_day": 1
                 }
             ]
@@ -296,5 +296,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1669014507
+    "modified": 1671438380
 }

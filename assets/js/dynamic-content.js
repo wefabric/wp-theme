@@ -1,5 +1,5 @@
 jQuery.ajax({
-    url: '/dynamic' ,
+    url: '/dynamic-content' ,
     type: 'get',
     dataType: 'json',
     success: function (response) {
@@ -21,6 +21,10 @@ jQuery.ajax({
             if(typeof response.cart.amount !== 'undefined') {
                 $('.cart-amount').html(response.cart.amount);
             }
+        }
+
+        if(typeof response.out_of_office !== 'undefined' && response.out_of_office) {
+            $('body').append(response.out_of_office);
         }
 
     },

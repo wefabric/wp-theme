@@ -17,9 +17,10 @@
 @if(isset($options['body_codes']) && $options['body_codes'])
     {!! $options['body_codes'] !!}
 @endif
+
 @if(isset($options['out_of_office']['active']) && $options['out_of_office']['active'])
-    @if(empty($options['out_of_office']['start_display_date']) || $options['out_of_office']['start_display_date'] <= date('Ymd')))
-        @if(empty($options['out_of_office']['end_display_date']) || $options['out_of_office']['end_display_date'] >= date('Ymd')))
+    @if(empty($options['out_of_office']['start_display_date']) || (new \Carbon\Carbon()) >= new \Carbon\Carbon($options['out_of_office']['start_display_date'])))
+        @if(empty($options['out_of_office']['end_display_date']) ||  (new \Carbon\Carbon()) <= new \Carbon\Carbon($options['out_of_office']['end_display_date']))
             @include('components.out-of-office', ['outOfOffice' => $options['out_of_office']])
         @endif
     @endif

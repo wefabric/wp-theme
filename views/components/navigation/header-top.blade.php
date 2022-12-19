@@ -12,7 +12,7 @@ No idea what this file does, given the new structure with contact info in the Es
         <a href="mailto:{{ $email }}" class="default-color-link mr-3" target="_blank"><i class="fas fa-envelope contact-icon-header mr-3"></i></a>
     @endif
     @if (isset($options['contact_appointment']) && $button = $options['contact_appointment'])
-        <a class="btn btn-small bg-primary text-white" href="{{ $button['link'] }}">
+        <a class="btn bg-primary text-white" href="{{ $button['link'] }}">
             {{ $button['title'] }}
         </a>
     @endif
