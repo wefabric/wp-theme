@@ -1,7 +1,7 @@
-<div class="pb-8 flex flex-col pt-3 gap-1">
-    <div class="text-base " >
-        <span class="font-bold">Artikelnummer: </span> {{ $product->get_sku() }}
-    </div>
+<div class="pb-8 flex flex-col pt-3 gap-1 product_meta custom">
+    <span class="block text-base sku_wrapper" >
+        <span class="font-bold ">Artikelnummer: </span> <span class="sku">{{ $product->get_sku() }}</span>
+    </span>
 
     @if($product->get_type() === 'simple')
         <div class="text-base">
