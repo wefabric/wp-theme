@@ -4,7 +4,7 @@
   }
 
   a {
-    @apply underline font-bold;
+    @apply underline font-bold text-primary;
 
     &:hover {
       @apply no-underline;
