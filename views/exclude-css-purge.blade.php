@@ -127,7 +127,8 @@
 	opacity-90 opacity-95
 	
 	sm:flex sm:flex-row md:flex md:flex-row lg:flex lg:flex-row
-	
+
+	text-sm
 	text-primary-color-light text-primary text-primary-dark hover:text-primary-light hover:text-primary hover:text-primary-dark bg-primary bg-primary-light bg-primary-dark
 	text-secondary-light text-secondary text-secondary-dark hover:text-secondary-light hover:text-secondary hover:text-secondary-darkd bg-secondairy bg-secondairy-light bg-secondairy-dark
 	text-tertiary-light text-tertiary text-tertiary-dark hover:text-tertiary-light hover:text-tertiary hover:text-tertiary-dark bg-tertiary bg-tertiary-light bg-tertiary-dark
@@ -138,7 +139,9 @@
 	border-2 border-green-500 border-pink-500
 {{--	debug 	--}}
 
-		text-sm
+	group
+
+
 
 ">
 

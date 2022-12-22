@@ -33,19 +33,25 @@
     @endif
 
     <div class="mx-auto mb-3">
+
         @if(!empty($fields['phonenumber']))
-			@include('components.buttons.icon', [
-                'href' => 'tel:'. $fields['phonenumber'],
-                'alt' => 'Telefoonnummer',
-				'icon' => 'fa-solid fa-phone text-sm align-top pt-1.5',
-				'size' => 'h-8 w-8',
-				'colors' => 'btn-black text-white ',
-				'a_class' => 'mx-1',
-			])
+            <div class="mb-3 flex items-center gap-2 group">
+                @include('components.buttons.icon', [
+                    'href' => $fields['phonenumber']->uri(),
+                    'alt' => 'Telefoonnummer',
+                    'icon' => 'fa-solid fa-phone text-sm align-top pt-1.5',
+                    'size' => 'h-8 w-8',
+                    'colors' => 'btn-black text-white ',
+                    'a_class' => 'mx-1',
+                ])
+                <a class="group-hover:text-primary" href="{{ $fields['phonenumber']->uri() }}">{{ $fields['phonenumber']->national() }}</a>
+            </div>
+
 		@endif
 
         @if(!empty($fields['email']))
-			@include('components.buttons.icon', [
+            <div class="flex items-center gap-2 group">
+                @include('components.buttons.icon', [
                 'href' => 'mailto:'. $fields['email'],
                 'alt' => 'Emailadres',
 				'icon' => 'fa-solid fa-envelope text-sm align-top pt-1.5',
@@ -53,6 +59,9 @@
 				'colors' => 'btn-black text-white ',
 				'a_class' => 'mx-1',
 			])
+                <a class="group-hover:text-primary" href="mailto:{{ $fields['email'] }}">{{ $fields['email'] }}</a>
+            </div>
+
 		@endif
 
         @if(!empty($fields['linkedin']))
