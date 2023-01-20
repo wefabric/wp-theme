@@ -162,7 +162,7 @@ add_action( 'woocommerce_before_shop_loop', function () {
 }, 50);
 
 add_filter( 'loop_shop_per_page', function ($number_of_posts) {
-	return 9; //products per page
+	return 12; //products per page
 }, 20);
 add_filter('loop_shop_columns', function () {
 	return 3; //product-columns per page
