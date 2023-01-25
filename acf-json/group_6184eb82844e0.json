@@ -6,6 +6,7 @@
             "key": "field_6184ef734796b",
             "label": "Hoofdkleur",
             "name": "primary_color_group",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -21,6 +22,7 @@
                     "key": "field_6184eb8fd4093",
                     "label": "Hoofdkleur",
                     "name": "primary_color",
+                    "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
                     "required": 0,
@@ -38,6 +40,7 @@
                     "key": "field_6184efa14796d",
                     "label": "Licht",
                     "name": "primary_color_light",
+                    "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
                     "required": 0,
@@ -55,6 +58,7 @@
                     "key": "field_6184efb64796e",
                     "label": "Donker",
                     "name": "primary_color_dark",
+                    "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
                     "required": 0,
@@ -74,6 +78,7 @@
             "key": "field_61853e5d00a1a",
             "label": "Secundaire kleur",
             "name": "secondary_color_group",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -89,6 +94,7 @@
                     "key": "field_61853e5d00a1b",
                     "label": "Secundaire kleur",
                     "name": "secondary_color",
+                    "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
                     "required": 0,
@@ -106,6 +112,7 @@
                     "key": "field_61853e5d00a1c",
                     "label": "Licht",
                     "name": "secondary_color_light",
+                    "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
                     "required": 0,
@@ -123,6 +130,7 @@
                     "key": "field_61853e5d00a1d",
                     "label": "Donker",
                     "name": "secondary_color_dark",
+                    "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
                     "required": 0,
@@ -142,6 +150,7 @@
             "key": "field_61853e5e00a1e",
             "label": "Derde kleur",
             "name": "tertiary_color_group",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -157,6 +166,7 @@
                     "key": "field_61853e5e00a1f",
                     "label": "Derde kleur",
                     "name": "tertiary_color",
+                    "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
                     "required": 0,
@@ -174,6 +184,7 @@
                     "key": "field_61853e5e00a20",
                     "label": "Licht",
                     "name": "tertiary_color_light",
+                    "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
                     "required": 0,
@@ -191,59 +202,9 @@
                     "key": "field_61853e5e00a21",
                     "label": "Donker",
                     "name": "tertiary_color_dark",
+                    "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                }
-            ]
-        },
-        {
-            "key": "field_62d6626881870",
-            "label": "Basiskleuren",
-            "name": "basic_color_group",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "30",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_62d6626881872",
-                    "label": "Succes",
-                    "name": "basic_color_success",
-                    "type": "color_picker",
-                    "instructions": "(Groen)",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                },
-                {
-                    "key": "field_62d6626881873",
-                    "label": "Error",
-                    "name": "basic_color_danger",
-                    "type": "color_picker",
-                    "instructions": "(Rood)",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -275,6 +236,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": 0,
-    "modified": 1658217291
+    "show_in_rest": false,
+    "modified": 1674650822
 }

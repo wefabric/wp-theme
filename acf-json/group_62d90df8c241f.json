@@ -6,6 +6,7 @@
             "key": "field_62d90dff7e5b3",
             "label": "Headerafbeelding",
             "name": "image",
+            "aria-label": "",
             "type": "image",
             "instructions": "",
             "required": 1,
@@ -45,5 +46,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1658407893
+    "modified": 1674650824
 }

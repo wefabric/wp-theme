@@ -6,6 +6,7 @@
             "key": "field_60b37f756180b",
             "label": "Naam",
             "name": "name",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 1,
@@ -25,6 +26,7 @@
             "key": "field_60b37f7561814",
             "label": "Algemeen telefoonnummer",
             "name": "common_phone",
+            "aria-label": "",
             "type": "phone_number",
             "instructions": "",
             "required": 0,
@@ -41,6 +43,7 @@
             "key": "field_60b37f756181c",
             "label": "Contact telefoonnummer",
             "name": "contact_phone",
+            "aria-label": "",
             "type": "phone_number",
             "instructions": "",
             "required": 0,
@@ -57,6 +60,7 @@
             "key": "field_60b37f7561824",
             "label": "Algemeen e-mailadres",
             "name": "common_email",
+            "aria-label": "",
             "type": "email",
             "instructions": "",
             "required": 0,
@@ -75,6 +79,7 @@
             "key": "field_60b37f756182b",
             "label": "Contact e-mailadres",
             "name": "contact_email",
+            "aria-label": "",
             "type": "email",
             "instructions": "",
             "required": 0,
@@ -93,6 +98,7 @@
             "key": "field_60b37f7561831",
             "label": "Straat",
             "name": "street",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -112,6 +118,7 @@
             "key": "field_6329ceb6130dd",
             "label": "Routebeschrijving tonen?",
             "name": "allow_route",
+            "aria-label": "",
             "type": "true_false",
             "instructions": "Werkt niet bij \"Postbus\" en \"Antwoordnummer\".",
             "required": 0,
@@ -131,6 +138,7 @@
             "key": "field_60b37f7561839",
             "label": "Huisnummer",
             "name": "house_number",
+            "aria-label": "",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -152,6 +160,7 @@
             "key": "field_60b37f7561841",
             "label": "Huisnummer toevoeging",
             "name": "house_number_addition",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -171,6 +180,7 @@
             "key": "field_60b37f7561849",
             "label": "Postcode",
             "name": "postcode",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -190,6 +200,7 @@
             "key": "field_60b37f7561851",
             "label": "Plaats",
             "name": "city",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -209,6 +220,7 @@
             "key": "field_60b37f7561859",
             "label": "Land",
             "name": "country_id",
+            "aria-label": "",
             "type": "country",
             "instructions": "",
             "required": 0,
@@ -486,6 +498,7 @@
             "key": "field_60b37f7561860",
             "label": "Coordinaten",
             "name": "coordinates",
+            "aria-label": "",
             "type": "group",
             "instructions": "Vul hieronder optioneel de coordinaten toe van de vestiging. De coordinaten van het adres zijn hier op te halen: https:\/\/www.latlong.net\/convert-address-to-lat-long.html",
             "required": 0,
@@ -501,6 +514,7 @@
                     "key": "field_60b37f757ac6a",
                     "label": "Lengtegraad",
                     "name": "latitude",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -520,6 +534,7 @@
                     "key": "field_60b37f757ac74",
                     "label": "Breedtegraad",
                     "name": "longitude",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -541,6 +556,7 @@
             "key": "field_60b37f7561868",
             "label": "Openingstijden",
             "name": "opening_hours",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "Voeg hieronder de openings- en sluitingstijden toe van de vestiging. Er kan een specifieke datum worden gekozen (voor bijvoorbeeld feestdagen) en een dag. Gebruik hierbij voor de dag de Nederlandse naam ('Dinsdag' of 'Donderdag' bijvoorbeeld). \r\n\r\nHet is mogelijk om twee tijdsloten per dag aan te geven. Zo is het mogelijk om van 09:00 - 12:00 en van 13:00 - 17:00 open te zijn op dezelfde dag.",
             "required": 0,
@@ -554,12 +570,14 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Nieuwe regel",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_6131d48207526",
                     "label": "Datum",
                     "name": "date",
+                    "aria-label": "",
                     "type": "date_picker",
                     "instructions": "",
                     "required": 0,
@@ -571,12 +589,14 @@
                     },
                     "display_format": "d\/m\/Y",
                     "return_format": "Y-m-d",
-                    "first_day": 1
+                    "first_day": 1,
+                    "parent_repeater": "field_60b37f7561868"
                 },
                 {
                     "key": "field_60b37f7583981",
                     "label": "Dag",
                     "name": "day",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 1,
@@ -590,12 +610,14 @@
                     "placeholder": "Bijv. maandag of 1e kerstdag",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_60b37f7561868"
                 },
                 {
                     "key": "field_60b37f7583992",
                     "label": "Gesloten",
                     "name": "closed",
+                    "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
                     "required": 0,
@@ -609,12 +631,14 @@
                     "default_value": 0,
                     "ui": 0,
                     "ui_on_text": "",
-                    "ui_off_text": ""
+                    "ui_off_text": "",
+                    "parent_repeater": "field_60b37f7561868"
                 },
                 {
                     "key": "field_60b37f758399e",
                     "label": "Openingstijd",
                     "name": "opening_hour",
+                    "aria-label": "",
                     "type": "time_picker",
                     "instructions": "",
                     "required": 0,
@@ -633,12 +657,14 @@
                         "id": ""
                     },
                     "display_format": "H:i",
-                    "return_format": "H:i"
+                    "return_format": "H:i",
+                    "parent_repeater": "field_60b37f7561868"
                 },
                 {
                     "key": "field_60b37f75839ac",
                     "label": "Sluitingstijd",
                     "name": "closing_hour",
+                    "aria-label": "",
                     "type": "time_picker",
                     "instructions": "",
                     "required": 0,
@@ -657,12 +683,14 @@
                         "id": ""
                     },
                     "display_format": "H:i",
-                    "return_format": "H:i"
+                    "return_format": "H:i",
+                    "parent_repeater": "field_60b37f7561868"
                 },
                 {
                     "key": "field_6131d3f507524",
                     "label": "Openingstijd 2",
                     "name": "opening_hour_2",
+                    "aria-label": "",
                     "type": "time_picker",
                     "instructions": "",
                     "required": 0,
@@ -685,12 +713,14 @@
                         "id": ""
                     },
                     "display_format": "H:i",
-                    "return_format": "H:i"
+                    "return_format": "H:i",
+                    "parent_repeater": "field_60b37f7561868"
                 },
                 {
                     "key": "field_6131d45e07525",
                     "label": "Sluitingstijd 2",
                     "name": "closing_hour_2",
+                    "aria-label": "",
                     "type": "time_picker",
                     "instructions": "",
                     "required": 0,
@@ -713,7 +743,8 @@
                         "id": ""
                     },
                     "display_format": "H:i",
-                    "return_format": "H:i"
+                    "return_format": "H:i",
+                    "parent_repeater": "field_60b37f7561868"
                 }
             ]
         },
@@ -721,6 +752,7 @@
             "key": "field_62ec2677c2291",
             "label": "KVK-nummer",
             "name": "kvk_number",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -740,6 +772,7 @@
             "key": "field_62ec27446af8f",
             "label": "BTW-nummer",
             "name": "vat_id",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -774,5 +807,5 @@
     "active": true,
     "description": "Vul hieronder de vestigingen in van het bedrijf. De eerste vestiging is de hoofdvestiging.",
     "show_in_rest": 0,
-    "modified": 1663684389
+    "modified": 1674650822
 }

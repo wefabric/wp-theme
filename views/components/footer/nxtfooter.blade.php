@@ -3,6 +3,7 @@
     <div class="grid gap-2 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1">
       <div class="flex lg:justify-start md:justify-center sm:justify-center items-center">
         <ul class="footer-links">
+          @php wp_nav_menu( array('menu' => 'Copyright', 'container' => '', 'items_wrap' => '%3$s' )); @endphp
           <li><a href="" title="">&copy; NXT event 2023</a></li>
           <li><a href="" title="">Privacybeleid</a></li>
           <li><a href="" title="">Algemene voorwaarden</a></li>

@@ -20569,6 +20569,10 @@ a.content a:hover {
   left: 0;
 }
 
+.subbanner {
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .banner h1 {
     font-size: 3rem;

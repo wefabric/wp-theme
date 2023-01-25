@@ -6,6 +6,7 @@
             "key": "field_62d7c92799708",
             "label": "Partners",
             "name": "footer_partners",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "Wil je logo's van partners tonen? Voeg ze hier toe!",
             "required": 0,
@@ -19,12 +20,14 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Nieuwe regel",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_62d7c93999709",
                     "label": "Logo",
                     "name": "logo",
+                    "aria-label": "",
                     "type": "image",
                     "instructions": "",
                     "required": 1,
@@ -43,12 +46,14 @@
                     "max_width": "",
                     "max_height": "",
                     "max_size": "",
-                    "mime_types": ""
+                    "mime_types": "",
+                    "parent_repeater": "field_62d7c92799708"
                 },
                 {
                     "key": "field_62d7c9c89970b",
                     "label": "Omschrijving",
                     "name": "alt_text",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "Vul hier de omschrijving van het logo in.",
                     "required": 1,
@@ -62,12 +67,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_62d7c92799708"
                 },
                 {
                     "key": "field_62d7c9969970a",
                     "label": "Link",
                     "name": "url",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "Wil je een link op de afbeelding hebben? Vul de link dan hier in.",
                     "required": 0,
@@ -81,7 +88,8 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_62d7c92799708"
                 }
             ]
         },
@@ -89,6 +97,7 @@
             "key": "field_62e2918be906d",
             "label": "USP's",
             "name": "footer_usps",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "Vul hier je USP's in!",
             "required": 0,
@@ -102,12 +111,14 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Nieuwe regel",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_62e29197e906e",
                     "label": "Icoon",
                     "name": "icon",
+                    "aria-label": "",
                     "type": "font-awesome",
                     "instructions": "",
                     "required": 1,
@@ -130,12 +141,14 @@
                     "show_preview": 1,
                     "enqueue_fa": 0,
                     "fa_live_preview": "",
-                    "choices": []
+                    "choices": [],
+                    "parent_repeater": "field_62e2918be906d"
                 },
                 {
                     "key": "field_62e291bce906f",
                     "label": "Tekst",
                     "name": "title",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 1,
@@ -149,12 +162,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_62e2918be906d"
                 },
                 {
                     "key": "field_62e291d3e9070",
                     "label": "Kleur",
                     "name": "color",
+                    "aria-label": "",
                     "type": "Thema Kleur",
                     "instructions": "",
                     "required": 0,
@@ -165,7 +180,8 @@
                         "id": ""
                     },
                     "theme_color": "black",
-                    "font_size": 14
+                    "font_size": 14,
+                    "parent_repeater": "field_62e2918be906d"
                 }
             ]
         },
@@ -173,6 +189,7 @@
             "key": "field_62e8fb22a8e12",
             "label": "Achtergrondkleur",
             "name": "bg_color",
+            "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
@@ -189,6 +206,7 @@
             "key": "field_62e8fb2da8e13",
             "label": "Textkleur",
             "name": "text_color",
+            "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
@@ -205,6 +223,7 @@
             "key": "field_630653a5cd6a5",
             "label": "Footer titels",
             "name": "footer_titles",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -220,6 +239,7 @@
                     "key": "field_630653b7cd6a6",
                     "label": "Footer titel 1",
                     "name": "footer_title_1",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -239,6 +259,7 @@
                     "key": "field_630653cacd6a7",
                     "label": "Footer titel 2",
                     "name": "footer_title_2",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -258,6 +279,7 @@
                     "key": "field_630653cbcd6a8",
                     "label": "Footer titel 3",
                     "name": "footer_title_3",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -277,6 +299,7 @@
                     "key": "field_630653cecd6a9",
                     "label": "Footer titel 4",
                     "name": "footer_title_4",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -298,6 +321,7 @@
             "key": "field_6329d0bc5b549",
             "label": "Footer vestigingen",
             "name": "footer_establishments",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "Selecteer hier de vestiging of twee vestigingen die je wilt tonen in de footer.",
             "required": 0,
@@ -311,12 +335,14 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Nieuwe regel",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_6329d0d798775",
                     "label": "Vestiging",
                     "name": "establishment",
+                    "aria-label": "",
                     "type": "post_object",
                     "instructions": "",
                     "required": 1,
@@ -333,7 +359,8 @@
                     "allow_null": 0,
                     "multiple": 0,
                     "return_format": "id",
-                    "ui": 1
+                    "ui": 1,
+                    "parent_repeater": "field_6329d0bc5b549"
                 }
             ]
         }
@@ -356,5 +383,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1665568807
+    "modified": 1674650825
 }

@@ -60,23 +60,3 @@
 
 </body>
 </html>
-
-{{--
-  @include('components.header.nxtheader')
-
-  @include('components.banner.nxtbanner')
-
-  @include('components.program.nxtprogram')
-
-  @include('components.speakers.nxtspeakers')
-
-  @include('components.register.nxtregister')
-
-  @include('components.sponsoren.nxtsponsoren')
-
-  @include('components.cta.nxtcta')
-
-  @include('components.referenties.nxtreferenties')
-
-  @include('components.footer.nxtfooter')
---}}
