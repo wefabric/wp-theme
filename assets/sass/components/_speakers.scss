@@ -1,0 +1,31 @@
+.speakers{
+  width:100%;
+  &:after{
+    content: '';
+    width: 80%;
+    height: 750px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background: #F5F7FF;
+    z-index: -1;
+  }
+}
+
+@media (max-width:1280px){
+
+}
+
+@media (max-width:1024px){
+
+}
+
+@media (max-width:768px){
+
+}
+
+@media (max-width:640px){
+  .speakers{
+    padding: 5rem 0;
+  }
+}

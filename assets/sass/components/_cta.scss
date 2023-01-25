@@ -1,0 +1,55 @@
+.cta{
+  width: 100%;
+  background: url('../../assets/images/ctabg.jpg') no-repeat;
+  background-size: cover;
+  background-position: center center;
+  .grid{
+    position: relative;
+    z-index: 40;
+    .grid-item{
+      .icon{
+        min-width: 74px;
+        max-height: 74px;
+        min-height: 74px;
+        line-height: 74px;
+        display: inline-block;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  &:after{
+    width: 100%;
+    height:100%;
+    position: absolute;
+    background: rgb(40 51 113 / 80%);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    content: '';
+  }
+}
+
+@media (max-width:1280px){
+
+}
+
+@media (max-width:1024px){
+
+}
+
+@media (max-width:768px){
+  .grid-item{
+    margin-bottom: 2rem;
+    &:nth-last-child(1){
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (max-width:640px){
+  .cta{
+    padding: 5rem 0;
+  }
+}

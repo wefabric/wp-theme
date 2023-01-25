@@ -53,7 +53,7 @@ module.exports = {
         'xs':   ['0.75rem', theme('lineHeight.normal')],  // 12
         'sm':   ['0.875rem', theme('lineHeight.normal')], // 14
         'base': ['1rem', theme('lineHeight.normal')],     // 16
-        'md':   ['1.125rem', theme('lineHeight.normal')], // 18
+        'md':   ['1rem', theme('lineHeight.normal')], // 18
         'lg':   ['1.25rem', theme('lineHeight.normal')],  // 20
         'xl':   ['1.5rem', theme('lineHeight.normal')],   // 24
         '2xl':  ['1.875rem', theme('lineHeight.normal')], // 30
@@ -106,4 +106,3 @@ module.exports = {
   ],
 
 }
-

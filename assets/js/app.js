@@ -16,3 +16,11 @@ window.Swiper = Swiper;
 window.SwiperPagination = Pagination;
 window.SwiperNavigation = Navigation;
 Alpine.start()
+
+
+// Hamburger Init
+$(document).ready(function(){
+  $(".hamburger").click(function(){
+    $(this).toggleClass("is-active");
+  });
+});

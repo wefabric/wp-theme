@@ -1,277 +1,179 @@
 @mixin btn {
 	@apply relative text-sm transition-all tracking-wider rounded-full;
 	@apply no-underline #{!important};
-	
-	padding: 0 36px 0 20px;
+	padding: 0 80px 0 80px;
 	display: inline-block;
 	color: #fff; //text-color white
+	border-radius: 0 !important;
 }
 
 @layer base {
-	
+
 	@each $themeColor in $themeColors {
 		.btn-#{$themeColor} {
 			@apply bg-#{$themeColor};
-			
+
 			&:hover {
 				@apply bg-black; //bg-#{$themeColor}-dark;
 			}
 		}
-		
+
 		.btn-#{$themeColor}-light {
 			@apply bg-#{$themeColor}-light;
-			
+
 			&:hover {
 				@apply bg-#{$themeColor};
 			}
 		}
-		
+
 		.btn-#{$themeColor}-dark {
 			@apply bg-#{$themeColor}-dark;
-			
+
 			&:hover {
 				@apply bg-black; //bg-#{$themeColor};
 			}
 		}
-		
+
 		.btn-#{$themeColor}-full {
 			@apply bg-#{$themeColor};
-			
+
 			&:hover {
 				@apply bg-#{$themeColor}-dark;
 			}
 		}
 	}
-	
+
 	.btn-white {
 		@apply bg-white text-black;
-		
+
 		&:hover {
 			@apply bg-primary;
 		}
 	}
-	
+
 	.btn-black {
 		@apply bg-black text-white;
-		
+
 		&:hover {
 			@apply bg-primary;
 		}
 	}
-	
+
 	.btn-gray {
 		@apply bg-gray-100 text-black;
-		
+
 		&:hover {
 			@apply bg-primary;
 		}
 	}
-	
+
 	.btn {
 		@include btn;
-		
+
 		@screen lg {
 			@apply text-md;
-			padding: 0 54px 0 41px;
+			padding: 0 30px 0 30px;
 		}
-		
+
+		&:after{
+			position: relative;
+			content: '\f054' !important;
+			font-family: $fa-font-family;
+			margin-left: 1rem;
+			font-size: 11px;
+			font-weight: 800;
+			transition: 0.3s;
+			top: -2px;
+		}
+
 		&.btn-transparent {
 			@apply bg-none;
+			padding: 0 0 10px 0 !important;
+			border-bottom: 3px solid white;
 			&:after {
-				top: 34%;
+
 			}
 		}
-		
-		&:after {
-			@apply transition-all;
-			@extend .fa-solid;
-			font-weight: 700 !important;
-			content: '\f0da' !important;
-			font-family: $fa-font-family;
-			right: 20px;
-			top: 38%;
-			position: absolute;
-			display: block;
-			height: 100%;
-		}
-		
+
 		&:hover {
 			@apply cursor-pointer;
-			
-			&:after {
-				right: 15px;
-			}
 		}
-		
-		&.disable-chevron {
-			padding: 12px 24px;
-			
-			&:after {
-				display: none !important;
-			}
-		}
-		
+
 		&.search {
 			&:after {
 				content: '\f002' !important;
 			}
-			
-			&.btn-tiny{
-				&:hover {
-					&:after {
-						right: 12px;
-					}
-				}
-			}
-			
+
 			&.btn-small, &.btn-large{
 				&:hover {
 					&:after {
-						right: 15px;
+
 					}
 				}
 			}
-			
-			
+
+
 		}
-		
-		&.reversed-chevron {
-			padding: 0 20px 0 36px;
-			
-			@screen lg {
-				padding: 0 41px 0 54px;
-			}
-			
-			&:after {
-				left: 20px;
-				right: auto;
-				transform: scaleX(-1);
-			}
-			
-			&:hover {
-				&:after {
-					left: 15px;
-					right: auto;
-				}
-			}
-		}
-		
-		
+
 		&.btn-tiny {
 			@apply text-xs;
-			padding: 3px 25px 4px 18px;
-			
+			padding: 3px 25px 4px 25px;
+
 			&:after {
 				@apply text-xs;
 				line-height: 0;
-				right: 12px;
 			}
-			
-			&.reversed-chevron {
-				padding: 3px 18px 4px 25px;
-				
-				&:after {
-					left: 12px;
-					right: auto;
-					transform: scaleX(-1);
-				}
-				
-				&:hover {
-					&:after {
-						left: 7px;
-						right: auto;
-					}
-				}
-			}
-			
-			&:hover {
-				&:after {
-					right: 7px;
-				}
-				
-			}
+
 		}
-		
-		
+
+
 		&.btn-small {
 			@apply text-base;
-			padding: 12px 30px 14px 22px;
-			
+			padding: 12px 20px 14px 20px;
+
 			&:after {
 				@apply text-sm;
 				line-height: 0.75rem;
-				right: 15px;
 			}
-			
-			&.reversed-chevron {
-				padding: 12px 22px 14px 30px;
-				
-				&:after {
-					left: 15px;
-					right: auto;
-					transform: scaleX(-1);
-				}
-				
-				&:hover {
-					&:after {
-						left: 10px;
-						right: auto;
-					}
-				}
-			}
-			
-			&.disable-chevron {
-				padding: 12px 30px;
-				
-				&:after {
-					display: none !important;
-				}
-			}
-			
+
 			&:hover {
 				&:after {
 					right: 10px;
 				}
 			}
 		}
-		
+
 		&.btn-large {
-			
+
 			@apply text-md;
-			padding: 12px 37px 13px 24px;
-			border-radius: 28px;
-			
+			padding: 12px 40px 13px 40px;
+
 			@screen lg {
 				@apply text-lg;
-				padding: 16px 50px 17px 32px;
-				border-radius: 37px;
-				
-				&.reversed-chevron {
-					padding: 16px 32px 17px 50px;
-				}
+				padding: 25px 60px;
 			}
-			
+
 			&:after {
-				@apply text-lg;
+				/* @apply text-lg; */
 				line-height: 0;
-				right: 15px;
 			}
-			
+
 			&:hover {
 				&:after {
-					right: 10px;
+					right: 0px;
+					transition: 0.3s;
 				}
 			}
-			
+
 			&.reversed-chevron {
 				padding: 12px 24px 13px 37px;
-				
+
 				&:after {
 					left: 15px;
 					right: auto;
 					transform: scaleX(-1);
 				}
-				
+
 				&:hover {
 					&:after {
 						left: 10px;
@@ -280,9 +182,9 @@
 				}
 			}
 		}
-		
+
 	}
-	
+
 	select, input {
 		&.input-lg {
 			-webkit-appearance: none;
@@ -291,7 +193,7 @@
 			appearance: none;
 			padding-right: 37px;
 		}
-		
+
 		+ i.fa {
 			float: right;
 			/* margin-top: -37px; */
@@ -301,7 +203,7 @@
 			font-size: 25px !important;
 			color: #d2d3d5;
 		}
-		
+
 		+ button.fa-search {
 			float: right;
 			transform: translateY(-46px);

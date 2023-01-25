@@ -4,7 +4,7 @@
 		$logoKey .= '_'.$type;
     }
 @endphp
-<div class="py-4">
+<div class="logo">
     @if(is_front_page() && is_home())
         <h1 class="site-title">
             <a href="{{ esc_url(home_url('/')) }}" class="block" aria-label="home" rel="home">

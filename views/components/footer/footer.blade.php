@@ -20,7 +20,7 @@
 				'items' => $usps,
 				'card_type' => 'usp',
 				'grid_class' => 'flex flex-col lg:flex-row justify-center',
-				
+
 				'size' => '3xl',
 				'style' => 'p font-bold lg:h6',
 				'class' => 'mx-auto w-full lg:w-4/5',
@@ -146,7 +146,7 @@
 									'class' => $class,
 									'text' => __($post->title, 'wefabric')
 								])
-	
+
 								@php
 									$last = (in_array($post, $menu) && $post == end($menu));
 								@endphp

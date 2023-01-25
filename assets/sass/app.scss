@@ -4,6 +4,7 @@
 @tailwind components;
 
 @import "fonts/fontawesome";
+@import "fonts/assistant";
 @import "fonts/opensans";
 
 @import "base/global";
@@ -13,7 +14,15 @@
 @import "base/forms";
 
 @import "components/content";
+@import "components/header";
 @import "components/navigation";
+@import "components/banner";
+@import "components/program";
+@import "components/speakers";
+@import "components/register";
+@import "components/sponsoren";
+@import "components/referenties";
+@import "components/cta";
 @import "components/nav-mobile";
 @import "components/footer";
 @import "components/video-container";

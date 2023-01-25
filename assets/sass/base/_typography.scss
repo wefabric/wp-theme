@@ -1,72 +1,76 @@
 @layer base {
-	
+
+	h1, h2, h3, h4, h5, h6{
+		letter-spacing: 5px;
+	}
+
 	p, .p {
 		@apply text-base font-normal;
-		line-height: 1.625rem !important;
+		line-height: 1.925rem !important;
 	}
 
 	.card-category-title {
 		@apply text-base font-bold text-gray-400
 	}
-	
+
 	ul, ol {
 		li {
 			line-height: 1.875rem;
-			
+
 			@screen lg {
 				line-height: 2.5rem;
 			}
 		}
 	}
-	
+
 	h1, .h1 {
 		@apply font-head text-2xl font-bold break-words;
-		line-height: 1.1 !important;
-		
+		line-height: 1.3 !important;
+
 		@screen lg {
 			@apply text-51;
 		}
 	}
-	
+
 	h2, .h2 {
 		@apply font-head text-xl font-bold break-words;
 		line-height: 1.25 !important;
-		
+
 		@screen lg {
 			@apply text-41;
 		}
 	}
-	
+
 	.h2-5 { //h2.5 : halfway between h2 and h3 but slightly smaller because Gerrit can't be consistent.
 		@apply font-head text-xl font-bold break-words;
 		line-height: 1.25 !important;
-		
+
 		@screen lg {
 			@apply text-36;
 		}
 	}
-	
+
 	h3, .h3 {
 		@apply text-xl font-head font-semibold break-words;
 		line-height: 1.3 !important;
-		
+
 		@screen md {
 			@apply text-31;
 		}
-		
+
 		@screen lg {
 			@apply text-lg font-bold;
 		}
-		
+
 		@screen xl {
 			@apply text-2xl;
 		}
 	}
-	
+
 	h4, .h4 {
 		@apply text-lg font-head font-bold break-words;
 		line-height: 1.2 !important;
-		
+
 		@screen md {
 			@apply text-26;
 		}
@@ -74,14 +78,14 @@
 			@apply text-2xl font-bold;
 		}
 	}
-	
+
 	h5, .h5, h6, .h6 {
 		@apply text-lg font-head font-bold break-words;
 		line-height: 1.25 !important;
-		
+
 		@screen md {
 			@apply text-21;
 		}
 	}
-	
+
 }
