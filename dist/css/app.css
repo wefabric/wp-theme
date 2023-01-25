@@ -20436,7 +20436,7 @@ a.content a:hover {
 }
 .main-navigation .menu li {
   display: inline-block;
-  margin: 0 1.5rem 0;
+  margin: 0 1.5rem 0 0;
 }
 .main-navigation .menu li a {
   text-transform: uppercase;
