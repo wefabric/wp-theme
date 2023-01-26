@@ -30,6 +30,12 @@
 
   @include('components.header.nxtheader')
 
+  @include('components.subbanner.nxtsubbanner')
+
+  @include('components.gallerij.nxtgallerij')
+
+{{--
+
   <div id="content">
       <div id="primary">
           <main id="main">
@@ -37,10 +43,6 @@
           </main>
       </div>
   </div>
-
-  @include('components.footer.nxtfooter')
-
-{{--
 
   @include('components.subbanner.nxtsubbanner')
 
@@ -59,6 +61,8 @@
   @include('components.cta.nxtcta')
 
   @include('components.referenties.nxtreferenties')
+
+  @include('components.footer.nxtfooter')
 
 --}}
 
