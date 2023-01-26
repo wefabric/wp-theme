@@ -3,16 +3,6 @@
 @endphp
 
 <nav id="site-navigation" class="main-navigation flex justify-end items-center">
-  <ul class="menu">
-    <li><a href="#Programma" title="">Programma</a></li>
-    <li><a href="#sponsoren" title="">Sponsoren</a></li>
-    <li><a href="#gallerij" title="">Gallerij</a></li>
-    <li><a href="#contact" title="">Contact</a></li>
-  </ul>
-</nav>
-
-
-<nav id="site-navigation" class="main-navigation flex justify-end items-center">
 
     @php
         $menuLocations = get_nav_menu_locations();

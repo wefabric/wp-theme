@@ -1,3 +1,4 @@
+.speakers-overview,
 .speakers{
   width:100%;
   &:after{
@@ -5,7 +6,7 @@
     width: 80%;
     height: 750px;
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 0;
     background: #F5F7FF;
     z-index: -1;
@@ -17,7 +18,10 @@
 }
 
 @media (max-width:1024px){
-
+  .speakers,
+  .speakers-overview{
+    padding: 5rem 0;
+  }
 }
 
 @media (max-width:768px){
@@ -25,7 +29,5 @@
 }
 
 @media (max-width:640px){
-  .speakers{
-    padding: 5rem 0;
-  }
+
 }

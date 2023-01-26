@@ -20283,6 +20283,22 @@ a.no-underline,
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.shape-1 {
+  width: 80%;
+  height: 900px;
+  position: absolute;
+  left: 0;
+  top: -50px;
+  background: #F5F7FF;
+  content: "";
+  z-index: -1;
+}
+
+@media (max-width: 1024px) {
+  .shape-1 {
+    top: 0px;
+  }
+}
 .content p {
   margin-bottom: 0.75rem;
   font-size: 1rem;
@@ -20589,6 +20605,41 @@ a.content a:hover {
     font-size: 1.75rem;
   }
 }
+.subbanner {
+  width: 100%;
+}
+.subbanner .image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0 !important;
+}
+.subbanner .image:after {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  z-index: 2;
+  background: rgba(40, 51, 113, 0.8);
+}
+
+@media (max-width: 1024px) {
+  .subbanner {
+    padding: 5rem 0;
+  }
+}
+@media (max-width: 768px) {
+  .subbanner {
+    padding: 3rem 0;
+  }
+}
 .program {
   position: relative;
   background-color: #212B66;
@@ -20664,22 +20715,25 @@ a.content a:hover {
     display: none;
   }
 }
+.speakers-overview,
 .speakers {
   width: 100%;
 }
+.speakers-overview:after,
 .speakers:after {
   content: "";
   width: 80%;
   height: 750px;
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 0;
   background: #F5F7FF;
   z-index: -1;
 }
 
-@media (max-width: 640px) {
-  .speakers {
+@media (max-width: 1024px) {
+  .speakers,
+  .speakers-overview {
     padding: 5rem 0;
   }
 }
@@ -20805,6 +20859,10 @@ a.content a:hover {
     padding: 5rem 0;
   }
 }
+.gallerij {
+  width: 100%;
+}
+
 .cta {
   width: 100%;
   background: url("../../assets/images/ctabg.jpg") no-repeat;
@@ -21725,6 +21783,10 @@ button.swiper-pagination-bullet {
   z-index: 0;
 }
 
+.z-5 {
+  z-index: 5;
+}
+
 .-z-1 {
   z-index: -1;
 }
@@ -22485,16 +22547,16 @@ button.swiper-pagination-bullet {
   gap: 0.5rem;
 }
 
+.gap-10 {
+  gap: 2.5rem;
+}
+
 .gap-3 {
   gap: 0.75rem;
 }
 
 .gap-24 {
   gap: 6rem;
-}
-
-.gap-10 {
-  gap: 2.5rem;
 }
 
 .self-end {
@@ -23548,12 +23610,12 @@ button.swiper-pagination-bullet {
     grid-column: span 4 / span 4;
   }
 
-  .md\:mt-0 {
-    margin-top: 0px;
-  }
-
   .md\:mb-4 {
     margin-bottom: 1rem;
+  }
+
+  .md\:mt-0 {
+    margin-top: 0px;
   }
 
   .md\:-mt-24 {

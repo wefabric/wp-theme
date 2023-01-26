@@ -1,0 +1,44 @@
+.subbanner {
+  width:100%;
+  .image{
+    width:100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius:0 !important;
+    &:after{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      content: '';
+      z-index: 2;
+      background: rgb(40 51 113 / 80%);
+    }
+  }
+}
+
+@media (max-width:1280px){
+
+}
+
+@media (max-width:1024px){
+  .subbanner{
+    padding: 5rem 0;
+  }
+}
+
+@media (max-width:768px){
+  .subbanner{
+    padding: 3rem 0;
+  }
+}
+
+@media (max-width:640px){
+
+}

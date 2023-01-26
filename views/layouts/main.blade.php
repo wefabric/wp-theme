@@ -38,11 +38,21 @@
       </div>
   </div>
 
+  @include('components.footer.nxtfooter')
+
+{{--
+
+  @include('components.subbanner.nxtsubbanner')
+
+  @include('components.gallerij.nxtgallerij')
+
   @include('components.program.nxtprogram')
 
   @include('components.speakers.nxtspeakers')
 
   @include('components.register.nxtregister')
+
+  @include('components.speakers-overview.nxtspeakers-overview')
 
   @include('components.sponsoren.nxtsponsoren')
 
@@ -50,7 +60,7 @@
 
   @include('components.referenties.nxtreferenties')
 
-  @include('components.footer.nxtfooter')
+--}}
 
 </div>
 
