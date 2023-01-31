@@ -24,3 +24,22 @@ $(document).ready(function(){
     $(this).toggleClass("is-active");
   });
 });
+
+$(document).ready(function(){
+  $(".hamburger").click(function(){
+      $("html").toggleClass("mobile-is-active");
+  });
+});
+
+// Sticky Header
+var activeSticky = $("body"),
+  winDow = $(window);
+winDow.on("scroll", function () {
+  var scroll = $(window).scrollTop(),
+    isSticky = activeSticky;
+  if (scroll < 1) {
+    isSticky.removeClass("header-is-sticky");
+  } else {
+    isSticky.addClass("header-is-sticky");
+  }
+});

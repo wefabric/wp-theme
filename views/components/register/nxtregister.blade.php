@@ -9,7 +9,7 @@
     </div>
     <div class="grid-item flex items-end justify-left">
 
-      <div class="inner">
+      <div class="inner mb-20">
         <h2 class="uppercase mb-10">Inschrijven</h2>
         <div class="">
           <p>

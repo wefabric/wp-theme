@@ -8,7 +8,7 @@
         </ul>
       </div>
       <div class="flex justify-end lg:justify-end lg:items-center md:justify-center sm:justify-center">
-        <ul class="footer-socials">
+        <ul class="socials">
           <li>
             <a href="#" title="Facebook" class="icon bg-secondary text-white text-center">
               <i class="fa-brands fa-facebook-f"></i>

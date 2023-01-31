@@ -1,20 +1,3 @@
-.shape-1{
-  width: 80%;
-  height: 900px;
-  position: absolute;
-  left: 0;
-  top: -50px;
-  background: #F5F7FF;
-  content: '';
-  z-index: -1;
-}
-
-@media (max-width:1024px){
-  .shape-1{
-    top: 0px;
-  }
-}
-
 .content {
   p {
     @apply mb-3 text-base;

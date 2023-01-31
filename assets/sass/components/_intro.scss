@@ -1,0 +1,35 @@
+.intro{
+  width: 100%;
+  margin-top: -50px;
+  position: relative;
+  overflow: hidden;
+  p{
+    margin-bottom: 2rem;
+  }
+  &:before{
+    width: 90%;
+    height: 600px;
+    background: #F5F7FF;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+@media (max-width:1280px){
+
+}
+
+@media (max-width:1024px){
+
+}
+
+@media (max-width:768px){
+
+}
+
+@media (max-width:640px){
+
+}

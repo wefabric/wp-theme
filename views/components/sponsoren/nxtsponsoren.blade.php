@@ -19,22 +19,22 @@
   <div class="carousel lg:pb-40 md:pt-40 md:pb-40 sm:pb-20 relative z-50">
     <div class="container mx-auto">
       <div class="grid lg:grid-cols-3 gap-10 md:grid-cols-2 sm:grid-cols-2">
-        <div class="logo-wrapper flex items-center justify-center md:mb-4 p-10">
+        <div class="logo-wrapper flex items-center justify-center md:mb-4 p-11">
           <img src="{{ bloginfo('template_directory'); }}/assets/images/wefabric.png" class="" alt="" />
         </div>
-        <div class="logo-wrapper flex items-center justify-center md:mb-4 p-10">
+        <div class="logo-wrapper flex items-center justify-center md:mb-4 p-11">
           <img src="{{ bloginfo('template_directory'); }}/assets/images/miedema.png" class="" alt="" />
         </div>
-        <div class="logo-wrapper flex items-center justify-center md:mb-4 p-10">
+        <div class="logo-wrapper flex items-center justify-center md:mb-4 p-11">
           <img src="{{ bloginfo('template_directory'); }}/assets/images/broeksterkerk.png" class="" alt="" />
         </div>
-        <div class="logo-wrapper flex items-center justify-center md:mb-4 p-10">
+        <div class="logo-wrapper flex items-center justify-center md:mb-4 p-11">
           <img src="{{ bloginfo('template_directory'); }}/assets/images/miedema.png" class="" alt="" />
         </div>
-        <div class="logo-wrapper flex items-center justify-center md:mb-4 p-10">
+        <div class="logo-wrapper flex items-center justify-center md:mb-4 p-11">
           <img src="{{ bloginfo('template_directory'); }}/assets/images/broeksterkerk.png" class="" alt="" />
         </div>
-        <div class="logo-wrapper flex items-center justify-center md:mb-4 p-10">
+        <div class="logo-wrapper flex items-center justify-center md:mb-4 p-11">
           <img src="{{ bloginfo('template_directory'); }}/assets/images/wefabric.png" class="" alt="" />
         </div>
       </div>

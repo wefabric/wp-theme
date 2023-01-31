@@ -3,7 +3,7 @@
 @endphp
 
         <!doctype html>
-<html {!! get_language_attributes() !!}>
+<html {!! get_language_attributes() !!} class="">
 <head>
     <meta charset="{{ get_bloginfo('charset') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,7 @@
     @if(isset($options['header_codes']) && $options['header_codes'])
         {!! $options['header_codes'] !!}
     @endif
+
 </head>
 <body @php(body_class())>
 
@@ -30,9 +31,25 @@
 
   @include('components.header.nxtheader')
 
-  @include('components.subbanner.nxtsubbanner')
+  <div id="content">
+      <div id="primary">
+          <main id="main">
+              @yield('content')
+          </main>
+      </div>
+  </div>
 
-  @include('components.gallerij.nxtgallerij')
+  @include('components.program.nxtprogram')
+
+  @include('components.speakers.nxtspeakers')
+
+  @include('components.register.nxtregister')
+
+  @include('components.sponsoren.nxtsponsoren')
+
+  @include('components.cta.nxtcta')
+
+  @include('components.referenties.nxtreferenties')
 
 {{--
 
@@ -44,9 +61,7 @@
       </div>
   </div>
 
-  @include('components.subbanner.nxtsubbanner')
-
-  @include('components.gallerij.nxtgallerij')
+  @include('components.header.nxtheader')
 
   @include('components.program.nxtprogram')
 
@@ -54,17 +69,34 @@
 
   @include('components.register.nxtregister')
 
-  @include('components.speakers-overview.nxtspeakers-overview')
-
   @include('components.sponsoren.nxtsponsoren')
 
   @include('components.cta.nxtcta')
 
   @include('components.referenties.nxtreferenties')
 
-  @include('components.footer.nxtfooter')
+
+  @include('components.subbanner.nxtsubbanner')
+
+  @include('components.intro.nxtintro')
+
+  @include('components.gallerij.nxtgallerij')
+
+  @include('components.program.nxtprogram-overview')
+
+  @include('components.speakers.nxtspeakers-overview')
+
+  @include('components.sponsoren.nxtsponsoren-overview')
+
+  @include('components.contactgegevens.nxtcontactgegevens')
+
+  @include('components.inschrijven.nxtinschrijven')
 
 --}}
+
+  @include('components.mobilenav.nxtmobilenav')
+
+  @include('components.footer.nxtfooter')
 
 </div>
 

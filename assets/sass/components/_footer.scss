@@ -13,16 +13,17 @@
       }
     }
   }
-  .footer-socials{
-    width:100%;
-    text-align: right;
-    li{
+}
+
+.socials{
+  width:100%;
+  text-align: right;
+  li{
+    display: inline-block;
+    a{
+      width: 56px;
+      line-height: 56px;
       display: inline-block;
-      a{
-        width: 56px;
-        line-height: 56px;
-        display: inline-block;
-      }
     }
   }
 }
@@ -38,9 +39,11 @@
         }
       }
     }
-    .footer-socials{
-      text-align: center;
-      margin-top: 2rem;
-    }
   }
+
+  .socials{
+    text-align: center;
+    margin-top: 2rem;
+  }
+
 }
