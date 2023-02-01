@@ -1,11 +1,5 @@
 .subbanner {
   width:100%;
-  margin-top:0px;
-  -webkit-transition: .4s ease-in-out;
-  -moz-transition: .4s ease-in-out;
-  -o-transition: .4s ease-in-out;
-  transition: .4s ease-in-out;
-  z-index: -1;
   .image{
     width:100%;
     height: 100%;
@@ -27,14 +21,6 @@
       background: rgb(40 51 113 / 80%);
     }
   }
-}
-
-.header-is-sticky .subbanner{
-  margin-top: -100px;
-  -webkit-transition: .4s ease-in-out;
-  -moz-transition: .4s ease-in-out;
-  -o-transition: .4s ease-in-out;
-  transition: .4s ease-in-out;
 }
 
 @media (max-width:1280px){

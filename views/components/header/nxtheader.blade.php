@@ -15,15 +15,13 @@
 
       <div class="w-3/12 flex items-center justify-center relative brick">
         <span class="flex items-center justify-center text-center register">
-          <a href="@php echo home_url('inschrijven'); @endphp" title="Inschrijven" class="">Inschrijven</a>
+          <a href="#registreren" title="Registreren" class="">Registreren</a>
         </span>
 
-        <div class="toggle">
-          <div class="hamburger" id="hamburger">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-          </div>
+        <div class="hamburger" id="hamburger-6">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
         </div>
 
       </div>

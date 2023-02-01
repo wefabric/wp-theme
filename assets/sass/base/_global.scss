@@ -2,12 +2,6 @@
   transform: scaleX(-1);
 }
 
-.text{
-  h2,h3,h4,h5,h6,p{
-    margin-bottom: 2rem;
-  }
-}
-
 body {
 
   @screen lg {
@@ -20,7 +14,6 @@ body {
 
 #page{
   overflow-x:hidden;
-  position: relative;
 }
 
 img {

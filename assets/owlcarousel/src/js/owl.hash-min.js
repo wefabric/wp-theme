@@ -1,0 +1,8 @@
+/**
+ * Hash Plugin
+ * @version 2.3.4
+ * @author Artus Kolanowski
+ * @author David Deutsch
+ * @license The MIT License (MIT)
+ */
+!function($,t,e,s){"use strict";var i=function(e){this._core=e,this._hashes={},this.$element=this._core.$element,this._handlers={"initialized.owl.carousel":$.proxy((function(e){e.namespace&&"URLHash"===this._core.settings.startPosition&&$(t).trigger("hashchange.owl.navigation")}),this),"prepared.owl.carousel":$.proxy((function(t){if(t.namespace){var e=$(t.content).find("[data-hash]").addBack("[data-hash]").attr("data-hash");if(!e)return;this._hashes[e]=t.content}}),this),"changed.owl.carousel":$.proxy((function(e){if(e.namespace&&"position"===e.property.name){var s=this._core.items(this._core.relative(this._core.current())),i=$.map(this._hashes,(function(t,e){return t===s?e:null})).join();if(!i||t.location.hash.slice(1)===i)return;t.location.hash=i}}),this)},this._core.options=$.extend({},i.Defaults,this._core.options),this.$element.on(this._handlers),$(t).on("hashchange.owl.navigation",$.proxy((function(e){var s=t.location.hash.substring(1),i=this._core.$stage.children(),n=this._hashes[s]&&i.index(this._hashes[s]);undefined!==n&&n!==this._core.current()&&this._core.to(this._core.relative(n),!1,!0)}),this))};i.Defaults={URLhashListener:!1},i.prototype.destroy=function(){var e,s;for(e in $(t).off("hashchange.owl.navigation"),this._handlers)this._core.$element.off(e,this._handlers[e]);for(s in Object.getOwnPropertyNames(this))"function"!=typeof this[s]&&(this[s]=null)},$.fn.owlCarousel.Constructor.Plugins.Hash=i}(window.Zepto||window.jQuery,window,document);
