@@ -20283,22 +20283,6 @@ a.no-underline,
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-.shape-1 {
-  width: 80%;
-  height: 900px;
-  position: absolute;
-  left: 0;
-  top: -50px;
-  background: #F5F7FF;
-  content: "";
-  z-index: -1;
-}
-
-@media (max-width: 1024px) {
-  .shape-1 {
-    top: 0px;
-  }
-}
 .content p {
   margin-bottom: 0.75rem;
   font-size: 1rem;
@@ -20433,6 +20417,57 @@ a.content a:hover {
   content: counters(ol-counter, ".") ".";
 }
 
+.intro {
+  width: 100%;
+}
+.intro:after {
+  content: "";
+  width: 95%;
+  height: 500px;
+  position: absolute;
+  top: -50px;
+  left: 0;
+  background: #F5F7FF;
+  z-index: -1;
+}
+
+.inschrijven {
+  width: 100%;
+}
+.inschrijven .container:before {
+  width: 500px;
+  height: 100%;
+  position: absolute;
+  content: "";
+  background: #F5F7FF;
+  top: -50px;
+  left: -500px;
+  z-index: -1;
+}
+.inschrijven .container:after {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  content: "";
+  background: #F5F7FF;
+  top: -50px;
+  left: 0;
+  z-index: -1;
+}
+.inschrijven .form {
+  width: 100%;
+}
+.inschrijven .form .field-wrapper {
+  margin-bottom: 2rem !important;
+}
+.inschrijven .form .field-wrapper input[type=text],
+.inschrijven .form .field-wrapper input[type=number] {
+  border: 0;
+  border-radius: 0;
+  background: white;
+  border: 1px solid #dadada;
+  outline: none;
+}
 #masthead {
   width: 100%;
   background: white;
@@ -20715,11 +20750,9 @@ a.content a:hover {
     display: none;
   }
 }
-.speakers-overview,
 .speakers {
   width: 100%;
 }
-.speakers-overview:after,
 .speakers:after {
   content: "";
   width: 80%;
@@ -20776,6 +20809,27 @@ a.content a:hover {
   margin-bottom: 2rem;
 }
 .sponsoren .inner:before {
+  content: "";
+  height: 100%;
+  width: 500px;
+  position: absolute;
+  background-color: rgb(231, 44, 94);
+  left: -500px;
+  top: 0;
+  z-index: -1;
+}
+
+.sponsoren-overview .inner {
+  width: 50%;
+  padding-left: 9rem;
+  padding-right: 9rem;
+  display: inline-block;
+  background-color: rgb(231, 44, 94);
+}
+.sponsoren-overview .inner p {
+  margin-bottom: 2rem;
+}
+.sponsoren-overview .inner:before {
   content: "";
   height: 100%;
   width: 500px;
@@ -20861,6 +20915,7 @@ a.content a:hover {
 }
 .gallerij {
   width: 100%;
+  z-index: 10;
 }
 
 .cta {
@@ -21190,15 +21245,15 @@ a.content a:hover {
 }
 
 /**
- * Swiper 8.4.5
+ * Swiper 8.4.6
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * https://swiperjs.com
  *
- * Copyright 2014-2022 Vladimir Kharlampidi
+ * Copyright 2014-2023 Vladimir Kharlampidi
  *
  * Released under the MIT License
  *
- * Released on: November 21, 2022
+ * Released on: January 17, 2023
  */
 @font-face {
   font-family: "swiper-icons";
@@ -21362,6 +21417,7 @@ a.content a:hover {
 }
 .swiper-centered > .swiper-wrapper > .swiper-slide {
   scroll-snap-align: center center;
+  scroll-snap-stop: always;
 }
 
 :root {
@@ -21914,6 +21970,10 @@ button.swiper-pagination-bullet {
   margin-top: 0.5rem;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .-mt-0\.5 {
   margin-top: -0.125rem;
 }
@@ -21934,12 +21994,12 @@ button.swiper-pagination-bullet {
   margin-right: 0.5rem;
 }
 
-.mt-3 {
-  margin-top: 0.75rem;
-}
-
 .mb-8 {
   margin-bottom: 2rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
 }
 
 .mb-14 {
@@ -22378,6 +22438,10 @@ button.swiper-pagination-bullet {
   width: 50%;
 }
 
+.w-9\/12 {
+  width: 75%;
+}
+
 .w-auto {
   width: auto;
 }
@@ -22388,10 +22452,6 @@ button.swiper-pagination-bullet {
 
 .w-10\/12 {
   width: 83.333333%;
-}
-
-.w-9\/12 {
-  width: 75%;
 }
 
 .w-6 {
@@ -24445,6 +24505,10 @@ button.swiper-pagination-bullet {
   .lg\:px-36 {
     padding-left: 9rem;
     padding-right: 9rem;
+  }
+  .lg\:py-32 {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
   }
   .lg\:px-16 {
     padding-left: 4rem;

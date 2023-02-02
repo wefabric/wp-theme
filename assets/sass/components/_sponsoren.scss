@@ -26,6 +26,29 @@
   }
 }
 
+.sponsoren-overview{
+  .inner{
+    width:50%;
+    padding-left: 9rem;
+    padding-right: 9rem;
+    display: inline-block;
+    background-color: rgb(231 44 94 / 100%);
+    p{
+      margin-bottom: 2rem;
+    }
+    &:before{
+      content: '';
+      height: 100%;
+      width: 500px;
+      position: absolute;
+      background-color: rgb(231 44 94 / 100%);
+      left: -500px;
+      top: 0;
+      z-index: -1;
+    }
+  }
+}
+
 .carousel{
   width:100%;
   .grid{

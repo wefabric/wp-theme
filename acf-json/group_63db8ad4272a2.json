@@ -1,5 +1,5 @@
 {
-    "key": "group_63d12520443a8",
+    "key": "group_63db8ad4272a2",
     "title": "Page Builder",
     "fields": [
         {
@@ -17,14 +17,14 @@
                 "id": ""
             },
             "layouts": {
-                "layout_60afe80a076a5": {
-                    "key": "layout_60afe80a076a5",
+                "layout_63db779fa8ee4": {
+                    "key": "layout_63db779fa8ee4",
                     "name": "textblock",
                     "label": "Tekstblok",
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_635a8905ab264",
+                            "key": "field_63db77a0a8ee5",
                             "label": "Blok grootte",
                             "name": "sizes",
                             "aria-label": "",
@@ -40,7 +40,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_635a8905ab265",
+                                    "key": "field_63db77a0a8ee6",
                                     "label": "Breedte (desktop)",
                                     "name": "width",
                                     "aria-label": "",
@@ -73,7 +73,7 @@
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_635a8905ab266",
+                                    "key": "field_63db77a0a8ee7",
                                     "label": "Hoogte (mobiel)",
                                     "name": "height_mobile",
                                     "aria-label": "",
@@ -101,7 +101,7 @@
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_635a8905ab267",
+                                    "key": "field_63db77a0a8ee8",
                                     "label": "Hoogte (desktop)",
                                     "name": "height_desktop",
                                     "aria-label": "",
@@ -131,7 +131,7 @@
                             ]
                         },
                         {
-                            "key": "field_63345f064727f",
+                            "key": "field_63db77a0a8ee9",
                             "label": "Titel",
                             "name": "title",
                             "aria-label": "",
@@ -147,7 +147,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_63345f0647280",
+                                    "key": "field_63db77a0a8eea",
                                     "label": "Losse titel tonen?",
                                     "name": "show_separate_title",
                                     "aria-label": "",
@@ -162,12 +162,12 @@
                                     },
                                     "message": "",
                                     "default_value": 0,
+                                    "ui": 0,
                                     "ui_on_text": "",
-                                    "ui_off_text": "",
-                                    "ui": 0
+                                    "ui_off_text": ""
                                 },
                                 {
-                                    "key": "field_63452bdd04314",
+                                    "key": "field_63db77a0a8eeb",
                                     "label": "Breedte",
                                     "name": "title_width",
                                     "aria-label": "",
@@ -177,9 +177,8 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_63345f0647280",
-                                                "operator": "==",
-                                                "value": "1"
+                                                "field": "field_63db77a0a8eea",
+                                                "operator": "=="
                                             }
                                         ]
                                     ],
@@ -205,7 +204,7 @@
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_63345f0647281",
+                                    "key": "field_63db77a0a8eec",
                                     "label": "Titelkleur",
                                     "name": "title_color",
                                     "aria-label": "",
@@ -215,9 +214,8 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_63345f0647280",
-                                                "operator": "==",
-                                                "value": "1"
+                                                "field": "field_63db77a0a8eea",
+                                                "operator": "=="
                                             }
                                         ]
                                     ],
@@ -230,7 +228,7 @@
                                     "font_size": 14
                                 },
                                 {
-                                    "key": "field_63345f0647282",
+                                    "key": "field_63db77a0a8eed",
                                     "label": "Positie t.o.v. tekst",
                                     "name": "title_position",
                                     "aria-label": "",
@@ -240,9 +238,8 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_63345f0647280",
-                                                "operator": "==",
-                                                "value": "1"
+                                                "field": "field_63db77a0a8eea",
+                                                "operator": "=="
                                             }
                                         ]
                                     ],
@@ -266,7 +263,7 @@
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_63345f0647283",
+                                    "key": "field_63db77a0a8eee",
                                     "label": "Titels",
                                     "name": "titles",
                                     "aria-label": "",
@@ -276,9 +273,8 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_63345f0647280",
-                                                "operator": "==",
-                                                "value": "1"
+                                                "field": "field_63db77a0a8eea",
+                                                "operator": "=="
                                             }
                                         ]
                                     ],
@@ -289,14 +285,14 @@
                                     },
                                     "layout": "block",
                                     "pagination": 0,
-                                    "rows_per_page": 20,
                                     "min": 1,
                                     "max": 3,
                                     "collapsed": "",
                                     "button_label": "Nieuwe regel",
+                                    "rows_per_page": 20,
                                     "sub_fields": [
                                         {
-                                            "key": "field_63345f0647284",
+                                            "key": "field_63db77a0a8eef",
                                             "label": "Tekst",
                                             "name": "text",
                                             "aria-label": "",
@@ -314,10 +310,10 @@
                                             "placeholder": "",
                                             "prepend": "",
                                             "append": "",
-                                            "parent_repeater": "field_63345f0647283"
+                                            "parent_repeater": "field_63db77a0a8eee"
                                         },
                                         {
-                                            "key": "field_63345f0647285",
+                                            "key": "field_63db77a0a8ef0",
                                             "label": "Type",
                                             "name": "type",
                                             "aria-label": "",
@@ -345,10 +341,10 @@
                                             "ui": 0,
                                             "ajax": 0,
                                             "placeholder": "",
-                                            "parent_repeater": "field_63345f0647283"
+                                            "parent_repeater": "field_63db77a0a8eee"
                                         },
                                         {
-                                            "key": "field_63345f0647286",
+                                            "key": "field_63db77a0a8ef1",
                                             "label": "Weergave (mobiel)",
                                             "name": "display_type_mobile",
                                             "aria-label": "",
@@ -378,10 +374,10 @@
                                             "ui": 0,
                                             "ajax": 0,
                                             "placeholder": "",
-                                            "parent_repeater": "field_63345f0647283"
+                                            "parent_repeater": "field_63db77a0a8eee"
                                         },
                                         {
-                                            "key": "field_63345f0647287",
+                                            "key": "field_63db77a0a8ef2",
                                             "label": "Weergave (desktop)",
                                             "name": "display_type_desktop",
                                             "aria-label": "",
@@ -411,10 +407,10 @@
                                             "ui": 0,
                                             "ajax": 0,
                                             "placeholder": "",
-                                            "parent_repeater": "field_63345f0647283"
+                                            "parent_repeater": "field_63db77a0a8eee"
                                         },
                                         {
-                                            "key": "field_63345f0647288",
+                                            "key": "field_63db77a0a8ef3",
                                             "label": "Uitlijning",
                                             "name": "align",
                                             "aria-label": "",
@@ -439,14 +435,14 @@
                                             "ui": 0,
                                             "ajax": 0,
                                             "placeholder": "",
-                                            "parent_repeater": "field_63345f0647283"
+                                            "parent_repeater": "field_63db77a0a8eee"
                                         }
                                     ]
                                 }
                             ]
                         },
                         {
-                            "key": "field_60afe836076a6",
+                            "key": "field_63db77a0a8ef4",
                             "label": "Tekst",
                             "name": "text",
                             "aria-label": "",
@@ -466,7 +462,7 @@
                             "delay": 0
                         },
                         {
-                            "key": "field_62ebbbcd0ba2b",
+                            "key": "field_63db77a0a8ef5",
                             "label": "Breedte (tekst)",
                             "name": "text_width",
                             "aria-label": "",
@@ -493,7 +489,7 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_62ebbcbf7db70",
+                            "key": "field_63db77a0a8ef6",
                             "label": "Tekst uitlijning",
                             "name": "text_align",
                             "aria-label": "",
@@ -520,7 +516,7 @@
                             "placeholder": ""
                         },
                         {
-                            "key": "field_632adbddd1a75",
+                            "key": "field_63db77a0a8ef7",
                             "label": "Knoppen",
                             "name": "buttons",
                             "aria-label": "",
@@ -531,8 +527,7 @@
                                 [
                                     {
                                         "field": "field_60afe3979d1ae",
-                                        "operator": "!=empty",
-                                        "value": ""
+                                        "operator": "!=empty"
                                     }
                                 ]
                             ],
@@ -544,7 +539,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_632adbddd1a76",
+                                    "key": "field_63db77a0a8ef8",
                                     "label": "Knop tonen?",
                                     "name": "show_button",
                                     "aria-label": "",
@@ -559,12 +554,12 @@
                                     },
                                     "message": "",
                                     "default_value": 0,
+                                    "ui": 0,
                                     "ui_on_text": "",
-                                    "ui_off_text": "",
-                                    "ui": 0
+                                    "ui_off_text": ""
                                 },
                                 {
-                                    "key": "field_632adbddd1a77",
+                                    "key": "field_63db77a0a8ef9",
                                     "label": "Uitlijning",
                                     "name": "justify",
                                     "aria-label": "",
@@ -574,9 +569,8 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_632adbddd1a76",
-                                                "operator": "==",
-                                                "value": "1"
+                                                "field": "field_63db77a0a8ef8",
+                                                "operator": "=="
                                             }
                                         ]
                                     ],
@@ -599,7 +593,7 @@
                                     "placeholder": ""
                                 },
                                 {
-                                    "key": "field_632adbddd1a78",
+                                    "key": "field_63db77a0a8efa",
                                     "label": "Knoppen",
                                     "name": "buttons",
                                     "aria-label": "",
@@ -609,9 +603,8 @@
                                     "conditional_logic": [
                                         [
                                             {
-                                                "field": "field_632adbddd1a76",
-                                                "operator": "==",
-                                                "value": "1"
+                                                "field": "field_63db77a0a8ef8",
+                                                "operator": "=="
                                             }
                                         ]
                                     ],
@@ -622,14 +615,14 @@
                                     },
                                     "layout": "table",
                                     "pagination": 0,
-                                    "rows_per_page": 20,
                                     "min": 1,
                                     "max": 2,
                                     "collapsed": "field_6322f2a8102e8",
                                     "button_label": "Nieuwe regel",
+                                    "rows_per_page": 20,
                                     "sub_fields": [
                                         {
-                                            "key": "field_632adbddd1a79",
+                                            "key": "field_63db77a0a8efb",
                                             "label": "Tekst",
                                             "name": "button_text",
                                             "aria-label": "",
@@ -647,10 +640,10 @@
                                             "placeholder": "",
                                             "prepend": "",
                                             "append": "",
-                                            "parent_repeater": "field_632adbddd1a78"
+                                            "parent_repeater": "field_63db77a0a8efa"
                                         },
                                         {
-                                            "key": "field_632adbddd1a7a",
+                                            "key": "field_63db77a0a8efc",
                                             "label": "Pagina Link",
                                             "name": "internal_link",
                                             "aria-label": "",
@@ -668,10 +661,10 @@
                                             "allow_archives": 1,
                                             "multiple": 0,
                                             "allow_null": 1,
-                                            "parent_repeater": "field_632adbddd1a78"
+                                            "parent_repeater": "field_63db77a0a8efa"
                                         },
                                         {
-                                            "key": "field_632adbddd1a7b",
+                                            "key": "field_63db77a0a8efd",
                                             "label": "Externe Link",
                                             "name": "external_link",
                                             "aria-label": "",
@@ -686,10 +679,10 @@
                                             },
                                             "default_value": "",
                                             "placeholder": "",
-                                            "parent_repeater": "field_632adbddd1a78"
+                                            "parent_repeater": "field_63db77a0a8efa"
                                         },
                                         {
-                                            "key": "field_632adbddd1a7c",
+                                            "key": "field_63db77a0a8efe",
                                             "label": "Achtergrondkleur",
                                             "name": "bg_color",
                                             "aria-label": "",
@@ -704,10 +697,10 @@
                                             },
                                             "theme_color": null,
                                             "font_size": 14,
-                                            "parent_repeater": "field_632adbddd1a78"
+                                            "parent_repeater": "field_63db77a0a8efa"
                                         },
                                         {
-                                            "key": "field_632adbddd1a7d",
+                                            "key": "field_63db77a0a8eff",
                                             "label": "Tekstkleur",
                                             "name": "text_color",
                                             "aria-label": "",
@@ -722,14 +715,14 @@
                                             },
                                             "theme_color": null,
                                             "font_size": 14,
-                                            "parent_repeater": "field_632adbddd1a78"
+                                            "parent_repeater": "field_63db77a0a8efa"
                                         }
                                     ]
                                 }
                             ]
                         },
                         {
-                            "key": "field_62e2968a052a2",
+                            "key": "field_63db77a0a8f00",
                             "label": "Achtergrondkleur",
                             "name": "bg_color",
                             "aria-label": "",
@@ -746,7 +739,7 @@
                             "font_size": 14
                         },
                         {
-                            "key": "field_62e29699052a3",
+                            "key": "field_63db77a0a8f01",
                             "label": "Tekstkleur",
                             "name": "text_color",
                             "aria-label": "",
@@ -948,13 +941,14 @@
                             "aria-label": "",
                             "type": "group",
                             "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
+                            "required": 0,
+                            "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
                                 "class": "",
                                 "id": ""
                             },
+                            "layout": "block",
                             "sub_fields": [
                                 {
                                     "key": "field_63452fc89dc03",
@@ -972,9 +966,9 @@
                                     },
                                     "message": "",
                                     "default_value": 0,
+                                    "ui": 0,
                                     "ui_on_text": "",
-                                    "ui_off_text": "",
-                                    "ui": 0
+                                    "ui_off_text": ""
                                 },
                                 {
                                     "key": "field_63452fc89dc04",
@@ -1082,19 +1076,28 @@
                                     "aria-label": "",
                                     "type": "repeater",
                                     "instructions": "",
-                                    "required": false,
-                                    "conditional_logic": false,
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_63452fc89dc03",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
                                     "wrapper": {
                                         "width": "",
                                         "class": "",
                                         "id": ""
                                     },
-                                    "min": 0,
-                                    "max": 0,
-                                    "rows_per_page": 20,
-                                    "layout": "table",
-                                    "button_label": "Nieuwe regel",
+                                    "layout": "block",
+                                    "pagination": 0,
+                                    "min": 1,
+                                    "max": 3,
                                     "collapsed": "",
+                                    "button_label": "Nieuwe regel",
+                                    "rows_per_page": 20,
                                     "sub_fields": [
                                         {
                                             "key": "field_63452fc89dc08",
@@ -1222,7 +1225,7 @@
                                             "type": "select",
                                             "instructions": "",
                                             "required": 0,
-                                            "conditional_logic": false,
+                                            "conditional_logic": 0,
                                             "wrapper": {
                                                 "width": "33",
                                                 "class": "",
@@ -1244,28 +1247,7 @@
                                         }
                                     ]
                                 }
-                            ],
-                            "layout": "block"
-                        },
-                        {
-                            "key": "field_610d3286f380f",
-                            "label": "Tekst",
-                            "name": "text",
-                            "aria-label": "",
-                            "type": "wysiwyg",
-                            "instructions": "",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "66",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "tabs": "all",
-                            "toolbar": "full",
-                            "media_upload": 1,
-                            "delay": 0
+                            ]
                         },
                         {
                             "key": "field_632c16103703e",
@@ -1706,5 +1688,5 @@
     "active": true,
     "description": "",
     "show_in_rest": false,
-    "modified": 1674650912
+    "modified": 1675332308
 }

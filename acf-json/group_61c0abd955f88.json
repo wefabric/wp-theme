@@ -17,10 +17,10 @@
                 "id": ""
             },
             "default_value": "",
+            "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "append": ""
         },
         {
             "key": "field_61c0abd95de49",
@@ -37,7 +37,6 @@
                 "id": ""
             },
             "return_format": "id",
-            "preview_size": "medium",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -45,7 +44,8 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
+            "mime_types": "",
+            "preview_size": "medium"
         },
         {
             "key": "field_61c0abd95de50",
@@ -62,9 +62,9 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
             "maxlength": "",
             "rows": "",
+            "placeholder": "",
             "new_lines": ""
         },
         {
@@ -82,10 +82,10 @@
                 "id": ""
             },
             "default_value": "",
+            "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "append": ""
         },
         {
             "key": "field_62d80f281780b",
@@ -127,7 +127,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "employees"
+                "value": "post"
             }
         ]
     ],
@@ -140,5 +140,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1675323981
+    "modified": 1675334537
 }

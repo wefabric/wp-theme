@@ -1,0 +1,738 @@
+{
+    "key": "group_63db77606dc8d",
+    "title": "Builder",
+    "fields": [
+        {
+            "key": "field_63db7760f5a55",
+            "label": "Builder",
+            "name": "builder",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_63db77675af9f": {
+                    "key": "layout_63db77675af9f",
+                    "name": "textblock",
+                    "label": "Tekstblok",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_63db77c4f6af0",
+                            "label": "Blok grootte",
+                            "name": "sizes",
+                            "aria-label": "",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_63db77dcf6af1",
+                                    "label": "Breedte (desktop)",
+                                    "name": "width",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-2\/5": "40%",
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-11\/12": "90%",
+                                        "w-full": "100%",
+                                        "nomargin": "Paginabreedte zonder marges"
+                                    },
+                                    "default_value": "w-full",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_63db780ef6af2",
+                                    "label": "Hoogte (mobiel)",
+                                    "name": "height_mobile",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale breedte (gelijk verdeeld over boven en onder het blok) je wilt op mobiel. Kan worden overschreven op desktop via de desktop-hoogte optie.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_63db783ff6af3",
+                                    "label": "Hoogte (desktop)",
+                                    "name": "height_desktop",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "Kies hier hoeveel verticale breedte (gelijk verdeeld over boven en onder het blok) je wilt op desktop. Overschrijft de mobiele hoogte.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "Geen",
+                                        "small": "Klein",
+                                        "medium": "Middel",
+                                        "large": "Groot"
+                                    },
+                                    "default_value": "medium",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_63db7b6840937",
+                            "label": "Titel",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_63db7b7a40938",
+                                    "label": "Losse titel tonen?",
+                                    "name": "show_separate_title",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 0,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": ""
+                                },
+                                {
+                                    "key": "field_63db7ba040939",
+                                    "label": "Breedte",
+                                    "name": "title_width",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "Kies hier de breedte van de titels binnen het blok. Geldt alleen op desktop.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "w-1\/2": "50%",
+                                        "w-3\/5": "60%",
+                                        "w-2\/3": "66%",
+                                        "w-3\/4": "75%",
+                                        "w-4\/5": "80%",
+                                        "w-full": "100%"
+                                    },
+                                    "default_value": "w-full",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_63db7bc84093a",
+                                    "label": "Titelkleur",
+                                    "name": "title_color",
+                                    "aria-label": "",
+                                    "type": "Thema Kleur",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "theme_color": null,
+                                    "font_size": 14
+                                },
+                                {
+                                    "key": "field_63db7beb4093b",
+                                    "label": "Positie t.o.v. tekst",
+                                    "name": "title_position",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "above": "Boven tekst",
+                                        "left": "Links van tekst",
+                                        "right": "Rechts van tekst",
+                                        "below": "Onder tekst"
+                                    },
+                                    "default_value": "above",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_63db7c1d4093c",
+                                    "label": "Titels",
+                                    "name": "titles",
+                                    "aria-label": "",
+                                    "type": "repeater",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "table",
+                                    "pagination": 0,
+                                    "min": 0,
+                                    "max": 0,
+                                    "collapsed": "",
+                                    "button_label": "Nieuwe regel",
+                                    "rows_per_page": 20,
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_63db7c334093d",
+                                            "label": "Tekst",
+                                            "name": "text",
+                                            "aria-label": "",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 1,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "maxlength": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "parent_repeater": "field_63db7c1d4093c"
+                                        },
+                                        {
+                                            "key": "field_63db7c534093e",
+                                            "label": "Type",
+                                            "name": "type",
+                                            "aria-label": "",
+                                            "type": "select",
+                                            "instructions": "Kies hier het type dat de titel is. H1 is gereserveerd voor de paginatitel.",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "33",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "h2": "h2",
+                                                "h3": "h3",
+                                                "h4": "h4",
+                                                "h5": "h5",
+                                                "h6": "h6",
+                                                "p": "tekst"
+                                            },
+                                            "default_value": "h2",
+                                            "return_format": "value",
+                                            "multiple": 0,
+                                            "allow_null": 0,
+                                            "ui": 0,
+                                            "ajax": 0,
+                                            "placeholder": "",
+                                            "parent_repeater": "field_63db7c1d4093c"
+                                        },
+                                        {
+                                            "key": "field_63db7c974093f",
+                                            "label": "Weergave (mobiel)",
+                                            "name": "display_type_mobile",
+                                            "aria-label": "",
+                                            "type": "select",
+                                            "instructions": "Kies hier het type hoe je de tekst wilt weergeven op mobiel, als dit moet afwijken van het type dat het echt is. Wordt eventueel op desktop overschreven door een desktop weergavetype.",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "33",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "h1": "h1",
+                                                "h2": "h2",
+                                                "h3": "h3",
+                                                "h4": "h4",
+                                                "h5": "h5",
+                                                "h6": "h6",
+                                                "p": "tekst",
+                                                "hidden": "verbergen"
+                                            },
+                                            "default_value": false,
+                                            "return_format": "value",
+                                            "multiple": 0,
+                                            "allow_null": 1,
+                                            "ui": 0,
+                                            "ajax": 0,
+                                            "placeholder": "",
+                                            "parent_repeater": "field_63db7c1d4093c"
+                                        },
+                                        {
+                                            "key": "field_63db7cdf40940",
+                                            "label": "Weergave (desktop)",
+                                            "name": "display_type_desktop",
+                                            "aria-label": "",
+                                            "type": "select",
+                                            "instructions": "Kies hier het type hoe je de tekst wilt weergeven op desktop, als dit moet afwijken van het type dat het echt is. Overschrijft een eventueel mobiel weergavetype.",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "33",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "h1": "h1",
+                                                "h2": "h2",
+                                                "h3": "h3",
+                                                "h4": "h4",
+                                                "h5": "h5",
+                                                "h6": "h6",
+                                                "p": "tekst",
+                                                "hidden": "verbergen"
+                                            },
+                                            "default_value": false,
+                                            "return_format": "value",
+                                            "multiple": 0,
+                                            "allow_null": 1,
+                                            "ui": 0,
+                                            "ajax": 0,
+                                            "placeholder": "",
+                                            "parent_repeater": "field_63db7c1d4093c"
+                                        },
+                                        {
+                                            "key": "field_63db7d0b40941",
+                                            "label": "Uitlijning",
+                                            "name": "align",
+                                            "aria-label": "",
+                                            "type": "select",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "33",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "left": "Links",
+                                                "center": "Midden",
+                                                "right": "Rechts"
+                                            },
+                                            "default_value": false,
+                                            "return_format": "value",
+                                            "multiple": 0,
+                                            "allow_null": 0,
+                                            "ui": 0,
+                                            "ajax": 0,
+                                            "placeholder": "",
+                                            "parent_repeater": "field_63db7c1d4093c"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_63db7d5414f1e",
+                            "label": "Tekst",
+                            "name": "text",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_63db7d7514f1f",
+                            "label": "Breedte (tekst)",
+                            "name": "text_width",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "w-3\/5": "60%",
+                                "w-4\/5": "80%",
+                                "w-full": "100%"
+                            },
+                            "default_value": "w-full",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_63db7da414f20",
+                            "label": "Tekst uitlijning",
+                            "name": "text_align",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Links",
+                                "center": "Midden",
+                                "right": "Rechts"
+                            },
+                            "default_value": "left",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_63db7dd014f21",
+                            "label": "Knoppen",
+                            "name": "buttons",
+                            "aria-label": "",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_63db7de514f22",
+                                    "label": "Knop tonen?",
+                                    "name": "show_button",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 0,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": ""
+                                },
+                                {
+                                    "key": "field_63db7e0414f23",
+                                    "label": "Uitlijning",
+                                    "name": "justify",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "40",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "start": "Links",
+                                        "center": "Midden",
+                                        "end": "Rechts"
+                                    },
+                                    "default_value": "center",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": ""
+                                },
+                                {
+                                    "key": "field_63db7e3114f24",
+                                    "label": "Knoppen",
+                                    "name": "buttons",
+                                    "aria-label": "",
+                                    "type": "repeater",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "table",
+                                    "pagination": 0,
+                                    "min": 0,
+                                    "max": 0,
+                                    "collapsed": "",
+                                    "button_label": "Nieuwe regel",
+                                    "rows_per_page": 20,
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_63db7e4614f25",
+                                            "label": "Tekst",
+                                            "name": "button_text",
+                                            "aria-label": "",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 1,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "maxlength": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "parent_repeater": "field_63db7e3114f24"
+                                        },
+                                        {
+                                            "key": "field_63db7e6114f26",
+                                            "label": "Pagina Link",
+                                            "name": "internal_link",
+                                            "aria-label": "",
+                                            "type": "page_link",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "post_type": "",
+                                            "taxonomy": "",
+                                            "allow_archives": 1,
+                                            "multiple": 0,
+                                            "allow_null": 1,
+                                            "parent_repeater": "field_63db7e3114f24"
+                                        },
+                                        {
+                                            "key": "field_63db7e9c14f27",
+                                            "label": "Externe Link",
+                                            "name": "external_link",
+                                            "aria-label": "",
+                                            "type": "url",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "parent_repeater": "field_63db7e3114f24"
+                                        },
+                                        {
+                                            "key": "field_63db7ee814f28",
+                                            "label": "Achtergrondkleur",
+                                            "name": "bg_color",
+                                            "aria-label": "",
+                                            "type": "Thema Kleur",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "theme_color": null,
+                                            "font_size": 14,
+                                            "parent_repeater": "field_63db7e3114f24"
+                                        },
+                                        {
+                                            "key": "field_63db7f1a14f29",
+                                            "label": "Tekstkleur",
+                                            "name": "text_color",
+                                            "aria-label": "",
+                                            "type": "Thema Kleur",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "theme_color": null,
+                                            "font_size": 14,
+                                            "parent_repeater": "field_63db7e3114f24"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_63db818114f2a",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_63db81be14f2b",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Nieuwe regel"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1675330024
+}
