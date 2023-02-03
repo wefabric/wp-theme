@@ -15,7 +15,7 @@
 
       <div class="w-3/12 flex items-center justify-center relative brick">
         <span class="flex items-center justify-center text-center register">
-          <a href="#registreren" title="Registreren" class="">Registreren</a>
+          <a href="{{ esc_url(home_url('/inschrijven')) }}" title="Registreren" class="">Inschrijven</a>
         </span>
 
         <div class="hamburger" id="hamburger-6">

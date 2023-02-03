@@ -136,3 +136,24 @@ $theme->support($theme->config('support', []));
 |
 */
 $theme->templates($theme->config('templates', []));
+
+
+
+/********************************************************************
+Add custom option pages for ACF
+********************************************************************/
+if( function_exists('acf_add_options_page') ) {
+
+ 	// add parent
+	$parent = acf_add_options_page(array(
+		'page_title' 	=> 'Event info',
+		'menu_slug'		=> 'event-info',
+		'capability'	=> 'edit_pages',
+		//'capability'	=> 'manage_options',
+		'parent_slug' 	=> '',
+		'position'		=> 3,
+		'icon_url'		=> false,
+		'redirect' 		=> false,
+	));
+
+}

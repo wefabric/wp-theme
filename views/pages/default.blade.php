@@ -6,9 +6,9 @@
             {!! themeHeader()->render() !!}
         </div>
 
-		@if(!is_front_page())
-			@include('components.breadcrumbs.index', ['classes' => ''])
-		@endif
+    		@if(!is_front_page())
+    			@include('components.subbanner.nxtsubheader', ['classes' => ''])
+    		@endif
 
         <div class="page-builder">
             {!! pageBuilder()->render() !!}

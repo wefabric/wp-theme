@@ -18,14 +18,14 @@
 					case 'medium' : $py = 'py-8'; break;
 					case 'large'  : $py = 'py-16'; break;
 				}
-				
+
 				switch($block->get('sizes')->get('height_desktop')) {
 					case 'none'   : $py_lg = 'lg:py-0';  break;
 					case 'small'  : $py_lg = 'lg:py-8';  break;
 					case 'medium' : $py_lg = 'lg:py-16'; break;
 					case 'large'  : $py_lg = 'lg:py-24'; break;
 				}
-	
+
 				//width (% of container) for desktop
 				$width = $block->get('sizes')->get('width');
 				if($width === 'nomargin') {
@@ -34,7 +34,7 @@
 					$px = 'container px-4 md:px-8 lg:px-0';
 				}
 			}
-			
+
             $bg = '';
             $gradient = '';
             if($block->get('bg_color')) {
@@ -51,7 +51,7 @@
         <div class="{{ $blockName }} @if(!empty($bg)) {{ $bg }} @endif text-{{ $block->get('text_color') ?? 'black' }}" @if(!empty($gradient)) style="{{ $gradient }}" @endif>
             <div class="{{ $px }} mx-auto {{ $py }} {{ $py_lg }} {{ $debug ? 'border-2 border-green-500' : '' }}">
                 @if($debug) <p>Block: {{ $blockName }}</p> @endif
-				
+
 				<div class="mx-auto w-full lg:{{ $width }} {{ $debug ? 'border-2 border-pink-500' : '' }}">
 					@include('page-builder.blocks.'. $blockName .'.index', ['block' => $block])
 				</div>

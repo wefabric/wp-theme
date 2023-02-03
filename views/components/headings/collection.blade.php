@@ -14,7 +14,7 @@
 	}
 @endphp
 
-<div class="mx-auto w-full {{ $width ?? '' }}">
+<div class="mx-auto w-full {{ $width ?? '' }} uppercase mb-10">
 	@foreach($titles as $heading)
 		@include('components.headings.normal', [
 			'type' => $heading->get('type'),

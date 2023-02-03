@@ -48,6 +48,3 @@
 		</div>
 	</div>
 </div>
-
-<div class="container mx-auto bg-white md:-mt-24 lg:-mt-44 md:-mb-56 md:h-60 hidden md:block p-9 px-9 relative z-2">
-</div>

@@ -1,11 +1,11 @@
 {
     "key": "group_61c0abd955f88",
-    "title": "Werknemer",
+    "title": "Spreker",
     "fields": [
         {
             "key": "field_61c0abd95de3b",
-            "label": "Functie",
-            "name": "function",
+            "label": "Titel",
+            "name": "title",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -140,5 +140,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1675334537
+    "modified": 1675420191
 }

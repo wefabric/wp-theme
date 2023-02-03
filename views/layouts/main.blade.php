@@ -33,20 +33,14 @@
   <div id="content">
       <div id="primary">
           <main id="main">
-              @yield('content')
+
+            @yield('content')
+
           </main>
       </div>
   </div>
 
-  @include('components.program.nxtprogram')
-
-  @include('components.register.nxtregister')
-
-  @include('components.sponsoren.nxtsponsoren')
-
 {{--
-
-
 
   @include('components.subbanner.nxtsubbanner')
 
@@ -60,19 +54,23 @@
 
   @include('components.speakers.nxtspeakers')
 
-  @include('components.speakers-overview.nxtspeakers-overview')
+  @include('components.speakers.nxtspeakers-overview')
 
   @include('components.register.nxtregister')
 
-  @include('components.sponsoren.nxtsponsoren')
+  @include('components.sponsors.sponsors')
 
---}}
+  @include('components.sponsors.sponsors-overview')
 
   @include('components.cta.nxtcta')
 
   @include('components.referenties.nxtreferenties')
 
+--}}
+
   @include('components.footer.nxtfooter')
+
+  @include('components.mobile-nav.nxtmobile-nav')
 
 </div>
 

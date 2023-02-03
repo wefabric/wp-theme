@@ -1,13 +1,13 @@
 {
-    "key": "group_62ff222c83db4",
-    "title": "Hoofdmenu",
+    "key": "group_63dbd9f60bdf6",
+    "title": "Event info",
     "fields": [
         {
-            "key": "field_62ff283210db3",
-            "label": "Tonen",
-            "name": "show_menu",
+            "key": "field_63dbd9f6cc2be",
+            "label": "Datum",
+            "name": "date",
             "aria-label": "",
-            "type": "true_false",
+            "type": "date_picker",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,62 +16,66 @@
                 "class": "",
                 "id": ""
             },
-            "message": "",
-            "default_value": 1,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
+            "display_format": "d\/m\/Y",
+            "return_format": "d\/m\/Y",
+            "first_day": 1
         },
         {
-            "key": "field_62ff223307a32",
-            "label": "Achtergrondkleur",
-            "name": "menu_background_color",
+            "key": "field_63dbda5d3a800",
+            "label": "Tijd",
+            "name": "time",
             "aria-label": "",
-            "type": "Thema Kleur",
+            "type": "time_picker",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "theme_color": "primary-color-dark",
-            "font_size": 14
+            "display_format": "g:i a",
+            "return_format": "g:i a"
         },
         {
-            "key": "field_62ff333ad3aad",
-            "label": "Tekstkleur",
-            "name": "menu_text_color",
+            "key": "field_63dbda723a801",
+            "label": "Kosten",
+            "name": "cost",
             "aria-label": "",
-            "type": "Thema Kleur",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "theme_color": "white",
-            "font_size": 14
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
-            "key": "field_62ff34321c493",
-            "label": "Actief tekstkleur",
-            "name": "menu_active_text_color",
+            "key": "field_63dbda923a802",
+            "label": "Locatie",
+            "name": "location",
             "aria-label": "",
-            "type": "Thema Kleur",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "theme_color": "primary-color",
-            "font_size": 14
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -79,7 +83,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "company-settings"
+                "value": "event-info"
             }
         ]
     ],

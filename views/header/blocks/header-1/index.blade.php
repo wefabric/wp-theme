@@ -17,7 +17,7 @@ if($block->get('bg_color')) {
 
 <section class="banner relative px-4 lg:py-40 md:py-30 sm:py-20 @if(!empty($bg)) {{ $bg }} @endif" @if(!empty($gradient)) style="{{ $gradient }}" @endif>
   <div class="flex flex-row container mx-auto">
-      <div class="lg:block lg:w-7/12 md:w-10/12 sm:w-full items-center z-20">
+      <div class="lg:block lg:w-8/12 md:w-10/12 sm:w-full items-center z-20">
 				@include('components.headings.collection', [
 					'titles' => $block->get('title'),
 					'title_color' => $block->get('text_color') ?? '',
