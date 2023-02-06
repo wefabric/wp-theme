@@ -22800,10 +22800,6 @@ button.swiper-pagination-bullet {
   padding: 0.5rem;
 }
 
-.p-9 {
-  padding: 2.25rem;
-}
-
 .p-12 {
   padding: 3rem;
 }
@@ -22868,16 +22864,6 @@ button.swiper-pagination-bullet {
   padding-bottom: 0.5rem;
 }
 
-.px-9 {
-  padding-left: 2.25rem;
-  padding-right: 2.25rem;
-}
-
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
 .py-40 {
   padding-top: 10rem;
   padding-bottom: 10rem;
@@ -22886,6 +22872,11 @@ button.swiper-pagination-bullet {
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .pt-3 {
@@ -23603,18 +23594,6 @@ button.swiper-pagination-bullet {
     margin-top: 0px;
   }
 
-  .md\:-mt-24 {
-    margin-top: -6rem;
-  }
-
-  .md\:-mb-56 {
-    margin-bottom: -14rem;
-  }
-
-  .md\:block {
-    display: block;
-  }
-
   .md\:flex {
     display: flex;
   }
@@ -23625,10 +23604,6 @@ button.swiper-pagination-bullet {
 
   .md\:h-auto {
     height: auto;
-  }
-
-  .md\:h-60 {
-    height: 15rem;
   }
 
   .md\:w-10\/12 {
@@ -23781,26 +23756,6 @@ button.swiper-pagination-bullet {
 
 @media (min-width: 1024px) {
 
-  .lg\:absolute {
-    position: absolute;
-  }
-
-  .lg\:right-0 {
-    right: 0px;
-  }
-
-  .lg\:order-2 {
-    order: 2;
-  }
-
-  .lg\:order-3 {
-    order: 3;
-  }
-
-  .lg\:order-1 {
-    order: 1;
-  }
-
   .lg\:my-24 {
     margin-top: 6rem;
     margin-bottom: 6rem;
@@ -23811,41 +23766,12 @@ button.swiper-pagination-bullet {
     margin-right: 0px;
   }
 
-  .lg\:my-auto {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-
   .lg\:mb-0 {
     margin-bottom: 0px;
   }
 
   .lg\:mt-24 {
     margin-top: 6rem;
-  }
-
-  .lg\:-mt-44 {
-    margin-top: -11rem;
-  }
-
-  .lg\:mt-auto {
-    margin-top: auto;
-  }
-
-  .lg\:mr-auto {
-    margin-right: auto;
-  }
-
-  .lg\:ml-0 {
-    margin-left: 0px;
-  }
-
-  .lg\:ml-auto {
-    margin-left: auto;
-  }
-
-  .lg\:mr-0 {
-    margin-right: 0px;
   }
 
   .lg\:block {
@@ -24034,10 +23960,6 @@ button.swiper-pagination-bullet {
 
   .lg\:h-auto {
     height: auto;
-  }
-
-  .lg\:h-full {
-    height: 100%;
   }
 
   .lg\:max-h-\[50px\] {
@@ -24374,12 +24296,6 @@ button.swiper-pagination-bullet {
   .lg\:gap-4 {
     gap: 1rem;
   }
-  .lg\:bg-right {
-    background-position: right;
-  }
-  .lg\:bg-left {
-    background-position: left;
-  }
   .lg\:p-20 {
     padding: 5rem;
   }
@@ -24438,14 +24354,6 @@ button.swiper-pagination-bullet {
   .lg\:py-32 {
     padding-top: 8rem;
     padding-bottom: 8rem;
-  }
-  .lg\:px-16 {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-  .lg\:py-5 {
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
   }
   .lg\:pt-20 {
     padding-top: 5rem;

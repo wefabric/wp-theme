@@ -3,7 +3,7 @@
 	$count = count($block->get('photos'));
 	$columns = $block->get('display_columns');
 	$img_size = 'gallery-thumbnail-1/'. $columns;
-	
+
 	switch($block->get('display_type')) {
 //		case 'grid': break;
 		case 'logo-slider':
@@ -12,7 +12,7 @@
 		case 'slider':
 			$image_class = 'bg-contain bg-center';
 			$spaceBetween = $block->get('sizes')->get('width') === 'nomargin' ? 0 : 30;
-			
+
 			$standard = [
 				'spaceBetween' => $spaceBetween,
 				'centeredSlides' => true,
@@ -47,54 +47,61 @@
 			break; //found the exact config.
 		}
 	}
-	
+
 	if($block->get('sizes')->get('width') !== 'nomargin') {
 		$card_classes .= ' m-0';
 		$grid_class = 'gap-4';
 	}
 @endphp
 
-<div class="">
-	
-	@if($block->get('title')->get('show_separate_title'))
-		@include('components.headings.collection', [
-			'title' => $block->get('title'),
-		])
-	@endif
+<div class="gallerij px-4 relative z-10">
 
-	@if($block->get('display_type') !== 'grid')
-		@include('components.slider.smart-slider', [
-			'items' => $block->get('photos'),
-			'card_type' => 'image',
-			'breakPoints' => $breakPoints ?? [],
-			'card_classes' => ($card_classes ?? ''),
+  <div class="container mx-auto lg:px-28 md:px-0 sm:px-0 z-10 mb-10">
 
-			'image_class' => $image_class ?? '',
-			'img_size' => $img_size ?? 'full',
-			'size_config' => $size_config,
-		])
-	@else
-		@include('components.slider.grid', [
-			'items' => $block->get('photos'),
-			'card_type' => 'image',
-			'grid_class' => 'grid lg:grid-cols-'. $columns .' '. ($card_classes ?? '') .' '. ($grid_class ?? ''),
-			'grid_spacing' => ($block->get('sizes')->get('width') === 'nomargin' ? '' : null),
-			
-			'img_size' => $img_size ?? 'full',
-			'size_config' => $size_config,
-			'rounded' => $block->get('sizes')->get('width') !== 'nomargin',
-		])
-	@endif
+		<div class="">
 
-	@if($block->get('buttons')->get('show_button'))
-		<div class="flex pt-6 justify-{{ $block->get('buttons')->get('justify') }}">
-			@foreach($block->get('buttons')->get('buttons') as $button)
-				@include('components.buttons.default', [
-					'button' => $button,
-					'a_class' => 'px-4',
+			@if($block->get('title')->get('show_separate_title'))
+				@include('components.headings.collection', [
+					'title' => $block->get('title'),
 				])
-			@endforeach
-		</div>
-	@endif
+			@endif
 
+			@if($block->get('display_type') !== 'grid')
+				@include('components.slider.smart-slider', [
+					'items' => $block->get('photos'),
+					'card_type' => 'image',
+					'breakPoints' => $breakPoints ?? [],
+					'card_classes' => ($card_classes ?? ''),
+
+					'image_class' => $image_class ?? '',
+					'img_size' => $img_size ?? 'full',
+					'size_config' => $size_config,
+				])
+			@else
+				@include('components.slider.grid', [
+					'items' => $block->get('photos'),
+					'card_type' => 'image',
+					'grid_class' => 'grid gap-10 lg:grid-cols-'. $columns .' '. ($card_classes ?? '') .' '. ($grid_class ?? ''),
+					'grid_spacing' => ($block->get('sizes')->get('width') === 'nomargin' ? '' : null),
+
+					'img_size' => $img_size ?? 'full',
+					'size_config' => $size_config,
+					'rounded' => $block->get('sizes')->get('width') !== 'nomargin',
+				])
+			@endif
+
+			@if($block->get('buttons')->get('show_button'))
+				<div class="flex pt-6 justify-{{ $block->get('buttons')->get('justify') }}">
+					@foreach($block->get('buttons')->get('buttons') as $button)
+						@include('components.buttons.default', [
+							'button' => $button,
+							'a_class' => 'px-4',
+						])
+					@endforeach
+				</div>
+			@endif
+
+		</div>
+
+  </div>
 </div>
