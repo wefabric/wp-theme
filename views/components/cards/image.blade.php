@@ -16,6 +16,10 @@
 		$width = 'w-[200px]';
     }
 
+    if(empty($rounded)) {
+        $rounded = null;
+    }
+
     if(empty($href) && (!empty($item->get('external_link')) || !empty($item->get('internal_link')))) {
         $href = empty($item->get('external_link')) ? $item->get('internal_link') : $item->get('external_link');
     }
