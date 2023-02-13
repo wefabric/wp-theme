@@ -342,4 +342,26 @@ add_filter('woocommerce_product_variation_get_sku', function ($sku){
     }
     return $sku;
 });
-// https://woocommerce.com/document/custom-tracking-code-for-the-thanks-page/ ?
+
+function hideFlatRateWhenFreeIsAvailable( $rates ) : array
+{
+    $shipmentRateKey = '';
+    $removeOtherShipmentMethod = false;
+    foreach ( $rates as $rateId => $rate ) {
+        if ( 'free_shipping' === $rate->get_method_id() ) {
+            $removeOtherShipmentMethod = true;
+            continue;
+        }
+        if ( 'flat_rate' === $rate->get_method_id() ) {
+            $shipmentRateKey = $rateId;
+        }
+
+    }
+
+    if(true === $removeOtherShipmentMethod && $shipmentRateKey) {
+        unset($rates[$shipmentRateKey]);
+    }
+
+    return $rates;
+}
+add_filter( 'woocommerce_package_rates', 'hideFlatRateWhenFreeIsAvailable', 100 );
