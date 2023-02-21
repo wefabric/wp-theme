@@ -1,4 +1,4 @@
-<div class="flex justify-end ">
+<div class="flex justify-center lg:justify-end ">
     <div class="text-center">
         <div class="relative text-center w-full text-sm py-4">
             <span class="absolute top-[5px] left-0 w-full px-1 mx-auto inline-block z-2">of</span>
