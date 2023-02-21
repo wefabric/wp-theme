@@ -32,7 +32,7 @@
         </header>
     @endif
 
-    <div id="content">
+    <div id="content" class=" -mt-4">
         <div id="primary">
             <main id="main">
                 @yield('content')

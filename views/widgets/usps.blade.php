@@ -23,7 +23,7 @@
 	];
 @endphp
 
-<div class="widget-content {{ $bg_color }} {{ $title_color }}">
+<div class="widget-content {{ $bg_color }} {{ $title_color }}  p-4 lg:p-0 lg:mb-0">
 	
 	@if(!empty($instance['title']))
 		@include('components.headings.normal', [

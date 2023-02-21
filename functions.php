@@ -157,7 +157,7 @@ add_action( 'woocommerce_before_shop_loop', function () {
 			'grid_class' => 'product-cats w-full',
 		])->render();
 
-		echo '<h2 class="text-36 font-head lg:pt-20 lg:pb-12">Alle producten</h2>';
+		echo '<h2 id="products-start" class="text-36 font-head mt-4 lg:mt-0 lg:pt-20 lg:pb-12">Alle producten</h2>';
 	}
 }, 50);
 

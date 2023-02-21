@@ -14,7 +14,7 @@ ul.products, .product-cats {
 }
 
 .woocommerce-products-header {
-	@apply w-full bg-black text-white text-center py-12 mt-8 mb-16;
+	@apply w-full bg-black text-white text-center py-4 lg:py-12 mt-4 lg:mt-8 mb-8 lg:mb-16;
 }
 
 .wc-block-components-checkbox .wc-block-components-checkbox__mark {

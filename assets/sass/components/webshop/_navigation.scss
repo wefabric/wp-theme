@@ -1,5 +1,5 @@
 .woocommerce-breadcrumb {
-	@apply text-base text-white mt-6 #{!important};
+	@apply text-sm lg:text-base text-white mt-3 lg:mt-6 #{!important};
 	
 	a {
 		@apply text-white #{!important};
