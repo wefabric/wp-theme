@@ -257,6 +257,10 @@ add_action('woocommerce_archive_description', function() {
 	woocommerce_breadcrumb();
 }, 1);
 
+add_action('woocommerce_before_single_product', function() {
+    echo view('woocommerce.single-product.breadcrumbs')->render();
+}, 1);
+
 add_action('wp', function () {
 	remove_theme_support( 'wc-product-gallery-zoom' ); //also removes zoom icon on main image.
 }, 99 );

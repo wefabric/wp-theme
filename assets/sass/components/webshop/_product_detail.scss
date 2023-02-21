@@ -92,6 +92,13 @@ form.cart {
 			}
 		}
 	}
+
+	.woocommerce-breadcrumb {
+		@apply text-black text-sm mb-0 mt-0 #{!important};
+		a {
+			@apply text-black text-sm #{!important};
+		}
+	}
 }
 
 .woocommerce-product-attributes {
