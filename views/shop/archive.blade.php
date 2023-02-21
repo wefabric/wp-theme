@@ -39,7 +39,7 @@
 							@php dynamic_sidebar('sidebar-shop') @endphp
 						</div>
 
-						<div class="sticky bottom-0 p-4 text-center z-10 w-full bg-white border border-white shadow-md">
+						<div class="sticky bottom-0 p-4 text-center z-10 w-full bg-white border border-white shadow-md lg:hidden">
 							<a href="#products-start" class="btn btn-primary sticky show-products">Toon producten</a>
 						</div>
 
