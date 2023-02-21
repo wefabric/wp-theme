@@ -11,21 +11,23 @@ document.addEventListener('wpcf7mailsent', function( event ) {
     // Use: Check the ID in the HTML of the form, then add it in the if-array and in the switch.
     // Every instance of a form must be added separately, although multiple instances of a form can
     // be grouped together in the switch (by using fall-through cases).
-    if(['wpcf7-f1835-p1829-o1', 'wpcf7-f1835-p1829-o2'].includes(contactFormId)) {
-        let email = '';
-        switch (contactFormId) {
-            case 'wpcf7-f1835-p1829-o1':
-            case 'wpcf7-f1835-p1829-o2':
-                email = event.detail.inputs[3]['value'];
-                break;
-        }
+    let subscribe = false;
+    let email = '';
 
-        if(email !== '') {
-            $('#mc-embedded-subscribe-form input[type=email]').val(email);
-            $('#mc-embedded-subscribe-form button').click();
-
-            $('.wpcf7-response-output').css('display', 'none');
+    for (let i = 0; i <  event.detail.inputs.length; i++) {
+        if(event.detail.inputs[i]['name'] === 'your-email') {
+            email = event.detail.inputs[i]['value'];
         }
+        if(event.detail.inputs[i]['name'] === 'newsletter[]') {
+            subscribe = true;
+        }
+    }
+
+    if(subscribe && email !== '') {
+        $('#mc-embedded-subscribe-form input[type=email]').val(email);
+        $('#mc-embedded-subscribe-form button').click();
+
+        $('.wpcf7-response-output').css('display', 'none');
     }
 
     let contactForm = document.getElementById(contactFormId);
