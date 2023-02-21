@@ -11,6 +11,7 @@ window.$ = window.jQuery = require('jquery');
 import './outOfOffice';
 import './forms';
 import './wc-search';
+import './wc-single-product';
 import './offer-dynamic-url';
 import './dynamic-content';
 
