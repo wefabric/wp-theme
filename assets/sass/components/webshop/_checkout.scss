@@ -15,37 +15,18 @@
 }
 
 form.checkout {
-	.woocommerce-billing-fields > h3::before {
-		content: "1"
-	}
-	
-	h3#ship-to-different-address,
-	.woocommerce-additional-fields > h3 {
-		&::before {
-			content: "2";
-		}
-	}
-	
 	.woocommerce-additional-fields > h3 {
 		@apply mb-3;
 	}
-	
-	h3#order_review_heading {
-		@apply mb-8;
-		
-		&::before {
-			content: "3";
-		}
-	}
-	
+
 	h3 {
 		@apply h5;
-		
-		&::before {
-			@apply bg-black text-white rounded-full px-4 py-2 mr-4;
-		}
 	}
-	
+
+	#order_review_heading {
+		@apply mb-4;
+	}
+
 }
 
 .woocommerce-form-coupon,

@@ -13,6 +13,8 @@ import './forms';
 import './wc-search';
 import './offer-dynamic-url';
 import './dynamic-content';
+import './custom-cart';
+
 
 window.Alpine = Alpine
 window.Swiper = Swiper;

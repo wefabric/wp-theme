@@ -365,3 +365,16 @@ function hideFlatRateWhenFreeIsAvailable( $rates ) : array
     return $rates;
 }
 add_filter( 'woocommerce_package_rates', 'hideFlatRateWhenFreeIsAvailable', 100 );
+
+
+// Enable the login form by default for unlogged users
+add_action( 'woocommerce_before_checkout_form', 'force_checkout_login_for_unlogged_customers', 4 );
+function force_checkout_login_for_unlogged_customers() {
+    if( ! is_user_logged_in() ) {
+        remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+    }
+}
+
+remove_action('woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+
+

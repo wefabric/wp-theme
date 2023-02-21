@@ -1,8 +1,8 @@
 .button {
-	@apply btn btn-small py-3 bg-primary text-white text-base font-normal ml-4 rounded-full #{!important};
+	@apply btn btn-small py-3 bg-black text-white text-base font-normal rounded-full #{!important};
 	
 	&:hover {
-		@apply bg-black #{!important};
+		@apply bg-primary transition-colors ease-in-out duration-300 #{!important};
 	}
 	
 	br {
