@@ -17,52 +17,57 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<table class="shop_table woocommerce-checkout-review-order-table">
-	<thead>
-		<tr>
-			<th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-            <th class="product-quantity"><?php esc_html_e( 'Aantal', 'woocommerce' ); ?></th>
-			<th class="product-total"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php
-		do_action( 'woocommerce_review_order_before_cart_contents' );
 
-		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-			$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 
-			if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
-				?>
-				<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
-					<td class="product-name">
-						<?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) ) . '&nbsp;'; ?>
-						<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					</td>
-                    <td class="product-quantity">
-                        <?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-                    </td>
-					<td class="product-total">
-						<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					</td>
-				</tr>
-				<?php
-			}
-		}
 
-		do_action( 'woocommerce_review_order_after_cart_contents' );
-		?>
-	</tbody>
-</table>
+<div class="shop_table woocommerce-checkout-review-order-table">
+
+    <div class="flex gap-2 font-bold">
+        <div class=" product-name w-2/3"><?php esc_html_e( 'Product', 'woocommerce' ); ?></div>
+        <div class="product-quantity w-1/6 "><?php esc_html_e( 'Aantal', 'woocommerce' ); ?></div>
+        <div class="product-total w-1/6 text-right grow"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></div>
+    </div>
+    </thead>
+    <tbody>
+    <?php
+    do_action( 'woocommerce_review_order_before_cart_contents' );
+
+    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        $_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+
+        if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
+            ?>
+            <div class="flex gap-2 pt-4 pb-4 border-b-2 border-black <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
+                <div class="product-name w-2/3" >
+                    <?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) ) . '&nbsp;'; ?>
+                    <?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                </div>
+                <div class="product-quantity w-1/6">
+                    <?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                </div>
+                <div class="product-total w-1/6 grow text-right">
+                    <?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                </div>
+            </div>
+            <?php
+        }
+    }
+
+    do_action( 'woocommerce_review_order_after_cart_contents' );
+    ?>
+
+</div>
+
+
 <div class="cart_totals">
-    <div class="cart-subtotal flex">
-        <div class="grow"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></div>
+    <div class="cart-subtotal flex mt-12 mb-6">
+        <div class="grow font-bold"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></div>
         <div><?php wc_cart_totals_subtotal_html(); ?></div>
     </div>
 
     <?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
-        <div class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
-            <div class="grow"><?php wc_cart_totals_coupon_label( $coupon ); ?></div>
+        <div class="cart-discount flex mb-6 coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
+            <div class="grow font-bold"><?php wc_cart_totals_coupon_label( $coupon ); ?></div>
             <div><?php wc_cart_totals_coupon_html( $coupon ); ?></div>
         </div>
     <?php endforeach; ?>
@@ -78,8 +83,8 @@ defined( 'ABSPATH' ) || exit;
     <?php endif; ?>
 
     <?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
-        <div class="fee flex grow">
-            <div><?php echo esc_html( $fee->name ); ?></div>
+        <div class="fee flex mb-6">
+            <div class="grow font-bold"><?php echo esc_html( $fee->name ); ?></div>
             <div><?php wc_cart_totals_fee_html( $fee ); ?></div>
         </div>
     <?php endforeach; ?>
@@ -87,14 +92,14 @@ defined( 'ABSPATH' ) || exit;
     <?php if ( wc_tax_enabled() && ! WC()->cart->display_prices_including_tax() ) : ?>
         <?php if ( 'itemized' === get_option( 'woocommerce_tax_total_display' ) ) : ?>
             <?php foreach ( WC()->cart->get_tax_totals() as $code => $tax ) : // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited ?>
-                <div class="tax-rate tax-rate-<?php echo esc_attr( sanitize_title( $code ) ); ?> flex">
-                    <div class="grow"><?php echo esc_html( $tax->label ); ?></div>
+                <div class="tax-rate flex mb-6 mt-6 tax-rate-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
+                    <div class="grow font-bold"><?php echo esc_html( $tax->label ); ?></div>
                     <div><?php echo wp_kses_post( $tax->formatted_amount ); ?></div>
                 </div>
             <?php endforeach; ?>
         <?php else : ?>
-            <div class="tax-total flex">
-                <div class="grow"><?php echo esc_html( WC()->countries->tax_or_vat() ); ?></div>
+            <div class="tax-total flex mb-6">
+                <div class="grow font-bold"><?php echo esc_html( WC()->countries->tax_or_vat() ); ?></div>
                 <div><?php wc_cart_totals_taxes_total_html(); ?></div>
             </div>
         <?php endif; ?>
@@ -102,7 +107,7 @@ defined( 'ABSPATH' ) || exit;
 
     <?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
-    <div class="order-total order_total_price flex">
+    <div class="order-total order_total_price flex mb-8 pt-4">
         <div class="grow font-bold"><?php esc_html_e( 'Total', 'woocommerce' ); ?></div>
         <div><?php wc_cart_totals_order_total_html(); ?></div>
     </div>

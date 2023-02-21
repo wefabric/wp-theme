@@ -62,7 +62,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
             </div>
 
 
-            <div class="w-full lg:w-1/2 form3 bg-[#F9F9F9] p-8">
+            <div class="w-full lg:w-1/2 form3 bg-[#F9F9F9] p-8 cart_total_content_background">
 
                 <h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
 

@@ -25,8 +25,12 @@ $show_shipping_calculator = ! empty( $show_shipping_calculator );
 $calculator_text          = '';
 ?>
 <div class="woocommerce-shipping-totals shipping">
-	<div><?php echo wp_kses_post( $package_name ); ?></div>
-	<div>
+    <div class="flex items-center mb-4">
+        <div class="font-bold"><?php echo wp_kses_post( $package_name ); ?></div>
+        <div class="pl-2 fa-solid fa-question-circle"></div>
+    </div>
+
+	<div class="mb-4">
 		<?php if ( $available_methods ) : ?>
 			<ul id="shipping_method" class="woocommerce-shipping-methods">
 				<?php foreach ( $available_methods as $method ) : ?>
@@ -44,7 +48,7 @@ $calculator_text          = '';
 				<?php endforeach; ?>
 			</ul>
 			<?php if ( is_cart() ) : ?>
-				<p class="woocommerce-shipping-destination">
+				<p class="woocommerce-shipping-destination mt-4">
 					<?php
 					if ( $formatted_destination ) {
 						// Translators: $s shipping destination.

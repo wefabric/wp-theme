@@ -22,17 +22,17 @@ defined( 'ABSPATH' ) || exit;
     <div class="p-8">
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-	<h3><?php esc_html_e( 'Cart totals', 'woocommerce' ); ?></h3>
+	<h3 class="mb-6"><?php esc_html_e( 'Cart totals', 'woocommerce' ); ?></h3>
 
-    <div class="cart-subtotal flex">
-        <p class="grow"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></p>
-        <p><?php wc_cart_totals_subtotal_html(); ?></p>
+    <div class="cart-subtotal flex mb-6"">
+        <div class="grow font-bold"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></div>
+        <div><?php wc_cart_totals_subtotal_html(); ?></div>
     </div>
 
     <?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
         <div class="cart-discount flex coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
-            <p class="grow"><?php wc_cart_totals_coupon_label( $coupon ); ?></p>
-            <p class=""><?php wc_cart_totals_coupon_html( $coupon ); ?></p>
+            <div class="grow"><?php wc_cart_totals_coupon_label( $coupon ); ?></div>
+            <div class=""><?php wc_cart_totals_coupon_html( $coupon ); ?></div>
         </div>
     <?php endforeach; ?>
 
@@ -46,9 +46,9 @@ defined( 'ABSPATH' ) || exit;
 
     <?php elseif ( WC()->cart->needs_shipping() && 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) : ?>
 
-        <div class="shipping flex">
-            <p class="grow"><?php esc_html_e( 'Shipping', 'woocommerce' ); ?></p>
-            <p class=""><?php woocommerce_shipping_calculator(); ?></p>
+        <div class="shipping flex>
+            <div class="grow"><?php esc_html_e( 'Shipping', 'woocommerce' ); ?></div>
+            <div class=""><?php woocommerce_shipping_calculator(); ?></div>
         </div>
 
     <?php endif; ?>
@@ -61,8 +61,8 @@ defined( 'ABSPATH' ) || exit;
                     <div class="cursor-pointer fa-solid fa-chevron-down show-cart-coupon-totals-toggle"></div>
                 </div>
 
-                <div class="show-cart-coupon-totals-wrapper flex lg:flex-row flex-col mt-4 hidden">
-                    <input type="text" name="coupon_code_totals" class="grow rounded-md lg:mr-4" placeholder="Voer waardebon in"/>
+                <div class="show-cart-coupon-totals-wrapper flex lg:flex-row flex-col mt-4 gap-1 hidden">
+                    <input type="text" name="coupon_code_totals" class="grow rounded-md" placeholder="Vul waardebon in"/>
                     <button class="button apply_coupon_code_totals float-right">Toepassen</button>
                 </div>
             </div>
@@ -70,9 +70,9 @@ defined( 'ABSPATH' ) || exit;
     <div class="p-8">
 
         <?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
-            <div class="fee flex">
-                <p class="grow"><?php echo esc_html( $fee->name ); ?></p>
-                <p class=""><?php wc_cart_totals_fee_html( $fee ); ?></p>
+            <div class="fee flex mb-6">
+                <div class="grow font-bold"><?php echo esc_html( $fee->name ); ?></div>
+                <div class=""><?php wc_cart_totals_fee_html( $fee ); ?></div>
             </div>
         <?php endforeach; ?>
 
@@ -89,17 +89,17 @@ defined( 'ABSPATH' ) || exit;
             if ( 'itemized' === get_option( 'woocommerce_tax_total_display' ) ) {
                 foreach ( WC()->cart->get_tax_totals() as $code => $tax ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
                     ?>
-                    <div class="tax-rate flex tax-rate-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
-                        <p class="grow"><?php echo esc_html( $tax->label ) . $estimated_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-                        <p class=""><?php echo wp_kses_post( $tax->formatted_amount ); ?></p>
+                    <div class="tax-rate flex mb-6 tax-rate-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
+                        <div class="grow font-bold"><?php echo esc_html( $tax->label ) . $estimated_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+                        <div class=""><?php echo wp_kses_post( $tax->formatted_amount ); ?></div>
                     </div>
                     <?php
                 }
             } else {
                 ?>
-                <div class="tax-total flex">
-                    <p class="grow font-bold"><?php echo esc_html( WC()->countries->tax_or_vat() ) . $estimated_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-                    <p class=""><?php wc_cart_totals_taxes_total_html(); ?></p>
+                <div class="tax-total flex mb-6">
+                    <div class="grow font-bold "><?php echo esc_html( WC()->countries->tax_or_vat() ) . $estimated_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+                    <div class=""><?php wc_cart_totals_taxes_total_html(); ?></div>
                 </div>
                 <?php
             }
@@ -108,9 +108,9 @@ defined( 'ABSPATH' ) || exit;
 
         <?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
 
-        <div class="order-total order_total_price flex">
-            <p class="grow font-bold"><?php esc_html_e( 'Total', 'woocommerce' ); ?></p>
-            <p class=""><?php wc_cart_totals_order_total_html(); ?></p>
+        <div class="order-total order_total_price flex mb-8 pt-4">
+            <div class="grow font-bold"><?php esc_html_e( 'Total', 'woocommerce' ); ?></div>
+            <div class=""><?php wc_cart_totals_order_total_html(); ?></div>
         </div>
 
         <?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>

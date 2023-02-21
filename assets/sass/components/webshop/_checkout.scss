@@ -24,7 +24,7 @@ form.checkout {
 	}
 
 	#order_review_heading {
-		@apply mb-4;
+		@apply mb-8;
 	}
 
 }
@@ -94,4 +94,8 @@ body > span.select2-container { //This holds the searchable select field.
 			@apply text-21 #{!important};
 		}
 	}
+}
+
+.woocommerce-checkout .woocommerce-Price-amount {
+	@apply float-right;
 }
