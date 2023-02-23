@@ -2,6 +2,7 @@ jQuery( function($) {
 
     $('.show-cart-coupon-totals-toggle').click(function (){
        $('.show-cart-coupon-totals-wrapper').toggleClass('hidden');
+       $('.rotate-chevron').toggleClass('rotating');
     });
 
     $('input[name="coupon_code_totals"]').on('input', function (){

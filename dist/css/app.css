@@ -23499,6 +23499,14 @@ a.woocommerce .cart_item td.product-name a,a .woocommerce .cart_item div.product
   content: attr(data-title);
 }
 
+.rotate-chevron {
+  transition: all 0.3s linear;
+}
+
+.rotate-chevron.rotating {
+  transform: rotate(-180deg);
+}
+
 .visible {
   visibility: visible;
 }

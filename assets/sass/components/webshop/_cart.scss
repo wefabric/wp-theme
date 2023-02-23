@@ -247,8 +247,15 @@
 }
 
 
+.rotate-chevron {
+  -moz-transition: all .3s linear;
+  -webkit-transition: all .3s linear;
+  transition: all .3s linear;
+}
 
-
-
-
+.rotate-chevron.rotating {
+  -moz-transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
 

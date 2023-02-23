@@ -58,7 +58,7 @@ defined( 'ABSPATH' ) || exit;
                 <div class="flex items-center">
                     <div class="cursor-pointer text-primary show-cart-coupon-totals-toggle">Waardeboncode invoeren </div>
                     <div class="text-black pl-1 grow">(niet verplicht)</div>
-                    <div class="cursor-pointer fa-solid fa-chevron-down show-cart-coupon-totals-toggle"></div>
+                    <div class="cursor-pointer fa-solid fa-chevron-down show-cart-coupon-totals-toggle rotate-chevron"></div>
                 </div>
 
                 <div class="show-cart-coupon-totals-wrapper flex lg:flex-row flex-col mt-4 gap-1 hidden">
