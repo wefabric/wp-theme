@@ -165,12 +165,16 @@
   @media only screen and (max-width: 768px) {
     .woocommerce tr.woocommerce-cart-form__cart-item.cart_item {
       display: grid;
+
       grid-template-areas:
-              "z f"
+              "f f"
               "a b"
               "c c"
               "d d"
               "e e";
+        &:not(:first-child){
+          border-top: 1px #dddddd solid;
+        }
 
       .product-thumbnail {
         grid-area: a;
@@ -232,10 +236,6 @@
   border-top: black 1px solid;
 }
 
-.woocommerce .cart_item {
-  border-bottom: 1px solid #DDDDDD;
-}
-
 .woocommerce-page #content table.cart .product-thumbnail {
   display: block;
 }
@@ -243,7 +243,6 @@
 .woocommerce table.shop_table_responsive tr td::before, .woocommerce-page table.shop_table_responsive tr td::before {
   content: attr(data-title);
 }
-
 
 .rotate-chevron {
   -moz-transition: all .3s linear;
@@ -256,4 +255,6 @@
   -webkit-transform: rotate(-180deg);
   transform: rotate(-180deg);
 }
+
+
 

@@ -23441,7 +23441,10 @@ a.woocommerce .cart_item td.product-name a,a .woocommerce .cart_item div.product
 @media only screen and (max-width: 768px) {
   .woocommerce-cart .woocommerce tr.woocommerce-cart-form__cart-item.cart_item {
     display: grid;
-    grid-template-areas: "z f" "a b" "c c" "d d" "e e";
+    grid-template-areas: "f f" "a b" "c c" "d d" "e e";
+  }
+  .woocommerce-cart .woocommerce tr.woocommerce-cart-form__cart-item.cart_item:not(:first-child) {
+    border-top: 1px #dddddd solid;
   }
   .woocommerce-cart .woocommerce tr.woocommerce-cart-form__cart-item.cart_item .product-thumbnail {
     grid-area: a;
@@ -23490,10 +23493,6 @@ a.woocommerce .cart_item td.product-name a,a .woocommerce .cart_item div.product
 .coupon {
   background-color: #EDEDED;
   border-top: black 1px solid;
-}
-
-.woocommerce .cart_item {
-  border-bottom: 1px solid #DDDDDD;
 }
 
 .woocommerce-page #content table.cart .product-thumbnail {
