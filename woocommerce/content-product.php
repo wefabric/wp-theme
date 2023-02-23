@@ -80,14 +80,12 @@ if(empty($product) || !$product->is_visible()) {
 		do_action( 'woocommerce_after_shop_loop_item_title' );
 		?>
 		
-		<div class="flex flex-row">
+		<div class="flex flex-row space-x-4 button-wrapper">
 			<?php echo view('components.buttons.default', [
 				'href' => $product->get_permalink(),
 				'text' => 'Meer info',
 				'colors' => 'btn-black text-white'
 			])->render(); ?>
-			
-			<div class="flex grow"></div>
 			
 			<?php
 			/**

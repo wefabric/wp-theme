@@ -77,7 +77,7 @@ $calculator_text          = '';
 		?>
 
 		<?php if ( $show_package_details ) : ?>
-			<?php echo '<p class="woocommerce-shipping-contents"><small>' . esc_html( $package_details ) . '</small></p>'; ?>
+			<?php echo '<p class="woocommerce-shipping-contents"><small class="font-normal">' . esc_html( $package_details ) . '</small></p>'; ?>
 		<?php endif; ?>
 
 		<?php if ( $show_shipping_calculator ) : ?>

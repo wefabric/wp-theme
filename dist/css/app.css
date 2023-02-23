@@ -22947,6 +22947,10 @@ a.wc-tabs-wrapper ul.tabs li a {
   margin-left: 0px;
 }
 
+.button-wrapper a:nth-child(n+3) {
+  margin-left: 0.8rem;
+}
+
 .sidebar {
   display: none;
 }
