@@ -22623,9 +22623,39 @@ form.woocommerce-form-register input[type=radio]:hover,
   color: rgb(239 68 68 / var(--tw-text-opacity)) !important;
 }
 
-.woocommerce-pagination .page-numbers {
-  border-style: none !important;
+.woocommerce nav.woocommerce-pagination .page-numbers {
+  border-style: none;
 }
+.woocommerce nav.woocommerce-pagination .page-numbers li {
+  border-radius: 100px;
+  border: none;
+  margin: 0 0.5rem;
+}
+.woocommerce nav.woocommerce-pagination .page-numbers li .page-numbers {
+  background-color: rgb(243, 244, 246);
+}
+.woocommerce nav.woocommerce-pagination .page-numbers li .page-numbers:hover {
+  background-color: var(--primary-color);
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.woocommerce nav.woocommerce-pagination .page-numbers li .current {
+  background-color: var(--primary-color);
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.woocommerce nav.woocommerce-pagination .page-numbers li .dots {
+  background-color: unset;
+}
+.woocommerce nav.woocommerce-pagination .page-numbers li .dots:hover {
+  background-color: unset;
+  color: unset;
+}
+.woocommerce nav.woocommerce-pagination .page-numbers li a, .woocommerce nav.woocommerce-pagination .page-numbers li span {
+  width: 2em;
+  height: 2em;
+}
+
 .woocommerce-info, .woocommerce-message, .woocommerce-error {
   width: 100%;
   border-top-width: 4px;
@@ -23271,38 +23301,38 @@ a.woocommerce .cart_item td.product-remove a.remove {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity)) !important;
 }
-.woocommerce .cart_item td.product-thumbnail img {
+.woocommerce .cart_item td.product-thumbnail img, .woocommerce .cart_item div.product-thumbnail img {
   width: 100px;
 }
-.woocommerce .cart_item td.product-name a {
+.woocommerce .cart_item td.product-name a, .woocommerce .cart_item div.product-name a {
   font-weight: 700;
   text-decoration-line: none;
 }
-a.woocommerce .cart_item td.product-name a {
+a.woocommerce .cart_item td.product-name a,a .woocommerce .cart_item div.product-name a {
   text-decoration-line: none;
 }
-.woocommerce .cart_item td.product-name .variation {
+.woocommerce .cart_item td.product-name .variation, .woocommerce .cart_item div.product-name .variation {
   padding-top: 0.5rem;
 }
-.woocommerce .cart_item td.product-name .variation dd, .woocommerce .cart_item td.product-name .variation dt {
+.woocommerce .cart_item td.product-name .variation dd, .woocommerce .cart_item td.product-name .variation dt, .woocommerce .cart_item div.product-name .variation dd, .woocommerce .cart_item div.product-name .variation dt {
   font-size: 0.875rem;
   line-height: 1.5;
 }
 @media (min-width: 1024px) {
 
-  .woocommerce .cart_item td.product-name .variation dd, .woocommerce .cart_item td.product-name .variation dt {
+  .woocommerce .cart_item td.product-name .variation dd, .woocommerce .cart_item td.product-name .variation dt, .woocommerce .cart_item div.product-name .variation dd, .woocommerce .cart_item div.product-name .variation dt {
     float: none;
     display: inline-block;
   }
 }
-.woocommerce .cart_item td.product-name .variation dd p, .woocommerce .cart_item td.product-name .variation dt p {
-  font-size: 0.875rem;
+.woocommerce .cart_item td.product-name .variation dd p, .woocommerce .cart_item td.product-name .variation dt p, .woocommerce .cart_item div.product-name .variation dd p, .woocommerce .cart_item div.product-name .variation dt p {
+  font-size: 0.75rem;
   line-height: 1.5;
 }
-.woocommerce .cart_item td.product-name .variation dt {
+.woocommerce .cart_item td.product-name .variation dt, .woocommerce .cart_item div.product-name .variation dt {
   margin-right: 0.25rem;
 }
-.woocommerce .cart_item td.product-name .variation dd {
+.woocommerce .cart_item td.product-name .variation dd, .woocommerce .cart_item div.product-name .variation dd {
   margin-right: 0.75rem;
 }
 .woocommerce table.shop_table {
@@ -23345,6 +23375,9 @@ a.woocommerce .cart_item td.product-name a {
   font-weight: 400;
 }
 
+.woocommerce-cart {
+  /* Mobile cart item layout */
+}
 .woocommerce-cart table.cart td.actions {
   margin-top: 1.5rem;
 }
@@ -23397,6 +23430,38 @@ a.woocommerce .cart_item td.product-name a {
 .woocommerce-cart .cart-collaterals .cart_totals .checkout-button:after, .woocommerce-cart .woocommerce-page .cart-collaterals .cart_totals .checkout-button:after {
   display: none;
 }
+@media only screen and (max-width: 768px) {
+  .woocommerce-cart .woocommerce tr.woocommerce-cart-form__cart-item.cart_item {
+    display: grid;
+    grid-template-areas: "z f" "a b" "c c" "d d" "e e";
+  }
+  .woocommerce-cart .woocommerce tr.woocommerce-cart-form__cart-item.cart_item .product-thumbnail {
+    grid-area: a;
+    display: block;
+  }
+  .woocommerce-cart .woocommerce tr.woocommerce-cart-form__cart-item.cart_item .product-name {
+    grid-area: b;
+    text-align: left !important;
+  }
+  .woocommerce-cart .woocommerce tr.woocommerce-cart-form__cart-item.cart_item .product-name:before {
+    display: none;
+  }
+  .woocommerce-cart .woocommerce tr.woocommerce-cart-form__cart-item.cart_item .product-price {
+    grid-area: c;
+  }
+  .woocommerce-cart .woocommerce tr.woocommerce-cart-form__cart-item.cart_item .product-quantity {
+    grid-area: d;
+  }
+  .woocommerce-cart .woocommerce tr.woocommerce-cart-form__cart-item.cart_item .product-subtotal {
+    grid-area: e;
+  }
+  .woocommerce-cart .woocommerce tr.woocommerce-cart-form__cart-item.cart_item .product-remove {
+    grid-area: f;
+  }
+  .woocommerce-cart .woocommerce tr.woocommerce-cart-form__cart-item.cart_item .product-remove a {
+    float: right;
+  }
+}
 
 .cart-items-count {
   display: none;
@@ -23424,6 +23489,14 @@ a.woocommerce .cart_item td.product-name a {
 
 .woocommerce .cart_item {
   border-bottom: 1px solid #DDDDDD;
+}
+
+.woocommerce-page #content table.cart .product-thumbnail {
+  display: block;
+}
+
+.woocommerce table.shop_table_responsive tr td::before, .woocommerce-page table.shop_table_responsive tr td::before {
+  content: attr(data-title);
 }
 
 .visible {

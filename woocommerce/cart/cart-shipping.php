@@ -27,7 +27,7 @@ $calculator_text          = '';
 <div class="woocommerce-shipping-totals shipping">
     <div class="flex items-center mb-4">
         <div class="font-bold"><?php echo wp_kses_post( $package_name ); ?></div>
-        <div class="pl-2 fa-solid fa-question-circle"></div>
+        <div class="pl-2 text-sm text-secondary">Gratis verzending vanaf €79</div>
     </div>
 
 	<div class="mb-4">

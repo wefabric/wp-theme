@@ -14,19 +14,55 @@
 	@apply bg-blue-500 text-red-500 text-41 #{!important}
 }
 
-.woocommerce-pagination {
-	.page-numbers {
-		@apply border-none #{!important};
-	}
-	
-	li {
+.woocommerce {
+	nav.woocommerce-pagination {
 		.page-numbers {
-		}
-		.current {
-		}
-		.next {
-		}
-		.prev {
+			@apply border-none;
+
+			li {
+				border-radius: 100px;
+				border: none;
+				margin: 0 .5rem;
+
+				.page-numbers {
+					background-color: rgb(243 244 246);
+					&:hover {
+						@apply bg-primary;
+						@apply text-white;
+					}
+				}
+
+				.current {
+					@apply bg-primary;
+					@apply text-white;
+				}
+
+				.dots {
+					background-color: unset;
+					&:hover {
+						background-color: unset;
+						color: unset;
+					}
+				}
+
+				.next {
+				}
+
+				.prev {
+				}
+
+				a, span {
+					width: 2em;
+					height: 2em;
+				}
+			}
 		}
 	}
 }
+
+
+
+
+
+
+

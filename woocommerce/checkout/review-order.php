@@ -18,8 +18,6 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-
-
 <div class="shop_table woocommerce-checkout-review-order-table">
 
     <div class="flex gap-2 font-bold">

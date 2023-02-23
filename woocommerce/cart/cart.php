@@ -25,14 +25,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 
         <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
             <thead>
-            <tr>
-                <th class="product-thumbnail"><span class="screen-reader-text"><?php esc_html_e( 'Thumbnail image', 'woocommerce' ); ?></span></th>
-                <th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
-                <th class="product-price"><?php esc_html_e( 'Price', 'woocommerce' ); ?></th>
-                <th class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
-                <th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
-                <th class="product-remove"><span class="screen-reader-text"><?php esc_html_e( 'Remove item', 'woocommerce' ); ?></span></th>
-            </tr>
+                <tr>
+                    <th class="product-thumbnail"><span class="screen-reader-text"><?php esc_html_e( 'Thumbnail image', 'woocommerce' ); ?></span></th>
+                    <th class="product-name"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
+                    <th class="product-price"><?php esc_html_e( 'Price', 'woocommerce' ); ?></th>
+                    <th class="product-quantity"><?php esc_html_e( 'Quantity', 'woocommerce' ); ?></th>
+                    <th class="product-subtotal"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
+                    <th class="product-remove"><span class="screen-reader-text"><?php esc_html_e( 'Remove item', 'woocommerce' ); ?></span></th>
+                </tr>
             </thead>
             <tbody>
             <?php do_action( 'woocommerce_before_cart_contents' ); ?>
@@ -178,10 +178,5 @@ do_action( 'woocommerce_before_cart' ); ?>
     </div>
 
 </div>
-
-<div class="">
-    <h3>Gerelateerde producten</h3>
-</div>
-
 
 <?php do_action( 'woocommerce_after_cart' ); ?>
