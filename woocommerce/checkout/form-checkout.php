@@ -56,15 +56,14 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
                 </div>
 
-                <div class="checkout-step-2 hidden">
+                <div class="checkout-step-2">
                     <?php woocommerce_checkout_payment(); ?>
                 </div>
             </div>
 
+            <div class="w-full lg:w-1/2 form3 bg-[#F9F9F9] cart_total_content_background">
 
-            <div class="w-full lg:w-1/2 form3 bg-[#F9F9F9] p-8 cart_total_content_background">
-
-                <h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
+                <h3 id="order_review_heading" class="p-8"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
 
                 <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
@@ -75,9 +74,6 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                 <?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
             </div>
         </div>
-
-
-
 </form>
 
 

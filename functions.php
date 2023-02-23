@@ -377,4 +377,12 @@ function force_checkout_login_for_unlogged_customers() {
 
 remove_action('woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 
+function disable_shipping_calc_on_cart( $show_shipping ) {
+    if( is_cart() ) {
+        return false;
+    }
+    return $show_shipping;
+}
+add_filter( 'woocommerce_cart_ready_to_calc_shipping', 'disable_shipping_calc_on_cart', 99 );
+
 

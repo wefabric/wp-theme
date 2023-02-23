@@ -113,6 +113,7 @@
       @apply mt-6;
 
       .coupon {
+
         .input-text {
           @apply float-none block;
           @apply w-full #{!important};
@@ -218,10 +219,6 @@
  * WooCommerce cart overview
  */
 
-.order-total {
-  border-top: 1px solid black;
-}
-
 .woocommerce .cart_total_content_background {
   @apply h-fit;
 }
@@ -232,6 +229,7 @@
 
 .coupon {
   background-color: #EDEDED;
+  border-top: black 1px solid;
 }
 
 .woocommerce .cart_item {

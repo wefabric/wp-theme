@@ -24,7 +24,6 @@ form.checkout {
 	}
 
 	#order_review_heading {
-		@apply mb-8;
 	}
 
 }
@@ -98,4 +97,16 @@ body > span.select2-container { //This holds the searchable select field.
 
 .woocommerce-checkout .woocommerce-Price-amount {
 	@apply float-right;
+}
+
+
+
+
+
+#add_payment_method #payment ul.payment_methods, .woocommerce-cart #payment ul.payment_methods, .woocommerce-checkout #payment ul.payment_methods {
+	padding: 0;
+}
+
+.woocommerce-checkout .wc_payment_methods li {
+	list-style: none;
 }

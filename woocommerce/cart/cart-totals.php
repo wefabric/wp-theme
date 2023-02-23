@@ -52,22 +52,9 @@ defined( 'ABSPATH' ) || exit;
         </div>
 
     <?php endif; ?>
-    </div>
-        <div class="coupon py-8">
-            <div class="px-8">
-                <div class="flex items-center">
-                    <div class="cursor-pointer text-primary show-cart-coupon-totals-toggle">Waardeboncode invoeren </div>
-                    <div class="text-black pl-1 grow">(niet verplicht)</div>
-                    <div class="cursor-pointer fa-solid fa-chevron-down show-cart-coupon-totals-toggle rotate-chevron"></div>
-                </div>
 
-                <div class="show-cart-coupon-totals-wrapper flex lg:flex-row flex-col mt-4 gap-1 hidden">
-                    <input type="text" name="coupon_code_totals" class="grow rounded-md" placeholder="Vul waardebon in"/>
-                    <button class="button apply_coupon_code_totals float-right">Toepassen</button>
-                </div>
-            </div>
-        </div>
-    <div class="p-8">
+
+
 
         <?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
             <div class="fee flex mb-6">
@@ -107,17 +94,34 @@ defined( 'ABSPATH' ) || exit;
         ?>
 
         <?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
+</div>
+        <div class="coupon py-8">
+            <div class="px-8">
+                <div class="flex items-center">
+                    <div class="cursor-pointer text-primary show-cart-coupon-totals-toggle">Waardeboncode invoeren </div>
+                    <div class="text-black pl-1 grow">(niet verplicht)</div>
+                    <div class="cursor-pointer fa-solid fa-chevron-down show-cart-coupon-totals-toggle rotate-chevron"></div>
+                </div>
 
-        <div class="order-total order_total_price flex mb-8 pt-4">
+                <div class="show-cart-coupon-totals-wrapper flex lg:flex-row flex-col mt-4 gap-1 hidden">
+                    <input type="text" name="coupon_code_totals" class="grow rounded-md" placeholder="Vul waardebon in"/>
+                    <button class="button apply_coupon_code_totals float-right">Toepassen</button>
+                </div>
+            </div>
+        </div>
+
+    <div class="p-8">
+        <div class="order-total order_total_price flex mb-8">
             <div class="grow font-bold"><?php esc_html_e( 'Total', 'woocommerce' ); ?></div>
             <div class=""><?php wc_cart_totals_order_total_html(); ?></div>
         </div>
 
         <?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
 
-	<div class="wc-proceed-to-checkout">
-		<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
-	</div>
+        <div class="wc-proceed-to-checkout">
+            <?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
+        </div>
+    </div>
 
 	<?php do_action( 'woocommerce_after_cart_totals' ); ?>
     </div>
