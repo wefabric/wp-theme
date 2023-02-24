@@ -113,6 +113,12 @@ body > span.select2-container { //This holds the searchable select field.
 	.woocommerce-checkout-review-order .woocommerce-Price-amount {
 		@apply float-right
 	}
+
+	.container {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
 }
 
 

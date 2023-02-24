@@ -263,3 +263,13 @@
 .woocommerce a.added_to_cart {
   display: none;
 }
+
+
+.cart_totals {
+  .content ul li:before {
+    display: none;
+  }
+  .woocommerce-shipping-totals {
+
+  }
+}

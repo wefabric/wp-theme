@@ -381,12 +381,47 @@ function force_checkout_login_for_unlogged_customers() {
 
 remove_action('woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 
-function disable_shipping_calc_on_cart( $show_shipping ) {
-    if( is_cart() ) {
-        return false;
+add_filter('woocommerce_cart_shipping_method_full_label', function ($label, WC_Shipping_Rate $method){
+    if($method->get_method_id() === 'local_pickup') {
+        $label .= '<span class="woocommerce-Price-amount amount"><bdi>Gratis</bdi></span>';
     }
-    return $show_shipping;
+
+    return $label;
+}, 5, 2);
+
+/**
+ * Accepts a zone name and returns its threshold for free shipping.
+ *
+ * @param $zone_name The name of the zone to get the threshold of. Case-sensitive.
+ * @return int The threshold corresponding to the zone, if there is any. If there is no such zone, or no free shipping method, null will be returned.
+ */
+function get_free_shipping_minimum($zone_name = 'Netherlands') {
+    if ( ! isset( $zone_name ) ) return null;
+
+    $result = null;
+    $zone = null;
+
+    $zones = WC_Shipping_Zones::get_zones();
+    foreach ( $zones as $z ) {
+        if ( $z['zone_name'] == $zone_name ) {
+            $zone = $z;
+        }
+    }
+
+    if ( $zone ) {
+        $shipping_methods_nl = $zone['shipping_methods'];
+
+        $free_shipping_method = null;
+        foreach ( $shipping_methods_nl as $method ) {
+            if ( $method->id == 'free_shipping' ) {
+                $free_shipping_method = $method;
+                break;
+            }
+        }
+        if ( $free_shipping_method ) {
+            $result = $free_shipping_method->min_amount;
+        }
+    }
+
+    return $result;
 }
-add_filter( 'woocommerce_cart_ready_to_calc_shipping', 'disable_shipping_calc_on_cart', 99 );
-
-

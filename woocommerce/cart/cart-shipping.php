@@ -26,8 +26,15 @@ $calculator_text          = '';
 ?>
 <div class="woocommerce-shipping-totals shipping">
     <div class="flex items-center mb-4">
+        <?php
+            $min_amount = get_free_shipping_minimum('BeNeDuLux');
+        ?>
         <div class="font-bold"><?php echo wp_kses_post( $package_name ); ?></div>
-        <div class="pl-2 text-sm text-secondary">Gratis verzending vanaf €79</div>
+        <?php if($min_amount) : ?>
+
+            <div class="pl-2 text-sm text-secondary">Gratis verzending vanaf <?php wc_price($min_amount); ?></div>
+
+        <?php endif ?>
     </div>
 
 	<div class="mb-4">
@@ -55,7 +62,7 @@ $calculator_text          = '';
 						printf( esc_html__( 'Shipping to %s.', 'woocommerce' ) . ' ', '<strong>' . esc_html( $formatted_destination ) . '</strong>' );
 						$calculator_text = esc_html__( 'Change address', 'woocommerce' );
 					} else {
-						echo wp_kses_post( apply_filters( 'woocommerce_shipping_estimate_html', __( 'Shipping options will be updated during checkout.', 'woocommerce' ) ) );
+						//echo wp_kses_post( apply_filters( 'woocommerce_shipping_estimate_html', __( 'Shipping options will be updated during checkout.', 'woocommerce' ) ) );
 					}
 					?>
 				</p>

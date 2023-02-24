@@ -21,7 +21,8 @@ if ( ! wp_doing_ajax() ) {
 	do_action( 'woocommerce_review_order_before_payment' );
 }
 ?>
-<div id="payment" class="woocommerce-checkout-payment md:px-8 mt-2">
+<div id="payment" class="woocommerce-checkout-payment md:px-8 mt-4">
+    <h3 class="mb-2">Je betaalmethode</h3>
 	<?php if ( WC()->cart->needs_payment() ) : ?>
 		<ul class="wc_payment_methods payment_methods methods">
 			<?php

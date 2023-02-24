@@ -17,10 +17,10 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<div class="md:px-8">
-    <div class="shop_table woocommerce-checkout-review-order-table">
+<div class="woocommerce-checkout-review-order-table ">
+    <div class="shop_table md:px-8 ">
 
-        <div class="flex gap-2 font-bold">
+        <div class="flex gap-2 font-bold ">
             <div class=" product-name w-2/3"><?php esc_html_e( 'Product', 'woocommerce' ); ?></div>
             <div class="product-quantity w-1/6 "><?php esc_html_e( 'Aantal', 'woocommerce' ); ?></div>
             <div class="product-total w-1/6 text-right grow"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></div>
@@ -56,8 +56,8 @@ defined( 'ABSPATH' ) || exit;
     </div>
 
 
-    <div class="cart_totals">
-        <div class="cart-subtotal flex mt-12 mb-6">
+    <div class="cart_totals md:px-8 ">
+        <div class="cart-subtotal flex mt-6 mb-2">
             <div class="grow font-bold"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></div>
             <div><?php wc_cart_totals_subtotal_html(); ?></div>
         </div>
@@ -89,7 +89,7 @@ defined( 'ABSPATH' ) || exit;
         <?php if ( wc_tax_enabled() && ! WC()->cart->display_prices_including_tax() ) : ?>
             <?php if ( 'itemized' === get_option( 'woocommerce_tax_total_display' ) ) : ?>
                 <?php foreach ( WC()->cart->get_tax_totals() as $code => $tax ) : // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited ?>
-                    <div class="tax-rate flex mb-6 mt-6 tax-rate-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
+                    <div class="tax-rate flex mb-2 mt-2 tax-rate-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
                         <div class="grow font-bold"><?php echo esc_html( $tax->label ); ?></div>
                         <div><?php echo wp_kses_post( $tax->formatted_amount ); ?></div>
                     </div>
@@ -104,30 +104,31 @@ defined( 'ABSPATH' ) || exit;
 
         <?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
     </div>
-</div>
 
-    <div class="coupon py-8">
-        <div class="px-8">
-            <div class="flex items-center">
-                <div class="cursor-pointer text-primary show-cart-coupon-totals-toggle">Waardeboncode invoeren </div>
-                <div class="text-black pl-1 grow">(niet verplicht)</div>
-                <div class="cursor-pointer fa-solid fa-chevron-down show-cart-coupon-totals-toggle rotate-chevron"></div>
-            </div>
+<!--    <div class="coupon py-8">-->
+<!--        <div class="px-8">-->
+<!--            <div class="flex items-center">-->
+<!--                <div class="cursor-pointer text-primary show-cart-coupon-totals-toggle">Waardeboncode invoeren </div>-->
+<!--                <div class="text-black pl-1 grow">(niet verplicht)</div>-->
+<!--                <div class="cursor-pointer fa-solid fa-chevron-down show-cart-coupon-totals-toggle rotate-chevron"></div>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="show-cart-coupon-totals-wrapper flex lg:flex-row flex-col mt-4 gap-1 hidden">-->
+<!--                <input type="text" name="coupon_code_totals" class="grow rounded-md" placeholder="Vul waardebon in"/>-->
+<!--                <button class="button apply_coupon_code_totals float-right">Toepassen</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
-            <div class="show-cart-coupon-totals-wrapper flex lg:flex-row flex-col mt-4 gap-1 hidden">
-                <input type="text" name="coupon_code_totals" class="grow rounded-md" placeholder="Vul waardebon in"/>
-                <button class="button apply_coupon_code_totals float-right">Toepassen</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="md:px-8 py-6">
+    <div class="md:px-8 pb-6">
         <div class="order-total order_total_price flex">
             <div class="grow font-bold"><?php esc_html_e( 'Total', 'woocommerce' ); ?></div>
             <div><?php wc_cart_totals_order_total_html(); ?></div>
         </div>
     </div>
+
 </div>
+
 
 <?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
 
