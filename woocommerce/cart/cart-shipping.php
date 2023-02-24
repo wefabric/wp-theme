@@ -32,7 +32,7 @@ $calculator_text          = '';
         <div class="font-bold"><?php echo wp_kses_post( $package_name ); ?></div>
         <?php if($min_amount) : ?>
 
-            <div class="pl-2 text-sm text-secondary">Gratis verzending vanaf <?php echo wc_price($min_amount); ?></div>
+            <div class="pl-2 text-sm text-secondary">Gratis verzending vanaf €<?php echo $min_amount; ?></div>
 
         <?php endif ?>
     </div>
