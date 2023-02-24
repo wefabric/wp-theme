@@ -14,16 +14,53 @@
 
 		</header>
 
-		<div class="flex flex-row w-full gap-4 lg:gap-32">
+		<div class="lg:flex lg:flex-row w-full gap-4 lg:gap-32">
 			@if(function_exists('dynamic_sidebar'))
-				<div class="sidebar mb-8">
-					@include('components.woocommerce.category-tree')
-					
-					@php dynamic_sidebar('sidebar-shop') @endphp
+				<div class="sidebar mb-4 lg:mb-8 ">
+
+					<div class="hidden lg:block">
+						@include('components.woocommerce.category-tree')
+					</div>
+
+
+					<div class="lg:hidden flex flex-row items-center gap-4 px-4 lg:px-0">
+						<div class="">
+							<span class="btn btn-black show-filters hover:bg-black "><i class="fa-solid fa-sliders"></i> Filters</span>
+						</div>
+						<div>
+							<a class="hover:underline" href="#products-start">Ga naar producten <i class="fa-solid fa-circle-chevron-right pl-1"></i></a>
+						</div>
+					</div>
+
+
+
+					<div class="shop-filters mt-4 lg:mt-0 hidden lg:block w-full">
+						<div class="px-4 lg:px-0">
+							@php dynamic_sidebar('sidebar-shop') @endphp
+						</div>
+
+						<div class="sticky bottom-0 p-4 text-center z-10 w-full bg-white border border-white shadow-md lg:hidden">
+							<a href="#products-start" class="btn btn-primary sticky show-products">Toon producten</a>
+						</div>
+
+					</div>
+
+					<script>
+						jQuery( document ).ready(function($) {
+							$('.show-filters').click(function (){
+								$('.shop-filters').toggleClass('hidden');
+							});
+							$('.show-products').click(function (){
+								$('.shop-filters').addClass('hidden');
+							});
+
+						});
+					</script>
+
 				</div>
 			@endif
 			
-			<div class="px-4 md:px-8 lg:px-0 w-full lg:w-3/4 shop_content">
+			<div class="px-4 m md:px-8 lg:px-0 w-full lg:w-3/4 shop_content">
 				@if(woocommerce_product_loop())
 					@php do_action('woocommerce_before_shop_loop') @endphp
 					

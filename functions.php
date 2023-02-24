@@ -157,7 +157,7 @@ add_action( 'woocommerce_before_shop_loop', function () {
 			'grid_class' => 'product-cats w-full',
 		])->render();
 
-		echo '<h2 class="text-36 font-head lg:pt-20 lg:pb-12">Alle producten</h2>';
+		echo '<h2 id="products-start" class="text-36 font-head mt-4 lg:mt-0 lg:pt-20 lg:pb-12">Alle producten</h2>';
 	}
 }, 50);
 
@@ -176,7 +176,7 @@ add_filter('woocommerce_product_loop_title_classes', function ($class) {
 // See content-single-product.php # 49
 add_action('woocommerce_single_product_summary', function() {
 	global $product;
-	echo '<h5 class="pb-2">'. $product->get_attribute('brand') .'</h5>';
+	echo '<span class="h5 pb-2">'. $product->get_attribute('brand') .'</span>';
 }, 3);
 add_action('woocommerce_single_product_summary', function() {
     global $product;
@@ -255,6 +255,10 @@ add_filter( 'woocommerce_breadcrumb_defaults', function () {
 });
 add_action('woocommerce_archive_description', function() {
 	woocommerce_breadcrumb();
+}, 1);
+
+add_action('woocommerce_before_single_product', function() {
+    echo view('woocommerce.single-product.breadcrumbs')->render();
 }, 1);
 
 add_action('wp', function () {
