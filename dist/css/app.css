@@ -21772,7 +21772,6 @@ button.swiper-pagination-bullet {
 }
 .faq-drawer .faq-drawer__title::after {
   margin: 0.5rem;
-  border-color: var(--primary-color);
   border-style: solid;
   border-width: 5px 5px 0 0;
   content: " ";
@@ -21781,6 +21780,7 @@ button.swiper-pagination-bullet {
   height: 15px;
   position: relative;
   right: 20px;
+  top: -3px;
   transform: rotate(135deg);
   transition: 0.35s ease-in-out;
   vertical-align: top;
@@ -21789,7 +21789,7 @@ button.swiper-pagination-bullet {
 @media only screen and (max-width: 600px) {
   .faq-drawer .faq-drawer__title::after {
     right: -8px;
-    top: -15px;
+    top: -2px;
   }
 }
 .faq-drawer .faq-drawer__trigger:checked + .faq-drawer__title + .faq-drawer__content-wrapper {

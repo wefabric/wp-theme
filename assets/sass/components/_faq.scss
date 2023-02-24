@@ -25,7 +25,7 @@
 		transition: all 0.25s ease-out;
 		
 		&::after {
-			@apply border-primary m-2;
+			@apply m-2;
 			border-style: solid;
 			border-width: 5px 5px 0 0;
 			content: " ";
@@ -34,7 +34,7 @@
 			height: 15px;
 			position: relative;
 			right: 20px;
-			//top: 5px;
+			top: -3px;
 			transform: rotate(135deg);
 			transition: 0.35s ease-in-out;
 			vertical-align: top;
@@ -42,7 +42,7 @@
 			
 			@media only screen and (max-width: 600px) {
 				right: -8px;
-				top: -15px;
+				top: -2px;
 			}
 			
 		}
