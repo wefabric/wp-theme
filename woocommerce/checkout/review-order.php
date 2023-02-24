@@ -17,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<div class="p-8">
+<div class="md:px-8">
     <div class="shop_table woocommerce-checkout-review-order-table">
 
         <div class="flex gap-2 font-bold">
@@ -121,8 +121,8 @@ defined( 'ABSPATH' ) || exit;
         </div>
     </div>
 
-    <div class="p-8">
-        <div class="order-total order_total_price flex mb-8">
+    <div class="md:px-8 py-6">
+        <div class="order-total order_total_price flex">
             <div class="grow font-bold"><?php esc_html_e( 'Total', 'woocommerce' ); ?></div>
             <div><?php wc_cart_totals_order_total_html(); ?></div>
         </div>

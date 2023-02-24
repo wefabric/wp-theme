@@ -19,10 +19,10 @@ defined( 'ABSPATH' ) || exit;
 
 ?>
 <div class="cart_totals <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?>">
-    <div class="p-8">
+    <div class="md:px-8">
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-	<h3 class="mb-6"><?php esc_html_e( 'Cart totals', 'woocommerce' ); ?></h3>
+	<h3 class="mb-6 py-8"><?php esc_html_e( 'Cart totals', 'woocommerce' ); ?></h3>
 
     <div class="cart-subtotal flex mb-6"">
         <div class="grow font-bold"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></div>
@@ -110,7 +110,7 @@ defined( 'ABSPATH' ) || exit;
             </div>
         </div>
 
-    <div class="p-8">
+    <div class="md:px-8 my-6">
         <div class="order-total order_total_price flex mb-8">
             <div class="grow font-bold"><?php esc_html_e( 'Total', 'woocommerce' ); ?></div>
             <div class=""><?php wc_cart_totals_order_total_html(); ?></div>

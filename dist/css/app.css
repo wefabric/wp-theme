@@ -22203,8 +22203,7 @@ form.checkout h3 {
 }
 
 #payment {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
+  background-color: unset !important;
 }
 #payment .payment_box {
   --tw-bg-opacity: 1 !important;
@@ -22246,16 +22245,17 @@ body > span.select2-container .select2-results ul .select2-results__option--high
   line-height: 1.5 !important;
 }
 
-.woocommerce-checkout .woocommerce-Price-amount {
-  float: right;
+.woocommerce-checkout #payment ul.payment_methods {
+  padding: 0px;
 }
-
-#add_payment_method #payment ul.payment_methods, .woocommerce-cart #payment ul.payment_methods, .woocommerce-checkout #payment ul.payment_methods {
-  padding: 0;
+.woocommerce-checkout #payment div.form-row {
+  padding: 1em 0;
 }
-
 .woocommerce-checkout .wc_payment_methods li {
   list-style: none;
+}
+.woocommerce-checkout .woocommerce-checkout-review-order .woocommerce-Price-amount {
+  float: right;
 }
 
 .woocommerce-MyAccount-navigation {
@@ -23382,6 +23382,16 @@ a.woocommerce .cart_item td.product-name a,a .woocommerce .cart_item div.product
 .woocommerce table.shop_table li label {
   font-weight: 400;
 }
+.woocommerce .cart_total_background {
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #F9F9F9;
+}
+@media only screen and (max-width: 768px) {
+  .woocommerce .cart_total_background {
+    background-color: white;
+  }
+}
 
 .woocommerce-cart {
   /* Mobile cart item layout */
@@ -23476,14 +23486,6 @@ a.woocommerce .cart_item td.product-name a,a .woocommerce .cart_item div.product
 
 .cart-items-count {
   display: none;
-}
-
-/**
- * WooCommerce cart overview
- */
-.woocommerce .cart_total_content_background {
-  height: -moz-fit-content;
-  height: fit-content;
 }
 
 .woocommerce .woocommerce-shipping-methods bdi {

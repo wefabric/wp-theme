@@ -105,6 +105,17 @@
       @apply font-normal;
     }
   }
+
+  .cart_total_background {
+    @apply h-fit;
+    background-color: #F9F9F9;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .cart_total_background {
+      background-color: white;
+    }
+  }
 }
 
 .woocommerce-cart {
@@ -129,12 +140,11 @@
         @apply text-sm #{!important};
       }
     }
-
   }
-
   .woocommerce-Price-amount {
     @apply float-right;
   }
+
 
   .wc-proceed-to-checkout a.checkout-button {
     @apply text-base;
@@ -217,14 +227,6 @@
 
 .cart-items-count {
   @apply hidden;
-}
-
-/**
- * WooCommerce cart overview
- */
-
-.woocommerce .cart_total_content_background {
-  @apply h-fit;
 }
 
 .woocommerce .woocommerce-shipping-methods bdi {

@@ -165,7 +165,7 @@ do_action( 'woocommerce_before_cart' ); ?>
     <?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 
 
-    <div class="bg-[#F9F9F9] lg:w-1/2 cart_total_content_background">
+    <div class="lg:w-1/2 cart_total_background">
         <?php
         /**
          * Cart collaterals hook.

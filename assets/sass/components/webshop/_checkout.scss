@@ -47,8 +47,8 @@ form.checkout {
 
 
 #payment {
-	@apply bg-white #{!important};
-	
+	background-color: unset !important;
+
 	.payment_box {
 		@apply bg-green-50 #{!important};
 
@@ -95,18 +95,24 @@ body > span.select2-container { //This holds the searchable select field.
 	}
 }
 
-.woocommerce-checkout .woocommerce-Price-amount {
-	@apply float-right;
+.woocommerce-checkout {
+	#payment {
+	 	ul.payment_methods {
+			@apply p-0
+		}
+
+		div.form-row  {
+			padding: 1em 0;
+		}
+	}
+
+	.wc_payment_methods li {
+		list-style: none;
+	}
+
+	.woocommerce-checkout-review-order .woocommerce-Price-amount {
+		@apply float-right
+	}
 }
 
 
-
-
-
-#add_payment_method #payment ul.payment_methods, .woocommerce-cart #payment ul.payment_methods, .woocommerce-checkout #payment ul.payment_methods {
-	padding: 0;
-}
-
-.woocommerce-checkout .wc_payment_methods li {
-	list-style: none;
-}
