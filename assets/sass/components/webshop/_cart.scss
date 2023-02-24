@@ -150,3 +150,7 @@
 .cart-items-count {
   @apply hidden;
 }
+
+.woocommerce a.added_to_cart {
+  display: none;
+}
