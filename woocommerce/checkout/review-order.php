@@ -57,7 +57,7 @@ defined( 'ABSPATH' ) || exit;
 
 
     <div class="cart_totals md:px-8 ">
-        <div class="cart-subtotal flex mt-6 mb-2">
+        <div class="cart-subtotal flex mt-12 mb-6">
             <div class="grow font-bold"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></div>
             <div><?php wc_cart_totals_subtotal_html(); ?></div>
         </div>
@@ -89,7 +89,7 @@ defined( 'ABSPATH' ) || exit;
         <?php if ( wc_tax_enabled() && ! WC()->cart->display_prices_including_tax() ) : ?>
             <?php if ( 'itemized' === get_option( 'woocommerce_tax_total_display' ) ) : ?>
                 <?php foreach ( WC()->cart->get_tax_totals() as $code => $tax ) : // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited ?>
-                    <div class="tax-rate flex mb-2 mt-2 tax-rate-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
+                    <div class="tax-rate flex mb-6 mt-6 tax-rate-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
                         <div class="grow font-bold"><?php echo esc_html( $tax->label ); ?></div>
                         <div><?php echo wp_kses_post( $tax->formatted_amount ); ?></div>
                     </div>

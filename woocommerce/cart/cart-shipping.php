@@ -28,10 +28,14 @@ $calculator_text          = '';
     <div class="flex items-center mb-4">
         <?php
             $min_amount = get_free_shipping_minimum('BeNeDuLux');
+
+            $showNotice = true;
+            if(isset(WC()->session->get( 'chosen_shipping_methods' )[0]) && str_contains(WC()->session->get( 'chosen_shipping_methods' )[0], 'free_shipping')) {
+                $showNotice = false;
+            }
         ?>
         <div class="font-bold"><?php echo wp_kses_post( $package_name ); ?></div>
-        <?php if($min_amount) : ?>
-
+        <?php if($min_amount && $showNotice) : ?>
             <div class="pl-2 text-sm text-secondary">Gratis verzending vanaf €<?php echo $min_amount; ?></div>
 
         <?php endif ?>

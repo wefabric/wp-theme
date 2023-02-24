@@ -382,7 +382,7 @@ function force_checkout_login_for_unlogged_customers() {
 remove_action('woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 
 add_filter('woocommerce_cart_shipping_method_full_label', function ($label, WC_Shipping_Rate $method){
-    if($method->get_method_id() === 'local_pickup') {
+    if($method->get_method_id() === 'local_pickup' || $method->get_method_id() === 'free_shipping') {
         $label .= '<span class="woocommerce-Price-amount amount"><bdi>Gratis</bdi></span>';
     }
 
