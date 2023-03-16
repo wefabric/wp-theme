@@ -41,7 +41,7 @@
 					position: relative;
 					right: 20px;
 					top: 20%;
-					transform: scaleY(1);
+					transform: rotate(0deg);
 					transition: 0.35s ease-in-out;
 					transition-property: transform;
 					vertical-align: top;
@@ -66,8 +66,8 @@
 			//}
 			
 			.product-category__trigger:checked + .product-category__title::after {
-				transform: scaleY(-1);
-				transition: 0.25s ease-in-out;
+				transform: rotate(180deg);
+				transition: 0.35s ease-in-out;
 			}
 
 			.product-category {

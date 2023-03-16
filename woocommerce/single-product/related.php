@@ -32,9 +32,10 @@ if ( $related_products ) : ?>
 		<?php endif; ?>
 		
 		<?php woocommerce_product_loop_start(); ?>
-
+        <div class="swiper relatedProductSwiper">
+            <div class="swiper-wrapper">
 			<?php foreach ( $related_products as $related_product ) : ?>
-
+            <div class="swiper-slide">
 					<?php
 					$post_object = get_post( $related_product->get_id() );
 
@@ -42,13 +43,23 @@ if ( $related_products ) : ?>
 
 					wc_get_template_part( 'content', 'product' );
 					?>
-
+            </div>
 			<?php endforeach; ?>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
 
 		<?php woocommerce_product_loop_end(); ?>
+
 
 	</section>
 	<?php
 endif;
 
+
 wp_reset_postdata();
+
+?>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<?php
+

@@ -15,6 +15,8 @@ import './wc-single-product';
 import './offer-dynamic-url';
 import './dynamic-content';
 import './custom-cart';
+import './cad-download-toggle';
+import './sliders';
 
 
 window.Alpine = Alpine
