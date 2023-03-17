@@ -1,0 +1,35 @@
+@media only screen and (max-width: 768px) {
+  .xoo-cp-pdetails tr {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+            "d a"
+            "c b";
+  }
+  tr {
+    .xoo-cp-ptitle {
+      grid-area: a;
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .xoo-cp-pprice {
+      grid-area: b;
+    }
+
+    .xoo-cp-pqty {
+      grid-area: c;
+      align-self: center;
+      width: auto;
+      text-align: left;
+    }
+
+    .xoo-cp-pimg {
+      grid-area: d;
+      display: block !important;
+      margin-bottom: 10px;
+      min-width: 100px;
+    }
+  }
+}

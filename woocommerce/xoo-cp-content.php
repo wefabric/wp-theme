@@ -73,7 +73,7 @@ $pattern   = apply_filters( 'woocommerce_quantity_input_pattern', has_filter( 'w
                 <span class="xcp-plus xcp-chng">+</span></div>
             <?php endif; ?>
         </td>
-        <td class="xoo-cp-remove"><span class="xoo-cp-icon-cross xoo-cp-remove-pd text-primary"></span></td>
+        <td class="xoo-cp-remove"><span class="xoo-cp-icon-cross xoo-cp-remove-pd text-primary hidden"></span></td>
     </tr>
 </table>
 <div class="xoo-cp-ptotal mb-8 w-full text-right"><span class="xcp-totxt"><?php _e('Totaal','added-to-cart-popup-woocommerce');?> : </span><span class="xcp-ptotal text-md"><?php echo $product_subtotal; ?></span></div>
