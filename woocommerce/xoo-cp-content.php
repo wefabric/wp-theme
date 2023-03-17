@@ -50,9 +50,9 @@ $pattern   = apply_filters( 'woocommerce_quantity_input_pattern', has_filter( 'w
 
 
 
-<table class="xoo-cp-pdetails clearfix">
+<table class="xoo-cp-pdetails clearfix mb-4">
     <tr data-xoo_cp_key="<?php echo $cart_item_key; ?>">
-        <td class="xoo-cp-remove"><span class="xoo-cp-icon-cross xoo-cp-remove-pd"></span></td>
+
         <td class="xoo-cp-pimg"><a href="<?php echo  $product_permalink; ?>"><?php echo $thumbnail; ?></a></td>
         <td class="xoo-cp-ptitle"><a href="<?php echo  $product_permalink; ?>"><?php echo $product_name; ?></a>
 
@@ -73,7 +73,8 @@ $pattern   = apply_filters( 'woocommerce_quantity_input_pattern', has_filter( 'w
                 <span class="xcp-plus xcp-chng">+</span></div>
             <?php endif; ?>
         </td>
+        <td class="xoo-cp-remove"><span class="xoo-cp-icon-cross xoo-cp-remove-pd text-primary"></span></td>
     </tr>
 </table>
-<div class="xoo-cp-ptotal"><span class="xcp-totxt"><?php _e('Totaal','added-to-cart-popup-woocommerce');?> : </span><span class="xcp-ptotal"><?php echo $product_subtotal; ?></span></div>
+<div class="xoo-cp-ptotal mb-8 w-full text-right"><span class="xcp-totxt"><?php _e('Totaal','added-to-cart-popup-woocommerce');?> : </span><span class="xcp-ptotal text-md"><?php echo $product_subtotal; ?></span></div>
 
