@@ -32,23 +32,32 @@ if ( $related_products ) : ?>
 		<?php endif; ?>
 		
 		<?php woocommerce_product_loop_start(); ?>
-        <div class="swiper relatedProductSwiper">
-            <div class="swiper-wrapper">
-			<?php foreach ( $related_products as $related_product ) : ?>
-            <div class="swiper-slide">
-					<?php
-					$post_object = get_post( $related_product->get_id() );
-
-					setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
-
-					wc_get_template_part( 'content', 'product' );
-					?>
-            </div>
-			<?php endforeach; ?>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-
+            <?php
+                echo view('components.slider.slider', [
+                    'items' => $related_products,
+                    'arrows' => false,
+                    'dots' => false,
+                    'card_type' => 'single-product-related',
+                    'breakPoints' => [
+                        640 => [ // when window width is >= 6400px
+                            'slidesPerView' => 1,
+                            'spaceBetween' => 20
+                        ],
+                        768 => [ // when window width is >= 768px
+                            'slidesPerView' => 2,
+                            'spaceBetween' => 20
+                        ],
+                        1024 => [ // when window width is >= 1024px
+                            'slidesPerView' => 3,
+                            'spaceBetween' => 20
+                        ],
+                        1350 => [ // when window width is >= 1350px
+                            'slidesPerView' => 4,
+                            'spaceBetween' => 20
+                       ],
+                    ],
+                ]);
+            ?>
 		<?php woocommerce_product_loop_end(); ?>
 
 
@@ -56,10 +65,5 @@ if ( $related_products ) : ?>
 	<?php
 endif;
 
-
 wp_reset_postdata();
-
-?>
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<?php
 
