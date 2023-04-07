@@ -61,7 +61,8 @@ section.related ul.products {
 	}
 
 	.swiper-wrapper {
-		@apply gap-4
+		@apply gap-4;
+		width: 80vw;
 	}
 
 	.swiper-slide img {
@@ -71,4 +72,3 @@ section.related ul.products {
 		object-fit: cover;
 	}
 }
-

@@ -30,36 +30,41 @@ if ( $related_products ) : ?>
 			?>
 			<h2><?php echo esc_html( $heading ); ?></h2>
 		<?php endif; ?>
-		
-		<?php woocommerce_product_loop_start(); ?>
-            <?php
-                echo view('components.slider.slider', [
-                    'items' => $related_products,
-                    'arrows' => false,
-                    'dots' => false,
-                    'card_type' => 'single-product-related',
-                    'breakPoints' => [
-                        640 => [ // when window width is >= 6400px
-                            'slidesPerView' => 1,
-                            'spaceBetween' => 20
-                        ],
-                        768 => [ // when window width is >= 768px
-                            'slidesPerView' => 2,
-                            'spaceBetween' => 20
-                        ],
-                        1024 => [ // when window width is >= 1024px
-                            'slidesPerView' => 3,
-                            'spaceBetween' => 20
-                        ],
-                        1350 => [ // when window width is >= 1350px
-                            'slidesPerView' => 4,
-                            'spaceBetween' => 20
-                       ],
-                    ],
-                ]);
-            ?>
-		<?php woocommerce_product_loop_end(); ?>
 
+        <div class="relatedProductSwiper">
+            <?php woocommerce_product_loop_start(); ?>
+                <?php
+                    echo view('components.slider.slider', [
+                        'items' => $related_products,
+                        'arrows' => false,
+                        'dots' => true,
+                        'card_type' => 'single-product-related',
+                        'breakPoints' => [
+                            1 => [ // when window width is >= 1px
+                                'slidesPerView' => 1,
+                                'spaceBetween' => 20
+                            ],
+                            640 => [ // when window width is >= 640px
+                                'slidesPerView' => 2,
+                                'spaceBetween' => 20
+                            ],
+                            768 => [ // when window width is >= 768px
+                                'slidesPerView' => 2,
+                                'spaceBetween' => 20
+                            ],
+                            1024 => [ // when window width is >= 1024px
+                                'slidesPerView' => 3,
+                                'spaceBetween' => 20
+                            ],
+                            1350 => [ // when window width is >= 1350px
+                                'slidesPerView' => 4,
+                                'spaceBetween' => 20
+                           ],
+                        ],
+                    ]);
+                ?>
+            <?php woocommerce_product_loop_end(); ?>
+        </div>
 
 	</section>
 	<?php
