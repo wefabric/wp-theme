@@ -3,7 +3,7 @@
 	$forceWebshop = true;
 @endphp
 <div class="hidden lg:flex lg:flex-col py-4 text-base">
-	
+
 	@if($forceWebshop || woocommerce_active()) {{-- webshop parts --}}
         <div class="flex justify-end pb-4">
 
@@ -30,7 +30,7 @@
 {{--                    </div>--}}
 {{--                </form>--}}
             </div>
-			
+
             @include('components.buttons.icon', [
                 'href' => wc_get_cart_url(),
                 'alt' => 'Naar de winkelwagen',
@@ -81,7 +81,7 @@
                 'echo' => false
             ]) !!}
         @endif
-		
+
 {{--
         @php
             $icon_classes = 'text-xl px-1.5 font-normal';
@@ -97,6 +97,6 @@
 			'a_class' => 'no-underline'
 		])
 --}}
-		
+
     </nav>
 </div>
