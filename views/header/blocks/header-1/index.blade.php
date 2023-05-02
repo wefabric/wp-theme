@@ -20,7 +20,7 @@
 
         @if(($block->get('show_usp')) === true)
             <div class="bg-tertiary h-8 absolute top-0 w-full rounded-t-lg ">
-                @include('components.usps.usp-banner')
+                @include('header.blocks.header-1.usp-banner')
             </div>
         @endif
 	
