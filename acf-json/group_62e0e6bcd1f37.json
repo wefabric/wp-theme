@@ -446,10 +446,10 @@
                             ]
                         },
                         {
-                            "key": "field_6447a8ac4cd7c",
-                            "label": "USP tonen in header afbeelding",
-                            "name": "show_usp",
-                            "type": "true_false",
+                            "key": "field_6454fdf2b8563",
+                            "label": "USP's",
+                            "name": "usps",
+                            "type": "group",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -458,71 +458,13 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "",
-                            "default_value": 0,
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": ""
-                        },
-                        {
-                            "key": "field_6450b4aab86f3",
-                            "label": "Toon gratis verzending prijs",
-                            "name": "show_free_shipping_price",
-                            "type": "true_false",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_6447a8ac4cd7c",
-                                        "operator": "==",
-                                        "value": "1"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 1,
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": ""
-                        },
-                        {
-                            "key": "field_6450b5edc0331",
-                            "label": "USPs",
-                            "name": "usps",
-                            "type": "repeater",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_6447a8ac4cd7c",
-                                        "operator": "==",
-                                        "value": "1"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "collapsed": "field_6450b601c0332",
-                            "min": 0,
-                            "max": 0,
                             "layout": "block",
-                            "button_label": "",
                             "sub_fields": [
                                 {
-                                    "key": "field_6450b601c0332",
-                                    "label": "USP",
-                                    "name": "usp_item",
-                                    "type": "text",
+                                    "key": "field_6447a8ac4cd7c",
+                                    "label": "USP tonen in header afbeelding",
+                                    "name": "show_usp",
+                                    "type": "true_false",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -531,11 +473,91 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
-                                    "maxlength": ""
+                                    "message": "",
+                                    "default_value": 0,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": ""
+                                },
+                                {
+                                    "key": "field_6454fe01b8564",
+                                    "label": "Globale USP's tonen?",
+                                    "name": "use_global_usps",
+                                    "type": "true_false",
+                                    "instructions": "Zodra deze aanstaat, worden de USP's uit de site instellingen ingeladen.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6447a8ac4cd7c",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 1,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": ""
+                                },
+                                {
+                                    "key": "field_6450b5edc0331",
+                                    "label": "USPs",
+                                    "name": "usps",
+                                    "type": "repeater",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6447a8ac4cd7c",
+                                                "operator": "==",
+                                                "value": "1"
+                                            },
+                                            {
+                                                "field": "field_6454fe01b8564",
+                                                "operator": "!=",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "collapsed": "field_6450b601c0332",
+                                    "min": 0,
+                                    "max": 0,
+                                    "layout": "block",
+                                    "button_label": "",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_6450b601c0332",
+                                            "label": "USP",
+                                            "name": "usp",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": ""
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -706,5 +728,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1683011610
+    "modified": 1683292771
 }

@@ -1,6 +1,15 @@
 @php
     $min_amount = get_free_shipping_minimum('BeNeDuLux');
-//    dd($block);
+    $uspsGroup = $block->get('usps');
+
+
+    $uspsList = [];
+    if($uspsGroup->get('use_global_usps') === true && !empty(get_fields('option')['usps'])) {
+        $uspsList = (new \Illuminate\Support\Collection(get_fields('option')['usps']['usp_items']))->recursive();
+    } else {
+        $uspsList = $uspsGroup->get('usps');
+
+    }
 @endphp
 
 <div class="bg-tertiary w-full rounded-t-lg">
@@ -8,65 +17,36 @@
     <!-- Desktop USP banner -->
     <div class="hidden lg:block usp_banner container mx-auto">
         <ul class="flex text-xs gap-6">
-            @if(($block->get('show_free_shipping_price')) === true)
-                <li class="usp-item ">
-                    <i class="text-secondary fas fa-check-circle"></i>
-                    <strong>Gratis</strong> verzending vanaf <?php echo $min_amount; ?>,-
+            @foreach ($uspsList as $usp)
+                 <li class="usp-item">
+                     <i class="text-secondary fas fa-check-circle"></i>
+                     {!! str_replace('{free_shipping_minimum}', $min_amount, $usp->get('usp')) !!}
                 </li>
-            @endif
-
-            @if (!empty($block->get('usps')))
-                @foreach ($block->get('usps') as $usp)
-                     <li class="usp-item">
-                         <i class="text-secondary fas fa-check-circle"></i>
-                         {!! $usp->get('usp_item') !!}
-                    </li>
-                @endforeach
-            @endif
-
-{{--            <li class="usp-item ">--}}
-{{--                <i class="text-secondary fas fa-check-circle"></i>--}}
-{{--                Vandaag besteld, <strong>morgen</strong> in huis!--}}
-{{--            </li>--}}
-{{--            <li class="usp-item ">--}}
-{{--                <i class="text-secondary fas fa-check-circle"></i>--}}
-{{--                Specialist in bevestigingstechnieken--}}
-{{--            </li>--}}
+            @endforeach
         </ul>
     </div>
 
     <!-- Mobile USP banner -->
     <div class="lg:hidden swiper uspSwiper text-center text-xs py-1">
         <ul class="swiper-wrapper">
-            @if(($block->get('show_free_shipping_price')) === true)
-            <li class="swiper-slide sm:mr-6">
-                <i class="text-secondary fas fa-check-circle"></i>
-                <strong>Gratis</strong> verzending vanaf <?php echo $min_amount; ?>,-
-            </li>
-            @endif
-
-            @if (!empty($block->get('usps')))
-                @foreach ($block->get('usps') as $usp)
-                    <li class="swiper-slide sm:mr-6">
-                        <i class="text-secondary fas fa-check-circle"></i>
-                        {!! $usp->get('usp_item') !!}
-                    </li>
-                @endforeach
-            @endif
+            @foreach ($uspsList as $usp)
+                <li class="swiper-slide sm:mr-6">
+                    <i class="text-secondary fas fa-check-circle"></i>
+                    {!! str_replace('{free_shipping_minimum}', $min_amount, $usp->get('usp')) !!}
+                </li>
+            @endforeach
         </ul>
     </div>
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
     <script>
-        const swiper = new Swiper(".uspSwiper", {
-            slidesPerView: 1,
-            loop: true,
-            autoplay: {
-                delay: 4000
-            },
+        window.addEventListener("DOMContentLoaded", (event) => {
+            new Swiper(".uspSwiper", {
+                slidesPerView: 1,
+                loop: true,
+                autoplay: {
+                    delay: 4000
+                },
+            });
         });
     </script>
 

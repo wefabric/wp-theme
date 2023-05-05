@@ -18,7 +18,7 @@
     <div class="image py-15 lg:{{ $block->get('vertical_space') }} mx-4 lg:mx-20 bg-center bg-cover bg-no-repeat z-50 relative" style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
 		<div class="bg-black opacity-20 -z-1 absolute h-full w-full top-0 left-0 rounded-lg"></div> {{-- black shade over image. --}}
 
-        @if(($block->get('show_usp')) === true)
+        @if(($block->get('usps') && $block->get('usps')->get('show_usp')) === true)
             <div class="bg-tertiary h-8 absolute top-0 w-full rounded-t-lg ">
                 @include('header.blocks.header-1.usp-banner')
             </div>
