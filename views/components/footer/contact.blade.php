@@ -17,7 +17,10 @@
 	@foreach($footer_establishments as $key => $establishment_config)
 		@php
 			/* @var WP_Post $establishment_config */
-			$establishment = new \Wefabric\WPEstablishments\Establishment($establishment_config['establishment']);
+			$establishment = null;
+			if($establishment_config) {
+                $establishment = new \Wefabric\WPEstablishments\Establishment($establishment_config['establishment']);
+			}
 		@endphp
 
 		<div class="mb-10 footer-address">
