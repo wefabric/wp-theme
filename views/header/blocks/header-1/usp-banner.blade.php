@@ -16,7 +16,7 @@
 
     <!-- Desktop USP banner -->
     <div class="hidden lg:block usp_banner container mx-auto">
-        <ul class="flex text-xs gap-6">
+        <ul class="flex text-sm gap-6 justify-center">
             @foreach ($uspsList as $usp)
                  <li class="usp-item">
                      <i class="text-secondary fas fa-check-circle"></i>
@@ -27,7 +27,7 @@
     </div>
 
     <!-- Mobile USP banner -->
-    <div class="lg:hidden swiper uspSwiper text-center text-xs py-1">
+    <div class="lg:hidden swiper uspSwiper text-center text-sm py-1">
         <ul class="swiper-wrapper">
             @foreach ($uspsList as $usp)
                 <li class="swiper-slide sm:mr-6">
