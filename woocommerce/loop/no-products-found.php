@@ -18,4 +18,4 @@
 defined( 'ABSPATH' ) || exit;
 
 ?>
-<p class="woocommerce-info"><?php esc_html_e( 'No products were found matching your selection.', 'woocommerce' ); ?></p>
+<p class="woocommerce-info"><?php esc_html_e( 'Niet gevonden wat je zocht? Wij helpen je graag. Klik rechtsonderin op de WhatsApp knop en stel je vraag.', 'woocommerce' ); ?></p>

@@ -62,7 +62,9 @@
 			
 			<div class="px-4 m md:px-8 lg:px-0 w-full lg:w-3/4 shop_content">
 				@if(woocommerce_product_loop())
-					@php do_action('woocommerce_before_shop_loop') @endphp
+					@unless(is_search())
+						@php do_action('woocommerce_before_shop_loop') @endphp
+					@endunless
 					
 					{!! woocommerce_product_loop_start(false) !!}
 					
