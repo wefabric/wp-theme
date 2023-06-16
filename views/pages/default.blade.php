@@ -22,7 +22,8 @@
 		@endif
 
         <div class="page-builder">
-            {!! pageBuilder()->render() !!}
+            <h1>{!! the_title() !!}</h1>
+            {!! the_content() !!}
         </div>
     @endloop
 @endsection
