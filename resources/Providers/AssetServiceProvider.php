@@ -40,7 +40,8 @@ class AssetServiceProvider extends ServiceProvider
         }
 
 
-        Asset::add('theme_styles', 'css/app.css', [], $version)->to('front');
+        Asset::add('theme_styles', 'css/app.css', [], $version)->to(['front', 'admin']);
+        Asset::add('admin_styles', 'css/admin.css', [], $version)->to(['admin']);
         Asset::add('theme_woo', 'css/woocommerce.css', ['theme_styles'], $version)->to('front');
         Asset::add('theme_js', 'js/app.js', [], $version)->to('front');
     }
