@@ -1,5 +1,15 @@
 {
   "blocks": [
-    "testimonial/block.json"
+    "header/block.json",
+    "tekst/block.json",
+    "afbeelding/block.json",
+    "titel-en-tekst/block.json",
+    "afbeelding-en-tekst/block.json",
+    "usp/block.json",
+    "nieuws/block.json",
+    "werknemers/block.json",
+    "werkwijze/block.json",
+    "testimonial/block.json",
+    "sebastiaan/block.json"
   ]
 }

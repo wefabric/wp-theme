@@ -17,6 +17,8 @@ import './dynamic-content';
 import './custom-cart';
 import './cad-download-toggle';
 
+Swiper.use([Navigation, Pagination]);
+
 window.Alpine = Alpine
 window.Swiper = Swiper;
 window.SwiperPagination = Pagination;

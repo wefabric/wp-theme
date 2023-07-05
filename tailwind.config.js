@@ -36,6 +36,11 @@ module.exports = {
           DEFAULT: 'var(--tertiary-color)',
           dark: 'var(--tertiary-color-dark)'
         },
+        sebastiaan: {
+          light: 'var(--sebastiaan-color-light)',
+          DEFAULT: 'var(--sebastiaan-color)',
+          dark: 'var(--sebastiaan-color-dark)'
+        },
         basic: {
           success: 'var(--basic-color-success)',
           danger: 'var(--basic-color-danger)'

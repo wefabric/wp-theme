@@ -1,6 +1,6 @@
 {
-  "name": "wefabric/testimonial",
-  "title": "Testimonial",
+  "name": "wefabric/sebastiaan",
+  "title": "Sebastiaan",
   "description": "A custom testimonial block",
   "style": "file:./style.css",
   "category": "theme",
@@ -44,10 +44,6 @@
     "fullHeight": true
   },
   "attributes": {
-    "backgroundColor": {
-      "type": "string",
-      "default": "purple"
-    }
   },
   "example": {
     "attributes": {
