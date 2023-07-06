@@ -15,6 +15,7 @@
     $showSliderDesktop = $uspsCount > $desktopLayout && $block['data']['show_slider'] == true;
 
     $swiperAutoplay = $block['data']['autoplay'] ? 'true' : 'false';
+    $swiperAutoplay = $swiperAutoplay ?? 'false';
 @endphp
 
 
