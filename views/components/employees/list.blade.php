@@ -13,8 +13,9 @@
     $showSliderTablet = count($employees) > $tabletLayout && $block['data']['show_slider'] == true;
     $showSliderDesktop = count($employees) > $desktopLayout && $block['data']['show_slider'] == true;
 
-    $swiperAutoplay = $block['data']['autoplay'] ? 'true' : 'false';
-    $swiperAutoplay = $swiperAutoplay ?? 'false';
+//    $swiperAutoplay = $block['data']['autoplay'] ? 'true' : 'false';
+//    $swiperAutoplay = $swiperAutoplay ?? 'false';
+    $swiperAutoplay = 'true';
 @endphp
 
 <div class="mobile block sm:hidden">
