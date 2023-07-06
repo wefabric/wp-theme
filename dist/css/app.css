@@ -26048,8 +26048,16 @@ a.woocommerce .cart_item td.product-name a,a .woocommerce .cart_item div.product
     margin-top: 0px;
   }
 
+  .sm\:block {
+    display: block;
+  }
+
   .sm\:flex {
     display: flex;
+  }
+
+  .sm\:hidden {
+    display: none;
   }
 
   .sm\:h-\[500px\] {
@@ -26333,6 +26341,10 @@ a.woocommerce .cart_item td.product-name a,a .woocommerce .cart_item div.product
 
   .lg\:mb-0 {
     margin-bottom: 0px;
+  }
+
+  .lg\:mb-20 {
+    margin-bottom: 5rem;
   }
 
   .lg\:mb-8 {
@@ -27052,10 +27064,6 @@ a.woocommerce .cart_item td.product-name a,a .woocommerce .cart_item div.product
 
   .xl\:w-1\/4 {
     width: 25%;
-  }
-
-  .xl\:w-2\/3 {
-    width: 66.666667%;
   }
 
   .xl\:w-3\/4 {

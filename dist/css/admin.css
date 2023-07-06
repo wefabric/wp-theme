@@ -12,3 +12,22 @@
 .wp-block[data-align="full"] {
     max-width: 100%;
 }
+
+
+table.fixed {
+    position: relative !important;
+}
+
+.button {
+     border-radius: unset !important;
+     --tw-bg-opacity: unset !important;
+     background-color: unset !important;
+     padding-top: unset !important;
+     padding-bottom: unset !important;
+     font-size: unset !important;
+     line-height: unset !important;
+     font-weight: unset !important;
+     --tw-text-opacity: unset !important;
+     color: unset !important;
+     letter-spacing: unset !important;
+}
