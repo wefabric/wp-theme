@@ -7,7 +7,6 @@
   "icon": "admin-comments",
   "apiVersion": 2,
   "keywords": [
-    "test",
     "testimonial"
   ],
   "acf": {
