@@ -43,7 +43,6 @@
         ];
     }
 
-
     $blockWidth = $block['data']['block_width'] ?? 100;
     $blockClass = '';
     if ($blockWidth == 50) {
