@@ -142,11 +142,11 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
-            "key": "field_64a5539ca9ccf",
-            "label": "Aantal nieuwsberichten op een rij",
+            "key": "field_64a66f5aa3e0b",
+            "label": "Layout (aantal nieuwsberichten op een rij)",
             "name": "layout",
             "aria-label": "",
-            "type": "select",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -155,20 +155,96 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "1": "1 per rij",
-                "2": "2 per rij",
-                "3": "3 per rij",
-                "4": "4 per rij",
-                "5": "5 per rij"
-            },
-            "default_value": 3,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_64a66faea3e0c",
+                    "label": "Mobiel",
+                    "name": "mobile",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "1": "1 per rij",
+                        "2": "2 per rij",
+                        "3": "3 per rij",
+                        "4": "4 per rij",
+                        "5": "5 per rij"
+                    },
+                    "default_value": 3,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_64a6750fcf091",
+                    "label": "Tablet",
+                    "name": "tablet",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "1": "1 per rij",
+                        "2": "2 per rij",
+                        "3": "3 per rij",
+                        "4": "4 per rij",
+                        "5": "5 per rij"
+                    },
+                    "default_value": 2,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_64a5539ca9ccf",
+                    "label": "Desktop",
+                    "name": "desktop",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "1": "1 per rij",
+                        "2": "2 per rij",
+                        "3": "3 per rij",
+                        "4": "4 per rij",
+                        "5": "5 per rij"
+                    },
+                    "default_value": 3,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                }
+            ]
         },
         {
             "key": "field_64a3ead6eaed5",
@@ -206,6 +282,7 @@
             },
             "choices": {
                 "50": "50%",
+                "66": "66%",
                 "100": "100%",
                 "fullscreen": "Volledig scherm"
             },
@@ -253,5 +330,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688565095
+    "modified": 1688630554
 }

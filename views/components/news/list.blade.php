@@ -1,51 +1,91 @@
 @php
-    $layout = $block['data']['layout'] ?? 1;
-    $layoutClass = '';
-    if ($layout == 1) {
-        $layoutClass = 'grid-cols-1';
-    } elseif ($layout == 2) {
-        $layoutClass = 'grid-cols-2';
-    } elseif ($layout == 3) {
-        $layoutClass = 'grid-cols-3';
-    } elseif ($layout == 4) {
-        $layoutClass = 'grid-cols-4';
-    } elseif ($layout >= 5) {
-        $layoutClass = 'grid-cols-5';
-    }
+    $mobileLayout = $block['data']['layout_mobile'] ?? 1;
+    $tabletLayout = $block['data']['layout_tablet'] ?? 2;
+    $desktopLayout = $block['data']['layout_desktop'] ?? 3;
 
-    $showSlider = false;
-    if (count($posts) > $layout && $block['data']['show_slider'] == true) {
-        $showSlider = true;
-    }
+    $layoutClasses = [
+        'mobile' => 'grid-cols-' . $mobileLayout,
+        'tablet' => 'sm:grid-cols-' . $tabletLayout,
+        'desktop' => 'lg:grid-cols-' . $desktopLayout,
+    ];
+
+    $showSliderMobile = count($posts) > $mobileLayout && $block['data']['show_slider'] == true;
+    $showSliderTablet = count($posts) > $tabletLayout && $block['data']['show_slider'] == true;
+    $showSliderDesktop = count($posts) > $desktopLayout && $block['data']['show_slider'] == true;
 @endphp
 
-
-@if($showSlider)
-    <div class="swiper nieuwsSwiper">
-        <div class="swiper-wrapper">
+<div class="mobile block sm:hidden">
+    @if($showSliderMobile)
+        <div class="swiper nieuwsSwiper nieuwsSwiperMobile">
+            <div class="swiper-wrapper">
+                @foreach ($posts as $post)
+                    <div class="swiper-slide h-full">
+                        @include('components.news.list-item')
+                    </div>
+                @endforeach
+            </div>
+            <div class="lg:hidden swiper-pagination"></div>
+            <div class="text-primary hidden lg:block swiper-button-next"></div>
+            <div class="text-primary hidden lg:block swiper-button-prev"></div>
+        </div>
+    @else
+        <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8">
             @foreach ($posts as $post)
-                <div class="swiper-slide h-full">
-                    @include('components.news.list-item')
-                </div>
+                @include('components.news.list-item')
             @endforeach
         </div>
-        <div class="lg:hidden swiper-pagination"></div>
-        <div class="text-primary hidden lg:block swiper-button-next"></div>
-        <div class="text-primary hidden lg:block swiper-button-prev"></div>
-    </div>
-@else
-    <div class="grid {{ $layoutClass }} gap-y-8 gap-x-4 lg:gap-x-8">
-        @foreach ($posts as $post)
-            @include('components.news.list-item')
-        @endforeach
-    </div>
-@endif
+    @endif
+</div>
 
+<div class="tablet hidden sm:block lg:hidden">
+    @if($showSliderTablet)
+        <div class="swiper nieuwsSwiper nieuwsSwiperTablet">
+            <div class="swiper-wrapper">
+                @foreach ($posts as $post)
+                    <div class="swiper-slide h-full">
+                        @include('components.news.list-item')
+                    </div>
+                @endforeach
+            </div>
+            <div class="lg:hidden swiper-pagination"></div>
+            <div class="text-primary hidden lg:block swiper-button-next"></div>
+            <div class="text-primary hidden lg:block swiper-button-prev"></div>
+        </div>
+    @else
+        <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8">
+            @foreach ($posts as $post)
+                @include('components.news.list-item')
+            @endforeach
+        </div>
+    @endif
+</div>
+
+<div class="desktop hidden lg:block">
+    @if($showSliderDesktop)
+        <div class="swiper nieuwsSwiper nieuwsSwiperDesktop">
+            <div class="swiper-wrapper">
+                @foreach ($posts as $post)
+                    <div class="swiper-slide h-full">
+                        @include('components.news.list-item')
+                    </div>
+                @endforeach
+            </div>
+            <div class="lg:hidden swiper-pagination"></div>
+            <div class="text-primary hidden lg:block swiper-button-next"></div>
+            <div class="text-primary hidden lg:block swiper-button-prev"></div>
+        </div>
+    @else
+        <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8">
+            @foreach ($posts as $post)
+                @include('components.news.list-item')
+            @endforeach
+        </div>
+    @endif
+</div>
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var uspSwiper = new Swiper(".nieuwsSwiper", {
-            slidesPerView: 'auto',
             spaceBetween: 20,
             loop: true,
             pagination: {
@@ -56,14 +96,14 @@
                 prevEl: ".swiper-button-prev",
             },
             breakpoints: {
-                640: {
-                    slidesPerView: {{ $layout - 1 }},
+                0: {
+                    slidesPerView: {{ $mobileLayout }},
                 },
-                768: {
-                    slidesPerView: {{ $layout }},
+                640: {
+                    slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    slidesPerView: {{ $layout }},
+                    slidesPerView: {{ $desktopLayout }},
                 }
             }
         });

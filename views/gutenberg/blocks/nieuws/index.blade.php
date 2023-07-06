@@ -12,7 +12,6 @@
         $titleClass = 'text-right';
     }
 
-
     $displayType = $block['data']['display_type'];
 
     if ($displayType == 'show_all') {
@@ -32,25 +31,33 @@
             }
     }
 
-    $blockWidth = $block['data']['block_width'] ?? 25;
+    $blockWidth = $block['data']['block_width'] ?? 100;
     $blockClass = '';
     if ($blockWidth == 50) {
-        $blockClass = 'container mx-auto w-full lg:w-1/2';
+        $blockClass = 'w-full lg:w-1/2';
+    }
+    elseif ($blockWidth == 66) {
+        $blockClass = 'w-full lg:w-2/3';
     }
     elseif ($blockWidth == 100) {
-        $blockClass = 'container mx-auto w-full';
+        $blockClass = ' w-full';
     }
     elseif ($blockWidth == 'fullscreen') {
-        $blockClass = ' w-full';
+        $blockClass = 'w-full';
+    }
+
+    $fullScreenClass = '';
+    if ($blockWidth !== 'fullscreen') {
+        $fullScreenClass = 'container mx-auto';
     }
 
 @endphp
 
 <section id="nieuws-block" class="bg-{{ $backgroundColor}}">
-    <div class="{{ $blockClass }} px-8 lg:py-20">
-        <div class="container mx-auto">
-            <h2 class="mb-20 {{ $titleClass }}">{{ $title }}</h2>
+    <div class="{{ $fullScreenClass }} px-8 py-8 lg:py-20">
+        <div class="{{ $blockClass }} mx-auto">
+            <h2 class="container mx-auto mb-8 lg:mb-20 {{ $titleClass }}">{{ $title }}</h2>
+            @include('components.news.list', ['posts' => $posts])
         </div>
-        @include('components.news.list', ['posts' => $posts])
     </div>
 </section>
