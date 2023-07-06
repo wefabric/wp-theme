@@ -1,6 +1,6 @@
 import Alpine from 'alpinejs'
 // core version + navigation, pagination modules:
-import Swiper, { Navigation, Pagination } from 'swiper';
+import Swiper, { Navigation, Pagination, Autoplay } from 'swiper';
 // import Swiper and modules styles
 
 
@@ -17,7 +17,7 @@ import './dynamic-content';
 import './custom-cart';
 import './cad-download-toggle';
 
-Swiper.use([Navigation, Pagination]);
+Swiper.use([Navigation, Pagination, Autoplay]);
 
 window.Alpine = Alpine
 window.Swiper = Swiper;

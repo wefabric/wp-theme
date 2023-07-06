@@ -13,7 +13,7 @@
     $postAuthorName = get_the_author_meta('display_name', $postAuthorId);
 @endphp
 
-<div class="nieuws-item group cursor-pointer" onclick="window.location.href = '{{ $postUrl }}';">
+<div class="nieuws-item group cursor-pointer h-full" onclick="window.location.href = '{{ $postUrl }}';">
     <div class="h-full flex flex-col items-center border-2 border-gray-200 border-opacity-60 group-hover:-translate-y-4 duration-300 ease-in-out">
         @if ($postThumbnailUrl)
             <div class="h-56 md:h-80 overflow-hidden w-full relative">

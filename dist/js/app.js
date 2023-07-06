@@ -3168,7 +3168,7 @@ window.$ = __webpack_provided_window_dot_jQuery = __webpack_require__(/*! jquery
 
 
 
-swiper__WEBPACK_IMPORTED_MODULE_1__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_1__.Pagination]);
+swiper__WEBPACK_IMPORTED_MODULE_1__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper__WEBPACK_IMPORTED_MODULE_1__.Pagination, swiper__WEBPACK_IMPORTED_MODULE_1__.Autoplay]);
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 window.Swiper = swiper__WEBPACK_IMPORTED_MODULE_1__["default"];
 window.SwiperPagination = swiper__WEBPACK_IMPORTED_MODULE_1__.Pagination;

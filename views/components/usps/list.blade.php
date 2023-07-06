@@ -13,6 +13,8 @@
     $showSliderMobile = $uspsCount > $mobileLayout && $block['data']['show_slider'] == true;
     $showSliderTablet = $uspsCount > $tabletLayout && $block['data']['show_slider'] == true;
     $showSliderDesktop = $uspsCount > $desktopLayout && $block['data']['show_slider'] == true;
+
+    $swiperAutoplay = $block['data']['autoplay'] ? 'true' : 'false';
 @endphp
 
 
@@ -90,6 +92,7 @@
         var uspSwiper = new Swiper(".uspSwiper", {
             spaceBetween: 20,
             loop: true,
+            autoplay: {{ $swiperAutoplay }},
             pagination: {
                 el: ".swiper-pagination",
             },

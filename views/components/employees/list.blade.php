@@ -12,6 +12,8 @@
     $showSliderMobile = count($employees) > $mobileLayout && $block['data']['show_slider'] == true;
     $showSliderTablet = count($employees) > $tabletLayout && $block['data']['show_slider'] == true;
     $showSliderDesktop = count($employees) > $desktopLayout && $block['data']['show_slider'] == true;
+
+    $swiperAutoplay = $block['data']['autoplay'] ? 'true' : 'false';
 @endphp
 
 <div class="mobile block sm:hidden">
@@ -89,6 +91,7 @@
         var uspSwiper = new Swiper(".werknemerSwiper", {
             spaceBetween: 20,
             loop: true,
+            autoplay: {{ $swiperAutoplay }},
             pagination: {
                 el: ".swiper-pagination",
             },

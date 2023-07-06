@@ -12,7 +12,7 @@
     $socials = $fields['socials'] ?? [];
 @endphp
 
-<div class="werknemer-item group">
+<div class="werknemer-item group h-full">
     <div class="h-full flex flex-col items-center border-2 border-gray-200 border-opacity-60 group-hover:-translate-y-4 duration-300 ease-in-out">
         <div class="h-60 lg:h-96 overflow-hidden w-full">
             <img src="{{ $imageUrl }}" alt="team" class="w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">

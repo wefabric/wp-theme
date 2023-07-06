@@ -23,12 +23,30 @@
     if (isset($block['data']['background_image'])) {
         $backgroundImageUrl = wp_get_attachment_image_src($block['data']['background_image'])[0] ?? '';
     }
+
+    $blockWidth = $block['data']['block_width'] ?? 100;
+    $blockClass = '';
+    if ($blockWidth == 50) {
+        $blockClass = 'w-full lg:w-1/2';
+    }
+    elseif ($blockWidth == 66) {
+        $blockClass = 'w-full lg:w-2/3';
+    }
+    elseif ($blockWidth == 100) {
+        $blockClass = ' w-full';
+    }
+    elseif ($blockWidth == 'fullscreen') {
+        $blockClass = 'w-full';
+    }
+
+    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 @endphp
 
 <section id="tekst-block" class="py-16 lg:py-0 bg-{{ $backgroundColor}}"
          style="background-image: url('{{ wp_get_attachment_image_src($block['data']['background_image'])[0] ?? '' }}'); background-repeat: no-repeat; background-size: cover;">
-    <div class="container mx-auto px-8 lg:py-20 text-{{ $textColor }}">
-        <div class="lg:w-2/3 {{ $textClass }}">
+
+    <div class="{{ $fullScreenClass }} px-8 py-8 lg:py-20 text-{{ $textColor }}">
+        <div class="{{ $blockClass }} {{ $textClass }}">
             <h2 class="mb-4">{{ $title }}</h2>
             <p>{{ $text }}</p>
             @if (!empty($buttonText) && !empty($buttonLink))

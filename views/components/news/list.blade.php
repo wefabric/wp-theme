@@ -12,6 +12,8 @@
     $showSliderMobile = count($posts) > $mobileLayout && $block['data']['show_slider'] == true;
     $showSliderTablet = count($posts) > $tabletLayout && $block['data']['show_slider'] == true;
     $showSliderDesktop = count($posts) > $desktopLayout && $block['data']['show_slider'] == true;
+
+    $swiperAutoplay = $block['data']['autoplay'] ? 'true' : 'false';
 @endphp
 
 <div class="mobile block sm:hidden">
@@ -85,9 +87,10 @@
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
-        var uspSwiper = new Swiper(".nieuwsSwiper", {
+            var uspSwiper = new Swiper(".nieuwsSwiper", {
             spaceBetween: 20,
             loop: true,
+            autoplay: {{ $swiperAutoplay }},
             pagination: {
                 el: ".swiper-pagination",
             },

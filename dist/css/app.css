@@ -21915,6 +21915,10 @@ button.swiper-pagination-bullet {
   height: 100%;
 }
 
+.swiper-slide {
+  height: 100% !important;
+}
+
 .faq-drawer {
   margin-bottom: 30px;
 }

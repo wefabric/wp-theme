@@ -373,6 +373,34 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_64a6c12b2d587",
+            "label": "Autoplay slider",
+            "name": "autoplay",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a55d545951a",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_64a57517320a3",
             "label": "Breedte blok",
             "name": "block_width",
@@ -436,5 +464,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688637319
+    "modified": 1688650131
 }
