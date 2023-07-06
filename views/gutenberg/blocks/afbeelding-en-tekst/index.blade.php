@@ -34,7 +34,7 @@
         $textClass = 'lg:w-1/3';
     }
 
-    $imageHeightClass = ($block['data']['full_height'] == true) ? 'h-full' : '';
+    $imageHeightClass = $block['data']['full_height'] ? 'h-full' : '';
 
 
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -52,10 +52,7 @@
         $blockClass = 'w-full';
     }
 
-    $fullScreenClass = '';
-    if ($blockWidth !== 'fullscreen') {
-        $fullScreenClass = 'container mx-auto';
-    }
+    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 @endphp
 
 

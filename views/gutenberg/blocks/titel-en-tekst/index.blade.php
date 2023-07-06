@@ -17,7 +17,6 @@
 
     $textOrder = ($textPosition === 'left') ? 'lg:order-1' : 'lg:order-2';
     $titleOrder = ($textPosition === 'left') ? 'lg:order-2' : 'lg:order-1';
-
 @endphp
 
 <section id="titel-tekst-block" class="bg-{{ $backgroundColor}} py-16 lg:py-0"

@@ -46,11 +46,7 @@
         $blockClass = 'w-full';
     }
 
-    $fullScreenClass = '';
-    if ($blockWidth !== 'fullscreen') {
-        $fullScreenClass = 'container mx-auto';
-    }
-
+    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 @endphp
 
 <section id="nieuws-block" class="bg-{{ $backgroundColor}}">

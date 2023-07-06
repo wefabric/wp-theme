@@ -32,7 +32,6 @@
             }
     }
 
-
     $blockWidth = $block['data']['block_width'] ?? 100;
     $blockClass = '';
     if ($blockWidth == 50) {
@@ -48,11 +47,7 @@
         $blockClass = 'w-full';
     }
 
-    $fullScreenClass = '';
-    if ($blockWidth !== 'fullscreen') {
-        $fullScreenClass = 'container mx-auto';
-    }
-
+    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 @endphp
 
 <section id="werknemers-block" class="bg-{{ $backgroundColor}}">
