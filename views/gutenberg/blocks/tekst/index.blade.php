@@ -1,9 +1,13 @@
 @php
+    // content
     $title = $block['data']['title'] ?? '';
     $text = $block['data']['text'] ?? '';
-    $textPosition = $block['data']['text_position'] ?? '';
+
+    $buttonText = $block['data']['button_text'] ?? '';
+    $buttonLink = ($block['data']['button_link']['url']) ?? '';
+
     $textColor = $block['data']['text_color'] ?? '';
-    $backgroundColor = $block['data']['background_color'];
+    $textPosition = $block['data']['text_position'] ?? '';
 
     if ($textPosition === 'left') {
         $textClass = 'mr-auto';
@@ -15,8 +19,9 @@
         $textClass = '';
     }
 
-    $buttonText = $block['data']['button_text'] ?? '';
-    $buttonLink = $block['data']['button_link'] ?? '';
+
+    // blokinstellingen
+    $backgroundColor = $block['data']['background_color'];
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
      $backgroundImageUrl = '';

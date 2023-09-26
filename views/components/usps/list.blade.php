@@ -14,7 +14,7 @@
     $showSliderTablet = $uspsCount > $tabletLayout && $block['data']['show_slider'] == true;
     $showSliderDesktop = $uspsCount > $desktopLayout && $block['data']['show_slider'] == true;
 
-    $swiperAutoplay = $block['data']['autoplay'] ? 'true' : 'false';
+    $swiperAutoplay = isset($block['data']['autoplay']) ? ($block['data']['autoplay'] ? 'true' : 'false') : 'false';
 
 @endphp
 

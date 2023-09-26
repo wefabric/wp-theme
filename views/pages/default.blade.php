@@ -2,8 +2,6 @@
 
 @section('content')
     @loop
-
-
         @if(get_the_ID() !== wc_get_page_id( 'cart' ))
             @if(get_post_type() === 'post' && themeHeader()->getHeaderValues(get_the_ID())->count() === 0)
                 <div class="header">
@@ -22,7 +20,6 @@
 		@endif
 
         <div class="page-builder">
-            <h1>{!! the_title() !!}</h1>
             {!! the_content() !!}
         </div>
     @endloop

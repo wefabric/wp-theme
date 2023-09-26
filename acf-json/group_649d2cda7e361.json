@@ -3,6 +3,23 @@
     "title": "Block: Afbeelding",
     "fields": [
         {
+            "key": "field_6512e23fc37ef",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_649d2cda8a125",
             "label": "Afbeelding",
             "name": "image",
@@ -28,6 +45,26 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_649d34d371a52",
+            "label": "Afbeelding volledige schermbreedte?",
+            "name": "full_screen_image",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_649d7231ceba7",
             "label": "Afbeelding grootte",
             "name": "image_size",
@@ -35,7 +72,15 @@
             "type": "radio",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_649d34d371a52",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -53,34 +98,6 @@
             "other_choice": 0,
             "layout": "vertical",
             "save_other_choice": 0
-        },
-        {
-            "key": "field_649d34d371a52",
-            "label": "Afbeelding volledige schermbreedte?",
-            "name": "full_screen_image",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_649d7231ceba7",
-                        "operator": "==",
-                        "value": "100"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
         },
         {
             "key": "field_649d745b68a4b",
@@ -131,6 +148,23 @@
             "placeholder": ""
         },
         {
+            "key": "field_6512e249c37f0",
+            "label": "Blokinstellingen",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_649d70b8572be",
             "label": "Achtergrond kleur",
             "name": "background_color",
@@ -166,5 +200,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688543796
+    "modified": 1695736421
 }

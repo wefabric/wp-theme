@@ -3,6 +3,23 @@
     "title": "Block: Tekst",
     "fields": [
         {
+            "key": "field_6512ef53ac959",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_649d53b08e829",
             "label": "Titel",
             "name": "title",
@@ -41,6 +58,50 @@
             "toolbar": "full",
             "media_upload": 1,
             "delay": 0
+        },
+        {
+            "key": "field_649d5430f587b",
+            "label": "Button tekst",
+            "name": "button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_649d5417f587a",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_649d543ef587c",
+            "label": "Button link",
+            "name": "button_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
         },
         {
             "key": "field_649d5403f5879",
@@ -87,65 +148,25 @@
             "placeholder": ""
         },
         {
-            "key": "field_649d5430f587b",
-            "label": "Button tekst",
-            "name": "button_text",
+            "key": "field_6512ef5cac95a",
+            "label": "Blokinstellingen",
+            "name": "",
             "aria-label": "",
-            "type": "text",
+            "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_649d5417f587a",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_649d543ef587c",
-            "label": "Button link",
-            "name": "button_link",
-            "aria-label": "",
-            "type": "page_link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_649d5417f587a",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": "",
-            "post_status": "",
-            "taxonomy": "",
-            "allow_archives": 1,
-            "multiple": 0,
-            "allow_null": 0
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_64a6ba376070b",
-            "label": "Breedte block",
+            "label": "Breedte blok",
             "name": "block_width",
             "aria-label": "",
             "type": "select",
@@ -240,5 +261,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688648286
+    "modified": 1695739952
 }

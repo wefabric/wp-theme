@@ -2,7 +2,7 @@
     $imageID = $block['data']['image'];
     $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
     $imagePosition = $block['data']['image_position'] ?? '';
-    $fullScreen = isset($block['data']['full_screen_image']) ? $block['data']['full_screen_image'] : false;
+    $fullScreen = $block['data']['full_screen_image'] ?? false;
     $imageSize = $block['data']['image_size'] ?? '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'none';

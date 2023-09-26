@@ -10,11 +10,10 @@
         $backgroundImageUrl = wp_get_attachment_image_src($block['data']['background_image'])[0] ?? '';
     }
 
-    $buttonOneText = $block['data']['button_one_text'] ?? '';
-    $buttonOneLink = $block['data']['button_one_link'] ?? '';
-
-    $buttonTwoText = $block['data']['button_two_text'] ?? '';
-    $buttonTwoLink = $block['data']['button_two_link'] ?? '';
+    $buttonOneText = $block['data']['button_1_text'] ?? '';
+    $buttonOneLink = ($block['data']['button_1_link']['url']) ?? '';
+    $buttonTwoText = $block['data']['button_2_text'] ?? '';
+    $buttonTwoLink = ($block['data']['button_2_link']['url']) ?? '';
 
     $textOrder = ($textPosition === 'left') ? 'lg:order-1' : 'lg:order-2';
     $imageOrder = ($textPosition === 'left') ? 'lg:order-2' : 'lg:order-1';

@@ -3,6 +3,23 @@
     "title": "Block: USP's",
     "fields": [
         {
+            "key": "field_6512dda90422d",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_649950952e415",
             "label": "Titel",
             "name": "title",
@@ -248,6 +265,23 @@
             ]
         },
         {
+            "key": "field_6512d342fc560",
+            "label": "Tekst kleur",
+            "name": "text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "black",
+            "font_size": 14
+        },
+        {
             "key": "field_64a68f4457d03",
             "label": "Layout (aantal USPs op een rij)",
             "name": "layout",
@@ -401,6 +435,23 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_6512ddb50422e",
+            "label": "Blokinstellingen",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_64a57517320a3",
             "label": "Breedte blok",
             "name": "block_width",
@@ -464,5 +515,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688650131
+    "modified": 1695735276
 }

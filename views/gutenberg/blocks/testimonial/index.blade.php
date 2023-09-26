@@ -39,7 +39,7 @@
                     <a class="inline-flex items-center">
                         <img alt="testimonial" src="https://dummyimage.com/106x106" class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
                         <span class="flex-grow flex flex-col pl-4">
-                            <span class="title-font font-medium">Sebas Hartman</span>
+                            <span class="title-font font-medium"><?php the_field('author'); ?></span>
                             <span class="text-gray-500 text-sm">Front-end Developer</span>
                         </span>
                     </a>

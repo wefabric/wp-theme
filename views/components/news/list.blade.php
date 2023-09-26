@@ -13,7 +13,7 @@
     $showSliderTablet = count($posts) > $tabletLayout && $block['data']['show_slider'] == true;
     $showSliderDesktop = count($posts) > $desktopLayout && $block['data']['show_slider'] == true;
 
-    $swiperAutoplay = $block['data']['autoplay'] ? 'true' : 'false';
+    $swiperAutoplay = isset($block['data']['autoplay']) ? ($block['data']['autoplay'] ? 'true' : 'false') : 'false';
 
 @endphp
 

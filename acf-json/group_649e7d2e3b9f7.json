@@ -3,6 +3,23 @@
     "title": "Block: Werkwijze",
     "fields": [
         {
+            "key": "field_6512e1573e2e8",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_649e7d2efb8cf",
             "label": "Titel",
             "name": "title",
@@ -267,6 +284,23 @@
             ]
         },
         {
+            "key": "field_6512e1613e2e9",
+            "label": "Blokinstellingen",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_64a69379bd6b3",
             "label": "Breedte blok",
             "name": "block_width",
@@ -330,5 +364,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688638362
+    "modified": 1695736176
 }

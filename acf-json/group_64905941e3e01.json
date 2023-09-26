@@ -3,6 +3,23 @@
     "title": "Block: Afbeelding en tekst",
     "fields": [
         {
+            "key": "field_6512dcc713516",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_649059427854a",
             "label": "Titel",
             "name": "title",
@@ -167,7 +184,7 @@
         {
             "key": "field_649afe956fdbd",
             "label": "Button 1 tekst",
-            "name": "button_one_text",
+            "name": "button_1_text",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -187,9 +204,9 @@
         {
             "key": "field_649afeb96fdbe",
             "label": "Button 1 link",
-            "name": "button_one_link",
+            "name": "button_1_link",
             "aria-label": "",
-            "type": "page_link",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -198,17 +215,12 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": "",
-            "post_status": "",
-            "taxonomy": "",
-            "allow_archives": 1,
-            "multiple": 0,
-            "allow_null": 0
+            "return_format": "url"
         },
         {
             "key": "field_649ed43409136",
             "label": "Button 2 tekst",
-            "name": "button_two_text",
+            "name": "button_2_text",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -228,9 +240,9 @@
         {
             "key": "field_649ed46f09137",
             "label": "Button 2 link",
-            "name": "button_two_link",
+            "name": "button_2_link",
             "aria-label": "",
-            "type": "page_link",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -239,12 +251,24 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": "",
-            "post_status": "",
-            "taxonomy": "",
-            "allow_archives": 1,
-            "multiple": 0,
-            "allow_null": 0
+            "return_format": "array"
+        },
+        {
+            "key": "field_6512dcd313517",
+            "label": "Blokinstellingen",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_64a6a755f534d",
@@ -335,5 +359,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688643956
+    "modified": 1695739421
 }

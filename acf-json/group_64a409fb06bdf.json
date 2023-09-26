@@ -31,6 +31,23 @@
             "placeholder": ""
         },
         {
+            "key": "field_6512db817cb59",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_64a40a4003fc4",
             "label": "Titel",
             "name": "title",
@@ -79,6 +96,49 @@
             "new_lines": ""
         },
         {
+            "key": "field_6512dc000d039",
+            "label": "Button 1 tekst",
+            "name": "button_1_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6512e7ec158f2",
+            "label": "Button 1 link",
+            "name": "button_1_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6512dc000d039",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
             "key": "field_64a43090bafd4",
             "label": "Tekstpositie",
             "name": "text_position",
@@ -123,6 +183,23 @@
             "font_size": 14
         },
         {
+            "key": "field_6512db1c457bb",
+            "label": "Afbeelding",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_64a40e90be6f8",
             "label": "Header afbeelding",
             "name": "background_image",
@@ -146,6 +223,94 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium"
+        },
+        {
+            "key": "field_6512d8c0de563",
+            "label": "Overlay op header afbeelding",
+            "name": "overlay_image",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a40e90be6f8",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6512da1e3db97",
+            "label": "Overlay kleur",
+            "name": "overlay_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6512d8c0de563",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_6512e32aa9872",
+            "label": "Overlay sterkte",
+            "name": "overlay_opacity",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6512d8c0de563",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "25": "25%",
+                "50": "50%",
+                "75": "75%",
+                "100": "100%"
+            },
+            "default_value": 50,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         }
     ],
     "location": [
@@ -166,5 +331,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688543692
+    "modified": 1695738671
 }

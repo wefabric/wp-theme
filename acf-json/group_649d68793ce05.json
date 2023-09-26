@@ -3,6 +3,23 @@
     "title": "Block: Titel en tekst",
     "fields": [
         {
+            "key": "field_6512de154b8cb",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_649d687930fc8",
             "label": "Titel",
             "name": "title",
@@ -86,6 +103,59 @@
             "placeholder": ""
         },
         {
+            "key": "field_649d6b3299525",
+            "label": "Button tekst",
+            "name": "button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_649d6b7999526",
+            "label": "Button link",
+            "name": "button_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_6512de204b8cc",
+            "label": "Blokinstellingen",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_649d68a330fca",
             "label": "Achtergrond kleur",
             "name": "background_color",
@@ -126,47 +196,6 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium"
-        },
-        {
-            "key": "field_649d6b3299525",
-            "label": "Button tekst",
-            "name": "button_text",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_649d6b7999526",
-            "label": "Button link",
-            "name": "button_link",
-            "aria-label": "",
-            "type": "page_link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": "",
-            "post_status": "",
-            "taxonomy": "",
-            "allow_archives": 1,
-            "multiple": 0,
-            "allow_null": 0
         }
     ],
     "location": [
@@ -187,5 +216,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688543808
+    "modified": 1695739669
 }

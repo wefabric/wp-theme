@@ -3,6 +3,23 @@
     "title": "Block: Nieuwsoverzicht",
     "fields": [
         {
+            "key": "field_6512dec4bd9a4",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_649d8c8962661",
             "label": "Titel",
             "name": "title",
@@ -295,6 +312,23 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_6512ded1bd9a5",
+            "label": "Blokinstellingen",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_64a569495ecd0",
             "label": "Breedte blok",
             "name": "block_width",
@@ -358,5 +392,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688650397
+    "modified": 1695735524
 }
