@@ -4,7 +4,7 @@
     $icon = $usp['uspIcon'];
     $iconColor = $usp['uspIconColor'];
     $imageUrl = wp_get_attachment_url($usp['uspImage']) ?? '';
-    $textColor = $block['data']['text_color'];
+    $textColor = $block['data']['text_color'] ?? '';
 @endphp
 
 
