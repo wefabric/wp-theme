@@ -22,11 +22,10 @@
 
     // Blokinstellingen
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
-
-    $backgroundImageUrl = '';
-    if (isset($block['data']['background_image'])) {
-        $backgroundImageUrl = wp_get_attachment_image_src($block['data']['background_image'])[0] ?? '';
-    }
+    $imageId = ($block['data']['background_image']) ?? '';
+    $overlayEnabled = ($block['data']['overlay_image']) ?? false;
+    $overlayColor = ($block['data']['overlay_color']) ?? '';
+    $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
 
     $blockWidth = $block['data']['block_width'] ?? 100;
     $blockClass = '';
@@ -42,17 +41,18 @@
     elseif ($blockWidth == 'fullscreen') {
         $blockClass = 'w-full';
     }
-
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 @endphp
 
-<section id="tekst-block" class="py-16 lg:py-0 bg-{{ $backgroundColor}}"
-         style="background-image: url('{{ wp_get_attachment_image_src($block['data']['background_image'])[0] ?? '' }}'); background-repeat: no-repeat; background-size: cover;">
-
-    <div class="{{ $fullScreenClass }} px-8 py-8 lg:py-20 text-{{ $textColor }}">
+<section id="tekst-block" class="relative py-16 lg:py-0 bg-{{ $backgroundColor}}"
+         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
+    @if ($overlayEnabled)
+        <div class="absolute inset-0 bg-{{$overlayColor}} opacity-{{$overlayOpacity}}"></div>
+    @endif
+    <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }} text-{{ $textColor }}">
         <div class="{{ $blockClass }} {{ $textClass }}">
             <h2 class="mb-4">{{ $title }}</h2>
-            <p>{{ $text }}</p>
+            <p>{!! $text !!} </p>
             @if (!empty($buttonText) && !empty($buttonLink))
                 <a href="{{ $buttonLink }}" class="btn button-primary bg-primary hover:bg-primary-dark mt-4 text-base">{{ $buttonText }}</a>
             @endif

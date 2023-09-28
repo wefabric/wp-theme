@@ -61,7 +61,7 @@
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 @endphp
 
-<section id="USP-block" class=" bg-{{ $backgroundColor }}">
+<section id="USP-block" class="relative bg-{{ $backgroundColor }}">
     <div class="{{ $fullScreenClass }} px-8 py-8 lg:py-20">
         <div class="{{ $blockClass }} mx-auto">
             @if (!empty($title))

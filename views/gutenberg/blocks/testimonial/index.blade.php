@@ -25,7 +25,7 @@
 
 
 
-<section id="testimonial-block" class="">
+<section id="testimonial-block" class="relative">
     <div class="container mx-auto px-8 lg:py-20">
         <h2 class="w-full lg:w-2/3 mx-auto mb-20">Testimonial</h2>
 

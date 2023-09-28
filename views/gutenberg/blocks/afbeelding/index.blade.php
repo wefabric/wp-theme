@@ -26,7 +26,7 @@
     }
 @endphp
 
-<section id="afbeelding-block" class="bg-{{ $backgroundColor}}">
+<section id="afbeelding-block" class="relative bg-{{ $backgroundColor}}">
     <div class="{{ $fullScreen ? 'w-full' : 'container mx-auto px-8 lg:py-20' }}">
         @if($block['data']['image'])
             {!! wp_get_attachment_image($imageID, 'full', false, [

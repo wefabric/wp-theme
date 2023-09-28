@@ -19,8 +19,7 @@
             "choices": {
                 "1": "Versie 1",
                 "2": "Versie 2",
-                "3": "Versie 3",
-                "4": "Versie 4"
+                "3": "Versie 3"
             },
             "default_value": 1,
             "return_format": "value",
@@ -61,6 +60,13 @@
                         "field": "field_64a409fbdbaf0",
                         "operator": "==",
                         "value": "1"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_64a409fbdbaf0",
+                        "operator": "==",
+                        "value": "2"
                     }
                 ]
             ],
@@ -103,7 +109,15 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a409fbdbaf0",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -125,6 +139,11 @@
             "required": 0,
             "conditional_logic": [
                 [
+                    {
+                        "field": "field_64a409fbdbaf0",
+                        "operator": "==",
+                        "value": "1"
+                    },
                     {
                         "field": "field_6512dc000d039",
                         "operator": "!=empty"
@@ -331,5 +350,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695738671
+    "modified": 1695902239
 }

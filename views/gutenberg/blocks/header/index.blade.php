@@ -1,16 +1,22 @@
 @php
+   // Variant
+   $headerVariant = $block['data']['header_version'] ?? '';
+
+   $headerClass = '';
+   if ($headerVariant == 1) {
+       $headerClass = 'h-[400px] sm:h-[500px] md:h-[600px] lg:h-[600px] xl:h-[800px]';
+   } elseif ($headerVariant == 2) {
+       $headerClass = 'h-[300px]';
+   }
+
+
+   // Content
    $title = !empty($block['data']['title']) ? $block['data']['title'] : get_the_title();
    $subTitle = ($block['data']['subtitle']) ?? '';
    $textColor = ($block['data']['text_color']) ?? '';
+
    $buttonOneText = ($block['data']['button_1_text']) ?? '';
    $buttonOneLink = ($block['data']['button_1_link']['url']) ?? '';
-
-
-   $imageId = ($block['data']['background_image']) ?? '';
-   $overlayEnabled = ($block['data']['overlay_image']) ?? false;
-   $overlayColor = ($block['data']['overlay_color']) ?? '';
-   $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
-
 
     $textPosition = $block['data']['text_position'] ?? '';
     $textPositionClass = '';
@@ -26,10 +32,18 @@
        $textPositionClass = 'justify-end text-left';
           $textWidthClass = 'w-full md:w-1/2 xl:w-1/3';
    }
+
+
+   // Afbeelding
+   $imageId = ($block['data']['background_image']) ?? '';
+   $overlayEnabled = ($block['data']['overlay_image']) ?? false;
+   $overlayColor = ($block['data']['overlay_color']) ?? '';
+   $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
+
 @endphp
 
 <section id="header-block" class="relative">
-    <div class="bg-cover bg-center h-[400px] sm:h-[500px] md:h-[600px] lg:h-[600px] xl:h-[800px]" style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}') ">
+    <div class="bg-cover bg-center {{ $headerClass }}" style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
         @if ($overlayEnabled)
             <div class="absolute inset-0 bg-{{$overlayColor}} opacity-{{$overlayOpacity}}"></div>
         @endif
