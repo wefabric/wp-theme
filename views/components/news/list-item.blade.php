@@ -16,25 +16,25 @@
 <div class="nieuws-item group cursor-pointer h-full" onclick="window.location.href = '{{ $postUrl }}';">
     <div class="h-full flex flex-col items-center border-2 border-gray-200 border-opacity-60 group-hover:-translate-y-4 duration-300 ease-in-out">
         @if ($postThumbnailUrl)
-            <div class="h-56 md:h-80 overflow-hidden w-full relative">
+            <div class="h-[360px] overflow-hidden w-full relative">
                 <div class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></div>
+                <div class="absolute z-20 top-[15px] left-[15px] bg-secondary px-4 py-2 rounded-full text-black">Categorie</div>
                 <img src="{{ $postThumbnailUrl }}" alt="Featured Image" class="w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">
-
             </div>
         @endif
         <div class="w-full mt-4 mb-2 p-3 md:p-4">
-            @if (!empty($visibleElements) && in_array('date', $visibleElements))
+            @if (!empty($visibleElements) && in_array('date', $visibleElements) && !empty($postDate))
                 <p class="text-gray-500">{{ $postDate }}</p>
             @endif
 
             <p class="font-bold text-lg">{{ $postTitle }}</p>
 
 
-            @if (!empty($visibleElements) && in_array('overview_text', $visibleElements))
+            @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($postSummary))
                 <p class="mt-3 mb-2">{{ $postSummary }} </p>
             @endif
 
-            @if (!empty($visibleElements) && in_array('author', $visibleElements))
+            @if (!empty($visibleElements) && in_array('author', $visibleElements) && !empty($postAuthorName)))
                 <p class="text-gray-500">Geschreven door {{ $postAuthorName }}</p>
             @endif
 
