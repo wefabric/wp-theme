@@ -3,6 +3,7 @@
     "header/block.json",
     "tekst/block.json",
     "afbeelding/block.json",
+    "call-to-action/block.json",
     "titel-en-tekst/block.json",
     "afbeelding-en-tekst/block.json",
     "usp/block.json",

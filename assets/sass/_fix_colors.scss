@@ -1,3 +1,5 @@
+// Primary
+
 .bg-primary-color {
   @apply bg-primary
 }
@@ -26,6 +28,8 @@
   @apply btn-primary-dark
 }
 
+
+// Secondary colors
 .bg-secondary-color {
   @apply bg-secondary
 }
@@ -54,6 +58,8 @@
   @apply btn-secondary-dark
 }
 
+
+// Tertiary colors
 .bg-tertiary-color {
   @apply bg-tertiary
 }
@@ -81,6 +87,37 @@
 .btn-tertiary-color-dark {
   @apply btn-tertiary-dark
 }
+
+
+// Background colors
+.bg-background-color {
+  @apply bg-background
+}
+.bg-background-color-light {
+  @apply bg-background-light
+}
+.bg-background-color-dark {
+  @apply bg-background-dark
+}
+.text-background-color {
+  @apply text-background
+}
+.text-background-color-light {
+  @apply text-background-light
+}
+.text-background-color-dark {
+  @apply text-background-dark
+}
+.btn-background-color {
+  @apply btn-background
+}
+.btn-background-color-light {
+  @apply btn-background-light
+}
+.btn-background-color-dark {
+  @apply btn-background-dark
+}
+
 
 //  .bg-success-color {
 //    @apply bg-success

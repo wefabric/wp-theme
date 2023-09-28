@@ -34,7 +34,7 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": ""
+                    "return_format": "string"
                 },
                 {
                     "key": "field_6184efa14796d",
@@ -52,7 +52,7 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": ""
+                    "return_format": "string"
                 },
                 {
                     "key": "field_6184efb64796e",
@@ -70,7 +70,7 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": ""
+                    "return_format": "string"
                 }
             ]
         },
@@ -106,7 +106,7 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": ""
+                    "return_format": "string"
                 },
                 {
                     "key": "field_61853e5d00a1c",
@@ -124,7 +124,7 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": ""
+                    "return_format": "string"
                 },
                 {
                     "key": "field_61853e5d00a1d",
@@ -142,7 +142,7 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": ""
+                    "return_format": "string"
                 }
             ]
         },
@@ -220,8 +220,8 @@
         },
         {
             "key": "field_648c6941d3387",
-            "label": "Sebastiaan kleur",
-            "name": "sebastiaan_color_group",
+            "label": "Achtergrond",
+            "name": "background_color_group",
             "aria-label": "",
             "type": "group",
             "instructions": "",
@@ -236,8 +236,8 @@
             "sub_fields": [
                 {
                     "key": "field_648c6941d3388",
-                    "label": "Sebastiaan",
-                    "name": "sebastiaan_color",
+                    "label": "Achtergrond kleur",
+                    "name": "background_color",
                     "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
@@ -255,7 +255,7 @@
                 {
                     "key": "field_648c6941d3389",
                     "label": "Licht",
-                    "name": "sebastiaan_color_light",
+                    "name": "background_color_light",
                     "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
@@ -273,7 +273,7 @@
                 {
                     "key": "field_648c6941d338a",
                     "label": "Donker",
-                    "name": "sebastiaan_color_dark",
+                    "name": "background_color_dark",
                     "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
@@ -309,5 +309,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1686923708
+    "modified": 1695889167
 }

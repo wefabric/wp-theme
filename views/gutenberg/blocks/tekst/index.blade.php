@@ -1,5 +1,5 @@
 @php
-    // content
+    // Content
     $title = $block['data']['title'] ?? '';
     $text = $block['data']['text'] ?? '';
 
@@ -20,7 +20,7 @@
     }
 
 
-    // blokinstellingen
+    // Blokinstellingen
     $backgroundColor = $block['data']['background_color'];
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
