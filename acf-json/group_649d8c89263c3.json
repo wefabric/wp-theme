@@ -146,9 +146,10 @@
             },
             "choices": {
                 "overview_text": "Overzichtstekst",
+                "category": "Categorie",
                 "date": "Datum",
-                "button": "Knop",
-                "author": "Auteur"
+                "author": "Auteur",
+                "button": "Knop"
             },
             "default_value": [],
             "return_format": "array",
@@ -392,5 +393,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695735524
+    "modified": 1695910797
 }

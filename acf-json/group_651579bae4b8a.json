@@ -145,9 +145,11 @@
                 "id": ""
             },
             "choices": {
+                "category": "Categorie",
                 "overview_text": "Overzichtstekst",
                 "location": "Locatie",
-                "date": "Datum"
+                "date": "Datum",
+                "button": "Knop"
             },
             "default_value": [],
             "return_format": "array",
@@ -391,5 +393,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695907715
+    "modified": 1695910807
 }
