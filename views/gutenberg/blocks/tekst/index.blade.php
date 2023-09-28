@@ -21,10 +21,9 @@
 
 
     // Blokinstellingen
-    $backgroundColor = $block['data']['background_color'];
-
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
-     $backgroundImageUrl = '';
+
+    $backgroundImageUrl = '';
     if (isset($block['data']['background_image'])) {
         $backgroundImageUrl = wp_get_attachment_image_src($block['data']['background_image'])[0] ?? '';
     }

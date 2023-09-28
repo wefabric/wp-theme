@@ -138,34 +138,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_651528d314241",
-            "label": "Breedte blok",
-            "name": "block_width",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "50": "50%",
-                "66": "66%",
-                "100": "100%",
-                "fullscreen": "Volledig scherm"
-            },
-            "default_value": 100,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
             "key": "field_651528d314248",
             "label": "Achtergrond kleur",
             "name": "background_color",
@@ -234,5 +206,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695891661
+    "modified": 1695892380
 }
