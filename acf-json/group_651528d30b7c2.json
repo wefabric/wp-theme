@@ -3,6 +3,32 @@
     "title": "Block: Call to action",
     "fields": [
         {
+            "key": "field_65168378fff09",
+            "label": "CTA variant",
+            "name": "cta_version",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "cta_button": "CTA met button",
+                "cta_form": "CTA met form"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_651528d314205",
             "label": "Content",
             "name": "",
@@ -58,6 +84,65 @@
             "toolbar": "full",
             "media_upload": 1,
             "delay": 0
+        },
+        {
+            "key": "field_65168a48db87e",
+            "label": "Formulier",
+            "name": "form",
+            "aria-label": "",
+            "type": "forms",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65168378fff09",
+                        "operator": "==",
+                        "value": "cta_form"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "allow_null": 0,
+            "multiple": 0
+        },
+        {
+            "key": "field_6516843e9d194",
+            "label": "Afbeelding",
+            "name": "image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65168378fff09",
+                        "operator": "==",
+                        "value": "cta_form"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
         },
         {
             "key": "field_651528d31421c",
@@ -294,5 +379,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695904098
+    "modified": 1695976232
 }

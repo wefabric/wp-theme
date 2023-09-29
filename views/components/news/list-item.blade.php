@@ -12,7 +12,6 @@
     $postAuthorId = get_post_field('post_author', $post);
     $postAuthorName = get_the_author_meta('display_name', $postAuthorId);
     $postCategories = get_the_category($post);
-
 @endphp
 
 <div class="nieuws-item group cursor-pointer h-full" onclick="window.location.href = '{{ $postUrl }}';">
@@ -29,7 +28,8 @@
                         @endforeach
                     </div>
                 @endif
-                <img src="{{ $postThumbnailUrl }}" alt="Featured Image" class="w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">
+                <img src="{{ $postThumbnailUrl }}" alt="Featured Image"
+                     class="w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">
             </div>
         @endif
         <div class="w-full mt-4 mb-2 p-3 md:p-4">
@@ -51,7 +51,9 @@
                 @if (!empty($visibleElements) && in_array('button', $visibleElements))
                     <div class="mt-4 flex items-center flex-wrap">
                         <a class="text-primary inline-flex items-center md:mb-2 lg:mb-0">Lees meer
-                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:scale-110 transition duration-300 ease-in-out" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:scale-110 transition duration-300 ease-in-out"
+                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"
+                                 stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M5 12h14"></path>
                                 <path d="M12 5l7 7-7 7"></path>
                             </svg>
