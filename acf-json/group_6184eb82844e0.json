@@ -3,6 +3,23 @@
     "title": "Styling opties",
     "fields": [
         {
+            "key": "field_6516a43f6e378",
+            "label": "Kleuren",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_6184ef734796b",
             "label": "Hoofdkleur",
             "name": "primary_color_group",
@@ -289,6 +306,79 @@
                     "return_format": "string"
                 }
             ]
+        },
+        {
+            "key": "field_6516a44b6e379",
+            "label": "Design",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_6516a3e6039c7",
+            "label": "Ronde hoeken",
+            "name": "rounded_design",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6516a3fd039c8",
+            "label": "Sterkte ronde hoeken",
+            "name": "border_radius_strenght",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6516a3e6039c7",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "[10px]": "Kleine ronde randen",
+                "[30px]": "Gemiddelde ronde randen",
+                "[50px]": "Grote ronde randen",
+                "full": "Volledig rond"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         }
     ],
     "location": [
@@ -309,5 +399,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695889167
+    "modified": 1695983919
 }

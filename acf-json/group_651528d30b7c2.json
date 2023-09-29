@@ -18,7 +18,7 @@
             },
             "choices": {
                 "cta_button": "CTA met button",
-                "cta_form": "CTA met form"
+                "cta_whitepaper": "CTA whitepaper"
             },
             "default_value": false,
             "return_format": "value",
@@ -98,7 +98,7 @@
                     {
                         "field": "field_65168378fff09",
                         "operator": "==",
-                        "value": "cta_form"
+                        "value": "cta_whitepaper"
                     }
                 ]
             ],
@@ -124,7 +124,7 @@
                     {
                         "field": "field_65168378fff09",
                         "operator": "==",
-                        "value": "cta_form"
+                        "value": "cta_whitepaper"
                     }
                 ]
             ],
@@ -155,9 +155,9 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_649d5417f587a",
+                        "field": "field_65168378fff09",
                         "operator": "==",
-                        "value": "1"
+                        "value": "cta_button"
                     }
                 ]
             ],
@@ -180,7 +180,15 @@
             "type": "link",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65168378fff09",
+                        "operator": "==",
+                        "value": "cta_button"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -221,6 +229,34 @@
             },
             "placement": "top",
             "endpoint": 0
+        },
+        {
+            "key": "field_651693931b390",
+            "label": "Breedte blok",
+            "name": "block_width",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "50": "50%",
+                "66": "66%",
+                "100": "100%",
+                "fullscreen": "Volledig scherm"
+            },
+            "default_value": 100,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_651528d314248",
@@ -379,5 +415,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695976232
+    "modified": 1695982276
 }

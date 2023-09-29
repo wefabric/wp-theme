@@ -12,32 +12,37 @@
     $postAuthorId = get_post_field('post_author', $post);
     $postAuthorName = get_the_author_meta('display_name', $postAuthorId);
     $postCategories = get_the_category($post);
+
+     // Theme settings
+    $options = get_fields('option');
+    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strenght']??'': 'rounded-none';
 @endphp
 
-<div class="nieuws-item group cursor-pointer h-full" onclick="window.location.href = '{{ $postUrl }}';">
-    <div class="h-full flex flex-col items-center border-2 border-gray-200 border-opacity-60 group-hover:-translate-y-4 duration-300 ease-in-out">
-        @if ($postThumbnailUrl)
-            <div class="h-[360px] overflow-hidden w-full relative">
-                <div class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></div>
-                @if (!empty($visibleElements) && in_array('category', $visibleElements))
-                    <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
-                        @foreach ($postCategories as $category)
-                            <a href="{{ $category->slug }}" class="bg-secondary px-4 py-2 rounded-full text-black mb-2">
-                                {{ $category->name }}
-                            </a>
-                        @endforeach
-                    </div>
-                @endif
-                <img src="{{ $postThumbnailUrl }}" alt="Featured Image"
-                     class="w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">
-            </div>
-        @endif
-        <div class="w-full mt-4 mb-2 p-3 md:p-4">
+<div class="nieuws-item group h-full">
+    <div class="h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
+
+            @if ($postThumbnailUrl)
+                <div class="h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
+                    <a href="{{ $postUrl }}" class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                    @if (!empty($visibleElements) && in_array('category', $visibleElements))
+                        <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                            @foreach ($postCategories as $category)
+                                <a href="{{ $category->slug }}" class="bg-secondary px-4 py-2 rounded-full text-black">
+                                    {{ $category->name }}
+                                </a>
+                            @endforeach
+                        </div>
+                    @endif
+                    <img src="{{ $postThumbnailUrl }}" alt="Featured Image"
+                         class="w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">
+                </div>
+            @endif
+        <div class="w-full mt-5">
             @if (!empty($visibleElements) && in_array('date', $visibleElements) && !empty($postDate))
                 <p class="text-gray-500">{{ $postDate }}</p>
             @endif
 
-            <p class="font-bold text-lg">{{ $postTitle }}</p>
+            <a href="{{ $postUrl }}" class="font-bold text-lg">{{ $postTitle }}</a>
 
             <div class="news-info">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($postSummary))
@@ -50,7 +55,7 @@
 
                 @if (!empty($visibleElements) && in_array('button', $visibleElements))
                     <div class="mt-4 flex items-center flex-wrap">
-                        <a class="text-primary inline-flex items-center md:mb-2 lg:mb-0">Lees meer
+                        <a href="{{ $postUrl }}" class="text-primary inline-flex items-center md:mb-2 lg:mb-0">Lees meer
                             <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:scale-110 transition duration-300 ease-in-out"
                                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"
                                  stroke-linecap="round" stroke-linejoin="round">

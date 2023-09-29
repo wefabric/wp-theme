@@ -1,5 +1,11 @@
 @php
     $options = get_fields('option');
+//    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strenght']??'': 'rounded-none';
+//    if ($options['rounded_design'] === true) {
+//        $borderRadius = $options['border_radius_strenght'] ?? '';
+//    } else {
+//        $borderRadius = 'rounded-none';
+//    }
 @endphp
 
         <!doctype html>

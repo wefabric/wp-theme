@@ -137,9 +137,10 @@
             },
             "choices": {
                 "left": "Links",
+                "center": "Midden",
                 "right": "Rechts"
             },
-            "default_value": false,
+            "default_value": "center",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -200,5 +201,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695736421
+    "modified": 1695993071
 }

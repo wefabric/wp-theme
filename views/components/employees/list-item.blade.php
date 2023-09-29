@@ -10,14 +10,19 @@
     $function = $fields['function'] ?? '';
     $overviewText = $fields['overview_text'] ?? '';
     $socials = $fields['socials'] ?? [];
+
+    // Theme settings
+    $options = get_fields('option');
+    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strenght']??'': 'rounded-none';
 @endphp
 
 <div class="werknemer-item group h-full">
-    <div class="h-full flex flex-col items-center border-2 border-gray-200 border-opacity-60 group-hover:-translate-y-4 duration-300 ease-in-out">
-        <div class="h-60 lg:h-96 overflow-hidden w-full">
-            <img src="{{ $imageUrl }}" alt="team" class="w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">
+    <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out ">
+        <div class="h-[360px] overflow-hidden w-full rounded-{{ $borderRadius }}">
+            <img src="{{ $imageUrl }}" alt="team"
+                 class="w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110 rounded-{{ $borderRadius }}">
         </div>
-        <div class="w-full mt-4 p-3 md:p-4">
+        <div class="w-full mt-5">
             <p class="font-bold text-lg">{{ $firstName }} {{ $lastName }}</p>
             @if (!empty($visibleElements) && in_array('function', $visibleElements))
                 <p class="font-medium">{{ $function }}</p>
@@ -25,7 +30,8 @@
             @if(!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($socials))
                 <div class="inline-flex gap-x-2">
                     @foreach ($socials as $social)
-                        <a class="text-2xl transform ease-in-out duration-300 hover:scale-110 hover:text-primary" href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer">
+                        <a class="text-2xl transform ease-in-out duration-300 hover:scale-110 hover:text-primary"
+                           href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer">
                             {!! $social['icon'] !!}
                         </a>
                     @endforeach
