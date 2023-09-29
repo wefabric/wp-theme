@@ -139,133 +139,132 @@ $theme->templates($theme->config('templates', []));
 
 //Woocommerce actions
 
-add_theme_support( 'post-thumbnails' );
+add_theme_support('post-thumbnails');
 
 
-add_action( 'woocommerce_before_shop_loop', function () {
-	$terms = get_terms( 'product_cat', [
-		'parent' => get_queried_object_id(),
-		'exclude' => [
-			'24', //term id of 'uncategorized'
-		],
-	]);
+add_action('woocommerce_before_shop_loop', function () {
+    $terms = get_terms('product_cat', [
+        'parent' => get_queried_object_id(),
+        'exclude' => [
+            '24', //term id of 'uncategorized'
+        ],
+    ]);
 
-	if ($terms) {
-		echo view('components.slider.grid', [
-			'items' => $terms,
-			'card_type' => 'category',
-			'grid_class' => 'product-cats w-full',
-		])->render();
+    if ($terms) {
+        echo view('components.slider.grid', [
+            'items' => $terms,
+            'card_type' => 'category',
+            'grid_class' => 'product-cats w-full',
+        ])->render();
 
-		echo '<h2 id="products-start" class="text-36 font-head mt-4 lg:mt-0 lg:pt-20 lg:pb-12">Alle producten</h2>';
-	}
+        echo '<h2 id="products-start" class="text-36 font-head mt-4 lg:mt-0 lg:pt-20 lg:pb-12">Alle producten</h2>';
+    }
 }, 50);
 
-add_filter( 'loop_shop_per_page', function ($number_of_posts) {
-	return 12; //products per page
+add_filter('loop_shop_per_page', function ($number_of_posts) {
+    return 12; //products per page
 }, 20);
 add_filter('loop_shop_columns', function () {
-	return 3; //product-columns per page
+    return 3; //product-columns per page
 }, 1); //DOESNT work, see the _product_archive.scss styling for .products as temp fix.
 
 remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail');
 add_filter('woocommerce_product_loop_title_classes', function ($class) {
-	return $class .' h5 text-black pb-6';
+    return $class . ' h5 text-black pb-6';
 });
 
 // See content-single-product.php # 49
-add_action('woocommerce_single_product_summary', function() {
-	global $product;
-	echo '<span class="h5 pb-2">'. $product->get_attribute('brand') .'</span>';
-}, 3);
-add_action('woocommerce_single_product_summary', function() {
+add_action('woocommerce_single_product_summary', function () {
     global $product;
-	echo view('woocommerce.single-product.additional-summary', ['product' => $product])->render();
+    echo '<span class="h5 pb-2">' . $product->get_attribute('brand') . '</span>';
+}, 3);
+add_action('woocommerce_single_product_summary', function () {
+    global $product;
+    echo view('woocommerce.single-product.additional-summary', ['product' => $product])->render();
 }, 8);
-add_action('woocommerce_single_product_summary', function() {
-	global $product;
-	echo '<div class="text-xs font-bold pt-2 pb-8">'. wc_price(wc_get_price_excluding_tax($product)) .' excl. BTW</div>';
+add_action('woocommerce_single_product_summary', function () {
+    global $product;
+    echo '<div class="text-xs font-bold pt-2 pb-8">' . wc_price(wc_get_price_excluding_tax($product)) . ' excl. BTW</div>';
 }, 11);
-remove_action('woocommerce_single_product_summary','woocommerce_template_single_meta', 40);
-add_action('woocommerce_single_product_summary', function() {
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+add_action('woocommerce_single_product_summary', function () {
     global $product;
     echo view('woocommerce.single-product.technical-sheet', ['product' => $product])->render();
 }, 20);
 
 
-add_action('woocommerce_single_product_summary', function() {
+add_action('woocommerce_single_product_summary', function () {
     global $product;
     echo view('woocommerce.single-product.quote', ['product' => $product])->render();
 }, 60);
 
 add_filter('woocommerce_product_single_add_to_cart_text', function () {
-	return 'In winkelwagen';
+    return 'In winkelwagen';
 });
 
-add_filter( 'woocommerce_page_title', function ( $page_title ) {
-	$page_title = str_replace('&ldquo;', '"', $page_title);
-	$page_title = str_replace('&rdquo;', '"', $page_title);
-	return $page_title;
-}, 10, 2 ); //Fix quotes on search page title. Would otherwise show the literal strings.
+add_filter('woocommerce_page_title', function ($page_title) {
+    $page_title = str_replace('&ldquo;', '"', $page_title);
+    $page_title = str_replace('&rdquo;', '"', $page_title);
+    return $page_title;
+}, 10, 2); //Fix quotes on search page title. Would otherwise show the literal strings.
 
 //Move the description tabs from <after the summary> to <after the thumbnails>
 remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs');
-add_action( 'woocommerce_before_single_product_summary', 'woocommerce_output_product_data_tabs', 99 );
+add_action('woocommerce_before_single_product_summary', 'woocommerce_output_product_data_tabs', 99);
 
 // Align the 'add to cart' button on the right
-add_action('woocommerce_before_add_to_cart_form', function() {
-	echo '<div class="flex justify-end">';
+add_action('woocommerce_before_add_to_cart_form', function () {
+    echo '<div class="flex justify-end">';
 });
-add_action('woocommerce_after_add_to_cart_form', function() {
-	echo '</div>';
+add_action('woocommerce_after_add_to_cart_form', function () {
+    echo '</div>';
 });
 
-add_action('woocommerce_before_cart_table', function() {
-	echo '<h2 class="cart-title">'. __('Cart', 'woocommerce') .'</h2>';
+add_action('woocommerce_before_cart_table', function () {
+    echo '<h2 class="cart-title">' . __('Cart', 'woocommerce') . '</h2>';
 });
-add_action('woocommerce_cart_is_empty', function() {
-	echo '<h2 class="cart-title">'. __('Cart', 'woocommerce') .'</h2>';
+add_action('woocommerce_cart_is_empty', function () {
+    echo '<h2 class="cart-title">' . __('Cart', 'woocommerce') . '</h2>';
 }, 1);
 
-add_action('woocommerce_before_add_to_cart_button', function() {
-	echo '<input type="hidden" name="_token" value="'. csrf_token() .'">';
+add_action('woocommerce_before_add_to_cart_button', function () {
+    echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
 });
 
-add_filter('woocommerce_dropdown_variation_attribute_options_args',function ( $args)
-{
-    if(count($args['options']) === 1) { //Check the count of available options in dropdown
+add_filter('woocommerce_dropdown_variation_attribute_options_args', function ($args) {
+    if (count($args['options']) === 1) { //Check the count of available options in dropdown
         $args['selected'] = $args['options'][0];
     }
     return $args;
-},10,1);
+}, 10, 1);
 
 
 add_action('init', function () {
-	remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+    remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
 });
-add_filter( 'woocommerce_breadcrumb_defaults', function () {
-	return array(
-		'delimiter'   => '<span class="breadcrumb-separator">/</span>',
-		'wrap_before' => '<nav class="woocommerce-breadcrumb" itemprop="breadcrumb">',
-		'wrap_after'  => '</nav>',
-		'before'      => '',
-		'after'       => '',
-		'home'        => _x( 'Home', 'breadcrumb', 'woocommerce' ),
-	);
+add_filter('woocommerce_breadcrumb_defaults', function () {
+    return array(
+        'delimiter' => '<span class="breadcrumb-separator">/</span>',
+        'wrap_before' => '<nav class="woocommerce-breadcrumb" itemprop="breadcrumb">',
+        'wrap_after' => '</nav>',
+        'before' => '',
+        'after' => '',
+        'home' => _x('Home', 'breadcrumb', 'woocommerce'),
+    );
 });
-add_action('woocommerce_archive_description', function() {
-	woocommerce_breadcrumb();
+add_action('woocommerce_archive_description', function () {
+    woocommerce_breadcrumb();
 }, 1);
 
-add_action('woocommerce_before_single_product', function() {
+add_action('woocommerce_before_single_product', function () {
     echo view('woocommerce.single-product.breadcrumbs')->render();
 }, 1);
 
 add_action('wp', function () {
-	remove_theme_support( 'wc-product-gallery-zoom' ); //also removes zoom icon on main image.
-}, 99 );
+    remove_theme_support('wc-product-gallery-zoom'); //also removes zoom icon on main image.
+}, 99);
 
-add_filter( 'woocommerce_checkout_fields' , function ( $fields ) {
+add_filter('woocommerce_checkout_fields', function ($fields) {
 
     unset($fields['billing']['billing_address_2']);
     unset($fields['shipping']['shipping_address_2']);
@@ -286,31 +285,33 @@ add_filter( 'woocommerce_checkout_fields' , function ( $fields ) {
 //    unset($fields['account']['account_username']);
 //    unset($fields['account']['account_password']);
 //    unset($fields['account']['account_password-2']);
-} );
-
-add_filter( 'woocommerce_reset_variations_link', function ($html){
-    return '<a class="reset_variations" href="#">' . esc_html__( 'Selectie wissen', 'woocommerce' ) . '</a>';
 });
 
-add_filter( 'woocommerce_ajax_variation_threshold', function() { return 200; } );
+add_filter('woocommerce_reset_variations_link', function ($html) {
+    return '<a class="reset_variations" href="#">' . esc_html__('Selectie wissen', 'woocommerce') . '</a>';
+});
 
-add_action('woocommerce_before_cart', function (){
-   echo sprintf('<a href="%s" class="no-underline text-sm hover:text-primary mb-4 inline-block"><i class="fa-solid fa-chevron-left pr-2 text-xs"></i> Verder winkelen</a>', get_permalink( wc_get_page_id( 'shop' ) ));
+add_filter('woocommerce_ajax_variation_threshold', function () {
+    return 200;
+});
+
+add_action('woocommerce_before_cart', function () {
+    echo sprintf('<a href="%s" class="no-underline text-sm hover:text-primary mb-4 inline-block"><i class="fa-solid fa-chevron-left pr-2 text-xs"></i> Verder winkelen</a>', get_permalink(wc_get_page_id('shop')));
 });
 
 // Fix for redirection adding two slashes in front of redirect.
-add_action('redirection_url_target', function ($url){
-   if(str_starts_with($url, '//')) {
-       return str_replace(substr($url, 0, 2), '/', $url);
-   }
-   return $url;
+add_action('redirection_url_target', function ($url) {
+    if (str_starts_with($url, '//')) {
+        return str_replace(substr($url, 0, 2), '/', $url);
+    }
+    return $url;
 }, 999);
 
 // Always show sku of product in mail
-add_filter( 'woocommerce_email_order_items_args', function ($args){
+add_filter('woocommerce_email_order_items_args', function ($args) {
     $args['show_sku'] = true;
     return $args;
-}, 10, 2 );
+}, 10, 2);
 
 /**
  * @snippet       Show SKU @ WooCommerce Cart
@@ -321,9 +322,10 @@ add_filter( 'woocommerce_email_order_items_args', function ($args){
  */
 
 // First, let's write the function that returns a given product SKU
-function renderSku( $product ) {
+function renderSku($product)
+{
     $sku = $product->get_sku();
-    if ( ! empty( $sku ) ) {
+    if (!empty($sku)) {
         return '<span class="inline-block pl-2"> - ' . $sku . '</span>';
     } else {
         return '';
@@ -331,58 +333,61 @@ function renderSku( $product ) {
 }
 
 // This adds the SKU under cart/checkout item name
-add_filter( 'woocommerce_cart_item_name', 'sku_cart_checkout_pages', 9999, 3 );
+add_filter('woocommerce_cart_item_name', 'sku_cart_checkout_pages', 9999, 3);
 
-function sku_cart_checkout_pages( $item_name, $cart_item, $cart_item_key  ) {
+function sku_cart_checkout_pages($item_name, $cart_item, $cart_item_key)
+{
     $product = $cart_item['data'];
-    $item_name .= renderSku( $product );
+    $item_name .= renderSku($product);
     return $item_name;
 }
 
-add_filter('woocommerce_product_variation_get_sku', function ($sku){
+add_filter('woocommerce_product_variation_get_sku', function ($sku) {
     preg_match_all('/\.(.*)/m', $sku, $matches, PREG_SET_ORDER, 0);
-    if(isset($matches[0], $matches[0][1])) {
+    if (isset($matches[0], $matches[0][1])) {
         return $matches[0][1];
     }
     return $sku;
 });
 
-function hideFlatRateWhenFreeIsAvailable( $rates ) : array
+function hideFlatRateWhenFreeIsAvailable($rates): array
 {
     $shipmentRateKey = '';
     $removeOtherShipmentMethod = false;
-    foreach ( $rates as $rateId => $rate ) {
-        if ( 'free_shipping' === $rate->get_method_id() ) {
+    foreach ($rates as $rateId => $rate) {
+        if ('free_shipping' === $rate->get_method_id()) {
             $removeOtherShipmentMethod = true;
             continue;
         }
-        if ( 'flat_rate' === $rate->get_method_id() ) {
+        if ('flat_rate' === $rate->get_method_id()) {
             $shipmentRateKey = $rateId;
         }
 
     }
 
-    if(true === $removeOtherShipmentMethod && $shipmentRateKey) {
+    if (true === $removeOtherShipmentMethod && $shipmentRateKey) {
         unset($rates[$shipmentRateKey]);
     }
 
     return $rates;
 }
-add_filter( 'woocommerce_package_rates', 'hideFlatRateWhenFreeIsAvailable', 100 );
+
+add_filter('woocommerce_package_rates', 'hideFlatRateWhenFreeIsAvailable', 100);
 
 
 // Enable the login form by default for unlogged users
-add_action( 'woocommerce_before_checkout_form', 'force_checkout_login_for_unlogged_customers', 4 );
-function force_checkout_login_for_unlogged_customers() {
-    if( ! is_user_logged_in() ) {
-        remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+add_action('woocommerce_before_checkout_form', 'force_checkout_login_for_unlogged_customers', 4);
+function force_checkout_login_for_unlogged_customers()
+{
+    if (!is_user_logged_in()) {
+        remove_action('woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10);
     }
 }
 
-remove_action('woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+remove_action('woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20);
 
-add_filter('woocommerce_cart_shipping_method_full_label', function ($label, WC_Shipping_Rate $method){
-    if($method->get_method_id() === 'local_pickup' || $method->get_method_id() === 'free_shipping') {
+add_filter('woocommerce_cart_shipping_method_full_label', function ($label, WC_Shipping_Rate $method) {
+    if ($method->get_method_id() === 'local_pickup' || $method->get_method_id() === 'free_shipping') {
         $label .= '<span class="woocommerce-Price-amount amount"><bdi>Gratis</bdi></span>';
     }
 
@@ -395,33 +400,81 @@ add_filter('woocommerce_cart_shipping_method_full_label', function ($label, WC_S
  * @param $zone_name The name of the zone to get the threshold of. Case-sensitive.
  * @return int The threshold corresponding to the zone, if there is any. If there is no such zone, or no free shipping method, null will be returned.
  */
-function get_free_shipping_minimum($zone_name = 'Netherlands') {
-    if ( ! isset( $zone_name ) ) return null;
+function get_free_shipping_minimum($zone_name = 'Netherlands')
+{
+    if (!isset($zone_name)) return null;
 
     $result = null;
     $zone = null;
 
     $zones = WC_Shipping_Zones::get_zones();
-    foreach ( $zones as $z ) {
-        if ( $z['zone_name'] == $zone_name ) {
+    foreach ($zones as $z) {
+        if ($z['zone_name'] == $zone_name) {
             $zone = $z;
         }
     }
 
-    if ( $zone ) {
+    if ($zone) {
         $shipping_methods_nl = $zone['shipping_methods'];
 
         $free_shipping_method = null;
-        foreach ( $shipping_methods_nl as $method ) {
-            if ( $method->id == 'free_shipping' ) {
+        foreach ($shipping_methods_nl as $method) {
+            if ($method->id == 'free_shipping') {
                 $free_shipping_method = $method;
                 break;
             }
         }
-        if ( $free_shipping_method ) {
+        if ($free_shipping_method) {
             $result = $free_shipping_method->min_amount;
         }
     }
 
     return $result;
 }
+
+function cw_scripts()
+{
+    wp_enqueue_script('jquery-ui-dialog');
+}
+
+add_action('wp_enqueue_scripts', 'cw_scripts');
+
+function cw_show_coupon_js() {
+    wc_enqueue_js('$("a.showcoupon").parent().hide();');
+    wc_enqueue_js('dialog = $("form.checkout_coupon").dialog({
+                       autoOpen: false,
+                       width: "auto",
+                       minHeight: 0,
+                       modal: false,
+                       appendTo: "#coupon-anchor",
+                       position: 0,
+                       draggable: false,
+                       resizable: false,
+                       dialogClass: "",
+                       closeText: " ",
+                       buttons: {}});');
+    wc_enqueue_js('$("#show-coupon-form").click( function() {
+                       if (dialog.dialog("isOpen")) {
+                           $(".checkout_coupon").show();
+                           dialog.dialog( "open" );
+                       } else {
+                           $(".checkout_coupon").show();
+                           dialog.dialog( "open" );
+                       }
+                       return false;});');
+}
+add_action('woocommerce_before_checkout_form', 'cw_show_coupon_js');
+
+function cw_show_coupon()
+{
+    global $woocommerce;
+    if ($woocommerce->cart->needs_payment()) {
+        echo '<p class="md:px-8" style="padding-bottom: 5px;">
+                    <a href="#" id="show-coupon-form">Waardeboncode invoeren</a>  (niet verplicht)
+                </p>
+                <div id="coupon-anchor" class="px-8"></div>
+                ';
+    }
+}
+
+add_action('woocommerce_checkout_order_review', 'cw_show_coupon');
