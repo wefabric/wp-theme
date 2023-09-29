@@ -3,25 +3,6 @@
     "title": "Extra productgegevens",
     "fields": [
         {
-            "key": "field_64a281efac866",
-            "label": "GTIN",
-            "name": "gtin",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
             "key": "field_6388b8233bd41",
             "label": "Technische Specificaties PDF",
             "name": "technical_sheet",
@@ -265,5 +246,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 1,
-    "modified": 1688371710
+    "modified": 1695709727
 }
