@@ -5,19 +5,25 @@
     $activityTitle = get_the_title($activity);
     $activityUrl = get_permalink($activity);
 
+     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
-
     $activitySummary = get_the_excerpt($activity);
-
+    $activityCategories = get_the_category($activity);
 @endphp
 
-<div class="nieuws-item group cursor-pointer h-full" onclick="window.location.href = '{{ $activityUrl }}';">
+<div class="activiteit-item group cursor-pointer h-full" onclick="window.location.href = '{{ $activityUrl }}';">
     <div class="h-full flex flex-col items-center border-2 border-gray-200 border-opacity-60 group-hover:-translate-y-4 duration-300 ease-in-out">
         @if ($activityThumbnailUrl)
             <div class="h-[360px] overflow-hidden w-full relative">
                 <div class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></div>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
-                    <div class="absolute z-20 top-[15px] left-[15px] bg-secondary px-4 py-2 rounded-full text-black">Categorie</div>
+                    <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                        @foreach ($activityCategories as $category)
+                            <a href="{{ $category->slug }}" class="bg-secondary px-4 py-2 rounded-full text-black mb-2">
+                                {{ $category->name }}
+                            </a>
+                        @endforeach
+                    </div>
                 @endif
                 @if ($fields['activity_full'])
                     <div class="absolute z-20 top-[15px] right-[15px] bg-red-500 px-4 py-2 rounded-full text-white">Vol</div>

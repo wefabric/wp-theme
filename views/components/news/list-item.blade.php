@@ -5,12 +5,14 @@
     $postTitle = get_the_title($post);
     $postUrl = get_permalink($post);
 
+    // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
-
     $postSummary = get_the_excerpt($post);
     $postDate = get_the_date('j F, Y', $post);
     $postAuthorId = get_post_field('post_author', $post);
     $postAuthorName = get_the_author_meta('display_name', $postAuthorId);
+    $postCategories = get_the_category($post);
+
 @endphp
 
 <div class="nieuws-item group cursor-pointer h-full" onclick="window.location.href = '{{ $postUrl }}';">
@@ -19,7 +21,13 @@
             <div class="h-[360px] overflow-hidden w-full relative">
                 <div class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></div>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
-                    <div class="absolute z-20 top-[15px] left-[15px] bg-secondary px-4 py-2 rounded-full text-black">Categorie</div>
+                    <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                        @foreach ($postCategories as $category)
+                            <a href="{{ $category->slug }}" class="bg-secondary px-4 py-2 rounded-full text-black mb-2">
+                                {{ $category->name }}
+                            </a>
+                        @endforeach
+                    </div>
                 @endif
                 <img src="{{ $postThumbnailUrl }}" alt="Featured Image" class="w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">
             </div>
