@@ -14,6 +14,7 @@
     $textOrder = ($textPosition === 'left') ? 'lg:order-1' : 'lg:order-2';
     $titleOrder = ($textPosition === 'left') ? 'lg:order-2' : 'lg:order-1';
 
+
     // Blokinstellingen
     $backgroundColor = $block['data']['background_color'] ?? 'none';
     $imageId = ($block['data']['background_image']) ?? '';

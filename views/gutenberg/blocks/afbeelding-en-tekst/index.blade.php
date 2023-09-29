@@ -2,6 +2,7 @@
     // Content
     $title = $block['data']['title'] ?? '';
     $text = $block['data']['text'] ?? '';
+
     $textPosition = $block['data']['text_position'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -31,21 +32,11 @@
 
     $imageHeightClass = $block['data']['full_height'] ? 'h-full' : '';
 
+
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
-    $blockClass = '';
-    if ($blockWidth == 50) {
-        $blockClass = 'w-full lg:w-1/2';
-    }
-    elseif ($blockWidth == 66) {
-        $blockClass = 'w-full lg:w-2/3';
-    }
-    elseif ($blockWidth == 100) {
-        $blockClass = ' w-full';
-    }
-    elseif ($blockWidth == 'fullscreen') {
-        $blockClass = 'w-full';
-    }
+    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 100 => 'w-full', 'fullscreen' => 'w-full'];
+    $blockClass = $blockClassMap[$blockWidth] ?? '';
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'none';
@@ -59,7 +50,6 @@
     $options = get_fields('option');
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strenght']??'': 'rounded-none';
 @endphp
-
 
 <section id="afbeelding-tekst-block" class="relative bg-{{ $backgroundColor}} py-16 lg:py-0"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">

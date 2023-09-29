@@ -1,21 +1,15 @@
 @php
+    // Content
     $title = $block['data']['title'];
-    $uspsCount = $block['data']['usps'];
-
-    $textPosition = $block['data']['title_position'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
 
-    $backgroundColor = $block['data']['background_color'];
+    $titlePosition = $block['data']['title_position'] ?? '';
+    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+    $titleClass = $titleClassMap[$titlePosition] ?? '';
 
-    if ($textPosition === 'left') {
-        $textClass = 'text-left';
-    } elseif ($textPosition === 'center') {
-        $textClass = 'mx-auto text-center';
-    } elseif ($textPosition === 'right') {
-        $textClass = 'text-right';
-    } else {
-        $textClass = '';
-    }
+
+    // Show usps
+    $uspsCount = $block['data']['usps'];
 
     $usps = [];
 
@@ -43,29 +37,21 @@
         ];
     }
 
-    $blockWidth = $block['data']['block_width'] ?? 100;
-    $blockClass = '';
-    if ($blockWidth == 50) {
-        $blockClass = 'w-full lg:w-1/2';
-    }
-    elseif ($blockWidth == 66) {
-        $blockClass = 'w-full lg:w-2/3';
-    }
-    elseif ($blockWidth == 100) {
-        $blockClass = ' w-full';
-    }
-    elseif ($blockWidth == 'fullscreen') {
-        $blockClass = 'w-full';
-    }
 
+    // Blokinstellingen
+    $blockWidth = $block['data']['block_width'] ?? 100;
+    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 100 => 'w-full', 'fullscreen' => 'w-full'];
+    $blockClass = $blockClassMap[$blockWidth] ?? '';
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
+
+    $backgroundColor = $block['data']['background_color'] ?? 'none';
 @endphp
 
 <section id="USP-block" class="relative bg-{{ $backgroundColor }}">
     <div class="{{ $fullScreenClass }} px-8 py-8 lg:py-20">
         <div class="{{ $blockClass }} mx-auto">
             @if (!empty($title))
-                <h2 class="container mx-auto mb-8 lg:mb-20 {{ $textClass }}">{{ $title }}</h2>
+                <h2 class="container mx-auto mb-8 lg:mb-20 {{ $titleClass }}">{{ $title }}</h2>
             @endif
             @include('components.usps.list', ['usps' => $usps])
         </div>

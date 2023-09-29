@@ -32,7 +32,6 @@
     // Theme settings
     $options = get_fields('option');
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strenght']??'': 'rounded-none';
-
 @endphp
 
 <section id="afbeelding-block" class="relative bg-{{ $backgroundColor}}">

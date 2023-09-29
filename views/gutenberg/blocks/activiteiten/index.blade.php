@@ -1,17 +1,13 @@
 @php
+    // Content
     $title = $block['data']['title'] ?? '';
+
     $titlePosition = $block['data']['title_position'] ?? '';
-    $backgroundColor = $block['data']['background_color'] ?? 'none';
+    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+    $titleClass = $titleClassMap[$titlePosition] ?? '';
 
-    $titleClass = '';
-    if ($titlePosition === 'left') {
-        $titleClass = 'text-left';
-    } elseif ($titlePosition === 'center') {
-        $titleClass = 'text-center';
-    } elseif ($titlePosition === 'right') {
-        $titleClass = 'text-right';
-    }
 
+    // Show activities
     $displayType = $block['data']['display_type'];
 
     if ($displayType == 'show_all') {
@@ -31,22 +27,14 @@
             }
     }
 
-    $blockWidth = $block['data']['block_width'] ?? 100;
-    $blockClass = '';
-    if ($blockWidth == 50) {
-        $blockClass = 'w-full lg:w-1/2';
-    }
-    elseif ($blockWidth == 66) {
-        $blockClass = 'w-full lg:w-2/3';
-    }
-    elseif ($blockWidth == 100) {
-        $blockClass = ' w-full';
-    }
-    elseif ($blockWidth == 'fullscreen') {
-        $blockClass = 'w-full';
-    }
 
+    // Blokinstellingen
+    $blockWidth = $block['data']['block_width'] ?? 100;
+    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 100 => 'w-full', 'fullscreen' => 'w-full'];
+    $blockClass = $blockClassMap[$blockWidth] ?? '';
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
+
+    $backgroundColor = $block['data']['background_color'] ?? 'none';
 @endphp
 
 <section id="activiteiten-block" class="relative bg-{{ $backgroundColor}}">

@@ -1,38 +1,22 @@
 @php
+    // Content
     $title = $block['data']['title'];
-    $titlePosition = $block['data']['title_position'] ?? '';
-    $backgroundColor = $block['data']['background_color'] ?? 'none';
 
-     $titleClass = '';
-        if ($titlePosition === 'left') {
-            $titleClass = 'text-left';
-        } elseif ($titlePosition === 'center') {
-            $titleClass = 'text-center';
-        } elseif ($titlePosition === 'right') {
-            $titleClass = 'text-right';
-        }
+    $titlePosition = $block['data']['title_position'] ?? '';
+    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+    $titleClass = $titleClassMap[$titlePosition] ?? '';
 
     $steps = $block['data']['steps'];
     $showStepNumber = $block['data']['show_step_number'];
 
 
-
+    // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
-    $blockClass = '';
-    if ($blockWidth == 50) {
-        $blockClass = 'w-full lg:w-1/2';
-    }
-    elseif ($blockWidth == 66) {
-        $blockClass = 'w-full lg:w-2/3';
-    }
-    elseif ($blockWidth == 100) {
-        $blockClass = ' w-full';
-    }
-    elseif ($blockWidth == 'fullscreen') {
-        $blockClass = 'w-full';
-    }
-
+    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 100 => 'w-full', 'fullscreen' => 'w-full'];
+    $blockClass = $blockClassMap[$blockWidth] ?? '';
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
+
+    $backgroundColor = $block['data']['background_color'] ?? 'none';
 @endphp
 
 <section id="werknemers-block" class="relative bg-{{ $backgroundColor}}">
@@ -43,7 +27,6 @@
             <div class="flex flex-wrap mx-auto">
                 @for ($i = 0; $i < $steps; $i++)
                     @php
-
                         $stepTitleKey = "steps_{$i}_step_title";
                         $stepTextKey = "steps_{$i}_step_text";
 
@@ -80,14 +63,16 @@
                             @if ($stepIcon)
                                 <div class="flex-shrink-0 w-24 h-24 bg-primary-light bg-{{ $stepIconColor }}-light text-primary text-{{ $stepIconColor }} rounded-full inline-flex items-center justify-center">
                                     @if ($iconClass)
-                                        <i class="fa {{ $iconClass }} text-3xl w-12 h-12 text-center" aria-hidden="true"></i>
+                                        <i class="fa {{ $iconClass }} text-3xl w-12 h-12 text-center"
+                                           aria-hidden="true"></i>
                                     @endif
                                 </div>
                             @endif
 
                             @if ($stepImage)
                                 <div class="flex-shrink-0">
-                                    <img src="{{ wp_get_attachment_image_url($stepImage, 'full') }}" alt="Step Image" class="object-cover md:w-60">
+                                    <img src="{{ wp_get_attachment_image_url($stepImage, 'full') }}" alt="Step Image"
+                                         class="object-cover md:w-60">
                                 </div>
                             @endif
 

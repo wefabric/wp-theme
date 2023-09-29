@@ -1,16 +1,9 @@
 @php
     $title = $block['data']['title'] ?? '';
-    $textPosition = $block['data']['title_position'] ?? '';
-    $backgroundColor = $block['data']['background_color'] ?? 'none';
 
-    $textClass = '';
-    if ($textPosition === 'left') {
-        $textClass = 'text-left';
-    } elseif ($textPosition === 'center') {
-        $textClass = 'text-center';
-    } elseif ($textPosition === 'right') {
-        $textClass = 'text-right';
-    }
+    $titlePosition = $block['data']['title_position'] ?? '';
+    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+    $titleClass = $titleClassMap[$titlePosition] ?? '';
 
 
     $displayType = $block['data']['display_type'];
@@ -32,28 +25,19 @@
             }
     }
 
+    // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
-    $blockClass = '';
-    if ($blockWidth == 50) {
-        $blockClass = 'w-full lg:w-1/2';
-    }
-    elseif ($blockWidth == 66) {
-        $blockClass = 'w-full lg:w-2/3';
-    }
-    elseif ($blockWidth == 100) {
-        $blockClass = ' w-full';
-    }
-    elseif ($blockWidth == 'fullscreen') {
-        $blockClass = 'w-full';
-    }
-
+    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 100 => 'w-full', 'fullscreen' => 'w-full'];
+    $blockClass = $blockClassMap[$blockWidth] ?? '';
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
+
+    $backgroundColor = $block['data']['background_color'] ?? 'none';
 @endphp
 
 <section id="werknemers-block" class="relative bg-{{ $backgroundColor}}">
     <div class="{{ $fullScreenClass }} px-8 py-8 lg:py-20">
         <div class="{{ $blockClass }} mx-auto">
-            <h2 class="container mx-auto mb-8 lg:mb-20 {{ $textClass }}">{{ $title }}</h2>
+            <h2 class="container mx-auto mb-8 lg:mb-20 {{ $titleClass }}">{{ $title }}</h2>
             @include('components.employees.list', ['employees' => $employees])
         </div>
     </div>
