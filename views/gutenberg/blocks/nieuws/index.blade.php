@@ -1,6 +1,7 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
+    $titleColor = $block['data']['title_color'] ?? '';
 
     $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
@@ -39,15 +40,10 @@
 <section id="nieuws-block" class="relative bg-{{ $backgroundColor}}">
     <div class="{{ $fullScreenClass }} px-8 py-8 lg:py-20">
         <div class="{{ $blockClass }} mx-auto">
-
-
-
-            <h2 class="container mx-auto mb-8 lg:mb-20 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{{ $title }}</h2>
-
+            <h2 class="text-{{ $titleColor }} container mx-auto mb-8 lg:mb-20 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{{ $title }}</h2>
             <div>
                 @include('components.news.category-list')
             </div>
-
             @include('components.news.list', ['posts' => $posts])
         </div>
     </div>

@@ -1,15 +1,13 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
-    $textColor = $block['data']['text_color'] ?? '';
+    $titleColor = $block['data']['title_color'] ?? '';
 
     $textPosition = $block['data']['text_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$textPosition] ?? '';
 
-
     $location = $block['data']['location']['adress']  ?? '';
-//    @dd($location);
 
 
     // Blokinstellingen
@@ -30,9 +28,9 @@
     @if ($overlayEnabled)
         <div class="absolute inset-0 bg-{{$overlayColor}} opacity-{{$overlayOpacity}}"></div>
     @endif
-    <div class="relative z-10 py-8 lg:py-20 {{ $fullScreenClass }} text-{{ $textColor }}">
+    <div class="relative z-10 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="mx-auto {{ $blockClass }}">
-            <h2 class="container mx-auto mb-4 px-8 {{ $titleClass }}">{{ $title }}</h2>
+            <h2 class="text-{{ $titleColor }} container mx-auto mb-4 px-8 {{ $titleClass }}">{{ $title }}</h2>
             <iframe width="100%" height="600"
                     class="h-[300px] lg:h-[600px] @if($blockWidth !== 'fullscreen') px-8 @endif"
                     frameborder="0" scrolling="no" marginheight="0" marginwidth="0"

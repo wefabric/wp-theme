@@ -41,8 +41,8 @@
         },
         {
             "key": "field_651bdd529fc17",
-            "label": "Tekst kleur",
-            "name": "text_color",
+            "label": "Titel kleur",
+            "name": "title_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
@@ -318,5 +318,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696326772
+    "modified": 1696346622
 }

@@ -40,6 +40,30 @@
             "append": ""
         },
         {
+            "key": "field_651c30a333433",
+            "label": "Titel kleur",
+            "name": "title_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_651579baf1104",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
             "key": "field_651579baf110e",
             "label": "Titel positie",
             "name": "title_position",
@@ -393,5 +417,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695910807
+    "modified": 1696346303
 }

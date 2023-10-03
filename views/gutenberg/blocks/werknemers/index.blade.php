@@ -1,11 +1,13 @@
 @php
     $title = $block['data']['title'] ?? '';
+    $titleColor = $block['data']['title_color'] ?? '';
 
     $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
 
+    // Show werknemers
     $displayType = $block['data']['display_type'];
 
     if ($displayType == 'show_all') {
@@ -38,7 +40,7 @@
 <section id="werknemers-block" class="relative bg-{{ $backgroundColor}}">
     <div class="{{ $fullScreenClass }} px-8 py-8 lg:py-20">
         <div class="{{ $blockClass }} mx-auto">
-            <h2 class="container mx-auto mb-8 lg:mb-20 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{{ $title }}</h2>
+            <h2 class="text-{{ $titleColor }} container mx-auto mb-8 lg:mb-20 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{{ $title }}</h2>
             @include('components.employees.list', ['employees' => $employees])
         </div>
     </div>
