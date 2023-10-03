@@ -8,7 +8,7 @@
     $titleClass = $titleClassMap[$textPosition] ?? '';
 
 
-    $location = $block['data']['location'];
+    $location = $block['data']['location']['adress']  ?? '';
 //    @dd($location);
 
 
@@ -33,10 +33,11 @@
     <div class="relative z-10 py-8 lg:py-20 {{ $fullScreenClass }} text-{{ $textColor }}">
         <div class="mx-auto {{ $blockClass }}">
             <h2 class="container mx-auto mb-4 px-8 {{ $titleClass }}">{{ $title }}</h2>
-            <iframe width="100%" height="600" class="h-[300px] lg:h-[600px] @if($blockWidth !== 'fullscreen') px-8 @endif" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+            <iframe width="100%" height="600"
+                    class="h-[300px] lg:h-[600px] @if($blockWidth !== 'fullscreen') px-8 @endif"
+                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{ $location }}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
             </iframe>
         </div>
-
     </div>
 </section>
