@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.kaartenblok.index', ['block' => $block])->render(); ?>

@@ -7,11 +7,13 @@
     "titel-en-tekst/block.json",
     "afbeelding-en-tekst/block.json",
     "usp/block.json",
+    "kaartenblok/block.json",
     "nieuws/block.json",
     "activiteiten/block.json",
     "werknemers/block.json",
     "werkwijze/block.json",
     "testimonial/block.json",
+    "google-maps/block.json",
     "sebastiaan/block.json"
   ]
 }

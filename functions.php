@@ -431,3 +431,25 @@ function get_free_shipping_minimum($zone_name = 'Netherlands') {
 
     return $result;
 }
+
+
+
+
+// Load CPT choices in ACF field
+function acf_populate_cpt_choices($field) {
+    // Get all registered post types
+    $post_types = get_post_types(['public' => true], 'objects');
+
+    // Populate choices array
+    $choices = [];
+    foreach ($post_types as $post_type) {
+        $choices[$post_type->name] = $post_type->label;
+    }
+
+    // Set choices for the field
+    $field['choices'] = $choices;
+
+    return $field;
+}
+
+add_filter('acf/load_field/name=cpt_type', 'acf_populate_cpt_choices');
