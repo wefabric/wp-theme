@@ -48,7 +48,11 @@
 
     // Theme settings
     $options = get_fields('option');
-    $borderRadius = $options['rounded_design'] === true ? ($options['border_radius_strength'] ?? '') : 'rounded-none';
+
+    @dd($options);
+    @dd($options['rounded_design']);
+
+    $borderRadius = $options['rounded_design'] ? ($options['border_radius_strength'] ?? '') : 'rounded-none';
 @endphp
 
 <section id="afbeelding-tekst-block" class="relative bg-{{ $backgroundColor}} py-16 lg:py-0"
