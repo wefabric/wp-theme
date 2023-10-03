@@ -48,10 +48,6 @@
 
     // Theme settings
     $options = get_fields('option');
-
-    @dd($options);
-    @dd($options['rounded_design']);
-
     $borderRadius = $options['rounded_design'] ? ($options['border_radius_strength'] ?? '') : 'rounded-none';
 @endphp
 
