@@ -15,7 +15,6 @@
     $showSliderDesktop = $uspsCount > $desktopLayout && $block['data']['show_slider'] == true;
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
-
 @endphp
 
 
@@ -96,6 +95,7 @@
             autoplay: {{ $swiperAutoplay }},
             pagination: {
                 el: ".swiper-pagination",
+                clickable: true,
             },
             navigation: {
                 nextEl: ".swiper-button-next",

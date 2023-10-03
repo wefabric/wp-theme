@@ -7,6 +7,9 @@
 		if(array_key_exists('text_color', $option)) {
 			$text_color = $option['text_color'];
 		}
+        if(array_key_exists('title_color', $option)) {
+			$title_color = $option['title_color'];
+		}
 		if(array_key_exists('footer_usps', $option)) {
 			$usps = $option['footer_usps'];
 		}
@@ -20,7 +23,7 @@
 				'items' => $usps,
 				'card_type' => 'usp',
 				'grid_class' => 'flex flex-col lg:flex-row justify-center',
-				
+
 				'size' => '3xl',
 				'style' => 'p font-bold lg:h6',
 				'class' => 'mx-auto w-full lg:w-4/5',

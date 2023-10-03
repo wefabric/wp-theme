@@ -2,6 +2,7 @@
     // CTA variant
     $ctaVariant = $block['data']['cta_version'] ?? '';
 
+
     // Content
     $title = $block['data']['title'] ?? '';
     $text = $block['data']['text'] ?? '';
@@ -14,6 +15,7 @@
         // CTA form fields
         $ctaImage = ($block['data']['image']) ?? '';
         $ctaForm = ($block['data']['form']) ?? '';
+
 
     // Blokinstellingen
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';

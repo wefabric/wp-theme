@@ -1,36 +1,9 @@
 {
-    "key": "group_64a409fb06bdf",
-    "title": "Block: Header",
+    "key": "group_651c21a7b9bb1",
+    "title": "Block: FAQ",
     "fields": [
         {
-            "key": "field_64a409fbdbaf0",
-            "label": "Header variant",
-            "name": "header_version",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "1": "Versie 1",
-                "2": "Versie 2",
-                "3": "Versie 3"
-            },
-            "default_value": 1,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_6512db817cb59",
+            "key": "field_651c21a7c477c",
             "label": "Content",
             "name": "",
             "aria-label": "",
@@ -47,46 +20,11 @@
             "endpoint": 0
         },
         {
-            "key": "field_64a40a4003fc4",
+            "key": "field_651c21a7c47ae",
             "label": "Titel",
             "name": "title",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_64a409fbdbaf0",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_64a409fbdbaf0",
-                        "operator": "==",
-                        "value": "2"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_64a430e4d8e3e",
-            "label": "Subtitel",
-            "name": "subtitle",
-            "aria-label": "",
-            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -97,55 +35,22 @@
             },
             "default_value": "",
             "maxlength": "",
-            "rows": "",
-            "placeholder": "",
-            "new_lines": ""
-        },
-        {
-            "key": "field_6512dc000d039",
-            "label": "Button 1 tekst",
-            "name": "button_1_text",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_64a409fbdbaf0",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_6512e7ec158f2",
-            "label": "Button 1 link",
-            "name": "button_1_link",
+            "key": "field_651c21a7c47e9",
+            "label": "Titel kleur",
+            "name": "title_color",
             "aria-label": "",
-            "type": "link",
+            "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a409fbdbaf0",
-                        "operator": "==",
-                        "value": "1"
-                    },
-                    {
-                        "field": "field_6512dc000d039",
+                        "field": "field_651c21a7c47ae",
                         "operator": "!=empty"
                     }
                 ]
@@ -155,11 +60,12 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "theme_color": null,
+            "font_size": 14
         },
         {
-            "key": "field_64a43090bafd4",
-            "label": "Tekstpositie",
+            "key": "field_651c21a7c47f3",
+            "label": "Titel positie",
             "name": "text_position",
             "aria-label": "",
             "type": "select",
@@ -185,7 +91,48 @@
             "placeholder": ""
         },
         {
-            "key": "field_64a430f7d8e3f",
+            "key": "field_651c21da5bb9c",
+            "label": "Veelgestelde vragen groep",
+            "name": "faq_group",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "faq"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "return_format": "object",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1
+        },
+        {
+            "key": "field_651c29e8c6775",
+            "label": "Vraag blok kleur",
+            "name": "faq_background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "background-color-dark",
+            "font_size": 14
+        },
+        {
+            "key": "field_651c296775c14",
             "label": "Tekst kleur",
             "name": "text_color",
             "aria-label": "",
@@ -198,12 +145,12 @@
                 "class": "",
                 "id": ""
             },
-            "theme_color": null,
+            "theme_color": "black",
             "font_size": 14
         },
         {
-            "key": "field_6512db1c457bb",
-            "label": "Afbeelding",
+            "key": "field_651c21a7c4803",
+            "label": "Blokinstellingen",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -219,8 +166,61 @@
             "endpoint": 0
         },
         {
-            "key": "field_64a40e90be6f8",
-            "label": "Header afbeelding",
+            "key": "field_651c21a7c4813",
+            "label": "Breedte blok",
+            "name": "block_width",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "50": "50%",
+                "66": "66%",
+                "100": "100%",
+                "fullscreen": "Volledig scherm"
+            },
+            "default_value": 100,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_651c21a7c4823",
+            "label": "Achtergrond kleur",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_649d562c20a1b",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_651c21a7c4836",
+            "label": "Achtergrond afbeelding",
             "name": "background_image",
             "aria-label": "",
             "type": "image",
@@ -244,7 +244,7 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_6512d8c0de563",
+            "key": "field_651c21a7c4844",
             "label": "Overlay op header afbeelding",
             "name": "overlay_image",
             "aria-label": "",
@@ -254,7 +254,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a40e90be6f8",
+                        "field": "field_651c21a7c4836",
                         "operator": "!=empty"
                     }
                 ]
@@ -271,7 +271,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_6512da1e3db97",
+            "key": "field_651c21a7c484d",
             "label": "Overlay kleur",
             "name": "overlay_color",
             "aria-label": "",
@@ -281,7 +281,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6512d8c0de563",
+                        "field": "field_651c21a7c4844",
                         "operator": "==",
                         "value": "1"
                     }
@@ -296,7 +296,7 @@
             "font_size": 14
         },
         {
-            "key": "field_6512e32aa9872",
+            "key": "field_651c21a7c4854",
             "label": "Overlay sterkte",
             "name": "overlay_opacity",
             "aria-label": "",
@@ -306,7 +306,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6512d8c0de563",
+                        "field": "field_651c21a7c4844",
                         "operator": "==",
                         "value": "1"
                     }
@@ -337,7 +337,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "wefabric\/header"
+                "value": "wefabric\/faq"
             }
         ]
     ],
@@ -350,5 +350,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696341624
+    "modified": 1696344647
 }

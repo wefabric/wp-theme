@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.faq.index', ['block' => $block])->render(); ?>

@@ -39,7 +39,6 @@
    $overlayEnabled = ($block['data']['overlay_image']) ?? false;
    $overlayColor = ($block['data']['overlay_color']) ?? '';
    $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
-
 @endphp
 
 <section id="header-block" class="relative">

@@ -23,7 +23,7 @@
                 @include('header.blocks.header-1.usp-banner')
             </div>
         @endif
-	
+
 		@if(!empty($videoUrl))
 			<div class="hidden lg:block"> {{-- only show on desktop, to prevent data usage when on mobile--}}
 				<video class="header-video" width="100%" height="100%" autoplay loop muted>
@@ -40,7 +40,7 @@
 				'title_color' => $block->get('text_color') ?? 'white',
 				'disable_bottom_padding' => 'true'
 			])
-			
+
 			@if(!empty($block->get('call_to_actions')))
                 <div class="flex flex-col lg:flex-row justify-center pt-4 lg:pt-8">
                     @foreach($block->get('call_to_actions') as $item)
@@ -62,7 +62,7 @@
                     @endforeach
                 </div>
             @endif
-			
+
         </div>
     </div>
 </div>

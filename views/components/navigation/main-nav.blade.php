@@ -4,18 +4,18 @@
 @endphp
 <div class="hidden lg:flex lg:flex-col py-4 text-base">
 
-	@if($forceWebshop || woocommerce_active()) {{-- webshop parts --}}
-        <div class="flex justify-end pb-4">
+{{--	@if($forceWebshop || woocommerce_active()) --}}{{-- webshop parts --}}
+{{--        <div class="flex justify-end pb-4">--}}
 
-            <div class="mr-3">
-                <div id="searchMainNav" class="inline-block main-nav-search hidden">
-                    @include('woocommerce.search.search')
-                </div>
+{{--            <div class="mr-3">--}}
+{{--                <div id="searchMainNav" class="inline-block main-nav-search hidden">--}}
+{{--                    @include('woocommerce.search.search')--}}
+{{--                </div>--}}
 
-                <button onclick="window.toggleSearch('searchMainNav')" type="submit" class="w-12 h-12 rounded-full text-center btn-black text-white text-center text-xl shadow shadow-slate-200">
-                    <i class="fa-light fa-search "></i>
-                    <span class="screen-reader-only">Zoeken</span>
-                </button>
+{{--                <button onclick="window.toggleSearch('searchMainNav')" type="submit" class="w-12 h-12 rounded-full text-center btn-black text-white text-center text-xl shadow shadow-slate-200">--}}
+{{--                    <i class="fa-light fa-search "></i>--}}
+{{--                    <span class="screen-reader-only">Zoeken</span>--}}
+{{--                </button>--}}
 {{--                <form action="/shop" method="get" id="" name="" class="validate" target="" novalidate>--}}
 {{--                    <div class="flex">--}}
 {{--                        <input type="text" value="" placeholder="Typ hier je zoekterm in..." name="s" class="hidden w-96 bg-white rounded-l-lg shadow-lg shadow-slate-200 " id="search">--}}
@@ -29,35 +29,35 @@
 
 {{--                    </div>--}}
 {{--                </form>--}}
-            </div>
+{{--            </div>--}}
 
-            @include('components.buttons.icon', [
-                'href' => wc_get_cart_url(),
-                'alt' => 'Naar de winkelwagen',
-    //            'rel' => 'noopener',
-    //            'target' => '_blank',
-                'icon' => 'fa-light fa-bag-shopping text-xl',
+{{--            @include('components.buttons.icon', [--}}
+{{--                'href' => wc_get_cart_url(),--}}
+{{--                'alt' => 'Naar de winkelwagen',--}}
+{{--    //            'rel' => 'noopener',--}}
+{{--    //            'target' => '_blank',--}}
+{{--                'icon' => 'fa-light fa-bag-shopping text-xl',--}}
 
-                'size' => 'h-12 w-12 pt-1.5 mr-3',
-                'colors' => 'btn-black text-white',
-                'class' => 'relative',
+{{--                'size' => 'h-12 w-12 pt-1.5 mr-3',--}}
+{{--                'colors' => 'btn-black text-white',--}}
+{{--                'class' => 'relative',--}}
 
-                'smallIconClass' => 'cart-items-count min-h-7 min-w-7 p-1 text-center mr-1 rounded-full bg-zinc-300 text-black text-xs absolute pt-0.5 -top-2 -right-2',
-                'smallIconContent' => ' ', //sprintf(_n('%d item', '%d items', $cart_items), $cart_items) .' - '. $cart_total, //number of items in shopping cart
-            ])
+{{--                'smallIconClass' => 'cart-items-count min-h-7 min-w-7 p-1 text-center mr-1 rounded-full bg-zinc-300 text-black text-xs absolute pt-0.5 -top-2 -right-2',--}}
+{{--                'smallIconContent' => ' ', //sprintf(_n('%d item', '%d items', $cart_items), $cart_items) .' - '. $cart_total, //number of items in shopping cart--}}
+{{--            ])--}}
 
-            @include('components.buttons.icon', [
-                'href' => get_permalink(get_option('woocommerce_myaccount_page_id')),
-                'alt' => 'Naar mijn profiel',
-    //            'rel' => 'noopener',
-    //            'target' => '_blank',
-                'icon' => 'fa-light fa-user text-xl',
+{{--            @include('components.buttons.icon', [--}}
+{{--                'href' => get_permalink(get_option('woocommerce_myaccount_page_id')),--}}
+{{--                'alt' => 'Naar mijn profiel',--}}
+{{--    //            'rel' => 'noopener',--}}
+{{--    //            'target' => '_blank',--}}
+{{--                'icon' => 'fa-light fa-user text-xl',--}}
 
-                'size' => 'h-12 w-12 pt-1.5 mr-3',
-                'colors' => 'btn-black text-white',
-            ])
-        </div>
-    @endif
+{{--                'size' => 'h-12 w-12 pt-1.5 mr-3',--}}
+{{--                'colors' => 'btn-black text-white',--}}
+{{--            ])--}}
+{{--        </div>--}}
+{{--    @endif--}}
 
     <nav id="site-navigation" class="main-navigation flex justify-end items-center mt-2">
         @include('components.header.home-house', [
@@ -81,22 +81,6 @@
                 'echo' => false
             ]) !!}
         @endif
-
-{{--
-        @php
-            $icon_classes = 'text-xl px-1.5 font-normal';
-        @endphp
-
-		@include('components.header.email', [
-			'class' => $icon_classes,
-			'a_class' => 'no-underline'
-		])
-
-		@include('components.header.phone', [
-			'class' => $icon_classes,
-			'a_class' => 'no-underline'
-		])
---}}
 
     </nav>
 </div>
