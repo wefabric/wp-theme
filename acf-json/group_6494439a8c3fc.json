@@ -56,7 +56,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -72,6 +72,23 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_6512d342fc560",
+            "label": "Tekst kleur",
+            "name": "text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "black",
+            "font_size": 14
         },
         {
             "key": "field_64a51c4198fb5",
@@ -263,23 +280,6 @@
                     "parent_repeater": "field_6494439a50244"
                 }
             ]
-        },
-        {
-            "key": "field_6512d342fc560",
-            "label": "Tekst kleur",
-            "name": "text_color",
-            "aria-label": "",
-            "type": "Thema Kleur",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "theme_color": "black",
-            "font_size": 14
         },
         {
             "key": "field_64a68f4457d03",
@@ -515,5 +515,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695735276
+    "modified": 1696327324
 }

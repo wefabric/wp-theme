@@ -1,7 +1,7 @@
 @php
     // Content
     $title = $block['data']['title'];
-    $titleColor = $block['data']['title_color'] ?? '';
+    $textColor = $block['data']['text_color'] ?? '';
 
     $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
@@ -51,7 +51,7 @@
     <div class="{{ $fullScreenClass }} px-8 py-8 lg:py-20">
         <div class="{{ $blockClass }} mx-auto">
             @if (!empty($title))
-                <h2 class="container mx-auto mb-8 lg:mb-20 {{ $titleClass }}">{{ $title }}</h2>
+                <h2 class="container mx-auto mb-8 lg:mb-20 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }} text-{{ $textColor }}">{{ $title }}</h2>
             @endif
             @include('components.usps.list', ['usps' => $usps])
         </div>
