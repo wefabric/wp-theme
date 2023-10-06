@@ -1,15 +1,15 @@
 {
-    "key": "post_type_6515778fb7c24",
-    "title": "Activiteiten",
+    "key": "post_type_651fcd1c0051e",
+    "title": "Opleidingen",
     "menu_order": 0,
     "active": true,
-    "post_type": "activities",
+    "post_type": "course",
     "advanced_configuration": true,
     "import_source": "",
     "import_date": "",
     "labels": {
-        "name": "Activiteiten",
-        "singular_name": "Activiteit",
+        "name": "Opleidingen",
+        "singular_name": "Opleiding",
         "menu_name": "",
         "all_items": "",
         "edit_item": "",
@@ -57,13 +57,14 @@
     "rest_namespace": "wp\/v2",
     "rest_controller_class": "WP_REST_Posts_Controller",
     "menu_position": "",
-    "menu_icon": "dashicons-calendar",
+    "menu_icon": "dashicons-welcome-learn-more",
     "rename_capabilities": false,
     "singular_capability_name": "post",
     "plural_capability_name": "posts",
     "supports": [
         "title",
         "editor",
+        "excerpt",
         "thumbnail"
     ],
     "taxonomies": [
@@ -82,5 +83,5 @@
     "can_export": true,
     "delete_with_user": false,
     "register_meta_box_cb": "",
-    "modified": 1696593132
+    "modified": 1696583241
 }
