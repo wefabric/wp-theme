@@ -104,7 +104,7 @@
             "aria-label": "",
             "type": "post_object",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -120,6 +120,23 @@
             "multiple": 0,
             "allow_null": 0,
             "ui": 1
+        },
+        {
+            "key": "field_6523f0490a797",
+            "label": "Tekst kleur",
+            "name": "text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
         },
         {
             "key": "field_6523d7ebbad82",
@@ -171,6 +188,23 @@
                 "id": ""
             },
             "return_format": "array"
+        },
+        {
+            "key": "field_6523ebe899011",
+            "label": "Testimonial achtergrond kleur",
+            "name": "testimonial_background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
         },
         {
             "key": "field_6523d7ebbad9e",
@@ -374,5 +408,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696848272
+    "modified": 1696854348
 }

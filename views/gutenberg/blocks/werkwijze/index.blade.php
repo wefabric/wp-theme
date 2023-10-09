@@ -34,7 +34,7 @@
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strenght'] ?? '' : 'rounded-none';
 @endphp
 
-<section id="werknemers-block" class="relative py-16 lg:py-0 bg-{{ $backgroundColor }}"
+<section id="werkwijze" class="relative py-16 lg:py-0 bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
     @if ($overlayEnabled)
         <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>

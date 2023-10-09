@@ -41,7 +41,7 @@
    $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
 @endphp
 
-<section id="header-block" class="relative">
+<section id="header" class="relative">
     <div class="bg-cover bg-center {{ $headerClass }}" style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
         @if ($overlayEnabled)
             <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>

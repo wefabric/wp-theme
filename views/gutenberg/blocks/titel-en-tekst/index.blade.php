@@ -23,7 +23,7 @@
     $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
 @endphp
 
-<section id="titel-tekst-block" class="relative bg-{{ $backgroundColor }} py-16 lg:py-0"
+<section id="titel-tekst" class="relative bg-{{ $backgroundColor }} py-16 lg:py-0"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
     @if ($overlayEnabled)
         <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>

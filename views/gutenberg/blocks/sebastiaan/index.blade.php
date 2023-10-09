@@ -19,3 +19,7 @@
 <div class="rounded-tl-[10px] rounded-tl-[30px] rounded-tl-[50px] rounded-tl-full"></div>
 <div class="rounded-br-[10px] rounded-br-[30px] rounded-br-[50px] rounded-br-full"></div>
 <div class="rounded-bl-[10px] rounded-bl-[30px] rounded-bl-[50px] rounded-bl-full"></div>
+
+<div class="sm:rounded-[10px] md:rounded-[10px] lg:rounded-[10px] xl:rounded-[10px]"></div>
+<div class="sm:rounded-[30px] md:rounded-[30px] lg:rounded-[30px] xl:rounded-[30px]"></div>
+<div class="sm:rounded-[50px] md:rounded-[50px] lg:rounded-[50px] xl:rounded-[50px]"></div>
