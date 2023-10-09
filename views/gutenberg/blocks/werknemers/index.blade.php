@@ -35,10 +35,18 @@
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'none';
+    $imageId = ($block['data']['background_image']) ?? '';
+    $overlayEnabled = ($block['data']['overlay_image']) ?? false;
+    $overlayColor = ($block['data']['overlay_color']) ?? '';
+    $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
 @endphp
 
-<section id="werknemers-block" class="relative bg-{{ $backgroundColor}}">
-    <div class="{{ $fullScreenClass }} px-8 py-8 lg:py-20">
+<section id="werknemers-block" class="relative py-16 lg:py-0 bg-{{ $backgroundColor}}"
+         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
+    @if ($overlayEnabled)
+        <div class="absolute inset-0 bg-{{$overlayColor}} opacity-{{$overlayOpacity}}"></div>
+    @endif
+    <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             <h2 class="text-{{ $titleColor }} container mx-auto mb-8 lg:mb-20 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{{ $title }}</h2>
             @include('components.employees.list', ['employees' => $employees])

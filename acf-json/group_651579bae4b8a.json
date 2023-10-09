@@ -397,6 +397,119 @@
             },
             "theme_color": null,
             "font_size": 14
+        },
+        {
+            "key": "field_6523d23ea59b3",
+            "label": "Achtergrond afbeelding",
+            "name": "background_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_6523d255a59b4",
+            "label": "Overlay op header afbeelding",
+            "name": "overlay_image",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6523d23ea59b3",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6523d26ca59b5",
+            "label": "Overlay kleur",
+            "name": "overlay_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6523d255a59b4",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_6523d28aa59b6",
+            "label": "Overlay sterkte",
+            "name": "overlay_opacity",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6523d255a59b4",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "25": "25%",
+                "50": "50%",
+                "75": "75%",
+                "100": "100%"
+            },
+            "default_value": 50,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         }
     ],
     "location": [
@@ -417,5 +530,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696346303
+    "modified": 1696846500
 }
