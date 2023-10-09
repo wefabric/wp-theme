@@ -77,7 +77,7 @@
                         <div class="hidden md:block w-1/4">
                             <img src="{{ $testimonialImage }}"
                                  alt="{{ $testimonialTitle }}"
-                                 class="w-full h-full aspect-square object-cover object-center">
+                                 class="w-full h-full aspect-square object-cover object-center rounded-r-{{ $borderRadius }}">
                         </div>
                     @endif
                 </div>
