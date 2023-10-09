@@ -446,7 +446,7 @@
         },
         {
             "key": "field_6523cd9ba0b2c",
-            "label": "Overlay op header afbeelding",
+            "label": "Overlay op afbeelding?",
             "name": "overlay_image",
             "aria-label": "",
             "type": "true_false",
@@ -551,5 +551,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696845306
+    "modified": 1696864112
 }

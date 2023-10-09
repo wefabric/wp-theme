@@ -45,110 +45,6 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_649d34d371a52",
-            "label": "Afbeelding volledige schermbreedte?",
-            "name": "full_screen_image",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_649d7231ceba7",
-            "label": "Afbeelding grootte",
-            "name": "image_size",
-            "aria-label": "",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_649d34d371a52",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "33": "33%",
-                "50": "50%",
-                "66": "66%",
-                "100": "100%"
-            },
-            "default_value": 100,
-            "return_format": "value",
-            "allow_null": 0,
-            "other_choice": 0,
-            "layout": "vertical",
-            "save_other_choice": 0
-        },
-        {
-            "key": "field_649d745b68a4b",
-            "label": "Afbeelding positie",
-            "name": "image_position",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_649d7231ceba7",
-                        "operator": "==",
-                        "value": "33"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_649d7231ceba7",
-                        "operator": "==",
-                        "value": "50"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_649d7231ceba7",
-                        "operator": "==",
-                        "value": "66"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "left": "Links",
-                "center": "Midden",
-                "right": "Rechts"
-            },
-            "default_value": "center",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
             "key": "field_6512e249c37f0",
             "label": "Blokinstellingen",
             "name": "",
@@ -166,6 +62,35 @@
             "endpoint": 0
         },
         {
+            "key": "field_652414048b1cd",
+            "label": "Breedte blok",
+            "name": "block_width",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "33": "33%",
+                "50": "50%",
+                "66": "66%",
+                "100": "100%",
+                "fullscreen": "Volledig scherm"
+            },
+            "default_value": 100,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_649d70b8572be",
             "label": "Achtergrond kleur",
             "name": "background_color",
@@ -181,6 +106,119 @@
             },
             "theme_color": null,
             "font_size": 14
+        },
+        {
+            "key": "field_652416b923f52",
+            "label": "Achtergrond afbeelding",
+            "name": "background_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_652416ce23f53",
+            "label": "Overlay op afbeelding?",
+            "name": "overlay_image",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_652416b923f52",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_652417c023f54",
+            "label": "Overlay kleur",
+            "name": "overlay_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_652416ce23f53",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_652417d323f55",
+            "label": "Overlay sterkte",
+            "name": "overlay_opacity",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_652416ce23f53",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "25": "25%",
+                "50": "50%",
+                "75": "75%",
+                "100": "100%"
+            },
+            "default_value": 50,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         }
     ],
     "location": [
@@ -201,5 +239,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695993071
+    "modified": 1696864243
 }

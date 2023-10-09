@@ -18,16 +18,16 @@
 
 
     // Blokinstellingen
+    $blockWidth = $block['data']['block_width'] ?? 100;
+    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 100 => 'w-full', 'fullscreen' => 'w-full'];
+    $blockClass = $blockClassMap[$blockWidth] ?? '';
+    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
+
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
     $imageId = ($block['data']['background_image']) ?? '';
     $overlayEnabled = ($block['data']['overlay_image']) ?? false;
     $overlayColor = ($block['data']['overlay_color']) ?? '';
     $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
-
-    $blockWidth = $block['data']['block_width'] ?? 100;
-    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 100 => 'w-full', 'fullscreen' => 'w-full'];
-    $blockClass = $blockClassMap[$blockWidth] ?? '';
-    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto px-8' : '';
 
     // Theme settings
     $options = get_fields('option');
@@ -36,12 +36,12 @@
 
 <section id="call-to-action" class="relative">
     <div class="{{ $fullScreenClass }} pt-8 lg:pt-20">
-        <div class="mx-auto {{ $blockClass }} relative py-16 px-8 bg-{{ $backgroundColor }} @if($blockWidth !== 'fullscreen') rounded-{{ $borderRadius }} @endif"
+        <div class="mx-auto {{ $blockClass }} relative py-16 px-8 bg-{{ $backgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif"
              style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
             @if ($overlayEnabled)
                 <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
             @endif
-            <div class="container mx-auto @if($blockWidth == 'fullscreen') px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
+            <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
                 <div class="flex flex-col md:flex-row md:items-center gap-y-4 md:gap-y-0">
                     <div class="w-full md:w-2/3 text-center md:text-left">
                         <h2 class="text-{{ $titleColor }}">{{ $title }}</h2>
