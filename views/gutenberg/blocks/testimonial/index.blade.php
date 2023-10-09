@@ -49,8 +49,8 @@
             <h2 class="text-{{ $titleColor }} container mx-auto mb-4 px-8 md:px-0 {{ $titleClass }}">{{ $title }}</h2>
 
             <div class="w-full text-{{ $textColor }}">
-                <div class="flex text-center md:text-left justify-center md:justify-start h-full bg-{{ $testimonialBackground }} md:rounded-{{ $borderRadius }}">
-                    <div class="p-8 w-full md:w-3/4">
+                <div class="relative flex items-center text-center md:text-left justify-center md:justify-start h-full min-h-full bg-{{ $testimonialBackground }} md:rounded-{{ $borderRadius }}">
+                    <div class="w-full md:w-3/5 p-8 lg:p-16">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                              class="block mx-auto md:mx-0 w-8 h-8 mb-4"
                              viewBox="0 0 975.036 975.036">
@@ -62,7 +62,7 @@
                                 <div class="">
                                     <img src="{{ is_array($testimonialAvatar) ? $testimonialAvatar['url'] : $testimonialAvatar }}"
                                          alt="{{ $testimonialTitle }}"
-                                         class="h-16 md:h-24 aspect-square rounded-full flex-shrink-0 object-cover object-center">
+                                         class="h-16 md:h-24 aspect-square rounded-full object-cover object-center">
                                 </div>
                             @endif
                             <div>
@@ -74,10 +74,10 @@
                         </div>
                     </div>
                     @if ($testimonialImage)
-                        <div class="hidden md:block w-1/4">
+                        <div class="hidden md:block absolute bottom-0 right-0 w-2/5 h-full">
                             <img src="{{ $testimonialImage }}"
                                  alt="{{ $testimonialTitle }}"
-                                 class="w-full h-full aspect-square object-cover object-center rounded-r-{{ $borderRadius }}">
+                                 class="w-full h-full aspect-square object-cover rounded-r-{{ $borderRadius }}">
                         </div>
                     @endif
                 </div>
