@@ -46,7 +46,6 @@
     $overlayColor = ($block['data']['overlay_color']) ?? '';
     $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
 
-
     // Theme settings
     $options = get_fields('option');
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strenght'] ?? '' : 'rounded-none';

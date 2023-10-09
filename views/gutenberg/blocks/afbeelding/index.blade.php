@@ -26,6 +26,7 @@
         $imageClass = '';
     }
 
+
     // Blokinstellingen
     $backgroundColor = $block['data']['background_color'] ?? 'none';
 

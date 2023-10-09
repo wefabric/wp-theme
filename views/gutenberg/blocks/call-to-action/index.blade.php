@@ -2,7 +2,6 @@
     // CTA variant
     $ctaVariant = $block['data']['cta_version'] ?? '';
 
-
     // Content
     $title = $block['data']['title'] ?? '';
     $text = $block['data']['text'] ?? '';
