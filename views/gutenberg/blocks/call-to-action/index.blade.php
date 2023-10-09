@@ -4,8 +4,9 @@
 
     // Content
     $title = $block['data']['title'] ?? '';
-    $text = $block['data']['text'] ?? '';
+    $titleColor = $block['data']['title_color'] ?? '';
 
+    $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
     $buttonText = $block['data']['button_text'] ?? '';
@@ -38,12 +39,12 @@
         <div class="mx-auto {{ $blockClass }} relative py-16 px-8 bg-{{ $backgroundColor }} @if($blockWidth !== 'fullscreen') rounded-{{ $borderRadius }} @endif"
              style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
             @if ($overlayEnabled)
-                <div class="absolute inset-0 bg-{{$overlayColor}} opacity-{{$overlayOpacity}}"></div>
+                <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
             @endif
             <div class="container mx-auto @if($blockWidth == 'fullscreen') px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
                 <div class="flex flex-col md:flex-row md:items-center gap-y-4 md:gap-y-0">
                     <div class="w-full md:w-2/3 text-center md:text-left">
-                        <h2 class="text-{{$textColor}}">{{ $title }}</h2>
+                        <h2 class="text-{{ $titleColor }}">{{ $title }}</h2>
                         @if (!empty($text))
                             <p class="mt-4 md:mt-8 text-{{$textColor}}">{{ $text }}</p>
                         @endif

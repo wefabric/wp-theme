@@ -2,10 +2,9 @@
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-
-    $textPosition = $block['data']['text_position'] ?? '';
+    $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-    $titleClass = $titleClassMap[$textPosition] ?? '';
+    $titleClass = $titleClassMap[$titlePosition] ?? '';
 
     $location = $block['data']['location']['adress']  ?? '';
 
@@ -23,10 +22,10 @@
     $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
 @endphp
 
-<section id="google-maps" class="relative py-16 lg:py-0 bg-{{ $backgroundColor}}"
+<section id="google-maps" class="relative py-16 lg:py-0 bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
     @if ($overlayEnabled)
-        <div class="absolute inset-0 bg-{{$overlayColor}} opacity-{{$overlayOpacity}}"></div>
+        <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="mx-auto {{ $blockClass }}">
