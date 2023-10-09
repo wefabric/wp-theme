@@ -227,13 +227,19 @@
             "aria-label": "",
             "type": "link",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": [
                 [
                     {
                         "field": "field_65168378fff09",
                         "operator": "==",
                         "value": "cta_button"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_651528d31421c",
+                        "operator": "!=empty"
                     }
                 ]
             ],
@@ -446,5 +452,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696864006
+    "modified": 1696864837
 }

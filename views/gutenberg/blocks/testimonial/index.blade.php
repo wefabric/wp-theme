@@ -6,9 +6,6 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
-    $buttonText = $block['data']['button_text'] ?? '';
-    $buttonLink = ($block['data']['button_link']['url']) ?? '';
-
     $textColor = $block['data']['text_color'] ?? '';
     $testimonialBackground = $block['data']['testimonial_background_color'] ?? 'none';
 
