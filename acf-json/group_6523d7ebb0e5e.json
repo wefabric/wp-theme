@@ -1,9 +1,9 @@
 {
-    "key": "group_649d53b000424",
-    "title": "Block: Tekst",
+    "key": "group_6523d7ebb0e5e",
+    "title": "Block: Testimonial",
     "fields": [
         {
-            "key": "field_6512ef53ac959",
+            "key": "field_6523d7ebbad6b",
             "label": "Content",
             "name": "",
             "aria-label": "",
@@ -20,7 +20,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_649d53b08e829",
+            "key": "field_6523d7ebbad74",
             "label": "Titel",
             "name": "title",
             "aria-label": "",
@@ -40,7 +40,7 @@
             "append": ""
         },
         {
-            "key": "field_6523da7110cc7",
+            "key": "field_6523d7ebbad90",
             "label": "Titel kleur",
             "name": "title_color",
             "aria-label": "",
@@ -50,7 +50,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_649d53b08e829",
+                        "field": "field_6523d7ebbad74",
                         "operator": "!=empty"
                     }
                 ]
@@ -64,11 +64,45 @@
             "font_size": 14
         },
         {
-            "key": "field_649d53cbf5878",
-            "label": "Tekst",
-            "name": "text",
+            "key": "field_6523d7ebbad97",
+            "label": "Titel positie",
+            "name": "title_position",
             "aria-label": "",
-            "type": "wysiwyg",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6523d7ebbad74",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "Links",
+                "center": "Midden",
+                "right": "Rechts"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6523d8662de80",
+            "label": "Selecteer testimonial",
+            "name": "testimonial",
+            "aria-label": "",
+            "type": "post_object",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -77,38 +111,18 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
-        },
-        {
-            "key": "field_649d5403f5879",
-            "label": "Tekst kleur",
-            "name": "text_color",
-            "aria-label": "",
-            "type": "Thema Kleur",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_649d53cbf5878",
-                        "operator": "!=empty"
-                    }
-                ]
+            "post_type": [
+                "testimonial"
             ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "theme_color": null,
-            "font_size": 14
+            "post_status": "",
+            "taxonomy": "",
+            "return_format": "object",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1
         },
         {
-            "key": "field_649d5430f587b",
+            "key": "field_6523d7ebbad82",
             "label": "Button tekst",
             "name": "button_text",
             "aria-label": "",
@@ -136,7 +150,7 @@
             "append": ""
         },
         {
-            "key": "field_649d543ef587c",
+            "key": "field_6523d7ebbad89",
             "label": "Button link",
             "name": "button_link",
             "aria-label": "",
@@ -146,7 +160,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_649d5430f587b",
+                        "field": "field_6523d7ebbad82",
                         "operator": "!=empty"
                     }
                 ]
@@ -159,34 +173,7 @@
             "return_format": "array"
         },
         {
-            "key": "field_649d5769af7e6",
-            "label": "Tekst positie",
-            "name": "text_position",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "left": "Links",
-                "center": "Midden",
-                "right": "Rechts"
-            },
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_6512ef5cac95a",
+            "key": "field_6523d7ebbad9e",
             "label": "Blokinstellingen",
             "name": "",
             "aria-label": "",
@@ -203,7 +190,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_64a6ba376070b",
+            "key": "field_6523d7ebbada5",
             "label": "Breedte blok",
             "name": "block_width",
             "aria-label": "",
@@ -231,7 +218,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_649d565f20a1c",
+            "key": "field_6523d7ebbadac",
             "label": "Achtergrond kleur",
             "name": "background_color",
             "aria-label": "",
@@ -256,7 +243,7 @@
             "font_size": 14
         },
         {
-            "key": "field_649d5b69c7cd0",
+            "key": "field_6523d7ebbadb3",
             "label": "Achtergrond afbeelding",
             "name": "background_image",
             "aria-label": "",
@@ -281,7 +268,7 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_65156fc770b90",
+            "key": "field_6523d7ebbadba",
             "label": "Overlay op header afbeelding",
             "name": "overlay_image",
             "aria-label": "",
@@ -291,7 +278,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_649d5b69c7cd0",
+                        "field": "field_6523d7ebbadb3",
                         "operator": "!=empty"
                     }
                 ]
@@ -308,7 +295,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_65156fdf70b91",
+            "key": "field_6523d7ebbadc1",
             "label": "Overlay kleur",
             "name": "overlay_color",
             "aria-label": "",
@@ -318,7 +305,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_65156fc770b90",
+                        "field": "field_6523d7ebbadba",
                         "operator": "==",
                         "value": "1"
                     }
@@ -333,7 +320,7 @@
             "font_size": 14
         },
         {
-            "key": "field_65156ff470b92",
+            "key": "field_6523d7ebbadc7",
             "label": "Overlay sterkte",
             "name": "overlay_opacity",
             "aria-label": "",
@@ -343,7 +330,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_65156fc770b90",
+                        "field": "field_6523d7ebbadba",
                         "operator": "==",
                         "value": "1"
                     }
@@ -374,7 +361,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "wefabric\/tekst"
+                "value": "wefabric\/testimonial"
             }
         ]
     ],
@@ -387,5 +374,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696848516
+    "modified": 1696848272
 }
