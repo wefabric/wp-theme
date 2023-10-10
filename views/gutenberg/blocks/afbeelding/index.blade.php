@@ -6,6 +6,10 @@
     $fullScreen = $block['data']['full_screen_image'] ?? false;
     $imageSize = $block['data']['image_size'] ?? '';
 
+    $overlayEnabled = ($block['data']['overlay_image']) ?? false;
+    $overlayColor = ($block['data']['overlay_color']) ?? '';
+    $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
+
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
     $blockClassMap = [33 => 'w-full lg:w-1/3', 50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 100 => 'w-full', 'fullscreen' => 'w-full'];
@@ -14,9 +18,9 @@
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
     $imageId = ($block['data']['background_image']) ?? '';
-    $overlayEnabled = ($block['data']['overlay_image']) ?? false;
-    $overlayColor = ($block['data']['overlay_color']) ?? '';
-    $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
+    $backgroundOverlayEnabled = ($block['data']['overlay_background_image']) ?? false;
+    $backgroundOverlayColor = ($block['data']['background_overlay_color']) ?? '';
+    $backgroundOverlayOpacity = ($block['data']['background_overlay_opacity']) ?? '';
 
     // Theme settings
     $options = get_fields('option');
@@ -25,16 +29,19 @@
 
 <section id="afbeelding" class="relative bg-{{ $backgroundColor }} py-16 lg:py-0"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
-    @if ($overlayEnabled)
-        <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+    @if ($backgroundOverlayEnabled)
+        <div class="absolute inset-0 bg-{{ $backgroundOverlayColor }} opacity-{{ $backgroundOverlayOpacity }}"></div>
     @endif
     <div class="relative z-10 py-8 lg:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto">
+        <div class="{{ $blockClass }} mx-auto relative">
             @if($block['data']['image'])
                 {!! wp_get_attachment_image($imageID, 'full', false, [
                     'class' => 'w-full object-cover rounded-' . $borderRadius,
                     'alt' => $imageAlt
                 ]) !!}
+                @if ($overlayEnabled)
+                    <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }} rounded-{{ $borderRadius }}"></div>
+                @endif
             @endif
         </div>
     </div>
