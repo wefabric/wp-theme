@@ -9,7 +9,7 @@
 
 @php
     if(!isset($size)) {
-	    $size = 'h-12 w-12 lg:h-14 lg:w-14 pt-1.5 lg:pt-2.5 mr-3';
+	    $size = 'h-12 w-12 lg:h-14 lg:w-14 pt-1.5 lg:pt-2.5 mb-3 mr-3';
     }
 
     if(!isset($colors)) {

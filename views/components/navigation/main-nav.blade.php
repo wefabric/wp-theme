@@ -59,7 +59,7 @@
 {{--        </div>--}}
 {{--    @endif--}}
 
-    <nav id="site-navigation" class="main-navigation flex justify-end items-center mt-2">
+    <nav id="site-navigation" class="main-navigation flex justify-end">
         @include('components.header.home-house', [
             'class' => 'md:px-4 text-xl text-primary', //this shows a house icon, as link to the homepage
         ])

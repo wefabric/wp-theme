@@ -17,7 +17,7 @@
             @apply inline-block pr-1 pb-1 md:px-4;
 			
 			&:hover {
-				@apply text-primary
+				@apply text-secondary;
 			}
         }
 	
@@ -117,7 +117,7 @@
 
 	li.current-menu-item a,
 	a:hover {
-		@apply no-underline text-primary;
+		@apply no-underline text-secondary;
 	}
 
 	.menu {
