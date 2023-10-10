@@ -36,7 +36,7 @@
         <div class="{{ $blockClass }} mx-auto relative">
             @if($block['data']['image'])
                 {!! wp_get_attachment_image($imageID, 'full', false, [
-                    'class' => 'w-full object-cover rounded-' . $borderRadius,
+                    'class' => 'w-full max-h-[400px] md:max-h-[600px] object-cover rounded-' . $borderRadius,
                     'alt' => $imageAlt
                 ]) !!}
                 @if ($overlayEnabled)

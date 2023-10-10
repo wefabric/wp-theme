@@ -46,7 +46,7 @@
             <h2 class="text-{{ $titleColor }} container mx-auto mb-4 px-8 md:px-0 {{ $titleClass }}">{{ $title }}</h2>
 
             <div class="w-full text-{{ $textColor }}">
-                <div class="relative flex items-center text-center md:text-left justify-center md:justify-start h-full min-h-full bg-{{ $testimonialBackground }} md:rounded-{{ $borderRadius }}">
+                <div class="relative flex items-center text-center md:text-left justify-center md:justify-start h-full min-h-full bg-{{ $testimonialBackground }} rounded-{{ $borderRadius }}">
                     <div class="w-full md:w-3/5 p-8 lg:p-16">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                              class="block mx-auto md:mx-0 w-8 h-8 mb-4"

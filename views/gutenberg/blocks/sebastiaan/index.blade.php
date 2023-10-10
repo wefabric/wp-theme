@@ -23,3 +23,4 @@
 <div class="sm:rounded-[10px] md:rounded-[10px] lg:rounded-[10px] xl:rounded-[10px]"></div>
 <div class="sm:rounded-[30px] md:rounded-[30px] lg:rounded-[30px] xl:rounded-[30px]"></div>
 <div class="sm:rounded-[50px] md:rounded-[50px] lg:rounded-[50px] xl:rounded-[50px]"></div>
+<div class="sm:rounded-full md:rounded-full lg:rounded-full xl:rounded-full"></div>
