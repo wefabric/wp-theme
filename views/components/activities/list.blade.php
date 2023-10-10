@@ -87,7 +87,7 @@
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
-            var uspSwiper = new Swiper(".activiteitenSwiper", {
+            var activiteitenSwiper = new Swiper(".activiteitenSwiper", {
             spaceBetween: 20,
             loop: true,
             autoplay: {{ $swiperAutoplay }},

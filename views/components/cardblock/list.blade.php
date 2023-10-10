@@ -9,21 +9,20 @@
         'desktop' => 'lg:grid-cols-' . $desktopLayout,
     ];
 
-    $showSliderMobile = count($posts) > $mobileLayout && $block['data']['show_slider'] == true;
-    $showSliderTablet = count($posts) > $tabletLayout && $block['data']['show_slider'] == true;
-    $showSliderDesktop = count($posts) > $desktopLayout && $block['data']['show_slider'] == true;
+    $showSliderMobile = count($pagesData) > $mobileLayout && $block['data']['show_slider'] == true;
+    $showSliderTablet = count($pagesData) > $tabletLayout && $block['data']['show_slider'] == true;
+    $showSliderDesktop = count($pagesData) > $desktopLayout && $block['data']['show_slider'] == true;
 
     $swiperAutoplay = isset($block['data']['autoplay']) ? ($block['data']['autoplay'] ? 'true' : 'false') : 'false';
-
 @endphp
 
 <div class="mobile block sm:hidden">
     @if($showSliderMobile)
-        <div class="swiper nieuwsSwiper nieuwsSwiperMobile">
+        <div class="swiper kaartenBlockSwiper">
             <div class="swiper-wrapper">
-                @foreach ($posts as $post)
+                @foreach ($pagesData as $page)
                     <div class="swiper-slide h-full">
-                        @include('components.news.list-item')
+                        @include('components.cardblock.list-item')
                     </div>
                 @endforeach
             </div>
@@ -33,8 +32,8 @@
         </div>
     @else
         <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8">
-            @foreach ($posts as $post)
-                @include('components.news.list-item')
+            @foreach ($pagesData as $page)
+                @include('components.cardblock.list-item')
             @endforeach
         </div>
     @endif
@@ -42,11 +41,11 @@
 
 <div class="tablet hidden sm:block lg:hidden">
     @if($showSliderTablet)
-        <div class="swiper nieuwsSwiper nieuwsSwiperTablet">
+        <div class="swiper kaartenBlockSwiper">
             <div class="swiper-wrapper">
-                @foreach ($posts as $post)
+                @foreach ($pagesData as $page)
                     <div class="swiper-slide h-full">
-                        @include('components.news.list-item')
+                        @include('components.cardblock.list-item')
                     </div>
                 @endforeach
             </div>
@@ -56,8 +55,8 @@
         </div>
     @else
         <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8">
-            @foreach ($posts as $post)
-                @include('components.news.list-item')
+            @foreach ($pagesData as $page)
+                @include('components.cardblock.list-item')
             @endforeach
         </div>
     @endif
@@ -65,11 +64,11 @@
 
 <div class="desktop hidden lg:block">
     @if($showSliderDesktop)
-        <div class="swiper nieuwsSwiper nieuwsSwiperDesktop">
+        <div class="swiper kaartenBlockSwiper">
             <div class="swiper-wrapper">
-                @foreach ($posts as $post)
+                @foreach ($pagesData as $page)
                     <div class="swiper-slide h-full">
-                        @include('components.news.list-item')
+                        @include('components.cardblock.list-item')
                     </div>
                 @endforeach
             </div>
@@ -79,8 +78,8 @@
         </div>
     @else
         <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8">
-            @foreach ($posts as $post)
-                @include('components.news.list-item')
+            @foreach ($pagesData as $page)
+                @include('components.cardblock.list-item')
             @endforeach
         </div>
     @endif
@@ -88,7 +87,7 @@
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
-        var nieuwsSwiper = new Swiper(".nieuwsSwiper", {
+            var kaartBlockSwiper = new Swiper(".kaartenBlockSwiper", {
             spaceBetween: 20,
             loop: true,
             autoplay: {{ $swiperAutoplay }},

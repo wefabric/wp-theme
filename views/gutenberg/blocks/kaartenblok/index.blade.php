@@ -10,21 +10,26 @@
     $pagesData = [];
     $numPages = intval($block['data']['pages']);
 
-//    for ($i = 0; $i < $numPages; $i++) {
-//        $pageKey = "pages_{$i}_image";
-//        $imageId = $block['data'][$imageKey] ?? '';
-//
-//        if ($imageId) {
-//            $imageInfo = wp_get_attachment_image_src($imageId, 'full');
-//            if ($imageInfo) {
-//                $imagesData[] = [
-//                    'id' => $imageId,
-//                    'url' => $imageInfo[0],
-//                    'caption' => $caption,
-//                ];
-//            }
-//        }
-//    }
+    for ($i = 0; $i < $numPages; $i++) {
+        $pageKey = "pages_{$i}_page";  // Adjust the key to the one you are using
+        $pageId = $block['data'][$pageKey] ?? 0; // Assuming you store the page ID in the ACF field
+
+        if ($pageId) {
+            // Retrieve information about the page
+            $page = get_post($pageId);
+
+            if ($page) {
+                $pagesData[] = [
+                    'id' => $page->ID,
+                    'title' => $page->post_title,
+                    'url' => get_permalink($page->ID),
+                    'content' => $page->post_content,
+                ];
+            }
+        }
+
+    }
+//            @dd($pagesData);
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -51,7 +56,7 @@
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} {{ $titleClass }}">
             <h2 class="text-{{ $titleColor }} mb-4">{{ $title }}</h2>
-{{--            @include('components.kaartenblock.list')--}}
+            @include('components.cardblock.list')
         </div>
     </div>
 </section>

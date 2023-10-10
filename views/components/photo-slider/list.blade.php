@@ -59,7 +59,7 @@
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
-        var uspSwiper = new Swiper(".fotoSliderSwiper", {
+        var fotoSliderSwiper = new Swiper(".fotoSliderSwiper", {
             spaceBetween: 20,
             loop: true,
             autoplay: {{ $swiperAutoplay }},

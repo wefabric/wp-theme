@@ -133,7 +133,14 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": "",
+                    "post_type": [
+                        "page",
+                        "post",
+                        "activities",
+                        "driver_training",
+                        "course",
+                        "vacancies"
+                    ],
                     "post_status": "",
                     "taxonomy": "",
                     "allow_archives": 1,
@@ -498,5 +505,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696944529
+    "modified": 1696947074
 }
