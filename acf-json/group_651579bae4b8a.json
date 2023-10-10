@@ -1,6 +1,6 @@
 {
     "key": "group_651579bae4b8a",
-    "title": "Block: Activiteitenoverzicht",
+    "title": "Block: Activiteiten overzicht",
     "fields": [
         {
             "key": "field_651579baf10fb",
@@ -290,7 +290,7 @@
         },
         {
             "key": "field_651579baf1136",
-            "label": "Activiteiten in slider weergeven",
+            "label": "Activiteiten in slider weergeven?",
             "name": "show_slider",
             "aria-label": "",
             "type": "true_false",
@@ -530,5 +530,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696864063
+    "modified": 1696930714
 }

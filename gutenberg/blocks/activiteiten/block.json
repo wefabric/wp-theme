@@ -1,6 +1,6 @@
 {
   "name": "wefabric/activiteiten",
-  "title": "Activiteiten",
+  "title": "Activiteiten overzicht",
   "description": "A custom activiteiten block",
   "style": "file:./style.css",
   "category": "theme",

@@ -2,28 +2,30 @@
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
+
     $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
 
-    // Show news
+    // Show vacancies
     $displayType = $block['data']['display_type'];
 
     if ($displayType == 'show_all') {
         $args = [
         'posts_per_page' => -1,
-        'post_type' => 'post',
+        'post_type' => 'vacancies',
         ];
+
         $query = new WP_Query($args);
-        $posts = wp_list_pluck($query->posts, 'ID');
+        $vacancies = wp_list_pluck($query->posts, 'ID');
     }
 
     elseif ($displayType == 'show_specific') {
-        $posts = $block['data']['show_specific_news'];
-        if (!is_array($posts) || empty($posts)) {
-            $posts = [];
-        }
+        $vacancies = $block['data']['show_specific_vacancy'];
+            if (!is_array($vacancies) || empty($vacancies)) {
+                $vacancies = [];
+            }
     }
 
 
@@ -44,7 +46,7 @@
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strenght']??'': 'rounded-none';
 @endphp
 
-<section id="nieuws" class="relative py-16 lg:py-0 bg-{{ $backgroundColor }}"
+<section id="vacatures" class="relative py-16 lg:py-0 bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
     @if ($overlayEnabled)
         <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
@@ -52,10 +54,7 @@
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             <h2 class="text-{{ $titleColor }} container mx-auto mb-8 lg:mb-20 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{{ $title }}</h2>
-            <div>
-                @include('components.news.category-list')
-            </div>
-            @include('components.news.list', ['posts' => $posts])
+            @include('components.vacancies.list', ['vacancies' => $vacancies])
         </div>
     </div>
 </section>

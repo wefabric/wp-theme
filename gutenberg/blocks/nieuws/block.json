@@ -1,6 +1,6 @@
 {
   "name": "wefabric/nieuws",
-  "title": "Nieuwsoverzicht",
+  "title": "Nieuws overzicht",
   "description": "A custom afbeelding block",
   "style": "file:./style.css",
   "category": "theme",

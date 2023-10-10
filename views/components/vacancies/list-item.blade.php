@@ -1,46 +1,46 @@
 @php
-    $fields = get_fields($activity);
+    $fields = get_fields($vacancy);
 
-    $activityThumbnailUrl = get_the_post_thumbnail_url($activity);
-    $activityTitle = get_the_title($activity);
-    $activityUrl = get_permalink($activity);
+    $vacancyThumbnailUrl = get_the_post_thumbnail_url($vacancy);
+    $vacancyTitle = get_the_title($vacancy);
+    $vacancyUrl = get_permalink($vacancy);
 
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
-    $activitySummary = get_the_excerpt($activity);
-    $activityCategories = get_the_category($activity);
+    $vacancySummary = get_the_excerpt($vacancy);
+    $vacancyCategories = get_the_category($vacancy);
 @endphp
 
-<div class="activiteit-item group h-full">
+<div class="vacature-item group h-full">
     <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
-        @if ($activityThumbnailUrl)
+        @if ($vacancyThumbnailUrl)
             <div class="h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
-                <a href="{{ $activityUrl }}" class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                <a href="{{ $vacancyUrl }}" class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
-                        @foreach ($activityCategories as $category)
+                        @foreach ($vacancyCategories as $category)
                             <a href="{{ $category->slug }}" class="bg-secondary px-4 py-2 rounded-full text-black">
                                 {{ $category->name }}
                             </a>
                         @endforeach
                     </div>
                 @endif
-                @if ($fields['activity_full'])
-                    <div class="absolute z-20 top-[15px] right-[15px] bg-red-500 px-4 py-2 rounded-full text-white">
-                        Vol
-                    </div>
-                @endif
-                <img src="{{ $activityThumbnailUrl }}" alt="Featured image"
+{{--                @if ($fields['activity_full'])--}}
+{{--                    <div class="absolute z-20 top-[15px] right-[15px] bg-red-500 px-4 py-2 rounded-full text-white">--}}
+{{--                        Vol--}}
+{{--                    </div>--}}
+{{--                @endif--}}
+                <img src="{{ $vacancyThumbnailUrl }}" alt="Featured image"
                      class="w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">
             </div>
         @endif
         <div class="w-full mt-5">
 
-            <a href="{{ $activityUrl }}" class="font-bold text-lg">{{ $activityTitle }}</a>
+            <a href="{{ $vacancyUrl }}" class="font-bold text-lg">{{ $vacancyTitle }}</a>
 
-            <div class="activity-data mt-4">
-                @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($activitySummary))
-                    <p class="mt-3 mb-3">{{ $activitySummary }}</p>
+            <div class="vacancy-data mt-4">
+                @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($vacancySummary))
+                    <p class="mt-3 mb-3">{{ $vacancySummary }}</p>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('location', $visibleElements) && !empty($fields['location']))
@@ -57,7 +57,7 @@
 
                 @if (!empty($visibleElements) && in_array('button', $visibleElements))
                     <div class="mt-4 flex items-center flex-wrap">
-                        <a href="{{ $activityUrl }}" class="text-primary inline-flex items-center md:mb-2 lg:mb-0">Lees meer
+                        <a href="{{ $vacancyUrl }}" class="text-primary inline-flex items-center md:mb-2 lg:mb-0">Lees meer
                             <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:scale-110 transition duration-300 ease-in-out"
                                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"
                                  stroke-linecap="round" stroke-linejoin="round">

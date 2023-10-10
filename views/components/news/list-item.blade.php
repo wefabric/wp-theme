@@ -12,10 +12,6 @@
     $postAuthorId = get_post_field('post_author', $post);
     $postAuthorName = get_the_author_meta('display_name', $postAuthorId);
     $postCategories = get_the_category($post);
-
-     // Theme settings
-    $options = get_fields('option');
-    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strenght']??'': 'rounded-none';
 @endphp
 
 <div class="nieuws-item group h-full">

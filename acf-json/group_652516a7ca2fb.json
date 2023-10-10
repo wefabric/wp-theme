@@ -1,9 +1,9 @@
 {
-    "key": "group_649d8c89263c3",
-    "title": "Block: Nieuws overzicht",
+    "key": "group_652516a7ca2fb",
+    "title": "Block: Vacatures overzicht",
     "fields": [
         {
-            "key": "field_6512dec4bd9a4",
+            "key": "field_652516a7d9711",
             "label": "Content",
             "name": "",
             "aria-label": "",
@@ -20,7 +20,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_649d8c8962661",
+            "key": "field_652516a7d9719",
             "label": "Titel",
             "name": "title",
             "aria-label": "",
@@ -40,7 +40,7 @@
             "append": ""
         },
         {
-            "key": "field_651c3147b343c",
+            "key": "field_652516a7d9721",
             "label": "Titel kleur",
             "name": "title_color",
             "aria-label": "",
@@ -50,7 +50,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_649d8c8962661",
+                        "field": "field_652516a7d9719",
                         "operator": "!=empty"
                     }
                 ]
@@ -64,7 +64,7 @@
             "font_size": 14
         },
         {
-            "key": "field_649d90d7e5d17",
+            "key": "field_652516a7d9728",
             "label": "Titel positie",
             "name": "title_position",
             "aria-label": "",
@@ -74,7 +74,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_649d8c8962661",
+                        "field": "field_652516a7d9719",
                         "operator": "!=empty"
                     }
                 ]
@@ -98,8 +98,8 @@
             "placeholder": ""
         },
         {
-            "key": "field_649d8cf162662",
-            "label": "Welke nieuwsberichten wil je tonen?",
+            "key": "field_652516a7d9737",
+            "label": "Welke vacatures wil je tonen?",
             "name": "display_type",
             "aria-label": "",
             "type": "radio",
@@ -112,8 +112,8 @@
                 "id": ""
             },
             "choices": {
-                "show_all": "Toon alle nieuwsberichten",
-                "show_specific": "Toon specifieke nieuwsberichten"
+                "show_all": "Toon alle vacatures",
+                "show_specific": "Toon specifieke vacatures"
             },
             "default_value": "show_all",
             "return_format": "value",
@@ -123,9 +123,9 @@
             "save_other_choice": 0
         },
         {
-            "key": "field_649d8d88de6ef",
-            "label": "Specifieke nieuwsberichten weergeven",
-            "name": "show_specific_news",
+            "key": "field_652516a7d973f",
+            "label": "Specifieke vacatures weergeven",
+            "name": "show_specific_vacancy",
             "aria-label": "",
             "type": "post_object",
             "instructions": "",
@@ -133,7 +133,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_649d8cf162662",
+                        "field": "field_652516a7d9737",
                         "operator": "==",
                         "value": "show_specific"
                     }
@@ -145,7 +145,7 @@
                 "id": ""
             },
             "post_type": [
-                "post"
+                "vacancies"
             ],
             "post_status": "",
             "taxonomy": "",
@@ -155,7 +155,7 @@
             "ui": 1
         },
         {
-            "key": "field_64a2e39036667",
+            "key": "field_652516a7d9747",
             "label": "Weergave",
             "name": "show_element",
             "aria-label": "",
@@ -169,10 +169,11 @@
                 "id": ""
             },
             "choices": {
-                "overview_text": "Overzichtstekst",
                 "category": "Categorie",
-                "date": "Datum",
-                "author": "Auteur",
+                "overview_text": "Overzichtstekst",
+                "location": "Locatie",
+                "working_hours": "Aantal uren",
+                "salary": "Salaris",
                 "button": "Knop"
             },
             "default_value": [],
@@ -184,8 +185,8 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
-            "key": "field_64a66f5aa3e0b",
-            "label": "Layout (aantal nieuwsberichten op een rij)",
+            "key": "field_652516a7d974e",
+            "label": "Layout (aantal vacatures op een rij)",
             "name": "layout",
             "aria-label": "",
             "type": "group",
@@ -200,7 +201,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_64a66faea3e0c",
+                    "key": "field_652516a7e47be",
                     "label": "Mobiel",
                     "name": "mobile",
                     "aria-label": "",
@@ -229,7 +230,7 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_64a6750fcf091",
+                    "key": "field_652516a7e47d6",
                     "label": "Tablet",
                     "name": "tablet",
                     "aria-label": "",
@@ -258,7 +259,7 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_64a5539ca9ccf",
+                    "key": "field_652516a7e47e1",
                     "label": "Desktop",
                     "name": "desktop",
                     "aria-label": "",
@@ -289,8 +290,8 @@
             ]
         },
         {
-            "key": "field_64a3ead6eaed5",
-            "label": "Nieuwsberichten in slider weergeven?",
+            "key": "field_652516a7d9755",
+            "label": "Vacatures in slider weergeven?",
             "name": "show_slider",
             "aria-label": "",
             "type": "true_false",
@@ -309,7 +310,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_64a6c28205233",
+            "key": "field_652516a7d975e",
             "label": "Autoplay swiper",
             "name": "autoplay",
             "aria-label": "",
@@ -319,7 +320,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a3ead6eaed5",
+                        "field": "field_652516a7d9755",
                         "operator": "==",
                         "value": "1"
                     }
@@ -337,7 +338,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_6512ded1bd9a5",
+            "key": "field_652516a7d9766",
             "label": "Blokinstellingen",
             "name": "",
             "aria-label": "",
@@ -354,7 +355,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_64a569495ecd0",
+            "key": "field_652516a7d976e",
             "label": "Breedte blok",
             "name": "block_width",
             "aria-label": "",
@@ -382,7 +383,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_64a2d86a20297",
+            "key": "field_652516a7d9777",
             "label": "Achtergrond kleur",
             "name": "background_color",
             "aria-label": "",
@@ -399,7 +400,7 @@
             "font_size": 14
         },
         {
-            "key": "field_6523d3678bfc6",
+            "key": "field_652516a7d977e",
             "label": "Achtergrond afbeelding",
             "name": "background_image",
             "aria-label": "",
@@ -424,7 +425,7 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_6523d3828bfc7",
+            "key": "field_652516a7d9786",
             "label": "Overlay op afbeelding?",
             "name": "overlay_image",
             "aria-label": "",
@@ -434,7 +435,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6523d3678bfc6",
+                        "field": "field_652516a7d977e",
                         "operator": "!=empty"
                     }
                 ]
@@ -451,7 +452,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_6523d3918bfc8",
+            "key": "field_652516a7d978d",
             "label": "Overlay kleur",
             "name": "overlay_color",
             "aria-label": "",
@@ -461,7 +462,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6523d3828bfc7",
+                        "field": "field_652516a7d9786",
                         "operator": "==",
                         "value": "1"
                     }
@@ -476,7 +477,7 @@
             "font_size": 14
         },
         {
-            "key": "field_6523d3ac8bfc9",
+            "key": "field_652516a7d9794",
             "label": "Overlay sterkte",
             "name": "overlay_opacity",
             "aria-label": "",
@@ -486,7 +487,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6523d3828bfc7",
+                        "field": "field_652516a7d9786",
                         "operator": "==",
                         "value": "1"
                     }
@@ -517,7 +518,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "wefabric\/nieuws"
+                "value": "wefabric\/vacatures"
             }
         ]
     ],
@@ -530,5 +531,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696930758
+    "modified": 1696930696
 }

@@ -1,13 +1,13 @@
 {
-  "name": "wefabric/usp",
-  "title": "USPs",
-  "description": "A custom usp block",
+  "name": "wefabric/vacatures",
+  "title": "Vacatures overzicht",
+  "description": "A custom vacatures block",
   "style": "file:./style.css",
   "category": "theme",
   "icon": "admin-comments",
   "apiVersion": 2,
   "keywords": [
-    "usp"
+    "vacatures overzicht"
   ],
   "acf": {
     "mode": "preview",
