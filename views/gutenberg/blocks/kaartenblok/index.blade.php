@@ -6,6 +6,25 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
+    // Show pages
+    $pagesData = [];
+    $numPages = intval($block['data']['pages']);
+
+//    for ($i = 0; $i < $numPages; $i++) {
+//        $pageKey = "pages_{$i}_image";
+//        $imageId = $block['data'][$imageKey] ?? '';
+//
+//        if ($imageId) {
+//            $imageInfo = wp_get_attachment_image_src($imageId, 'full');
+//            if ($imageInfo) {
+//                $imagesData[] = [
+//                    'id' => $imageId,
+//                    'url' => $imageInfo[0],
+//                    'caption' => $caption,
+//                ];
+//            }
+//        }
+//    }
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -18,6 +37,10 @@
     $overlayEnabled = ($block['data']['overlay_image']) ?? false;
     $overlayColor = ($block['data']['overlay_color']) ?? '';
     $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
+
+    // Theme settings
+    $options = get_fields('option');
+    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strenght'] ?? '' : 'rounded-none';
 @endphp
 
 <section id="kaarten" class="relative py-16 lg:py-0 bg-{{ $backgroundColor }}"
@@ -28,6 +51,7 @@
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} {{ $titleClass }}">
             <h2 class="text-{{ $titleColor }} mb-4">{{ $title }}</h2>
+{{--            @include('components.kaartenblock.list')--}}
         </div>
     </div>
 </section>

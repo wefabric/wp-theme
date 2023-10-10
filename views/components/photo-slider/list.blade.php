@@ -17,7 +17,7 @@
         <div class="swiper-wrapper">
             @foreach ($imagesData as $image)
                 <div class="swiper-slide h-full">
-                    @include('components.foto-slider.list-item')
+                    @include('components.photo-slider.list-item')
                 </div>
             @endforeach
         </div>
@@ -32,7 +32,7 @@
         <div class="swiper-wrapper">
             @foreach ($imagesData as $image)
                 <div class="swiper-slide h-full">
-                    @include('components.foto-slider.list-item')
+                    @include('components.photo-slider.list-item')
                 </div>
             @endforeach
         </div>
@@ -47,7 +47,7 @@
         <div class="swiper-wrapper">
             @foreach ($imagesData as $image)
                 <div class="swiper-slide h-full">
-                    @include('components.foto-slider.list-item')
+                    @include('components.photo-slider.list-item')
                 </div>
             @endforeach
         </div>

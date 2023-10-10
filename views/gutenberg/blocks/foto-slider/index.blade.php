@@ -6,9 +6,9 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
-    // Show usps
+    // Show images
     $imagesData = [];
-    $numImages = intval($block['data']['images']); // Assuming 'images' holds the count of images
+    $numImages = intval($block['data']['images']);
 
     for ($i = 0; $i < $numImages; $i++) {
         $imageKey = "images_{$i}_image";
@@ -20,10 +20,13 @@
         if ($imageId) {
             $imageInfo = wp_get_attachment_image_src($imageId, 'full');
             if ($imageInfo) {
+                $alt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
+                $alt = $alt ? $alt : "image_$i";
+
                 $imagesData[] = [
-                    'id' => $imageId,
                     'url' => $imageInfo[0],
                     'caption' => $caption,
+                    'alt' => $alt,
                 ];
             }
         }
@@ -54,7 +57,7 @@
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             <h2 class="text-{{ $titleColor }} container mx-auto mb-8 lg:mb-20 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{{ $title }}</h2>
-            @include('components.foto-slider.list')
+            @include('components.photo-slider.list')
         </div>
     </div>
 </section>
