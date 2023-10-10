@@ -16,9 +16,8 @@
 
 <div class="nieuws-item group h-full">
     <div class="h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
-
             @if ($postThumbnailUrl)
-                <div class="h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
+                <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                     <a href="{{ $postUrl }}" class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                     @if (!empty($visibleElements) && in_array('category', $visibleElements))
                         <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
@@ -29,8 +28,8 @@
                             @endforeach
                         </div>
                     @endif
-                    <img src="{{ $postThumbnailUrl }}" alt="Featured Image"
-                         class="w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">
+                    <img src="{{ $postThumbnailUrl }}" alt="{{ $postTitle }}"
+                         class="aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">
                 </div>
             @endif
         <div class="w-full mt-5">

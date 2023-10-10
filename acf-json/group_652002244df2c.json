@@ -25,7 +25,7 @@
         {
             "key": "field_6520023b7895b",
             "label": "Locatie",
-            "name": "locatie",
+            "name": "location",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -71,7 +71,7 @@
         {
             "key": "field_652003597895d",
             "label": "Salaris",
-            "name": "sallery",
+            "name": "salary",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -107,5 +107,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696596956
+    "modified": 1696932841
 }

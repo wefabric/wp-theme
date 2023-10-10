@@ -170,7 +170,7 @@
             },
             "choices": {
                 "category": "Categorie",
-                "overview_text": "Overzichtstekst",
+                "overview_text": "Korte samenvatting",
                 "location": "Locatie",
                 "working_hours": "Aantal uren",
                 "salary": "Salaris",
@@ -531,5 +531,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696930696
+    "modified": 1696931946
 }
