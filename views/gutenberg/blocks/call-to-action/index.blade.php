@@ -42,7 +42,6 @@
 
 <section id="call-to-action" class="relative">
     <div class="{{ $fullScreenClass }} pt-8 lg:pt-20">
-
         @if (!empty($employeeImage))
             <div class="absolute z-10 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <img src="{{ $employeeImage }}"
@@ -50,21 +49,17 @@
                      class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] aspect-square object-cover rounded-full">
             </div>
         @endif
-
         <div class="mx-auto {{ $blockClass }} relative py-16 px-8 bg-{{ $backgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif"
              style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
             @if ($overlayEnabled)
                 <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
             @endif
-
             @if ($ctaVariant == 'cta_button')
                 @include('components.cta.cta-button')
             @endif
-
             @if ($ctaVariant == 'cta_whitepaper')
                 @include('components.cta.cta-whitepaper')
             @endif
-
             @if ($ctaVariant == 'cta_employee')
                 @include('components.cta.cta-employee')
             @endif

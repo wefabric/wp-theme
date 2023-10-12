@@ -14,6 +14,7 @@
     "vacatures/block.json",
     "werknemers/block.json",
     "werkwijze/block.json",
+    "prijzen/block.json",
     "testimonial/block.json",
     "faq/block.json",
     "google-maps/block.json",

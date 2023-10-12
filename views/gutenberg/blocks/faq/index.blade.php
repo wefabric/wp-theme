@@ -36,10 +36,10 @@
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="mx-auto {{ $blockClass }} {{ $titleClass }}">
             <div class="faq-drawer container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
-                <h2 class="mb-4 text-{{ $titleColor }}">{{ $title }} </h2>
+                <h2 class="mb-8 lg:mb-20 text-{{ $titleColor }}">{{ $title }} </h2>
                 @if ($questionsAndAnswers)
                     @foreach ($questionsAndAnswers as $key => $faq)
-                        <div class="mb-2 text-{{ $textColor }}">
+                        <div class="mb-2 text-left text-{{ $textColor }}">
                             <input class="faq-drawer__trigger mb-4" id="faq-drawer-{{$key}}" type="checkbox"/>
                             <label class="faq-drawer__title relative block cursor-pointer text-md font-bold p-10 bg-{{ $faqBackgroundColor }}"
                                    for="faq-drawer-{{$key}}">{{ $faq['question_and_answer']['question'] }}</label>
