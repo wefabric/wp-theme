@@ -38,8 +38,6 @@
         }
     }
 }
-//    @dd($block['data']);
-//            @dd($pagesData);
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -64,7 +62,7 @@
         <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} {{ $titleClass }}">
+        <div class="{{ $blockClass }} mx-auto {{ $titleClass }}">
             <h2 class="text-{{ $titleColor }} container mx-auto mb-8 lg:mb-20 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{{ $title }}</h2>
             @include('components.cardblock.list')
         </div>
