@@ -11,25 +11,31 @@
     $numPages = intval($block['data']['pages']);
 
     for ($i = 0; $i < $numPages; $i++) {
-        $pageKey = "pages_{$i}_page";  // Adjust the key to the one you are using
-        $pageId = $block['data'][$pageKey] ?? 0; // Assuming you store the page ID in the ACF field
+    $pageKey = "pages_{$i}_page";
+    $pageId = $block['data'][$pageKey] ?? 0;
+    $iconKey = "pages_{$i}_icon";
+    $imageKey = "pages_{$i}_image";
+    $imageId = $block['data'][$imageKey] ?? 0;
 
-        if ($pageId) {
-            // Retrieve information about the page
-            $page = get_post($pageId);
+    if ($pageId) {
+        $page = get_post($pageId);
 
-            if ($page) {
-                $pagesData[] = [
-                    'id' => $page->ID,
-                    'title' => $page->post_title,
-                    'url' => get_permalink($page->ID),
-                    'content' => $page->post_content,
+        if ($page) {
 
-                ];
-            }
+            $icon = $block['data'][$iconKey] ?? '';
+
+            $pagesData[] = [
+                'id' => $page->ID,
+                'title' => $page->post_title,
+                'url' => get_permalink($page->ID),
+                'content' => $page->post_content,
+                'icon' => $icon,
+                'image_id' => $imageId,
+            ];
         }
-
     }
+}
+//    @dd($block['data']);
 //            @dd($pagesData);
 
     // Blokinstellingen
@@ -56,7 +62,7 @@
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} {{ $titleClass }}">
-            <h2 class="text-{{ $titleColor }} mb-4">{{ $title }}</h2>
+            <h2 class="text-{{ $titleColor }} container mx-auto mb-8 lg:mb-20 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{{ $title }}</h2>
             @include('components.cardblock.list')
         </div>
     </div>
