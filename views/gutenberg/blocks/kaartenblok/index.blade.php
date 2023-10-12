@@ -17,30 +17,38 @@
    $numPages = intval($block['data']['pages']);
 
    for ($i = 0; $i < $numPages; $i++) {
-   $pageKey = "pages_{$i}_page";
-   $pageId = $block['data'][$pageKey] ?? 0;
-   $iconKey = "pages_{$i}_icon";
-   $imageKey = "pages_{$i}_image";
-   $imageId = $block['data'][$imageKey] ?? 0;
+    $pageKey = "pages_{$i}_page";
+    $pageId = $block['data'][$pageKey] ?? 0;
+    $iconKey = "pages_{$i}_icon";
+    $imageKey = "pages_{$i}_image";
+    $imageId = $block['data'][$imageKey] ?? 0;
 
-   if ($pageId) {
-       $page = get_post($pageId);
+        if ($pageId) {
+            $page = get_post($pageId);
 
-       if ($page) {
+            if ($page) {
+                $icon = $block['data'][$iconKey] ?? '';
 
-           $icon = $block['data'][$iconKey] ?? '';
+                $featured_image_id = 0;
+                if ($imageId) {
+                    $featured_image_id = $imageId;
+                } elseif (has_post_thumbnail($page->ID)) {
+                    $thumbnail_id = get_post_thumbnail_id($page->ID);
+                    $featured_image_id = $thumbnail_id;
+                }
 
-           $pagesData[] = [
-               'id' => $page->ID,
-               'title' => $page->post_title,
-               'url' => get_permalink($page->ID),
-               'content' => $page->post_content,
-               'icon' => $icon,
-               'image_id' => $imageId,
-           ];
-       }
-   }
-}
+                $pagesData[] = [
+                    'id' => $page->ID,
+                    'title' => $page->post_title,
+                    'url' => get_permalink($page->ID),
+                    'content' => $page->post_content,
+                    'icon' => $icon,
+                    'image_id' => $imageId,
+                    'featured_image_id' => $featured_image_id,
+                ];
+            }
+        }
+    }
 
    // Blokinstellingen
    $blockWidth = $block['data']['block_width'] ?? 100;

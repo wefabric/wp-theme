@@ -2,21 +2,29 @@
     <div class="bg-{{ $cardBackgroundColor }} text-{{ $cardTextColor }} rounded-{{ $borderRadius }} h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out overflow-hidden">
         <div>
             <div class="h-[360px] relative overflow-hidden rounded-{{ $borderRadius }}">
-                @if ($pageIcon)
+                @if($block['data']['block_visual'] == 'featured_image' && $featuredImageId)
+                    <a href="{{ $pageUrl }}"
+                       class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                    @include('components.image', [
+                     'image_id' => $featuredImageId,
+                     'size' => 'full',
+                     'object_fit' => 'cover',
+                     'img_class' => 'w-full h-full object-cover transform ease-in-out duration-300 group-hover:scale-110 rounded-t-' . $borderRadius,
+                     'alt' => $pageTitle
+                  ])
+                @elseif ($block['data']['block_visual'] == 'icon' && $pageIcon)
                     <div class="h-full flex justify-center items-center">
                         <i class="relative z-20 text-[200px] fas fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
                     </div>
-                @endif
-                @if($imageID)
+                @elseif($block['data']['block_visual'] == 'image' && $imageID)
                     <a href="{{ $pageUrl }}"
                        class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
-
                     @include('components.image', [
                        'image_id' => $imageID,
                        'size' => 'full',
                        'object_fit' => 'cover',
                        'img_class' => 'w-full h-full object-cover transform ease-in-out duration-300 group-hover:scale-110 rounded-t-' . $borderRadius,
-                       'alt' => 'no alt'
+                       'alt' => $pageTitle
                     ])
                 @endif
             </div>
