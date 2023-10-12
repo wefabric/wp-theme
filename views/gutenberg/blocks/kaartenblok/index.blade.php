@@ -6,6 +6,9 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
+    $cardBackgroundColor = $block['data']['card_background_color'] ?? '';
+    $cardTextColor = $block['data']['card_text_color'] ?? '';
+
     // Show pages
     $pagesData = [];
     $numPages = intval($block['data']['pages']);
