@@ -88,10 +88,14 @@
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
-            var uspSwiper = new Swiper(".vacaturesSwiper", {
+        var uspSwiper = new Swiper(".vacaturesSwiper", {
             spaceBetween: 20,
             loop: true,
-            autoplay: {{ $swiperAutoplay }},
+            @if ($swiperAutoplay)
+                autoplay: {
+                    disableOnInteraction: false,
+                },
+            @endif
             pagination: {
                 el: ".swiper-pagination",
             },

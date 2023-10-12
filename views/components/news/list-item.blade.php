@@ -37,7 +37,7 @@
                 <p class="text-gray-500">{{ $postDate }}</p>
             @endif
 
-            <a href="{{ $postUrl }}" class="font-bold text-lg">{{ $postTitle }}</a>
+            <a href="{{ $postUrl }}" class="font-bold text-lg group-hover:text-primary">{{ $postTitle }}</a>
 
             <div class="news-info">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($postSummary))

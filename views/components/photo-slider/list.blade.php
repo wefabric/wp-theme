@@ -62,7 +62,11 @@
         var fotoSliderSwiper = new Swiper(".fotoSliderSwiper", {
             spaceBetween: 20,
             loop: true,
-            autoplay: {{ $swiperAutoplay }},
+            @if ($swiperAutoplay)
+                autoplay: {
+                    disableOnInteraction: false,
+                },
+            @endif
             pagination: {
                 el: ".swiper-pagination",
             },

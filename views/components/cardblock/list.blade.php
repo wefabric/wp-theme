@@ -87,15 +87,15 @@
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
-            var kaartBlockSwiper = new Swiper(".kaartenBlockSwiper", {
+        var kaartBlockSwiper = new Swiper(".kaartenBlockSwiper", {
             spaceBetween: 20,
             centeredSlides: true,
             loop: true,
-                effect: 'zoom',
-                zoom: {
-                    maxRatio: 3, // Adjust the maximum zoom level as needed
+            @if ($swiperAutoplay)
+                autoplay: {
+                    disableOnInteraction: false,
                 },
-            autoplay: {{ $swiperAutoplay }},
+            @endif
             pagination: {
                 el: ".swiper-pagination",
             },

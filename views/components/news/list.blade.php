@@ -91,7 +91,11 @@
         var nieuwsSwiper = new Swiper(".nieuwsSwiper", {
             spaceBetween: 20,
             loop: true,
-            autoplay: {{ $swiperAutoplay }},
+            @if ($swiperAutoplay)
+                autoplay: {
+                    disableOnInteraction: false,
+                },
+            @endif
             pagination: {
                 el: ".swiper-pagination",
             },

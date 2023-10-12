@@ -36,7 +36,7 @@
         @endif
         <div class="w-full mt-5">
 
-            <a href="{{ $activityUrl }}" class="font-bold text-lg">{{ $activityTitle }}</a>
+            <a href="{{ $activityUrl }}" class="font-bold text-lg group-hover:text-primary">{{ $activityTitle }}</a>
 
             <div class="activity-data mt-4">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($activitySummary))
