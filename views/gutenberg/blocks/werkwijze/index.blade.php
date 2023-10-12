@@ -1,4 +1,7 @@
 @php
+    // Workflow variant
+    $workflowVariant = $block['data']['layout_steps'] ?? '';
+
     // Content
     $title = $block['data']['title'];
     $titleColor = $block['data']['title_color'] ?? '';
@@ -7,9 +10,6 @@
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
     $stepTextColor = $block['data']['step_text_color'] ?? '';
-
-    // Workflow variant
-    $workflowVariant = $block['data']['layout_steps'] ?? '';
 
 
     // Show steps
