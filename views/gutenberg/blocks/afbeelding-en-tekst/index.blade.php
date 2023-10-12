@@ -16,6 +16,10 @@
     $textOrder = ($textPosition === 'left') ? 'lg:order-1' : 'lg:order-2';
     $imageOrder = ($textPosition === 'left') ? 'lg:order-2' : 'lg:order-1';
 
+    $imageID = $block['data']['image'];
+    $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
+
+
     $imageSize = $block['data']['image_size'] ?? '';
     $imageClass = '';
     $textClass = '';
@@ -71,9 +75,17 @@
                            class="ml-4 text-black font-medium hover:text-primary underline mt-4 text-base">{{ $buttonTwoText }}</a>
                     @endif
                 </div>
-                <div class="{{ $imageClass }} order-1 {{ $imageOrder }}">
-                    {!! wp_get_attachment_image($block['data']['image'], 'full', false, ['class' => 'w-full object-cover rounded-' . $borderRadius . ' ' . $imageHeightClass ]) !!}
-                </div>
+                @if($imageID)
+                    <div class="{{ $imageClass }} order-1 {{ $imageOrder }}">
+                        @include('components.image', [
+                            'image_id' => $imageID,
+                            'size' => 'full',
+                            'object_fit' => 'cover',
+                            'img_class' => 'w-full object-cover rounded-' . $borderRadius . ' ' . $imageHeightClass,
+                            'alt' => $imageAlt
+                        ])
+                    </div>
+                @endif
             </div>
         </div>
     </div>

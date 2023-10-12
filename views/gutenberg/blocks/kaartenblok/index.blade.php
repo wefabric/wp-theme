@@ -24,6 +24,7 @@
                     'title' => $page->post_title,
                     'url' => get_permalink($page->ID),
                     'content' => $page->post_content,
+
                 ];
             }
         }

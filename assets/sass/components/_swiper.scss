@@ -44,3 +44,14 @@ section.related ul.products {
 	height: 100% !important;
 }
 
+
+//.kaartenBlockSwiper .swiper-wrapper{
+//	height: 300px !important;
+//}
+
+.kaartenBlockSwiper .swiper-slide-active .cardbackground {
+	@apply bg-secondary;
+	//height: 300px !important;
+}
+
+
