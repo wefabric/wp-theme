@@ -11,19 +11,20 @@
     $numImages = intval($block['data']['images']);
 
     for ($i = 0; $i < $numImages; $i++) {
-        $imageKey = "images_{$i}_image";
-        $captionKey = "images_{$i}_caption";
+    $imageKey = "images_{$i}_image";
+    $captionKey = "images_{$i}_caption";
 
-        $imageId = $block['data'][$imageKey] ?? '';
-        $caption = $block['data'][$captionKey] ?? '';
+    $imageID = $block['data'][$imageKey] ?? '';
+    $caption = $block['data'][$captionKey] ?? '';
 
-        if ($imageId) {
-            $imageInfo = wp_get_attachment_image_src($imageId, 'full');
+        if ($imageID) {
+            $imageInfo = wp_get_attachment_image_src($imageID, 'full');
             if ($imageInfo) {
-                $alt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
+                $alt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
                 $alt = $alt ? $alt : "image_$i";
 
                 $imagesData[] = [
+                    'id' => $imageID, // Add the image ID to the array
                     'url' => $imageInfo[0],
                     'caption' => $caption,
                     'alt' => $alt,

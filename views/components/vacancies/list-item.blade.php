@@ -32,7 +32,7 @@
         @endif
         <div class="w-full mt-5">
 
-            <a href="{{ $vacancyUrl }}" class="font-bold text-lg">{{ $vacancyTitle }}</a>
+            <a href="{{ $vacancyUrl }}" class="font-bold text-lg group-hover:text-primary">{{ $vacancyTitle }}</a>
 
             <div class="vacancy-data mt-4">
 

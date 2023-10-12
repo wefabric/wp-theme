@@ -8,15 +8,15 @@
     $textPosition = $block['data']['text_position'] ?? '';
 
     $buttonOneText = $block['data']['button_1_text'] ?? '';
-    $buttonOneLink = ($block['data']['button_1_link']['url']) ?? '';
+    $buttonOneLink = $block['data']['button_1_link']['url'] ?? '';
 
     $buttonTwoText = $block['data']['button_2_text'] ?? '';
-    $buttonTwoLink = ($block['data']['button_2_link']['url']) ?? '';
+    $buttonTwoLink = $block['data']['button_2_link']['url'] ?? '';
 
     $textOrder = ($textPosition === 'left') ? 'lg:order-1' : 'lg:order-2';
     $imageOrder = ($textPosition === 'left') ? 'lg:order-2' : 'lg:order-1';
 
-    $imageID = $block['data']['image'];
+    $imageID = $block['data']['image'] ?? '';
     $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
 
 

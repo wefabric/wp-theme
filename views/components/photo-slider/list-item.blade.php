@@ -1,11 +1,19 @@
 @php
     $imageCaption = $image['caption'] ?? '';
-    $imageUrl = ($image['url']) ?? '';
-    $imageAlt = ($image['alt']) ?? '';
+    $imageUrl = $image['url'] ?? '';
+    $imageAlt = $image['alt'] ?? '';
+    $imageID = $image['id'] ?? '';
 @endphp
 
-<img src="{{ $imageUrl }}" alt="{{ $imageAlt }}" height="500" width="500"
-     class="h-[300px] lg:h-[500px] w-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110 rounded-{{ $borderRadius }}">
+@if($imageID)
+    @include('components.image', [
+        'image_id' => $imageID,
+        'size' => 'full',
+        'object_fit' => 'cover',
+        'img_class' => 'w-full h-[400px] h-[600px] object-cover rounded-' . $borderRadius,
+        'alt' => $imageAlt
+    ])
+@endif
 @if($imageCaption)
     <p class="mt-2">{{ $imageCaption }}</p>
 @endif

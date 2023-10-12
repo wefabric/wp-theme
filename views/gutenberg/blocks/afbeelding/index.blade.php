@@ -4,9 +4,9 @@
     $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
     $fullScreen = $block['data']['full_screen_image'] ?? false;
 
-    $overlayEnabled = ($block['data']['overlay_image']) ?? false;
-    $overlayColor = ($block['data']['overlay_color']) ?? '';
-    $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
+    $overlayEnabled = $block['data']['overlay_image'] ?? false;
+    $overlayColor = $block['data']['overlay_color'] ?? '';
+    $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -15,10 +15,10 @@
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto px-8' : '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
-    $imageId = ($block['data']['background_image']) ?? '';
-    $backgroundOverlayEnabled = ($block['data']['overlay_background_image']) ?? false;
-    $backgroundOverlayColor = ($block['data']['background_overlay_color']) ?? '';
-    $backgroundOverlayOpacity = ($block['data']['background_overlay_opacity']) ?? '';
+    $imageId = $block['data']['background_image'] ?? '';
+    $backgroundOverlayEnabled = $block['data']['overlay_background_image'] ?? false;
+    $backgroundOverlayColor = $block['data']['background_overlay_color'] ?? '';
+    $backgroundOverlayOpacity = $block['data']['background_overlay_opacity'] ?? '';
 
     // Theme settings
     $options = get_fields('option');
@@ -32,14 +32,14 @@
     @endif
     <div class="relative z-10 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto relative">
-            @if($imageID)
+            @if ($imageID)
                 @include('components.image', [
-               'image_id' => $imageID,
-               'size' => 'full',
-               'object_fit' => 'cover',
-               'img_class' => 'w-full max-h-[400px] md:max-h-[600px] object-cover rounded-' . $borderRadius,
-               'alt' => $imageAlt
-           ])
+                   'image_id' => $imageID,
+                   'size' => 'full',
+                   'object_fit' => 'cover',
+                   'img_class' => 'w-full max-h-[400px] md:max-h-[600px] object-cover rounded-' . $borderRadius,
+                   'alt' => $imageAlt
+               ])
                 @if ($overlayEnabled)
                     <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }} rounded-{{ $borderRadius }}"></div>
                 @endif
