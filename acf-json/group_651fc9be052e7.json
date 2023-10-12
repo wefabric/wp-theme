@@ -3,6 +3,32 @@
     "title": "Block: Kaartenblok",
     "fields": [
         {
+            "key": "field_6527b2439ad98",
+            "label": "Kaartenblok variant",
+            "name": "cardblock_version",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "variant1": "Variant 1",
+                "variant2": "Variant 2"
+            },
+            "default_value": "variant1",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_651fc9be0ee9c",
             "label": "Content",
             "name": "",
@@ -651,5 +677,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697098875
+    "modified": 1697101736
 }

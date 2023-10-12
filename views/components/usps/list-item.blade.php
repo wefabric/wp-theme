@@ -17,7 +17,7 @@
             <img src="{{ $imageUrl }}" alt="usp-image" class="mx-auto w-auto h-auto max-w-full max-h-20 mb-8">
         @endif
         @if ($title)
-            <p class="text-white font-bold text-xl lg:text-3xl mb-4">{{ $title }}</p>
+            <p class="text-{{$textColor}} font-bold h4 mb-4">{{ $title }}</p>
         @endif
         @if ($text)
             <p class="text-{{$textColor}}">{{ $text }}</p>
