@@ -6,12 +6,22 @@
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
-//    $buttonText = $block['data']['button_text'] ?? '';
-//    $buttonLink = ($block['data']['button_link']['url']) ?? '';
 
-//    $textPosition = $block['data']['text_position'] ?? '';
-//    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-//    $textClass = $titleClassMap[$textPosition] ?? '';
+    // Show links
+    $linksCount = $block['data']['links'] ?? 0;
+    $links = [];
+
+    for ($i = 0; $i < $linksCount; $i++) {
+        $buttonTextKey = "links_{$i}_button_text";
+        $buttonLinkKey = "links_{$i}_button_link";
+        $buttonText = $block['data'][$buttonTextKey] ?? '';
+        $buttonLink = $block['data'][$buttonLinkKey]['url'] ?? '';
+
+        $links[] = [
+            'buttonText' => $buttonText,
+            'buttonLink' => $buttonLink,
+        ];
+    }
 
 
     // Blokinstellingen
@@ -40,9 +50,12 @@
             @if ($text)
                 <p class="text-{{ $textColor }}">{!! $text !!} </p>
             @endif
-            @if (($buttonText) && ($buttonLink))
-                <a href="{{ $buttonLink }}" class="btn button-primary bg-primary hover:bg-primary-dark mt-4 text-base">{{ $buttonText }}</a>
-            @endif
+            @foreach($links as $link)
+                @if($link['buttonText'] && $link['buttonLink'])
+                    <a href="{{ $link['buttonLink'] }}"
+                       class="btn button-primary bg-primary hover:bg-primary-dark mt-4 text-base">{{ $link['buttonText'] }}</a>
+                @endif
+            @endforeach
         </div>
     </div>
 </section>

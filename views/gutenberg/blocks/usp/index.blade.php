@@ -11,7 +11,6 @@
 
     // Show usps
     $uspsCount = $block['data']['usps'];
-
     $usps = [];
 
     for ($i = 0; $i < $uspsCount; $i++) {

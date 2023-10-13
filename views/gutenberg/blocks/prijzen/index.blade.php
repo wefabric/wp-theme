@@ -72,7 +72,7 @@
             @include('components.prices.packages-list', ['packages' => $packages])
 
             @if ($showTables)
-                <div class="container px-8 w-full @if(($blockWidth == '50') || ($blockWidth == '66')) w-full @else md:w-2/3 @endif mx-auto">
+                <div class="container w-full @if(($blockWidth == '50') || ($blockWidth == '66')) w-full @else md:w-2/3 @endif mx-auto">
                     @include('components.prices.tables-list', ['tables' => $tables])
                 </div>
             @endif
