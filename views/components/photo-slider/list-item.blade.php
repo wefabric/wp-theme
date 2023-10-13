@@ -15,5 +15,5 @@
     ])
 @endif
 @if($imageCaption)
-    <p class="mt-2">{{ $imageCaption }}</p>
+    <p class="text-lg font-bold mt-2">{{ $imageCaption }}</p>
 @endif
