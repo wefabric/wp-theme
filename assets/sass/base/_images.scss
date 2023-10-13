@@ -1,11 +1,11 @@
 //img:not(.disable-rounded),
-.image:not(.disable-rounded) {
-	@apply rounded-2xl;
-	
-	img {
-		@apply rounded-2xl;
-	}
-}
+//.image:not(.disable-rounded) {
+//	@apply rounded-2xl;
+//
+//	img {
+//		@apply rounded-2xl;
+//	}
+//}
 
 .invert-color {
   filter:  brightness(0) invert(1);

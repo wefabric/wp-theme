@@ -99,7 +99,7 @@
         },
         {
             "key": "field_6527fb701076f",
-            "label": "Welke activiteiten wil je tonen?",
+            "label": "Welke pakketten wil je tonen?",
             "name": "display_type",
             "aria-label": "",
             "type": "radio",
@@ -112,10 +112,10 @@
                 "id": ""
             },
             "choices": {
-                "show_all": "Toon alle activiteiten",
-                "show_specific": "Toon specifieke activiteiten"
+                "show_specific": "Toon specifieke pakketten",
+                "show_all": "Toon alle pakketten"
             },
-            "default_value": "show_all",
+            "default_value": "show_specific",
             "return_format": "value",
             "allow_null": 0,
             "other_choice": 0,
@@ -124,8 +124,8 @@
         },
         {
             "key": "field_6527fb7010775",
-            "label": "Specifieke activiteiten weergeven",
-            "name": "show_specific_activity",
+            "label": "Specifieke pakketten weergeven",
+            "name": "show_specific_package",
             "aria-label": "",
             "type": "post_object",
             "instructions": "",
@@ -145,7 +145,7 @@
                 "id": ""
             },
             "post_type": [
-                "activities"
+                "prices"
             ],
             "post_status": "",
             "taxonomy": "",
@@ -185,7 +185,7 @@
         },
         {
             "key": "field_6527fb7010783",
-            "label": "Layout (aantal activiteiten op een rij)",
+            "label": "Layout (aantal pakketten op een rij)",
             "name": "layout",
             "aria-label": "",
             "type": "group",
@@ -530,5 +530,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697119103
+    "modified": 1697186519
 }
