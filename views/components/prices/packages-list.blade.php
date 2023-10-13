@@ -22,7 +22,7 @@
             <div class="swiper-wrapper">
                 @foreach ($packages as $package)
                     <div class="swiper-slide h-full">
-                        @include('components.packages.list-item')
+                        @include('components.prices.packages-list-item')
                     </div>
                 @endforeach
             </div>
@@ -33,7 +33,7 @@
     @else
         <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8">
             @foreach ($packages as $package)
-                @include('components.packages.list-item')
+                @include('components.prices.packages-list-item')
             @endforeach
         </div>
     @endif
@@ -45,7 +45,7 @@
             <div class="swiper-wrapper">
                 @foreach ($packages as $package)
                     <div class="swiper-slide h-full">
-                        @include('components.packages.list-item')
+                        @include('components.prices.packages-list-item')
                     </div>
                 @endforeach
             </div>
@@ -56,7 +56,7 @@
     @else
         <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8">
             @foreach ($packages as $package)
-                @include('components.packages.list-item')
+                @include('components.prices.packages-list-item')
             @endforeach
         </div>
     @endif
@@ -68,7 +68,7 @@
             <div class="swiper-wrapper">
                 @foreach ($packages as $package)
                     <div class="swiper-slide h-full">
-                        @include('components.packages.list-item')
+                        @include('components.prices.packages-list-item')
                     </div>
                 @endforeach
             </div>
@@ -79,7 +79,7 @@
     @else
         <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8">
             @foreach ($packages as $package)
-                @include('components.packages.list-item')
+                @include('components.prices.packages-list-item')
             @endforeach
         </div>
     @endif

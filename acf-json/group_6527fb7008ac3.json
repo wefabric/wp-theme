@@ -1,6 +1,6 @@
 {
     "key": "group_6527fb7008ac3",
-    "title": "Block: Prijs pakketten",
+    "title": "Block: Prijzen",
     "fields": [
         {
             "key": "field_6527fb701074f",
@@ -124,12 +124,12 @@
         },
         {
             "key": "field_6527fb7010775",
-            "label": "Specifieke pakketten weergeven",
-            "name": "show_specific_package",
+            "label": "Specifieke prijzen weergeven",
+            "name": "show_specific_price",
             "aria-label": "",
             "type": "post_object",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": [
                 [
                     {
@@ -296,6 +296,26 @@
                     }
                 ]
             ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_652939778fac5",
+            "label": "Prijs tabellen tonen?",
+            "name": "show_price_tables",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -501,5 +521,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697197396
+    "modified": 1697201776
 }

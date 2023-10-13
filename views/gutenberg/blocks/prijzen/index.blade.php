@@ -6,12 +6,14 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
+    $showTables = $block['data']['show_price_tables'] ?? false;
 
-    // Show packages
+    // Show prices
     $displayType = $block['data']['display_type'];
     $packages = [];
+    $tables = [];
 
-    if ($displayType == 'show_all') {
+   if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
             'post_type' => 'prices',
@@ -19,15 +21,24 @@
         $query = new WP_Query($args);
         foreach ($query->posts as $post) {
             $packages[] = get_field('packages', $post->ID);
+            $tables[] = get_field('tables', $post->ID);
         }
         $packages = array_merge(...array_filter($packages));
+        $tables = array_merge(...array_filter($tables));
 
     } elseif ($displayType == 'show_specific') {
-        $postIds = $block['data']['show_specific_package'];
+        $postIds = $block['data']['show_specific_price'] ?? [];
+
+        if (!is_array($postIds)) {
+            $postIds = [$postIds];
+        }
+
         foreach ($postIds as $postId) {
             $packages[] = get_field('packages', $postId);
+            $tables[] = get_field('tables', $postId);
         }
         $packages = array_merge(...array_filter($packages));
+        $tables = array_merge(...array_filter($tables));
     }
 
 
@@ -56,7 +67,13 @@
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             <h2 class="text-{{ $titleColor }} container mx-auto mb-8 lg:mb-20 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{{ $title }}</h2>
-             @include('components.packages.list', ['packages' => $packages])
+            @include('components.prices.packages-list', ['packages' => $packages])
+
+            @if ($showTables)
+                <div class="container px-8 w-full @if(($blockWidth == '50') || ($blockWidth == '66')) w-full @else md:w-2/3 @endif mx-auto">
+                    @include('components.prices.tables-list', ['tables' => $tables])
+                </div>
+            @endif
         </div>
     </div>
 </section>
