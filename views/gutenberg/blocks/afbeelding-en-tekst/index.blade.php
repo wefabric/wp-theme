@@ -64,9 +64,13 @@
         <div class="{{ $blockClass }} mx-auto">
             <div class="flex flex-col lg:flex-row gap-8 xl:gap-20">
                 <div class="{{ $textClass }} order-2 {{ $textOrder }}">
-                    <h2 class="mb-4 text-{{ $titleColor }}">{{ $title }}</h2>
-                    <p class="text-{{ $textColor }}">{{ $text }}</p>
-                    @if (!empty($buttonOneText) && !empty($buttonOneLink))
+                    @if ($title)
+                        <h2 class="mb-4 text-{{ $titleColor }}">{{ $title }}</h2>
+                    @endif
+                    @if ($text)
+                        <p class="text-{{ $textColor }}">{{ $text }}</p>
+                    @endif
+                    @if (($buttonOneText) && ($buttonOneLink))
                         <a href="{{ $buttonOneLink }}"
                            class="btn button-primary bg-primary hover:bg-primary-dark mt-4 text-base">{{ $buttonOneText }}</a>
                     @endif

@@ -36,7 +36,9 @@
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="mx-auto {{ $blockClass }} {{ $titleClass }}">
             <div class="faq-drawer container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
-                <h2 class="mb-8 lg:mb-20 text-{{ $titleColor }}">{{ $title }} </h2>
+                @if ($title)
+                    <h2 class="mb-8 lg:mb-20 text-{{ $titleColor }}">{{ $title }} </h2>
+                @endif
                 @if ($questionsAndAnswers)
                     @foreach ($questionsAndAnswers as $key => $faq)
                         <div class="mb-2 text-left text-{{ $textColor }}">

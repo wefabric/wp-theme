@@ -43,7 +43,9 @@
     @endif
     <div class="relative z-10 md:px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
-            <h2 class="text-{{ $titleColor }} container mx-auto mb-4 px-8 md:px-0 {{ $titleClass }}">{{ $title }}</h2>
+            @if ($title)
+                <h2 class="text-{{ $titleColor }} container mx-auto mb-4 px-8 md:px-0 {{ $titleClass }}">{{ $title }}</h2>
+            @endif
 
             <div class="w-full text-{{ $textColor }}">
                 <div class="relative flex items-center text-center md:text-left justify-center md:justify-start h-full min-h-full bg-{{ $testimonialBackground }} rounded-{{ $borderRadius }}">
