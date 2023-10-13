@@ -74,7 +74,7 @@
                         <a href="{{ $buttonOneLink }}"
                            class="btn button-primary bg-primary hover:bg-primary-dark mt-4 text-base">{{ $buttonOneText }}</a>
                     @endif
-                    @if (!empty($buttonTwoText) && !empty($buttonTwoLink))
+                    @if (($buttonTwoText) && ($buttonTwoLink))
                         <a href="{{ $buttonTwoLink }}"
                            class="ml-4 text-black font-medium hover:text-primary underline mt-4 text-base">{{ $buttonTwoText }}</a>
                     @endif

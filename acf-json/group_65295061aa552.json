@@ -365,7 +365,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "wefabric\/tekst"
+                "value": "wefabric\/links"
             }
         ]
     ],
@@ -378,5 +378,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697206456
+    "modified": 1697207434
 }
