@@ -155,35 +155,6 @@
             "ui": 1
         },
         {
-            "key": "field_6527fb701077d",
-            "label": "Weergave",
-            "name": "show_element",
-            "aria-label": "",
-            "type": "checkbox",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "category": "Categorie",
-                "overview_text": "Overzichtstekst",
-                "location": "Locatie",
-                "date": "Datum",
-                "button": "Knop"
-            },
-            "default_value": [],
-            "return_format": "array",
-            "allow_custom": 0,
-            "layout": "vertical",
-            "toggle": 0,
-            "save_custom": 0,
-            "custom_choice_button_text": "Nieuwe keuze toevoegen"
-        },
-        {
             "key": "field_6527fb7010783",
             "label": "Layout (aantal pakketten op een rij)",
             "name": "layout",
@@ -290,7 +261,7 @@
         },
         {
             "key": "field_6527fb701078a",
-            "label": "Activiteiten in slider weergeven?",
+            "label": "Pakketten in slider weergeven?",
             "name": "show_slider",
             "aria-label": "",
             "type": "true_false",
@@ -530,5 +501,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697186519
+    "modified": 1697197396
 }

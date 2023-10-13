@@ -27,7 +27,35 @@
                 {
                     "key": "field_6528fcdbd7572",
                     "label": "Pakket titel",
-                    "name": "package_title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6528fc70d7570",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6528fc70d7570"
+                },
+                {
+                    "key": "field_6529104a642a9",
+                    "label": "Beschrijving",
+                    "name": "description",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -53,7 +81,14 @@
                     "type": "text",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6528fc70d7570",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -62,6 +97,27 @@
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6528fc70d7570"
+                },
+                {
+                    "key": "field_65291524c28d5",
+                    "label": "Prijs per",
+                    "name": "price_per",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "Maand",
                     "prepend": "",
                     "append": "",
                     "parent_repeater": "field_6528fc70d7570"
@@ -152,6 +208,42 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
+                    "parent_repeater": "field_6528fc70d7570"
+                },
+                {
+                    "key": "field_65292efb79451",
+                    "label": "Pakket blok kleur",
+                    "name": "package_background_color",
+                    "aria-label": "",
+                    "type": "Thema Kleur",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "theme_color": null,
+                    "font_size": 14,
+                    "parent_repeater": "field_6528fc70d7570"
+                },
+                {
+                    "key": "field_65292f2379452",
+                    "label": "Tekst kleur",
+                    "name": "text_color",
+                    "aria-label": "",
+                    "type": "Thema Kleur",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "theme_color": null,
+                    "font_size": 14,
                     "parent_repeater": "field_6528fc70d7570"
                 }
             ]
@@ -287,5 +379,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697188620
+    "modified": 1697198153
 }
