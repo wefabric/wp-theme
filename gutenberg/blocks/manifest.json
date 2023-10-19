@@ -15,6 +15,7 @@
     "vacatures/block.json",
     "werknemers/block.json",
     "werkwijze/block.json",
+    "contact/block.json",
     "prijzen/block.json",
     "testimonial/block.json",
     "faq/block.json",

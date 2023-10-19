@@ -347,7 +347,7 @@
         {
             "key": "field_6516a3fd039c8",
             "label": "Sterkte ronde hoeken",
-            "name": "border_radius_strenght",
+            "name": "border_radius_strength",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -399,5 +399,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1695983919
+    "modified": 1697705485
 }

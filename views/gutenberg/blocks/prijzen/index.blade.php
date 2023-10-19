@@ -56,7 +56,7 @@
 
     // Theme settings
     $options = get_fields('option');
-    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strenght']??'': 'rounded-none';
+    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
 @endphp
 
 <section id="prijs-pakketten" class="relative py-16 lg:py-0 bg-{{ $backgroundColor }}"
