@@ -39,23 +39,18 @@
 
 <section id="contact" class="relative py-16 lg:py-0 bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
-
     @if ($overlayEnabled)
         <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto flex flex-col lg:flex-row gap-8">
-
             <div class="w-full lg:w-1/2 order-1 lg:order-0">
                 @if ($title)
                     <h2 class="mb-4 text-{{ $titleColor }}">{{ $title }}</h2>
                 @endif
-
                 @if ($text)
-                    <p class="text-{{ $textColor }}">{!! $text !!} </p>
+                    <p class="mb-4 text-{{ $textColor }}">{!! $text !!} </p>
                 @endif
-
                 @if (!empty($visibleElements) && in_array('establishments', $visibleElements) && $establishment_query->have_posts())
                     @while ($establishment_query->have_posts())
                         @php
@@ -68,8 +63,7 @@
                             $house_number_addition = get_post_meta($establishment_id, 'house_number_addition', true);
                             $city = get_post_meta($establishment_id, 'city', true);
                         @endphp
-
-                        <div class="mb-4">
+                        <div class="mb-4 text-{{ $textColor }}">
                             <p class="font-bold">{{ $establishment_title }}</p>
                             @if($street && $house_number)
                                 <p>{{ $street }} {{ $house_number }} {{ $house_number_addition }}</p>
@@ -78,13 +72,13 @@
                                 <p>{{ $zipcode }}, {{ $city }}</p>
                             @endif
                             @if($street)
-                                <a href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}" target="_blank" class="hover:text-primary underline">Routebeschrijving ></a>
+                                <a href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}"
+                                   target="_blank" class="hover:text-primary underline">Routebeschrijving ></a>
                             @endif
                         </div>
                     @endwhile
                 @endif
             </div>
-
             @if($form)
                 <div class="w-full lg:w-1/2 order-0 lg:order-1">
                     <div class="bg-background-color p-12 rounded-{{ $borderRadius }}">
@@ -92,7 +86,6 @@
                     </div>
                 </div>
             @endif
-
         </div>
     </div>
 </section>
