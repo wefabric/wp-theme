@@ -171,6 +171,7 @@
             "choices": {
                 "function": "Functie",
                 "overview_text": "Overzichtstekst",
+                "contact_info": "Contactgegevens",
                 "socials": "Social media"
             },
             "default_value": [],
@@ -528,5 +529,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696864098
+    "modified": 1697698546
 }

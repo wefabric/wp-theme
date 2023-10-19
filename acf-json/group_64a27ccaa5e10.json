@@ -110,7 +110,7 @@
         {
             "key": "field_64a27df26cb54",
             "label": "E-mailadres",
-            "name": "e-mailadres",
+            "name": "email",
             "aria-label": "",
             "type": "email",
             "instructions": "",
@@ -237,5 +237,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1688391675
+    "modified": 1697699151
 }

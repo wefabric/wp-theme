@@ -8,6 +8,8 @@
     $visibleElements = $block['data']['show_element'] ?? [];
     $function = $fields['function'] ?? '';
     $overviewText = $fields['overview_text'] ?? '';
+    $mail = $fields['email'] ?? '';
+    $phoneNumber = $fields['phone_number'] ?? '';
     $socials = $fields['socials'] ?? [];
 @endphp
 
@@ -31,6 +33,22 @@
                         </a>
                     @endforeach
                 </div>
+            @endif
+            @if(!empty($visibleElements) && in_array('contact_info', $visibleElements))
+                @if($mail)
+                    <p>
+                        <a href="mailto:{{ $mail }}" class="hover:text-primary">
+                            <i class="w-4 object-cover fas fa-envelope mr-3"></i>{{ $mail }}
+                        </a>
+                    </p>
+                @endif
+                @if($phoneNumber)
+                    <p>
+                        <a href="tel:{{$phoneNumber}}" class="hover:text-primary">
+                            <i class="w-4 object-cover fas fa-phone mr-3"></i>{{ $phoneNumber }}
+                        </a>
+                    </p>
+                @endif
             @endif
             @if (!empty($visibleElements) && in_array('overview_text', $visibleElements))
                 <p class="mt-3 mb-2">{{ $overviewText }}</p>
