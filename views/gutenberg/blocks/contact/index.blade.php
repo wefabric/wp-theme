@@ -82,7 +82,7 @@
             </div>
             @if($form)
                 <div class="w-full lg:w-1/2 order-0 lg:order-1">
-                    <div class="bg-background-color p-12 rounded-{{ $borderRadius }}">
+                    <div class="bg-{{ $formBackgroundColor }} p-12 rounded-{{ $borderRadius }}">
                         {!! gravity_form($form) !!}
                     </div>
                 </div>
