@@ -5,6 +5,7 @@
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
     $form = $block['data']['form'] ?? '';
+    $formBackgroundColor = $block['data']['form_background_color'] ?? '';
     $visibleElements = $block['data']['show_element'] ?? [];
 
     // Toon vestigingen

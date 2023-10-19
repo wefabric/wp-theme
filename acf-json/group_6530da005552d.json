@@ -146,6 +146,23 @@
             "multiple": 0
         },
         {
+            "key": "field_6530f1f5abf49",
+            "label": "Form achtergrond kleur",
+            "name": "form_background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
             "key": "field_6530da0066368",
             "label": "Blokinstellingen",
             "name": "",
@@ -198,15 +215,7 @@
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_649d562c20a1b",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -347,5 +356,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697706185
+    "modified": 1697706552
 }
