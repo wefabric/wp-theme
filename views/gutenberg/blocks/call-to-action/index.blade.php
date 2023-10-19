@@ -12,6 +12,10 @@
     $buttonText = $block['data']['button_text'] ?? '';
     $buttonLink = ($block['data']['button_link']['url']) ?? '';
 
+    $textPosition = $block['data']['text_position'] ?? '';
+    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+    $textClass = $titleClassMap[$textPosition] ?? '';
+
         // CTA employee fields
         $ctaEmployee = $block['data']['employee'] ?? '';
         $employeeImageId = $ctaEmployee ? get_field('image', $ctaEmployee) : '';
