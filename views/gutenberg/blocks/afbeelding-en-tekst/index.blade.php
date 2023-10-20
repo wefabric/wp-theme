@@ -59,7 +59,7 @@
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             <div class="flex flex-col lg:flex-row gap-8 xl:gap-20">
-                <div class="{{ $textClass }} order-2 {{ $textOrder }}">
+                <div class="text {{ $textClass }} order-2 {{ $textOrder }}">
                     @if ($title)
                         <h2 class="mb-4 text-{{ $titleColor }}">{{ $title }}</h2>
                     @endif
@@ -76,7 +76,7 @@
                     @endif
                 </div>
                 @if($imageID)
-                    <div class="{{ $imageClass }} order-1 {{ $imageOrder }}">
+                    <div class="image {{ $imageClass }} order-1 {{ $imageOrder }}">
                         @include('components.image', [
                             'image_id' => $imageID,
                             'size' => 'full',
