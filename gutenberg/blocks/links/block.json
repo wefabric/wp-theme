@@ -2,7 +2,6 @@
   "name": "wefabric/links",
   "title": "Links",
   "description": "A custom links block",
-  "style": "file:./style.css",
   "category": "theme",
   "icon": "admin-comments",
   "apiVersion": 2,
@@ -12,35 +11,6 @@
   "acf": {
     "mode": "preview",
     "renderTemplate": "render.php"
-  },
-  "styles": [
-    { "name": "default", "label": "Default", "isDefault": true },
-    { "name": "red", "label": "Red" },
-    { "name": "green", "label": "Green" },
-    { "name": "blue", "label": "Blue" }
-  ],
-  "supports": {
-    "align": true,
-    "anchor": true,
-    "alignContent": false,
-    "color": {
-      "text": true,
-      "background": true,
-      "link": true
-    },
-    "alignText": true,
-    "spacing": {
-      "margin": [
-        "top",
-        "bottom"
-      ],
-      "padding": true
-    },
-    "typography": {
-      "lineHeight": true,
-      "fontSize": true
-    },
-    "fullHeight": true
   },
   "attributes": {
   },

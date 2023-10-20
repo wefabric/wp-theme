@@ -2,12 +2,11 @@
   "name": "wefabric/sebastiaan",
   "title": "Sebastiaan",
   "description": "A custom testimonial block",
-  "style": "file:./style.css",
   "category": "theme",
   "icon": "admin-comments",
   "apiVersion": 2,
   "keywords": [
-    "test",
+    "sebastiaan",
     "testimonial"
   ],
   "acf": {
