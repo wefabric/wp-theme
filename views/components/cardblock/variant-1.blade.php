@@ -6,9 +6,8 @@
              style="background-image: url('{{ wp_get_attachment_image_url($imageID, 'full') }}'); background-repeat: no-repeat; background-size: cover;"
             @endif
     >
-
         <a href="{{ $pageUrl }}"
-           class="absolute h-full w-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out rounded-t-{{ $borderRadius }}"></a>
+           class="absolute h-full w-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
         @if ($pageIcon)
             <a href="{{ $pageUrl }}">
                 <i class="relative z-20 text-[60px] md:text-[100px] fas fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-white transition-all duration-300 ease-in-out"></i>

@@ -1,6 +1,5 @@
 <h3 class="text-sebastiaan">{{ $block['title'] }}</h3>
 
-
 // Need to compile these classes
 <div class="sm:grid-cols-1 sm:grid-cols-2 sm:grid-cols-3 sm:grid-cols-4 sm:grid-cols-5"></div>
 <div class="md:grid-cols-1 md:grid-cols-2 md:grid-cols-3 md:grid-cols-4 md:grid-cols-5"></div>

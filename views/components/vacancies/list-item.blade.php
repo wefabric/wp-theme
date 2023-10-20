@@ -1,7 +1,6 @@
 @php
     $fields = get_fields($vacancy);
-
-    $vacancyThumbnailUrl = get_the_post_thumbnail_url($vacancy);
+    $vacancyThumbnailID = get_post_thumbnail_id($vacancy);
     $vacancyTitle = get_the_title($vacancy);
     $vacancyUrl = get_permalink($vacancy);
 
@@ -13,7 +12,7 @@
 
 <div class="vacature-item group h-full">
     <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
-        @if ($vacancyThumbnailUrl)
+        @if ($vacancyThumbnailID)
             <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $vacancyUrl }}"
                    class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
@@ -26,8 +25,13 @@
                         @endforeach
                     </div>
                 @endif
-                <img src="{{ $vacancyThumbnailUrl }}" alt="{{ $vacancyTitle }}"
-                     class="aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">
+                @include('components.image', [
+                   'image_id' => $vacancyThumbnailID,
+                   'size' => 'full',
+                   'object_fit' => 'cover',
+                   'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
+                   'alt' => $vacancyTitle,
+           ])
             </div>
         @endif
         <div class="w-full mt-5">

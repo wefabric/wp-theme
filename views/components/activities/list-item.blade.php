@@ -1,7 +1,6 @@
 @php
     $fields = get_fields($activity);
-
-    $activityThumbnailUrl = get_the_post_thumbnail_url($activity);
+    $activityThumbnailID = get_post_thumbnail_id($activity);
     $activityTitle = get_the_title($activity);
     $activityUrl = get_permalink($activity);
 
@@ -13,9 +12,10 @@
 
 <div class="activiteit-item group h-full">
     <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
-        @if ($activityThumbnailUrl)
+        @if ($activityThumbnailID)
             <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
-                <a href="{{ $activityUrl }}" class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                <a href="{{ $activityUrl }}"
+                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                         @foreach ($activityCategories as $category)
@@ -30,8 +30,13 @@
                         Vol
                     </div>
                 @endif
-                <img src="{{ $activityThumbnailUrl }}" alt="{{ $activityTitle }}"
-                     class="aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">
+                @include('components.image', [
+                    'image_id' => $activityThumbnailID,
+                    'size' => 'full',
+                    'object_fit' => 'cover',
+                    'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
+                    'alt' => $activityTitle,
+            ])
             </div>
         @endif
         <div class="w-full mt-5">
@@ -57,7 +62,8 @@
 
                 @if (!empty($visibleElements) && in_array('button', $visibleElements))
                     <div class="mt-4 flex items-center flex-wrap">
-                        <a href="{{ $activityUrl }}" class="text-primary inline-flex items-center md:mb-2 lg:mb-0">Lees meer
+                        <a href="{{ $activityUrl }}" class="text-primary inline-flex items-center md:mb-2 lg:mb-0">Lees
+                            meer
                             <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:scale-110 transition duration-300 ease-in-out"
                                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"
                                  stroke-linecap="round" stroke-linejoin="round">

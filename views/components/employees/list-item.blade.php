@@ -3,7 +3,7 @@
 
     $firstName = $fields['first_name'] ?? '';
     $lastName = $fields['last_name'] ?? '';
-    $imageUrl = wp_get_attachment_url($fields['image']) ?? '';
+    $imageID = $fields['image'] ?? '';
 
     $visibleElements = $block['data']['show_element'] ?? [];
     $function = $fields['function'] ?? '';
@@ -16,8 +16,13 @@
 <div class="werknemer-item group h-full">
     <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out ">
         <div class="max-h-[360px] overflow-hidden w-full rounded-{{ $borderRadius }}">
-            <img src="{{ $imageUrl }}" alt="{{ $firstName . ' ' . $lastName }}"
-                 class="aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110 rounded-{{ $borderRadius }}">
+            @include('components.image', [
+                 'image_id' => $imageID,
+                 'size' => 'full',
+                 'object_fit' => 'cover',
+                 'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110 rounded-{{ $borderRadius }}',
+                 'alt' => $firstName . ' ' . $lastName,
+         ])
         </div>
         <div class="w-full mt-5">
             <p class="font-bold text-lg">{{ $firstName }} {{ $lastName }}</p>

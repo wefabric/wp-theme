@@ -8,7 +8,7 @@
     $formBackgroundColor = $block['data']['form_background_color'] ?? '';
     $visibleElements = $block['data']['show_element'] ?? [];
 
-    // Toon vestigingen
+    // Show establishments
     $establishment_args = [
         'post_type' => 'establishments',
         'posts_per_page' => -1,

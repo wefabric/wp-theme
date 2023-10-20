@@ -10,6 +10,7 @@
             $stepIconColorKey = "steps_{$i}_step_icon_color";
 
             $stepImage = isset($block['data'][$stepImageKey]) ? $block['data'][$stepImageKey] : '';
+             $stepImageAlt = get_post_meta($stepImage, '_wp_attachment_image_alt', true) ?: "Stap " . ($i + 1) . " afbeelding";
 
             $stepIcon = isset($block['data'][$stepIconKey]) ? $block['data'][$stepIconKey] : '';
             $stepIconColor = isset($block['data'][$stepIconColorKey]) ? $block['data'][$stepIconColorKey] : '';
@@ -34,7 +35,6 @@
                     @endif
                 </div>
             @endif
-
             <div class="flex flex-col items-center gap-y-4">
                 @if ($stepIcon)
                     <div class="mx-auto w-24 h-24 bg-primary-light bg-{{ $stepIconColor }}-light text-primary text-{{ $stepIconColor }} rounded-full inline-flex items-center justify-center">
@@ -44,22 +44,22 @@
                         @endif
                     </div>
                 @endif
-
                 @if ($stepImage)
                     <div class="aspect-square">
-                        <img src="{{ wp_get_attachment_image_url($stepImage, 'full') }}"
-                             alt="{{ get_post_meta($stepImage, '_wp_attachment_image_alt', true) }}"
-                             class="object-cover aspect-square rounded-{{ $borderRadius }}">
+                        @include('components.image', [
+                           'image_id' => $stepImage,
+                           'size' => 'full',
+                           'object_fit' => 'cover',
+                           'img_class' => 'object-cover aspect-square rounded-' . $borderRadius,
+                           'alt' => $stepImageAlt,
+                       ])
                     </div>
                 @endif
-
                 <div class="text-center text-{{ $stepTextColor }}">
                     <h3 class="mb-2 text-xl">{{ $stepTitle }}</h3>
                     <p class="">{{ $stepText }}</p>
                 </div>
-
             </div>
         </div>
-
     @endfor
 </div>

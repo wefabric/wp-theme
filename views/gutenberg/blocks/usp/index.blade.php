@@ -5,9 +5,7 @@
     $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
-
     $textColor = $block['data']['text_color'] ?? '';
-
 
     // Show usps
     $uspsCount = $block['data']['usps'];
@@ -36,7 +34,6 @@
             'uspIconColor' => $uspIconColor,
         ];
     }
-
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;

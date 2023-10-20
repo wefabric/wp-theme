@@ -11,11 +11,9 @@
 
     $stepTextColor = $block['data']['step_text_color'] ?? '';
 
-
     // Show steps
     $steps = $block['data']['steps'];
     $showStepNumber = $block['data']['show_step_number'];
-
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;

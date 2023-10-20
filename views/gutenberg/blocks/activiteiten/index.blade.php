@@ -6,7 +6,6 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
-
     // Show activities
     $displayType = $block['data']['display_type'];
 
@@ -26,7 +25,6 @@
                 $activities = [];
             }
     }
-
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;

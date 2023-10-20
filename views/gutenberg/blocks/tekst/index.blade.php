@@ -2,7 +2,6 @@
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -12,7 +11,6 @@
     $textPosition = $block['data']['text_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $textClass = $titleClassMap[$textPosition] ?? '';
-
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;

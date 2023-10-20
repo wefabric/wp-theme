@@ -6,7 +6,6 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
-
     // Show news
     $displayType = $block['data']['display_type'];
 
@@ -25,7 +24,6 @@
             $posts = [];
         }
     }
-
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;

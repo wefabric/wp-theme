@@ -9,7 +9,6 @@
 
     $buttonOneText = $block['data']['button_1_text'] ?? '';
     $buttonOneLink = $block['data']['button_1_link']['url'] ?? '';
-
     $buttonTwoText = $block['data']['button_2_text'] ?? '';
     $buttonTwoLink = $block['data']['button_2_link']['url'] ?? '';
 
@@ -18,8 +17,6 @@
 
     $imageID = $block['data']['image'] ?? '';
     $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
-
-
     $imageSize = $block['data']['image_size'] ?? '';
     $imageClass = '';
     $textClass = '';
@@ -36,7 +33,6 @@
     }
 
     $imageHeightClass = $block['data']['full_height'] ? 'h-full' : '';
-
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;

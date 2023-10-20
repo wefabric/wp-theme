@@ -7,7 +7,6 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
-
     // Show vacancies
     $displayType = $block['data']['display_type'];
 
@@ -27,7 +26,6 @@
                 $vacancies = [];
             }
     }
-
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;

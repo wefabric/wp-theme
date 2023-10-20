@@ -16,16 +16,15 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $textClass = $titleClassMap[$textPosition] ?? '';
 
-        // CTA employee fields
-        $ctaEmployee = $block['data']['employee'] ?? '';
-        $employeeImageId = $ctaEmployee ? get_field('image', $ctaEmployee) : '';
-        $employeeImage = $employeeImageId ? wp_get_attachment_image_url($employeeImageId, 'full') : '';
-        $employeeTitle = $ctaEmployee ? get_the_title($ctaEmployee) : '';
+    // CTA employee fields
+    $ctaEmployee = $block['data']['employee'] ?? '';
+    $employeeImageId = $ctaEmployee ? get_field('image', $ctaEmployee) : '';
+    $employeeImage = $employeeImageId ? wp_get_attachment_image_url($employeeImageId, 'full') : '';
+    $employeeTitle = $ctaEmployee ? get_the_title($ctaEmployee) : '';
 
-        // CTA form fields
-        $ctaImage = ($block['data']['image']) ?? '';
-        $ctaForm = ($block['data']['form']) ?? '';
-
+    // CTA form fields
+    $ctaImage = ($block['data']['image']) ?? '';
+    $ctaForm = ($block['data']['form']) ?? '';
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;

@@ -2,7 +2,6 @@
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -13,7 +12,6 @@
     $textAlignment = ($textPosition === 'left') ? 'left' : 'right';
     $textOrder = ($textPosition === 'left') ? 'lg:order-1' : 'lg:order-2';
     $titleOrder = ($textPosition === 'left') ? 'lg:order-2' : 'lg:order-1';
-
 
     // Blokinstellingen
     $backgroundColor = $block['data']['background_color'] ?? 'none';

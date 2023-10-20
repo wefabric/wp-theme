@@ -9,7 +9,6 @@
     $textColor = $block['data']['text_color'] ?? '';
     $testimonialBackground = $block['data']['testimonial_background_color'] ?? 'none';
 
-
     // Show testimonial
     $selectedTestimonialFields = get_fields($block['data']['testimonial'] ?? '');
     $testimonialTitle = $selectedTestimonialFields ? get_the_title($block['data']['testimonial']) : '';
@@ -17,7 +16,6 @@
     $testimonialAvatar = ($avatarId = $selectedTestimonialFields['avatar'] ?? '') ? wp_get_attachment_image_url($avatarId, 'full') : '';
     $testimonialFunction = $selectedTestimonialFields['function'] ?? '';
     $testimonialImage = ($testimonialImageId = $selectedTestimonialFields['image'] ?? '') ? wp_get_attachment_image_url($testimonialImageId, 'full') : '';
-
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;

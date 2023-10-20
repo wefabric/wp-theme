@@ -5,15 +5,12 @@
     $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
-
     $textColor = $block['data']['text_color'] ?? '';
-
 
     // FAQ
     $faqId = $block['data']['faq_group'] ?? '';
     $questionsAndAnswers = get_field('faq', $faqId);
     $faqBackgroundColor = $block['data']['faq_background_color'] ?? 'default-color';
-
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;

@@ -1,7 +1,6 @@
 @php
     $fields = get_fields($post);
-
-    $postThumbnailUrl = get_the_post_thumbnail_url($post);
+    $postThumbnailId = get_post_thumbnail_id($post);
     $postTitle = get_the_title($post);
     $postUrl = get_permalink($post);
 
@@ -16,22 +15,28 @@
 
 <div class="nieuws-item group h-full">
     <div class="h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
-            @if ($postThumbnailUrl)
-                <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
-                    <a href="{{ $postUrl }}" class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
-                    @if (!empty($visibleElements) && in_array('category', $visibleElements))
-                        <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
-                            @foreach ($postCategories as $category)
-                                <a href="{{ $category->slug }}" class="bg-secondary px-4 py-2 rounded-full text-black">
-                                    {{ $category->name }}
-                                </a>
-                            @endforeach
-                        </div>
-                    @endif
-                    <img src="{{ $postThumbnailUrl }}" alt="{{ $postTitle }}"
-                         class="aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110">
-                </div>
-            @endif
+        @if ($postThumbnailId)
+            <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
+                <a href="{{ $postUrl }}"
+                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                @if (!empty($visibleElements) && in_array('category', $visibleElements))
+                    <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                        @foreach ($postCategories as $category)
+                            <a href="{{ $category->slug }}" class="bg-secondary px-4 py-2 rounded-full text-black">
+                                {{ $category->name }}
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
+                @include('components.image', [
+                    'image_id' => $postThumbnailId,
+                    'size' => 'full',
+                    'object_fit' => 'cover',
+                    'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
+                    'alt' => $postTitle,
+            ])
+            </div>
+        @endif
         <div class="w-full mt-5">
             @if (!empty($visibleElements) && in_array('date', $visibleElements) && !empty($postDate))
                 <p class="text-gray-500">{{ $postDate }}</p>

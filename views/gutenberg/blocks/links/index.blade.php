@@ -2,10 +2,8 @@
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
-
 
     // Show links
     $linksCount = $block['data']['links'] ?? 0;
@@ -22,7 +20,6 @@
             'buttonLink' => $buttonLink,
         ];
     }
-
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;

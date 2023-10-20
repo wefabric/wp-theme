@@ -9,7 +9,6 @@
        $headerClass = 'h-[300px]';
    }
 
-
    // Content
    $title = !empty($block['data']['title']) ? $block['data']['title'] : get_the_title();
    $subTitle = ($block['data']['subtitle']) ?? '';
@@ -33,8 +32,7 @@
           $textWidthClass = 'w-full md:w-1/2 xl:w-1/3';
    }
 
-
-   // Afbeelding
+   // Image
    $imageId = ($block['data']['background_image']) ?? '';
    $overlayEnabled = ($block['data']['overlay_image']) ?? false;
    $overlayColor = ($block['data']['overlay_color']) ?? '';
