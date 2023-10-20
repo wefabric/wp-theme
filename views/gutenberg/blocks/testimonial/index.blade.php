@@ -5,7 +5,6 @@
     $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
-
     $textColor = $block['data']['text_color'] ?? '';
     $testimonialBackground = $block['data']['testimonial_background_color'] ?? 'none';
 
@@ -13,9 +12,9 @@
     $selectedTestimonialFields = get_fields($block['data']['testimonial'] ?? '');
     $testimonialTitle = $selectedTestimonialFields ? get_the_title($block['data']['testimonial']) : '';
     $testimonialText = $selectedTestimonialFields['review'] ?? '';
-    $testimonialAvatar = ($avatarId = $selectedTestimonialFields['avatar'] ?? '') ? wp_get_attachment_image_url($avatarId, 'full') : '';
     $testimonialFunction = $selectedTestimonialFields['function'] ?? '';
-    $testimonialImage = ($testimonialImageId = $selectedTestimonialFields['image'] ?? '') ? wp_get_attachment_image_url($testimonialImageId, 'full') : '';
+    $testimonialAvatarID = $selectedTestimonialFields['avatar'] ?? '';
+    $testimonialImageID = $selectedTestimonialFields['image'] ?? '';
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -55,11 +54,15 @@
                         </svg>
                         <p class="mb-6">{{ $testimonialText }}</p>
                         <div class="flex flex-col md:flex-row items-center gap-x-4 md:gap-x-6 gap-y-4">
-                            @if ($testimonialAvatar)
+                            @if ($testimonialAvatarID)
                                 <div class="">
-                                    <img src="{{ is_array($testimonialAvatar) ? $testimonialAvatar['url'] : $testimonialAvatar }}"
-                                         alt="{{ $testimonialTitle }}"
-                                         class="w-24 h-24 aspect-square rounded-full object-cover object-center">
+                                    @include('components.image', [
+                                        'image_id' => $testimonialAvatarID,
+                                        'size' => 'full',
+                                        'object_fit' => 'cover',
+                                        'img_class' => 'w-24 h-24 aspect-square rounded-full object-cover object-center',
+                                        'alt' => $testimonialTitle,
+                                    ])
                                 </div>
                             @endif
                             <div>
@@ -70,11 +73,15 @@
                             </div>
                         </div>
                     </div>
-                    @if ($testimonialImage)
+                    @if ($testimonialImageID)
                         <div class="hidden md:block absolute bottom-0 right-0 w-2/5 h-full">
-                            <img src="{{ $testimonialImage }}"
-                                 alt="{{ $testimonialTitle }}"
-                                 class="w-full h-full aspect-square object-cover rounded-r-{{ $borderRadius }}">
+                            @include('components.image', [
+                                'image_id' => $testimonialImageID,
+                                'size' => 'full',
+                                'object_fit' => 'cover',
+                                'img_class' => 'w-full h-full aspect-square object-cover rounded-' . $borderRadius,
+                                'alt' => $testimonialTitle,
+                            ])
                         </div>
                     @endif
                 </div>
