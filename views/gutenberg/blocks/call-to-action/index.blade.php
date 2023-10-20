@@ -43,7 +43,7 @@
 @endphp
 
 <section id="call-to-action" class="relative bg-{{ $backgroundColor }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">>
+         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
     <div class="{{ $fullScreenClass }} pt-8 lg:pt-20">
         @if (!empty($employeeImage))
             <div class="absolute z-10 left-1/2 -translate-x-1/2 -translate-y-1/2">
