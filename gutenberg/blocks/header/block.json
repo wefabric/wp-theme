@@ -1,9 +1,9 @@
 {
   "name": "wefabric/header",
   "title": "Header",
-  "description": "A custom header block",
+  "description": "Een header blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "align-center",
   "apiVersion": 2,
   "keywords": [
     "header"

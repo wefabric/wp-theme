@@ -1,9 +1,9 @@
 {
   "name": "wefabric/vacatures",
   "title": "Vacatures overzicht",
-  "description": "A custom vacatures block",
+  "description": "Een vacatures blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "portfolio",
   "apiVersion": 2,
   "keywords": [
     "vacatures overzicht"

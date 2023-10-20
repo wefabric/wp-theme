@@ -1,9 +1,9 @@
 {
   "name": "wefabric/afbeelding",
   "title": "Afbeelding",
-  "description": "A custom afbeelding block",
+  "description": "Een afbeelding blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "format-image",
   "apiVersion": 2,
   "keywords": [
     "afbeelding"

@@ -1,9 +1,9 @@
 {
   "name": "wefabric/titel-en-tekst",
   "title": "Titel en tekst",
-  "description": "A custom afbeelding en tekst block",
+  "description": "Een titel en tekst blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "editor-paragraph",
   "apiVersion": 2,
   "keywords": [
     "titel en tekst"

@@ -1,9 +1,9 @@
 {
   "name": "wefabric/kaartenblok",
   "title": "Kaartenblok",
-  "description": "A custom kaarten block",
+  "description": "Een kaarten blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "grid-view",
   "apiVersion": 2,
   "keywords": [
     "kaartenblok"

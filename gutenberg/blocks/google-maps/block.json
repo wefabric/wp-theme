@@ -1,9 +1,9 @@
 {
   "name": "wefabric/google-maps",
   "title": "Google Maps",
-  "description": "A custom google maps block",
+  "description": "Een Google maps blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "location-alt",
   "apiVersion": 2,
   "keywords": [
     "google maps"

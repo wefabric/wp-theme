@@ -1,9 +1,9 @@
 {
   "name": "wefabric/nieuws",
   "title": "Nieuws overzicht",
-  "description": "A custom afbeelding block",
+  "description": "Een nieuws overzicht blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "index-card",
   "apiVersion": 2,
   "keywords": [
     "nieuws overzicht"

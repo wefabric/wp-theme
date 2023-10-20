@@ -1,9 +1,9 @@
 {
   "name": "wefabric/foto-slider",
   "title": "Foto slider",
-  "description": "A custom foto slider block",
+  "description": "Een foto slider blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "format-gallery",
   "apiVersion": 2,
   "keywords": [
     "foto slider"

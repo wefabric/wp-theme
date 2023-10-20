@@ -1,9 +1,9 @@
 {
   "name": "wefabric/call-to-action",
   "title": "Call to action",
-  "description": "A custom call to action",
+  "description": "Een call to action blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "button",
   "apiVersion": 2,
   "keywords": [
     "call to action"

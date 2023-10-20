@@ -1,9 +1,9 @@
 {
   "name": "wefabric/usp",
   "title": "USPs",
-  "description": "A custom usp block",
+  "description": "Een USP blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "awards",
   "apiVersion": 2,
   "keywords": [
     "usp"

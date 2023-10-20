@@ -1,9 +1,9 @@
 {
   "name": "wefabric/werknemers",
   "title": "Werknemers overzicht",
-  "description": "A custom werknemers block",
+  "description": "Een werknemers overzicht blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "groups",
   "apiVersion": 2,
   "keywords": [
     "werknemers"

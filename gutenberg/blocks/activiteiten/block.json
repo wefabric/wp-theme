@@ -1,9 +1,9 @@
 {
   "name": "wefabric/activiteiten",
   "title": "Activiteiten overzicht",
-  "description": "A custom activiteiten block",
+  "description": "Een activiteiten overzicht blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "calendar",
   "apiVersion": 2,
   "keywords": [
     "activiteiten overzicht"

@@ -1,9 +1,9 @@
 {
   "name": "wefabric/prijzen",
   "title": "Prijzen",
-  "description": "A custom prijzen block",
+  "description": "Een prijzen blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "money-alt",
   "apiVersion": 2,
   "keywords": [
     "prijzen"

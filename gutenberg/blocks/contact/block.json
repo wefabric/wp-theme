@@ -1,9 +1,9 @@
 {
   "name": "wefabric/contact",
   "title": "Contact",
-  "description": "A custom contact block",
+  "description": "Een contact blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "email",
   "apiVersion": 2,
   "keywords": [
     "contact"

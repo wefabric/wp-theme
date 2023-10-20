@@ -1,9 +1,9 @@
 {
   "name": "wefabric/testimonial",
   "title": "Testimonial",
-  "description": "A custom testimonial block",
+  "description": "Een testimonial blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "format-quote",
   "apiVersion": 2,
   "keywords": [
     "testimonial"

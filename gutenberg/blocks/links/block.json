@@ -1,9 +1,9 @@
 {
   "name": "wefabric/links",
   "title": "Links",
-  "description": "A custom links block",
+  "description": "Een links blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "admin-links",
   "apiVersion": 2,
   "keywords": [
     "links"

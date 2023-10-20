@@ -1,9 +1,9 @@
 {
   "name": "wefabric/faq",
   "title": "FAQ",
-  "description": "A custom faq block",
+  "description": "Een veelgestelde vragen blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "format-chat",
   "apiVersion": 2,
   "keywords": [
     "faq"

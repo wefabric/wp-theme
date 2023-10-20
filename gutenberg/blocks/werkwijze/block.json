@@ -1,9 +1,9 @@
 {
   "name": "wefabric/werkwijze",
   "title": "Werkwijze",
-  "description": "A custom werkwijze block",
+  "description": "Een werkwijze blok",
   "category": "theme",
-  "icon": "admin-comments",
+  "icon": "editor-ol",
   "apiVersion": 2,
   "keywords": [
     "werknemers"
