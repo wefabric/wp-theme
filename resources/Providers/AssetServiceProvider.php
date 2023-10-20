@@ -26,7 +26,6 @@ class AssetServiceProvider extends ServiceProvider
 
         /** For cache busting **/
 
-
         $version = $theme->getHeader('version');
         $manifestPath = get_template_directory().'/dist/mix-manifest.json';
         if(file_exists($manifestPath)) {
@@ -38,6 +37,7 @@ class AssetServiceProvider extends ServiceProvider
         } else {
             $version = substr(md5($theme->getUrl().microtime()), 0, 8);
         }
+
 
 
         Asset::add('theme_styles', 'css/app.css', [], $version)->to(['front', 'admin']);

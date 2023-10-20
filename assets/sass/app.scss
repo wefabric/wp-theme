@@ -11,6 +11,7 @@
 @import "base/buttons";
 @import "base/images";
 @import "base/forms";
+@import "base/home";
 @import "components/content";
 @import "components/navigation";
 @import "components/nav-mobile";
@@ -25,7 +26,6 @@
 @import "components/webshop";
 @import "components/modal_style";
 @import "components/usp_banner";
-
 @tailwind utilities;
 
 @import "_fix_colors";

@@ -1,0 +1,86 @@
+/* Temporary styling for homepage */
+.home {
+	#usps {
+		padding-bottom: 400px !important;
+
+		.USP-item div {
+			@apply p-10;
+		}
+
+		div i {
+			@apply w-full aspect-square justify-center items-center rounded-full border border-2 border-primary;
+			display: flex;
+			position: relative;
+		}
+
+		p {
+			@apply font-bold;
+		}
+
+		/* div i:after {
+          @apply h-[1px] w-[100px] bg-primary absolute right-0 translate-y-1/2;
+          content: '';
+        } */
+	}
+
+	#afbeelding-tekst {
+		@apply -translate-y-1/2;
+		padding-top: 0 !important;
+
+		.relative {
+			@apply py-0;
+		}
+
+		.flex {
+			gap: 0 !important;
+		}
+
+		.text {
+			@apply bg-white px-20 py-12 shadow-xl rounded-[20px] w-full;
+			margin-left: -80px !important;
+		}
+
+		.image {
+			@apply w-full;
+
+			img {
+				border-radius: 10px 10px 10px 234px !important;
+			}
+		}
+
+		.flex.flex-col {
+			@apply items-center;
+		}
+	}
+
+	#werknemers {
+		margin-top: -300px !important;
+
+		.werknemer-item {
+			color: white !important;
+		}
+	}
+
+	#titel-tekst {
+		border-radius: 0px 0px 200px 0px !important;
+		padding: 100px 0px !important;
+		@apply -translate-y-1/2;
+		margin-top: 100px !important;
+
+		div.inset-0 {
+			border-radius: 0px 0px 200px 0px !important;
+		}
+
+		.relative {
+			margin-top: 200px !important;
+		}
+	}
+
+	#activiteiten {
+		margin-top: -300px !important;
+	}
+
+	/* h2 {
+      margin-left: 110px !important;
+    } */
+}
