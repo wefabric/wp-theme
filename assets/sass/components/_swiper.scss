@@ -2,18 +2,32 @@
 @import "../../../node_modules/swiper/modules/navigation/navigation";
 @import "../../../node_modules/swiper/modules/pagination/pagination";
 
-.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
-  bottom: 0;
+.swiper {
+	width: 100%;
+	height: 100%;
 }
 
 .swiper-slide {
-	.card {
-		@screen lg {
-			//@apply mr-4;
-		}
-		@apply grow;
-		@apply mr-0;
-	}
+	height: 100% !important;
+}
+
+// Navigation
+.swiper-button-next {
+	right: -50px;
+}
+
+.swiper-button-prev {
+	left: -50px;
+}
+
+.swiper-button-prev, .swiper-button-next {
+	@apply transition-all hover:scale-105 duration-200 ease-in-out;
+}
+
+
+// Pagination
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+	bottom: 0;
 }
 
 .swiper-pagination-bullet {
@@ -24,34 +38,27 @@
 	@apply bg-primary opacity-100;
 }
 
-.card {
-	@apply rounded-2xl shadow-lg;
-}
-
-section.related ul.products {
-	@screen lg {
-		display: block !important;
-	}
-}
 
 
-.swiper {
-	width: 100%;
-	height: 100%;
-}
 
-.swiper-slide {
-	height: 100% !important;
-}
-
-
-//.kaartenBlockSwiper .swiper-wrapper{
-//	height: 300px !important;
+//.swiper-slide {
+//	.card {
+//		@screen lg {
+//			//@apply mr-4;
+//		}
+//		@apply grow;
+//		@apply mr-0;
+//	}
 //}
-
-.kaartenBlockSwiper .swiper-slide-active .cardbackground {
-	@apply bg-secondary;
-	//height: 300px !important;
-}
-
-
+//
+//
+//
+//.card {
+//	@apply rounded-2xl shadow-lg;
+//}
+//
+//section.related ul.products {
+//	@screen lg {
+//		display: block !important;
+//	}
+//}

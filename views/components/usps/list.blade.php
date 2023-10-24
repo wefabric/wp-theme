@@ -17,10 +17,10 @@
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
 @endphp
 
-
-<div class="mobile block sm:hidden">
+{{--Mobile--}}
+<div class="mobile block sm:hidden relative">
     @if($showSliderMobile)
-        <div class="swiper uspSwiper">
+        <div class="swiper uspSwiper py-8">
             <div class="swiper-wrapper">
                 @foreach ($usps as $usp)
                     <div class="swiper-slide h-full">
@@ -29,11 +29,13 @@
                 @endforeach
             </div>
             <div class="lg:hidden swiper-pagination"></div>
-            <div class="text-primary hidden lg:block swiper-button-next"></div>
-            <div class="text-primary hidden lg:block swiper-button-prev"></div>
+        </div>
+        <div class="swiper-navigation w-full top-1/2 absolute">
+            <div class="swiper-button-next usps-button-next text-secondary hidden lg:block"></div>
+            <div class="swiper-button-prev usps-button-prev text-secondary hidden lg:block"></div>
         </div>
     @else
-        <div class=" grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 justify-center ">
+        <div class=" grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 justify-center py-8">
             @foreach ($usps as $usp)
                 @include('components.usps.list-item')
             @endforeach
@@ -41,9 +43,10 @@
     @endif
 </div>
 
-<div class="tablet hidden sm:block lg:hidden">
+{{--Tablet--}}
+<div class="tablet hidden sm:block lg:hidden relative">
     @if($showSliderTablet)
-        <div class="swiper uspSwiper">
+        <div class="swiper uspSwiper py-8">
             <div class="swiper-wrapper">
                 @foreach ($usps as $usp)
                     <div class="swiper-slide h-full">
@@ -52,11 +55,13 @@
                 @endforeach
             </div>
             <div class="lg:hidden swiper-pagination"></div>
-            <div class="text-primary hidden lg:block swiper-button-next"></div>
-            <div class="text-primary hidden lg:block swiper-button-prev"></div>
+        </div>
+        <div class="swiper-navigation w-full top-1/2 absolute">
+            <div class="swiper-button-next usps-button-next text-secondary hidden lg:block"></div>
+            <div class="swiper-button-prev usps-button-prev text-secondary hidden lg:block"></div>
         </div>
     @else
-        <div class=" grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 justify-center ">
+        <div class=" grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 justify-center py-8">
             @foreach ($usps as $usp)
                 @include('components.usps.list-item')
             @endforeach
@@ -64,9 +69,10 @@
     @endif
 </div>
 
-<div class="desktop hidden lg:block">
+{{--Desktop--}}
+<div class="desktop hidden lg:block relative">
     @if($showSliderDesktop)
-        <div class="swiper uspSwiper">
+        <div class="swiper uspSwiper py-8">
             <div class="swiper-wrapper">
                 @foreach ($usps as $usp)
                     <div class="swiper-slide h-full">
@@ -75,11 +81,13 @@
                 @endforeach
             </div>
             <div class="lg:hidden swiper-pagination"></div>
-            <div class="text-primary hidden lg:block swiper-button-next"></div>
-            <div class="text-primary hidden lg:block swiper-button-prev"></div>
+        </div>
+        <div class="swiper-navigation w-full top-1/2 absolute">
+            <div class="swiper-button-next usps-button-next text-secondary hidden lg:block"></div>
+            <div class="swiper-button-prev usps-button-prev text-secondary hidden lg:block"></div>
         </div>
     @else
-        <div class=" grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 justify-center ">
+        <div class=" grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 justify-center py-8">
             @foreach ($usps as $usp)
                 @include('components.usps.list-item')
             @endforeach
@@ -93,17 +101,17 @@
             spaceBetween: 20,
             loop: true,
             @if ($swiperAutoplay)
-                autoplay: {
-                    disableOnInteraction: false,
-                },
+            autoplay: {
+                disableOnInteraction: false,
+            },
             @endif
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
             },
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+                nextEl: ".usps-button-next",
+                prevEl: ".usps-button-prev",
             },
             breakpoints: {
                 0: {

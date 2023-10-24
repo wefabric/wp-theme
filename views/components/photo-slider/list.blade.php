@@ -12,8 +12,9 @@
     $swiperAutoplay = isset($block['data']['autoplay']) ? ($block['data']['autoplay'] ? 'true' : 'false') : 'false';
 @endphp
 
-<div class="mobile block sm:hidden">
-    <div class="swiper fotoSliderSwiper">
+{{--Mobile--}}
+<div class="mobile block sm:hidden relative">
+    <div class="swiper fotoSliderSwiper py-8">
         <div class="swiper-wrapper">
             @foreach ($imagesData as $image)
                 <div class="swiper-slide h-full">
@@ -22,13 +23,16 @@
             @endforeach
         </div>
         <div class="lg:hidden swiper-pagination"></div>
-        <div class="text-primary hidden lg:block swiper-button-next"></div>
-        <div class="text-primary hidden lg:block swiper-button-prev"></div>
+    </div>
+    <div class="swiper-navigation w-full top-1/2 absolute">
+        <div class="swiper-button-next photoslider-button-next text-secondary hidden lg:block"></div>
+        <div class="swiper-button-prev photoslider-button-prev text-secondary hidden lg:block"></div>
     </div>
 </div>
 
-<div class="tablet hidden sm:block lg:hidden">
-    <div class="swiper fotoSliderSwiper">
+{{--Mobile--}}
+<div class="tablet hidden sm:block lg:hidden relative">
+    <div class="swiper fotoSliderSwiper py-8">
         <div class="swiper-wrapper">
             @foreach ($imagesData as $image)
                 <div class="swiper-slide h-full">
@@ -37,13 +41,16 @@
             @endforeach
         </div>
         <div class="lg:hidden swiper-pagination"></div>
-        <div class="text-primary hidden lg:block swiper-button-next"></div>
-        <div class="text-primary hidden lg:block swiper-button-prev"></div>
+    </div>
+    <div class="swiper-navigation w-full top-1/2 absolute">
+        <div class="swiper-button-next photoslider-button-next text-secondary hidden lg:block"></div>
+        <div class="swiper-button-prev photoslider-button-prev text-secondary hidden lg:block"></div>
     </div>
 </div>
 
-<div class="desktop hidden lg:block">
-    <div class="swiper fotoSliderSwiper">
+{{--Mobile--}}
+<div class="desktop hidden lg:block relative">
+    <div class="swiper fotoSliderSwiper py-8">
         <div class="swiper-wrapper">
             @foreach ($imagesData as $image)
                 <div class="swiper-slide h-full">
@@ -52,8 +59,10 @@
             @endforeach
         </div>
         <div class="lg:hidden swiper-pagination"></div>
-        <div class="text-primary hidden lg:block swiper-button-next"></div>
-        <div class="text-primary hidden lg:block swiper-button-prev"></div>
+    </div>
+    <div class="swiper-navigation w-full top-1/2 absolute">
+        <div class="swiper-button-next photoslider-button-next text-secondary hidden lg:block"></div>
+        <div class="swiper-button-prev photoslider-button-prev text-secondary hidden lg:block"></div>
     </div>
 </div>
 
@@ -71,8 +80,8 @@
                 el: ".swiper-pagination",
             },
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+                nextEl: ".photoslider-button-next",
+                prevEl: ".photoslider-button-prev",
             },
             breakpoints: {
                 0: {

@@ -54,9 +54,9 @@
         <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto">
+        <div class="{{ $blockClass }} mx-auto relative">
             @if ($title)
-                <h2 class="container mx-auto mb-8 lg:mb-20 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }} text-{{ $titleColor }}">{{ $title }}</h2>
+                <h2 class="container mx-auto lg:mb-12 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }} text-{{ $titleColor }}">{{ $title }}</h2>
             @endif
             @include('components.usps.list', ['usps' => $usps])
         </div>
