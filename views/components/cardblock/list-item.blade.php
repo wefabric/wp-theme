@@ -6,7 +6,6 @@
 
     $featuredImageId = $page['featured_image_id'] ?? '';
 
-
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
     $pageExcerpt = get_the_excerpt($page['id']);

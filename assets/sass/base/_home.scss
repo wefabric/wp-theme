@@ -1,7 +1,31 @@
 /* Temporary styling for homepage */
 .home {
+
+	#kaarten {
+
+		.block-content {
+			margin-top: -280px !important;
+		}
+
+		.card-item:hover {
+			.card-background {
+				@apply bg-secondary;
+			}
+
+			.card-overlay {
+				@apply opacity-0;
+			}
+
+			.page-icon, .page-title {
+				@apply text-primary;
+			}
+		}
+	}
+
+
 	#usps {
 		padding-bottom: 400px !important;
+		margin-top: -100px !important;
 
 		.USP-item div {
 			@apply p-10;
