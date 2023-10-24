@@ -24,13 +24,13 @@
         </div>
         <div class="lg:hidden swiper-pagination"></div>
     </div>
-    <div class="swiper-navigation w-full top-1/2 absolute">
-        <div class="swiper-button-next photoslider-button-next text-secondary hidden lg:block"></div>
-        <div class="swiper-button-prev photoslider-button-prev text-secondary hidden lg:block"></div>
+    <div class="swiper-navigation">
+        <div class="swiper-button-next photoslider-button-next"></div>
+        <div class="swiper-button-prev photoslider-button-prev"></div>
     </div>
 </div>
 
-{{--Mobile--}}
+{{--Tablet--}}
 <div class="tablet hidden sm:block lg:hidden relative">
     <div class="swiper fotoSliderSwiper py-8">
         <div class="swiper-wrapper">
@@ -42,13 +42,13 @@
         </div>
         <div class="lg:hidden swiper-pagination"></div>
     </div>
-    <div class="swiper-navigation w-full top-1/2 absolute">
-        <div class="swiper-button-next photoslider-button-next text-secondary hidden lg:block"></div>
-        <div class="swiper-button-prev photoslider-button-prev text-secondary hidden lg:block"></div>
+    <div class="swiper-navigation">
+        <div class="swiper-button-next photoslider-button-next"></div>
+        <div class="swiper-button-prev photoslider-button-prev"></div>
     </div>
 </div>
 
-{{--Mobile--}}
+{{--Desktop--}}
 <div class="desktop hidden lg:block relative">
     <div class="swiper fotoSliderSwiper py-8">
         <div class="swiper-wrapper">
@@ -60,9 +60,9 @@
         </div>
         <div class="lg:hidden swiper-pagination"></div>
     </div>
-    <div class="swiper-navigation w-full top-1/2 absolute">
-        <div class="swiper-button-next photoslider-button-next text-secondary hidden lg:block"></div>
-        <div class="swiper-button-prev photoslider-button-prev text-secondary hidden lg:block"></div>
+    <div class="swiper-navigation">
+        <div class="swiper-button-next photoslider-button-next"></div>
+        <div class="swiper-button-prev photoslider-button-prev"></div>
     </div>
 </div>
 

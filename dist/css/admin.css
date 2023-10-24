@@ -31,3 +31,7 @@ table.fixed {
      color: unset !important;
      letter-spacing: unset !important;
 }
+
+body>span.select2-container .select2-results ul .select2-results__option--highlighted {
+    background-color: #518EF7 !important;
+}

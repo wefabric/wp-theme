@@ -29,9 +29,9 @@
             </div>
             <div class="lg:hidden swiper-pagination"></div>
         </div>
-        <div class="swiper-navigation w-full top-1/2 absolute">
-            <div class="swiper-button-next employee-button-next text-secondary hidden lg:block"></div>
-            <div class="swiper-button-prev employee-button-prev text-secondary hidden lg:block"></div>
+        <div class="swiper-navigation">
+            <div class="swiper-button-next employee-button-next"></div>
+            <div class="swiper-button-prev employee-button-prev"></div>
         </div>
     @else
         <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
@@ -55,9 +55,9 @@
             </div>
             <div class="lg:hidden swiper-pagination"></div>
         </div>
-        <div class="swiper-navigation w-full top-1/2 absolute">
-            <div class="swiper-button-next employee-button-next text-secondary hidden lg:block"></div>
-            <div class="swiper-button-prev employee-button-prev text-secondary hidden lg:block"></div>
+        <div class="swiper-navigation">
+            <div class="swiper-button-next employee-button-next"></div>
+            <div class="swiper-button-prev employee-button-prev"></div>
         </div>
     @else
         <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
@@ -81,9 +81,9 @@
             </div>
             <div class="lg:hidden swiper-pagination"></div>
         </div>
-        <div class="swiper-navigation w-full top-1/2 absolute">
-            <div class="swiper-button-next employee-button-next text-secondary hidden lg:block"></div>
-            <div class="swiper-button-prev employee-button-prev text-secondary hidden lg:block"></div>
+        <div class="swiper-navigation">
+            <div class="swiper-button-next employee-button-next"></div>
+            <div class="swiper-button-prev employee-button-prev"></div>
         </div>
     @else
         <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">

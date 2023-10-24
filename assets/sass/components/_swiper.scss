@@ -12,12 +12,19 @@
 }
 
 // Navigation
+.swiper-navigation {
+	@apply hidden lg:block;
+	@apply w-full top-1/2 absolute;
+}
+
 .swiper-button-next {
 	right: -50px;
+	@apply text-secondary;
 }
 
 .swiper-button-prev {
 	left: -50px;
+	@apply text-secondary;
 }
 
 .swiper-button-prev, .swiper-button-next {
