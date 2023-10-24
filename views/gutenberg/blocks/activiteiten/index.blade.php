@@ -5,6 +5,8 @@
     $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
+    $buttonText = $block['data']['button_text'] ?? '';
+    $buttonLink = ($block['data']['button_link']['url']) ?? '';
 
     // Show activities
     $displayType = $block['data']['display_type'];
@@ -54,6 +56,11 @@
                 <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-12 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{{ $title }}</h2>
             @endif
             @include('components.activities.list', ['activities' => $activities])
+            @if ($buttonText && $buttonLink)
+                <div class="text-center mt-4">
+                    <a href="{{ $buttonLink }}" class="btn btn-primary">{{ $buttonText }}</a>
+                </div>
+            @endif
         </div>
     </div>
 </section>

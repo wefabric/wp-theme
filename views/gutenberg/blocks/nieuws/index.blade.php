@@ -5,6 +5,8 @@
     $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
+    $buttonText = $block['data']['button_text'] ?? '';
+    $buttonLink = ($block['data']['button_link']['url']) ?? '';
 
     // Show news
     $displayType = $block['data']['display_type'];
@@ -56,6 +58,11 @@
                 @include('components.news.category-list')
             </div>
             @include('components.news.list', ['posts' => $posts])
+            @if ($buttonText && $buttonLink)
+                <div class="text-center mt-4">
+                    <a href="{{ $buttonLink }}" class="btn btn-primary">{{ $buttonText }}</a>
+                </div>
+            @endif
         </div>
     </div>
 </section>
