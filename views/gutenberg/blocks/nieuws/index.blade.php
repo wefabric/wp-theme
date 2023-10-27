@@ -58,9 +58,21 @@
                 @include('components.news.category-list')
             </div>
             @include('components.news.list', ['posts' => $posts])
+            {{--            @if ($buttonText && $buttonLink)--}}
+            {{--                <div class="text-center mt-4">--}}
+            {{--                    <a href="{{ $buttonLink }}" class="btn btn-primary">{{ $buttonText }}</a>--}}
+            {{--                </div>--}}
+            {{--            @endif--}}
             @if ($buttonText && $buttonLink)
-                <div class="text-center mt-4">
-                    <a href="{{ $buttonLink }}" class="btn btn-primary">{{ $buttonText }}</a>
+                <div class="w-full text-center">
+                    @include('components.buttons.default', [
+                       'text' => $buttonText,
+                       'href' => $buttonLink,
+                       'alt' => $buttonText,
+                       'colors' => 'btn btn-primary',
+                       'class' => '',
+                       'target' => '_blank',
+                   ])
                 </div>
             @endif
         </div>
