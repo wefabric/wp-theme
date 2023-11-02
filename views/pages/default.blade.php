@@ -15,9 +15,9 @@
 
         @endif
 
-		@if(!is_front_page() && get_the_ID() !== wc_get_page_id( 'cart' ))
-			@include('components.breadcrumbs.index', ['classes' => ''])
-		@endif
+{{--		@if(!is_front_page() && get_the_ID() !== wc_get_page_id( 'cart' ))--}}
+{{--			@include('components.breadcrumbs.index', ['classes' => ''])--}}
+{{--		@endif--}}
 
         <div class="page-builder">
             {!! the_content() !!}

@@ -5,11 +5,11 @@
         {!! themeHeader()->render($page->ID) !!}
     </div>
 
-	@include('components.breadcrumbs.index', ['classes' => ''])
+{{--	@include('components.breadcrumbs.index', ['classes' => ''])--}}
 	
-	<div class="container px-8 pt-6 lg:pt-12 mx-auto">
-		@include('components.news.category-links')
-	</div>
+{{--	<div class="container px-8 pt-6 lg:pt-12 mx-auto">--}}
+{{--		@include('components.news.category-links')--}}
+{{--	</div>--}}
 
 	<section class="news-archive-grid relative">
 		<div class="container mx-auto my-12 lg:my-12">
@@ -39,8 +39,11 @@
 		</div>
 --}}
 	</section>
-	
+
     <div class="page-builder">
         {!! pageBuilder()->render($page->ID) !!}
     </div>
 @endsection
+
+
+

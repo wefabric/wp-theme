@@ -1,8 +1,8 @@
-<div class="w-full {{ $bg_color ?? 'bg-black text-white' }} py-10">
-	<div class="container mx-auto px-8 lg:px-24">
-		<div class="flex mx-auto text-base {{ $classes ?? 'w-4/5 lg:w-3/5' }}">
+<div class="w-full py-10 bg-{{ $breadcrumbsBackgroundColor }} text-{{ $breadcrumbsTextColor }}">
+	<div class="relative z-10 px-8 container mx-auto">
+		<div class="flex text-base ">
 			<div class="flex items-center">
-				<a href="/"><i class="fas fa-home mr-1"></i></a>
+				<a href="/"><i class="fas fa-home mr-1 hover:text-secondary"></i></a>
 				@php if (function_exists('rank_math_the_breadcrumbs')) rank_math_the_breadcrumbs(); @endphp
 				@php if (function_exists('yoast_breadcrumb')) echo yoast_breadcrumb(); @endphp
 			</div>
