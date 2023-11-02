@@ -30,7 +30,7 @@
         <div class="w-full xl:w-2/3 mx-auto flex flex-col lg:flex-row gap-x-8">
             <div class="w-full xl:w-3/5 order-2 {{ $textOrder }}">
                 @if ($text)
-                    <p class="text-{{ $textColor }}">{!! $text !!}</p>
+                    <div class="text-{{ $textColor }}">{!! $text !!}</div>
                 @endif
                 @if (($buttonText) && ($buttonLink))
                     <a href="{{ $buttonLink }}"

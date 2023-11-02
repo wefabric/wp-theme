@@ -104,9 +104,9 @@
 					//	background-color: #ffffff;
 					//}
 
-					@apply bg-white rounded-xl p-3 block z-10 border border-gray-100;
+					@apply bg-white p-3 block z-10 border border-gray-100;
 					z-index: 66;
-					width: calc(100% + 100px); // https://stackoverflow.com/questions/899107/ - This is to allow enough space for items to become bold when hovered, without it expanding the submenu width. (remove it and see what happens)
+					//width: calc(100% + 100px); // https://stackoverflow.com/questions/899107/ - This is to allow enough space for items to become bold when hovered, without it expanding the submenu width. (remove it and see what happens)
 					position: absolute;
 					left: -10%;
 					top: 65px;

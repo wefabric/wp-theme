@@ -52,8 +52,12 @@
                     </div>
                 @endif
                 <div class="flex-grow sm:pl-6 mt-6 sm:mt-0 text-{{ $stepTextColor }}">
-                    <h3 class="mb-1 text-xl">{{ $stepTitle }}</h3>
-                    <p class="">{{ $stepText }}</p>
+                    @if($stepTitle)
+                        <h3 class="mb-1 text-xl">{{ $stepTitle }}</h3>
+                    @endif
+                    @if ($stepText)
+                        <div class="">{!! $stepText !!}</div>
+                    @endif
                 </div>
             </div>
         </div>

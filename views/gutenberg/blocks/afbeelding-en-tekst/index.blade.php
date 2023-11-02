@@ -64,7 +64,7 @@
                         <h2 class="mb-4 text-{{ $titleColor }}">{{ $title }}</h2>
                     @endif
                     @if ($text)
-                        <p class="text-{{ $textColor }}">{{ $text }}</p>
+                        <div class="text-{{ $textColor }}">{!! $text !!}</div>
                     @endif
                     @if (($buttonOneText) && ($buttonOneLink))
                         <a href="{{ $buttonOneLink }}"

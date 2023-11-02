@@ -10,7 +10,7 @@
             $stepIconColorKey = "steps_{$i}_step_icon_color";
 
             $stepImage = isset($block['data'][$stepImageKey]) ? $block['data'][$stepImageKey] : '';
-             $stepImageAlt = get_post_meta($stepImage, '_wp_attachment_image_alt', true) ?: "Stap " . ($i + 1) . " afbeelding";
+            $stepImageAlt = get_post_meta($stepImage, '_wp_attachment_image_alt', true) ?: "Stap " . ($i + 1) . " afbeelding";
 
             $stepIcon = isset($block['data'][$stepIconKey]) ? $block['data'][$stepIconKey] : '';
             $stepIconColor = isset($block['data'][$stepIconColorKey]) ? $block['data'][$stepIconColorKey] : '';
@@ -56,8 +56,12 @@
                     </div>
                 @endif
                 <div class="text-center text-{{ $stepTextColor }}">
-                    <h3 class="mb-2 text-xl">{{ $stepTitle }}</h3>
-                    <p class="">{{ $stepText }}</p>
+                    @if($stepTitle)
+                        <h3 class="mb-2 text-xl">{{ $stepTitle }}</h3>
+                    @endif
+                    @if ($stepText)
+                        <div class="">{!! $stepText !!}</div>
+                    @endif
                 </div>
             </div>
         </div>
