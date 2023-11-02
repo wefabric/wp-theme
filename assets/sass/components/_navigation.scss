@@ -115,6 +115,10 @@
 						width: max-content;
 						@apply text-black hover:text-secondary;
 					}
+
+					.current-menu-item {
+						@apply text-secondary;
+					}
 				}
 			}
         }

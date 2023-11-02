@@ -49,9 +49,6 @@
                 @if ($title)
                     <h2 class="mb-4 text-{{ $titleColor }}">{{ $title }}</h2>
                 @endif
-                @if ($text)
-                    <p class="mb-4 text-{{ $textColor }}">{!! $text !!} </p>
-                @endif
                 @if (!empty($visibleElements) && in_array('establishments', $visibleElements) && $establishment_query->have_posts())
                     @while ($establishment_query->have_posts())
                         @php
@@ -78,6 +75,9 @@
                             @endif
                         </div>
                     @endwhile
+                @endif
+                @if ($text)
+                    <div class="mt-4 text-{{ $textColor }}">{!! $text !!} </div>
                 @endif
             </div>
             @if($form)
