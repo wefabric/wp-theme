@@ -58,13 +58,16 @@
         &:before {
           content: '';
           z-index: -1;
-          @apply bg-#{$themeColor} absolute h-0.5 right-0 bottom-0 transition-all duration-200 w-full;
+          @apply bg-#{$themeColor} absolute h-0.5 bottom-0 transition-all duration-200 w-full;
+          left: 0;
+          right: unset;
         }
 
         &:hover {
-          @apply left-0;
           &:before {
             width: 0%;
+            right: 0;
+            left: unset;
           }
         }
       }
@@ -118,13 +121,16 @@
         &:before {
           content: '';
           z-index: -1;
-          @apply bg-#{$themeColor}-light absolute h-0.5 right-0 bottom-0 transition-all duration-200 w-full;
+          @apply bg-#{$themeColor}-light absolute h-0.5 bottom-0 transition-all duration-200 w-full;
+          left: 0;
+          right: unset;
         }
 
         &:hover {
-          @apply left-0;
           &:before {
             width: 0%;
+            right: 0;
+            left: unset;
           }
         }
       }
@@ -179,13 +185,16 @@
         &:before {
           content: '';
           z-index: -1;
-          @apply bg-#{$themeColor}-dark absolute h-0.5 right-0 bottom-0 transition-all duration-200 w-full;
+          @apply bg-#{$themeColor}-dark absolute h-0.5 bottom-0 transition-all duration-200 w-full;
+          left: 0;
+          right: unset;
         }
 
         &:hover {
-          @apply left-0;
           &:before {
             width: 0%;
+            right: 0;
+            left: unset;
           }
         }
       }
@@ -238,13 +247,17 @@
       &:before {
         content: '';
         z-index: -1;
-        @apply bg-white absolute h-0.5 right-0 bottom-0 transition-all duration-200 w-full;
+        @apply bg-white absolute h-0.5 bottom-0 transition-all duration-200 w-full;
+        left: 0;
+        right: unset;
       }
 
       &:hover {
         @apply left-0;
         &:before {
           width: 0%;
+          right: 0;
+          left: unset;
         }
       }
     }
@@ -295,13 +308,16 @@
       &:before {
         content: '';
         z-index: -1;
-        @apply bg-black absolute h-0.5 right-0 bottom-0 transition-all duration-200 w-full;
+        @apply bg-black absolute h-0.5 bottom-0 transition-all duration-200 w-full;
+        left: 0;
+        right: unset;
       }
 
       &:hover {
-        @apply left-0;
         &:before {
           width: 0%;
+          right: 0;
+          left: unset;
         }
       }
     }
@@ -352,13 +368,16 @@
       &:before {
         content: '';
         z-index: -1;
-        @apply bg-gray-400 absolute h-0.5 right-0 bottom-0 transition-all duration-200 w-full;
+        @apply bg-gray-400 absolute h-0.5 bottom-0 transition-all duration-200 w-full;
+        left: 0;
+        right: unset;
       }
 
       &:hover {
-        @apply left-0;
         &:before {
           width: 0%;
+          right: 0;
+          left: unset;
         }
       }
     }
