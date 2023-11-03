@@ -55,12 +55,12 @@
 			@apply py-0;
 		}
 
-		.flex {
+		.text-image {
 			gap: 0 !important;
 		}
 
 		.text {
-			@apply bg-white px-20 py-12 shadow-xl rounded-[20px] w-full;
+			@apply bg-white px-20 py-12 shadow-xl rounded-[20px] w-full z-20;
 			margin-left: -80px !important;
 		}
 

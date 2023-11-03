@@ -39,7 +39,7 @@
                 <div class="text-{{ $textColor }}">{!! $text !!} </div>
             @endif
             @if (($buttonText) && ($buttonLink))
-                <a href="{{ $buttonLink }}" class="btn button-primary bg-primary hover:bg-primary-dark mt-4 text-base">{{ $buttonText }}</a>
+                <a href="{{ $buttonLink }}" class="btn btn-primary btn-filled mt-4">{{ $buttonText }}</a>
             @endif
         </div>
     </div>

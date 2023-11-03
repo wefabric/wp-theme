@@ -34,7 +34,7 @@
                 @endif
                 @if (($buttonText) && ($buttonLink))
                     <a href="{{ $buttonLink }}"
-                       class="btn button-primary bg-primary hover:bg-primary-dark mt-4 text-base">{{ $buttonText }}</a>
+                       class="btn btn-primary btn-filled mt-4">{{ $buttonText }}</a>
                 @endif
             </div>
             <div class="w-full xl:w-2/5 order-1 {{ $titleOrder }}">

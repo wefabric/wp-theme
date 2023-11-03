@@ -50,7 +50,7 @@
             @foreach($links as $link)
                 @if($link['buttonText'] && $link['buttonLink'])
                     <a href="{{ $link['buttonLink'] }}"
-                       class="btn button-primary bg-primary hover:bg-primary-dark mt-4 text-base">{{ $link['buttonText'] }}</a>
+                       class="btn btn-primary btn-filled mt-4">{{ $link['buttonText'] }}</a>
                 @endif
             @endforeach
         </div>

@@ -51,13 +51,13 @@
             <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
         <div class="relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }}">
-            <div class="text-shadow-lg text-{{ $textColor }} {{ $textWidthClass }}">
-                <h1 class="mb-4">{{ $title }}</h1>
+            <div class="text-{{ $textColor }} {{ $textWidthClass }}">
+                <h1 class="mb-4 text-shadow-lg">{{ $title }}</h1>
                 @if ($subTitle)
-                    <p class="text-lg mb-4">{{ $subTitle }}</p>
+                    <p class="text-lg mb-4 text-shadow-lg">{{ $subTitle }}</p>
                 @endif
-                @if (!empty($buttonOneText) && !empty($buttonOneLink))
-                    <a href="{{ $buttonOneLink }}" class="btn bg-primary">{{ $buttonOneText }}</a>
+                @if ($buttonOneText && $buttonOneLink)
+                    <a href="{{ $buttonOneLink }}" class="btn btn-primary btn-filled">{{ $buttonOneText }}</a>
                 @endif
             </div>
         </div>

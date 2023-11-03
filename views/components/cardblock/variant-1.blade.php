@@ -23,7 +23,7 @@
         @if (!empty($visibleElements) && in_array('button', $visibleElements))
             <div class="relative z-20 flex items-center">
                 <a href="{{ $pageUrl }}"
-                   class="btn button-primary bg-primary hover:bg-primary-dark mt-4 text-base">Lees meer</a>
+                   class="btn btn-primary btn-filled mt-4">Lees meer</a>
             </div>
         @endif
     </div>

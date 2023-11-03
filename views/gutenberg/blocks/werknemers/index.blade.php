@@ -58,7 +58,7 @@
             @include('components.employees.list', ['employees' => $employees])
             @if ($buttonText && $buttonLink)
                 <div class="text-center mt-4">
-                    <a href="{{ $buttonLink }}" class="btn btn-primary">{{ $buttonText }}</a>
+                    <a href="{{ $buttonLink }}" class="btn btn-primary btn-outline">{{ $buttonText }}</a>
                 </div>
             @endif
         </div>

@@ -82,7 +82,7 @@
             @include('components.cardblock.list')
             @if ($buttonText && $buttonLink)
                 <div class="text-center mt-4">
-                    <a href="{{ $buttonLink }}" class="btn btn-primary">{{ $buttonText }}</a>
+                    <a href="{{ $buttonLink }}" class="btn btn-primary btn-filled">{{ $buttonText }}</a>
                 </div>
             @endif
         </div>

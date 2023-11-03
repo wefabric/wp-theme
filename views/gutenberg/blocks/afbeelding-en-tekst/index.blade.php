@@ -58,7 +58,7 @@
     @endif
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
-            <div class="flex flex-col lg:flex-row gap-8 xl:gap-20">
+            <div class="text-image flex flex-col lg:flex-row gap-8 xl:gap-20">
                 <div class="text {{ $textClass }} order-2 {{ $textOrder }}">
                     @if ($title)
                         <h2 class="mb-4 text-{{ $titleColor }}">{{ $title }}</h2>
@@ -66,14 +66,17 @@
                     @if ($text)
                         <div class="text-{{ $textColor }}">{!! $text !!}</div>
                     @endif
+
+                        <div class="flex flex-col sm:flex-row gap-4 mt-4">
                     @if (($buttonOneText) && ($buttonOneLink))
                         <a href="{{ $buttonOneLink }}"
-                           class="btn button-primary bg-primary hover:bg-primary-dark mt-4 text-base">{{ $buttonOneText }}</a>
+                           class="btn btn-primary btn-outline">{{ $buttonOneText }}</a>
                     @endif
                     @if (($buttonTwoText) && ($buttonTwoLink))
                         <a href="{{ $buttonTwoLink }}"
-                           class="ml-4 text-black font-medium hover:text-primary underline mt-4 text-base">{{ $buttonTwoText }}</a>
+                           class="btn btn-primary btn-underline">{{ $buttonTwoText }}</a>
                     @endif
+                        </div>
                 </div>
                 @if($imageID)
                     <div class="image {{ $imageClass }} order-1 {{ $imageOrder }}">

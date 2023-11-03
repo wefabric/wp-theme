@@ -69,9 +69,9 @@
                        'text' => $buttonText,
                        'href' => $buttonLink,
                        'alt' => $buttonText,
-                       'colors' => 'btn btn-primary',
+                       'colors' => 'btn btn-primary btn-outline',
                        'class' => '',
-                       'target' => '_blank',
+                       'target' => '_self',
                    ])
                 </div>
             @endif

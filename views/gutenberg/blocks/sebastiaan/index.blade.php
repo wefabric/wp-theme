@@ -23,3 +23,11 @@
 <div class="sm:rounded-[30px] md:rounded-[30px] lg:rounded-[30px] xl:rounded-[30px]"></div>
 <div class="sm:rounded-[50px] md:rounded-[50px] lg:rounded-[50px] xl:rounded-[50px]"></div>
 <div class="sm:rounded-full md:rounded-full lg:rounded-full xl:rounded-full"></div>
+
+
+
+// Buttons
+<div class="btn-primary-color-light btn-secondary-color-light btn-tertiary-color-light"></div>
+<div class="btn-primary-color-dark btn-secondary-color-dark btn-tertiary-color-dark"></div>
+<div class="border-primary-light border-secondary-light border-tertiary-light"></div>
+<div class="border-primary-dark border-secondary-dark border-tertiary-dark"></div>

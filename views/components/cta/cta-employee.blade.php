@@ -17,7 +17,7 @@
         @if ($buttonText && $buttonLink)
             <div class="w-full md:w-1/3 md:justify-center text-center mx-auto mt-2">
                 <a href="{{ $buttonLink }}"
-                   class="btn button-secondary bg-secondary-color hover:bg-secondary-dark text-base">{{ $buttonText }}</a>
+                   class="btn btn-secondary btn-filled">{{ $buttonText }}</a>
             </div>
         @endif
     </div>
