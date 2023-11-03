@@ -190,16 +190,6 @@
         }
       }
     }
-
-
-    // ?? BUTTON
-    .btn-#{$themeColor}-full {
-      @apply bg-#{$themeColor};
-
-      &:hover {
-        @apply bg-#{$themeColor}-dark;
-      }
-    }
   }
 
 
@@ -319,10 +309,58 @@
 
 
   .btn-gray {
-    @apply bg-gray-100 text-black;
 
-    &:hover {
-      @apply bg-primary;
+    &.btn-filled {
+      @apply bg-gray-400 text-black overflow-hidden z-1 duration-200 relative;
+
+      &:before {
+        content: '';
+        z-index: -1;
+        @apply bg-gray-500 absolute h-full w-0 left-0 bottom-0 transition-all duration-200;
+      }
+
+      &:hover {
+        @apply text-white;
+        &:before {
+          @apply w-full;
+        }
+      }
+    }
+
+    &.btn-outline {
+      @apply border border-2 border-gray-400 text-gray-400 overflow-hidden z-1 duration-200 relative;
+
+      &:before {
+        content: '';
+        z-index: -1;
+        @apply bg-gray-400 absolute h-full w-0 left-0 bottom-0 transition-all duration-200;
+      }
+
+      &:hover {
+        &:before {
+          @apply w-full;
+        }
+      }
+    }
+
+    &.btn-underline {
+      @apply text-gray-400 duration-200 relative;
+      position: relative;
+      padding-left: 0;
+      padding-right: 0;
+
+      &:before {
+        content: '';
+        z-index: -1;
+        @apply bg-gray-400 absolute h-0.5 right-0 bottom-0 transition-all duration-200 w-full;
+      }
+
+      &:hover {
+        @apply left-0;
+        &:before {
+          width: 0%;
+        }
+      }
     }
   }
 
@@ -332,15 +370,14 @@
 
     @screen lg {
       @apply text-md;
-
     }
 
-    &.btn-transparent {
-      @apply bg-none;
-      &:after {
-        top: 34%;
-      }
-    }
+    //&.btn-transparent {
+    //  @apply bg-none;
+    //  &:after {
+    //    top: 34%;
+    //  }
+    //}
 
     &:hover {
       @apply cursor-pointer;

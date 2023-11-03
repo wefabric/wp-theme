@@ -42,10 +42,12 @@
     $overlayEnabled = ($block['data']['overlay_image']) ?? false;
     $overlayColor = ($block['data']['overlay_color']) ?? '';
     $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
+
+    $headerBackgroundColor = ($block['data']['background_color']) ?? '';
 @endphp
 
 <section id="header" class="relative">
-    <div class="bg-cover bg-center {{ $headerClass }}"
+    <div class="bg-cover bg-center bg-{{ $headerBackgroundColor }} {{ $headerClass }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
         @if ($overlayEnabled)
             <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
