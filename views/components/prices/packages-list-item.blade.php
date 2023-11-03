@@ -45,13 +45,13 @@
             @endif
         </div>
         <div class="mx-auto">
-            <a href="#" class="btn btn-secondary text-black btn-filled flex gap-2 items-center group">Aanmelden
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                     stroke-width="2" class="w-4 h-4 ml-auto group-hover:translate-x-2 ease-in-out transition-all"
-                     viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-            </a>
+            @include('components.buttons.default', [
+                'text' => 'Aanmelden',
+                'href' => '#',
+                'alt' => 'Aanmelden',
+                'colors' => 'btn btn-secondary btn-filled text-black',
+                'class' => 'rounded-lg',
+            ])
         </div>
     </div>
 </div>

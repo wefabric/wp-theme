@@ -10,8 +10,13 @@
         </div>
         @if ($buttonText && $buttonLink)
             <div class="w-full md:w-1/3 md:justify-center text-center">
-                <a href="{{ $buttonLink }}"
-                   class="btn btn-secondary btn-filled">{{ $buttonText }}</a>
+                @include('components.buttons.default', [
+                   'text' => $buttonText,
+                   'href' => $buttonLink,
+                   'alt' => $buttonText,
+                   'colors' => 'btn btn-secondary btn-filled',
+                   'class' => 'rounded-lg',
+               ])
             </div>
         @endif
     </div>

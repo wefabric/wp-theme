@@ -39,7 +39,15 @@
                 <div class="text-{{ $textColor }}">{!! $text !!} </div>
             @endif
             @if (($buttonText) && ($buttonLink))
-                <a href="{{ $buttonLink }}" class="btn btn-primary btn-filled mt-4">{{ $buttonText }}</a>
+                <div class="w-full mt-4">
+                    @include('components.buttons.default', [
+                       'text' => $buttonText,
+                       'href' => $buttonLink,
+                       'alt' => $buttonText,
+                       'colors' => 'btn btn-primary btn-outline',
+                       'class' => 'rounded-lg',
+                   ])
+                </div>
             @endif
         </div>
     </div>

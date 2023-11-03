@@ -81,8 +81,14 @@
             @endif
             @include('components.cardblock.list')
             @if ($buttonText && $buttonLink)
-                <div class="text-center mt-4">
-                    <a href="{{ $buttonLink }}" class="btn btn-primary btn-filled">{{ $buttonText }}</a>
+                <div class="w-full text-center">
+                    @include('components.buttons.default', [
+                       'text' => $buttonText,
+                       'href' => $buttonLink,
+                       'alt' => $buttonText,
+                       'colors' => 'btn btn-white btn-outline',
+                       'class' => 'rounded-lg',
+                   ])
                 </div>
             @endif
         </div>

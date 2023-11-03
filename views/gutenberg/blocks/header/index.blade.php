@@ -59,7 +59,15 @@
                     <p class="text-lg mb-4 text-shadow-lg">{{ $subTitle }}</p>
                 @endif
                 @if ($buttonOneText && $buttonOneLink)
-                    <a href="{{ $buttonOneLink }}" class="btn btn-primary btn-filled">{{ $buttonOneText }}</a>
+                    <div class="mt-8 flex justify-center gap-4">
+                        @include('components.buttons.default', [
+                            'text' => $buttonOneText,
+                            'href' => $buttonOneLink,
+                            'alt' => $buttonOneText,
+                            'colors' => 'btn btn-primary btn-filled',
+                            'class' => 'rounded-lg',
+                        ])
+                    </div>
                 @endif
             </div>
         </div>

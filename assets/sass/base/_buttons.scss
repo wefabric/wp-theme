@@ -218,11 +218,11 @@
       &:before {
         content: '';
         z-index: -1;
-        @apply bg-primary absolute h-full w-0 left-0 bottom-0 transition-all duration-200;
+        @apply bg-white absolute h-full w-0 left-0 bottom-0 transition-all duration-200;
       }
 
       &:hover {
-        @apply text-white border-primary;
+        @apply text-primary border-white;
         &:before {
           @apply w-full;
         }

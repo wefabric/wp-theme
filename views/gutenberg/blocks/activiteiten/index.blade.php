@@ -57,8 +57,14 @@
             @endif
             @include('components.activities.list', ['activities' => $activities])
             @if ($buttonText && $buttonLink)
-                <div class="text-center mt-4">
-                    <a href="{{ $buttonLink }}" class="btn btn-primary btn-outline">{{ $buttonText }}</a>
+                <div class="w-full text-center">
+                    @include('components.buttons.default', [
+                       'text' => $buttonText,
+                       'href' => $buttonLink,
+                       'alt' => $buttonText,
+                       'colors' => 'btn btn-primary btn-outline',
+                       'class' => 'rounded-lg',
+                   ])
                 </div>
             @endif
         </div>

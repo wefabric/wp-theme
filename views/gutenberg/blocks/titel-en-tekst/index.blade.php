@@ -26,15 +26,20 @@
     @if ($overlayEnabled)
         <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="relative z-10 container mx-auto px-8 lg:py-20">
+    <div class="custom-margin relative z-10 container mx-auto px-8 lg:py-20">
         <div class="w-full xl:w-2/3 mx-auto flex flex-col lg:flex-row gap-x-8">
             <div class="w-full xl:w-3/5 order-2 {{ $textOrder }}">
                 @if ($text)
                     <div class="text-{{ $textColor }}">{!! $text !!}</div>
                 @endif
                 @if (($buttonText) && ($buttonLink))
-                    <a href="{{ $buttonLink }}"
-                       class="btn btn-primary btn-filled mt-4">{{ $buttonText }}</a>
+                    @include('components.buttons.default', [
+                        'text' => $buttonText,
+                        'href' => $buttonLink,
+                        'alt' => $buttonText,
+                        'colors' => 'btn btn-primary btn-filled',
+                        'class' => 'rounded-lg mt-4',
+                    ])
                 @endif
             </div>
             <div class="w-full xl:w-2/5 order-1 {{ $titleOrder }}">

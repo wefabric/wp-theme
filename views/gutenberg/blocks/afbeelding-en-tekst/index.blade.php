@@ -67,16 +67,26 @@
                         <div class="text-{{ $textColor }}">{!! $text !!}</div>
                     @endif
 
-                        <div class="flex flex-col sm:flex-row gap-4 mt-4">
-                    @if (($buttonOneText) && ($buttonOneLink))
-                        <a href="{{ $buttonOneLink }}"
-                           class="btn btn-primary btn-outline">{{ $buttonOneText }}</a>
-                    @endif
-                    @if (($buttonTwoText) && ($buttonTwoLink))
-                        <a href="{{ $buttonTwoLink }}"
-                           class="btn btn-primary btn-underline">{{ $buttonTwoText }}</a>
-                    @endif
-                        </div>
+                    <div class="flex flex-col sm:flex-row gap-4 mt-4 md:mt-8">
+                        @if (($buttonOneText) && ($buttonOneLink))
+                            @include('components.buttons.default', [
+                               'text' => $buttonOneText,
+                               'href' => $buttonOneLink,
+                               'alt' => $buttonOneText,
+                               'colors' => 'btn btn-primary btn-outline',
+                               'class' => 'flex rounded-lg',
+                           ])
+                        @endif
+                        @if (($buttonTwoText) && ($buttonTwoLink))
+                            @include('components.buttons.default', [
+                                'text' => $buttonTwoText,
+                                'href' => $buttonTwoLink,
+                                'alt' => $buttonTwoText,
+                                'colors' => 'btn btn-primary btn-underline',
+                                'class' => 'flex',
+                            ])
+                        @endif
+                    </div>
                 </div>
                 @if($imageID)
                     <div class="image {{ $imageClass }} order-1 {{ $imageOrder }}">
