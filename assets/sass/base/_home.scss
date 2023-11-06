@@ -1,7 +1,14 @@
 /* Temporary styling for homepage */
 .home {
 
+	#header {
+		z-index: 1;
+	}
+
+
 	#kaarten {
+
+		z-index: 2;
 
 		.block-content {
 			margin-top: -280px !important;

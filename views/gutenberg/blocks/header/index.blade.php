@@ -1,12 +1,14 @@
 @php
     // Variant
-    $headerVariant = $block['data']['header_version'] ?? '';
+    $headerHeight = $block['data']['header_height'] ?? '';
 
     $headerClass = '';
-    if ($headerVariant == 1) {
-        $headerClass = 'h-[400px] sm:h-[500px] md:h-[600px] lg:h-[600px] xl:h-[800px]';
-    } elseif ($headerVariant == 2) {
-        $headerClass = 'h-[300px]';
+    if ($headerHeight == 1) {
+        $headerClass = 'h-[400px] sm:h-[500px] md:h-[600px] lg:h-[800px] xl:h-[1000px]';
+    } elseif ($headerHeight == 2) {
+        $headerClass = 'h-[300px] md:h-[500px]';
+    } elseif ($headerHeight == 3) {
+        $headerClass = 'h-[180px] md:h-[300px]';
     }
 
     // Content
@@ -16,6 +18,8 @@
 
     $buttonOneText = ($block['data']['button_1_text']) ?? '';
     $buttonOneLink = ($block['data']['button_1_link']['url']) ?? '';
+    $buttonTwoText = ($block['data']['button_2_text']) ?? '';
+    $buttonTwoLink = ($block['data']['button_2_link']['url']) ?? '';
 
     $textPosition = $block['data']['text_position'] ?? '';
     $textPositionClass = '';
@@ -61,7 +65,7 @@
                     <p class="text-lg mb-4 text-shadow-lg">{{ $subTitle }}</p>
                 @endif
                 @if ($buttonOneText && $buttonOneLink)
-                    <div class="mt-8 flex justify-center gap-4">
+                    <div class="mt-8 flex gap-4 @if($textPosition == 'center') justify-center @endif">
                         @include('components.buttons.default', [
                             'text' => $buttonOneText,
                             'href' => $buttonOneLink,
@@ -69,6 +73,15 @@
                             'colors' => 'btn btn-primary btn-filled',
                             'class' => 'rounded-lg',
                         ])
+                        @if ($buttonTwoText && $buttonTwoLink)
+                            @include('components.buttons.default', [
+                               'text' => $buttonTwoText,
+                               'href' => $buttonTwoLink,
+                               'alt' => $buttonTwoText,
+                               'colors' => 'btn btn-white btn-outline',
+                               'class' => 'rounded-lg',
+                           ])
+                        @endif
                     </div>
                 @endif
             </div>
