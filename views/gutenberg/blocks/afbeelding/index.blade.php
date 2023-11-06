@@ -28,7 +28,7 @@
 <section id="afbeelding" class="relative bg-{{ $backgroundColor }} py-16 lg:py-0"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
     @if ($backgroundOverlayEnabled)
-        <div class="absolute inset-0 bg-{{ $backgroundOverlayColor }} opacity-{{ $backgroundOverlayOpacity }}"></div>
+        <div class="overlay absolute inset-0 bg-{{ $backgroundOverlayColor }} opacity-{{ $backgroundOverlayOpacity }}"></div>
     @endif
     <div class="relative z-10 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto relative">

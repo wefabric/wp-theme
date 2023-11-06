@@ -24,7 +24,7 @@
 <section id="titel-tekst" class="relative bg-{{ $backgroundColor }} py-16 lg:py-0"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
     @if ($overlayEnabled)
-        <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+        <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="custom-margin relative z-10 container mx-auto px-8 lg:py-20">
         <div class="w-full xl:w-2/3 mx-auto flex flex-col lg:flex-row gap-x-8">

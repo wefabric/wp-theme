@@ -24,9 +24,9 @@
 <section id="google-maps" class="relative py-16 lg:py-0 bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
     @if ($overlayEnabled)
-        <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+        <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="relative z-10 py-8 lg:py-20 {{ $fullScreenClass }}">
+    <div class="relative z-10 pt-8 lg:pt-20 {{ $fullScreenClass }}">
         <div class="mx-auto {{ $blockClass }}">
             @if ($title)
                 <h2 class="text-{{ $titleColor }} container mx-auto mb-4 px-8 {{ $titleClass }}">{{ $title }}</h2>

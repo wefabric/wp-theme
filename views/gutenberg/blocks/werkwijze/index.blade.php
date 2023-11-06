@@ -35,7 +35,7 @@
 <section id="werkwijze" class="relative py-16 lg:py-0 bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
     @if ($overlayEnabled)
-        <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+        <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
 
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">

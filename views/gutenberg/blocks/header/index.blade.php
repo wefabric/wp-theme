@@ -52,11 +52,11 @@
     $headerBackgroundColor = ($block['data']['background_color']) ?? '';
 @endphp
 
-<section id="header" class="relative">
-    <div class="bg-cover bg-center bg-{{ $headerBackgroundColor }} {{ $headerClass }}"
+<section id="header" class="relative bg-{{ $headerBackgroundColor }}">
+    <div class="bg-cover bg-center {{ $headerClass }}"
          style="background-image: url('{{ $imageId ? wp_get_attachment_image_url($imageId, 'full') : ($featuredImage ? $featuredImage : '') }}')">
         @if ($overlayEnabled)
-            <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+            <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
         <div class="relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }}">
             <div class="text-{{ $textColor }} {{ $textWidthClass }}">
