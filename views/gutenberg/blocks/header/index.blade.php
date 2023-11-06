@@ -6,9 +6,9 @@
     if ($headerHeight == 1) {
         $headerClass = 'h-[400px] sm:h-[500px] md:h-[600px] lg:h-[800px] xl:h-[1000px]';
     } elseif ($headerHeight == 2) {
-        $headerClass = 'h-[300px] md:h-[500px]';
+        $headerClass = 'h-[200px] md:h-[500px]';
     } elseif ($headerHeight == 3) {
-        $headerClass = 'h-[180px] md:h-[300px]';
+        $headerClass = 'h-[180px] md:h-[200px]';
     }
 
     // Content
@@ -60,9 +60,9 @@
         @endif
         <div class="relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }}">
             <div class="text-{{ $textColor }} {{ $textWidthClass }}">
-                <h1 class="mb-4 text-shadow-lg">{{ $title }}</h1>
+                <h1 class="text-shadow-lg">{{ $title }}</h1>
                 @if ($subTitle)
-                    <p class="text-lg mb-4 text-shadow-lg">{{ $subTitle }}</p>
+                    <div class="mt-4 text-lg mb-4 text-shadow-lg">{{ $subTitle }}</div>
                 @endif
                 @if ($buttonOneText && $buttonOneLink)
                     <div class="mt-8 flex gap-4 @if($textPosition == 'center') justify-center @endif">
