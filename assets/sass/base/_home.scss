@@ -60,7 +60,14 @@
 
 	#afbeelding-tekst {
 		@apply -translate-y-1/2;
-		padding-top: 0 !important;
+
+		@media only screen and (min-width: 1024px) {
+			padding-top: 0 !important;
+		}
+
+		@media only screen and (max-width: 1023px) {
+			padding-top: 488px !important;
+		}
 
 		.custom-styling {
 			@apply py-0;
@@ -72,7 +79,10 @@
 
 		.text {
 			@apply bg-white px-20 py-12 shadow-xl rounded-[20px] w-full z-20;
-			margin-left: -80px !important;
+
+			@media only screen and (min-width: 1024px) {
+				margin-left: -80px !important;
+			}
 		}
 
 		.image {
@@ -89,7 +99,14 @@
 	}
 
 	#werknemers {
-		margin-top: -300px !important;
+
+		@media only screen and (max-width: 1023px) {
+			margin-top: -850px !important;
+		}
+
+		@media only screen and (min-width: 1024px) {
+			margin-top: -300px !important;
+		}
 
 		.werknemer-item {
 			color: white !important;
