@@ -4,8 +4,8 @@
     "fields": [
         {
             "key": "field_64a409fbdbaf0",
-            "label": "Header variant",
-            "name": "header_version",
+            "label": "Header hoogte",
+            "name": "header_height",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -17,9 +17,9 @@
                 "id": ""
             },
             "choices": {
-                "1": "Versie 1",
-                "2": "Versie 2",
-                "3": "Versie 3"
+                "1": "Groot",
+                "2": "Gemiddeld",
+                "3": "Klein"
             },
             "default_value": 1,
             "return_format": "value",
@@ -54,22 +54,7 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_64a409fbdbaf0",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_64a409fbdbaf0",
-                        "operator": "==",
-                        "value": "2"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -109,15 +94,7 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_64a409fbdbaf0",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -140,12 +117,57 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a409fbdbaf0",
-                        "operator": "==",
-                        "value": "1"
-                    },
-                    {
                         "field": "field_6512dc000d039",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_6548cc7bb1755",
+            "label": "Button 2 tekst",
+            "name": "button_2_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6512e7ec158f2",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6548cc8bb1756",
+            "label": "Button 2 link",
+            "name": "button_2_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6548cc7bb1755",
                         "operator": "!=empty"
                     }
                 ]
@@ -202,8 +224,78 @@
             "font_size": 14
         },
         {
+            "key": "field_65435c0e7b7e9",
+            "label": "Breadcrumbs tonen?",
+            "name": "show_breadcrumbs",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_65435e59e0f54",
+            "label": "Breadcrumbs achtergrond kleur",
+            "name": "breadcrumbs_background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65435c0e7b7e9",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "white",
+            "font_size": 14
+        },
+        {
+            "key": "field_65435e8fe0f55",
+            "label": "Breadcrumbs tekst kleur",
+            "name": "breadcrumbs_text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65435c0e7b7e9",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
             "key": "field_6512db1c457bb",
-            "label": "Afbeelding",
+            "label": "Achtergrond",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -217,6 +309,23 @@
             },
             "placement": "top",
             "endpoint": 0
+        },
+        {
+            "key": "field_6545060382edb",
+            "label": "Achtergrond kleur",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
         },
         {
             "key": "field_64a40e90be6f8",
@@ -251,14 +360,7 @@
             "type": "true_false",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_64a40e90be6f8",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -341,7 +443,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 19,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -350,5 +452,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696864087
+    "modified": 1699269803
 }
