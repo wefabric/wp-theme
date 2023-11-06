@@ -27,8 +27,12 @@
 		padding-bottom: 400px !important;
 		margin-top: -70px !important;
 
+		.custom-layout {
+			@apply gap-x-8;
+		}
+
 		.USP-item div {
-			@apply p-10;
+			@apply p-0;
 		}
 
 		div i {

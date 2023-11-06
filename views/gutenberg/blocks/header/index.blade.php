@@ -43,12 +43,14 @@
     $overlayColor = ($block['data']['overlay_color']) ?? '';
     $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
 
+    $featuredImage = get_the_post_thumbnail_url(get_the_ID(), 'full');
+
     $headerBackgroundColor = ($block['data']['background_color']) ?? '';
 @endphp
 
 <section id="header" class="relative">
     <div class="bg-cover bg-center bg-{{ $headerBackgroundColor }} {{ $headerClass }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
+         style="background-image: url('{{ $imageId ? wp_get_attachment_image_url($imageId, 'full') : ($featuredImage ? $featuredImage : '') }}')">
         @if ($overlayEnabled)
             <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif

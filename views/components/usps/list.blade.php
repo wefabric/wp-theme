@@ -35,7 +35,7 @@
             <div class="swiper-button-prev usps-button-prev"></div>
         </div>
     @else
-        <div class=" grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 justify-center py-8">
+        <div class="grid custom-layout {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 justify-center py-8">
             @foreach ($usps as $usp)
                 @include('components.usps.list-item')
             @endforeach
@@ -61,7 +61,7 @@
             <div class="swiper-button-prev usps-button-prev"></div>
         </div>
     @else
-        <div class=" grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 justify-center py-8">
+        <div class="grid custom-layout {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 justify-center py-8">
             @foreach ($usps as $usp)
                 @include('components.usps.list-item')
             @endforeach
@@ -87,7 +87,7 @@
             <div class="swiper-button-prev usps-button-prev"></div>
         </div>
     @else
-        <div class=" grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 justify-center py-8">
+        <div class="grid custom-layout {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 justify-center py-8">
             @foreach ($usps as $usp)
                 @include('components.usps.list-item')
             @endforeach

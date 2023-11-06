@@ -2,9 +2,13 @@
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-    $titlePosition = $block['data']['title_position'] ?? '';
-    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-    $titleClass = $titleClassMap[$titlePosition] ?? '';
+    $text = $block['data']['text'] ?? '';
+    $textColor = $block['data']['text_color'] ?? '';
+    $textPosition = $block['data']['text_position'] ?? '';
+    $textClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+    $textClass = $textClassMap[$textPosition] ?? '';
+
+    $bottomText = $block['data']['bottom_text'] ?? '';
 
     $showTables = $block['data']['show_price_tables'] ?? false;
 
@@ -66,14 +70,22 @@
     <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($title)
-                <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-12 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{{ $title }}</h2>
+                <div class="container mx-auto lg:mb-12 @if($blockWidth == 'fullscreen') px-8 @endif">
+                    <h2 class="text-{{ $titleColor }} {{ $textClass }} mb-4">{{ $title }}</h2>
+
+                    @if ($text)
+                        <div class="text-{{ $textColor }} {{ $textClass }}">{!! $text !!}</div>
+                    @endif
+                </div>
             @endif
             @include('components.prices.packages-list', ['packages' => $packages])
-
             @if ($showTables)
                 <div class="container w-full @if(($blockWidth == '50') || ($blockWidth == '66')) w-full @else md:w-2/3 @endif mx-auto">
                     @include('components.prices.tables-list', ['tables' => $tables])
                 </div>
+            @endif
+            @if($bottomText)
+                <div class="mt-4 container w-full @if(($blockWidth == '50') || ($blockWidth == '66')) w-full @else md:w-2/3 @endif mx-auto">{!! $bottomText !!}</div>
             @endif
         </div>
     </div>

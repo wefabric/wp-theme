@@ -4,9 +4,13 @@
     $packageDescription = $package['description'] ?? '';
     $packageLabel = $package['label'] ?? '';
     $packagePricePer = $package['price_per'] ?? '';
+    $packageLink = $package['package_link']['url'] ?? '#';
 
     $packageBackgroundColor = $package['package_background_color'] ?? '';
     $packageTextColor = $package['text_color'] ?? '';
+
+    $buttonText = $block['data']['button_text'] ?? '';
+//    @dd($buttonText);
 @endphp
 
 <div class="w-full h-full flex flex-col relative bg-background-color shadow-xl rounded-{{ $borderRadius }}">
@@ -46,8 +50,8 @@
         </div>
         <div class="mx-auto">
             @include('components.buttons.default', [
-                'text' => 'Aanmelden',
-                'href' => '#',
+                'text' => $buttonText,
+                'href' => $packageLink,
                 'alt' => 'Aanmelden',
                 'colors' => 'btn btn-secondary btn-filled text-black',
                 'class' => 'rounded-lg',
