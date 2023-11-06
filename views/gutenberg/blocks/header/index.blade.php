@@ -27,13 +27,13 @@
 
     if ($textPosition === 'left') {
         $textPositionClass = 'justify-start text-left';
-        $textWidthClass = 'w-full md:w-1/2 xl:w-1/3';
+        $textWidthClass = ($headerHeight == 3) ? 'w-full' : 'w-full md:w-1/2 xl:w-1/3';
     } elseif ($textPosition === 'center') {
         $textPositionClass = 'justify-center text-center';
-           $textWidthClass = 'w-full xl:w-3/4';
+           $textWidthClass = ($headerHeight == 3) ? 'w-full' : 'w-full xl:w-3/4';
     } elseif ($textPosition === 'right') {
-        $textPositionClass = 'justify-end text-left';
-           $textWidthClass = 'w-full md:w-1/2 xl:w-1/3';
+        $textPositionClass = 'justify-end text-left text-right';
+           $textWidthClass = ($headerHeight == 3) ? 'w-full md:w-2/3' : 'w-full md:w-1/2 xl:w-1/3';
     }
 
     // Breadcrumbs
@@ -65,7 +65,7 @@
                     <div class="mt-4 text-lg mb-4 text-shadow-lg">{{ $subTitle }}</div>
                 @endif
                 @if ($buttonOneText && $buttonOneLink)
-                    <div class="mt-8 flex gap-4 @if($textPosition == 'center') justify-center @endif">
+                    <div class="mt-8 flex gap-4 {{ $textPosition == 'center' ? 'justify-center' : ($textPosition == 'right' ? 'justify-end' : '') }}">
                         @include('components.buttons.default', [
                             'text' => $buttonOneText,
                             'href' => $buttonOneLink,
