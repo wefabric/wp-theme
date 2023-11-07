@@ -35,5 +35,10 @@
                 @endif
             </div>
         @endif
+        @if ($ctaForm)
+            <div class="w-full mt-10 text-left text-white">
+                {!! gravity_form($ctaForm, false) ; !!}
+            </div>
+        @endif
     </div>
 </div>

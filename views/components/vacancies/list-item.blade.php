@@ -48,7 +48,7 @@
 
                 @if (!empty($visibleElements) && in_array('working_hours', $visibleElements) && !empty($fields['working_hours']))
                     <p class="capitalize">
-                        <i class="w-4 object-cover fas fa-clock mr-2 mr-3"></i>{{ $fields['working_hours'] }}
+                        <i class="w-4 object-cover fas fa-clock mr-3"></i>{{ $fields['working_hours'] }}
                     </p>
                 @endif
 
