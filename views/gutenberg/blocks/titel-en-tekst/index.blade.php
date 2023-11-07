@@ -5,8 +5,17 @@
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
-    $buttonText = $block['data']['button_text'] ?? '';
-    $buttonLink = ($block['data']['button_link']['url']) ?? '';
+    // Buttons
+    $button1Text = $block['data']['button_button_1']['title'] ?? '';
+    $button1Link = ($block['data']['button_button_1']['url']) ?? '';
+    $button1Target = ($block['data']['button_button_1']['target']) ?? '_self';
+    $button1Color = $block['data']['button_button_1_color'] ?? '';
+    $button1Style = $block['data']['button_button_1_style'] ?? '';
+    $button2Text = $block['data']['button_button_2']['title'] ?? '';
+    $button2Link = ($block['data']['button_button_2']['url']) ?? '';
+    $button2Target = ($block['data']['button_button_2']['target']) ?? '_self';
+    $button2Color = $block['data']['button_button_2_color'] ?? '';
+    $button2Style = $block['data']['button_button_2_style'] ?? '';
 
     $textPosition = $block['data']['text_position'] ?? '';
     $textAlignment = ($textPosition === 'left') ? 'left' : 'right';
@@ -32,14 +41,27 @@
                 @if ($text)
                     <div class="text-{{ $textColor }}">{!! $text !!}</div>
                 @endif
-                @if (($buttonText) && ($buttonLink))
-                    @include('components.buttons.default', [
-                        'text' => $buttonText,
-                        'href' => $buttonLink,
-                        'alt' => $buttonText,
-                        'colors' => 'btn btn-primary btn-filled',
-                        'class' => 'rounded-lg mt-4',
-                    ])
+                @if (($button1Text) && ($button1Link))
+                    <div class="flex gap-4 mt-4 md:mt-8">
+                        @include('components.buttons.default', [
+                           'text' => $button1Text,
+                           'href' => $button1Link,
+                           'alt' => $button1Text,
+                           'colors' => 'btn btn-' . $button1Color . ' btn-' . $button1Style . '',
+                           'class' => 'rounded-lg',
+                           'target' => $button1Target,
+                       ])
+                        @if (($button2Text) && ($button2Link))
+                            @include('components.buttons.default', [
+                               'text' => $button2Text,
+                               'href' => $button2Link,
+                               'alt' => $button2Text,
+                               'colors' => 'btn btn-' . $button2Color . ' btn-' . $button2Style . '',
+                               'class' => 'rounded-lg',
+                               'target' => $button2Target,
+                           ])
+                        @endif
+                    </div>
                 @endif
             </div>
             <div class="w-full xl:w-2/5 order-1 {{ $titleOrder }}">

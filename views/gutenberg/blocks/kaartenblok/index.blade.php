@@ -8,8 +8,13 @@
    $titlePosition = $block['data']['title_position'] ?? '';
    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
    $titleClass = $titleClassMap[$titlePosition] ?? '';
-   $buttonText = $block['data']['button_text'] ?? '';
-   $buttonLink = ($block['data']['button_link']['url']) ?? '';
+
+    // Buttons
+    $button1Text = $block['data']['button_button_1']['title'] ?? '';
+    $button1Link = ($block['data']['button_button_1']['url']) ?? '';
+    $button1Target = ($block['data']['button_button_1']['target']) ?? '_self';
+    $button1Color = $block['data']['button_button_1_color'] ?? '';
+    $button1Style = $block['data']['button_button_1_style'] ?? '';
 
    $cardBackgroundColor = $block['data']['card_background_color'] ?? '';
    $cardTextColor = $block['data']['card_text_color'] ?? '';
@@ -80,14 +85,15 @@
                 <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-12 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{{ $title }}</h2>
             @endif
             @include('components.cardblock.list')
-            @if ($buttonText && $buttonLink)
+            @if (($button1Text) && ($button1Link))
                 <div class="w-full text-center">
                     @include('components.buttons.default', [
-                       'text' => $buttonText,
-                       'href' => $buttonLink,
-                       'alt' => $buttonText,
-                       'colors' => 'btn btn-white btn-outline',
+                       'text' => $button1Text,
+                       'href' => $button1Link,
+                       'alt' => $button1Text,
+                       'colors' => 'btn btn-' . $button1Color . ' btn-' . $button1Style . '',
                        'class' => 'rounded-lg',
+                       'target' => $button1Target,
                    ])
                 </div>
             @endif

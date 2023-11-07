@@ -35,7 +35,7 @@
         'target' => $target ?? '',
         'class' => ($a_class ?? ''). ' no-underline',
     ])
-        <span class="btn {{ $size ?? '' }} {{ $colors }} {{ $class ?? '' }} @if($icon ?? '') disable-chevron @endif">
+        <span class="btn {{ $size ?? '' }} {{ $colors }} {{ $class ?? '' }}">
             {{ $text }}
             @if($icon ?? '')
                 <i class="{{ $icon }}"></i>

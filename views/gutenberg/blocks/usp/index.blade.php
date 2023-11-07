@@ -7,6 +7,13 @@
     $titleClass = $titleClassMap[$titlePosition] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
+    // Buttons
+    $button1Text = $block['data']['button_button_1']['title'] ?? '';
+    $button1Link = ($block['data']['button_button_1']['url']) ?? '';
+    $button1Target = ($block['data']['button_button_1']['target']) ?? '_self';
+    $button1Color = $block['data']['button_button_1_color'] ?? '';
+    $button1Style = $block['data']['button_button_1_style'] ?? '';
+
     // Show usps
     $uspsCount = $block['data']['usps'];
     $usps = [];
@@ -59,6 +66,18 @@
                 <h2 class="container mx-auto lg:mb-12 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }} text-{{ $titleColor }}">{{ $title }}</h2>
             @endif
             @include('components.usps.list', ['usps' => $usps])
+            @if (($button1Text) && ($button1Link))
+                <div class="w-full text-center">
+                    @include('components.buttons.default', [
+                       'text' => $button1Text,
+                       'href' => $button1Link,
+                       'alt' => $button1Text,
+                       'colors' => 'btn btn-' . $button1Color . ' btn-' . $button1Style . '',
+                       'class' => 'rounded-lg',
+                       'target' => $button1Target,
+                   ])
+                </div>
+            @endif
         </div>
     </div>
 </section>

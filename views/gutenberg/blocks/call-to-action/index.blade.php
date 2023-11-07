@@ -7,13 +7,22 @@
     $titleColor = $block['data']['title_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
-    $buttonText = $block['data']['button_text'] ?? '';
-    $buttonLink = ($block['data']['button_link']['url']) ?? '';
-    $textPosition = $block['data']['text_position'] ?? '';
-    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-    $textClass = $titleClassMap[$textPosition] ?? '';
-
+//    $textPosition = $block['data']['text_position'] ?? '';
+//    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+//    $textClass = $titleClassMap[$textPosition] ?? '';
     $blockBackgroundColor = $block['data']['block_background_color'] ?? '';
+
+    // Buttons
+    $button1Text = $block['data']['button_button_1']['title'] ?? '';
+    $button1Link = ($block['data']['button_button_1']['url']) ?? '';
+    $button1Target = ($block['data']['button_button_1']['target']) ?? '_self';
+    $button1Color = $block['data']['button_button_1_color'] ?? '';
+    $button1Style = $block['data']['button_button_1_style'] ?? '';
+    $button2Text = $block['data']['button_button_2']['title'] ?? '';
+    $button2Link = ($block['data']['button_button_2']['url']) ?? '';
+    $button2Target = ($block['data']['button_button_2']['target']) ?? '_self';
+    $button2Color = $block['data']['button_button_2_color'] ?? '';
+    $button2Style = $block['data']['button_button_2_style'] ?? '';
 
     // CTA employee fields
     $ctaEmployee = $block['data']['employee'] ?? '';

@@ -23,7 +23,7 @@
         }
 
         &:hover {
-          @apply text-white;
+          @apply text-white border-#{$themeColor}-dark;
 
           &:before {
             @apply w-full;
@@ -77,7 +77,7 @@
     // Light button
     .btn-#{$themeColor}-light {
       &.btn-filled {
-        @apply bg-#{$themeColor} overflow-hidden z-1 duration-200 relative;
+        @apply bg-#{$themeColor} border border-2 border-#{$themeColor} overflow-hidden z-1 duration-200 relative;
 
         &:before {
           content: '';
@@ -86,7 +86,7 @@
         }
 
         &:hover {
-          @apply text-white;
+          @apply text-white border-#{$themeColor}-dark;
 
           &:before {
             @apply w-full;
@@ -141,7 +141,7 @@
     .btn-#{$themeColor}-dark {
 
       &.btn-filled {
-        @apply bg-#{$themeColor}-dark overflow-hidden z-1 duration-200 relative;
+        @apply bg-#{$themeColor}-dark border border-2 border-#{$themeColor} overflow-hidden z-1 duration-200 relative;
 
         &:before {
           content: '';
@@ -205,7 +205,7 @@
   // White button
   .btn-white {
     &.btn-filled {
-      @apply bg-white text-black overflow-hidden z-1 duration-200 relative;
+      @apply bg-white border border-2 border-white text-black overflow-hidden z-1 duration-200 relative;
 
       &:before {
         content: '';
@@ -214,7 +214,7 @@
       }
 
       &:hover {
-        @apply text-white;
+        @apply text-white border-primary;
         &:before {
           @apply w-full;
         }
@@ -231,7 +231,7 @@
       }
 
       &:hover {
-        @apply text-primary border-white;
+        @apply text-primary;
         &:before {
           @apply w-full;
         }
@@ -267,15 +267,16 @@
   // Black button
   .btn-black {
     &.btn-filled {
-      @apply bg-black text-white overflow-hidden z-1 duration-200 relative;
+      @apply bg-black border border-2 border-black text-white overflow-hidden z-1 duration-200 relative;
 
       &:before {
         content: '';
         z-index: -1;
-        @apply bg-black absolute h-full w-0 left-0 bottom-0 transition-all duration-200;
+        @apply bg-primary absolute h-full w-0 left-0 bottom-0 transition-all duration-200;
       }
 
       &:hover {
+        @apply border-primary;
         &:before {
           @apply w-full;
         }
@@ -323,11 +324,10 @@
     }
   }
 
-
+  // Gray button
   .btn-gray {
-
     &.btn-filled {
-      @apply bg-gray-400 text-black overflow-hidden z-1 duration-200 relative;
+      @apply bg-gray-400 border border-2 border-gray-400 text-black overflow-hidden z-1 duration-200 relative;
 
       &:before {
         content: '';
@@ -336,7 +336,7 @@
       }
 
       &:hover {
-        @apply text-white;
+        @apply text-white border-gray-500;
         &:before {
           @apply w-full;
         }
@@ -353,6 +353,7 @@
       }
 
       &:hover {
+        @apply text-white;
         &:before {
           @apply w-full;
         }

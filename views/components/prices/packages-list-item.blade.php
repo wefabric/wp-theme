@@ -9,8 +9,11 @@
     $packageBackgroundColor = $package['package_background_color'] ?? '';
     $packageTextColor = $package['text_color'] ?? '';
 
-    $buttonText = $block['data']['button_text'] ?? '';
-//    @dd($buttonText);
+
+    // Buttons
+    $buttonText = $block['data']['button_button_text'] ?? '';
+    $buttonColor = $block['data']['button_button_color'] ?? '';
+    $buttonStyle = $block['data']['button_button_style'] ?? '';
 @endphp
 
 <div class="w-full h-full flex flex-col relative bg-background-color shadow-xl rounded-{{ $borderRadius }}">
@@ -52,8 +55,8 @@
             @include('components.buttons.default', [
                 'text' => $buttonText,
                 'href' => $packageLink,
-                'alt' => 'Aanmelden',
-                'colors' => 'btn btn-secondary btn-filled text-black',
+                'alt' => $buttonText,
+                'colors' => 'btn btn-' . $buttonColor . ' btn-' . $buttonStyle . '',
                 'class' => 'rounded-lg',
             ])
         </div>

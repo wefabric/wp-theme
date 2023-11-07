@@ -4,7 +4,7 @@
 
 <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
     <div class="flex flex-col md:flex-row md:items-center gap-y-4 md:gap-y-0">
-        <div class="w-full @if($ctaImage) md:w-2/3 @else md:w-full @endif text-center md:{{ $textClass }}">
+        <div class="w-full @if($ctaImage) md:w-2/3 @else md:w-full @endif text-center">
             @if ($title)
                 <h2 class="text-{{ $titleColor }}">{{ $title }}</h2>
             @endif

@@ -16,10 +16,17 @@
     $subTitle = ($block['data']['subtitle']) ?? '';
     $textColor = ($block['data']['text_color']) ?? '';
 
-    $buttonOneText = ($block['data']['button_1_text']) ?? '';
-    $buttonOneLink = ($block['data']['button_1_link']['url']) ?? '';
-    $buttonTwoText = ($block['data']['button_2_text']) ?? '';
-    $buttonTwoLink = ($block['data']['button_2_link']['url']) ?? '';
+    // Buttons
+    $button1Text = $block['data']['button_button_1']['title'] ?? '';
+    $button1Link = ($block['data']['button_button_1']['url']) ?? '';
+    $button1Target = ($block['data']['button_button_1']['target']) ?? '_self';
+    $button1Color = $block['data']['button_button_1_color'] ?? '';
+    $button1Style = $block['data']['button_button_1_style'] ?? '';
+    $button2Text = $block['data']['button_button_2']['title'] ?? '';
+    $button2Link = ($block['data']['button_button_2']['url']) ?? '';
+    $button2Target = ($block['data']['button_button_2']['target']) ?? '_self';
+    $button2Color = $block['data']['button_button_2_color'] ?? '';
+    $button2Style = $block['data']['button_button_2_style'] ?? '';
 
     $textPosition = $block['data']['text_position'] ?? '';
     $textPositionClass = '';
@@ -48,7 +55,6 @@
     $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
 
     $featuredImage = get_the_post_thumbnail_url(get_the_ID(), 'full');
-
     $headerBackgroundColor = ($block['data']['background_color']) ?? '';
 @endphp
 
@@ -64,22 +70,24 @@
                 @if ($subTitle)
                     <div class="mt-4 text-lg mb-4 text-shadow-lg">{{ $subTitle }}</div>
                 @endif
-                @if ($buttonOneText && $buttonOneLink)
-                    <div class="mt-8 flex gap-4 {{ $textPosition == 'center' ? 'justify-center' : ($textPosition == 'right' ? 'justify-end' : '') }}">
+                @if (($button1Text) && ($button1Link))
+                    <div class="{{ $textPositionClass }} w-full flex sm:flex-row gap-4 mt-4">
                         @include('components.buttons.default', [
-                            'text' => $buttonOneText,
-                            'href' => $buttonOneLink,
-                            'alt' => $buttonOneText,
-                            'colors' => 'btn btn-primary btn-filled',
-                            'class' => 'rounded-lg',
-                        ])
-                        @if ($buttonTwoText && $buttonTwoLink)
+                           'text' => $button1Text,
+                           'href' => $button1Link,
+                           'alt' => $button1Text,
+                           'colors' => 'btn btn-' . $button1Color . ' btn-' . $button1Style . '',
+                           'class' => 'rounded-lg',
+                           'target' => $button1Target,
+                       ])
+                        @if (($button2Text) && ($button2Link))
                             @include('components.buttons.default', [
-                               'text' => $buttonTwoText,
-                               'href' => $buttonTwoLink,
-                               'alt' => $buttonTwoText,
-                               'colors' => 'btn btn-white btn-outline',
+                               'text' => $button2Text,
+                               'href' => $button2Link,
+                               'alt' => $button2Text,
+                               'colors' => 'btn btn-' . $button2Color . ' btn-' . $button2Style . '',
                                'class' => 'rounded-lg',
+                               'target' => $button2Target,
                            ])
                         @endif
                     </div>
