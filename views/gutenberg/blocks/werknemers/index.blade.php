@@ -62,7 +62,7 @@
             @endif
             @include('components.employees.list', ['employees' => $employees])
             @if (($button1Text) && ($button1Link))
-                <div class="w-full text-center">
+                <div class="w-full text-center mt-4 md:mt-8">
                     @include('components.buttons.default', [
                        'text' => $button1Text,
                        'href' => $button1Link,

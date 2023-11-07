@@ -71,7 +71,7 @@
                     <div class="mt-4 text-lg mb-4 text-shadow-lg">{{ $subTitle }}</div>
                 @endif
                 @if (($button1Text) && ($button1Link))
-                    <div class="{{ $textPositionClass }} w-full flex sm:flex-row gap-4 mt-4">
+                    <div class="{{ $textPositionClass }} w-full flex sm:flex-row gap-4 mt-4 md:mt-8">
                         @include('components.buttons.default', [
                            'text' => $button1Text,
                            'href' => $button1Link,

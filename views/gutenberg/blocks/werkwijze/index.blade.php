@@ -9,11 +9,10 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
-    $stepTextColor = $block['data']['step_text_color'] ?? '';
-
     // Show steps
     $steps = $block['data']['steps'];
     $showStepNumber = $block['data']['show_step_number'];
+    $stepTextColor = $block['data']['step_text_color'] ?? '';
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
