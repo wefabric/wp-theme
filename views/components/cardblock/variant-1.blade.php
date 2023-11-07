@@ -21,10 +21,17 @@
             <p class="relative z-20 group-hover:text-white transition-all duration-300 ease-in-out">{{ $pageExcerpt }}</p>
         @endif
         @if (!empty($visibleElements) && in_array('button', $visibleElements))
-            <div class="relative z-20 flex items-center">
-                <a href="{{ $pageUrl }}"
-                   class="btn btn-primary btn-filled mt-4">Lees meer</a>
-            </div>
+            @if ($buttonCardText)
+                <div class="relative z-20 flex items-center">
+                    @include('components.buttons.default', [
+                       'text' => $buttonCardText,
+                       'href' => $pageUrl,
+                       'alt' => $buttonCardText,
+                       'colors' => 'btn btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle . '',
+                       'class' => 'rounded-lg',
+                   ])
+                </div>
+            @endif
         @endif
     </div>
 </div>

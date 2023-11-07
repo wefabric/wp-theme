@@ -9,12 +9,15 @@
    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
    $titleClass = $titleClassMap[$titlePosition] ?? '';
 
-    // Buttons
-    $button1Text = $block['data']['button_button_1']['title'] ?? '';
-    $button1Link = ($block['data']['button_button_1']['url']) ?? '';
-    $button1Target = ($block['data']['button_button_1']['target']) ?? '_self';
-    $button1Color = $block['data']['button_button_1_color'] ?? '';
-    $button1Style = $block['data']['button_button_1_style'] ?? '';
+   // Buttons
+   $button1Text = $block['data']['button_bottom__button_1']['title'] ?? '';
+   $button1Link = ($block['data']['button_bottom_button_1']['url']) ?? '';
+   $button1Target = ($block['data']['button_bottom_button_1']['target']) ?? '_self';
+   $button1Color = $block['data']['button_bottom_button_1_color'] ?? '';
+   $button1Style = $block['data']['button_bottom_button_1_style'] ?? '';
+   $buttonCardText = $block['data']['card_button_button_text'] ?? '';
+   $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
+   $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
 
    $cardBackgroundColor = $block['data']['card_background_color'] ?? '';
    $cardTextColor = $block['data']['card_text_color'] ?? '';

@@ -63,16 +63,17 @@
                 @endif
 
                 @if (!empty($visibleElements) && in_array('button', $visibleElements))
-                    <div class="mt-4 flex items-center flex-wrap">
-                        <a href="{{ $vacancyUrl }}" class="text-primary inline-flex items-center md:mb-2 lg:mb-0">Lees meer
-                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:scale-110 transition duration-300 ease-in-out"
-                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"
-                                 stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14"></path>
-                                <path d="M12 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
+                    @if ($buttonCardText)
+                        <div class="relative z-20 flex items-center">
+                            @include('components.buttons.default', [
+                               'text' => $buttonCardText,
+                               'href' => $vacancyUrl,
+                               'alt' => $buttonCardText,
+                               'colors' => 'btn btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle . '',
+                               'class' => 'rounded-lg',
+                           ])
+                        </div>
+                    @endif
                 @endif
             </div>
         </div>

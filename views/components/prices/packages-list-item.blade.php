@@ -51,7 +51,7 @@
                 @endforeach
             @endif
         </div>
-        <div class="mx-auto">
+        <div class="mx-auto z-10">
             @include('components.buttons.default', [
                 'text' => $buttonText,
                 'href' => $packageLink,

@@ -12,6 +12,9 @@
     $button1Target = ($block['data']['button_button_1']['target']) ?? '_self';
     $button1Color = $block['data']['button_button_1_color'] ?? '';
     $button1Style = $block['data']['button_button_1_style'] ?? '';
+    $buttonCardText = $block['data']['card_button_button_text'] ?? '';
+    $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
+    $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
 
     // Show news
     $displayType = $block['data']['display_type'];
