@@ -1,7 +1,7 @@
 .content {
-  p {
-    @apply mb-3 text-base;
-  }
+  //p {
+  //  @apply mb-3 text-base;
+  //}
 
   a {
     @apply underline font-bold text-primary;
@@ -12,7 +12,7 @@
   }
 
   b, strong {
-    @apply font-bold
+    @apply font-bold;
   }
 
   h2 {
@@ -25,7 +25,7 @@
 
   figure {
     img, video {
-      @apply inline-block
+      @apply inline-block;
     }
 
     figcaption {

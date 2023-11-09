@@ -7,7 +7,6 @@
     $textPosition = $block['data']['text_position'] ?? '';
     $textClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $textClass = $textClassMap[$textPosition] ?? '';
-
     $bottomText = $block['data']['bottom_text'] ?? '';
 
     $showTables = $block['data']['show_price_tables'] ?? false;
@@ -72,9 +71,8 @@
             @if ($title)
                 <div class="container mx-auto lg:mb-12 @if($blockWidth == 'fullscreen') px-8 @endif">
                     <h2 class="text-{{ $titleColor }} {{ $textClass }} mb-4">{{ $title }}</h2>
-
                     @if ($text)
-                        <div class="text-{{ $textColor }} {{ $textClass }}">{!! $text !!}</div>
+                        @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])
                     @endif
                 </div>
             @endif
@@ -85,7 +83,10 @@
                 </div>
             @endif
             @if($bottomText)
-                <div class="mt-4 container w-full @if(($blockWidth == '50') || ($blockWidth == '66')) w-full @else md:w-2/3 @endif mx-auto">{!! $bottomText !!}</div>
+                @include('components.content', [
+                    'content' => apply_filters('the_content', $bottomText),
+                    'class' => 'mt-4 container mx-auto ' . (($blockWidth == '50' || $blockWidth == '66') ? 'w-full' : 'md:w-2/3')
+                ])
             @endif
         </div>
     </div>

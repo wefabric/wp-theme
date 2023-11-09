@@ -56,7 +56,7 @@
                         <h3 class="mb-1 text-xl">{{ $stepTitle }}</h3>
                     @endif
                     @if ($stepText)
-                        <div class="">{!! $stepText !!}</div>
+                        @include('components.content', ['content' => apply_filters('the_content', $stepText), 'class' => 'text-' . $stepTextColor])
                     @endif
                 </div>
             </div>

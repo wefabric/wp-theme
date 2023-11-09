@@ -44,7 +44,7 @@
                                    for="faq-drawer-{{$key}}">{{ $faq['question_and_answer']['question'] }}</label>
                             <div class="faq-drawer__content-wrapper">
                                 <div class="faq-drawer__content px-10 pb-8 bg-{{ $faqBackgroundColor }}">
-                                    <p class="text-base ">{!! apply_filters('the_content', $faq['question_and_answer']['answer']) !!}</p>
+                                    <div class="text-base ">{!! apply_filters('the_content', $faq['question_and_answer']['answer']) !!}</div>
                                 </div>
                             </div>
                         </div>

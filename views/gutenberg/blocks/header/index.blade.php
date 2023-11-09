@@ -68,7 +68,7 @@
             <div class="text-{{ $textColor }} {{ $textWidthClass }}">
                 <h1 class="text-shadow-lg">{{ $title }}</h1>
                 @if ($subTitle)
-                    <div class="mt-4 text-lg mb-4 text-shadow-lg">{{ $subTitle }}</div>
+                    @include('components.content', ['content' => apply_filters('the_content', $subTitle), 'class' => 'mt-4 text-lg mb-4 text-shadow-lg'])
                 @endif
                 @if (($button1Text) && ($button1Link))
                     <div class="{{ $textPositionClass }} w-full flex sm:flex-row gap-4 mt-4 md:mt-8">

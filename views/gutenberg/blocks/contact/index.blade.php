@@ -77,7 +77,7 @@
                     @endwhile
                 @endif
                 @if ($text)
-                    <div class="mt-4 text-{{ $textColor }}">{!! $text !!} </div>
+                    @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 text-' . $textColor])
                 @endif
             </div>
             @if($form)
