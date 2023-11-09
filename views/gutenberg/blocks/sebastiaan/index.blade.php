@@ -31,3 +31,5 @@
 <div class="btn-primary-color-dark btn-secondary-color-dark btn-tertiary-color-dark"></div>
 <div class="border-primary-light border-secondary-light border-tertiary-light"></div>
 <div class="border-primary-dark border-secondary-dark border-tertiary-dark"></div>
+<div class="btn-cta"></div>
+<div class="border-cta-color"></div>

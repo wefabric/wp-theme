@@ -41,6 +41,9 @@ module.exports = {
           DEFAULT: 'var(--background-color)',
           dark: 'var(--background-color-dark)'
         },
+        cta: {
+          DEFAULT: 'var(--cta-color)',
+        },
         basic: {
           success: 'var(--basic-color-success)',
           danger: 'var(--basic-color-danger)'

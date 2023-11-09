@@ -119,6 +119,21 @@
 }
 
 
+// CTA color
+.bg-cta-color {
+  @apply bg-cta
+}
+.text-cta-color {
+  @apply text-cta
+}
+.btn-cta-color {
+  @apply btn-cta
+}
+.border-cta-color {
+  @apply border-cta
+}
+
+
 //  .bg-success-color {
 //    @apply bg-success
 //  }
