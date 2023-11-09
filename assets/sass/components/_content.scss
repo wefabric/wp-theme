@@ -65,20 +65,13 @@
         margin-bottom: 0;
       }
     }
-
-
   }
 
-
-  ul {
-    @apply ml-4;
-  }
 
   li {
     line-height: 1.6;
-    list-style: disc;
     &:before {
-      @apply inline-block pl-2;
+      @apply inline-block mr-3;
     }
   }
 
@@ -93,11 +86,9 @@
   ul {
     li {
       &:before {
-        @apply bg-primary-light;
-        content: '';
-        width: 8px;
-        height: 8px;
-        border-radius: 100%;
+        @apply inline-block mr-3;
+        content: '\2022'; /* Unicode character for a filled circle */
+        font-family: 'Font Awesome'; /* Specify the font family for the icon */
       }
     }
   }
@@ -108,7 +99,7 @@
       counter-increment: ol-counter;
 
       &:before {
-        @apply text-primary-light;
+        ;
         content: counters(ol-counter, '.') '.';
       }
 

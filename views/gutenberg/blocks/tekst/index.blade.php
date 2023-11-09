@@ -45,7 +45,7 @@
                 <h2 class="mb-4 text-{{ $titleColor }}">{{ $title }}</h2>
             @endif
             @if ($text)
-                <div class="text-{{ $textColor }}">{!! $text !!} </div>
+                @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])
             @endif
             @if (($button1Text) && ($button1Link))
                 <div class="{{ $textClass }} w-full flex sm:flex-row gap-4 mt-4 md:mt-8">
