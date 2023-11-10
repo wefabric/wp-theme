@@ -10,11 +10,12 @@
     ];
 
     $swiperAutoplay = isset($block['data']['autoplay']) ? ($block['data']['autoplay'] ? 'true' : 'false') : 'false';
+    $randomNumber = rand(0, 1000);
+    $randomId = 'photoSliderSwiper-' . $randomNumber;
 @endphp
 
-{{--Mobile--}}
-<div class="mobile block sm:hidden relative">
-    <div class="swiper fotoSliderSwiper py-8">
+<div class="block relative">
+    <div class="swiper {{ $randomId }} py-8">
         <div class="swiper-wrapper">
             @foreach ($imagesData as $image)
                 <div class="swiper-slide h-full">
@@ -25,74 +26,41 @@
         <div class="lg:hidden swiper-pagination"></div>
     </div>
     <div class="swiper-navigation">
-        <div class="swiper-button-next photoslider-button-next"></div>
-        <div class="swiper-button-prev photoslider-button-prev"></div>
-    </div>
-</div>
-
-{{--Tablet--}}
-<div class="tablet hidden sm:block lg:hidden relative">
-    <div class="swiper fotoSliderSwiper py-8">
-        <div class="swiper-wrapper">
-            @foreach ($imagesData as $image)
-                <div class="swiper-slide h-full">
-                    @include('components.photo-slider.list-item')
-                </div>
-            @endforeach
-        </div>
-        <div class="lg:hidden swiper-pagination"></div>
-    </div>
-    <div class="swiper-navigation">
-        <div class="swiper-button-next photoslider-button-next"></div>
-        <div class="swiper-button-prev photoslider-button-prev"></div>
-    </div>
-</div>
-
-{{--Desktop--}}
-<div class="desktop hidden lg:block relative">
-    <div class="swiper fotoSliderSwiper py-8">
-        <div class="swiper-wrapper">
-            @foreach ($imagesData as $image)
-                <div class="swiper-slide h-full">
-                    @include('components.photo-slider.list-item')
-                </div>
-            @endforeach
-        </div>
-        <div class="lg:hidden swiper-pagination"></div>
-    </div>
-    <div class="swiper-navigation">
-        <div class="swiper-button-next photoslider-button-next"></div>
-        <div class="swiper-button-prev photoslider-button-prev"></div>
+        <div class="swiper-button-next photoslider-button-next-{{ $randomNumber }}"></div>
+        <div class="swiper-button-prev photoslider-button-prev-{{ $randomNumber }}"></div>
     </div>
 </div>
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
-        var fotoSliderSwiper = new Swiper(".fotoSliderSwiper", {
+        var photoSliderSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
-            loop: true,
+            centeredSlides: false,
             @if ($swiperAutoplay)
-                autoplay: {
-                    disableOnInteraction: false,
-                },
+            autoplay: {
+                disableOnInteraction: false,
+            },
             @endif
             pagination: {
-                el: ".swiper-pagination",
+                el: '.swiper-pagination',
             },
             navigation: {
-                nextEl: ".photoslider-button-next",
-                prevEl: ".photoslider-button-prev",
+                nextEl: ".photoslider-button-next-{{ $randomNumber }}",
+                prevEl: ".photoslider-button-prev-{{ $randomNumber }}",
             },
             breakpoints: {
                 0: {
+                    loop: {{count($imagesData) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 640: {
+                    loop: {{ count($imagesData) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
+                    loop: {{ count($imagesData) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
-                }
+                },
             }
         });
     });
