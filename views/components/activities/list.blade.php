@@ -9,17 +9,14 @@
         'desktop' => 'lg:grid-cols-' . $desktopLayout,
     ];
 
-    $showSliderMobile = count($activities) > $mobileLayout && $block['data']['show_slider'] == true;
-    $showSliderTablet = count($activities) > $tabletLayout && $block['data']['show_slider'] == true;
-    $showSliderDesktop = count($activities) > $desktopLayout && $block['data']['show_slider'] == true;
-
     $swiperAutoplay = isset($block['data']['autoplay']) ? ($block['data']['autoplay'] ? 'true' : 'false') : 'false';
+    $randomNumber = rand(0, 1000);
+    $randomId = 'activiteitenSwiper-' . $randomNumber;
 @endphp
 
-{{--Mobile--}}
-<div class="mobile block sm:hidden relative">
-    @if($showSliderMobile)
-        <div class="swiper activiteitenSwiper py-8">
+@if($block['data']['show_slider'])
+    <div class="block relative">
+        <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($activities as $activity)
                     <div class="swiper-slide h-full">
@@ -30,97 +27,48 @@
             <div class="lg:hidden swiper-pagination"></div>
         </div>
         <div class="swiper-navigation">
-            <div class="swiper-button-next activity-button-next"></div>
-            <div class="swiper-button-prev activity-button-prev"></div>
+            <div class="swiper-button-next activity-button-next-{{ $randomNumber }}"></div>
+            <div class="swiper-button-prev activity-button-prev-{{ $randomNumber }}"></div>
         </div>
-    @else
-        <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
-            @foreach ($activities as $activity)
-                @include('components.activities.list-item')
-            @endforeach
-        </div>
-    @endif
-</div>
-
-{{--Tablet--}}
-<div class="tablet hidden sm:block lg:hidden relative">
-    @if($showSliderTablet)
-        <div class="swiper activiteitenSwiper py-8">
-            <div class="swiper-wrapper">
-                @foreach ($activities as $activity)
-                    <div class="swiper-slide h-full">
-                        @include('components.activities.list-item')
-                    </div>
-                @endforeach
-            </div>
-            <div class="lg:hidden swiper-pagination"></div>
-        </div>
-        <div class="swiper-navigation">
-            <div class="swiper-button-next activity-button-next"></div>
-            <div class="swiper-button-prev activity-button-prev"></div>
-        </div>
-    @else
-        <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
-            @foreach ($activities as $activity)
-                @include('components.activities.list-item')
-            @endforeach
-        </div>
-    @endif
-</div>
-
-{{--Desktop--}}
-<div class="desktop hidden lg:block relative">
-    @if($showSliderDesktop)
-        <div class="swiper activiteitenSwiper py-8">
-            <div class="swiper-wrapper">
-                @foreach ($activities as $activity)
-                    <div class="swiper-slide h-full">
-                        @include('components.activities.list-item')
-                    </div>
-                @endforeach
-            </div>
-            <div class="lg:hidden swiper-pagination"></div>
-        </div>
-        <div class="swiper-navigation">
-            <div class="swiper-button-next activity-button-next"></div>
-            <div class="swiper-button-prev activity-button-prev"></div>
-        </div>
-    @else
-        <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
-            @foreach ($activities as $activity)
-                @include('components.activities.list-item')
-            @endforeach
-        </div>
-    @endif
-</div>
+    </div>
+@else
+    <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
+        @foreach ($activities as $activity)
+            @include('components.activities.list-item')
+        @endforeach
+    </div>
+@endif
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
-        var activiteitenSwiper = new Swiper(".activiteitenSwiper", {
+        var activiteitenSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
-            loop: true,
+            centeredSlides: true,
             @if ($swiperAutoplay)
             autoplay: {
                 disableOnInteraction: false,
             },
             @endif
             pagination: {
-                el: ".swiper-pagination",
+                el: '.swiper-pagination',
             },
             navigation: {
-                nextEl: ".activity-button-next",
-                prevEl: ".activity-button-prev",
+                nextEl: ".activity-button-next-{{ $randomNumber }}",
+                prevEl: ".activity-button-prev-{{ $randomNumber }}",
             },
             breakpoints: {
                 0: {
+                    loop: {{count($activities) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 640: {
+                    loop: {{ count($activities) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
+                    loop: {{ count($activities) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
-                }
+                },
             }
         });
     });

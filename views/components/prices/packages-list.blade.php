@@ -9,17 +9,14 @@
         'desktop' => 'lg:grid-cols-' . $desktopLayout,
     ];
 
-    $showSliderMobile = count($packages) > $mobileLayout && $block['data']['show_slider'] == true;
-    $showSliderTablet = count($packages) > $tabletLayout && $block['data']['show_slider'] == true;
-    $showSliderDesktop = count($packages) > $desktopLayout && $block['data']['show_slider'] == true;
-
     $swiperAutoplay = isset($block['data']['autoplay']) ? ($block['data']['autoplay'] ? 'true' : 'false') : 'false';
+    $randomNumber = rand(0, 1000);
+    $randomId = 'packagesSwiper-' . $randomNumber;
 @endphp
 
-{{--Mobile--}}
-<div class="mobile block sm:hidden relative">
-    @if($showSliderMobile)
-        <div class="swiper pakkettenSwiper py-8">
+@if($block['data']['show_slider'])
+    <div class="block relative">
+        <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($packages as $package)
                     <div class="swiper-slide h-full">
@@ -30,97 +27,48 @@
             <div class="lg:hidden swiper-pagination"></div>
         </div>
         <div class="swiper-navigation">
-            <div class="swiper-button-next package-button-next"></div>
-            <div class="swiper-button-prev package-button-prev"></div>
+            <div class="swiper-button-next package-button-next-{{ $randomNumber }}"></div>
+            <div class="swiper-button-prev package-button-prev-{{ $randomNumber }}"></div>
         </div>
-    @else
-        <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
-            @foreach ($packages as $package)
-                @include('components.prices.packages-list-item')
-            @endforeach
-        </div>
-    @endif
-</div>
-
-{{--Tablet--}}
-<div class="tablet hidden sm:block lg:hidden relative">
-    @if($showSliderTablet)
-        <div class="swiper pakkettenSwiper py-8">
-            <div class="swiper-wrapper">
-                @foreach ($packages as $package)
-                    <div class="swiper-slide h-full">
-                        @include('components.prices.packages-list-item')
-                    </div>
-                @endforeach
-            </div>
-            <div class="lg:hidden swiper-pagination"></div>
-        </div>
-        <div class="swiper-navigation">
-            <div class="swiper-button-next package-button-next"></div>
-            <div class="swiper-button-prev package-button-prev"></div>
-        </div>
-    @else
-        <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
-            @foreach ($packages as $package)
-                @include('components.prices.packages-list-item')
-            @endforeach
-        </div>
-    @endif
-</div>
-
-{{--Desktop--}}
-<div class="desktop hidden lg:block relative">
-    @if($showSliderDesktop)
-        <div class="swiper pakkettenSwiper py-8">
-            <div class="swiper-wrapper">
-                @foreach ($packages as $package)
-                    <div class="swiper-slide h-full">
-                        @include('components.prices.packages-list-item')
-                    </div>
-                @endforeach
-            </div>
-            <div class="lg:hidden swiper-pagination"></div>
-        </div>
-        <div class="swiper-navigation">
-            <div class="swiper-button-next package-button-next"></div>
-            <div class="swiper-button-prev package-button-prev"></div>
-        </div>
-    @else
-        <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
-            @foreach ($packages as $package)
-                @include('components.prices.packages-list-item')
-            @endforeach
-        </div>
-    @endif
-</div>
+    </div>
+@else
+    <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
+        @foreach ($packages as $package)
+            @include('components.prices.packages-list-item')
+        @endforeach
+    </div>
+@endif
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
-        var packagesSwiper = new Swiper(".pakkettenSwiper", {
+        var packagesSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
-            loop: true,
+            centeredSlides: false,
             @if ($swiperAutoplay)
             autoplay: {
                 disableOnInteraction: false,
             },
             @endif
             pagination: {
-                el: ".swiper-pagination",
+                el: '.swiper-pagination',
             },
             navigation: {
-                nextEl: ".package-button-next",
-                prevEl: ".package-button-prev",
+                nextEl: ".package-button-next-{{ $randomNumber }}",
+                prevEl: ".package-button-prev-{{ $randomNumber }}",
             },
             breakpoints: {
                 0: {
+                    loop: {{count($packages) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 640: {
+                    loop: {{ count($packages) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
+                    loop: {{ count($packages) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
-                }
+                },
             }
         });
     });

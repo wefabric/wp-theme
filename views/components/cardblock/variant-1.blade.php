@@ -1,4 +1,4 @@
-<div class="card-item group h-full">
+<div id="{{ str_replace(' ', '-', strtolower($pageTitle)) }}" class="card-item group h-full">
     <div class="card-background relative bg-{{ $cardBackgroundColor }} w-full aspect-square flex flex-col gap-y-4 items-center justify-center text-center text-{{ $cardTextColor }} rounded-{{ $borderRadius }} group-hover:-translate-y-4 duration-300 ease-in-out"
          @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId)
              style="background-image: url('{{ wp_get_attachment_image_url($featuredImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;"

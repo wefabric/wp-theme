@@ -9,20 +9,17 @@
         'desktop' => 'lg:grid-cols-' . $desktopLayout,
     ];
 
-    $showSliderMobile = count($employees) > $mobileLayout && $block['data']['show_slider'] == true;
-    $showSliderTablet = count($employees) > $tabletLayout && $block['data']['show_slider'] == true;
-    $showSliderDesktop = count($employees) > $desktopLayout && $block['data']['show_slider'] == true;
-
     $swiperAutoplay = isset($block['data']['autoplay']) ? ($block['data']['autoplay'] ? 'true' : 'false') : 'false';
+    $randomNumber = rand(0, 1000);
+    $randomId = 'employeeSwiper-' . $randomNumber;
 @endphp
 
-{{--Mobile--}}
-<div class="mobile block sm:hidden relative">
-    @if($showSliderMobile)
-        <div class="swiper werknemerSwiper py-8">
+@if($block['data']['show_slider'])
+    <div class="block relative">
+        <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($employees as $employee)
-                    <div class="swiper-slide">
+                    <div class="swiper-slide h-full">
                         @include('components.employees.list-item')
                     </div>
                 @endforeach
@@ -30,97 +27,48 @@
             <div class="lg:hidden swiper-pagination"></div>
         </div>
         <div class="swiper-navigation">
-            <div class="swiper-button-next employee-button-next"></div>
-            <div class="swiper-button-prev employee-button-prev"></div>
+            <div class="swiper-button-next employee-button-next-{{ $randomNumber }}"></div>
+            <div class="swiper-button-prev employee-button-prev-{{ $randomNumber }}"></div>
         </div>
-    @else
-        <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
-            @foreach ($employees as $employee)
-                @include('components.employees.list-item')
-            @endforeach
-        </div>
-    @endif
-</div>
-
-{{--Tablet--}}
-<div class="tablet hidden sm:block lg:hidden relative">
-    @if($showSliderTablet)
-        <div class="swiper werknemerSwiper py-8">
-            <div class="swiper-wrapper">
-                @foreach ($employees as $employee)
-                    <div class="swiper-slide">
-                        @include('components.employees.list-item')
-                    </div>
-                @endforeach
-            </div>
-            <div class="lg:hidden swiper-pagination"></div>
-        </div>
-        <div class="swiper-navigation">
-            <div class="swiper-button-next employee-button-next"></div>
-            <div class="swiper-button-prev employee-button-prev"></div>
-        </div>
-    @else
-        <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
-            @foreach ($employees as $employee)
-                @include('components.employees.list-item')
-            @endforeach
-        </div>
-    @endif
-</div>
-
-{{--Desktop--}}
-<div class="desktop hidden lg:block relative">
-    @if($showSliderDesktop)
-        <div class="swiper werknemerSwiper py-8">
-            <div class="swiper-wrapper">
-                @foreach ($employees as $employee)
-                    <div class="swiper-slide">
-                        @include('components.employees.list-item')
-                    </div>
-                @endforeach
-            </div>
-            <div class="lg:hidden swiper-pagination"></div>
-        </div>
-        <div class="swiper-navigation">
-            <div class="swiper-button-next employee-button-next"></div>
-            <div class="swiper-button-prev employee-button-prev"></div>
-        </div>
-    @else
-        <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
-            @foreach ($employees as $employee)
-                @include('components.employees.list-item')
-            @endforeach
-        </div>
-    @endif
-</div>
+    </div>
+@else
+    <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
+        @foreach ($employees as $employee)
+            @include('components.employees.list-item')
+        @endforeach
+    </div>
+@endif
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
-        var werknemerSwiper = new Swiper(".werknemerSwiper", {
+        var employeeSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
-            loop: true,
+            centeredSlides: false,
             @if ($swiperAutoplay)
             autoplay: {
                 disableOnInteraction: false,
             },
             @endif
             pagination: {
-                el: ".swiper-pagination",
+                el: '.swiper-pagination',
             },
             navigation: {
-                nextEl: ".employee-button-next",
-                prevEl: ".employee-button-prev",
+                nextEl: ".employee-button-next-{{ $randomNumber }}",
+                prevEl: ".employee-button-prev-{{ $randomNumber }}",
             },
             breakpoints: {
                 0: {
+                    loop: {{count($employees) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 640: {
+                    loop: {{ count($employees) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
+                    loop: {{ count($employees) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
-                }
+                },
             }
         });
     });
