@@ -106,27 +106,6 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_654df69236cdb",
-                    "label": "Link tekst",
-                    "name": "text",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_654df67636cd9"
-                },
-                {
                     "key": "field_654df68e36cda",
                     "label": "Link",
                     "name": "link",
@@ -369,5 +348,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1699630828
+    "modified": 1699631861
 }
