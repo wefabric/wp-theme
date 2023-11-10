@@ -10,14 +10,16 @@
     $links = [];
 
      for ($i = 0; $i < $linksCount; $i++) {
-        $linkTextKey = "links_{$i}_text";
+
         $linkKey = "links_{$i}_link";
-        $linkText = $block['data'][$linkTextKey] ?? '';
-        $link = $block['data'][$linkKey] ?? '';
+        $linkUrl = $block['data'][$linkKey]['url'] ?? '';
+        $linkText = $block['data'][$linkKey]['title'] ?? '';
+        $linkTarget = $block['data'][$linkKey]['target'] ?? '';
 
         $links[] = [
             'text' => $linkText,
-            'link' => $link,
+            'link' => $linkUrl,
+            'target' => $linkTarget,
         ];
     }
 
@@ -50,7 +52,7 @@
             <div class="flex flex-wrap gap-1 text-{{ $textColor }}">
                 @foreach($links as $index => $link)
                     @if($link['text'] && $link['link'])
-                        <a href="{{ $link['link'] }}" class="underline hover:text-primary">{{ $link['text'] }}</a>
+                        <a href="{{ $link['link'] }}" class="underline hover:text-primary" target="{{ $link['target'] }}">{{ $link['text'] }}</a>
                         @if($index < count($links) - 1)
                             <span class="separator">|</span>
                         @endif

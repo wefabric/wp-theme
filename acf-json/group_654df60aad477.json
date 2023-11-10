@@ -131,7 +131,7 @@
                     "label": "Link",
                     "name": "link",
                     "aria-label": "",
-                    "type": "url",
+                    "type": "link",
                     "instructions": "Link naar een #id of pagina",
                     "required": 0,
                     "conditional_logic": 0,
@@ -140,8 +140,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "#",
-                    "placeholder": "",
+                    "return_format": "array",
                     "parent_repeater": "field_654df67636cd9"
                 }
             ]
@@ -370,5 +369,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1699627988
+    "modified": 1699630828
 }
