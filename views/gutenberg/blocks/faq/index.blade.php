@@ -34,7 +34,7 @@
         <div class="mx-auto {{ $blockClass }} {{ $titleClass }}">
             <div class="faq-drawer container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                 @if ($title)
-                    <h2 class="mb-8 lg:mb-20 text-{{ $titleColor }}">{{ $title }} </h2>
+                    <h2 class="mb-8 text-{{ $titleColor }}">{{ $title }} </h2>
                 @endif
                 @if ($questionsAndAnswers)
                     @foreach ($questionsAndAnswers as $key => $faq)

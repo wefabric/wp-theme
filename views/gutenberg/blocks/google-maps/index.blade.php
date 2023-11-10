@@ -29,7 +29,7 @@
     <div class="relative z-10 pt-8 lg:pt-20 {{ $fullScreenClass }}">
         <div class="mx-auto {{ $blockClass }}">
             @if ($title)
-                <h2 class="text-{{ $titleColor }} container mx-auto mb-4 px-8 {{ $titleClass }}">{{ $title }}</h2>
+                <h2 class="mb-8 text-{{ $titleColor }} container mx-auto px-8 {{ $titleClass }}">{{ $title }}</h2>
             @endif
             <iframe width="100%" height="600"
                     class="h-[300px] lg:h-[600px] @if($blockWidth !== 'fullscreen') px-8 @endif"
