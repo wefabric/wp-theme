@@ -1,11 +1,11 @@
 {
-    "key": "group_648c678e8bcbb",
-    "title": "Block: Sebastiaan",
+    "key": "group_65313ad2564b0",
+    "title": "Home",
     "fields": [
         {
-            "key": "field_648c678e7a883",
-            "label": "Titel",
-            "name": "title",
+            "key": "field_65313ad2dc9e2",
+            "label": "Test",
+            "name": "test",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -26,13 +26,13 @@
     "location": [
         [
             {
-                "param": "block",
+                "param": "page_type",
                 "operator": "==",
-                "value": "wefabric\/sebastiaan"
+                "value": "front_page"
             }
         ]
     ],
-    "menu_order": 20,
+    "menu_order": 0,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -41,5 +41,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698159271
+    "modified": 1698159440
 }

@@ -6,6 +6,7 @@
             "key": "field_6307451cf2089",
             "label": "Nieuwsbriefinschrijving Footer",
             "name": "newsletter_footer",
+            "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -21,6 +22,7 @@
                     "key": "field_63074223c7e7d",
                     "label": "Tonen?",
                     "name": "show",
+                    "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
                     "required": 0,
@@ -40,6 +42,7 @@
                     "key": "field_6307450bf2088",
                     "label": "Titel",
                     "name": "title",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -67,6 +70,7 @@
                     "key": "field_630739b2c7e7c",
                     "label": "Inschrijf url",
                     "name": "embed_subscribe_url",
+                    "aria-label": "",
                     "type": "url",
                     "instructions": "Lees hier meer over de Inschrijf url: https:\/\/www.notion.so\/wefabric\/Nieuwsbriefinschrijving-Mailchimp-364fea4b0c6b41c2b32736620bd42f09",
                     "required": 1,
@@ -99,7 +103,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 32,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -108,5 +112,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1663684899
+    "modified": 1698159397
 }

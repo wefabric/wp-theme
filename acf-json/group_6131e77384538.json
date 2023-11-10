@@ -6,6 +6,7 @@
             "key": "field_6131e77b85029",
             "label": "Header",
             "name": "header_codes",
+            "aria-label": "",
             "type": "textarea",
             "instructions": "Plak hier codes die in de <head> tag dienen te worden geplaatst.",
             "required": 0,
@@ -25,6 +26,7 @@
             "key": "field_6131e7d38502a",
             "label": "Body",
             "name": "body_codes",
+            "aria-label": "",
             "type": "textarea",
             "instructions": "Plak hier codes die in de <body> tag dienen te worden geplaatst.",
             "required": 0,
@@ -39,25 +41,6 @@
             "maxlength": "",
             "rows": "",
             "new_lines": ""
-        },
-        {
-            "key": "field_62d6bc0eef3f1",
-            "label": "Mailchimp nieuwsbrief",
-            "name": "mailchimp_code",
-            "type": "text",
-            "instructions": "Plak hier de Mailchimp API key in.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
         }
     ],
     "location": [
@@ -69,7 +52,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 31,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -78,5 +61,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1658240735
+    "modified": 1698159392
 }

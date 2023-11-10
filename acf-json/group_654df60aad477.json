@@ -84,30 +84,6 @@
             "delay": 0
         },
         {
-            "key": "field_654df60ab78f7",
-            "label": "Tekst kleur",
-            "name": "text_color",
-            "aria-label": "",
-            "type": "Thema Kleur",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_654df60ab78f0",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "theme_color": null,
-            "font_size": 14
-        },
-        {
             "key": "field_654df67636cd9",
             "label": "Links",
             "name": "links",
@@ -169,6 +145,36 @@
                     "parent_repeater": "field_654df67636cd9"
                 }
             ]
+        },
+        {
+            "key": "field_654df60ab78f7",
+            "label": "Tekst kleur",
+            "name": "text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_654df60ab78f0",
+                        "operator": "!=empty"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_654df67636cd9",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
         },
         {
             "key": "field_654df60ab7904",
@@ -364,5 +370,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1699609176
+    "modified": 1699627988
 }

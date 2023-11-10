@@ -6,6 +6,7 @@
             "key": "field_62ff283210db3",
             "label": "Tonen",
             "name": "show_menu",
+            "aria-label": "",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -25,6 +26,7 @@
             "key": "field_62ff223307a32",
             "label": "Achtergrondkleur",
             "name": "menu_background_color",
+            "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
@@ -41,6 +43,7 @@
             "key": "field_62ff333ad3aad",
             "label": "Tekstkleur",
             "name": "menu_text_color",
+            "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
@@ -57,6 +60,7 @@
             "key": "field_62ff34321c493",
             "label": "Actief tekstkleur",
             "name": "menu_active_text_color",
+            "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
@@ -79,7 +83,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 33,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -88,5 +92,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1660892232
+    "modified": 1698159402
 }

@@ -139,57 +139,6 @@
             "font_size": 14
         },
         {
-            "key": "field_6523d7ebbad82",
-            "label": "Button tekst",
-            "name": "button_text",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_649d5417f587a",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_6523d7ebbad89",
-            "label": "Button link",
-            "name": "button_link",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6523d7ebbad82",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
-        },
-        {
             "key": "field_6523ebe899011",
             "label": "Testimonial achtergrond kleur",
             "name": "testimonial_background_color",
@@ -399,7 +348,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 5,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -408,5 +357,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696864018
+    "modified": 1699541448
 }

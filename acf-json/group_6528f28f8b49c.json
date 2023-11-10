@@ -224,8 +224,25 @@
                         "class": "",
                         "id": ""
                     },
-                    "theme_color": null,
+                    "theme_color": "primary-color",
                     "font_size": 14,
+                    "parent_repeater": "field_6528fc70d7570"
+                },
+                {
+                    "key": "field_6548ae182101d",
+                    "label": "Pakket link",
+                    "name": "package_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
                     "parent_repeater": "field_6528fc70d7570"
                 },
                 {
@@ -370,7 +387,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 21,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -379,5 +396,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697202669
+    "modified": 1699262073
 }

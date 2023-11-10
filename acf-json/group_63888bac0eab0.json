@@ -6,6 +6,7 @@
             "key": "field_6388b8233bd41",
             "label": "Technische Specificaties PDF",
             "name": "technical_sheet",
+            "aria-label": "",
             "type": "file",
             "instructions": "",
             "required": 0,
@@ -25,6 +26,7 @@
             "key": "field_6388b8413bd42",
             "label": "Extra bestanden",
             "name": "extra_files",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -38,12 +40,14 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Nieuwe regel",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_6388b85a3bd43",
                     "label": "Titel",
                     "name": "title",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 1,
@@ -57,12 +61,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_6388b8413bd42"
                 },
                 {
                     "key": "field_6388b86a3bd44",
                     "label": "Bestand",
                     "name": "file",
+                    "aria-label": "",
                     "type": "file",
                     "instructions": "",
                     "required": 1,
@@ -76,7 +82,8 @@
                     "library": "all",
                     "min_size": "",
                     "max_size": "",
-                    "mime_types": ""
+                    "mime_types": "",
+                    "parent_repeater": "field_6388b8413bd42"
                 }
             ]
         },
@@ -84,6 +91,7 @@
             "key": "field_63888bb604a13",
             "label": "CAD Downloads",
             "name": "cad_downloads",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -97,12 +105,14 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Nieuwe regel",
+            "rows_per_page": 20,
             "sub_fields": [
                 {
                     "key": "field_63888bc504a14",
                     "label": "Type",
                     "name": "type",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "Type: DWG (2D), XML etc",
                     "required": 1,
@@ -116,12 +126,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_63888bb604a13"
                 },
                 {
                     "key": "field_63888beb04a15",
                     "label": "Titel",
                     "name": "title",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 1,
@@ -135,12 +147,14 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "parent_repeater": "field_63888bb604a13"
                 },
                 {
                     "key": "field_63888c0104a16",
                     "label": "Bestands URL",
                     "name": "url",
+                    "aria-label": "",
                     "type": "url",
                     "instructions": "",
                     "required": 1,
@@ -151,7 +165,8 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": ""
+                    "placeholder": "",
+                    "parent_repeater": "field_63888bb604a13"
                 }
             ]
         },
@@ -159,6 +174,7 @@
             "key": "field_638f016bd9d09",
             "label": "Verrijkt",
             "name": "crawled",
+            "aria-label": "",
             "type": "group",
             "instructions": "Hieronder staan de gegevens wanneer het product voor het laatst verrijkt is.",
             "required": 0,
@@ -174,6 +190,7 @@
                     "key": "field_638f04267c32f",
                     "label": "Is verrijkt",
                     "name": "is_crawled",
+                    "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
                     "required": 0,
@@ -193,6 +210,7 @@
                     "key": "field_638f0177d9d0a",
                     "label": "Bron",
                     "name": "source",
+                    "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -212,6 +230,7 @@
                     "key": "field_638f0199d9d0b",
                     "label": "Verrijkt op",
                     "name": "crawled_at",
+                    "aria-label": "",
                     "type": "date_time_picker",
                     "instructions": "",
                     "required": 0,
@@ -233,11 +252,16 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "product"
+                "value": "post"
+            },
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 36,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -246,5 +270,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 1,
-    "modified": 1670317143
+    "modified": 1698933733
 }

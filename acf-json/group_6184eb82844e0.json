@@ -308,6 +308,42 @@
             ]
         },
         {
+            "key": "field_654c94b5c3781",
+            "label": "Call to action kleur",
+            "name": "cta_color_group",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_654c94b5c3782",
+                    "label": "Call to action kleur",
+                    "name": "cta_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string"
+                }
+            ]
+        },
+        {
             "key": "field_6516a44b6e379",
             "label": "Design",
             "name": "",
@@ -390,7 +426,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 28,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -399,5 +435,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1697705485
+    "modified": 1699519783
 }
