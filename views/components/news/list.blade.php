@@ -43,7 +43,7 @@
     window.addEventListener("DOMContentLoaded", (event) => {
         var nieuwsSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
-            centeredSlides: true,
+            centeredSlides: false,
             @if ($swiperAutoplay)
             autoplay: {
                 disableOnInteraction: false,
