@@ -45,9 +45,9 @@
                 <h2 class="mb-4 text-{{ $titleColor }}">{{ $title }}</h2>
             @endif
             @if ($text)
-                <p class="text-{{ $textColor }}">{!! $text !!} </p>
+                @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mb-4 text-' . $textColor])
             @endif
-            <div class="flex flex-wrap gap-1">
+            <div class="flex flex-wrap gap-1 text-{{ $textColor }}">
                 @foreach($links as $index => $link)
                     @if($link['text'] && $link['link'])
                         <a href="{{ $link['link'] }}" class="underline hover:text-primary">{{ $link['text'] }}</a>
