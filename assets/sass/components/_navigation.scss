@@ -19,7 +19,19 @@
 			&:hover {
 				@apply text-secondary;
 			}
+
+			&.custom {
+				padding: 0;
+				margin-left: 12px;
+				font-size: 16px;
+
+				a {
+					padding: 0.5rem 2rem;
+					line-height: 2.5rem;
+				}
+			}
         }
+
 	
 		.menu-item:not(.current_page_item) {
 		 	>a {
@@ -187,3 +199,4 @@
 	}
 	
 }
+

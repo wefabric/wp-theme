@@ -34,7 +34,7 @@
         </header>
     @endif
 
-    <div id="content" class=" -mt-4">
+    <div id="content" class="">
         <div id="primary">
             <main id="main">
                 @yield('content')
