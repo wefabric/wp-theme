@@ -76,7 +76,7 @@
                            'text' => $button1Text,
                            'href' => $button1Link,
                            'alt' => $button1Text,
-                           'colors' => 'btn btn-' . $button1Color . ' btn-' . $button1Style . '',
+                           'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style . '',
                            'class' => 'rounded-lg',
                            'target' => $button1Target,
                        ])
@@ -85,7 +85,7 @@
                                'text' => $button2Text,
                                'href' => $button2Link,
                                'alt' => $button2Text,
-                               'colors' => 'btn btn-' . $button2Color . ' btn-' . $button2Style . '',
+                               'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style . '',
                                'class' => 'rounded-lg',
                                'target' => $button2Target,
                            ])

@@ -152,3 +152,13 @@
 		}
 	}
 }
+
+#prijs-pakketten {
+	a .btn-filled {
+		@apply text-primary;
+	}
+
+	a .btn-filled:hover {
+		@apply text-white;
+	}
+}

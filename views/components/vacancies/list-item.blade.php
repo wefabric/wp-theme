@@ -69,7 +69,7 @@
                                'text' => $buttonCardText,
                                'href' => $vacancyUrl,
                                'alt' => $buttonCardText,
-                               'colors' => 'btn btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle . '',
+                               'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle . '',
                                'class' => 'rounded-lg',
                            ])
                         </div>

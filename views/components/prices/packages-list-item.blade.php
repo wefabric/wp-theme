@@ -56,7 +56,7 @@
                 'text' => $buttonText,
                 'href' => $packageLink,
                 'alt' => $buttonText,
-                'colors' => 'btn btn-' . $buttonColor . ' btn-' . $buttonStyle . '',
+                'colors' => 'btn-' . $buttonColor . ' btn-' . $buttonStyle . '',
                 'class' => 'rounded-lg',
             ])
         </div>
