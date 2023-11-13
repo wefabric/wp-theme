@@ -14,6 +14,13 @@
 			$usps = $option['footer_usps'];
 		}
 	}
+
+
+    $privacyPage = $option['pages']['privacy_page'] ?? '';
+    $termsPage = $option['pages']['terms_page'] ?? '';
+
+
+//@dd($option['pages']);
 @endphp
 
 <div class="footer bg-{{ $bg_color ?? 'black' }} text-{{ $text_color ?? 'white' }} text-base pb-10 lg:pb-24">
@@ -160,10 +167,19 @@
 						</div>
                     @endif
                 </div>
+
+                <div class="flex gap-1 justify-center md:justify-start">
+                    @if($termsPage)
+                        <a href="{{ get_permalink($termsPage) }}">Algemene voorwaarden</a> |
+                    @endif
+                    @if($privacyPage)
+                        <a href="{{ get_permalink($privacyPage) }}">Privacybeleid</a>
+                    @endif
+                </div>
             </div>
 
             <div class="w-full md:w-1/2 xl:w-1/4 flex">
-                <div class="flex w-full pt-8 lg:pt-0 self-end md:text-right md:justify-end items-center">
+                <div class="flex w-full pt-8 lg:pt-0 self-end md:text-right md:justify-end items-center justify-center">
                     <span class="pr-1">
                         Gerealiseerd door:
                     </span>

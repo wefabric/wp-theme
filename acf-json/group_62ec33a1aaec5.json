@@ -269,6 +269,54 @@
                     "ui": 1
                 },
                 {
+                    "key": "field_6551e3665cece",
+                    "label": "Algemene voorwaarden pagina",
+                    "name": "terms_page",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "return_format": "id",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 1
+                },
+                {
+                    "key": "field_6551e4055cecf",
+                    "label": "Privacybeleid pagina",
+                    "name": "privacy_page",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "return_format": "id",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 1
+                },
+                {
                     "key": "field_637b22f258e52",
                     "label": "Offerte pagina",
                     "name": "offer_page",
@@ -372,5 +420,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698159387
+    "modified": 1699865885
 }
