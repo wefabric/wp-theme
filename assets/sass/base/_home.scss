@@ -1,13 +1,11 @@
-/* Temporary styling for homepage */
+/* Dinkla home styling */
 .home {
 
 	#header {
 		z-index: 1;
 	}
 
-
 	#kaarten {
-
 		z-index: 2;
 
 		.block-content {
@@ -153,6 +151,9 @@
 	}
 }
 
+
+// Other blocks
+
 #prijs-pakketten {
 	a .btn-filled {
 		@apply text-primary;
@@ -162,3 +163,5 @@
 		@apply text-white;
 	}
 }
+
+

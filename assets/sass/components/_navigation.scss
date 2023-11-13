@@ -29,6 +29,10 @@
 					padding: 0.5rem 2rem;
 					line-height: 2.5rem;
 				}
+
+				&:hover {
+					@apply text-white;
+				}
 			}
         }
 
