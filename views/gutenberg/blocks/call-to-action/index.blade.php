@@ -54,6 +54,11 @@
 <section id="call-to-action" class="relative bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover;">
     <div class="{{ $fullScreenClass }} pt-8 lg:pt-20">
+
+        <div class="custom-width background-container absolute top-0 right-0 h-full pt-8 lg:pt-20">
+            <div class="bg-{{ $blockBackgroundColor }} w-full h-full"></div>
+        </div>
+
         @if (!empty($employeeImage))
             <div class="overlay absolute z-10 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <img src="{{ $employeeImage }}"
@@ -61,7 +66,8 @@
                      class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] aspect-square object-cover rounded-full">
             </div>
         @endif
-        <div class="mx-auto {{ $blockClass }} relative py-16 px-8 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif">
+        <div class="cta-block mx-auto {{ $blockClass }} relative py-16 px-8 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif">
+
             @if ($overlayEnabled)
                 <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
             @endif
