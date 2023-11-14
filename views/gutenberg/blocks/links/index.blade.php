@@ -50,7 +50,7 @@
             @foreach($links as $link)
                 @if($link['buttonText'] && $link['buttonLink'])
                     <a href="{{ $link['buttonLink'] }}"
-                       class="btn btn-primary btn-filled mt-4">{{ $link['buttonText'] }}</a>
+                       class="btn btn-primary btn-filled mt-2">{{ $link['buttonText'] }}</a>
                 @endif
             @endforeach
         </div>
