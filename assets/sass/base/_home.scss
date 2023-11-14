@@ -45,21 +45,6 @@
 
 	#usps {
 
-		@media only screen and (max-width: 767px) {
-			padding-bottom: 250px;
-			margin-top: -20px;
-		}
-
-		@media only screen and (min-width: 768px) and (max-width: 1023px) {
-			padding-bottom: 300px;
-			margin-top: -20px;
-		}
-
-		@media only screen and (min-width: 1024px) {
-			padding-bottom: 400px;
-			margin-top: -70px;
-		}
-
 		.custom-layout {
 			@apply gap-x-8;
 		}
@@ -82,6 +67,21 @@
           @apply h-[1px] w-[100px] bg-primary absolute right-0 translate-y-1/2;
           content: '';
         } */
+
+			@media only screen and (max-width: 767px) {
+				padding-bottom: 250px;
+				margin-top: -20px;
+			}
+
+			@media only screen and (min-width: 768px) and (max-width: 1023px) {
+				padding-bottom: 300px;
+				margin-top: -20px;
+			}
+
+			@media only screen and (min-width: 1024px) {
+				padding-bottom: 400px;
+				margin-top: -70px;
+			}
 	}
 
 	#afbeelding-tekst {
@@ -132,35 +132,23 @@
 
 	#werknemers {
 
-		@media only screen and (max-width: 1023px) {
-			margin-top: -670px;
-		}
-
-		@media only screen and (min-width: 1024px) {
-			margin-top: -250px;
-		}
-
 		.werknemer-item {
 			color: white;
 		}
+
+			@media only screen and (max-width: 1023px) {
+				margin-top: -670px;
+			}
+
+			@media only screen and (min-width: 1024px) {
+				margin-top: -250px;
+			}
 	}
 
 	#titel-tekst {
 		border-radius: 0px 0px 200px 0px !important;
 		padding: 100px 0px !important;
 		@apply -translate-y-1/2;
-
-		@media only screen and (max-width: 767px) {
-			margin-top: -10px;
-		}
-
-		@media only screen and (min-width: 768px) and (max-width: 1023px) {
-			margin-top: 50px;
-		}
-
-		@media only screen and (min-width: 1024px) {
-			margin-top: 100px;
-		}
 
 		div.inset-0 {
 			border-radius: 0px 0px 200px 0px !important;
@@ -169,27 +157,39 @@
 		.custom-margin {
 			margin-top: 200px !important;
 		}
+
+			@media only screen and (max-width: 767px) {
+				margin-top: 50px;
+			}
+
+			@media only screen and (min-width: 768px) and (max-width: 1023px) {
+				margin-top: 50px;
+			}
+
+			@media only screen and (min-width: 1024px) {
+				margin-top: 100px;
+			}
 	}
 
 	#activiteiten {
 
-		@media only screen and (max-width: 376px) {
-			margin-top: -400px;
-		}
-
-		@media only screen and (min-width: 377px) and (max-width: 767px) {
-			margin-top: -330px;
-		}
-
-		@media only screen and (min-width: 768px) and (max-width: 1023px) {
-			margin-top: -230px;
-		}
-
-		@media only screen and (min-width: 1024px) {
-			margin-top: -310px;
-		}
-
 		@apply pb-8 md:pb-16
+
+			@media only screen and (max-width: 376px) {
+				margin-top: -400px;
+			}
+
+			@media only screen and (min-width: 377px) and (max-width: 767px) {
+				margin-top: -250px;
+			}
+
+			@media only screen and (min-width: 768px) and (max-width: 1023px) {
+				margin-top: -230px;
+			}
+
+			@media only screen and (min-width: 1024px) {
+				margin-top: -310px;
+			}
 	}
 
 
@@ -222,5 +222,3 @@
 		@apply text-white;
 	}
 }
-
-
