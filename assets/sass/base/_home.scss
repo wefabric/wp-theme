@@ -15,15 +15,15 @@
 		.block-content {
 
 			@media only screen and (max-width: 767px) {
-				margin-top: -40px !important;
+				margin-top: 0px;
 			}
 
 			@media only screen and (min-width: 768px) and (max-width: 1023px) {
-				margin-top: -200px !important;
+				margin-top: -200px;
 			}
 
 			@media only screen and (min-width: 1024px) {
-				margin-top: -280px !important;
+				margin-top: -280px;
 			}
 		}
 
@@ -47,17 +47,17 @@
 
 		@media only screen and (max-width: 767px) {
 			padding-bottom: 250px;
-			margin-top: -20px !important;
+			margin-top: -20px;
 		}
 
 		@media only screen and (min-width: 768px) and (max-width: 1023px) {
 			padding-bottom: 300px;
-			margin-top: -20px !important;
+			margin-top: -20px;
 		}
 
 		@media only screen and (min-width: 1024px) {
 			padding-bottom: 400px;
-			margin-top: -70px !important;
+			margin-top: -70px;
 		}
 
 		.custom-layout {
@@ -133,11 +133,11 @@
 	#werknemers {
 
 		@media only screen and (max-width: 1023px) {
-			margin-top: -700px;
+			margin-top: -670px;
 		}
 
 		@media only screen and (min-width: 1024px) {
-			margin-top: -300px;
+			margin-top: -250px;
 		}
 
 		.werknemer-item {
@@ -155,10 +155,10 @@
 		}
 
 		@media only screen and (min-width: 768px) and (max-width: 1023px) {
-			margin-top: -80px;
+			margin-top: 50px;
 		}
 
-		@media only screen and (min-width: 1024px){
+		@media only screen and (min-width: 1024px) {
 			margin-top: 100px;
 		}
 
@@ -177,11 +177,15 @@
 			margin-top: -400px;
 		}
 
-		@media only screen and (min-width: 377px) and (max-width: 767px){
+		@media only screen and (min-width: 377px) and (max-width: 767px) {
 			margin-top: -330px;
 		}
 
-		@media only screen and (min-width: 768px){
+		@media only screen and (min-width: 768px) and (max-width: 1023px) {
+			margin-top: -230px;
+		}
+
+		@media only screen and (min-width: 1024px) {
 			margin-top: -310px;
 		}
 
@@ -191,10 +195,10 @@
 
 	#call-to-action {
 		.cta-block {
-			@media only screen and (max-width: 638px){
+			@media only screen and (max-width: 638px) {
 				border-radius: 0px;
 			}
-			@media only screen and (min-width: 639px){
+			@media only screen and (min-width: 639px) {
 				border-radius: 10px 0px 0px 10px;
 			}
 		}
@@ -206,7 +210,8 @@
 }
 
 
-// Other blocks
+
+// Andere blokken
 
 #prijs-pakketten {
 	a .btn-filled {
