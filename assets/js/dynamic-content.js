@@ -38,3 +38,28 @@ jQuery.ajax({
 
     },
 });
+
+jQuery.ajax({
+    url: '/dynamic-content' ,
+    type: 'get',
+    dataType: 'json',
+    success: function (response) {
+        if(typeof response.csrf !== 'undefined') {
+            $('meta[name=csrf-token]').attr('content', response.csrf);
+            $('input[name=_token]').val(response.csrf);
+        }
+    },
+});
+
+
+// Get all the forms on the page
+let allForms = document.querySelectorAll("form");
+
+// Loop through all forms and add hidden input fields
+for (var i = 0; i < allForms.length; i++) {
+    let hiddenInput = document.createElement("input");
+    hiddenInput.type = "hidden";
+    hiddenInput.name = '_token';
+    hiddenInput.value = $('meta[name=csrf-token]').attr('content');
+    allForms[i].appendChild(hiddenInput);
+}
