@@ -25,12 +25,12 @@
     $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
 @endphp
 
-<section id="faq" class="relative py-16 lg:py-0 bg-{{ $backgroundColor }}"
+<section id="faq" class="relative bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
+    <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="mx-auto {{ $blockClass }} {{ $titleClass }}">
             <div class="faq-drawer container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                 @if ($title)

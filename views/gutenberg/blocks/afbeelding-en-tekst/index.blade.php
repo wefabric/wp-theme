@@ -58,12 +58,12 @@
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength'] ?? '' : 'rounded-none';
 @endphp
 
-<section id="afbeelding-tekst" class="relative bg-{{ $backgroundColor }} py-16 lg:py-0"
+<section id="afbeelding-tekst" class="relative bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="custom-styling relative z-10 px-8 py-8 lg:py-20 {{ $fullScreenClass }}">
+    <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             <div class="text-image flex flex-col lg:flex-row gap-8 xl:gap-20">
                 <div class="text {{ $textClass }} order-2 {{ $textOrder }}">
