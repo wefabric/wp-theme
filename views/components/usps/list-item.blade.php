@@ -9,9 +9,9 @@
 @endphp
 
 <div class="USP-item">
-    <div class="h-full p-6 rounded-lg text-center">
+    <div class="h-full text-center">
         @if ($icon)
-            <i class="fa {{ $icon }} text-{{ $iconColor }} text-[70px] text-3xl mb-3 inline-block"
+            <i class="fa {{ $icon }} text-{{ $iconColor }} text-[70px] mb-3 inline-block"
                aria-hidden="true"></i>
         @endif
         @if ($imageID)
@@ -24,10 +24,10 @@
             ])
         @endif
         @if ($title)
-            <p class="text-{{$textColor}} font-bold h4 mb-4">{{ $title }}</p>
+            <p class="text-{{$textColor}} font-bold h4">{{ $title }}</p>
         @endif
         @if ($text)
-            <p class="text-{{$textColor}}">{{ $text }}</p>
+            <p class="mt-4 text-{{$textColor}}">{{ $text }}</p>
         @endif
     </div>
 </div>

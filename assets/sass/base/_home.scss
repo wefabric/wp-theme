@@ -45,21 +45,6 @@
 
 	#usps {
 
-		@media only screen and (max-width: 767px) {
-			padding-bottom: 250px;
-			margin-top: -20px;
-		}
-
-		@media only screen and (min-width: 768px) and (max-width: 1023px) {
-			padding-bottom: 300px;
-			margin-top: -20px;
-		}
-
-		@media only screen and (min-width: 1024px) {
-			padding-bottom: 400px;
-			margin-top: -70px;
-		}
-
 		.custom-layout {
 			@apply gap-x-8;
 		}
@@ -78,22 +63,30 @@
 			@apply font-bold;
 		}
 
-		/* div i:after {
-          @apply h-[1px] w-[100px] bg-primary absolute right-0 translate-y-1/2;
-          content: '';
-        } */
+		div i:after {
+          	@apply h-[2px] w-[72px] sm:w-[124px] bg-primary absolute right-0 translate-y-1/2;
+          	content: '';
+			left: 100%;
+        }
+
+			@media only screen and (max-width: 767px) {
+				padding-bottom: 250px;
+				margin-top: -20px;
+			}
+
+			@media only screen and (min-width: 768px) and (max-width: 1023px) {
+				padding-bottom: 300px;
+				margin-top: -20px;
+			}
+
+			@media only screen and (min-width: 1024px) {
+				padding-bottom: 400px;
+				margin-top: -70px;
+			}
 	}
 
 	#afbeelding-tekst {
 		@apply -translate-y-1/2;
-
-		@media only screen and (max-width: 1023px) {
-			padding-top: 488px;
-		}
-
-		@media only screen and (min-width: 1024px) {
-			padding-top: 0;
-		}
 
 		.custom-styling {
 			@apply py-0;
@@ -128,6 +121,15 @@
 		.flex.flex-col {
 			@apply items-center;
 		}
+
+			@media only screen and (max-width: 1023px) {
+				padding-top: 488px;
+			}
+
+			@media only screen and (min-width: 1024px) {
+				padding-top: 0;
+			}
+
 	}
 
 	#werknemers {
