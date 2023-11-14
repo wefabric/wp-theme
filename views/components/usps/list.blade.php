@@ -42,7 +42,7 @@
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var uspSwiper = new Swiper(".{{ $randomId }}", {
-            spaceBetween: 20,
+            spaceBetween: 120,
             centeredSlides: false,
             @if ($swiperAutoplay)
             autoplay: {

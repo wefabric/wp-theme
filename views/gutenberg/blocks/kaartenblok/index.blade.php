@@ -10,7 +10,7 @@
    $titleClass = $titleClassMap[$titlePosition] ?? '';
 
    // Buttons
-   $button1Text = $block['data']['button_bottom__button_1']['title'] ?? '';
+   $button1Text = $block['data']['button_bottom_button_1']['title'] ?? '';
    $button1Link = ($block['data']['button_bottom_button_1']['url']) ?? '';
    $button1Target = ($block['data']['button_bottom_button_1']['target']) ?? '_self';
    $button1Color = $block['data']['button_bottom_button_1_color'] ?? '';
