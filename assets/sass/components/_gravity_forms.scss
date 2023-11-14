@@ -5,3 +5,23 @@
 #contact .gform_title {
   margin-bottom: 2rem;
 }
+
+.gform_footer {
+  .gform_button {
+    @apply bg-cta rounded-lg border border-2 border-cta overflow-hidden z-1 duration-200 relative #{!important};
+
+      &:before {
+        content: '' !important;
+        z-index: -1 !important;
+        @apply bg-black opacity-20 absolute h-full w-full left-0 bottom-0 transition-all duration-200 #{!important};
+      }
+
+    &:hover {
+      @apply bg-cta text-white border-black border-opacity-20 #{!important};
+
+      &:before {
+        @apply w-full #{!important};
+      }
+    }
+  }
+}

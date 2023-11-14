@@ -224,3 +224,17 @@
 		@apply text-white;
 	}
 }
+
+#usps {
+
+	.USP-item div {
+		@apply p-0;
+	}
+
+	div i {
+		@apply w-full mx-auto aspect-square justify-center items-center rounded-full border border-2 border-primary;
+		display: flex;
+		position: relative;
+		max-width: 150px;
+	}
+}
