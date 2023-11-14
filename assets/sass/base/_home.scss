@@ -76,7 +76,7 @@
 		}
 
 		.text {
-			@apply bg-white px-20 py-20 shadow-xl rounded-[20px] w-full z-20;
+			@apply bg-white px-0 md:px-20 py-8 md:py-20 md:shadow-xl md:rounded-[20px] w-full z-20;
 
 			@media only screen and (min-width: 1024px) {
 				margin-left: -80px !important;
@@ -87,7 +87,13 @@
 			@apply w-full;
 
 			img {
-				border-radius: 10px 10px 10px 234px !important;
+				@media only screen and (max-width: 1023px) {
+					border-radius: 10px 0px 0px 100px !important;
+				}
+
+				@media only screen and (min-width: 1024px) {
+					border-radius: 10px 10px 10px 234px !important;
+				}
 			}
 		}
 
@@ -115,7 +121,14 @@
 		border-radius: 0px 0px 200px 0px !important;
 		padding: 100px 0px !important;
 		@apply -translate-y-1/2;
-		margin-top: 100px !important;
+
+		@media only screen and (max-width: 1023px) {
+			margin-top: -80px;
+		}
+
+		@media only screen and (min-width: 1024px){
+			margin-top: 100px;
+		}
 
 		div.inset-0 {
 			border-radius: 0px 0px 200px 0px !important;
