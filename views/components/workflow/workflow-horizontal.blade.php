@@ -27,9 +27,9 @@
         <div class="relative flex flex-col sm:items-center gap-y-8">
             @if ($showStepNumber)
                 <div class="w-full flex items-center justify-center relative">
-                    <div class="flex-shrink-0 w-36 h-36 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-primary bg-{{ $stepIconColor }} text-white z-10 text-3xl">{{ $i + 1 }}</div>
+                    <div class="step flex-shrink-0 w-36 h-36 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-primary bg-{{ $stepIconColor }} text-white z-10 text-3xl">{{ $i + 1 }}</div>
                     @if ($i < $steps - 1)
-                        <div class="hidden lg:flex worflow-connector absolute top-1/2 h-1 w-full bg-gray-200 items-center justify-center">
+                        <div class="hidden lg:flex worflow-connector absolute top-1/2 h-1 w-full items-center justify-center">
                             <i class="fa-solid fa-chevron-right text-3xl text-primary"></i>
                         </div>
                     @endif

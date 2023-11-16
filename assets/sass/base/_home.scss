@@ -238,3 +238,10 @@
 		max-width: 150px;
 	}
 }
+
+#werkwijze {
+	.step {
+		@apply border border-2 border-primary;
+		background-color: unset;
+	}
+}
