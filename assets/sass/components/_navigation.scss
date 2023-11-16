@@ -42,7 +42,7 @@
 	
 		.menu-item:not(.current_page_item) {
 		 	>a {
-				@apply font-normal no-underline #{!important};
+				@apply font-normal no-underline;
 			
 			}
 		}

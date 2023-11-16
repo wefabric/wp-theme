@@ -1,11 +1,12 @@
 <div id="{{ str_replace(' ', '-', strtolower($pageTitle)) }}" class="card-item group h-full">
     <div class="card-background relative bg-{{ $cardBackgroundColor }} w-full aspect-square flex flex-col gap-y-4 items-center justify-center text-center text-{{ $cardTextColor }} rounded-{{ $borderRadius }} group-hover:-translate-y-4 duration-300 ease-in-out"
-         @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId)
+        @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId)
              style="background-image: url('{{ wp_get_attachment_image_url($featuredImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($featuredImageId) }}">
-         @elseif ($block['data']['block_visual'] == 'image' && $imageID)
+        @elseif ($block['data']['block_visual'] == 'image' && $imageID)
              style="background-image: url('{{ wp_get_attachment_image_url($imageID, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageID) }}">
-            @endif
-    >
+        @else >
+        @endif
+
         <a href="{{ $pageUrl }}"
            class="card-overlay absolute h-full w-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
         @if ($pageIcon)

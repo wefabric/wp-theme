@@ -45,26 +45,26 @@
 
 	#usps {
 
+		p {
+			@apply font-bold;
+		}
+
 		.custom-layout {
 			@apply gap-x-8;
 		}
 
-		.USP-item div {
-			@apply p-0;
-		}
+		//.USP-item div {
+		//	@apply p-0;
+		//}
 
-		div i {
+		.USP-item i {
 			@apply w-full aspect-square justify-center items-center rounded-full border border-2 border-primary;
 			display: flex;
 			position: relative;
 		}
 
-		p {
-			@apply font-bold;
-		}
-
-		div i:after {
-          	@apply h-[2px] w-[72px] sm:w-[124px] bg-primary absolute right-0 translate-y-1/2;
+		.USP-item i:after {
+          	@apply h-[2px] w-[72px] sm:w-[128px] bg-primary absolute right-0 translate-y-1/2;
           	content: '';
 			left: 100%;
         }
@@ -244,4 +244,24 @@
 		@apply border border-2 border-primary;
 		background-color: unset;
 	}
+}
+
+
+// Dinkla fonts
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: "Roboto Condensed";
+}
+
+footer label {
+	font-family: "Roboto Condensed";
+}
+
+.main-navigation .menu .menu-item a {
+	font-family: "Roboto Condensed";
+	font-weight: 600 !important;
+}
+
+p, span, a, table, label, li, ul, ol {
+	font-family: "Roboto";
 }

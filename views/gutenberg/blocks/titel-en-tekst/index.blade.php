@@ -66,7 +66,7 @@
             </div>
             <div class="w-full xl:w-2/5 order-1 {{ $titleOrder }}">
                 @if ($title)
-                    <h2 class="h1 mb-4 text-{{ $titleColor }} lg:text-{{ $textAlignment }}">{!! $title !!}</h2>
+                    <h2 class="h1 lg:-mt-[5px] mb-4 text-{{ $titleColor }} lg:text-{{ $textAlignment }}">{!! $title !!}</h2>
                 @endif
             </div>
         </div>
