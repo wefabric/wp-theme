@@ -9,7 +9,7 @@
                 @foreach ($table['table_data'] as $rowIndex => $row)
                     <tr class="{{ $rowIndex % 2 == 0 ? 'bg-gray-100' : 'bg-white' }} border-b">
                         <td class="py-4 px-4 w-4/5">{{ $row['category'] }}</td>
-                        <td class="py-4 px-4 w-1/5">€ {{ $row['price'] }}</td>
+                        <td class="py-4 px-4 w-1/5 whitespace-nowrap">€ {{ $row['price'] }}</td>
                     </tr>
                 @endforeach
                 </tbody>
