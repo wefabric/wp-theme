@@ -22,8 +22,11 @@
 
 			&.custom {
 				padding: 0;
-				margin-left: 12px;
 				font-size: 16px;
+
+				@media only screen and (min-width: 1024px) {
+					margin-left: 12px;
+				}
 
 				a {
 					padding: 0.5rem 2rem;
