@@ -244,6 +244,11 @@
 		@apply border border-2 border-primary;
 		background-color: unset;
 	}
+
+	.step {
+		@apply text-primary text-[90px];
+		font-family: 'Roboto';
+	}
 }
 
 
