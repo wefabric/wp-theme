@@ -59,6 +59,7 @@
     // Theme settings
     $options = get_fields('option');
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
+
 @endphp
 
 <section id="prijs-pakketten" class="relative bg-{{ $backgroundColor }}"
@@ -76,7 +77,9 @@
                     @endif
                 </div>
             @endif
-            @include('components.prices.packages-list', ['packages' => $packages])
+            @if ($packages)
+                @include('components.prices.packages-list', ['packages' => $packages])
+            @endif
             @if ($showTables)
                 <div class="container w-full @if(($blockWidth == '50') || ($blockWidth == '66')) w-full @else md:w-2/3 @endif mx-auto">
                     @include('components.prices.tables-list', ['tables' => $tables])
