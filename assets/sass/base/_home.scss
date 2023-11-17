@@ -269,6 +269,8 @@
 
 
 
+
+
 // Andere blokken
 
 #prijs-pakketten {
@@ -311,22 +313,20 @@
 	//	@apply w-1/2 mx-0
 	//}
 
-
-
-//#kaarten {
-//	.page-title {
-//		@apply text-2xl;
-//		order: 0;
-//	}
-//
-//	.page-icon {
-//		order: 1;
-//	}
-//
-//	.page-button {
-//		order: 2;
-//	}
-//}
+	//#kaarten {
+	//	.page-title {
+	//		@apply text-2xl;
+	//		order: 0;
+	//	}
+	//
+	//	.page-icon {
+	//		order: 1;
+	//	}
+	//
+	//	.page-button {
+	//		order: 2;
+	//	}
+	//}
 
 #foto-slider .swiper{
 	.swiper-slide:nth-child(2n) {
