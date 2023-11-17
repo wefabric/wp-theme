@@ -54,12 +54,10 @@
     $overlayColor = ($block['data']['overlay_color']) ?? '';
     $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
 
-    $featuredImage = get_the_post_thumbnail_url(get_the_ID(), 'full');
+    $showFeaturedImage = ($block['data']['show_featured_image']) ?? false;
+    $featuredImage = $showFeaturedImage ? get_the_post_thumbnail_url(get_the_ID(), 'full') : '';
     $featuredImageId = $featuredImage ? attachment_url_to_postid($featuredImage) : '';
     $headerBackgroundColor = ($block['data']['background_color']) ?? '';
-
-//    @dd($imageId, $featuredImageId);
-
 @endphp
 
 <section id="header" class="relative bg-{{ $headerBackgroundColor }}">

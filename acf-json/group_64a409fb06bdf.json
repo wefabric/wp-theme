@@ -436,6 +436,26 @@
             "font_size": 14
         },
         {
+            "key": "field_655791c318220",
+            "label": "Toon uitgelichte afbeelding",
+            "name": "show_featured_image",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_64a40e90be6f8",
             "label": "Header afbeelding",
             "name": "background_image",
@@ -443,7 +463,15 @@
             "type": "image",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_655791c318220",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -560,5 +588,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1699540093
+    "modified": 1700238443
 }
