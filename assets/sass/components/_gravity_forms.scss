@@ -6,7 +6,7 @@
   margin-bottom: 2rem;
 }
 
-.gform_body .gform_button, .gform_footer .gform_button, .gform-button {
+.gform_body .gform_button, .gform_footer .gform_button, .gform_fields .gform-button {
   @apply bg-cta rounded-lg border border-2 border-cta overflow-hidden z-1 duration-200 relative #{!important};
 
   &:before {
