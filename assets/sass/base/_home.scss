@@ -1,4 +1,5 @@
 /* Dinkla home styling */
+
 .home {
 
 	#header {
@@ -238,8 +239,30 @@
 			}
 		}
 
+		.cta-custom {
+			z-index: 20;
+			margin-bottom: -45px;
+		}
+
 		.custom-width {
 			width: calc(100vw / 2);
+			z-index: 20;
+		}
+
+		.cta-block {
+			z-index: 20;
+		}
+	}
+
+	footer {
+
+		.footer {
+			position: relative;
+			z-index: 10;
+		}
+
+		.container {
+			padding-top: 55px;
 		}
 	}
 }
@@ -283,6 +306,9 @@
 		font-family: 'Roboto';
 	}
 }
+
+
+
 
 
 // Dinkla fonts

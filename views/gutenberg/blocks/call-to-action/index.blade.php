@@ -53,7 +53,7 @@
 
 <section id="call-to-action" class="relative bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
-    <div class="{{ $fullScreenClass }} pt-8 lg:pt-16 xl:pt-20">
+    <div class="cta-custom {{ $fullScreenClass }} pt-8 lg:pt-16 xl:pt-20">
 
         <div class="custom-width background-container absolute top-0 right-0 h-full pt-8 lg:pt-16 xl:pt-20">
             <div class="bg-{{ $blockBackgroundColor }} w-full h-full"></div>
