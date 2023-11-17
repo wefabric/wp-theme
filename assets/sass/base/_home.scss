@@ -8,6 +8,10 @@
 	#kaarten {
 		z-index: 2;
 
+		//.card-background {
+		//	@apply aspect-auto mx-auto;
+		//}
+
 		@media only screen and (max-width: 767px) {
 			padding-bottom: 0;
 		}
@@ -88,7 +92,12 @@
 			left: 100%;
         }
 
-			@media only screen and (max-width: 767px) {
+			@media only screen and (max-width: 459px) {
+				padding-bottom: 200px;
+				margin-top: -20px;
+			}
+
+			@media only screen and (min-width: 460px) and (max-width: 767px) {
 				padding-bottom: 250px;
 				margin-top: -20px;
 			}
