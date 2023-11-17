@@ -313,6 +313,29 @@
 
 
 
+//#kaarten {
+//	.page-title {
+//		@apply text-2xl;
+//		order: 0;
+//	}
+//
+//	.page-icon {
+//		order: 1;
+//	}
+//
+//	.page-button {
+//		order: 2;
+//	}
+//}
+
+#foto-slider .swiper{
+	.swiper-slide:nth-child(2n) {
+		img {
+			margin-top: 50px;
+		}
+	}
+}
+
 
 // Dinkla fonts
 
@@ -336,3 +359,5 @@ p, span, a, table, label, li, ul, ol {
 .secondary-navigation {
 	font-family: "Roboto Condensed";
 }
+
+
