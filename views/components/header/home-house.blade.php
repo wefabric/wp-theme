@@ -8,7 +8,7 @@
     'alt' => $alt,
 ])
 
-	<i class="fa-regular fa-house text-white hover:text-secondary {{ $class ?? ''}}"></i>
+	<i class="fa-regular fa-house {{ $class ?? ''}}"></i>
 	<span class="screen-reader-only">{{ $alt }}</span>
 
 @include('components.link.closing')

@@ -15,12 +15,8 @@
 		}
 	}
 
-
     $privacyPage = $option['pages']['privacy_page'] ?? '';
     $termsPage = $option['pages']['terms_page'] ?? '';
-
-
-//@dd($option['pages']);
 @endphp
 
 <div class="footer bg-{{ $bg_color ?? 'black' }} text-{{ $text_color ?? 'white' }} text-base pb-10 lg:pb-24">

@@ -61,7 +61,7 @@
 
     <nav id="site-navigation" class="main-navigation flex justify-end">
         @include('components.header.home-house', [
-            'class' => 'md:px-4 text-xl text-primary', //this shows a house icon, as link to the homepage
+            'class' => 'md:px-4 text-xl hover:text-' . (isset($options['menu_active_text_color']) ? str_replace('-color', '', $options['menu_active_text_color']) : 'cta') . ' text-'. (isset($options['menu_text_color']) ? str_replace('-color', '', $options['menu_text_color']) : 'black'),
         ])
 
         @php
@@ -81,6 +81,5 @@
                 'echo' => false
             ]) !!}
         @endif
-
     </nav>
 </div>

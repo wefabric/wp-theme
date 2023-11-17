@@ -16,9 +16,9 @@
 		li {
             @apply inline-block pr-1 pb-1 md:px-4;
 			
-			&:hover {
-				@apply text-secondary;
-			}
+			//&:hover {
+			//	@apply text-secondary;
+			//}
 
 			&.custom {
 				padding: 0;
