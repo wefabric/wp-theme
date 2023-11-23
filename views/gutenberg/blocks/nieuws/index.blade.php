@@ -27,12 +27,27 @@
         $query = new WP_Query($args);
         $posts = wp_list_pluck($query->posts, 'ID');
     }
-
     elseif ($displayType == 'show_specific') {
         $posts = $block['data']['show_specific_news'];
         if (!is_array($posts) || empty($posts)) {
             $posts = [];
         }
+    }
+    elseif ($displayType == 'show_category') {
+        $selectedCategory = $block['data']['category'] ?? '';
+        $args = [
+            'posts_per_page' => -1,
+            'post_type' => 'post',
+            'tax_query' => [
+                [
+                    'taxonomy' => 'category',
+                    'field' => 'id',
+                    'terms' => $selectedCategory,
+                ],
+            ],
+        ];
+        $query = new WP_Query($args);
+        $posts = wp_list_pluck($query->posts, 'ID');
     }
 
     // Blokinstellingen

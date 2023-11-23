@@ -28,12 +28,27 @@
         $query = new WP_Query($args);
         $vacancies = wp_list_pluck($query->posts, 'ID');
     }
-
     elseif ($displayType == 'show_specific') {
         $vacancies = $block['data']['show_specific_vacancy'];
             if (!is_array($vacancies) || empty($vacancies)) {
                 $vacancies = [];
             }
+    }
+     elseif ($displayType == 'show_category') {
+        $selectedCategory = $block['data']['category'] ?? '';
+        $args = [
+            'posts_per_page' => -1,
+            'post_type' => 'vacancies',
+            'tax_query' => [
+                [
+                    'taxonomy' => 'category',
+                    'field' => 'id',
+                    'terms' => $selectedCategory,
+                ],
+            ],
+        ];
+        $query = new WP_Query($args);
+        $vacancies = wp_list_pluck($query->posts, 'ID');
     }
 
     // Blokinstellingen

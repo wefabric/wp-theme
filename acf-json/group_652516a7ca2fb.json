@@ -113,6 +113,7 @@
             },
             "choices": {
                 "show_all": "Toon alle vacatures",
+                "show_category": "Toon vacatures van een categorie",
                 "show_specific": "Toon specifieke vacatures"
             },
             "default_value": "show_all",
@@ -121,6 +122,37 @@
             "other_choice": 0,
             "layout": "vertical",
             "save_other_choice": 0
+        },
+        {
+            "key": "field_655f46f0c1948",
+            "label": "Categorie",
+            "name": "category",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_652516a7d9737",
+                        "operator": "==",
+                        "value": "show_category"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "multiple": 0
         },
         {
             "key": "field_652516a7d973f",
@@ -780,5 +812,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1699524685
+    "modified": 1700743339
 }
