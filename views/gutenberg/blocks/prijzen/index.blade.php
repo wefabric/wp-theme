@@ -66,7 +66,7 @@
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+    <div id="{{ str_replace(' ', '-', strtolower($title)) }}" class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($title)
                 <div class="container mx-auto lg:mb-12 @if($blockWidth == 'fullscreen') px-8 @endif">
