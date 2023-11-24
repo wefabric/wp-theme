@@ -27,12 +27,6 @@
         $query = new WP_Query($args);
         $posts = wp_list_pluck($query->posts, 'ID');
     }
-    elseif ($displayType == 'show_specific') {
-        $posts = $block['data']['show_specific_news'];
-        if (!is_array($posts) || empty($posts)) {
-            $posts = [];
-        }
-    }
     elseif ($displayType == 'show_category') {
         $selectedCategory = $block['data']['category'] ?? '';
         $args = [
@@ -45,6 +39,23 @@
                     'terms' => $selectedCategory,
                 ],
             ],
+        ];
+        $query = new WP_Query($args);
+        $posts = wp_list_pluck($query->posts, 'ID');
+    }
+    elseif ($displayType == 'show_specific') {
+        $posts = $block['data']['show_specific_news'];
+        if (!is_array($posts) || empty($posts)) {
+            $posts = [];
+        }
+    }
+    elseif ($displayType == 'show_latest') {
+        $postAmount = $block['data']['post_amount'] ?? 3;
+        $args = [
+            'posts_per_page' => $postAmount,
+            'post_type' => 'post',
+            'orderby' => 'date',
+            'order' => 'DESC',
         ];
         $query = new WP_Query($args);
         $posts = wp_list_pluck($query->posts, 'ID');

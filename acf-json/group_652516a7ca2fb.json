@@ -102,7 +102,7 @@
             "label": "Welke vacatures wil je tonen?",
             "name": "display_type",
             "aria-label": "",
-            "type": "radio",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -114,14 +114,16 @@
             "choices": {
                 "show_all": "Toon alle vacatures",
                 "show_category": "Toon vacatures van een categorie",
-                "show_specific": "Toon specifieke vacatures"
+                "show_specific": "Toon specifieke vacatures",
+                "show_latest": "Toon laatste vacatures"
             },
             "default_value": "show_all",
             "return_format": "value",
+            "multiple": 0,
             "allow_null": 0,
-            "other_choice": 0,
-            "layout": "vertical",
-            "save_other_choice": 0
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_655f46f0c1948",
@@ -185,6 +187,36 @@
             "multiple": 1,
             "allow_null": 0,
             "ui": 1
+        },
+        {
+            "key": "field_656083f368347",
+            "label": "Hoeveel vacatures wil je tonen?",
+            "name": "post_amount",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_652516a7d9737",
+                        "operator": "==",
+                        "value": "show_latest"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "min": 1,
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_652516a7d9747",
@@ -812,5 +844,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1700743339
+    "modified": 1700824095
 }

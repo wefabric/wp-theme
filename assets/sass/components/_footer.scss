@@ -62,13 +62,27 @@
   }
   // End footer accordion
 
-  .mobile-ul-menu-footer  {
+  .mobile-ul-menu-footer {
     ul {
       display: flex;
     }
 
     li {
       padding-right: 1rem;
+    }
+  }
+}
+
+.footer {
+  .menu {
+    li {
+      a:after {
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:hover a:after {
+        padding-left: 0.75rem;
+      }
     }
   }
 }

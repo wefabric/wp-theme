@@ -28,12 +28,6 @@
         $query = new WP_Query($args);
         $activities = wp_list_pluck($query->posts, 'ID');
     }
-    elseif ($displayType == 'show_specific') {
-        $activities = $block['data']['show_specific_activity'];
-            if (!is_array($activities) || empty($activities)) {
-                $activities = [];
-            }
-    }
     elseif ($displayType == 'show_category') {
         $selectedCategory = $block['data']['category'] ?? '';
         $args = [
@@ -46,6 +40,23 @@
                     'terms' => $selectedCategory,
                 ],
             ],
+        ];
+        $query = new WP_Query($args);
+        $activities = wp_list_pluck($query->posts, 'ID');
+    }
+    elseif ($displayType == 'show_specific') {
+        $activities = $block['data']['show_specific_activity'];
+            if (!is_array($activities) || empty($activities)) {
+                $activities = [];
+            }
+    }
+    elseif ($displayType == 'show_latest') {
+        $postAmount = $block['data']['post_amount'] ?? 3;
+        $args = [
+            'posts_per_page' => $postAmount,
+            'post_type' => 'activities',
+            'orderby' => 'date',
+            'order' => 'DESC',
         ];
         $query = new WP_Query($args);
         $activities = wp_list_pluck($query->posts, 'ID');

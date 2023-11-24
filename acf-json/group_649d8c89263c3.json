@@ -102,7 +102,7 @@
             "label": "Welke nieuwsberichten wil je tonen?",
             "name": "display_type",
             "aria-label": "",
-            "type": "radio",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -114,14 +114,16 @@
             "choices": {
                 "show_all": "Toon alle nieuwsberichten",
                 "show_category": "Toon nieuwsberichten van een categorie",
-                "show_specific": "Toon specifieke nieuwsberichten"
+                "show_specific": "Toon specifieke nieuwsberichten",
+                "show_latest": "Toon laatste nieuwsberichten"
             },
             "default_value": "show_all",
             "return_format": "value",
+            "multiple": 0,
             "allow_null": 0,
-            "other_choice": 0,
-            "layout": "vertical",
-            "save_other_choice": 0
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_655f38e5de81c",
@@ -185,6 +187,36 @@
             "multiple": 1,
             "allow_null": 0,
             "ui": 1
+        },
+        {
+            "key": "field_65607fd14fc75",
+            "label": "Hoeveel nieuwsberichten wil je tonen?",
+            "name": "post_amount",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_649d8cf162662",
+                        "operator": "==",
+                        "value": "show_latest"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_64a2e39036667",
@@ -811,5 +843,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1700739422
+    "modified": 1700823104
 }

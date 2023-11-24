@@ -28,13 +28,7 @@
         $query = new WP_Query($args);
         $vacancies = wp_list_pluck($query->posts, 'ID');
     }
-    elseif ($displayType == 'show_specific') {
-        $vacancies = $block['data']['show_specific_vacancy'];
-            if (!is_array($vacancies) || empty($vacancies)) {
-                $vacancies = [];
-            }
-    }
-     elseif ($displayType == 'show_category') {
+    elseif ($displayType == 'show_category') {
         $selectedCategory = $block['data']['category'] ?? '';
         $args = [
             'posts_per_page' => -1,
@@ -46,6 +40,23 @@
                     'terms' => $selectedCategory,
                 ],
             ],
+        ];
+        $query = new WP_Query($args);
+        $vacancies = wp_list_pluck($query->posts, 'ID');
+    }
+    elseif ($displayType == 'show_specific') {
+        $vacancies = $block['data']['show_specific_vacancy'];
+            if (!is_array($vacancies) || empty($vacancies)) {
+                $vacancies = [];
+            }
+    }
+    elseif ($displayType == 'show_latest') {
+        $postAmount = $block['data']['post_amount'] ?? 3;
+        $args = [
+            'posts_per_page' => $postAmount,
+            'post_type' => 'vacancies',
+            'orderby' => 'date',
+            'order' => 'DESC',
         ];
         $query = new WP_Query($args);
         $vacancies = wp_list_pluck($query->posts, 'ID');
