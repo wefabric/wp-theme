@@ -434,55 +434,35 @@ function get_free_shipping_minimum($zone_name = 'Netherlands') {
 
 
 
+// Temporarly disabled because multiple dates
 //
-//// Load CPT choices in ACF field
-//function acf_populate_cpt_choices($field) {
-//    // Get all registered post types
-//    $post_types = get_post_types(['public' => true], 'objects');
+//add_action('wp_loaded', 'check_activity_date');
+//function check_activity_date() {
+//    if (is_admin()) {
+//        $post_id = isset($_GET['post']) ? intval($_GET['post']) : 0;
 //
-//    // Populate choices array
-//    $choices = [];
-//    foreach ($post_types as $post_type) {
-//        $choices[$post_type->name] = $post_type->label;
+//        if ($post_id > 0) {
+//            $post_type = get_post_type($post_id);
+//
+//            if ($post_type === 'activities') {
+//                $datum = get_field('date', $post_id);
+//
+//                if ($datum) {
+//                    $timestamp = DateTime::createFromFormat('d/m/Y', $datum)->getTimestamp();
+//                    $current_timestamp = time();
+//
+//                    $new_status = ($current_timestamp > $timestamp) ? 'draft' : 'publish';
+//                } else {
+//                    $new_status = 'publish';
+//                }
+//
+//                $post_data = array(
+//                    'ID' => $post_id,
+//                    'post_status' => $new_status,
+//                );
+//
+//                wp_update_post($post_data);
+//            }
+//        }
 //    }
-//
-//    // Set choices for the field
-//    $field['choices'] = $choices;
-//
-//    return $field;
 //}
-//
-//add_filter('acf/load_field/name=cpt_type', 'acf_populate_cpt_choices');
-
-
-
-add_action('wp_loaded', 'check_activity_date');
-function check_activity_date() {
-    if (is_admin()) {
-        $post_id = isset($_GET['post']) ? intval($_GET['post']) : 0;
-
-        if ($post_id > 0) {
-            $post_type = get_post_type($post_id);
-
-            if ($post_type === 'activities') {
-                $datum = get_field('date', $post_id);
-
-                if ($datum) {
-                    $timestamp = DateTime::createFromFormat('d/m/Y', $datum)->getTimestamp();
-                    $current_timestamp = time();
-
-                    $new_status = ($current_timestamp > $timestamp) ? 'draft' : 'publish';
-                } else {
-                    $new_status = 'publish';
-                }
-
-                $post_data = array(
-                    'ID' => $post_id,
-                    'post_status' => $new_status,
-                );
-
-                wp_update_post($post_data);
-            }
-        }
-    }
-}
