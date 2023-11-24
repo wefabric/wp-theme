@@ -237,6 +237,7 @@
                 "overview_text": "Overzichtstekst",
                 "location": "Locatie",
                 "date": "Datum",
+                "time": "Start en eindtijd",
                 "button": "Knop in activiteit blok",
                 "button_bottom": "Knop onder activiteiten"
             },
@@ -843,5 +844,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1700824022
+    "modified": 1700833511
 }

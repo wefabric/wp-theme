@@ -60,6 +60,12 @@
                     </p>
                 @endif
 
+                @if (!empty($visibleElements) && in_array('time', $visibleElements) && !empty($fields['start_time']))
+                    <p>
+                        <i class="w-4 fas fa-clock mr-3"></i>{{ $fields['start_time'] }} @if($fields['end_time']) tot {{ $fields['end_time'] }} @endif
+                    </p>
+                @endif
+
                 @if (!empty($visibleElements) && in_array('button', $visibleElements))
                     @if ($buttonCardText)
                         <div class="mt-4 md:mt-8 z-10">
