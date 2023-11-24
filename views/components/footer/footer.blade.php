@@ -166,10 +166,10 @@
 
                 <div class="flex gap-1 justify-center md:justify-start">
                     @if($termsPage)
-                        <a href="{{ get_permalink($termsPage) }}">Algemene voorwaarden</a> |
+                        <a class="underline" href="{{ get_permalink($termsPage) }}">Algemene voorwaarden</a> |
                     @endif
                     @if($privacyPage)
-                        <a href="{{ get_permalink($privacyPage) }}">Privacybeleid</a>
+                        <a class="underline" href="{{ get_permalink($privacyPage) }}">Privacybeleid</a>
                     @endif
                 </div>
             </div>
