@@ -19,7 +19,7 @@
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($packages as $package)
-                    <div class="swiper-slide h-full">
+                    <div class="swiper-slide h-auto">
                         @include('components.prices.packages-list-item')
                     </div>
                 @endforeach

@@ -19,7 +19,7 @@
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($usps as $usp)
-                    <div class="swiper-slide h-full">
+                    <div class="swiper-slide h-auto">
                         @include('components.usps.list-item')
                     </div>
                 @endforeach

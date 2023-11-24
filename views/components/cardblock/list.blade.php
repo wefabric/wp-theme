@@ -19,7 +19,7 @@
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($pagesData as $page)
-                    <div class="swiper-slide h-full">
+                    <div class="swiper-slide h-auto">
                         @include('components.cardblock.list-item')
                     </div>
                 @endforeach

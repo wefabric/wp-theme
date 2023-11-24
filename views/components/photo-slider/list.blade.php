@@ -18,7 +18,7 @@
     <div class="swiper {{ $randomId }} py-8">
         <div class="swiper-wrapper">
             @foreach ($imagesData as $image)
-                <div class="swiper-slide h-full">
+                <div class="swiper-slide h-auto">
                     @include('components.photo-slider.list-item')
                 </div>
             @endforeach

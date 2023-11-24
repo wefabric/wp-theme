@@ -56,7 +56,7 @@
                         @endif
                         <div class="flex flex-col md:flex-row items-center gap-x-4 md:gap-x-6 gap-y-4">
                             @if ($testimonialAvatarID)
-                                <div class="">
+                                <div>
                                     @include('components.image', [
                                         'image_id' => $testimonialAvatarID,
                                         'size' => 'full',
