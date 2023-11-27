@@ -79,29 +79,31 @@
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
 @endphp
 
-<section id="activiteiten" class="relative bg-{{ $backgroundColor }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
-    @if ($overlayEnabled)
-        <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
-    @endif
-    <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto">
-            @if ($title)
-                <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
-            @endif
-            @include('components.activities.list', ['activities' => $activities])
-            @if (($button1Text) && ($button1Link))
-                <div class="w-full text-center mt-4 md:mt-8">
-                    @include('components.buttons.default', [
-                       'text' => $button1Text,
-                       'href' => $button1Link,
-                       'alt' => $button1Text,
-                       'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style . '',
-                       'class' => 'rounded-lg',
-                       'target' => $button1Target,
-                   ])
-                </div>
-            @endif
+@if ($activities)
+    <section id="activiteiten" class="relative bg-{{ $backgroundColor }}"
+             style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
+        @if ($overlayEnabled)
+            <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+        @endif
+        <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+            <div class="{{ $blockClass }} mx-auto">
+                @if ($title)
+                    <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
+                @endif
+                @include('components.activities.list', ['activities' => $activities])
+                @if (($button1Text) && ($button1Link))
+                    <div class="w-full text-center mt-4 md:mt-8">
+                        @include('components.buttons.default', [
+                           'text' => $button1Text,
+                           'href' => $button1Link,
+                           'alt' => $button1Text,
+                           'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style . '',
+                           'class' => 'rounded-lg',
+                           'target' => $button1Target,
+                       ])
+                    </div>
+                @endif
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+@endif
