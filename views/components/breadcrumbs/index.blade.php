@@ -1,4 +1,4 @@
-<div class="w-full py-10 bg-{{ $breadcrumbsBackgroundColor }} text-{{ $breadcrumbsTextColor }}">
+<div class="w-full pt-10 bg-{{ $breadcrumbsBackgroundColor }} text-{{ $breadcrumbsTextColor }}">
 	<div class="relative z-10 px-8 container mx-auto">
 		<div class="flex text-base ">
 			<div class="flex items-center">
