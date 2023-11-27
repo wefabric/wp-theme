@@ -40,7 +40,7 @@
     <div class="relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($title)
-                <h2 class="container mx-auto mb-8 lg:mb-20 {{ $titleClass }} text-{{ $titleColor }}">{{ $title }}</h2>
+                <h2 class="container mx-auto mb-8 lg:mb-20 {{ $titleClass }} text-{{ $titleColor }}">{!! $title !!}</h2>
             @endif
             @if ($workflowVariant == 'horizontal')
                 @include('components.workflow.workflow-horizontal')

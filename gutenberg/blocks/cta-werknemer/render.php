@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.cta-werknemer.index', ['block' => $block])->render(); ?>

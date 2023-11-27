@@ -2,10 +2,12 @@
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
-    $textPosition = $block['data']['text_position'] ?? '';
+//    $textPosition = $block['data']['text_position'] ?? '';
+//    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+//    $textClass = $titleClassMap[$textPosition] ?? '';
+    $blockBackgroundColor = $block['data']['block_background_color'] ?? '';
 
     // Buttons
     $button1Text = $block['data']['button_button_1']['title'] ?? '';
@@ -19,27 +21,16 @@
     $button2Color = $block['data']['button_button_2_color'] ?? '';
     $button2Style = $block['data']['button_button_2_style'] ?? '';
 
-    $textOrder = ($textPosition === 'left') ? 'lg:order-1' : 'lg:order-2';
-    $imageOrder = ($textPosition === 'left') ? 'lg:order-2' : 'lg:order-1';
+    // Employee
+    $ctaEmployee = $block['data']['employee'] ?? '';
+    $employeeImageId = $ctaEmployee ? get_field('image', $ctaEmployee) : '';
+    $employeeImage = $employeeImageId ? wp_get_attachment_image_url($employeeImageId, 'full') : '';
+    $employeeTitle = $ctaEmployee ? get_the_title($ctaEmployee) : '';
 
-    $imageID = $block['data']['image'] ?? '';
-    $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
-    $imageSize = $block['data']['image_size'] ?? '';
-    $imageClass = '';
-    $textClass = '';
 
-    if ($imageSize === '33') {
-        $imageClass = 'lg:w-1/3';
-        $textClass = 'lg:w-2/3';
-    } elseif ($imageSize === '50') {
-        $imageClass = 'lg:w-1/2';
-        $textClass = 'lg:w-1/2';
-    } elseif ($imageSize === '66') {
-        $imageClass = 'lg:w-2/3';
-        $textClass = 'lg:w-1/3';
-    }
-
-    $imageHeightClass = $block['data']['full_height'] ? 'h-full' : '';
+    // Form
+    $ctaImage = ($block['data']['image']) ?? '';
+    $ctaForm = ($block['data']['form']) ?? '';
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -47,7 +38,7 @@
     $blockClass = $blockClassMap[$blockWidth] ?? '';
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
-    $backgroundColor = $block['data']['background_color'] ?? 'none';
+    $backgroundColor = $block['data']['background_color'] ?? 'default-color';
     $imageId = ($block['data']['background_image']) ?? '';
     $overlayEnabled = ($block['data']['overlay_image']) ?? false;
     $overlayColor = ($block['data']['overlay_color']) ?? '';
@@ -55,26 +46,39 @@
 
     // Theme settings
     $options = get_fields('option');
-    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength'] ?? '' : 'rounded-none';
+    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
 @endphp
 
-<section id="afbeelding-tekst" class="relative bg-{{ $backgroundColor }}"
+<section id="cta-werknemer" class="relative bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
-    @if ($overlayEnabled)
-        <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
-    @endif
-    <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto">
-            <div class="text-image flex flex-col lg:flex-row gap-8 xl:gap-20">
-                <div class="text {{ $textClass }} order-2 {{ $textOrder }}">
+    <div class="cta-custom {{ $fullScreenClass }} pt-8 lg:pt-16 xl:pt-20">
+
+        <div class="custom-width background-container absolute top-0 right-0 h-full pt-8 lg:pt-16 xl:pt-20">
+            <div class="bg-{{ $blockBackgroundColor }} w-full h-full"></div>
+        </div>
+
+        @if (!empty($employeeImage))
+            <div class="overlay absolute z-10 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <img src="{{ $employeeImage }}"
+                     alt="{{ $employeeTitle }}"
+                     class="w-[200px] h-[200px] md:w-[300px] md:h-[300px] aspect-square object-cover rounded-full">
+            </div>
+        @endif
+        <div class="cta-block mx-auto {{ $blockClass }} relative py-16 px-8 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif">
+            @if ($overlayEnabled)
+                <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+            @endif
+
+            <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
+                <div class="w-full md:w-2/3 text-center mx-auto @if($employeeImage) mt-16 md:mt-32 @endif">
                     @if ($title)
-                        <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
+                        <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
                     @endif
                     @if ($text)
-                        @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])
+                        @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 md:mt-4 text-' . $textColor])
                     @endif
                     @if (($button1Text) && ($button1Link))
-                        <div class="flex gap-4 mt-4 md:mt-8">
+                        <div class="flex gap-4 w-full justify-center mt-4 md:mt-8">
                             @include('components.buttons.default', [
                                'text' => $button1Text,
                                'href' => $button1Link,
@@ -95,18 +99,12 @@
                             @endif
                         </div>
                     @endif
+                    @if ($ctaForm)
+                        <div class="w-full mt-10 text-left text-white">
+                            {!! gravity_form($ctaForm, false) ; !!}
+                        </div>
+                    @endif
                 </div>
-                @if($imageID)
-                    <div class="image {{ $imageClass }} order-1 {{ $imageOrder }}">
-                        @include('components.image', [
-                            'image_id' => $imageID,
-                            'size' => 'full',
-                            'object_fit' => 'cover',
-                            'img_class' => 'w-full object-cover rounded-' . $borderRadius . ' ' . $imageHeightClass,
-                            'alt' => $imageAlt
-                        ])
-                    </div>
-                @endif
             </div>
         </div>
     </div>

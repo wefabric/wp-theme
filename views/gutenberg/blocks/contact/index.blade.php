@@ -47,7 +47,7 @@
         <div class="{{ $blockClass }} mx-auto flex flex-col lg:flex-row gap-8">
             <div class="w-full lg:w-1/3 xl:w-1/2 order-1 lg:order-0 px-8">
                 @if ($title)
-                    <h2 class="mb-4 text-{{ $titleColor }}">{{ $title }}</h2>
+                    <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
                 @endif
                 @if (!empty($visibleElements) && in_array('establishments', $visibleElements) && $establishment_query->have_posts())
                     @while ($establishment_query->have_posts())

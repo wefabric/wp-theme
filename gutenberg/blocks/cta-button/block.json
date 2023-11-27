@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/cta-button",
+  "title": "Call to action - button",
+  "description": "Een call to action blok met button(s)",
+  "category": "theme",
+  "icon": "button",
+  "apiVersion": 2,
+  "keywords": [
+    "call to action"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

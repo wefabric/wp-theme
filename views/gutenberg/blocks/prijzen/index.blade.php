@@ -70,7 +70,7 @@
         <div class="{{ $blockClass }} mx-auto">
             @if ($title)
                 <div class="container mx-auto lg:mb-12 @if($blockWidth == 'fullscreen') px-8 @endif">
-                    <h2 class="text-{{ $titleColor }} {{ $textClass }} mb-4">{{ $title }}</h2>
+                    <h2 class="text-{{ $titleColor }} {{ $textClass }} mb-4">{!! $title !!}</h2>
                     @if ($text)
                         @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])
                     @endif

@@ -25,7 +25,7 @@
             "name": "title",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Voeg &lt;br&gt; toe om een nieuwe regel te beginnen.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -844,5 +844,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1700833511
+    "modified": 1701089225
 }

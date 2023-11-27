@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.cta-button.index', ['block' => $block])->render(); ?>

@@ -35,7 +35,6 @@
                 @endif
             </div>
         @endif
-{{--            @dd($ctaForm)--}}
         @if ($ctaForm)
             <div class="w-full mt-10 text-left text-white">
                 {!! gravity_form($ctaForm, false) ; !!}

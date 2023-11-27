@@ -68,7 +68,7 @@
         @endif
         <div class="relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }}">
             <div class="text-{{ $textColor }} {{ $textWidthClass }}">
-                <h1 class="text-shadow-lg">{{ $title }}</h1>
+                <h1 class="text-shadow-lg">{!! $title !!}</h1>
                 @if ($subTitle)
                     @include('components.content', ['content' => apply_filters('the_content', $subTitle), 'class' => 'mt-4 text-lg mb-4 text-shadow-lg'])
                 @endif
