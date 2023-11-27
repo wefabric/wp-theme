@@ -225,7 +225,7 @@
 	}
 
 
-	#call-to-action {
+	#cta-button {
 		.cta-block {
 			@media only screen and (max-width: 638px) {
 				border-radius: 0px;
@@ -284,7 +284,6 @@
 }
 
 #usps {
-
 	.USP-item div {
 		@apply p-0;
 	}
