@@ -7,8 +7,10 @@
 //    $textPosition = $block['data']['text_position'] ?? '';
 //    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
 //    $textClass = $titleClassMap[$textPosition] ?? '';
-   $ctaImage = ($block['data']['image']) ?? '';
-   $alt = get_post_meta($ctaImage, '_wp_attachment_image_alt', true) ?: 'whitepaper';
+
+   $ctaForm = ($block['data']['form']) ?? '';
+   $sideImage = ($block['data']['side_image']) ?? '';
+   $topImage = ($block['data']['top_image']) ?? '';
    $blockBackgroundColor = $block['data']['block_background_color'] ?? '';
 
    // Buttons
@@ -22,9 +24,6 @@
    $button2Target = ($block['data']['button_button_2']['target']) ?? '_self';
    $button2Color = $block['data']['button_button_2_color'] ?? '';
    $button2Style = $block['data']['button_button_2_style'] ?? '';
-
-   // Form field
-   $ctaForm = ($block['data']['form']) ?? '';
 
    // Blokinstellingen
    $blockWidth = $block['data']['block_width'] ?? 100;
@@ -51,14 +50,25 @@
             <div class="bg-{{ $blockBackgroundColor }} w-full h-full"></div>
         </div>
 
+        @if ($topImage)
+            <div class="overlay absolute z-30 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                @include('components.image', [
+                    'image_id' => $topImage,
+                    'size' => 'full',
+                    'object_fit' => 'cover',
+                    'img_class' => 'w-[200px] h-[200px] aspect-square object-cover rounded-full',
+                    'alt' => get_post_meta($topImage, '_wp_attachment_image_alt', true) ?: 'Top image',
+                ])
+            </div>
+        @endif
+
         <div class="cta-block mx-auto {{ $blockClass }} relative py-16 px-8 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif">
             @if ($overlayEnabled)
                 <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
             @endif
-
             <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
-                <div class="flex flex-col md:flex-row md:items-center gap-y-4 md:gap-y-0">
-                    <div class="w-full @if($ctaImage) md:w-2/3 @else md:w-full @endif text-center">
+                <div class="flex flex-col md:flex-row md:items-center gap-y-4 md:gap-y-0 @if($topImage) mt-16 md:mt-20 @endif">
+                    <div class="w-full @if($sideImage) md:w-2/3 @else md:w-full @endif text-center">
                         @if ($title)
                             <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
                         @endif
@@ -66,14 +76,14 @@
                             @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 md:mt-4 text-' . $textColor])
                         @endif
                     </div>
-                    @if ($ctaImage)
+                    @if ($sideImage)
                         <div class="w-full md:w-1/3 md:justify-center text-center md:mt-[-100px]">
                             @include('components.image', [
-                               'image_id' => $ctaImage,
+                               'image_id' => $sideImage,
                                'size' => 'full',
                                'object_fit' => 'cover',
                                'img_class' => 'w-full object-cover',
-                               'alt' => $alt,
+                               'alt' => get_post_meta($sideImage, '_wp_attachment_image_alt', true) ?: 'Whitepaper',
                            ])
                         </div>
                     @endif
