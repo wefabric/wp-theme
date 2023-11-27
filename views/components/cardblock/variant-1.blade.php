@@ -1,5 +1,5 @@
-<div id="{{ str_replace(' ', '-', strtolower($pageTitle)) }}" class="card-item group h-full">
-    <div class="card-background relative bg-{{ $cardBackgroundColor }} w-full aspect-square flex flex-col gap-y-4 items-center justify-center text-center text-{{ $cardTextColor }} rounded-{{ $borderRadius }} group-hover:-translate-y-4 duration-300 ease-in-out"
+<div id="{{ str_replace(' ', '-', strtolower($pageTitle)) }}" class="version-1 card-item group h-full w-full">
+    <div class="card-background mx-auto relative bg-{{ $cardBackgroundColor }} w-full aspect-square flex flex-col gap-y-4 items-center justify-center text-center text-{{ $cardTextColor }} rounded-{{ $borderRadius }} group-hover:-translate-y-4 duration-300 ease-in-out"
         @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId)
              style="background-image: url('{{ wp_get_attachment_image_url($featuredImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($featuredImageId) }}">
         @elseif ($block['data']['block_visual'] == 'image' && $imageID)
@@ -10,7 +10,7 @@
         <a href="{{ $pageUrl }}"
            class="card-overlay absolute h-full w-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
         @if ($pageIcon)
-            <a href="{{ $pageUrl }}">
+            <a class="page-icon" href="{{ $pageUrl }}">
                 <i class="page-icon relative z-20 text-[60px] md:text-[100px] fas fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-white transition-all duration-300 ease-in-out"></i>
             </a>
         @endif
@@ -23,7 +23,7 @@
         @endif
         @if (!empty($visibleElements) && in_array('button', $visibleElements))
             @if ($buttonCardText)
-                <div class="relative z-20 flex items-center">
+                <div class="page-button relative z-20 flex items-center">
                     @include('components.buttons.default', [
                        'text' => $buttonCardText,
                        'href' => $pageUrl,

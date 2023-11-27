@@ -317,20 +317,30 @@
 	//	@apply w-1/2 mx-0
 	//}
 
-	//#kaarten {
-	//	.page-title {
-	//		@apply text-2xl;
-	//		order: 0;
-	//	}
-	//
-	//	.page-icon {
-	//		order: 1;
-	//	}
-	//
-	//	.page-button {
-	//		order: 2;
-	//	}
-	//}
+	body:not(.home) {
+		#kaarten {
+			.version-1 {
+
+				.card-background {
+					@apply items-start;
+				}
+
+				.page-title {
+					@apply text-[30px] xl:text-[42px] px-8 lg:px-16 text-left;
+					order: 0;
+				}
+
+				.page-icon {
+					@apply text-[100px] xl:text-[160px] w-full;
+					order: 1;
+				}
+
+				.page-button {
+					order: 2;
+				}
+			}
+		}
+	}
 
 #foto-slider .swiper{
 	.swiper-slide:nth-child(2n) {
