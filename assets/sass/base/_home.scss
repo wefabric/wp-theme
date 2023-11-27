@@ -327,11 +327,12 @@
 
 				.page-title {
 					@apply text-[30px] xl:text-[42px] px-8 lg:px-16 text-left;
+					word-break: break-word !important;
 					order: 0;
 				}
 
 				.page-icon {
-					@apply text-[100px] xl:text-[160px] w-full;
+					@apply text-[100px] xl:text-[140px] w-full;
 					order: 1;
 				}
 
