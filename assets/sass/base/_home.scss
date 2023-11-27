@@ -70,25 +70,21 @@
 	#usps {
 
 		p {
-			@apply font-bold;
+			@apply font-bold text-[20px] mt-8;
 		}
 
 		.custom-layout {
 			@apply gap-x-8;
 		}
 
-		//.USP-item div {
-		//	@apply p-0;
-		//}
-
 		.USP-item i {
-			@apply w-full aspect-square justify-center items-center rounded-full border border-2 border-primary;
+			@apply bg-tertiary w-full aspect-square justify-center items-center rounded-full border border-2 border-primary ;
 			display: flex;
 			position: relative;
 		}
 
 		.USP-item i:after {
-          	@apply h-[2px] w-[72px] sm:w-[128px] bg-primary absolute right-0 translate-y-1/2;
+          	@apply h-[2px] w-[1000px] bg-primary absolute right-0 translate-y-1/2;
           	content: '';
 			left: 100%;
         }
@@ -294,10 +290,11 @@
 	}
 
 	div i {
-		@apply w-full mx-auto aspect-square justify-center items-center rounded-full border border-2 border-primary;
-		display: flex;
-		position: relative;
-		max-width: 150px;
+		@apply text-[50px] lg:text-[60px] w-full flex relative mx-auto aspect-square justify-center items-center rounded-full border border-2 border-primary max-w-[110px] lg:max-w-[120px];
+	}
+
+	p {
+		@apply mt-6;
 	}
 }
 
