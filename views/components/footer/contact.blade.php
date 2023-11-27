@@ -39,7 +39,7 @@
 						'alt' => 'Telefoonnummer',
 						'class' => 'flex'
 					])
-					<i class="fa-solid fa-phone mr-4 text-md pt-1"></i>
+					<i class="fa-solid fa-phone mr-4 text-secondary text-md pt-1"></i>
 					<span class="inline-block pt-1">{{ $phone->national() }}</span>
 					@include('components.link.closing')
 				@endif
@@ -50,7 +50,7 @@
 						'alt' => 'E-mailadres',
 						'class' => 'flex'
 					])
-					<i class="fa-solid fa-envelope mr-4 text-md pt-1"></i>
+					<i class="fa-solid fa-envelope text-secondary mr-4 text-md pt-1"></i>
 					<span class="inline-block pt-1">{{ $email }}</span>
 					@include('components.link.closing')
 				@endif
@@ -66,11 +66,9 @@
 				@if($establishment->getAcfFields()->get('vat_id'))
 					<div>
 						<span class="inline-block pt-1">BTW: {{ $establishment->getAcfFields()->get('vat_id') }}</span>
-
 					</div>
 				@endif
 			@endif
 		</div>
 	@endforeach
-
 </div>
