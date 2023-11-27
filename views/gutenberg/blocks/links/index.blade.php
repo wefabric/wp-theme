@@ -45,14 +45,18 @@
                 <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
             @endif
             @if ($text)
-                <p class="text-{{ $textColor }}">{!! $text !!} </p>
+                @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])
             @endif
-            @foreach($links as $link)
-                @if($link['buttonText'] && $link['buttonLink'])
-                    <a href="{{ $link['buttonLink'] }}"
-                       class="btn btn-primary btn-filled mt-2">{{ $link['buttonText'] }}</a>
-                @endif
-            @endforeach
+            @if ($links)
+                <div class="mt-4 flex flex-wrap gap-2">
+                    @foreach($links as $link)
+                        @if($link['buttonText'] && $link['buttonLink'])
+                            <a href="{{ $link['buttonLink'] }}"
+                               class="btn btn-primary btn-filled">{{ $link['buttonText'] }}</a>
+                        @endif
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 </section>

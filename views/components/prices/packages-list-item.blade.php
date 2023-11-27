@@ -9,7 +9,6 @@
     $packageBackgroundColor = $package['package_background_color'] ?? '';
     $packageTextColor = $package['text_color'] ?? '';
 
-
     // Buttons
     $buttonText = $block['data']['button_button_text'] ?? '';
     $buttonColor = $block['data']['button_button_color'] ?? '';
@@ -17,7 +16,7 @@
 @endphp
 
 <div class="w-full h-full flex flex-col relative bg-background-color shadow-xl rounded-{{ $borderRadius }}">
-    <div class="p-6 bg-{{ $packageBackgroundColor }} text-{{ $packageTextColor }} rounded-t-{{ $borderRadius }}">
+    <div class="price-color p-6 bg-{{ $packageBackgroundColor }} text-{{ $packageTextColor }} rounded-t-{{ $borderRadius }}">
         @if ($packageLabel)
             <span class="bg-primary font-medium text-white px-4 py-2 absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 rounded-full">{{ $packageLabel }}</span>
         @endif

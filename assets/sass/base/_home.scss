@@ -281,6 +281,10 @@
 	a .btn-filled:hover {
 		@apply text-white;
 	}
+
+	.price-color {
+		border-radius: 10px 10px 60px 0px !important;
+	}
 }
 
 #usps {
