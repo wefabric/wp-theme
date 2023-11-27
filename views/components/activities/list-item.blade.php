@@ -16,6 +16,10 @@
             <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $activityUrl }}"
                    class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                @if ($fields['activity_full'])
+                    <a href="{{ $activityUrl }}"
+                       class="absolute w-full h-full bg-white z-10 opacity-70 transition-opacity"></a>
+                @endif
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                         @foreach ($activityCategories as $category)
