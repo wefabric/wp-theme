@@ -8,7 +8,7 @@
     } elseif ($headerHeight == 2) {
         $headerClass = 'h-[200px] md:h-[400px] 2xl:h-[500px]';
     } elseif ($headerHeight == 3) {
-        $headerClass = 'h-[180px] md:h-[200px]';
+        $headerClass = 'h-[160px] md:h-[200px]';
     }
 
     // Content

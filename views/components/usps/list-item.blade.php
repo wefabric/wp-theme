@@ -24,10 +24,10 @@
             ])
         @endif
         @if ($title)
-            <p class="text-{{$textColor}} font-bold h4">{{ $title }}</p>
+            <p class="text-{{$textColor}} font-bold h4">{!! $title !!}</p>
         @endif
         @if ($text)
-            <p class="mt-4 text-{{$textColor}}">{{ $text }}</p>
+            @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 text-' . $textColor])
         @endif
     </div>
 </div>
