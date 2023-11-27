@@ -6,7 +6,7 @@
     if ($headerHeight == 1) {
         $headerClass = 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]';
     } elseif ($headerHeight == 2) {
-        $headerClass = 'h-[200px] md:h-[500px]';
+        $headerClass = 'h-[200px] md:h-[400px] 2xl:h-[500px]';
     } elseif ($headerHeight == 3) {
         $headerClass = 'h-[180px] md:h-[200px]';
     }

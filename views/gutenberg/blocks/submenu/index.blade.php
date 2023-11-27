@@ -41,7 +41,7 @@
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="relative z-10 px-8 py-8 xl:py-16 {{ $fullScreenClass }}">
+    <div class="relative z-10 px-8 py-8 2xl:py-16 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($title)
                 <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
