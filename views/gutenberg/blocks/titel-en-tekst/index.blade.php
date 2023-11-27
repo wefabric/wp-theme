@@ -36,8 +36,8 @@
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="custom-margin relative z-10 container mx-auto px-8 lg:py-20">
-        <div class="w-full xl:w-3/4 mx-auto flex flex-col lg:flex-row gap-x-8">
-            <div class="w-full xl:w-3/5 order-2 {{ $textOrder }}">
+        <div class="w-full lg:w-3/4 mx-auto flex flex-col lg:flex-row justify-center gap-x-16">
+            <div class="w-full lg:w-2/5 order-2 {{ $textOrder }}">
                 @if ($text)
                     @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])
                 @endif
@@ -64,7 +64,7 @@
                     </div>
                 @endif
             </div>
-            <div class="w-full xl:w-2/5 order-1 {{ $titleOrder }}">
+            <div class="w-full lg:w-2/5 order-1 {{ $titleOrder }}">
                 @if ($title)
                     <h2 class="h1 lg:-mt-[5px] mb-4 text-{{ $titleColor }} lg:text-{{ $textAlignment }}">{!! $title !!}</h2>
                 @endif
