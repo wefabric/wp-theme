@@ -44,7 +44,7 @@
 
 <section id="cta-whitepaper" class="relative bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
-    <div class="cta-custom {{ $fullScreenClass }} pt-8 lg:pt-16 xl:pt-20">
+    <div class="cta-custom {{ $fullScreenClass }} @if ($topImage) pt-36 lg:pt-52 @else pt-8 lg:pt-16 xl:pt-20 @endif">
 
         <div class="custom-width background-container absolute top-0 right-0 h-full pt-8 lg:pt-16 xl:pt-20">
             <div class="bg-{{ $blockBackgroundColor }} w-full h-full"></div>
@@ -69,7 +69,7 @@
                 @endif
                 <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
                     <div class="flex flex-col md:flex-row md:items-center gap-y-4 md:gap-y-0 @if($topImage) mt-16 md:mt-20 @endif">
-                        <div class="w-full @if($sideImage) md:w-2/3 @else md:w-full @endif text-center">
+                        <div class="w-full text-center @if($sideImage) md:w-2/3 @else md:w-full @endif">
                             @if ($title)
                                 <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
                             @endif

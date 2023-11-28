@@ -48,19 +48,19 @@
 
 <section id="cta-werknemer" class="relative bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
-    <div class="cta-custom {{ $fullScreenClass }} pt-8 lg:pt-16 xl:pt-20">
+    <div class="cta-custom {{ $fullScreenClass }} @if ($employeeImage) pt-36 lg:pt-64 @else pt-8 lg:pt-16 xl:pt-20 @endif">
 
         <div class="custom-width background-container absolute top-0 right-0 h-full pt-8 lg:pt-16 xl:pt-20">
             <div class="bg-{{ $blockBackgroundColor }} w-full h-full"></div>
         </div>
 
-        @if (!empty($employeeImage))
+        @if ($employeeImage)
             <div class="overlay absolute z-30 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 @include('components.image', [
                  'image_id' => $employeeImageId,
                  'size' => 'full',
                  'object_fit' => 'cover',
-                 'img_class' => 'w-[200px] h-[200px] md:w-[300px] md:h-[300px] aspect-square object-cover rounded-full',
+                 'img_class' => 'w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] aspect-square object-cover rounded-full',
                  'alt' => $employeeTitle,
              ])
             </div>
