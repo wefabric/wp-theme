@@ -61,7 +61,7 @@
             </div>
         @endif
 
-        <div class="cta-block mx-auto {{ $blockClass }} relative md:px-8">
+        <div class="cta-block mx-auto relative {{ $blockClass }} @if($blockWidth !== 'fullscreen') md:px-8 @endif">
             <div class="px-8 py-16 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif">
                 @if ($overlayEnabled)
                     <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
