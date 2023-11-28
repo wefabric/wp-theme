@@ -40,6 +40,7 @@
     }
 
     $imageHeightClass = $block['data']['full_height'] ? 'h-full' : '';
+    $verticalCentered = $block['data']['vertical_centered'] ?? false;
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -65,7 +66,7 @@
     @endif
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
-            <div class="text-image flex flex-col lg:flex-row gap-8 xl:gap-20">
+            <div class="text-image flex flex-col lg:flex-row gap-8 xl:gap-20 @if ($verticalCentered) items-center @endif">
                 <div class="text {{ $textClass }} order-2 {{ $textOrder }}">
                     @if ($title)
                         <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>

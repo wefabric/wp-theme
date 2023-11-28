@@ -394,9 +394,43 @@
             "name": "full_height",
             "aria-label": "",
             "type": "true_false",
-            "instructions": "",
+            "instructions": "Als de tekst een grotere hoogte heeft dan de afbeelding, kan hiermee de afbeelding mee geschaald worden met de tekst hoogte.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6490599eabdca",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_656609b84517c",
+            "label": "Tekst verticaal centreren met afbeelding",
+            "name": "vertical_centered",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Als de tekst een minder grote hoogte heeft dan de afbeelding, kan hiermee de tekst verticaal met de afbeelding gecentreerd worden.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6490599eabdca",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -603,5 +637,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701169741
+    "modified": 1701186158
 }
