@@ -36,6 +36,11 @@ module.exports = {
           DEFAULT: 'var(--tertiary-color)',
           dark: 'var(--tertiary-color-dark)'
         },
+        quaternary: {
+          light: 'var(--quaternary-color-light)',
+          DEFAULT: 'var(--quaternary-color)',
+          dark: 'var(--quaternary-color-dark)'
+        },
         background: {
           light: 'var(--background-color-light)',
           DEFAULT: 'var(--background-color)',

@@ -10,14 +10,15 @@
     $links = [];
 
     for ($i = 0; $i < $linksCount; $i++) {
-        $buttonTextKey = "links_{$i}_button_text";
         $buttonLinkKey = "links_{$i}_button_link";
-        $buttonText = $block['data'][$buttonTextKey] ?? '';
+        $buttonText = $block['data'][$buttonLinkKey]['title'] ?? '';
         $buttonLink = $block['data'][$buttonLinkKey]['url'] ?? '';
+        $buttonColor = $block['data']["links_{$i}_button_color"] ?? '';
 
         $links[] = [
             'buttonText' => $buttonText,
             'buttonLink' => $buttonLink,
+            'buttonColor' => $buttonColor,
         ];
     }
 
@@ -52,7 +53,7 @@
                     @foreach($links as $link)
                         @if($link['buttonText'] && $link['buttonLink'])
                             <a href="{{ $link['buttonLink'] }}"
-                               class="btn btn-primary btn-filled">{{ $link['buttonText'] }}</a>
+                               class="btn btn-{{ $link['buttonColor'] }} btn-filled">{{ $link['buttonText'] }}</a>
                         @endif
                     @endforeach
                 </div>

@@ -88,6 +88,35 @@
   @apply btn-tertiary-dark
 }
 
+// Quaternary colors
+.bg-quaternary-color {
+  @apply bg-quaternary
+}
+.bg-quaternary-color-light {
+  @apply bg-quaternary-light
+}
+.bg-quaternary-color-dark {
+  @apply bg-quaternary-dark
+}
+.text-quaternary-color {
+  @apply text-quaternary
+}
+.text-quaternary-color-light {
+  @apply text-quaternary-light
+}
+.text-quaternary-color-dark {
+  @apply text-quaternary-dark
+}
+.btn-quaternary-color {
+  @apply btn-quaternary
+}
+.btn-quaternary-color-light {
+  @apply btn-quaternary-light
+}
+.btn-quaternary-color-dark {
+  @apply btn-quaternary-dark
+}
+
 
 // Background colors
 .bg-background-color {

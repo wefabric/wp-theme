@@ -130,38 +130,34 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_65295061b3f73",
-                    "label": "Button tekst",
-                    "name": "button_text",
+                    "key": "field_65295061b3f7a",
+                    "label": "Button tekst en link",
+                    "name": "button_link",
                     "aria-label": "",
-                    "type": "text",
+                    "type": "link",
                     "instructions": "",
-                    "required": 0,
+                    "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
+                    "return_format": "array",
                     "parent_repeater": "field_6529507ee205e"
                 },
                 {
-                    "key": "field_65295061b3f7a",
-                    "label": "Button link",
-                    "name": "button_link",
+                    "key": "field_6565cf9c5587f",
+                    "label": "Button kleur",
+                    "name": "button_color",
                     "aria-label": "",
-                    "type": "link",
+                    "type": "select",
                     "instructions": "",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_65295061b3f73",
+                                "field": "field_65295061b3f7a",
                                 "operator": "!=empty"
                             }
                         ]
@@ -171,7 +167,23 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
+                    "choices": {
+                        "primary-color": "Primary",
+                        "secondary-color": "Secondary",
+                        "tertiary-color": "Tertiary",
+                        "quaternary-color": "Quaternary",
+                        "cta": "CTA",
+                        "white": "Wit",
+                        "black": "Zwart",
+                        "gray": "Grijs"
+                    },
+                    "default_value": "primary-color",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
                     "parent_repeater": "field_6529507ee205e"
                 }
             ]
@@ -371,5 +383,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701163309
+    "modified": 1701171260
 }

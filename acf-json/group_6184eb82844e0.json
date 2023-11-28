@@ -236,6 +236,78 @@
             ]
         },
         {
+            "key": "field_6565c1a7a56f2",
+            "label": "Vierde kleur",
+            "name": "quaternary_color_group",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_6565c1a7a56f3",
+                    "label": "Vierde kleur",
+                    "name": "quaternary_color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string"
+                },
+                {
+                    "key": "field_6565c1a7a56f4",
+                    "label": "Licht",
+                    "name": "quaternary_color_light",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string"
+                },
+                {
+                    "key": "field_6565c1a7a56f5",
+                    "label": "Donker",
+                    "name": "quaternary_color_dark",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string"
+                }
+            ]
+        },
+        {
             "key": "field_648c6941d3387",
             "label": "Achtergrond",
             "name": "background_color_group",
@@ -426,7 +498,7 @@
             }
         ]
     ],
-    "menu_order": 28,
+    "menu_order": 33,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -435,5 +507,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1699519783
+    "modified": 1701167958
 }

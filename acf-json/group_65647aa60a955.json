@@ -221,6 +221,7 @@
                         "primary-color": "Primary",
                         "secondary-color": "Secondary",
                         "tertiary-color": "Tertiary",
+                        "quaternary-color": "Quaternary",
                         "cta": "CTA",
                         "white": "Wit",
                         "black": "Zwart",
@@ -316,6 +317,7 @@
                         "primary-color": "Primary",
                         "secondary-color": "Secondary",
                         "tertiary-color": "Tertiary",
+                        "quaternary-color": "Quaternary",
                         "cta": "CTA",
                         "white": "Wit",
                         "black": "Zwart",
@@ -577,5 +579,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701164878
+    "modified": 1701169942
 }

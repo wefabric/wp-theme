@@ -273,6 +273,17 @@
 
 // Andere blokken
 
+#header {
+
+	.bg-cover {
+		border-radius: 0 0 0 200px;
+	}
+
+	.overlay {
+		border-radius: 0 0 0 200px;
+	}
+}
+
 #prijs-pakketten {
 	a .btn-filled {
 		@apply text-primary;
@@ -379,7 +390,7 @@ p, span, a, table, label, li, ul, ol {
 
 
 
-// Zijlstra
+// //Zijlstra
 //btn {
 //  @apply uppercase;
 //}
@@ -426,4 +437,10 @@ p, span, a, table, label, li, ul, ol {
 //
 //.secondary-navigation {
 //	font-family: "Roboto Condensed";
+//}
+//
+//// Header
+//#header {
+//	//margin: 0 34px -100px !important;
+//	//z-index: 50;
 //}

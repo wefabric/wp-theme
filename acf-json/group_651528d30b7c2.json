@@ -289,6 +289,7 @@
                         "primary-color": "Primary",
                         "secondary-color": "Secondary",
                         "tertiary-color": "Tertiary",
+                        "quaternary-color": "Quaternary",
                         "cta": "CTA",
                         "white": "Wit",
                         "black": "Zwart",
@@ -384,6 +385,7 @@
                         "primary-color": "Primary",
                         "secondary-color": "Secondary",
                         "tertiary-color": "Tertiary",
+                        "quaternary-color": "Quaternary",
                         "cta": "CTA",
                         "white": "Wit",
                         "black": "Zwart",
@@ -635,7 +637,7 @@
             }
         ]
     ],
-    "menu_order": 4,
+    "menu_order": 5,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -644,5 +646,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1699524532
+    "modified": 1701169901
 }
