@@ -391,6 +391,7 @@
             "choices": {
                 "50": "50%",
                 "66": "66%",
+                "80": "80%",
                 "100": "100%",
                 "fullscreen": "Volledig scherm"
             },
@@ -542,7 +543,7 @@
             }
         ]
     ],
-    "menu_order": 11,
+    "menu_order": 16,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -551,5 +552,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701089157
+    "modified": 1701163551
 }

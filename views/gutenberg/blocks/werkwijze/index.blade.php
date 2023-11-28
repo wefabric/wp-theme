@@ -16,7 +16,7 @@
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
-    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 100 => 'w-full', 'fullscreen' => 'w-full'];
+    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
     $blockClass = $blockClassMap[$blockWidth] ?? '';
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
@@ -37,7 +37,7 @@
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
 
-    <div class="relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+    <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($title)
                 <h2 class="container mx-auto mb-8 lg:mb-20 {{ $titleClass }} text-{{ $titleColor }}">{!! $title !!}</h2>

@@ -442,6 +442,7 @@
             "choices": {
                 "50": "50%",
                 "66": "66%",
+                "80": "80%",
                 "100": "100%",
                 "fullscreen": "Volledig scherm"
             },
@@ -602,5 +603,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701096689
+    "modified": 1701165087
 }

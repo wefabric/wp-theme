@@ -9,7 +9,7 @@
 		   'class' => 'flex no-underline items-center',
 		   'target' => '_blank'
 	   ])
-	<i class="fa-solid fa-location-dot mr-4 ml-1 text-secondary text-md pt-1 "></i>
+	<i class="fa-solid fa-location-dot mr-4 ml-1 text-{{ $title_color }} text-md pt-1 "></i>
 	<span class="inline-block pt-1">Routebeschrijving</span>
 	@include('components.link.closing')
 @endif

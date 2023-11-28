@@ -11,6 +11,10 @@
 		$footer_establishments = [];
 		$footer_establishments[] = \Wefabric\WPEstablishments\Establishment::primary();
 	}
+
+     if(array_key_exists('title_color', $option)) {
+			$title_color = $option['title_color'];
+		}
 @endphp
 
 <div class="text-base mb-6 leading-7">
@@ -39,7 +43,7 @@
 						'alt' => 'Telefoonnummer',
 						'class' => 'flex'
 					])
-					<i class="fa-solid fa-phone mr-4 text-secondary text-md pt-1"></i>
+					<i class="fa-solid fa-phone mr-4 text-{{ $title_color }} text-md pt-1"></i>
 					<span class="inline-block pt-1">{{ $phone->national() }}</span>
 					@include('components.link.closing')
 				@endif
@@ -50,7 +54,7 @@
 						'alt' => 'E-mailadres',
 						'class' => 'flex'
 					])
-					<i class="fa-solid fa-envelope text-secondary mr-4 text-md pt-1"></i>
+					<i class="fa-solid fa-envelope text-{{ $title_color }} mr-4 text-md pt-1"></i>
 					<span class="inline-block pt-1">{{ $email }}</span>
 					@include('components.link.closing')
 				@endif

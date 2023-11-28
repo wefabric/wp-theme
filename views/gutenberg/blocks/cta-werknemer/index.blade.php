@@ -31,7 +31,7 @@
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
-    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 100 => 'w-full', 'fullscreen' => 'w-full'];
+    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
     $blockClass = $blockClassMap[$blockWidth] ?? '';
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
@@ -65,46 +65,48 @@
              ])
             </div>
         @endif
-        <div class="cta-block mx-auto {{ $blockClass }} relative py-16 px-8 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif">
-            @if ($overlayEnabled)
-                <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
-            @endif
+        <div class="cta-block mx-auto {{ $blockClass }} relative md:px-8">
+            <div class="px-8 py-16 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif">
+                @if ($overlayEnabled)
+                    <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+                @endif
 
-            <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
-                <div class="w-full md:w-2/3 text-center mx-auto @if($employeeImage) mt-16 md:mt-32 @endif">
-                    @if ($title)
-                        <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
-                    @endif
-                    @if ($text)
-                        @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 md:mt-4 text-' . $textColor])
-                    @endif
-                    @if (($button1Text) && ($button1Link))
-                        <div class="flex gap-4 w-full justify-center mt-4 md:mt-8">
-                            @include('components.buttons.default', [
-                               'text' => $button1Text,
-                               'href' => $button1Link,
-                               'alt' => $button1Text,
-                               'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style . '',
-                               'class' => 'rounded-lg',
-                               'target' => $button1Target,
-                           ])
-                            @if (($button2Text) && ($button2Link))
+                <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
+                    <div class="w-full text-center mx-auto @if($employeeImage) mt-16 md:mt-32 @endif">
+                        @if ($title)
+                            <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
+                        @endif
+                        @if ($text)
+                            @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 md:mt-4 text-' . $textColor])
+                        @endif
+                        @if (($button1Text) && ($button1Link))
+                            <div class="flex gap-4 w-full justify-center mt-4 md:mt-8">
                                 @include('components.buttons.default', [
-                                   'text' => $button2Text,
-                                   'href' => $button2Link,
-                                   'alt' => $button2Text,
-                                   'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style . '',
+                                   'text' => $button1Text,
+                                   'href' => $button1Link,
+                                   'alt' => $button1Text,
+                                   'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style . '',
                                    'class' => 'rounded-lg',
-                                   'target' => $button2Target,
+                                   'target' => $button1Target,
                                ])
-                            @endif
-                        </div>
-                    @endif
-                    @if ($ctaForm)
-                        <div class="w-full mt-10 text-left text-white">
-                            {!! gravity_form($ctaForm, false) ; !!}
-                        </div>
-                    @endif
+                                @if (($button2Text) && ($button2Link))
+                                    @include('components.buttons.default', [
+                                       'text' => $button2Text,
+                                       'href' => $button2Link,
+                                       'alt' => $button2Text,
+                                       'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style . '',
+                                       'class' => 'rounded-lg',
+                                       'target' => $button2Target,
+                                   ])
+                                @endif
+                            </div>
+                        @endif
+                        @if ($ctaForm)
+                            <div class="w-full mt-10 text-left text-white">
+                                {!! gravity_form($ctaForm, false) ; !!}
+                            </div>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

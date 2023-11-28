@@ -46,7 +46,7 @@
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
-    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 100 => 'w-full', 'fullscreen' => 'w-full'];
+    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
     $blockClass = $blockClassMap[$blockWidth] ?? '';
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
@@ -80,7 +80,7 @@
                 @include('components.prices.packages-list', ['packages' => $packages])
             @endif
             @if ($showTables)
-                <div class="container w-full @if(($blockWidth == '50') || ($blockWidth == '66')) w-full @else md:w-2/3 @endif mx-auto">
+                <div class="container w-full @if(($blockWidth == '50') || ($blockWidth == '66') || ($blockWidth == '80')) w-full @else md:w-2/3 @endif mx-auto">
                     @include('components.prices.tables-list', ['tables' => $tables])
                 </div>
             @endif

@@ -27,7 +27,7 @@
 
    // Blokinstellingen
    $blockWidth = $block['data']['block_width'] ?? 100;
-   $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 100 => 'w-full', 'fullscreen' => 'w-full'];
+   $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
    $blockClass = $blockClassMap[$blockWidth] ?? '';
    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
@@ -62,37 +62,39 @@
             </div>
         @endif
 
-        <div class="cta-block mx-auto {{ $blockClass }} relative py-16 px-8 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif">
-            @if ($overlayEnabled)
-                <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
-            @endif
-            <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
-                <div class="flex flex-col md:flex-row md:items-center gap-y-4 md:gap-y-0 @if($topImage) mt-16 md:mt-20 @endif">
-                    <div class="w-full @if($sideImage) md:w-2/3 @else md:w-full @endif text-center">
-                        @if ($title)
-                            <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
-                        @endif
-                        @if ($text)
-                            @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 md:mt-4 text-' . $textColor])
+        <div class="cta-block mx-auto {{ $blockClass }} relative md:px-8">
+            <div class="px-8 py-16 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif">
+                @if ($overlayEnabled)
+                    <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+                @endif
+                <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
+                    <div class="flex flex-col md:flex-row md:items-center gap-y-4 md:gap-y-0 @if($topImage) mt-16 md:mt-20 @endif">
+                        <div class="w-full @if($sideImage) md:w-2/3 @else md:w-full @endif text-center">
+                            @if ($title)
+                                <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
+                            @endif
+                            @if ($text)
+                                @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 md:mt-4 text-' . $textColor])
+                            @endif
+                        </div>
+                        @if ($sideImage)
+                            <div class="w-full md:w-1/3 md:justify-center text-center md:mt-[-100px]">
+                                @include('components.image', [
+                                   'image_id' => $sideImage,
+                                   'size' => 'full',
+                                   'object_fit' => 'cover',
+                                   'img_class' => 'w-full object-cover',
+                                   'alt' => get_post_meta($sideImage, '_wp_attachment_image_alt', true) ?: 'Whitepaper',
+                               ])
+                            </div>
                         @endif
                     </div>
-                    @if ($sideImage)
-                        <div class="w-full md:w-1/3 md:justify-center text-center md:mt-[-100px]">
-                            @include('components.image', [
-                               'image_id' => $sideImage,
-                               'size' => 'full',
-                               'object_fit' => 'cover',
-                               'img_class' => 'w-full object-cover',
-                               'alt' => get_post_meta($sideImage, '_wp_attachment_image_alt', true) ?: 'Whitepaper',
-                           ])
+                    @if ($ctaForm)
+                        <div class="w-full mt-10 text-left text-white">
+                            {!! gravity_form($ctaForm, false) ; !!}
                         </div>
                     @endif
                 </div>
-                @if ($ctaForm)
-                    <div class="w-full mt-10 text-left text-white">
-                        {!! gravity_form($ctaForm, false) ; !!}
-                    </div>
-                @endif
             </div>
         </div>
     </div>
