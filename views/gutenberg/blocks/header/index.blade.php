@@ -69,9 +69,9 @@
         @endif
         <div class="relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }}">
             <div class="header-info flex flex-col {{ $textWidthClass }}">
-                <h1 class="text-{{ $titleColor }} text-shadow-lg">{!! $title !!}</h1>
+                <h1 class="text-{{ $titleColor }}">{!! $title !!}</h1>
                 @if ($subTitle)
-                    @include('components.content', ['content' => apply_filters('the_content', $subTitle), 'class' => 'mt-4 text-lg mb-4 text-shadow-lg text-' . $textColor])
+                    @include('components.content', ['content' => apply_filters('the_content', $subTitle), 'class' => 'mt-4 text-lg mb-4 text-' . $textColor])
                 @endif
                 @if (($button1Text) && ($button1Link))
                     <div class="buttons w-full flex sm:flex-row gap-4 mt-4 md:mt-8 {{ $textPositionClass }}">

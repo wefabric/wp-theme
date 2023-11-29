@@ -219,6 +219,23 @@
             "append": ""
         },
         {
+            "key": "field_65673f68f4b93",
+            "label": "Logo achtergrond kleur",
+            "name": "logo_background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
             "key": "field_6566ff79947b3",
             "label": "Weergave",
             "name": "show_element",
@@ -434,7 +451,7 @@
                         "4": "4 per rij",
                         "5": "5 per rij"
                     },
-                    "default_value": 2,
+                    "default_value": 3,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
@@ -463,7 +480,7 @@
                         "4": "4 per rij",
                         "5": "5 per rij"
                     },
-                    "default_value": 3,
+                    "default_value": 4,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
@@ -716,5 +733,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701253876
+    "modified": 1701265560
 }

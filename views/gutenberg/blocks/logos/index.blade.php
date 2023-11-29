@@ -13,6 +13,8 @@
     $button1Color = $block['data']['button_button_1_color'] ?? '';
     $button1Style = $block['data']['button_button_1_style'] ?? '';
 
+    $logoBackgroundColor = $block['data']['logo_background_color'] ?? '';
+
     // Show logos
     $displayType = $block['data']['display_type'];
 

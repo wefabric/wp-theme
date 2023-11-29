@@ -24,7 +24,7 @@
             }
         @endphp
 
-        <div class="flex relative pt-10 pb-20 sm:items-center w-full">
+        <div class="flex relative py-6 sm:items-center w-full">
             @if ($showStepNumber)
                 <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
                     <div class="h-full w-1 bg-gray-200"></div>
