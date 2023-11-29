@@ -12,6 +12,10 @@
    $sideImage = ($block['data']['side_image']) ?? '';
    $topImage = ($block['data']['top_image']) ?? '';
    $blockBackgroundColor = $block['data']['block_background_color'] ?? '';
+   $blockBackgroundImage = ($block['data']['block_background_image']) ?? '';
+   $blockOverlayEnabled = ($block['data']['block_overlay_image']) ?? false;
+   $blockOverlayColor = ($block['data']['block_overlay_color']) ?? '';
+   $blockOverlayOpacity = ($block['data']['block_overlay_opacity']) ?? '';
 
    // Buttons
    $button1Text = $block['data']['button_button_1']['title'] ?? '';
@@ -44,6 +48,9 @@
 
 <section id="cta-whitepaper" class="relative bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
+    @if ($overlayEnabled)
+        <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+    @endif
     <div class="cta-custom {{ $fullScreenClass }} @if ($topImage) pt-36 lg:pt-52 @else pt-8 lg:pt-16 xl:pt-20 @endif">
 
         <div class="custom-width background-container absolute top-0 right-0 h-full pt-8 lg:pt-16 xl:pt-20">
@@ -63,10 +70,12 @@
         @endif
 
         <div class="cta-block mx-auto relative {{ $blockClass }} @if($blockWidth !== 'fullscreen') md:px-8 @endif">
-            <div class="px-8 py-16 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif">
-                @if ($overlayEnabled)
-                    <div class="absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+            <div class="px-8 py-16 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif"
+                 style="background-image: url('{{ wp_get_attachment_image_url($blockBackgroundImage, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($blockBackgroundImage) }}">
+                @if ($blockOverlayEnabled)
+                    <div class="absolute inset-0 @if($blockWidth !== 'fullscreen') md:mx-8 @endif bg-{{ $blockOverlayColor }} opacity-{{ $blockOverlayOpacity }}"></div>
                 @endif
+
                 <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
                     <div class="flex flex-col md:flex-row md:items-center gap-y-4 md:gap-y-0 @if($topImage) mt-16 md:mt-20 @endif">
                         <div class="w-full text-center @if($sideImage) md:w-2/3 @else md:w-full @endif">
