@@ -1,6 +1,6 @@
 {
     "key": "group_6528f28f8b49c",
-    "title": "Prijzen",
+    "title": "Prijs",
     "fields": [
         {
             "key": "field_6528fc70d7570",
@@ -387,7 +387,7 @@
             }
         ]
     ],
-    "menu_order": 21,
+    "menu_order": 26,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -396,5 +396,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1699262073
+    "modified": 1701248593
 }

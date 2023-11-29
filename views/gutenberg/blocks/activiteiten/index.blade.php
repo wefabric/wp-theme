@@ -21,8 +21,8 @@
 
     if ($displayType == 'show_all') {
         $args = [
-        'posts_per_page' => -1,
-        'post_type' => 'activities',
+            'posts_per_page' => -1,
+            'post_type' => 'activities',
         ];
 
         $query = new WP_Query($args);
@@ -90,7 +90,9 @@
                 @if ($title)
                     <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
                 @endif
-                @include('components.activities.list', ['activities' => $activities])
+                @if ($activities)
+                    @include('components.activities.list', ['activities' => $activities])
+                @endif
                 @if (($button1Text) && ($button1Link))
                     <div class="w-full text-center mt-4 md:mt-8">
                         @include('components.buttons.default', [

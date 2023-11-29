@@ -75,7 +75,7 @@
                     @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 text-' . $textColor])
                 @endif
             </div>
-            @if($form)
+            @if ($form)
                 <div class="w-full lg:w-2/3 xl:w-1/2 order-0 lg:order-1 sm:px-8">
                     <div class="lg:-mt-[180px] bg-{{ $formBackgroundColor }} p-12 lg:shadow-xl rounded-{{ $borderRadius }}">
                         {!! gravity_form($form) !!}

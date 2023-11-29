@@ -61,12 +61,12 @@
                 @if (!empty($visibleElements) && in_array('date', $visibleElements) && !empty($fields['dates']))
                     <p class="flex">
                         <i class="w-4 fas fa-calendar-alt mr-3"></i>
-                        @foreach($fields['dates'] as $date)
+                        @foreach ($fields['dates'] as $date)
                             {{ ($date['date']) }}
 
                             @if (!empty($visibleElements) && in_array('time', $visibleElements) && !empty($date['start_time']))
                                 van {{ ($date['start_time']) }}
-                                @if($date['end_time'])
+                                @if ($date['end_time'])
                                     tot {{ ($date['end_time']) }}
                                 @endif
                             @endif

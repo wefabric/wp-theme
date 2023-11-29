@@ -13,6 +13,7 @@
 
     // Content
     $title = !empty($block['data']['title']) ? $block['data']['title'] : get_the_title();
+    $titleColor = ($block['data']['title_color']) ?? '';
     $subTitle = ($block['data']['subtitle']) ?? '';
     $textColor = ($block['data']['text_color']) ?? '';
 
@@ -67,13 +68,13 @@
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
         <div class="relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }}">
-            <div class="text-{{ $textColor }} {{ $textWidthClass }}">
-                <h1 class="text-shadow-lg">{!! $title !!}</h1>
+            <div class="header-info flex flex-col {{ $textWidthClass }}">
+                <h1 class="text-{{ $titleColor }} text-shadow-lg">{!! $title !!}</h1>
                 @if ($subTitle)
-                    @include('components.content', ['content' => apply_filters('the_content', $subTitle), 'class' => 'mt-4 text-lg mb-4 text-shadow-lg'])
+                    @include('components.content', ['content' => apply_filters('the_content', $subTitle), 'class' => 'mt-4 text-lg mb-4 text-shadow-lg text-' . $textColor])
                 @endif
                 @if (($button1Text) && ($button1Link))
-                    <div class="{{ $textPositionClass }} w-full flex sm:flex-row gap-4 mt-4 md:mt-8">
+                    <div class="buttons w-full flex sm:flex-row gap-4 mt-4 md:mt-8 {{ $textPositionClass }}">
                         @include('components.buttons.default', [
                            'text' => $button1Text,
                            'href' => $button1Link,

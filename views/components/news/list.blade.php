@@ -9,7 +9,7 @@
         'desktop' => 'lg:grid-cols-' . $desktopLayout,
     ];
 
-    $swiperAutoplay =  $block['data']['autoplay'] ?? false;
+    $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'nieuwsSwiper-' . $randomNumber;
 @endphp

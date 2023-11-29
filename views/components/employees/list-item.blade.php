@@ -29,7 +29,7 @@
             @if (!empty($visibleElements) && in_array('function', $visibleElements))
                 <p class="font-medium">{{ $function }}</p>
             @endif
-            @if(!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($socials))
+            @if (!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($socials))
                 <div class="inline-flex gap-x-2">
                     @foreach ($socials as $social)
                         <a class="text-2xl transform ease-in-out duration-300 hover:scale-110 hover:text-primary"
@@ -39,15 +39,15 @@
                     @endforeach
                 </div>
             @endif
-            @if(!empty($visibleElements) && in_array('contact_info', $visibleElements))
-                @if($mail)
+            @if (!empty($visibleElements) && in_array('contact_info', $visibleElements))
+                @if ($mail)
                     <p>
                         <a href="mailto:{{ $mail }}" class="hover:text-primary">
                             <i class="w-4 object-cover fas fa-envelope mr-3"></i>{{ $mail }}
                         </a>
                     </p>
                 @endif
-                @if($phoneNumber)
+                @if ($phoneNumber)
                     <p>
                         <a href="tel:{{$phoneNumber}}" class="hover:text-primary">
                             <i class="w-4 object-cover fas fa-phone mr-3"></i>{{ $phoneNumber }}

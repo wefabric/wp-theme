@@ -18,14 +18,13 @@
 
     if ($displayType == 'show_all') {
         $args = [
-        'posts_per_page' => -1,
-        'post_type' => 'employees',
+            'posts_per_page' => -1,
+            'post_type' => 'employees',
         ];
 
         $query = new WP_Query($args);
         $employees = wp_list_pluck($query->posts, 'ID');
     }
-
     elseif ($displayType == 'show_specific') {
         $employees = $block['data']['show_specific_employees'];
             if (!is_array($employees) || empty($employees)) {
@@ -60,7 +59,9 @@
             @if ($title)
                 <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
             @endif
-            @include('components.employees.list', ['employees' => $employees])
+            @if ($employees)
+                @include('components.employees.list', ['employees' => $employees])
+            @endif
             @if (($button1Text) && ($button1Link))
                 <div class="w-full text-center mt-4 md:mt-8">
                     @include('components.buttons.default', [

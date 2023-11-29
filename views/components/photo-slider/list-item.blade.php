@@ -5,7 +5,7 @@
     $imageID = $image['id'] ?? '';
 @endphp
 
-@if($imageID)
+@if ($imageID)
     @include('components.image', [
         'image_id' => $imageID,
         'size' => 'full',
@@ -14,6 +14,6 @@
         'alt' => $imageAlt
     ])
 @endif
-@if($imageCaption)
+@if ($imageCaption)
     <p class="text-lg font-bold mt-2">{{ $imageCaption }}</p>
 @endif

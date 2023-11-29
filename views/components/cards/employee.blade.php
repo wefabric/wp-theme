@@ -23,7 +23,7 @@
         ])
     </div>
 
-    @if(isset($fields['function']) && $fields['function'])
+    @if (isset($fields['function']) && $fields['function'])
         <div class="mx-auto mb-3">
             @include('components.content', [
 	            'content' => $fields['function'],
@@ -34,7 +34,7 @@
 
     <div class="mx-auto mb-3">
 
-        @if(!empty($fields['phonenumber']))
+        @if (!empty($fields['phonenumber']))
             <div class="mb-3 flex items-center gap-2 group">
                 @include('components.buttons.icon', [
                     'href' => $fields['phonenumber']->uri(),
@@ -49,7 +49,7 @@
 
 		@endif
 
-        @if(!empty($fields['email']))
+        @if (!empty($fields['email']))
             <div class="flex items-center gap-2 group">
                 @include('components.buttons.icon', [
                 'href' => 'mailto:'. $fields['email'],
@@ -64,7 +64,7 @@
 
 		@endif
 
-        @if(!empty($fields['linkedin']))
+        @if (!empty($fields['linkedin']))
 			@include('components.buttons.icon', [
 				'href' => $fields['linkedin'],
 				'alt' => 'LinkedIn',

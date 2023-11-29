@@ -16,13 +16,13 @@
     $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
     $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
 
-    // Show vacancies
+    // Show vacatures
     $displayType = $block['data']['display_type'];
 
     if ($displayType == 'show_all') {
         $args = [
-        'posts_per_page' => -1,
-        'post_type' => 'vacancies',
+            'posts_per_page' => -1,
+            'post_type' => 'vacancies',
         ];
 
         $query = new WP_Query($args);
@@ -89,7 +89,9 @@
             @if ($title)
                 <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-12 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
             @endif
-            @include('components.vacancies.list', ['vacancies' => $vacancies])
+            @if ($vacancies)
+                @include('components.vacancies.list', ['vacancies' => $vacancies])
+            @endif
             @if (($button1Text) && ($button1Link))
                 <div class="w-full text-center mt-4 md:mt-8">
                     @include('components.buttons.default', [

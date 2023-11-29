@@ -12,26 +12,23 @@
     $button1Target = ($block['data']['button_button_1']['target']) ?? '_self';
     $button1Color = $block['data']['button_button_1_color'] ?? '';
     $button1Style = $block['data']['button_button_1_style'] ?? '';
-    $buttonCardText = $block['data']['card_button_button_text'] ?? '';
-    $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
-    $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
 
-    // Show news
+    // Show logos
     $displayType = $block['data']['display_type'];
 
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'post',
+            'post_type' => 'logo',
         ];
         $query = new WP_Query($args);
-        $posts = wp_list_pluck($query->posts, 'ID');
+        $logos = wp_list_pluck($query->posts, 'ID');
     }
     elseif ($displayType == 'show_category') {
         $selectedCategory = $block['data']['category'] ?? '';
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'post',
+            'post_type' => 'logo',
             'tax_query' => [
                 [
                     'taxonomy' => 'category',
@@ -41,24 +38,24 @@
             ],
         ];
         $query = new WP_Query($args);
-        $posts = wp_list_pluck($query->posts, 'ID');
+        $logos = wp_list_pluck($query->posts, 'ID');
     }
     elseif ($displayType == 'show_specific') {
-        $posts = $block['data']['show_specific_news'];
-        if (!is_array($posts) || empty($posts)) {
-            $posts = [];
+        $logos = $block['data']['show_specific_logos'];
+        if (!is_array($logos) || empty($logos)) {
+            $logos = [];
         }
     }
     elseif ($displayType == 'show_latest') {
         $postAmount = $block['data']['post_amount'] ?? 3;
         $args = [
             'posts_per_page' => $postAmount,
-            'post_type' => 'post',
+            'post_type' => 'logo',
             'orderby' => 'date',
             'order' => 'DESC',
         ];
         $query = new WP_Query($args);
-        $posts = wp_list_pluck($query->posts, 'ID');
+        $logos = wp_list_pluck($query->posts, 'ID');
     }
 
     // Blokinstellingen
@@ -78,7 +75,7 @@
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
 @endphp
 
-<section id="nieuws" class="relative bg-{{ $backgroundColor }}"
+<section id="logos" class="relative bg-{{ $backgroundColor }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
@@ -88,13 +85,8 @@
             @if ($title)
                 <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
             @endif
-            @if (!empty($block['data']['show_element']) && in_array('category', $block['data']['show_element']))
-                <div class="mt-6">
-                    @include('components.news.category-list')
-                </div>
-            @endif
-            @if($posts)
-                @include('components.news.list', ['posts' => $posts])
+            @if ($logos)
+                @include('components.logos.list', ['logos' => $logos])
             @endif
             @if (($button1Text) && ($button1Link))
                 <div class="w-full text-center mt-4 md:mt-8">

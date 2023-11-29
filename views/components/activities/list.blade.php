@@ -9,12 +9,12 @@
         'desktop' => 'lg:grid-cols-' . $desktopLayout,
     ];
 
-    $swiperAutoplay =  $block['data']['autoplay'] ?? false;
+    $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'activiteitenSwiper-' . $randomNumber;
 @endphp
 
-@if($block['data']['show_slider'])
+@if ($block['data']['show_slider'])
     <div class="block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">

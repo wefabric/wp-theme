@@ -97,7 +97,7 @@
                         </div>
                     @endif
                 </div>
-                @if($imageID)
+                @if ($imageID)
                     <div class="image {{ $imageClass }} order-1 {{ $imageOrder }}">
                         @include('components.image', [
                             'image_id' => $imageID,
