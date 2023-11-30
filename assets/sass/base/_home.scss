@@ -398,11 +398,11 @@ p, span, a, table, label, li, ul, ol {
 
 // Custom classes
 .pb-200px {
-	padding-bottom: 200px;
+	padding-bottom: 200px !important;
 }
 
 .-mt-200px {
-	margin-top: -200px;
+	margin-top: -200px !important;
 }
 
 ///* Zijlstra styling */
