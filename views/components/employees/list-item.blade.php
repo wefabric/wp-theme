@@ -3,6 +3,7 @@
 
     $firstName = $fields['first_name'] ?? '';
     $lastName = $fields['last_name'] ?? '';
+    $fullName = !empty($firstName) || !empty($lastName) ? $firstName . ' ' . $lastName : get_the_title($employee);
     $imageID = $fields['image'] ?? '';
 
     $visibleElements = $block['data']['show_element'] ?? [];
@@ -21,7 +22,7 @@
                  'size' => 'full',
                  'object_fit' => 'cover',
                  'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110 rounded-{{ $borderRadius }}',
-                 'alt' => $firstName . ' ' . $lastName,
+                 'alt' => $fullName,
          ])
         </div>
         <div class="w-full mt-5">
