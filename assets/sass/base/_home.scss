@@ -9,7 +9,7 @@
 		z-index: 1;
 
       h1 {
-        font-size: 70px;
+        @apply text-[42px] lg:text-[70px];
       }
 	}
 
@@ -170,18 +170,17 @@
 		.werknemer-item {
 			color: white;
 		}
+		@media only screen and (max-width: 639px) {
+			margin-top: -630px;
+		}
 
-			@media only screen and (max-width: 639px) {
-				margin-top: -630px;
-			}
+		@media only screen and (min-width: 640px) and (max-width: 1079px) {
+			margin-top: -630px;
+		}
 
-			@media only screen and (min-width: 640px) and (max-width: 1079px) {
-				margin-top: -630px;
-			}
-
-			@media only screen and (min-width: 1080px) {
-				margin-top: -250px;
-			}
+		@media only screen and (min-width: 1080px) {
+			margin-top: -250px;
+		}
 	}
 
 	#titel-tekst {
@@ -190,7 +189,7 @@
 		@apply -translate-y-1/2;
 
       h2 {
-        font-size: 70px;
+        @apply text-[46px] lg:text-[70px] lg:-mt-[14px];
       }
 
 		div.inset-0 {
