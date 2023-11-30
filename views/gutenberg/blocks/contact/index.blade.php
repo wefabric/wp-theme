@@ -27,13 +27,15 @@
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
+    $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+
     // Theme Settings
     $options = get_fields('option');
     $roundedDesign = $options['rounded_design'] ?? false;
     $borderRadius = $roundedDesign ? ($options['border_radius_strength'] ?? '') : 'rounded-none';
 @endphp
 
-<section id="contact" class="relative bg-{{ $backgroundColor }}"
+<section id="contact" class="relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>

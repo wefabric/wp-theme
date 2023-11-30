@@ -9,18 +9,18 @@
 
     // Buttons
     $button1Text = $block['data']['button_button_1']['title'] ?? '';
-    $button1Link = ($block['data']['button_button_1']['url']) ?? '';
-    $button1Target = ($block['data']['button_button_1']['target']) ?? '_self';
+    $button1Link = $block['data']['button_button_1']['url'] ?? '';
+    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
     $button1Color = $block['data']['button_button_1_color'] ?? '';
     $button1Style = $block['data']['button_button_1_style'] ?? '';
     $button2Text = $block['data']['button_button_2']['title'] ?? '';
-    $button2Link = ($block['data']['button_button_2']['url']) ?? '';
-    $button2Target = ($block['data']['button_button_2']['target']) ?? '_self';
+    $button2Link = $block['data']['button_button_2']['url'] ?? '';
+    $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
     $button2Color = $block['data']['button_button_2_color'] ?? '';
     $button2Style = $block['data']['button_button_2_style'] ?? '';
 
-    $textOrder = ($textPosition === 'left') ? 'lg:order-1' : 'lg:order-2';
-    $imageOrder = ($textPosition === 'left') ? 'lg:order-2' : 'lg:order-1';
+    $textOrder = $textPosition === 'left' ? 'lg:order-1' : 'lg:order-2';
+    $imageOrder = $textPosition === 'left' ? 'lg:order-2' : 'lg:order-1';
 
     $imageID = $block['data']['image'] ?? '';
     $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
@@ -49,17 +49,19 @@
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'none';
-    $imageId = ($block['data']['background_image']) ?? '';
-    $overlayEnabled = ($block['data']['overlay_image']) ?? false;
-    $overlayColor = ($block['data']['overlay_color']) ?? '';
-    $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
+    $imageId = $block['data']['background_image'] ?? '';
+    $overlayEnabled = $block['data']['overlay_image'] ?? false;
+    $overlayColor = $block['data']['overlay_color'] ?? '';
+    $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+
+    $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
 
     // Theme settings
     $options = get_fields('option');
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength'] ?? '' : 'rounded-none';
 @endphp
 
-<section id="afbeelding-tekst" class="relative bg-{{ $backgroundColor }}"
+<section id="afbeelding-tekst" class="relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>

@@ -41,16 +41,18 @@
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
     $imageId = ($block['data']['background_image']) ?? '';
-    $overlayEnabled = ($block['data']['overlay_image']) ?? false;
-    $overlayColor = ($block['data']['overlay_color']) ?? '';
-    $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
+    $overlayEnabled = $block['data']['overlay_image'] ?? false;
+    $overlayColor = $block['data']['overlay_color'] ?? '';
+    $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+
+    $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
 
     // Theme settings
     $options = get_fields('option');
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
 @endphp
 
-<section id="foto-slider" class="relative bg-{{ $backgroundColor }}"
+<section id="foto-slider" class="relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>

@@ -19,13 +19,15 @@
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
-    $imageId = ($block['data']['background_image']) ?? '';
-    $overlayEnabled = ($block['data']['overlay_image']) ?? false;
-    $overlayColor = ($block['data']['overlay_color']) ?? '';
-    $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
+    $imageId = $block['data']['background_image'] ?? '';
+    $overlayEnabled = $block['data']['overlay_image'] ?? false;
+    $overlayColor = $block['data']['overlay_color'] ?? '';
+    $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+
+    $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
 @endphp
 
-<section id="faq" class="relative bg-{{ $backgroundColor }}"
+<section id="faq" class="relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>

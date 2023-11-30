@@ -13,19 +13,19 @@
 
     // Content
     $title = !empty($block['data']['title']) ? $block['data']['title'] : get_the_title();
-    $titleColor = ($block['data']['title_color']) ?? '';
-    $subTitle = ($block['data']['subtitle']) ?? '';
-    $textColor = ($block['data']['text_color']) ?? '';
+    $titleColor = $block['data']['title_color'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $textColor = $block['data']['text_color'] ?? '';
 
     // Buttons
     $button1Text = $block['data']['button_button_1']['title'] ?? '';
-    $button1Link = ($block['data']['button_button_1']['url']) ?? '';
-    $button1Target = ($block['data']['button_button_1']['target']) ?? '_self';
+    $button1Link = $block['data']['button_button_1']['url'] ?? '';
+    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
     $button1Color = $block['data']['button_button_1_color'] ?? '';
     $button1Style = $block['data']['button_button_1_style'] ?? '';
     $button2Text = $block['data']['button_button_2']['title'] ?? '';
-    $button2Link = ($block['data']['button_button_2']['url']) ?? '';
-    $button2Target = ($block['data']['button_button_2']['target']) ?? '_self';
+    $button2Link = $block['data']['button_button_2']['url'] ?? '';
+    $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
     $button2Color = $block['data']['button_button_2_color'] ?? '';
     $button2Style = $block['data']['button_button_2_style'] ?? '';
 
@@ -45,23 +45,25 @@
     }
 
     // Breadcrumbs
-    $breadcrumbsEnabled = ($block['data']['show_breadcrumbs']) ?? false;
-    $breadcrumbsBackgroundColor = ($block['data']['breadcrumbs_background_color']) ?? '';
-    $breadcrumbsTextColor = ($block['data']['breadcrumbs_text_color']) ?? '';
+    $breadcrumbsEnabled = $block['data']['show_breadcrumbs'] ?? false;
+    $breadcrumbsBackgroundColor = $block['data']['breadcrumbs_background_color'] ?? '';
+    $breadcrumbsTextColor = $block['data']['breadcrumbs_text_color'] ?? '';
 
     // Image
-    $imageId = ($block['data']['background_image']) ?? '';
-    $overlayEnabled = ($block['data']['overlay_image']) ?? false;
-    $overlayColor = ($block['data']['overlay_color']) ?? '';
-    $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
+    $imageId = $block['data']['background_image'] ?? '';
+    $overlayEnabled = $block['data']['overlay_image'] ?? false;
+    $overlayColor = $block['data']['overlay_color'] ?? '';
+    $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
-    $showFeaturedImage = ($block['data']['show_featured_image']) ?? false;
+    $showFeaturedImage = $block['data']['show_featured_image'] ?? false;
     $featuredImage = $showFeaturedImage ? get_the_post_thumbnail_url(get_the_ID(), 'full') : '';
     $featuredImageId = $featuredImage ? attachment_url_to_postid($featuredImage) : '';
-    $headerBackgroundColor = ($block['data']['background_color']) ?? '';
+    $headerBackgroundColor = $block['data']['background_color'] ?? '';
+
+    $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
 @endphp
 
-<section id="header" class="relative bg-{{ $headerBackgroundColor }}">
+<section id="header" class="relative bg-{{ $headerBackgroundColor }} {{ $customBlockClasses }}">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
          style="background-image: url('{{ $imageId ? wp_get_attachment_image_url($imageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId ?: $featuredImageId) }}">
         @if ($overlayEnabled)

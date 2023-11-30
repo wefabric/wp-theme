@@ -8,23 +8,23 @@
 //    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
 //    $textClass = $titleClassMap[$textPosition] ?? '';
 
-    $ctaForm = ($block['data']['form']) ?? '';
-    $topImage = ($block['data']['top_image']) ?? '';
+    $ctaForm = $block['data']['form'] ?? '';
+    $topImage = $block['data']['top_image'] ?? '';
     $blockBackgroundColor = $block['data']['block_background_color'] ?? '';
-    $blockBackgroundImage = ($block['data']['block_background_image']) ?? '';
-    $blockOverlayEnabled = ($block['data']['block_overlay_image']) ?? false;
-    $blockOverlayColor = ($block['data']['block_overlay_color']) ?? '';
-    $blockOverlayOpacity = ($block['data']['block_overlay_opacity']) ?? '';
+    $blockBackgroundImage = $block['data']['block_background_image'] ?? '';
+    $blockOverlayEnabled = $block['data']['block_overlay_image'] ?? false;
+    $blockOverlayColor = $block['data']['block_overlay_color'] ?? '';
+    $blockOverlayOpacity = $block['data']['block_overlay_opacity'] ?? '';
 
     // Buttons
     $button1Text = $block['data']['button_button_1']['title'] ?? '';
-    $button1Link = ($block['data']['button_button_1']['url']) ?? '';
-    $button1Target = ($block['data']['button_button_1']['target']) ?? '_self';
+    $button1Link = $block['data']['button_button_1']['url'] ?? '';
+    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
     $button1Color = $block['data']['button_button_1_color'] ?? '';
     $button1Style = $block['data']['button_button_1_style'] ?? '';
     $button2Text = $block['data']['button_button_2']['title'] ?? '';
-    $button2Link = ($block['data']['button_button_2']['url']) ?? '';
-    $button2Target = ($block['data']['button_button_2']['target']) ?? '_self';
+    $button2Link = $block['data']['button_button_2']['url'] ?? '';
+    $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
     $button2Color = $block['data']['button_button_2_color'] ?? '';
     $button2Style = $block['data']['button_button_2_style'] ?? '';
 
@@ -35,17 +35,19 @@
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
-    $imageId = ($block['data']['background_image']) ?? '';
-    $overlayEnabled = ($block['data']['overlay_image']) ?? false;
-    $overlayColor = ($block['data']['overlay_color']) ?? '';
-    $overlayOpacity = ($block['data']['overlay_opacity']) ?? '';
+    $imageId = $block['data']['background_image'] ?? '';
+    $overlayEnabled = $block['data']['overlay_image'] ?? false;
+    $overlayColor = $block['data']['overlay_color'] ?? '';
+    $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+
+    $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
 
     // Theme settings
     $options = get_fields('option');
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
 @endphp
 
-<section id="cta-button" class="relative bg-{{ $backgroundColor }}"
+<section id="cta-button" class="relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
