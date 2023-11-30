@@ -89,7 +89,7 @@
             @if($bottomText)
                 @include('components.content', [
                     'content' => apply_filters('the_content', $bottomText),
-                    'class' => 'mt-4 container mx-auto ' . (($blockWidth == '50' || $blockWidth == '66') || ($blockWidth == '80')) ? 'w-full' : 'md:w-2/3')
+                    'class' => 'mt-4 container mx-auto ' . (($blockWidth == '50') || ($blockWidth == '66') || ($blockWidth == '80') ? 'w-full' : 'md:w-2/3')
                 ])
             @endif
         </div>
