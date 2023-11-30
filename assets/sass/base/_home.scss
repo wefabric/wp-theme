@@ -1,9 +1,16 @@
 /* Dinkla home styling */
 
+
+// Home styling
+
 .home {
 
 	#header {
 		z-index: 1;
+
+      h1 {
+        font-size: 70px;
+      }
 	}
 
 	#kaarten {
@@ -182,6 +189,10 @@
 		padding: 100px 0px !important;
 		@apply -translate-y-1/2;
 
+      h2 {
+        font-size: 70px;
+      }
+
 		div.inset-0 {
 			border-radius: 0px 0px 200px 0px !important;
 		}
@@ -270,8 +281,7 @@
 }
 
 
-
-// Andere blokken
+// Custom styling
 
 #header {
 
@@ -363,9 +373,7 @@
 }
 
 
-
-
-// Dinkla fonts
+// Typography
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-family: "Roboto Condensed";
 }
@@ -381,6 +389,7 @@ footer label {
 
 p, span, a, table, label, li, ul, ol {
 	font-family: "Roboto";
+	letter-spacing: .05rem;
 }
 
 .secondary-navigation {
@@ -388,9 +397,69 @@ p, span, a, table, label, li, ul, ol {
 }
 
 
-
-
-// //Zijlstra
+///* Zijlstra styling */
+//
+//// Home styling
+//
+//.home {
+//
+//  #usps {
+//
+//    h2 {
+//      @apply text-[24px];
+//    }
+//
+//    .USP-item {
+//
+//      div {
+//        @apply border-tertiary border-2;
+//        border-radius: 10px;
+//        padding: 36px;
+//        display: flex;
+//        text-align: left;
+//        align-items: center;
+//      }
+//
+//      i {
+//        margin-right: 30px !important;
+//      }
+//    }
+//  }
+//
+//  #header {
+//    .content {
+//      @apply order-1;
+//
+//      h1 {
+//        @apply text-[18px] font-bold uppercase text-shadow-none;
+//        font-family: 'Dyno' !important;
+//      }
+//    }
+//
+//    h1 {
+//      @apply order-2 text-[65px] text-shadow-none;
+//    }
+//
+//    .buttons {
+//      @apply order-3;
+//    }
+//  }
+//
+//}
+//
+//// Custom styling
+//
+//#header {
+//  //margin: 0 34px -100px !important;
+//  //z-index: 50;
+//}
+//
+//body:not(.home) {
+//  h1 {
+//    font-size: 120px !important;
+//  }
+//}
+//
 //btn {
 //  @apply uppercase;
 //}
@@ -399,48 +468,52 @@ p, span, a, table, label, li, ul, ol {
 //  @apply uppercase;
 //}
 //
-//
-//.home #usps .USP-item {
-//
-//	div {
-//		@apply border-tertiary border-2;
-//		border-radius: 10px;
-//		padding: 36px;
-//		display: flex;
-//		text-align: left;
-//		align-items: center;
-//	}
-//
-//	i {
-//		margin-right: 30px !important;
-//	}
+//footer .footer {
+//  background-image: url('https://theme2023.test/content/themes/theme2023/assets/images/footer/footer-logo-zijlstra.png');
+//  background-size: contain;
+//  background-repeat: no-repeat;
+//  background-position: right 50px top 50px;
 //}
 //
-//// Zijlstra fonts
+//#kaarten {
+//  .version-1 {
+//
+//    a.page-title.relative {
+//      @apply p-4 rounded-md bg-white text-primary ;
+//    }
+//
+//    &:hover {
+//      a.page-title.relative {
+//        @apply bg-primary text-white;
+//      }
+//    }
+//  }
+//}
+//
+//
+//// Typography
 //h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-//	font-family: "Roboto Condensed";
-//	@apply uppercase;
+//  font-family: "Dyno";
+//  @apply uppercase;
+//}
+//
+//.btn {
+//  @apply uppercase;
 //}
 //
 //footer label {
-//	font-family: "Roboto Condensed";
+//  font-family: "Dyno";
 //}
 //
 //.main-navigation .menu .menu-item a {
-//	font-family: "Roboto Condensed";
-//	font-weight: 600 !important;
+//  font-family: "Dyno";
+//  font-weight: 600 !important;
 //}
 //
 //p, span, a, table, label, li, ul, ol {
-//	font-family: "Roboto";
+//  font-family: "Hind";
 //}
 //
 //.secondary-navigation {
-//	font-family: "Roboto Condensed";
-//}
-//
-//// Header
-//#header {
-//	//margin: 0 34px -100px !important;
-//	//z-index: 50;
+//  font-family: "Dyno";
 //}
