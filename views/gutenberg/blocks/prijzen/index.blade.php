@@ -82,14 +82,14 @@
                 @include('components.prices.packages-list', ['packages' => $packages])
             @endif
             @if ($showTables)
-                <div class="container w-full @if(($blockWidth == '50') || ($blockWidth == '66') || ($blockWidth == '80')) w-full @else md:w-2/3 @endif mx-auto">
+                <div class="container w-full mx-auto @if(($blockWidth == '50') || ($blockWidth == '66') || ($blockWidth == '80')) w-full @else md:w-2/3 @endif">
                     @include('components.prices.tables-list', ['tables' => $tables])
                 </div>
             @endif
             @if($bottomText)
                 @include('components.content', [
                     'content' => apply_filters('the_content', $bottomText),
-                    'class' => 'mt-4 container mx-auto ' . (($blockWidth == '50' || $blockWidth == '66') ? 'w-full' : 'md:w-2/3')
+                    'class' => 'mt-4 container mx-auto ' . (($blockWidth == '50' || $blockWidth == '66') || ($blockWidth == '80')) ? 'w-full' : 'md:w-2/3')
                 ])
             @endif
         </div>
