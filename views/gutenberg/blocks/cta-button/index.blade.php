@@ -53,7 +53,7 @@
 
     <div class="cta-custom {{ $fullScreenClass }} @if ($topImage) pt-36 lg:pt-52 @else pt-8 lg:pt-16 xl:pt-20 @endif">
         {{--Voor het uitlijnen naar rechts--}}
-        <div class="custom-width background-container absolute top-0 right-0 h-full pt-8 lg:pt-16 xl:pt-20">
+        <div class="custom-width background-container absolute top-0 right-0 h-full @if ($topImage) pt-36 lg:pt-52 @else pt-8 lg:pt-16 xl:pt-20 @endif">
             <div class="bg-{{ $blockBackgroundColor }} w-full h-full"></div>
         </div>
 
