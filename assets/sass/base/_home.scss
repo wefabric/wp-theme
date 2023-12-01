@@ -75,7 +75,8 @@
 		}
 
 		.swiper-slide {
-			transform: scale(0.8) !important;
+			//transform: scale(0.8) !important;
+			transform-origin: center center;
 			transition: all 0.3s ease-in-out;
 		}
 	}

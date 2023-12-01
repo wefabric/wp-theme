@@ -43,7 +43,7 @@
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var kaartBlockSwiper = new Swiper(".{{ $randomId }}", {
-            spaceBetween: 0,
+            spaceBetween: 20,
             @if ($swiperCenteredSlides)
                 centeredSlides: true,
             @endif
