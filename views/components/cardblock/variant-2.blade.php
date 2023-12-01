@@ -29,7 +29,7 @@
                 @endif
             </div>
         </div>
-        <div class="h-full flex flex-col gap-y-4 p-8">
+        <div class="h-full flex flex-col gap-y-4 p-6 xl:p-8">
             <a href="{{ $pageUrl }}"
                class="relative z-20 h3 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
                 {{ $pageTitle }}
@@ -44,7 +44,7 @@
                            'text' => $buttonCardText,
                            'href' => $pageUrl,
                            'alt' => $buttonCardText,
-                           'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle . '',
+                           'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
                            'class' => 'rounded-lg',
                        ])
                     </div>
