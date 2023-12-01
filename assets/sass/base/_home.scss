@@ -16,6 +16,10 @@
 	#kaarten {
 		z-index: 2;
 
+		.swiper {
+			padding-top: 3.5rem !important;
+		}
+
 		.card-background {
 			@apply aspect-auto mx-auto;
 			padding-top: 4rem;
