@@ -307,6 +307,79 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
+            "key": "field_6527ab5c852ba",
+            "label": "Kaart achtergrond kleur",
+            "name": "card_background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65254f6289fbf",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "background-color",
+            "font_size": 14
+        },
+        {
+            "key": "field_6569df636c728",
+            "label": "Kaart titel kleur",
+            "name": "card_title_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65254f6289fbf",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_6527ab93852bb",
+            "label": "Kaart tekst kleur",
+            "name": "card_text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6527da09ae373",
+                        "operator": "==",
+                        "value": "overview_text"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
             "key": "field_654a35109b823",
             "label": "Button in kaart",
             "name": "card_button",
@@ -432,54 +505,6 @@
                     "placeholder": ""
                 }
             ]
-        },
-        {
-            "key": "field_6527ab5c852ba",
-            "label": "Kaart achtergrond kleur",
-            "name": "card_background_color",
-            "aria-label": "",
-            "type": "Thema Kleur",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_65254f6289fbf",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "theme_color": "background-color",
-            "font_size": 14
-        },
-        {
-            "key": "field_6527ab93852bb",
-            "label": "Kaart tekst kleur",
-            "name": "card_text_color",
-            "aria-label": "",
-            "type": "Thema Kleur",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_65254f6289fbf",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "theme_color": null,
-            "font_size": 14
         },
         {
             "key": "field_654a0df0b6d96",
@@ -1008,5 +1033,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701435463
+    "modified": 1701437648
 }

@@ -1,5 +1,5 @@
 <div id="{{ str_replace(' ', '-', strtolower($pageTitle)) }}" class="content-under-card-item card-item group h-full">
-    <div class="bg-{{ $cardBackgroundColor }} text-{{ $cardTextColor }} rounded-{{ $borderRadius }} h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out overflow-hidden">
+    <div class="bg-{{ $cardBackgroundColor }} rounded-{{ $borderRadius }} h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out overflow-hidden">
         <div>
             <div class="h-[360px] relative overflow-hidden rounded-t-{{ $borderRadius }}">
                 @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId)
@@ -14,7 +14,7 @@
                   ])
                 @elseif ($block['data']['block_visual'] == 'icon' && $pageIcon)
                     <div class="h-full flex justify-center items-center">
-                        <i class="relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
+                        <i class="text-{{ $cardTitleColor }} relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
                     </div>
                 @elseif ($block['data']['block_visual'] == 'image' && $imageID)
                     <a href="{{ $pageUrl }}"
@@ -31,11 +31,11 @@
         </div>
         <div class="h-full flex flex-col gap-y-4 p-6 xl:p-8">
             <a href="{{ $pageUrl }}"
-               class="relative z-20 h3 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
+               class="text-{{ $cardTitleColor }} relative z-20 h3 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
                 {{ $pageTitle }}
             </a>
             @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && $pageExcerpt)
-                <p>{{ $pageExcerpt }}</p>
+                <p class="text-{{ $cardTextColor }}">{{ $pageExcerpt }}</p>
             @endif
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
                 @if ($buttonCardText)
