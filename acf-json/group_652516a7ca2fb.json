@@ -250,6 +250,69 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
+            "key": "field_6569ecad0fb0c",
+            "label": "Vacature titel kleur",
+            "name": "vacancy_title_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_6569ecc90fb0d",
+            "label": "Vacature tekst kleur",
+            "name": "vacancy_text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_652516a7d9747",
+                        "operator": "==",
+                        "value": "overview_text"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_652516a7d9747",
+                        "operator": "==",
+                        "value": "location"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_652516a7d9747",
+                        "operator": "==",
+                        "value": "working_hours"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_652516a7d9747",
+                        "operator": "==",
+                        "value": "salary"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
             "key": "field_654a3f14fb041",
             "label": "Button in vacature blok",
             "name": "card_button",
@@ -867,5 +930,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701342101
+    "modified": 1701440929
 }
