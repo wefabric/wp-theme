@@ -6,6 +6,9 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
+    $newsTitleColor = $block['data']['news_title_color'] ?? '';
+    $newsTextColor = $block['data']['news_text_color'] ?? '';
+
     // Buttons
     $button1Text = $block['data']['button_button_1']['title'] ?? '';
     $button1Link = $block['data']['button_button_1']['url'] ?? '';

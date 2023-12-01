@@ -249,6 +249,62 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
+            "key": "field_6569e8697e266",
+            "label": "Nieuws titel kleur",
+            "name": "news_title_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_6569e8b77e267",
+            "label": "Nieuws tekst kleur",
+            "name": "news_text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a2e39036667",
+                        "operator": "==",
+                        "value": "overview_text"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_64a2e39036667",
+                        "operator": "==",
+                        "value": "date"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_64a2e39036667",
+                        "operator": "==",
+                        "value": "author"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
             "key": "field_654a3d687befe",
             "label": "Button in nieuws blok",
             "name": "card_button",
@@ -866,5 +922,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701341990
+    "modified": 1701439745
 }

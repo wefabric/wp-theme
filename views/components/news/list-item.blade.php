@@ -43,18 +43,18 @@
         @endif
         <div class="flex flex-col w-full grow mt-5">
             @if (!empty($visibleElements) && in_array('date', $visibleElements) && !empty($postDate))
-                <p class="text-gray-500">{{ $postDate }}</p>
+                <p class="mb-2 text-{{ $newsTextColor }}">{{ $postDate }}</p>
             @endif
 
-            <a href="{{ $postUrl }}" class="font-bold text-lg group-hover:text-primary">{{ $postTitle }}</a>
+            <a href="{{ $postUrl }}" class="text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{{ $postTitle }}</a>
 
             <div class="news-info">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($postSummary))
-                    <p class="mt-3 mb-2">{{ $postSummary }} </p>
+                    <p class="text-{{ $newsTextColor }} mt-3 mb-2">{{ $postSummary }} </p>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('author', $visibleElements) && !empty($postAuthorName))
-                    <p class="text-gray-500">Geschreven door {{ $postAuthorName }}</p>
+                    <p class="mt-4 text-{{ $newsTextColor }}">Geschreven door {{ $postAuthorName }}</p>
                 @endif
             </div>
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
