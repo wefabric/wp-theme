@@ -63,16 +63,21 @@
 			}
 		}
 
-		// RESIZE ACTIVE SLIDE
-		//.swiper-slide.swiper-slide-active {
-		//	transform: scale(1.2) !important;
-		//	transition: all 0.3s ease-in-out;
-		//}
-		//
-		//.swiper-slide {
-		//	transform: scale(0.8) !important;
-		//	transition: all 0.3s ease-in-out;
-		//}
+		 //RESIZE ACTIVE SLIDE
+		.swiper-slide.swiper-slide-active {
+			transform: scale(1.2) !important;
+		  	transform-origin: center center;
+			transition: all 0.3s ease-in-out;
+
+			.card-background {
+				@apply bg-secondary;
+			}
+		}
+
+		.swiper-slide {
+			transform: scale(0.8) !important;
+			transition: all 0.3s ease-in-out;
+		}
 	}
 
 

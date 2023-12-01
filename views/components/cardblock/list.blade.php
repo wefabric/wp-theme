@@ -10,6 +10,7 @@
     ];
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
+    $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'kaartenBlockSwiper-' . $randomNumber;
 @endphp
@@ -42,8 +43,10 @@
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var kaartBlockSwiper = new Swiper(".{{ $randomId }}", {
-            spaceBetween: 20,
-            centeredSlides: false,
+            spaceBetween: 0,
+            @if ($swiperCenteredSlides)
+                centeredSlides: true,
+            @endif
             @if ($swiperAutoplay)
             autoplay: {
                 disableOnInteraction: false,
