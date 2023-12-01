@@ -28,6 +28,7 @@
 
     .swiper {
       padding-top: 3.5rem !important;
+      padding-bottom: 3.5rem !important;
     }
 
     .page-title {
@@ -86,6 +87,7 @@
       transform: scale(1.2) !important;
       transform-origin: center center;
       transition: all 0.3s ease-in-out;
+      margin: 0 40px 0 20px !important;
       @apply z-20;
 
       .card-background {
