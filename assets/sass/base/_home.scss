@@ -212,6 +212,10 @@
     @media only screen and (min-width: 1080px) {
       margin-top: -250px;
     }
+
+    .swiper .swiper-pagination{
+      display: none !important;
+    }
   }
 
   #titel-tekst {
