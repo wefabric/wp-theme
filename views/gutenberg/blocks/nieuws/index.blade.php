@@ -99,12 +99,12 @@
                 @include('components.news.list', ['posts' => $posts])
             @endif
             @if (($button1Text) && ($button1Link))
-                <div class="w-full text-center mt-4 md:mt-8">
+                <div class="w-full text-center mt-auto">
                     @include('components.buttons.default', [
                        'text' => $button1Text,
                        'href' => $button1Link,
                        'alt' => $button1Text,
-                       'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style . '',
+                       'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
                        'class' => 'rounded-lg',
                        'target' => $button1Target,
                    ])

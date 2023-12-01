@@ -82,7 +82,7 @@
                                'text' => $buttonCardText,
                                'href' => $activityUrl,
                                'alt' => $buttonCardText,
-                               'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle . '',
+                               'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
                                'class' => 'rounded-lg',
                            ])
                         </div>

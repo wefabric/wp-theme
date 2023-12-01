@@ -39,7 +39,7 @@
             @endif
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
                 @if ($buttonCardText)
-                    <div class="mt-4 md:mt-8 z-10">
+                    <div class="mt-auto z-10">
                         @include('components.buttons.default', [
                            'text' => $buttonCardText,
                            'href' => $pageUrl,

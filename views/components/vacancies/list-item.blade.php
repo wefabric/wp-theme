@@ -64,12 +64,12 @@
 
                 @if (!empty($visibleElements) && in_array('button', $visibleElements))
                     @if ($buttonCardText)
-                        <div class="relative z-20 flex items-center">
+                        <div class="mt-auto relative z-20 flex items-center">
                             @include('components.buttons.default', [
                                'text' => $buttonCardText,
                                'href' => $vacancyUrl,
                                'alt' => $buttonCardText,
-                               'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle . '',
+                               'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
                                'class' => 'rounded-lg',
                            ])
                         </div>
