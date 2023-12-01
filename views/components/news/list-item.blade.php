@@ -7,6 +7,10 @@
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
     $postSummary = get_the_excerpt($post);
+        $maxSummaryLength = 180;
+        if (strlen($postSummary) > $maxSummaryLength) {
+            $postSummary = substr($postSummary, 0, $maxSummaryLength - 3) . '...';
+        }
     $postDate = get_the_date('j F, Y', $post);
     $postAuthorId = get_post_field('post_author', $post);
     $postAuthorName = get_the_author_meta('display_name', $postAuthorId);
