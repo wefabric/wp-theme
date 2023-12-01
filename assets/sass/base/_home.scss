@@ -16,9 +16,11 @@
 	#kaarten {
 		z-index: 2;
 
-		//.card-background {
-		//	@apply aspect-auto mx-auto;
-		//}
+		.card-background {
+			@apply aspect-auto mx-auto;
+			padding-top: 4rem;
+			padding-bottom: 4rem;
+		}
 
 		@media only screen and (max-width: 767px) {
 			padding-bottom: 0;
