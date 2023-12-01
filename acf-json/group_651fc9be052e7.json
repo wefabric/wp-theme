@@ -226,6 +226,10 @@
                     "icon_sets": [
                         "solid",
                         "regular",
+                        "light",
+                        "thin",
+                        "duotone",
+                        "fak",
                         "brands"
                     ],
                     "custom_icon_set": "",
@@ -1004,5 +1008,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701431158
+    "modified": 1701435463
 }

@@ -14,7 +14,7 @@
                   ])
                 @elseif ($block['data']['block_visual'] == 'icon' && $pageIcon)
                     <div class="h-full flex justify-center items-center">
-                        <i class="relative z-20 text-[200px] fas fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
+                        <i class="relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
                     </div>
                 @elseif ($block['data']['block_visual'] == 'image' && $imageID)
                     <a href="{{ $pageUrl }}"

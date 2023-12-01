@@ -76,7 +76,7 @@
                     @include('components.content', ['content' => apply_filters('the_content', $subTitle), 'class' => 'mt-4 text-lg mb-4 text-' . $textColor])
                 @endif
                 @if (($button1Text) && ($button1Link))
-                    <div class="buttons w-full flex sm:flex-row gap-4 mt-4 md:mt-8 {{ $textPositionClass }}">
+                    <div class="buttons w-full flex sm:flex-row gap-4 mt-4 {{ $textPositionClass }}">
                         @include('components.buttons.default', [
                            'text' => $button1Text,
                            'href' => $button1Link,
