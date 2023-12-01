@@ -346,7 +346,7 @@
 				}
 
 				.page-title {
-					@apply text-[30px] xl:text-[34px] px-8 lg:px-16 text-left;
+					@apply text-[30px] xl:text-[34px] text-left;
 					word-break: break-word !important;
 					order: 0;
 				}
