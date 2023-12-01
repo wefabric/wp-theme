@@ -169,6 +169,7 @@
                 "id": ""
             },
             "choices": {
+                "name": "Naam",
                 "function": "Functie",
                 "overview_text": "Overzichtstekst",
                 "contact_info": "Contactgegevens",
@@ -182,6 +183,77 @@
             "toggle": 0,
             "save_custom": 0,
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
+        },
+        {
+            "key": "field_6569e438e1ec1",
+            "label": "Werknemer naam kleur",
+            "name": "employee_title_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a2e7d645184",
+                        "operator": "==",
+                        "value": "name"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_6569e475e1ec2",
+            "label": "Werknemer tekst kleur",
+            "name": "employee_text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a2e7d645184",
+                        "operator": "==",
+                        "value": "function"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_64a2e7d645184",
+                        "operator": "==",
+                        "value": "overview_text"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_64a2e7d645184",
+                        "operator": "==",
+                        "value": "contact_info"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_64a2e7d645184",
+                        "operator": "==",
+                        "value": "socials"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
         },
         {
             "key": "field_654a134712e58",
@@ -674,5 +746,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701342337
+    "modified": 1701438623
 }

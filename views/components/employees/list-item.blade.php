@@ -26,14 +26,16 @@
          ])
         </div>
         <div class="w-full mt-5">
-            <p class="font-bold text-lg">{{ $firstName }} {{ $lastName }}</p>
+            @if (!empty($visibleElements) && in_array('name', $visibleElements))
+                <p class="font-bold text-lg text-{{ $employeeTitleColor }}">{{ $firstName }} {{ $lastName }}</p>
+            @endif
             @if (!empty($visibleElements) && in_array('function', $visibleElements))
-                <p class="font-medium">{{ $function }}</p>
+                <p class="text-{{ $employeeTextColor }} font-medium">{{ $function }}</p>
             @endif
             @if (!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($socials))
                 <div class="inline-flex gap-x-2">
                     @foreach ($socials as $social)
-                        <a class="text-2xl transform ease-in-out duration-300 hover:scale-110 hover:text-primary"
+                        <a class="text-{{ $employeeTextColor }} text-2xl transform ease-in-out duration-300 hover:scale-110 hover:text-primary"
                            href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer">
                             {!! $social['icon'] !!}
                         </a>
@@ -43,21 +45,21 @@
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements))
                 @if ($mail)
                     <p>
-                        <a href="mailto:{{ $mail }}" class="hover:text-primary">
+                        <a href="mailto:{{ $mail }}" class="text-{{ $employeeTextColor }} hover:text-primary">
                             <i class="w-4 object-cover fas fa-envelope mr-3"></i>{{ $mail }}
                         </a>
                     </p>
                 @endif
                 @if ($phoneNumber)
                     <p>
-                        <a href="tel:{{$phoneNumber}}" class="hover:text-primary">
+                        <a href="tel:{{$phoneNumber}}" class="text-{{ $employeeTextColor }} hover:text-primary">
                             <i class="w-4 object-cover fas fa-phone mr-3"></i>{{ $phoneNumber }}
                         </a>
                     </p>
                 @endif
             @endif
             @if (!empty($visibleElements) && in_array('overview_text', $visibleElements))
-                <p class="mt-3 mb-2">{{ $overviewText }}</p>
+                <p class="text-{{ $employeeTextColor }} mt-3 mb-2">{{ $overviewText }}</p>
             @endif
         </div>
     </div>
