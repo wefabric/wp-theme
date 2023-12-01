@@ -26,13 +26,17 @@
   #kaarten {
     z-index: 2;
 
+    div.relative {
+      @apply px-0 sm:px-8;
+    }
+
     .swiper {
       padding-top: 3.5rem !important;
       padding-bottom: 3.5rem !important;
     }
 
     .page-title {
-      @apply text-[21px];
+      @apply text-[14px] sm:text-[21px];
     }
 
     .card-background {
