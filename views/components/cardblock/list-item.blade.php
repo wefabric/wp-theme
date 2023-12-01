@@ -10,8 +10,10 @@
     $visibleElements = $block['data']['show_element'] ?? [];
 @endphp
 
+{{--Variant 1 is content in kaart--}}
 @if ($cardVariant == 'variant1')
     @include('components/cardblock/variant-1')
+{{--Variant 2 is content onder kaart--}}
 @elseif ($cardVariant == 'variant2')
     @include('components/cardblock/variant-2')
 @endif

@@ -339,7 +339,7 @@
 
 	body:not(.home) {
 		#kaarten {
-			.version-1 {
+			.content-in-card-item {
 
 				.card-background {
 					@apply items-start;
@@ -492,6 +492,8 @@ p, span, a, table, label, li, ul, ol {
 	}
 }
 
+
+
 ///* Zijlstra styling */
 //
 //// Home styling
@@ -571,7 +573,7 @@ p, span, a, table, label, li, ul, ol {
 //}
 //
 //#kaarten {
-//  .version-1 {
+//  .content-in-card-item {
 //
 //    a.page-title.relative {
 //      @apply p-4 rounded-md bg-white text-primary ;

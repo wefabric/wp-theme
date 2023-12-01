@@ -17,8 +17,8 @@
                 "id": ""
             },
             "choices": {
-                "variant1": "Variant 1",
-                "variant2": "Variant 2"
+                "variant1": "Content in kaart",
+                "variant2": "Content onder kaart"
             },
             "default_value": "variant1",
             "return_format": "value",
@@ -976,5 +976,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701341849
+    "modified": 1701421232
 }

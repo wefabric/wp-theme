@@ -1,4 +1,4 @@
-<div id="{{ str_replace(' ', '-', strtolower($pageTitle)) }}" class="version-2 card-item group h-full">
+<div id="{{ str_replace(' ', '-', strtolower($pageTitle)) }}" class="content-under-card-item card-item group h-full">
     <div class="bg-{{ $cardBackgroundColor }} text-{{ $cardTextColor }} rounded-{{ $borderRadius }} h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out overflow-hidden">
         <div>
             <div class="h-[360px] relative overflow-hidden rounded-t-{{ $borderRadius }}">
