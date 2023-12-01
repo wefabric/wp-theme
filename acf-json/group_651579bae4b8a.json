@@ -250,6 +250,69 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
+            "key": "field_656a001d1ae99",
+            "label": "Activiteit titel kleur",
+            "name": "activity_title_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_656a003b1ae9a",
+            "label": "Activiteit tekst kleur",
+            "name": "activity_text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_651579baf1126",
+                        "operator": "==",
+                        "value": "overview_text"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_651579baf1126",
+                        "operator": "==",
+                        "value": "location"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_651579baf1126",
+                        "operator": "==",
+                        "value": "date"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_651579baf1126",
+                        "operator": "==",
+                        "value": "time"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
             "key": "field_654a3b9188f42",
             "label": "Button in activiteit blok",
             "name": "card_button",
@@ -867,5 +930,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701342249
+    "modified": 1701445758
 }

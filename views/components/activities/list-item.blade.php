@@ -45,9 +45,9 @@
         @endif
         <div class="flex flex-col w-full grow mt-5">
 
-            <a href="{{ $activityUrl }}" class="font-bold text-lg group-hover:text-primary">{{ $activityTitle }}</a>
+            <a href="{{ $activityUrl }}" class="font-bold text-{{ $activityTitleColor }} text-lg group-hover:text-primary">{{ $activityTitle }}</a>
 
-            <div class="activity-data mt-4">
+            <div class="activity-data mt-4 text-{{ $activityTextColor }}">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($activitySummary))
                     <p class="mt-3 mb-3">{{ $activitySummary }}</p>
                 @endif
