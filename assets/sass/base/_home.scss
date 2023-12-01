@@ -213,7 +213,7 @@
       margin-top: -250px;
     }
 
-    .swiper .swiper-pagination{
+    .swiper .swiper-pagination {
       display: none !important;
     }
   }
@@ -318,13 +318,22 @@
 // Custom styling
 
 #header {
-
-  .bg-cover {
-    border-radius: 0 0 0 200px;
+  @media only screen and (max-width: 639px) {
+    .bg-cover {
+      border-radius: 0 0 0 100px;
+    }
+    .overlay {
+      border-radius: 0 0 0 100px;
+    }
   }
 
-  .overlay {
-    border-radius: 0 0 0 200px;
+  @media only screen and (min-width: 640px) {
+    .bg-cover {
+      border-radius: 0 0 0 200px;
+    }
+    .overlay {
+      border-radius: 0 0 0 200px;
+    }
   }
 }
 
