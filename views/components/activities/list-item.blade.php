@@ -53,13 +53,14 @@
                 @endif
 
                 @if (!empty($visibleElements) && in_array('location', $visibleElements) && !empty($fields['location']))
-                    <p>
-                        <i class="w-4 fas fa-map-marker-alt mr-3"></i>{{ $fields['location'] }}
+                    <p class="flex items-baseline leading-[1.5]">
+                        <i class="w-4 fas fa-map-marker-alt mr-3 inline flex-shrink-0"></i>
+                        {{ $fields['location'] }}
                     </p>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('date', $visibleElements) && !empty($fields['dates']))
-                    <p class="flex">
+                    <p class="flex items-baseline leading-[1.5]">
                         <i class="w-4 fas fa-calendar-alt mr-3"></i>
                         @foreach ($fields['dates'] as $date)
                             {{ ($date['date']) }}

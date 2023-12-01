@@ -41,20 +41,23 @@
             <div class="vacancy-data mt-4 text-{{ $vacancyTextColor }}">
 
                 @if (!empty($visibleElements) && in_array('location', $visibleElements) && !empty($fields['location']))
-                    <p>
-                        <i class="w-4 object-cover fas fa-map-marker-alt mr-3"></i>{{ $fields['location'] }}
+                    <p class="flex items-baseline leading-[1.5]">
+                        <i class="w-4 object-cover fas fa-map-marker-alt mr-3"></i>
+                        {{ $fields['location'] }}
                     </p>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('working_hours', $visibleElements) && !empty($fields['working_hours']))
-                    <p class="capitalize">
-                        <i class="w-4 object-cover fas fa-clock mr-3"></i>{{ $fields['working_hours'] }}
+                    <p class="flex items-baseline leading-[1.5] capitalize">
+                        <i class="w-4 object-cover fas fa-clock mr-3"></i>
+                        {{ $fields['working_hours'] }}
                     </p>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('salary', $visibleElements) && !empty($fields['salary']))
-                    <p>
-                        <i class="w-4 fas fa-money-bill-simple-wave mr-3"></i>{{ $fields['salary'] }}
+                    <p class="flex items-baseline leading-[1.5]">
+                        <i class="w-4 fas fa-money-bill-simple-wave mr-3"></i>
+                        {{ $fields['salary'] }}
                     </p>
                 @endif
 
