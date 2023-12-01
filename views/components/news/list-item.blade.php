@@ -37,7 +37,7 @@
             ])
             </div>
         @endif
-        <div class="w-full mt-5">
+        <div class="flex flex-col w-full grow mt-5">
             @if (!empty($visibleElements) && in_array('date', $visibleElements) && !empty($postDate))
                 <p class="text-gray-500">{{ $postDate }}</p>
             @endif
@@ -52,21 +52,20 @@
                 @if (!empty($visibleElements) && in_array('author', $visibleElements) && !empty($postAuthorName))
                     <p class="text-gray-500">Geschreven door {{ $postAuthorName }}</p>
                 @endif
-
-                @if (!empty($visibleElements) && in_array('button', $visibleElements))
-                    @if ($buttonCardText)
-                        <div class="mt-auto z-10">
-                            @include('components.buttons.default', [
-                               'text' => $buttonCardText,
-                               'href' => $postUrl,
-                               'alt' => $buttonCardText,
-                               'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
-                               'class' => 'rounded-lg',
-                           ])
-                        </div>
-                    @endif
-                @endif
             </div>
+            @if (!empty($visibleElements) && in_array('button', $visibleElements))
+                @if ($buttonCardText)
+                    <div class="mt-auto pt-8 z-10">
+                        @include('components.buttons.default', [
+                           'text' => $buttonCardText,
+                           'href' => $postUrl,
+                           'alt' => $buttonCardText,
+                           'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
+                           'class' => 'rounded-lg',
+                       ])
+                    </div>
+                @endif
+            @endif
         </div>
     </div>
 </div>

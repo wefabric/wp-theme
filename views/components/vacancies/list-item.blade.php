@@ -34,7 +34,7 @@
            ])
             </div>
         @endif
-        <div class="w-full mt-5">
+        <div class="flex flex-col w-full grow mt-5">
 
             <a href="{{ $vacancyUrl }}" class="font-bold text-lg group-hover:text-primary">{{ $vacancyTitle }}</a>
 
@@ -61,21 +61,21 @@
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($vacancySummary))
                     <p class="mt-3 mb-3">{{ $vacancySummary }}</p>
                 @endif
-
-                @if (!empty($visibleElements) && in_array('button', $visibleElements))
-                    @if ($buttonCardText)
-                        <div class="mt-auto relative z-20 flex items-center">
-                            @include('components.buttons.default', [
-                               'text' => $buttonCardText,
-                               'href' => $vacancyUrl,
-                               'alt' => $buttonCardText,
-                               'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
-                               'class' => 'rounded-lg',
-                           ])
-                        </div>
-                    @endif
-                @endif
             </div>
+
+            @if (!empty($visibleElements) && in_array('button', $visibleElements))
+                @if ($buttonCardText)
+                    <div class="mt-auto pt-8 z-10">
+                        @include('components.buttons.default', [
+                           'text' => $buttonCardText,
+                           'href' => $vacancyUrl,
+                           'alt' => $buttonCardText,
+                           'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
+                           'class' => 'rounded-lg',
+                       ])
+                    </div>
+                @endif
+            @endif
         </div>
     </div>
 </div>
