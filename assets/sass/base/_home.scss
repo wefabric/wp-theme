@@ -49,11 +49,15 @@
 			}
 
 			@media only screen and (min-width: 1080px) and (max-width: 1559px) {
-				margin-top: -180px;
+				margin-top: -230px;
+
+				.custom-styling {
+					height: 680px !important;
+				}
 			}
 
 			@media only screen and (min-width: 1560px) {
-				margin-top: -280px;
+				margin-top: -320px;
 			}
 		}
 
