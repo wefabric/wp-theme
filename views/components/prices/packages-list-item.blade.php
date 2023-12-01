@@ -34,7 +34,7 @@
         <div class="bulletpoints">
             @if ($package['bulletpoints'] && is_array($package['bulletpoints']))
                 @foreach ($package['bulletpoints'] as $bulletpoint)
-                    <p class="flex items-center text-gray-600 mb-2">
+                    <p class="flex items-baseline text-gray-600 mb-2">
                         <span class="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                  stroke-width="2.5"
