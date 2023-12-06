@@ -1,7 +1,7 @@
 {
   "name": "wefabric/logos",
-  "title": "Logo's",
-  "description": "Een logo's blok",
+  "title": "Logo overzicht",
+  "description": "Een logo overzicht blok",
   "category": "theme",
   "icon": "format-gallery",
   "apiVersion": 2,

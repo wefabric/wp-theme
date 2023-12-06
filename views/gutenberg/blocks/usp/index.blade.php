@@ -14,7 +14,7 @@
     $button1Color = $block['data']['button_button_1_color'] ?? '';
     $button1Style = $block['data']['button_button_1_style'] ?? '';
 
-    // Show usps
+   // Show usps
     $uspsCount = $block['data']['usps'];
     $usps = [];
 
@@ -22,22 +22,21 @@
         $uspTitle = $block['data']["usps_{$i}_usp_title"];
         $uspText = $block['data']["usps_{$i}_usp_text"];
 
-        $uspImage = isset($block['data']["usps_{$i}_image"]) ? $block['data']["usps_{$i}_image"] : null;
+        $uspImage = $block['data']["usps_{$i}_image"] ?? '';
 
-        $uspIcon = isset($block['data']["usps_{$i}_icon"]) ? $block['data']["usps_{$i}_icon"] : null;
-        $uspIconColor = isset($block['data']["usps_{$i}_icon_color"]) ? str_replace('-color', '', $block['data']["usps_{$i}_icon_color"]) : '';
+        $uspIcon = $block['data']["usps_{$i}_icon"] ?? null;
+        $uspIconColor = $block['data']["usps_{$i}_icon_color"] ?? '';
 
         $iconClass = '';
         if ($uspIcon !== null) {
-            $iconData = json_decode($uspIcon);
-            $iconClass = $iconData->style . ' fa-' . $iconData->id;
+            $iconData = json_decode($uspIcon, true);
         }
 
         $usps[] = [
             'uspTitle' => $uspTitle,
             'uspText' => $uspText,
             'uspImage' => $uspImage,
-            'uspIcon' => $iconClass,
+            'uspIcon' => $iconData,
             'uspIconColor' => $uspIconColor,
         ];
     }

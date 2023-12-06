@@ -545,29 +545,6 @@ p, span, a, table, label, li, ul, ol {
 //
 //.home {
 //
-//  #usps {
-//
-//    h2 {
-//      @apply text-[24px];
-//    }
-//
-//    .USP-item {
-//
-//      div {
-//        @apply border-tertiary border-2;
-//        border-radius: 10px;
-//        padding: 36px;
-//        display: flex;
-//        text-align: left;
-//        align-items: center;
-//      }
-//
-//      i {
-//        margin-right: 30px !important;
-//      }
-//    }
-//  }
-//
 //  #header {
 //    .content {
 //      @apply order-1;
@@ -598,13 +575,81 @@ p, span, a, table, label, li, ul, ol {
 //
 //body:not(.home) {
 //  h1 {
-//    font-size: 120px !important;
+//    @media only screen and (max-width: 1023px) {
+//      font-size: 60px !important;
+//    }
+//    @media only screen and (min-width: 1024px) {
+//      font-size: 120px !important;
+//    }
 //  }
 //}
 //
 //btn {
 //  @apply uppercase;
 //}
+//
+//
+//// USP block
+//#usps {
+//
+//  h2 {
+//    @apply text-[24px];
+//  }
+//
+//  .USP-item {
+//
+//    div {
+//      @apply border-tertiary border-2;
+//      border-radius: 10px;
+//      padding: 36px;
+//      display: flex;
+//      text-align: left;
+//      align-items: center;
+//    }
+//
+//    i {
+//      margin-right: 30px !important;
+//    }
+//  }
+//}
+//
+//
+//// Kaarten blok
+//.custom-grid-overview {
+//  h2 {
+//    margin-bottom: 100px;
+//  }
+//
+//  .grid {
+//    .card-item:nth-child(2), .card-item:nth-child(5), .card-item:nth-child(8), .card-item:nth-child(11), .card-item:nth-child(14), .card-item:nth-child(17) {
+//      margin-top: -100px !important;
+//    }
+//  }
+//}
+//
+//
+//// Bedrijfskleding archive
+//.custom-bedrijfskleding .grid {
+//  @media only screen and (min-width: 1024px) {
+//    .card-item:nth-child(1), .card-item:nth-child(7), .card-item:nth-child(11), .card-item:nth-child(17), .card-item:nth-child(21), .card-item:nth-child(27) {
+//      @apply col-span-2;
+//
+//      .card-background {
+//        aspect-ratio: auto !important;
+//      }
+//    }
+//  }
+//}
+//
+//
+//// usp-background
+//.usp-background {
+//  .w-full {
+//    @apply bg-primary-dark p-12 lg:p-20;
+//    border-radius: 10px;
+//  }
+//}
+//
 //
 //nav ul li {
 //  @apply uppercase;

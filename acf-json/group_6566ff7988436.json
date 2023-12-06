@@ -1,6 +1,6 @@
 {
     "key": "group_6566ff7988436",
-    "title": "Block: Logo's",
+    "title": "Block: Logo's overzicht",
     "fields": [
         {
             "key": "field_6566ff7994766",
@@ -491,6 +491,34 @@
             ]
         },
         {
+            "key": "field_657047648b74b",
+            "label": "Logo's in afwisselende rijindeling tonen",
+            "name": "alternative_row_layout",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Op de even rijen worden 4 logo's getoond.\r\nOp oneven rijen worden 3 logo's getoond.\r\nGeldt alleen op tablet en grotere schermformaten",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6566ff79947d1",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6566ff79947d1",
             "label": "Logo's in slider weergeven?",
             "name": "show_slider",
@@ -744,7 +772,7 @@
             }
         ]
     ],
-    "menu_order": 20,
+    "menu_order": 19,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -753,5 +781,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701341875
+    "modified": 1701859393
 }

@@ -12,6 +12,8 @@
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'logosSwiper-' . $randomNumber;
+
+    $logoCount = count($logos);
 @endphp
 
 @if($block['data']['show_slider'])
@@ -31,8 +33,24 @@
             <div class="swiper-button-prev logos-button-prev-{{ $randomNumber }}"></div>
         </div>
     </div>
+
+@elseif($block['data']['alternative_row_layout'])
+    <div class="hidden md:grid grid-cols-8 gap-y-4 gap-x-4 py-8">
+        @foreach ($logos as $index => $logo)
+            <div class="col-span-2 {{ ($index + 1) % 7 === 5 ? 'col-start-2' : '' }}">
+                @include('components.logos.list-item')
+            </div>
+        @endforeach
+    </div>
+
+    <div class="grid md:hidden {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-4 gap-x-4 py-8">
+        @foreach ($logos as $logo)
+            @include('components.logos.list-item')
+        @endforeach
+    </div>
+
 @else
-    <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
+    <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-4 gap-x-4 py-8">
         @foreach ($logos as $logo)
             @include('components.logos.list-item')
         @endforeach

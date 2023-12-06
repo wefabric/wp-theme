@@ -171,6 +171,10 @@
                     "icon_sets": [
                         "solid",
                         "regular",
+                        "light",
+                        "thin",
+                        "duotone",
+                        "fak",
                         "brands"
                     ],
                     "custom_icon_set": "",
@@ -778,7 +782,7 @@
             }
         ]
     ],
-    "menu_order": 15,
+    "menu_order": 14,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -787,5 +791,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701341390
+    "modified": 1701867520
 }

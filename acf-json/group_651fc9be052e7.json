@@ -192,7 +192,9 @@
                         "driver_training",
                         "course",
                         "vacancies",
-                        "branches"
+                        "branches",
+                        "bedrijfskleding",
+                        "klantcases"
                     ],
                     "post_status": "",
                     "taxonomy": "",
@@ -1033,5 +1035,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701437648
+    "modified": 1701792339
 }

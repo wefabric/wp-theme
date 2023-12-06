@@ -25,7 +25,7 @@
 
    // Show pages
    $pagesData = [];
-   $numPages = intval($block['data']['pages']);
+   $numPages = isset($block['data']['pages']) ? intval($block['data']['pages']) : 0;
 
    for ($i = 0; $i < $numPages; $i++) {
     $pageKey = "pages_{$i}_page";

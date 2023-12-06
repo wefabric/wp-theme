@@ -11,7 +11,7 @@
 <div class="USP-item">
     <div class="h-full text-center">
         @if ($icon)
-            <i class="fa {{ $icon }} text-{{ $iconColor }} text-[70px] mb-3 inline-block"
+            <i class="fa-{{ $icon['style'] }} fa-{{ $icon['id'] }} text-{{ $iconColor }} text-[70px] mb-3 inline-block"
                aria-hidden="true"></i>
         @endif
         @if ($imageID)
