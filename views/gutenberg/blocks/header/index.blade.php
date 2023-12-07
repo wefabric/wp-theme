@@ -2,14 +2,19 @@
     // Variant
     $headerHeight = $block['data']['header_height'] ?? '';
 
-    $headerClass = '';
-    if ($headerHeight == 1) {
-        $headerClass = 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]';
-    } elseif ($headerHeight == 2) {
-        $headerClass = 'h-[200px] md:h-[400px] 2xl:h-[500px]';
-    } elseif ($headerHeight == 3) {
-        $headerClass = 'h-[160px] md:h-[200px]';
-    }
+    $heightClasses = [
+        1 => 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]',
+        2 => 'h-[200px] md:h-[400px] 2xl:h-[500px]',
+        3 => 'h-[160px] md:h-[200px]',
+    ];
+    $headerClass = $heightClasses[$headerHeight] ?? '';
+
+    $headerNames = [
+        1 => 'big-header',
+        2 => 'medium-header',
+        3 => 'small-header',
+    ];
+    $headerName = $headerNames[$headerHeight] ?? '';
 
     // Content
     $title = !empty($block['data']['title']) ? $block['data']['title'] : get_the_title();
@@ -63,7 +68,7 @@
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
 @endphp
 
-<section id="header" class="relative bg-{{ $headerBackgroundColor }} {{ $customBlockClasses }}">
+<section id="header" class="relative bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }}">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
          style="background-image: url('{{ $imageId ? wp_get_attachment_image_url($imageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId ?: $featuredImageId) }}">
         @if ($overlayEnabled)

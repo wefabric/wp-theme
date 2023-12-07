@@ -441,59 +441,61 @@ p, span, a, table, label, li, ul, ol {
 }
 
 
+
 ///* Zijlstra styling */
 //
 //// Home styling
 //
 //.home {
-//
 //  #header {
 //    .content {
-//      @apply order-1 mt-4 mb-4;
+//      margin-bottom: 0.5rem !important;
+//    }
+//
+//    h1 {
+//      @apply text-[36px] sm:text-[48px] lg:text-[65px];
+//    }
+//  }
+//}
+//
+//
+//// Custom styling
+//.page-builder {
+//  #header.big-header, #header.medium-header {
+//
+//    z-index: 50;
+//    @media only screen and (min-width: 640px) {
+//      margin: 0 34px -100px !important;
+//    }
+//
+//    .content {
+//      @apply order-1 mt-0 -mb-2;
 //
 //      h1 {
-//        @apply text-[18px] font-bold uppercase text-shadow-none;
+//        @apply font-bold uppercase text-shadow-none;
 //        font-family: 'Dyno' !important;
+//        font-size: 18px !important;
 //      }
 //    }
 //
 //    h1 {
-//      @apply order-2 text-[40px] lg:text-[65px] text-shadow-none;
+//      @apply order-2 lg:text-[65px] text-shadow-none;
 //    }
 //
 //    .buttons {
 //      @apply order-3;
 //    }
-//  }
 //
-//}
-//
-//// Custom styling
-//
-//#header {
-//  //margin: 0 34px -100px !important;
-//  //z-index: 50;
-//
-//  .content {
-//    @apply order-1 mt-0 -mb-2;
-//
-//    h1 {
-//      @apply font-bold uppercase text-shadow-none;
-//      font-family: 'Dyno' !important;
-//      font-size: 18px !important;
+//    .custom-styling, .custom-styling .overlay {
+//      @apply sm:rounded-[10px];
 //    }
 //  }
 //
-//  h1 {
-//    @apply order-2 md:text-[65px] text-shadow-none;
+//  > section:nth-child(2) {
+//    @apply sm:mt-[30px] sm:pt-[70px];
 //  }
-//
-//  .buttons {
-//    @apply order-3;
-//  }
-//
-//
 //}
+//
 //
 //body:not(.home) {
 //  h1 {
@@ -509,7 +511,6 @@ p, span, a, table, label, li, ul, ol {
 //btn {
 //  @apply uppercase;
 //}
-//
 //
 //// USP block
 //#usps {
@@ -645,4 +646,43 @@ p, span, a, table, label, li, ul, ol {
 //
 //.secondary-navigation {
 //  font-family: "Dyno";
+//}
+//
+//
+//
+//
+//
+//// Lines under titles
+//
+//#tekst, #afbeelding-tekst {
+//  h2:after {
+//    content: "";
+//    display: block;
+//    width: 1px;
+//    height: 50px;
+//    @apply bg-quaternary;
+//    margin: 5px 0 15px 30px;
+//  }
+//}
+//
+//#titel-tekst {
+//  h2:after {
+//    content: "";
+//    display: block;
+//    width: 50px;
+//    height: 1px;
+//    @apply bg-quaternary;
+//    margin: 20px 0 0 auto;
+//  }
+//}
+//
+//#kaarten {
+//  h2:after {
+//    content: "";
+//    display: block;
+//    width: 50px;
+//    height: 1px;
+//    @apply bg-quaternary;
+//    margin: 20px auto 0;
+//  }
 //}

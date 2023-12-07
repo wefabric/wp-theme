@@ -4,9 +4,14 @@
     $titleColor = $block['data']['title_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
-//    $textPosition = $block['data']['text_position'] ?? '';
-//    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-//    $textClass = $titleClassMap[$textPosition] ?? '';
+
+    $textPosition = $block['data']['text_position'] ?? '';
+    $textClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+    $textClass = $textClassMap[$textPosition] ?? 'text-left';
+    $flexClassMap = ['left' => 'items-start', 'center' => 'items-center', 'right' => 'items-end',];
+    $flexClass = $flexClassMap[$textPosition] ?? 'items-center';
+    $ctaLayout = $block['data']['cta_layout'] ?? '';
+    $flexDirection = ($ctaLayout === 'vertical') ? 'flex-col' : (($ctaLayout === 'horizontal') ? 'flex-row' : '');
 
     $ctaForm = $block['data']['form'] ?? '';
     $topImage = $block['data']['top_image'] ?? '';
@@ -80,8 +85,8 @@
                 @endif
 
                 <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
-                    <div class="flex flex-col md:flex-row md:items-center justify-center gap-x-16 gap-y-4 md:gap-y-0 @if($topImage) mt-16 md:mt-20 @endif">
-                        <div class="w-fit text-center md:text-left">
+                    <div class="flex flex-col md:{{ $flexDirection }} {{ $flexClass }} justify-center gap-x-16 gap-y-4 @if($topImage) mt-16 md:mt-20 @endif">
+                        <div class="w-fit @if($ctaLayout == 'vertical' && $textPosition !== 'center') {{ $textClass }} @else text-center @endif md:{{ $textClass }}">
                             @if ($title)
                                 <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
                             @endif
@@ -90,12 +95,12 @@
                             @endif
                         </div>
                         @if (($button1Text) && ($button1Link))
-                            <div class="flex gap-4 w-fit justify-center md:justify-start">
+                            <div class="flex flex-col sm:flex-row gap-x-4 w-fit justify-center md:justify-start">
                                 @include('components.buttons.default', [
                                    'text' => $button1Text,
                                    'href' => $button1Link,
                                    'alt' => $button1Text,
-                                   'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style . '',
+                                   'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
                                    'class' => 'rounded-lg',
                                    'target' => $button1Target,
                                ])
@@ -104,7 +109,7 @@
                                        'text' => $button2Text,
                                        'href' => $button2Link,
                                        'alt' => $button2Text,
-                                       'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style . '',
+                                       'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
                                        'class' => 'rounded-lg',
                                        'target' => $button2Target,
                                    ])
