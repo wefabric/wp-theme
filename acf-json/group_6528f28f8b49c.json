@@ -383,11 +383,11 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "prices"
+                "value": "prijzen"
             }
         ]
     ],
-    "menu_order": 26,
+    "menu_order": 28,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -396,5 +396,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701248593
+    "modified": 1701961810
 }

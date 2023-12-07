@@ -3,7 +3,7 @@
     "title": "Prijzen",
     "menu_order": 0,
     "active": true,
-    "post_type": "prices",
+    "post_type": "prijzen",
     "advanced_configuration": true,
     "import_source": "",
     "import_date": "",
@@ -81,5 +81,5 @@
     "can_export": true,
     "delete_with_user": false,
     "register_meta_box_cb": "",
-    "modified": 1701247862
+    "modified": 1701961777
 }
