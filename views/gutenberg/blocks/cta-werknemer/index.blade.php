@@ -75,7 +75,7 @@
              ])
             </div>
         @endif
-        <div class="cta-block mx-auto relative {{ $blockClass }} relative @if($blockWidth !== 'fullscreen') md:px-8 @endif">
+        <div class="cta-block relative z-10 mx-auto {{ $blockClass }} relative @if($blockWidth !== 'fullscreen') md:px-8 @endif">
             <div class="px-8 py-16 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif"
                  style="background-image: url('{{ wp_get_attachment_image_url($blockBackgroundImage, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($blockBackgroundImage) }}">
                 @if ($blockOverlayEnabled)
@@ -96,7 +96,7 @@
                                    'text' => $button1Text,
                                    'href' => $button1Link,
                                    'alt' => $button1Text,
-                                   'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style . '',
+                                   'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
                                    'class' => 'rounded-lg',
                                    'target' => $button1Target,
                                ])
@@ -105,7 +105,7 @@
                                        'text' => $button2Text,
                                        'href' => $button2Link,
                                        'alt' => $button2Text,
-                                       'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style . '',
+                                       'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
                                        'class' => 'rounded-lg',
                                        'target' => $button2Target,
                                    ])

@@ -118,6 +118,19 @@
   border-radius: 50px;
 }
 
+.bottom-diagonal-transition::after {
+  content: '';
+  @apply bg-background;
+  position: absolute;
+  bottom: -160px;
+  left: 0;
+  width: calc(100% + 30px);
+  height: 400px;
+  z-index: 5;
+  transform: rotate(-6deg);
+  border-radius: 50px;
+}
+
 
 .top-transition::after {
   content: '';
