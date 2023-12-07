@@ -60,17 +60,14 @@
                 0: {
                     loop: {{count($usps) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
-                    spaceBetween: 70,
                 },
                 640: {
                     loop: {{ count($usps) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
-                    spaceBetween: 120,
                 },
                 1280: {
                     loop: {{ count($usps) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
-                    spaceBetween: 120,
                 },
             }
         });
