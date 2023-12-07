@@ -42,7 +42,7 @@
     @endif
     <div class="relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto flex flex-col lg:flex-row gap-8">
-            <div class="w-full lg:w-1/3 xl:w-1/2 order-1 lg:order-0 px-8">
+            <div class="content-block w-full lg:w-1/3 xl:w-1/2 order-1 lg:order-0 px-8">
                 @if ($title)
                     <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
                 @endif
@@ -79,7 +79,7 @@
             </div>
             @if ($form)
                 <div class="w-full lg:w-2/3 xl:w-1/2 order-0 lg:order-1 sm:px-8">
-                    <div class="lg:-mt-[180px] bg-{{ $formBackgroundColor }} p-12 lg:shadow-xl rounded-{{ $borderRadius }}">
+                    <div class="contact-block bg-{{ $formBackgroundColor }} p-12 lg:shadow-xl rounded-{{ $borderRadius }}">
                         {!! gravity_form($form) !!}
                     </div>
                 </div>

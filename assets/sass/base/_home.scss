@@ -249,7 +249,6 @@
   }
 
   #activiteiten {
-
     @apply pb-8 md:pb-16;
 
     @media only screen and (max-width: 376px) {
@@ -296,7 +295,6 @@
   }
 
   footer {
-
     .footer {
       position: relative;
       z-index: 10;
@@ -377,9 +375,9 @@
   }
 }
 
-//#tekst div div {
-//	@apply w-1/2 mx-0
-//}
+#contact .contact-block {
+  @apply lg:-mt-[180px];
+}
 
 body:not(.home) {
   #kaarten {
@@ -561,7 +559,6 @@ p, span, a, table, label, li, ul, ol {
 //        margin-top: -80px !important;
 //      }
 //    }
-//
 //    @media only screen and (min-width: 1024px) {
 //      .card-item:nth-child(2), .card-item:nth-child(5), .card-item:nth-child(8), .card-item:nth-child(11), .card-item:nth-child(14), .card-item:nth-child(17) {
 //        margin-top: -100px !important;
@@ -573,6 +570,11 @@ p, span, a, table, label, li, ul, ol {
 //
 //// Bedrijfskleding archive
 //.custom-bedrijfskleding .grid {
+//
+//  .card-background, .card-background .card-overlay {
+//    border-radius: 60px !important;
+//  }
+//
 //  @media only screen and (min-width: 1024px) {
 //    .card-item:nth-child(1), .card-item:nth-child(7), .card-item:nth-child(11), .card-item:nth-child(17), .card-item:nth-child(21), .card-item:nth-child(27) {
 //      @apply col-span-2;
@@ -672,7 +674,14 @@ p, span, a, table, label, li, ul, ol {
 //    width: 50px;
 //    height: 1px;
 //    @apply bg-quaternary;
-//    margin: 20px 0 0 auto;
+//
+//    @media only screen and (max-width: 1023px) {
+//      margin: 20px 0 0 0;
+//    }
+//
+//    @media only screen and (min-width: 1024px) {
+//      margin: 20px 0 0 auto;
+//    }
 //  }
 //}
 //
