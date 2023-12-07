@@ -8,7 +8,7 @@
     $altText = get_post_meta($imageID, '_wp_attachment_image_alt', true) ?: 'usp-image';
 @endphp
 
-<div class="USP-item">
+<div class="USP-item h-full">
     <div class="h-full text-center">
         @if ($icon)
             <i class="fa-{{ $icon['style'] }} fa-{{ $icon['id'] }} text-{{ $iconColor }} text-[70px] mb-3 inline-block"

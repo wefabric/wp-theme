@@ -449,7 +449,7 @@ p, span, a, table, label, li, ul, ol {
 //
 //  #header {
 //    .content {
-//      @apply order-1;
+//      @apply order-1 mt-4 mb-4;
 //
 //      h1 {
 //        @apply text-[18px] font-bold uppercase text-shadow-none;
@@ -458,7 +458,7 @@ p, span, a, table, label, li, ul, ol {
 //    }
 //
 //    h1 {
-//      @apply order-2 text-[65px] text-shadow-none;
+//      @apply order-2 text-[40px] lg:text-[65px] text-shadow-none;
 //    }
 //
 //    .buttons {
@@ -473,6 +473,26 @@ p, span, a, table, label, li, ul, ol {
 //#header {
 //  //margin: 0 34px -100px !important;
 //  //z-index: 50;
+//
+//  .content {
+//    @apply order-1 mt-0 -mb-2;
+//
+//    h1 {
+//      @apply font-bold uppercase text-shadow-none;
+//      font-family: 'Dyno' !important;
+//      font-size: 18px !important;
+//    }
+//  }
+//
+//  h1 {
+//    @apply order-2 md:text-[65px] text-shadow-none;
+//  }
+//
+//  .buttons {
+//    @apply order-3;
+//  }
+//
+//
 //}
 //
 //body:not(.home) {
@@ -501,16 +521,28 @@ p, span, a, table, label, li, ul, ol {
 //  .USP-item {
 //
 //    div {
-//      @apply border-tertiary border-2;
+//      @apply border-tertiary border-2 flex-col xl:flex-row;
 //      border-radius: 10px;
 //      padding: 36px;
 //      display: flex;
 //      text-align: left;
 //      align-items: center;
+//      justify-content: center;
 //    }
 //
 //    i {
-//      margin-right: 30px !important;
+//      @media only screen and (max-width: 1279px) {
+//        margin-bottom: 20px !important;
+//      }
+//      @media only screen and (min-width: 1280px) {
+//        margin-right: 30px !important;
+//      }
+//    }
+//
+//    p {
+//      @media only screen and (max-width: 1279px) {
+//        text-align: center;
+//      }
 //    }
 //  }
 //}
@@ -523,8 +555,16 @@ p, span, a, table, label, li, ul, ol {
 //  }
 //
 //  .grid {
-//    .card-item:nth-child(2), .card-item:nth-child(5), .card-item:nth-child(8), .card-item:nth-child(11), .card-item:nth-child(14), .card-item:nth-child(17) {
-//      margin-top: -100px !important;
+//    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+//      .card-item:nth-child(even) {
+//        margin-top: -80px !important;
+//      }
+//    }
+//
+//    @media only screen and (min-width: 1024px) {
+//      .card-item:nth-child(2), .card-item:nth-child(5), .card-item:nth-child(8), .card-item:nth-child(11), .card-item:nth-child(14), .card-item:nth-child(17) {
+//        margin-top: -100px !important;
+//      }
 //    }
 //  }
 //}

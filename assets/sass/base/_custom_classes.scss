@@ -1,4 +1,4 @@
-// Custom classes
+// Padding and margin classes
 .desktop-pb-100px {
   @media only screen and (min-width: 1024px) {
     padding-bottom: 100px !important;
@@ -93,4 +93,30 @@
   @media only screen and (max-width: 1023px) {
     margin-top: -200px !important;
   }
+}
+
+
+
+
+
+
+
+
+
+// Block transition blocks
+//.page-builder {
+//  overflow: hidden;
+//}
+
+.top-overlay::after {
+  content: '';
+  @apply bg-background;
+  position: absolute;
+  top: -160px;
+  left: 0;
+  width: calc(100% + 30px);
+  height: 400px;
+  z-index: 5;
+  transform: rotate(-6deg);
+  border-radius: 50px;
 }
