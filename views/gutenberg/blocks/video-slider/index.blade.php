@@ -8,8 +8,9 @@
 
     // Show videos
     $videosData = [];
+    $numVideos = intval($block['data']['videos']);
 
-    for ($i = 0; $i < $block['data']['videos']; $i++) {
+    for ($i = 0; $i < $numVideos; $i++) {
         $videoKey = "videos_{$i}_video";
         $captionKey = "videos_{$i}_caption";
 
@@ -43,7 +44,7 @@
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
 @endphp
 
-<section id="foto-slider" class="relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
+<section id="video-slider" class="relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
