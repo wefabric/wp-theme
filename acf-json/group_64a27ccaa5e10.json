@@ -224,11 +224,11 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "employees"
+                "value": "werknemers"
             }
         ]
     ],
-    "menu_order": 25,
+    "menu_order": 33,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -237,5 +237,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698159360
+    "modified": 1702031597
 }

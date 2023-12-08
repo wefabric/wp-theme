@@ -98,11 +98,11 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "testimonial"
+                "value": "testimonials"
             }
         ]
     ],
-    "menu_order": 24,
+    "menu_order": 32,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -111,5 +111,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1699541336
+    "modified": 1702031627
 }
