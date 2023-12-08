@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/video-slider",
+  "title": "Video slider",
+  "description": "Een video slider blok",
+  "category": "theme",
+  "icon": "format-video",
+  "apiVersion": 2,
+  "keywords": [
+    "video slider"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
