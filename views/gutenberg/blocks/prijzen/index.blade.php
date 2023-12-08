@@ -19,7 +19,7 @@
    if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'prices',
+            'post_type' => 'prijzen',
         ];
         $query = new WP_Query($args);
         foreach ($query->posts as $post) {
