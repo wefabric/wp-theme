@@ -2,8 +2,11 @@
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-    $text = $block['data']['text'] ?? '';
-    $textColor = $block['data']['text_color'] ?? '';
+    $quote = $block['data']['quote'] ?? '';
+    $quoteTextColor = $block['data']['quote_text_color'] ?? '';
+    $name = $block['data']['name'] ?? '';
+    $function = $block['data']['function'] ?? '';
+    $personTextColor = $block['data']['person_text_color'] ?? '';
 
     // Buttons
     $button1Text = $block['data']['button_button_1']['title'] ?? '';
@@ -36,7 +39,7 @@
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
 @endphp
 
-<section id="tekst" class="relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
+<section id="quote" class="relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
@@ -46,8 +49,14 @@
             @if ($title)
                 <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
             @endif
-            @if ($text)
-                @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])
+            @if ($quote)
+                @include('components.content', ['content' => apply_filters('the_content', $quote), 'class' => 'text-' . $quoteTextColor])
+            @endif
+            @if ($name)
+                <p class="mt-5 h6 text-{{ $personTextColor }}">{{ $name }}</p>
+            @endif
+            @if ($function)
+                <p class="mt-1 text-{{ $personTextColor }}">{{ $function }}</p>
             @endif
             @if (($button1Text) && ($button1Link))
                 <div class="{{ $textClass }} w-full flex sm:flex-row gap-4 mt-4 md:mt-8">
@@ -55,7 +64,7 @@
                        'text' => $button1Text,
                        'href' => $button1Link,
                        'alt' => $button1Text,
-                       'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                       'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style ,
                        'class' => 'rounded-lg',
                        'target' => $button1Target,
                    ])

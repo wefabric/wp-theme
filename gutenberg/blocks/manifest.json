@@ -23,6 +23,7 @@
     "werkwijze/block.json",
     "contact/block.json",
     "prijzen/block.json",
+    "quote/block.json",
     "testimonial/block.json",
     "faq/block.json",
     "google-maps/block.json",
