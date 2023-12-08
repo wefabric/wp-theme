@@ -179,7 +179,7 @@
                 "id": ""
             },
             "post_type": [
-                "activities"
+                "activiteiten"
             ],
             "post_status": "",
             "taxonomy": "",
@@ -921,7 +921,7 @@
             }
         ]
     ],
-    "menu_order": 22,
+    "menu_order": 24,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -930,5 +930,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701445758
+    "modified": 1702050248
 }

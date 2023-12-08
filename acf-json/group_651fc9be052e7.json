@@ -188,13 +188,14 @@
                     "post_type": [
                         "page",
                         "post",
-                        "activities",
-                        "driver_training",
-                        "course",
-                        "vacancies",
                         "branches",
                         "bedrijfskleding",
-                        "klantcases"
+                        "klantcases",
+                        "activiteiten",
+                        "opleidingen",
+                        "rijopleidingen",
+                        "vacatures",
+                        "werknemers"
                     ],
                     "post_status": "",
                     "taxonomy": "",
@@ -1026,7 +1027,7 @@
             }
         ]
     ],
-    "menu_order": 19,
+    "menu_order": 20,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -1035,5 +1036,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701792339
+    "modified": 1702050185
 }

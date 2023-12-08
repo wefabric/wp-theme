@@ -140,7 +140,7 @@
                 "id": ""
             },
             "post_type": [
-                "employees"
+                "werknemers"
             ],
             "post_status": "",
             "taxonomy": "",
@@ -703,7 +703,7 @@
             }
         ]
     ],
-    "menu_order": 7,
+    "menu_order": 6,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -712,5 +712,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701340481
+    "modified": 1702050012
 }

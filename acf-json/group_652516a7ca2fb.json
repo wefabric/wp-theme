@@ -179,7 +179,7 @@
                 "id": ""
             },
             "post_type": [
-                "vacancies"
+                "vacatures"
             ],
             "post_status": "",
             "taxonomy": "",
@@ -921,7 +921,7 @@
             }
         ]
     ],
-    "menu_order": 21,
+    "menu_order": 23,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -930,5 +930,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701440929
+    "modified": 1702050229
 }

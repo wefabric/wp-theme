@@ -189,7 +189,7 @@
                 "id": ""
             },
             "post_type": [
-                "prices"
+                "prijzen"
             ],
             "post_status": "",
             "taxonomy": "",
@@ -694,7 +694,7 @@
             }
         ]
     ],
-    "menu_order": 18,
+    "menu_order": 19,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -703,5 +703,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701341691
+    "modified": 1702050112
 }
