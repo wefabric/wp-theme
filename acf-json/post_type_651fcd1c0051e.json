@@ -3,7 +3,7 @@
     "title": "Opleidingen",
     "menu_order": 0,
     "active": true,
-    "post_type": "course",
+    "post_type": "opleidingen",
     "advanced_configuration": true,
     "import_source": "",
     "import_date": "",
@@ -83,5 +83,5 @@
     "can_export": true,
     "delete_with_user": false,
     "register_meta_box_cb": "",
-    "modified": 1701248271
+    "modified": 1702033560
 }
