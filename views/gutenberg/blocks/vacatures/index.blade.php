@@ -25,7 +25,7 @@
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'vacancies',
+            'post_type' => 'vacatures',
         ];
 
         $query = new WP_Query($args);
@@ -35,7 +35,7 @@
         $selectedCategory = $block['data']['category'] ?? '';
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'vacancies',
+            'post_type' => 'vacatures',
             'tax_query' => [
                 [
                     'taxonomy' => 'category',
@@ -57,7 +57,7 @@
         $postAmount = $block['data']['post_amount'] ?? 3;
         $args = [
             'posts_per_page' => $postAmount,
-            'post_type' => 'vacancies',
+            'post_type' => 'vacatures',
             'orderby' => 'date',
             'order' => 'DESC',
         ];
