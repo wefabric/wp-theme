@@ -134,11 +134,11 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "activities"
+                "value": "activiteiten"
             }
         ]
     ],
-    "menu_order": 23,
+    "menu_order": 31,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -147,5 +147,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1700835564
+    "modified": 1702035575
 }
