@@ -22,7 +22,7 @@
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'employees',
+            'post_type' => 'werknemers',
         ];
 
         $query = new WP_Query($args);
