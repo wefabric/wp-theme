@@ -23,7 +23,10 @@
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                         @foreach ($activityCategories as $category)
-                            <a href="{{ $category->slug }}" class="bg-secondary px-4 py-2 rounded-full text-black">
+                            @php
+                                $categoryColor = get_field('category_color', $category);
+                            @endphp
+                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full">
                                 {{ $category->name }}
                             </a>
                         @endforeach
