@@ -22,7 +22,7 @@
                             @php
                                 $categoryColor = get_field('category_color', $category);
                             @endphp
-                            <a href="{{ $category->slug }}" tyle="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full">
+                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full">
                                 {{ $category->name }}
                             </a>
                         @endforeach
