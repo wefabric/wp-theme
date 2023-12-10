@@ -164,14 +164,15 @@
                     @endif
                 </div>
 
-                <div class="flex gap-1 justify-center md:justify-start">
+                <div class="text-center md:text-left text-[14px]">
                     @if($termsPage)
-                        <a class="underline" href="{{ get_permalink($termsPage) }}">Algemene voorwaarden</a> |
+                        <a class="underline" href="{{ get_permalink($termsPage) }}">Algemene voorwaarden</a> @if($termsPage && $privacyPage) | @endif
                     @endif
                     @if($privacyPage)
                         <a class="underline" href="{{ get_permalink($privacyPage) }}">Privacybeleid</a>
                     @endif
                 </div>
+
             </div>
 
             <div class="w-full md:w-1/2 xl:w-1/4 flex">
