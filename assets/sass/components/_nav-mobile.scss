@@ -192,7 +192,7 @@ header.banner {
     //  @apply text-secondary #{!important};
     //}
 
-    &.current-menu-item a {
+    &.current-menu-item > a:first-child {
       @apply text-secondary #{!important};
     }
 
