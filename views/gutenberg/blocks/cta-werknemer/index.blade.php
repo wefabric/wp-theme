@@ -58,9 +58,9 @@
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
 
-    <div class="cta-custom {{ $fullScreenClass }} @if ($employeeImage) pt-36 lg:pt-64 @else pt-8 lg:pt-16 xl:pt-20 @endif">
+    <div class="cta-custom {{ $fullScreenClass }} @if ($employeeImage) pt-24 lg:pt-28 @else pt-8 lg:pt-16 xl:pt-20 @endif">
         {{--Voor het uitlijnen naar rechts--}}
-        <div class="custom-width background-container absolute top-0 right-0 h-full pt-8 lg:pt-16 xl:pt-20">
+        <div class="custom-width background-container absolute top-0 right-0 h-full @if ($employeeImage) pt-24 lg:pt-28 @else pt-8 lg:pt-16 xl:pt-20 @endif">
             <div class="bg-{{ $blockBackgroundColor }} w-full h-full"></div>
         </div>
 
