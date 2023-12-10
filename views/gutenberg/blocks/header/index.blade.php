@@ -5,7 +5,7 @@
     $heightClasses = [
         1 => 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]',
         2 => 'h-[200px] md:h-[400px] 2xl:h-[500px]',
-        3 => 'h-[160px] md:h-[200px]',
+        3 => 'h-[120px] md:h-[200px]',
     ];
     $headerClass = $heightClasses[$headerHeight] ?? '';
 
