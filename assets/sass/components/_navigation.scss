@@ -207,3 +207,20 @@
 	
 }
 
+
+
+// Breadcrumbs
+
+.rank-math-breadcrumb a:first-child {
+	font-family: 'Font Awesome 6 Pro';
+	position: relative;
+	margin-right: 25px;
+}
+
+.rank-math-breadcrumb a:first-child::before {
+	content: '\f015';
+	font-family: 'Font Awesome 6 Pro';
+	position: absolute;
+	left: 0;
+	@apply hover:text-secondary;
+}
