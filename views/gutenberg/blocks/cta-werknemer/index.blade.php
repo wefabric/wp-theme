@@ -70,7 +70,7 @@
                  'image_id' => $employeeImageId,
                  'size' => 'full',
                  'object_fit' => 'cover',
-                 'img_class' => 'w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] aspect-square object-cover rounded-full',
+                 'img_class' => 'w-[200px] lg:w-[300px] lg:h-[300px] aspect-square object-cover rounded-full',
                  'alt' => $employeeTitle,
              ])
             </div>

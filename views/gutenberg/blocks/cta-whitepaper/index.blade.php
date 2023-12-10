@@ -65,7 +65,7 @@
                     'image_id' => $topImage,
                     'size' => 'full',
                     'object_fit' => 'cover',
-                    'img_class' => 'w-[200px] h-[200px] aspect-square object-cover rounded-full',
+                    'img_class' => 'w-[200px] aspect-square object-cover rounded-full',
                     'alt' => get_post_meta($topImage, '_wp_attachment_image_alt', true) ?: 'Top image',
                 ])
             </div>
