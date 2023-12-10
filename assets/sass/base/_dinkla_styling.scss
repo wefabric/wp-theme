@@ -413,6 +413,10 @@ body:not(.home) {
   }
 }
 
+.footer i.fa-paper-plane {
+  @apply text-white transform transition-all ease-in-out duration-200 hover:scale-110 hover:text-secondary;
+}
+
 
 // Typography
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {

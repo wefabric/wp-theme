@@ -1,5 +1,13 @@
 @php
     $option = get_fields('option');
+    if(!empty($option)) {
+		if(array_key_exists('text_color', $option)) {
+			$text_color = $option['text_color'];
+		}
+        if(array_key_exists('title_color', $option)) {
+			$title_color = $option['title_color'];
+		}
+	}
 @endphp
 
 @include('components.socials.list', ['icon_class' => 'text-xl'])
@@ -10,7 +18,7 @@
 
 		$url = $option['newsletter_footer']['embed_subscribe_url'] ?? '';
 	@endphp
-	<span class="h5 pt-4 pb-2 pr-6 inline-block">
+	<span class="h5 text-{{ $title_color }} pt-4 pb-2 pr-6 inline-block">
 		{{ $title }}
 	</span>
     <div>
