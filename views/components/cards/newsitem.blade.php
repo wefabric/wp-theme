@@ -7,6 +7,12 @@
 
     $categories = get_the_category($postId);
 
+    $postSummary = get_the_excerpt($postId);
+        $maxSummaryLength = 180;
+        if (strlen($postSummary) > $maxSummaryLength) {
+            $postSummary = substr($postSummary, 0, $maxSummaryLength - 3) . '...';
+        }
+
     // Blokinstellingen
     $options = get_fields('option');
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
@@ -78,15 +84,7 @@
         <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
             <a href="{{ get_permalink($postId) }}"
                class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
-            {{--                @if (!empty($visibleElements) && in_array('category', $visibleElements))--}}
-            {{--                    <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">--}}
-            {{--                        @foreach ($postCategories as $category)--}}
-            {{--                            <a href="{{ $category->slug }}" class="bg-secondary px-4 py-2 rounded-full text-black">--}}
-            {{--                                {{ $category->name }}--}}
-            {{--                            </a>--}}
-            {{--                        @endforeach--}}
-            {{--                    </div>--}}
-            {{--                @endif--}}
+
             @include('components.image', [
                 'image_id' => get_post_thumbnail_id($postId),
                 'size' => 'news-thumbnail',
@@ -96,27 +94,23 @@
         ])
         </div>
 
-        <div class="w-full mt-5">
-            {{--            @if (!empty($visibleElements) && in_array('date', $visibleElements) && !empty($postDate))--}}
-            {{--                <p class="text-gray-500">{{ $postDate }}</p>--}}
-            {{--            @endif--}}
+        <div class="flex flex-col w-full grow mt-5">
 
             <a href="{{ get_permalink($postId) }}"
                class="font-bold text-lg group-hover:text-primary">{{ get_the_title($postId) }}</a>
+
             <div class="news-info">
-                <p class="mt-3 mb-2">{{ get_the_excerpt($postId) }} </p>
-                {{--                @if (!empty($visibleElements) && in_array('author', $visibleElements) && !empty($postAuthorName))--}}
-                {{--                    <p class="text-gray-500">Geschreven door {{ $postAuthorName }}</p>--}}
-                {{--                @endif--}}
-                <div class="mt-4 md:mt-8 z-10">
-                    @include('components.buttons.default', [
-                       'text' => 'Lees meer',
-                       'href' => get_permalink($postId),
-                       'alt' => 'Lees meer',
-                       'colors' => 'btn-primary-color btn-filled',
-                       'class' => 'rounded-lg',
-                   ])
-                </div>
+                <p class="mt-3 mb-2">{{ $postSummary }} </p>
+            </div>
+
+            <div class="mt-auto pt-8 z-10">
+                @include('components.buttons.default', [
+                   'text' => 'Lees meer',
+                   'href' => get_permalink($postId),
+                   'alt' => 'Lees meer',
+                   'colors' => 'btn-primary-color btn-filled',
+                   'class' => 'rounded-lg',
+               ])
             </div>
         </div>
     </div>
