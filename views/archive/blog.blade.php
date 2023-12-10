@@ -1,12 +1,17 @@
 @extends('layouts.main')
 
 @section('content')
+
+	<div class="page-builder">
+		{!! apply_filters('the_content', get_post_field('post_content', $page->ID)) !!}
+	</div>
+
     <div class="header">
         {!! themeHeader()->render($page->ID) !!}
     </div>
 
 {{--	@include('components.breadcrumbs.index', ['classes' => ''])--}}
-	
+
 {{--	<div class="container px-8 pt-6 lg:pt-12 mx-auto">--}}
 {{--		@include('components.news.category-links')--}}
 {{--	</div>--}}
@@ -20,7 +25,7 @@
 					])
 				@endloop
 			</div>
-		
+
 			<div class="pagination text-center mt-12 lg:mt-24">
 				@php
 					the_posts_pagination( [
@@ -32,7 +37,6 @@
 				@endphp
 			</div>
 		</div>
-	
 {{--
 		<div class="bg-primary absolute w-full h-96 bottom-0 left-0 -z-50">
 			//bottom colored bar.
@@ -40,10 +44,8 @@
 --}}
 	</section>
 
-    <div class="page-builder">
-        {!! pageBuilder()->render($page->ID) !!}
-    </div>
+
+
+
+
 @endsection
-
-
-
