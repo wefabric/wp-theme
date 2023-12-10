@@ -173,8 +173,6 @@ header.banner {
     display: block;
   }
 
-
-
   li {
     position: relative;
     display: block !important;
@@ -190,8 +188,16 @@ header.banner {
       font-family: $fa-font-family;
     }
 
+    //&.current_page_parent > a:first-child {
+    //  @apply text-secondary #{!important};
+    //}
+
+    &.current-menu-item a {
+      @apply text-secondary #{!important};
+    }
+
     a {
-      @apply text-white hover:text-white #{!important};
+      @apply text-white;
       padding: 0.5rem 0 0.25rem;
     }
 
@@ -204,7 +210,7 @@ header.banner {
 
 
   li.custom.btn {
-    @apply text-center mt-4;
+    @apply text-center mt-4 mb-12;
     padding: 0 3rem !important;
   }
 }
