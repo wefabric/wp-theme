@@ -103,7 +103,7 @@
                     <div class="image {{ $imageClass }} order-1 {{ $imageOrder }}">
                         @include('components.image', [
                             'image_id' => $imageID,
-                            'size' => 'full',
+                            'size' => 'textblock-image',
                             'object_fit' => 'cover',
                             'img_class' => 'w-full object-cover rounded-' . $borderRadius . ' ' . $imageHeightClass,
                             'alt' => $imageAlt
