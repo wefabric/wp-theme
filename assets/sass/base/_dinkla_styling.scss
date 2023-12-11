@@ -316,6 +316,11 @@
 // Custom styling
 
 #header {
+
+  h1 {
+    @apply text-shadow-lg;
+  }
+
   @media only screen and (max-width: 639px) {
     .bg-cover {
       border-radius: 0 0 0 100px;
