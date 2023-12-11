@@ -14,7 +14,7 @@
 				<i class="fa-solid fa-paper-plane "></i>
 				<span class="screen-reader-only">Aanmelden</span>
 			</button>
-			<input type="submit" value="" name="subscribe" id="mc-embedded-subscribe">
+			<input type="submit" value="" name="subscribe" id="mc-embedded-subscribe" aria-label="Submit button">
 		</div>
 	
 	</div>
