@@ -7,7 +7,7 @@
                        class="absolute left-0  w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                     @include('components.image', [
                      'image_id' => $featuredImageId,
-                     'size' => 'news-thumbnail',
+                     'size' => 'job-thumbnail',
                      'object_fit' => 'cover',
                      'img_class' => 'w-full h-full object-cover transform ease-in-out duration-300 group-hover:scale-110 rounded-t-' . $borderRadius,
                      'alt' => $pageTitle
@@ -21,7 +21,7 @@
                        class="absolute left-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                     @include('components.image', [
                        'image_id' => $imageID,
-                       'size' => 'news-thumbnail',
+                       'size' => 'job-thumbnail',
                        'object_fit' => 'cover',
                        'img_class' => 'w-full h-full object-cover transform ease-in-out duration-300 group-hover:scale-110 rounded-t-' . $borderRadius,
                        'alt' => $pageTitle
