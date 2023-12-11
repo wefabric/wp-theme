@@ -7,14 +7,14 @@
         @else >
         @endif
 
-        <a href="{{ $pageUrl }}"
+        <a href="{{ $pageUrl }}" aria-label="Open {{ $pageTitle }} pagina"
            class="card-overlay left-0 right-0 absolute h-full w-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
         @if ($pageIcon)
-            <a class="page-icon" href="{{ $pageUrl }}">
+            <a class="page-icon" href="{{ $pageUrl }}" aria-label="Open {{ $pageTitle }} pagina">
                 <i class="text-{{ $cardTitleColor }} page-icon relative z-20 text-[60px] md:text-[100px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-white transition-all duration-300 ease-in-out"></i>
             </a>
         @endif
-        <a href="{{ $pageUrl }}"
+        <a href="{{ $pageUrl }} " aria-label="Open {{ $pageTitle }} pagina"
            class="text-{{ $cardTitleColor }} page-title relative z-20 h4 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
             {{ $pageTitle }}
         </a>
