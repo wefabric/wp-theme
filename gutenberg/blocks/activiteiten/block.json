@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/activiteiten",
+  "title": "Activiteiten overzicht",
+  "description": "Een activiteiten overzicht blok",
+  "category": "theme",
+  "icon": "calendar",
+  "apiVersion": 2,
+  "keywords": [
+    "activiteiten overzicht"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+#contact .gform_fields {
+  grid-template-columns: repeat(1, 1fr) !important;
+}
+
+#contact .gform_title {
+  margin-bottom: 2rem;
+}
+
+.gform_body .gform_button, .gform_footer .gform_button, .gform_fields .gform-button {
+  @apply bg-cta rounded-lg border border-2 border-cta overflow-hidden z-1 duration-200 relative #{!important};
+
+  &:before {
+    content: '' !important;
+    z-index: -1 !important;
+    @apply bg-black opacity-20 absolute h-full w-full left-0 bottom-0 transition-all duration-200 #{!important};
+  }
+
+  &:hover {
+    @apply bg-cta text-white border-black border-opacity-20 #{!important};
+
+    &:before {
+      @apply w-full #{!important};
+    }
+  }
+}
+
+.gform_wrapper.gravity-theme .ginput_complex:not(.ginput_container_address) span:not([style*="display:none"]):not(.ginput_full), .gform_wrapper.gravity-theme .ginput_complex:not(.ginput_container_address) fieldset:not([style*="display:none"]):not(.ginput_full) {
+  padding: 0 !important;
+}

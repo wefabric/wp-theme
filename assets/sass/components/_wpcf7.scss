@@ -1,0 +1,64 @@
+.wpcf7 {
+	
+	p {
+		@apply leading-normal;
+	}
+	
+	br {
+		display: block;
+		height: 1px;
+	}
+	
+	// This is to no longer show the "thank you for your message" notification so user doesn't get confused
+	.form.sent {
+		display: none;
+	}
+	
+	form {
+		.wpcf7-response-output {
+			@apply text-base mx-0 border-0 p-4 bg-red-400;
+		}
+	}
+	
+	.wpc7-submit-holder {
+		position: relative;
+		
+		&:before {
+			&:hover {
+				//@apply bg-primary;
+			}
+		}
+		
+		.wpcf7-submit {
+			@apply pl-12 pr-6 py-2;
+			
+			&:hover {
+				//@apply bg-primary;
+			}
+		}
+		
+		.wpcf7-spinner {
+			@apply bg-white top-[25%] hidden md:inline-block;
+			position: absolute;
+			
+			&:before {
+				@apply bg-primary;
+			}
+		}
+		
+	}
+	
+	.wpcf7-not-valid-tip {
+		@apply bg-red-400 text-white text-sm mt-0 px-2 py-1 ;
+		margin-top: -14px;
+		display: block;
+		padding-top: 18px;
+		border-bottom-left-radius: 0.5rem;
+		border-bottom-right-radius: 0.5rem;
+	}
+
+	.wpcf7-list-item {
+		margin: 0;
+	}
+	
+}

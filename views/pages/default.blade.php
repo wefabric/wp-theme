@@ -2,11 +2,8 @@
 
 @section('content')
     @loop
-        <div class="header">
-            {!! themeHeader()->render() !!}
-        </div>
         <div class="page-builder">
-            {!! pageBuilder()->render() !!}
+            {!! the_content() !!}
         </div>
     @endloop
 @endsection

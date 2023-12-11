@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.quote.index', ['block' => $block])->render(); ?>

@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/afbeelding-en-tekst",
+  "title": "Afbeelding en tekst",
+  "description": "Een afbeelding en tekst blok",
+  "category": "theme",
+  "icon": "align-pull-left",
+  "apiVersion": 2,
+  "keywords": [
+    "afbeelding en tekst"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

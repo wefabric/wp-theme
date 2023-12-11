@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/nieuws",
+  "title": "Nieuws overzicht",
+  "description": "Een nieuws overzicht blok",
+  "category": "theme",
+  "icon": "index-card",
+  "apiVersion": 2,
+  "keywords": [
+    "nieuws overzicht"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

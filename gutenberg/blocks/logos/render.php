@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.logos.index', ['block' => $block])->render(); ?>

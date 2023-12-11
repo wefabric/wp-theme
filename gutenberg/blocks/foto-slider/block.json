@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/foto-slider",
+  "title": "Foto slider",
+  "description": "Een foto slider blok",
+  "category": "theme",
+  "icon": "format-gallery",
+  "apiVersion": 2,
+  "keywords": [
+    "foto slider"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

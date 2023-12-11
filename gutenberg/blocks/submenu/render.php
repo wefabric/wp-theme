@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.submenu.index', ['block' => $block])->render(); ?>

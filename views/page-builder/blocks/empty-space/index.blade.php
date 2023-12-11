@@ -1,0 +1,1 @@
+<div class="bg-{{ $block->get('bg_color') }} h-[{{ $block->get('height_mobile') }}px] lg:h-[{{ $block->get('height_desktop') }}px] "></div>

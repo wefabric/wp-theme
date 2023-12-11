@@ -8,11 +8,21 @@
       "name": "Leo Flapper",
       "email": "leo@wefabric.nl",
       "homepage": "https://wefabric.nl/"
-    }
+    },
+	{
+	  "name": "Kevin Nauta",
+	  "email": "kevin@wefabric.nl",
+	  "homepage": "https://wefabric.nl/"
+	}
   ],
   "type": "wordpress-theme",
   "require": {
     "php": ">=7.4.0",
     "composer/installers" : "~1.2"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
   }
 }

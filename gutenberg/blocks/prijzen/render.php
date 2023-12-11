@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.prijzen.index', ['block' => $block])->render(); ?>

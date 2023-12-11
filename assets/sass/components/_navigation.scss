@@ -1,43 +1,230 @@
 .main-navigation {
     .menu {
         @apply flex flex-row w-full;
+		margin-bottom: -25px; // to negate the .menu-item-has-children { padding-bottom }
 
         > ul {
             display: flex;
-            flex-direction: row;
             justify-content: center;
-            @media only screen and (max-width: 1023px) {
+            flex-direction: row;
+			
+			@media only screen and (max-width: 1023px) {
                 flex-direction: column;
             }
         }
+	
+		li {
+            @apply inline-block pr-1 pb-1 md:px-4;
+			
+			//&:hover {
+			//	@apply text-secondary;
+			//}
 
-        li {
-            padding-right: 1rem;
-            @media only screen and (max-width: 1023px) {
-                padding-bottom: 1rem;
-            }
+			&.custom {
+				padding: 0;
+				font-size: 16px;
+
+				@media only screen and (min-width: 1024px) {
+					margin-left: 12px;
+				}
+
+				a {
+					padding: 0.5rem 2rem;
+					line-height: 2.5rem;
+				}
+
+				&:hover {
+					@apply text-white;
+				}
+			}
         }
+
+	
+		.menu-item:not(.current_page_item) {
+		 	>a {
+				@apply font-normal no-underline;
+			
+			}
+		}
+		
+		.current_page_item {
+			>a {
+				@apply font-bold no-underline #{!important};
+			}
+			
+			.sub-menu {
+				@apply font-normal;
+			}
+		}
+
+		.home-icon { //this is the menu item
+			@screen lg {
+				@apply hidden;
+			}
+		}
+		
+		.menu-btn {
+			@screen lg {
+				@apply btn btn-small btn-primary hover:text-white h-10 flex items-center text-sm;
+				@apply text-white  #{!important};
+			}
+
+
+			&:after {
+				line-height: 0.9;
+			}
+		}
 
         .menu-item-has-children {
             position: relative;
 
+
+			&:after {
+				@apply text-xs pl-1;
+				font-family: $fa-font-family;
+				content: '\f078';
+			}
+
+
+			@screen lg {
+				padding-bottom: 25px; // to allow someone to hover the menu, and then go down to the submenu without the latter closing
+			}
+			
             > .sub-menu {
-                display: none;
-                position: absolute;
-
-                .menu-item-has-children {
-                    .sub-menu {
-                        right: -100%;
-                        top: 0;
-                    }
-                }
+				// Do something to add the triangle pointing up
+				
+				li {
+					display: list-item !important;
+					margin-left: 20px;
+				}
+				
+				@screen lg {
+					@apply shadow-md shadow-gray-600;
+					display: none; //hide when not hovered.
+				
+					li {
+						list-style-type: none;
+						margin-left: 0;
+					}
+				}
             }
 
-            &:hover {
-                > .sub-menu {
-                    display: block;
-                }
-            }
+            &:hover > .sub-menu {
+				@screen lg {
+					//&::before { //The border is to extra accentuate the shadow.
+					//	@apply block absolute z-0 p-2 shadow-md shadow-gray-600 border border-gray-100;
+					//	rotate: 45deg;
+					//	left: calc(50% - 50px);
+					//	top: -9px;
+					//
+					//	content: ""; // Important!
+					//	-webkit-clip-path: polygon(0 100%, 0 0, 100% 0);
+					//	clip-path: polygon(0 100%, 0 0, 100% 0);
+					//	background-color: #ffffff;
+					//}
+
+					@apply bg-white p-3 block z-10 border border-gray-100;
+					z-index: 66;
+					//width: calc(100% + 100px); // https://stackoverflow.com/questions/899107/ - This is to allow enough space for items to become bold when hovered, without it expanding the submenu width. (remove it and see what happens)
+					position: absolute;
+					left: -10%;
+					top: 65px;
+
+					.menu-item {
+						width: max-content;
+						@apply text-black hover:text-secondary;
+					}
+
+					.current-menu-item {
+						@apply text-secondary;
+					}
+				}
+			}
         }
     }
+}
+
+.footer {
+	// DIT MOET WEGGEHAALD WORDEN
+	li.current-menu-item a,
+	a:hover {
+		@apply no-underline text-secondary;
+	}
+
+	.menu {
+		li {
+			a {
+				@apply inline-block relative w-full;
+
+
+				&:after {
+					@apply pl-2 text-xs;
+					content: '\f054';
+					font-family: $fa-font-family;
+				}
+
+			}
+		}
+	}
+
+	.footer-address {
+		a {
+			span {
+				@apply underline;
+			}
+		}
+	}
+
+	.bottom-footer {
+		a {
+			@apply underline;
+		}
+	}
+}
+
+.nav-links { //pagenumbers at the bottom of the news (posts) page
+
+	a, span {
+		@apply rounded-full inline-block w-12 h-12 pt-3 mr-3 text-base font-bold;
+	}
+	
+	span.current {
+		@apply bg-primary text-white;
+	}
+	
+	span.dots {
+		@apply bg-gray-100 text-black;
+	}
+	
+	a.page-numbers {
+		@apply bg-gray-100 text-black hover:bg-primary hover:text-white;
+		@apply no-underline #{!important};
+	}
+	
+	a.next, a.prev {
+		@apply rounded-full bg-gray-100 hover:bg-primary hover:text-white;
+	}
+	
+}
+
+
+
+// Breadcrumbs
+
+.rank-math-breadcrumb a:first-child {
+	font-family: 'Font Awesome 6 Pro';
+	position: relative;
+	margin-right: 25px;
+}
+
+.rank-math-breadcrumb a {
+	@apply hover:text-secondary;
+}
+
+.rank-math-breadcrumb a:first-child::before {
+	content: '\f015';
+	font-family: 'Font Awesome 6 Pro';
+	position: absolute;
+	left: 0;
+	@apply hover:text-secondary;
 }

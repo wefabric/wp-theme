@@ -1,0 +1,124 @@
+.cart-title {
+	@apply pb-12;
+}
+
+.checkout-button {
+	@apply btn-secondary text-white hover:text-white #{!important};
+	
+	br {
+		display: none;
+	}
+}
+
+.woocommerce_checkout_place_order {
+	@apply btn-secondary;
+}
+
+form.checkout {
+	.woocommerce-additional-fields > h3 {
+		@apply mb-3;
+	}
+
+	h3 {
+		@apply h5;
+	}
+
+	#order_review_heading {
+	}
+
+}
+
+.woocommerce-form-coupon,
+.woocommerce-account-fields,
+#ship-to-different-address {
+	@apply pb-3;
+	
+	br {
+		display: none;
+	}
+}
+
+.woocommerce-terms-and-conditions-wrapper,
+.woocommerce-account-fields {
+	input[type="checkbox"] {
+		display: inline-block !important;
+	}
+}
+
+
+#payment {
+	background-color: unset !important;
+
+	.payment_box {
+		@apply bg-green-50 #{!important};
+
+		&::before {
+			@apply border-b-green-50 #{!important};
+		}
+	}
+}
+
+#payment,
+table.shop_table,
+.woocommerce-thankyou-order-details {
+	li::before { //hide the list dots.
+		display:none;
+	}
+}
+
+body > span.select2-container { //This holds the searchable select field.
+	@apply text-base;
+	
+	.select2-results {
+		ul {
+			.select2-results__option--highlighted {
+				@apply bg-primary;
+			}
+		}
+	}
+}
+
+//Not really part of the checkout, but you can only visit this page after completing an order.
+.woocommerce-thankyou-order-details {
+	@apply ml-4 mb-8 #{!important};
+	
+	&::before {
+		@apply pl-4;
+	}
+	
+	li {
+		@apply text-base normal-case #{!important};
+		
+		strong {
+			@apply text-21 #{!important};
+		}
+	}
+}
+
+.woocommerce-checkout {
+	#payment {
+	 	ul.payment_methods {
+			@apply p-0
+		}
+
+		div.form-row  {
+			padding: 1em 0;
+		}
+	}
+
+	.wc_payment_methods li {
+		list-style: none;
+	}
+
+	.woocommerce-checkout-review-order .woocommerce-Price-amount {
+		@apply float-right
+	}
+
+	.page-builder .container {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+}
+
+

@@ -1,0 +1,55 @@
+//hacky fix.
+ul.products, .product-cats {
+	@apply grid lg:grid-cols-3 gap-4 #{!important};
+	
+	&:before {
+		@apply hidden #{!important};
+	}
+}
+
+.shop_content {
+	h2 {
+		clear: both;
+	}
+}
+
+.woocommerce-products-header {
+	@apply w-full bg-black text-white text-center py-4 lg:py-12 mt-4 lg:mt-8 mb-8 lg:mb-16;
+}
+
+.wc-block-components-checkbox .wc-block-components-checkbox__mark {
+	fill: #fff;
+}
+
+.sidebar .sidebar-widget .wp-block-woocommerce-attribute-filter .wc-block-checkbox-list li [type=checkbox]:checked {
+	@apply border-primary;
+}
+
+.woocommerce .woocommerce-ordering {
+	@apply -mt-2;
+}
+
+.woocommerce .product-cats .card img {
+	height: 100%;
+}
+
+
+.product .price {
+	@apply flex;
+	font-size: 0;
+}
+
+.woocommerce .product .price .woocommerce-Price-amount:nth-of-type(1) {
+	@apply text-xl;
+	@apply order-2;
+}
+
+.woocommerce .product .price .woocommerce-Price-amount:nth-of-type(2), .woocommerce div.product p.price {
+	font-size: 0;
+	@apply order-1;
+}
+
+.woocommerce .product .price .woocommerce-Price-amount:nth-of-type(2):before {
+	content: 'Vanaf ';
+	@apply text-xl;
+}

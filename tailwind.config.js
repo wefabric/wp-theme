@@ -8,37 +8,59 @@ module.exports = {
   ],
   theme: {
     boxShadow: {
-      sm: '0 1px 2px 0 rgba(0, 0, 0, 0.04)',
-      DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04)',
-      md: '0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.04)',
-      lg: '0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.04)',
-      xl: '0 20px 25px -5px rgba(0, 0, 0, 0.04), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-      '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.04)',
-      '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.04)',
-      inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.04)',
+      sm: '0 1px 2px 0 rgba(0, 0, 0, 0.09)',
+      DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.09), 0 1px 2px 0 rgba(0, 0, 0, 0.09)',
+      md: '0 4px 6px -1px rgba(0, 0, 0, 0.09), 0 2px 4px -1px rgba(0, 0, 0, 0.09)',
+      lg: '0 10px 15px -3px rgba(0, 0, 0, 0.09), 0 4px 6px -2px rgba(0, 0, 0, 0.09)',
+      xl: '0 20px 25px -5px rgba(0, 0, 0, 0.09), 0 10px 10px -5px rgba(0, 0, 0, 0.09)',
+      '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.09)',
+      '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.09)',
+      inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.09)',
       none: 'none',
     },
     extend: {
       colors: {
         DEFAULT: '#000000',
         primary: {
-          light: '#000000',
-          DEFAULT: '#000000',
-          dark: '#000000'
+          light: 'var(--primary-color-light)',
+          DEFAULT: 'var(--primary-color)',
+          dark: 'var(--primary-color-dark)'
         },
         secondary: {
-          light: '#ea7039',
-          DEFAULT: '#CE5827',
-          dark: '#ac481e'
+          light: 'var(--secondary-color-light)',
+          DEFAULT: 'var(--secondary-color)',
+          dark: 'var(--secondary-color-dark)'
+        },
+        tertiary: {
+          light: 'var(--tertiary-color-light)',
+          DEFAULT: 'var(--tertiary-color)',
+          dark: 'var(--tertiary-color-dark)'
+        },
+        quaternary: {
+          light: 'var(--quaternary-color-light)',
+          DEFAULT: 'var(--quaternary-color)',
+          dark: 'var(--quaternary-color-dark)'
+        },
+        background: {
+          light: 'var(--background-color-light)',
+          DEFAULT: 'var(--background-color)',
+          dark: 'var(--background-color-dark)'
+        },
+        cta: {
+          DEFAULT: 'var(--cta-color)',
+        },
+        basic: {
+          success: 'var(--basic-color-success)',
+          danger: 'var(--basic-color-danger)'
         },
         input: {
-          background: '#F0F5FC',
-          placeholder: '#D0D6DF'
+          background: '#F5F3F3',
+          placeholder: '#a1a1a1'
         }
       },
       fontFamily: {
-        sans: ['Poppins', ...defaultTheme.fontFamily.sans],
-        head: ['Poppins', ...defaultTheme.fontFamily.sans],
+        sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
+        head: ['Open Sans', ...defaultTheme.fontFamily.sans],
       },
       fontSize: theme => ({
         'xs':   ['0.75rem', theme('lineHeight.normal')],  // 12
@@ -51,7 +73,17 @@ module.exports = {
         '3xl':  ['2.25rem', theme('lineHeight.normal')],  // 36
         '4xl':  ['3rem', theme('lineHeight.normal')],     // 48
         '5xl':  ['4rem', theme('lineHeight.normal')],     // 64
-        '6xl':  ['4.5rem', theme('lineHeight.normal')]    // 72
+        '6xl':  ['4.5rem', theme('lineHeight.normal')],   // 72
+
+          //Divide font by 16. Because 1 rem == 16px
+
+          '21': ['1.3125rem', theme('lineHeight.normal')],
+          '26': ['1.625rem', theme('lineHeight.normal')],
+          '31': ['1.9375rem', theme('lineHeight.normal')],
+          '36': ['2.25rem', theme('lineHeight.normal')],
+          '41': ['2.5625rem', theme('lineHeight.normal')],
+          '51': ['3.1875rem', theme('lineHeight.normal')],
+
       }),
       zIndex: {
         '1': '1',

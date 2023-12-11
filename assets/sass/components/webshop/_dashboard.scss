@@ -1,0 +1,33 @@
+//AKA my-account
+
+.woocommerce-MyAccount-navigation {
+	@apply text-21 font-normal;
+}
+
+mark {
+	@apply bg-transparent font-bold;
+}
+
+.woocommerce-MyAccount-content {
+	h2, h3 {
+		@apply h4 #{!important};
+	}
+}
+
+.woocommerce-columns--addresses, .woocommerce-Addresses {
+	p:empty {
+		@apply hidden;
+	}
+	
+	address {
+		@apply text-base;
+	}
+}
+
+.woocommerce-EditAccountForm,
+.woocommerce-form-login,
+.woocommerce-form-register {
+	br {
+		@apply hidden;
+	}
+}

@@ -1,0 +1,37 @@
+form.checkout,
+form.cart,
+form.woocommerce-form-login,
+form.woocommerce-form-register,
+.woocommerce .woocommerce-cart table.cart td.actions .coupon .input-text,
+.woocommerce-shipping-totals,
+.woocommerce-MyAccount-content>form {
+	
+	input[type="text"], input[type="tel"], input[type="email"], input[type="password"], input[type="number"], textarea, select, .select2-selection {
+		@include form-field;
+	}
+	
+	.select2-selection {
+		@apply relative h-auto;
+		
+		.select2-selection__arrow {
+			top: 17px;
+			right: 4px;
+		}
+	}
+	
+	textarea {
+		@apply mt-1;
+		height: 9rem !important;
+	}
+	
+	::placeholder {
+		@apply text-base text-gray-400;
+	}
+	
+	input[type="checkbox"], input[type="radio"] {
+		&:checked, &:hover {
+			@apply bg-primary;
+		}
+	}
+
+}

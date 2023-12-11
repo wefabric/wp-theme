@@ -1,14 +1,18 @@
 .content {
-  p {
-    @apply mb-3;
-  }
+  //p {
+  //  @apply mb-3 text-base;
+  //}
 
   a {
-    @apply underline;
+    @apply underline font-bold text-primary;
+
+    &:hover {
+      @apply no-underline;
+    }
   }
 
   b, strong {
-    @apply font-bold
+    @apply font-bold;
   }
 
   h2 {
@@ -21,7 +25,7 @@
 
   figure {
     img, video {
-      @apply inline-block
+      @apply inline-block;
     }
 
     figcaption {
@@ -61,8 +65,6 @@
         margin-bottom: 0;
       }
     }
-
-
   }
 
 
@@ -84,11 +86,9 @@
   ul {
     li {
       &:before {
-        @apply bg-primary-light;
-        content: '';
-        width: 8px;
-        height: 8px;
-        border-radius: 100%;
+        @apply inline-block mr-3;
+        content: '\2022'; /* Unicode character for a filled circle */
+        font-family: 'Font Awesome'; /* Specify the font family for the icon */
       }
     }
   }
@@ -99,7 +99,7 @@
       counter-increment: ol-counter;
 
       &:before {
-        @apply text-primary-light;
+        ;
         content: counters(ol-counter, '.') '.';
       }
 
@@ -107,3 +107,6 @@
   }
 }
 
+.aligncenter {
+  margin: 0 auto;
+}

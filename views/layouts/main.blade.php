@@ -6,10 +6,8 @@
 <html {!! get_language_attributes() !!}>
 <head>
     <meta charset="{{ get_bloginfo('charset') }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <link rel="profile" href="https://gmpg.org/xfn/11">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     @head
     @if(isset($options['header_codes']) && $options['header_codes'])
         {!! $options['header_codes'] !!}
@@ -19,41 +17,42 @@
 @if(isset($options['body_codes']) && $options['body_codes'])
     {!! $options['body_codes'] !!}
 @endif
-@if(isset($options['out_of_office']['active']) && $options['out_of_office']['active'])
-    @if((isset($options['out_of_office']['start_display_date']) && $options['out_of_office']['start_display_date'] <= date('Ymd')) || $options['out_of_office']['start_display_date'])
-        @if((isset($options['out_of_office']['end_display_date']) && $options['out_of_office']['end_display_date'] >= date('Ymd')) || $options['out_of_office']['end_display_date'])
-            @include('components.out-of-office', ['outOfOffice' => $options['out_of_office']])
-        @endif
-    @endif
-@endif
 <div id="page" class="site">
-    @include('components.navigation.header-top')
-    <header id="masthead" class="px-4">
-        <div class="flex flex-row container mx-auto">
-            <div class="hidden lg:block w-1/6 items-center">
-                @include('components.header.logo')
-            </div>
-            <div class="lg:w-5/6 lg:flex items-center justify-end h-12 lg:h-auto">
-                @include('components.navigation.main-nav')
-                @include('components.navigation.header-mobile')
-            </div>
-        </div>
-    </header>
+    @if(isset($options['show_menu']) && $options['show_menu'])
 
-    <div id="content">
+        <header id="masthead">
+            @if (isset($options['show_secondary_menu']))
+               @include('components.navigation.secondary-nav')
+            @endif
+            <div class="main-navigation bg-{{ $options['menu_background_color'] }} text-{{ $options['menu_text_color'] ?? 'white' }}">
+                <div class="flex flex-row container mx-auto py-3 px-4">
+                    <div class="hidden lg:block w-1/6 items-center">
+                        @include('components.header.logo')
+                    </div>
+                    <div class="lg:w-5/6 lg:flex items-center justify-end h-16 lg:h-auto">
+                        @include('components.navigation.main-nav')
+                        @include('components.navigation.header-mobile')
+                    </div>
+                </div>
+            </div>
+        </header>
+    @endif
+
+    <div id="content" class="">
         <div id="primary">
             <main id="main">
                 @yield('content')
             </main>
         </div>
     </div><!-- #content -->
-
     <footer id="colophon" class="site-footer">
         @include('components.footer.footer')
     </footer><!-- #colophon -->
 </div><!-- #page -->
 
 @footer
+
+{!! styleCustomizer()->renderCustomColors() !!}
 
 </body>
 </html>

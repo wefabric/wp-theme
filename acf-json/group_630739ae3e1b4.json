@@ -1,0 +1,116 @@
+{
+    "key": "group_630739ae3e1b4",
+    "title": "MailChimp",
+    "fields": [
+        {
+            "key": "field_6307451cf2089",
+            "label": "Nieuwsbriefinschrijving Footer",
+            "name": "newsletter_footer",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_63074223c7e7d",
+                    "label": "Tonen?",
+                    "name": "show",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
+                    "key": "field_6307450bf2088",
+                    "label": "Titel",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_63074223c7e7d",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "80",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Blijf op de hoogte!",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_630739b2c7e7c",
+                    "label": "Inschrijf url",
+                    "name": "embed_subscribe_url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "Lees hier meer over de Inschrijf url: https:\/\/www.notion.so\/wefabric\/Nieuwsbriefinschrijving-Mailchimp-364fea4b0c6b41c2b32736620bd42f09",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_63074223c7e7d",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "https:\/\/wefabric.us16.list-manage.com\/subscribe\/post?u=97458c1812b52842329db8e54&amp;id=5af5026eaf&amp;f_id=005f67e0f0",
+                    "placeholder": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "company-settings_newsletter"
+            }
+        ]
+    ],
+    "menu_order": 32,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1698159397
+}

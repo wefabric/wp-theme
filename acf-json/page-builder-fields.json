@@ -1,0 +1,60 @@
+{
+  "layout_60f1906ff9fa1": {
+    "key": "layout_60f1906ff9fa1",
+    "name": "faq",
+    "label": "Veelgestelde vragen ",
+    "display": "block",
+    "sub_fields": [
+      {
+        "key": "field_60f1906ff9fa2",
+        "label": "Titel",
+        "name": "title",
+        "type": "text",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "placeholder": "",
+        "prepend": "",
+        "append": "",
+        "maxlength": ""
+      },
+      {
+        "key": "field_60f1906ff9fa5",
+        "label": "Veelgestelde vragen",
+        "name": "faq",
+        "type": "post_object",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": [
+          [
+            {
+              "field": "field_60afe3979d1ae",
+              "operator": "!=empty"
+            }
+          ]
+        ],
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "post_type": [
+          "faq"
+        ],
+        "taxonomy": "",
+        "allow_null": 0,
+        "multiple": 0,
+        "return_format": "object",
+        "ui": 1
+      }
+    ],
+    "min": "",
+    "max": ""
+  }
+}

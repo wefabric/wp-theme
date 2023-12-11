@@ -1,0 +1,1573 @@
+{
+    "key": "group_60afe39084ee3",
+    "title": "Page Builder",
+    "fields": [
+        {
+            "key": "field_60afe3979d1ae",
+            "label": "Page Builder",
+            "name": "page_builder",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_60afe80a076a5": {
+                    "key": "layout_60afe80a076a5",
+                    "name": "textblock",
+                    "label": "Tekstblok",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_62ce893297c88",
+                            "label": "Breedte (desktop)",
+                            "name": "width_copy",
+                            "type": "select",
+                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "w-1\/2": "50%",
+                                "w-3\/5": "60%",
+                                "w-2\/3": "66%",
+                                "w-3\/4": "75%",
+                                "w-4\/5": "80%",
+                                "w-full": "100%"
+                            },
+                            "default_value": "w-3\/4",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_60afe836076a6",
+                            "label": "Tekst",
+                            "name": "text",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_62e2968a052a2",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e29699052a3",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_60b77930877cf": {
+                    "key": "layout_60b77930877cf",
+                    "name": "image",
+                    "label": "Afbeelding",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_60b77941877d0",
+                            "label": "Afbeelding",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "preview_size": "thumbnail",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_62bc56ae73be8",
+                            "label": "Breedte (desktop)",
+                            "name": "width",
+                            "type": "select",
+                            "instructions": "Geef de relatieve breedte op voor desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "w-1\/4": "25%",
+                                "w-1\/2": "50%",
+                                "w-3\/4": "75%",
+                                "w-full": "100%"
+                            },
+                            "default_value": "w-3\/4",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62e296ab052a4",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_610d324bf380e": {
+                    "key": "layout_610d324bf380e",
+                    "name": "textblockImage",
+                    "label": "Tekst met afbeelding",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_610d3286f380f",
+                            "label": "Tekst",
+                            "name": "text",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "66",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_610d3297f3810",
+                            "label": "Afbeelding",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "preview_size": "thumbnail",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_62ce78bcdbc16",
+                            "label": "Afbeelding positie (desktop)",
+                            "name": "image_position",
+                            "type": "select",
+                            "instructions": "Selecteer de positie van de afbeelding ten opzichte van de tekst (voor desktopweergave). Op mobiele weergave komt de afbeelding altijd onder de tekst.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Links van tekst",
+                                "right": "Rechts van tekst"
+                            },
+                            "default_value": "right",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62ce78f0dbc17",
+                            "label": "Afbeelding uitlijning (desktop)",
+                            "name": "image_vertical_position",
+                            "type": "select",
+                            "instructions": "Selecteer de verticale uitlijning van de afbeelding ten opzichte van de tekst (voor desktopweergave). Niet van toepassing op mobiele weergave, hierbij komt de afbeelding altijd onder de tekst in plaats van ernaast. Werkt ook andersom indien de tekst kleiner is dan de afbeelding.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "top": "Boven",
+                                "middle": "Gecentreerd",
+                                "bottom": "Onder"
+                            },
+                            "default_value": "middle",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62ce872d1c517",
+                            "label": "Breedte (desktop)",
+                            "name": "width",
+                            "type": "select",
+                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "w-1\/2": "50%",
+                                "w-3\/5": "60%",
+                                "w-2\/3": "66%",
+                                "w-3\/4": "75%",
+                                "w-4\/5": "80%",
+                                "w-full": "100%"
+                            },
+                            "default_value": "w-full",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62e296c4052a6",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e296ce052a7",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_613863fa1d357": {
+                    "key": "layout_613863fa1d357",
+                    "name": "usps_small",
+                    "label": "USP's (klein)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6138640f1d358",
+                            "label": "Titel",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_613864221d359",
+                            "label": "Subtitel",
+                            "name": "subtitle",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_613864551d35a",
+                            "label": "Hoeveelheid USP's naast elkaar",
+                            "name": "col_amount",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "1": "Een",
+                                "2": "Twee",
+                                "3": "Drie",
+                                "4": "Vier"
+                            },
+                            "default_value": 3,
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62ceb2088c458",
+                            "label": "Icoon kleur",
+                            "name": "icon_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_6138651b1d35b",
+                            "label": "USP's",
+                            "name": "usps",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "collapsed": "",
+                            "min": 1,
+                            "max": 4,
+                            "layout": "table",
+                            "button_label": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_613865771d35e",
+                                    "label": "icoon",
+                                    "name": "icon",
+                                    "type": "font-awesome",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "icon_sets": [
+                                        "fas",
+                                        "far",
+                                        "fal",
+                                        "fad",
+                                        "fab"
+                                    ],
+                                    "custom_icon_set": "",
+                                    "default_label": "",
+                                    "default_value": "",
+                                    "save_format": "class",
+                                    "allow_null": 0,
+                                    "show_preview": 1,
+                                    "enqueue_fa": 0,
+                                    "fa_live_preview": "",
+                                    "choices": []
+                                },
+                                {
+                                    "key": "field_613865611d35d",
+                                    "label": "Titel",
+                                    "name": "title",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_613865941d35f",
+                                    "label": "Pagina link",
+                                    "name": "page_url",
+                                    "type": "page_link",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": "",
+                                    "taxonomy": "",
+                                    "allow_null": 0,
+                                    "allow_archives": 1,
+                                    "multiple": 0
+                                },
+                                {
+                                    "key": "field_613865b01d360",
+                                    "label": "Vrije invoer link",
+                                    "name": "external_url",
+                                    "type": "text",
+                                    "instructions": "Wanneer de vrije invoer link is ingevuld word deze weergegeven in plaats van de pagina link.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_62e296dc052a8",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e297be95b1b",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_62cebf216b3f9": {
+                    "key": "layout_62cebf216b3f9",
+                    "name": "usps_large",
+                    "label": "USP's (groot)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_62cebf216b3fa",
+                            "label": "Titel",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_62cebf216b3fb",
+                            "label": "Subtitel",
+                            "name": "subtitle",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_62cebf216b3fc",
+                            "label": "Hoeveelheid USP's naast elkaar",
+                            "name": "col_amount",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "1": "Een",
+                                "2": "Twee",
+                                "3": "Drie",
+                                "4": "Vier"
+                            },
+                            "default_value": 3,
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62cebf216b3fd",
+                            "label": "Icoon kleur",
+                            "name": "icon_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62cebf216b3fe",
+                            "label": "USP's",
+                            "name": "usps",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "collapsed": "",
+                            "min": 1,
+                            "max": 4,
+                            "layout": "table",
+                            "button_label": "",
+                            "sub_fields": [
+                                {
+                                    "key": "field_62cebf216b3ff",
+                                    "label": "icoon",
+                                    "name": "icon",
+                                    "type": "font-awesome",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "icon_sets": [
+                                        "solid",
+                                        "regular",
+                                        "light",
+                                        "duotone",
+                                        "brands"
+                                    ],
+                                    "custom_icon_set": "",
+                                    "default_label": "",
+                                    "default_value": "",
+                                    "save_format": "class",
+                                    "allow_null": 0,
+                                    "show_preview": 1,
+                                    "enqueue_fa": 0,
+                                    "fa_live_preview": "",
+                                    "choices": []
+                                },
+                                {
+                                    "key": "field_62cebf216b400",
+                                    "label": "Titel",
+                                    "name": "title",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_62cec59414a4d",
+                                    "label": "Subtitel",
+                                    "name": "subtitle",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                },
+                                {
+                                    "key": "field_62cebf216b401",
+                                    "label": "Pagina link",
+                                    "name": "page_url",
+                                    "type": "page_link",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": "",
+                                    "taxonomy": "",
+                                    "allow_null": 0,
+                                    "allow_archives": 1,
+                                    "multiple": 0
+                                },
+                                {
+                                    "key": "field_62cebf216b402",
+                                    "label": "Vrije invoer link",
+                                    "name": "external_url",
+                                    "type": "text",
+                                    "instructions": "Wanneer de vrije invoer link is ingevuld word deze weergegeven in plaats van de pagina link.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_62d6c8abc59eb",
+                            "label": "Knop tekst",
+                            "name": "button_text",
+                            "type": "text",
+                            "instructions": "Wil je een knop? Vul dan hier de tekst in, en in het volgende veld de link. De knop wordt alleen getoond indien zowel de tekst als de link zijn ingevuld.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_62d6c8e3c59ec",
+                            "label": "Knop link",
+                            "name": "button_external_link",
+                            "type": "url",
+                            "instructions": "Wil je een knop? Vul dan hier de link in. De knop wordt alleen getoond indien zowel de tekst als de link zijn ingevuld.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62d6c90cc59ed",
+                            "label": "Knop link naar pagina",
+                            "name": "button_internal_link",
+                            "type": "page_link",
+                            "instructions": "Wil je een knop? Hier kun je een pagina kiezen om te linken. Let op: als er ook een externe link is ingevuld wordt die gebruikt.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "34",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": "",
+                            "taxonomy": "",
+                            "allow_null": 0,
+                            "allow_archives": 1,
+                            "multiple": 0
+                        },
+                        {
+                            "key": "field_62e28caf30936",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": "white",
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e28cd88d4cb",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": "black",
+                            "font_size": 14
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_60bf247801dae": {
+                    "key": "layout_60bf247801dae",
+                    "name": "news",
+                    "label": "Nieuws berichten",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_610d298d542ca",
+                            "label": "Titel",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_60bf248b01daf",
+                            "label": "Alle nieuwsberichten tonen?",
+                            "name": "show_all",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_60bf253501db0",
+                            "label": "Nieuws",
+                            "name": "news",
+                            "type": "post_object",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_60bf248b01daf",
+                                        "operator": "!=",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": "",
+                            "taxonomy": "",
+                            "allow_null": 0,
+                            "multiple": 1,
+                            "return_format": "id",
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_62e296ea052a9",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e296f3052aa",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_60c7663851713": {
+                    "key": "layout_60c7663851713",
+                    "name": "contactForm",
+                    "label": "Contactformulier",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_60c7663851714",
+                            "label": "Titel",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_60c7665151717",
+                            "label": "Content",
+                            "name": "content",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "maxlength": "",
+                            "rows": "",
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_60c7665d51718",
+                            "label": "Formulier",
+                            "name": "form",
+                            "type": "acf_cf7",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_62e296fd052ab",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e29707052ac",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_62cede36d30d4": {
+                    "key": "layout_62cede36d30d4",
+                    "name": "video",
+                    "label": "Video",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_62cede43d30d5",
+                            "label": "Video url",
+                            "name": "video",
+                            "type": "url",
+                            "instructions": "Plaats hier de link van de Youtube of Vimeo link.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "75",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "https:\/\/www.youtube.com\/watch?v=-JdU2cgphu4&ab_channel=Wefabricweb%26marketing"
+                        },
+                        {
+                            "key": "field_62cede67d30d7",
+                            "label": "Breedte (desktop)",
+                            "name": "width",
+                            "type": "select",
+                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "w-1\/2": "50%",
+                                "w-3\/5": "60%",
+                                "w-2\/3": "66%",
+                                "w-3\/4": "75%",
+                                "w-4\/5": "80%",
+                                "w-full": "100%"
+                            },
+                            "default_value": "w-3\/4",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62e29715052ad",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_62cfc08e59fd0": {
+                    "key": "layout_62cfc08e59fd0",
+                    "name": "iframe_html",
+                    "label": "Iframe HTML",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_62cfc09459fd1",
+                            "label": "Iframe HTML",
+                            "name": "iframe-html",
+                            "type": "textarea",
+                            "instructions": "Plak hier de iframe code in.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "maxlength": "",
+                            "rows": 6,
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_62cfc0c859fd2",
+                            "label": "Breedte (desktop)",
+                            "name": "width",
+                            "type": "select",
+                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "w-1\/2": "50%",
+                                "w-3\/5": "60%",
+                                "w-2\/3": "66%",
+                                "w-3\/4": "75%",
+                                "w-4\/5": "80%",
+                                "w-full": "100%"
+                            },
+                            "default_value": "w-3\/4",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62e29720052ae",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_62cfc25155d75": {
+                    "key": "layout_62cfc25155d75",
+                    "name": "iframe_url",
+                    "label": "Iframe URL",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_62cfc182d4cbc",
+                            "label": "Iframe-url",
+                            "name": "iframe-url",
+                            "type": "text",
+                            "instructions": "Plak hier de URL in die je wilt embedden.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "66",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_62cfc4f6d08ef",
+                            "label": "Omschrijving",
+                            "name": "description",
+                            "type": "text",
+                            "instructions": "Plaats hier de omschrijving van de URL. Deze wordt niet op de webpagina getoond maar alleen gebruikt voor SEO-doeleinden.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "34",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_62cfc27855d77",
+                            "label": "Breedte (desktop)",
+                            "name": "width",
+                            "type": "select",
+                            "instructions": "Kies hier de totale breedte van het blok op desktop-weergave. Op mobiele weergave wordt de volledige breedte (binnen de zij-marges) gebruikt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "w-1\/2": "50%",
+                                "w-3\/5": "60%",
+                                "w-2\/3": "66%",
+                                "w-3\/4": "75%",
+                                "w-4\/5": "80%",
+                                "w-full": "100%"
+                            },
+                            "default_value": "w-3\/4",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62cfc2dd55d79",
+                            "label": "Hoogte (desktop)",
+                            "name": "height_desktop",
+                            "type": "select",
+                            "instructions": "Kies hier de totale hoogte van het blok op desktop-weergave.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "100px": "100px",
+                                "200px": "200px",
+                                "300px": "300px",
+                                "400px": "400px",
+                                "500px": "500px",
+                                "600px": "600px",
+                                "700px": "700px"
+                            },
+                            "default_value": "400px",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62cfc37955d7a",
+                            "label": "Hoogte (mobiel)",
+                            "name": "height_mobile",
+                            "type": "select",
+                            "instructions": "Kies hier de totale hoogte van het blok op mobiele weergave.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "34",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "100px": "100px",
+                                "200px": "200px",
+                                "300px": "300px",
+                                "400px": "400px",
+                                "500px": "500px",
+                                "600px": "600px",
+                                "700px": "700px"
+                            },
+                            "default_value": "400px",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62e2972c052af",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_60b9e4d65df7b": {
+                    "key": "layout_60b9e4d65df7b",
+                    "name": "employees",
+                    "label": "Werknemers",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_60b9e4df5df7c",
+                            "label": "Titel",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_62d81b2614583",
+                            "label": "Subtitel",
+                            "name": "subtitle",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "maxlength": "",
+                            "rows": "",
+                            "new_lines": ""
+                        },
+                        {
+                            "key": "field_60ce431d19eac",
+                            "label": "Weergave",
+                            "name": "display_type",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "slider": "Slider weergave",
+                                "grid": "Blokken weergave"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
+                        },
+                        {
+                            "key": "field_60b9e5955df7d",
+                            "label": "Alle werknemers tonen?",
+                            "name": "show_all",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_60b9e5b35df7e",
+                            "label": "Werknemers",
+                            "name": "employees",
+                            "type": "post_object",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_60b9e5955df7d",
+                                        "operator": "!=",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "employees"
+                            ],
+                            "taxonomy": "",
+                            "allow_null": 0,
+                            "multiple": 1,
+                            "return_format": "id",
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_62e29736052b0",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e29740052b1",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "Nieuw blok",
+            "min": "",
+            "max": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "!=",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1659017164
+}

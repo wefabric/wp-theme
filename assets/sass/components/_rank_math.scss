@@ -1,0 +1,15 @@
+.rank-math-breadcrumb {
+  a {
+    @apply font-normal;
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+  }
+
+  .separator {
+    @apply px-1;
+  }
+
+  .last {
+    @apply font-bold;
+  }
+}

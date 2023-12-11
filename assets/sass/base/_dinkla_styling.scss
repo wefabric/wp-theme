@@ -1,0 +1,448 @@
+/* Dinkla home styling */
+
+
+// Home styling
+
+.home {
+
+  #header {
+    z-index: 1;
+
+    h1 {
+      @apply text-[42px] lg:text-[70px];
+    }
+
+    .custom-styling {
+      @media only screen and (min-width: 1024px) and (max-width: 1535px) {
+        height: 650px !important;
+      }
+
+      @media only screen and (min-width: 1536px) {
+        height: 800px !important;
+      }
+    }
+  }
+
+  #kaarten {
+    z-index: 2;
+
+    div.relative {
+      @apply px-0 sm:px-8;
+    }
+
+    .swiper {
+      padding-top: 3.5rem !important;
+      padding-bottom: 3.5rem !important;
+    }
+
+    .page-title {
+      @apply text-[14px] sm:text-[21px];
+    }
+
+    .card-background {
+      @apply aspect-auto mx-auto;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    @media only screen and (max-width: 767px) {
+      padding-bottom: 0;
+    }
+
+    .block-content {
+
+      h2 {
+        @apply mb-0;
+      }
+
+      @media only screen and (max-width: 767px) {
+        margin-top: 0px;
+      }
+
+      @media only screen and (min-width: 768px) and (max-width: 1079px) {
+        margin-top: -140px;
+      }
+
+      @media only screen and (min-width: 1080px) and (max-width: 1559px) {
+        margin-top: -230px;
+      }
+
+      @media only screen and (min-width: 1560px) {
+        margin-top: -320px;
+      }
+    }
+
+    .card-item:hover {
+      .card-background {
+        @apply bg-secondary;
+      }
+
+      .card-overlay {
+        @apply opacity-0;
+      }
+
+      .page-icon, .page-title {
+        @apply text-primary;
+      }
+    }
+
+    //RESIZE ACTIVE SLIDE
+    .swiper-slide.swiper-slide-active {
+      transform: scale(1.2) !important;
+      transform-origin: center center;
+      transition: all 0.3s ease-in-out;
+      margin: 0 40px 0 20px !important;
+      @apply z-20;
+
+      .card-background {
+        @apply bg-secondary;
+      }
+    }
+
+    .swiper-slide {
+      //transform: scale(0.8) !important;
+      transform-origin: center center;
+      transition: all 0.3s ease-in-out;
+      @apply z-10;
+    }
+  }
+
+
+  #usps {
+
+    p {
+      @apply font-bold text-[20px] mt-8;
+    }
+
+    .custom-layout {
+      @apply gap-x-8;
+    }
+
+    .USP-item i {
+      @apply bg-tertiary w-full aspect-square justify-center items-center rounded-full border border-2 border-primary ;
+      display: flex;
+      position: relative;
+    }
+
+    .USP-item i:after {
+      @apply h-[2px] w-[1000px] bg-primary absolute right-0 translate-y-1/2;
+      content: '';
+      left: 100%;
+    }
+
+    @media only screen and (max-width: 459px) {
+      padding-bottom: 200px;
+      margin-top: -20px;
+    }
+
+    @media only screen and (min-width: 460px) and (max-width: 767px) {
+      padding-bottom: 250px;
+      margin-top: -20px;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1079px) {
+      padding-bottom: 300px;
+      margin-top: -20px;
+    }
+
+    @media only screen and (min-width: 1080px) {
+      padding-bottom: 400px;
+      margin-top: -70px;
+    }
+  }
+
+  #afbeelding-tekst {
+    @apply -translate-y-1/2;
+
+    .custom-styling {
+      @apply py-0;
+      @apply px-0 pl-8 md:pl-8 md:pr-8
+    }
+
+    .text-image {
+      gap: 0 !important;
+    }
+
+    .text {
+      @apply bg-white pr-8 md:pr-0 px-0 lg:px-20 py-8 lg:py-20 lg:shadow-xl lg:rounded-[20px] w-full z-20;
+
+      @media only screen and (min-width: 1080px) {
+        margin-left: -80px !important;
+      }
+    }
+
+    .image {
+      @apply w-full;
+
+      img {
+        @media only screen and (max-width: 1079px) {
+          border-radius: 10px 0px 0px 100px !important;
+        }
+
+        @media only screen and (min-width: 1280px) {
+          border-radius: 10px 10px 10px 234px !important;
+        }
+      }
+    }
+
+    .flex.flex-col {
+      @apply items-center;
+    }
+
+    @media only screen and (max-width: 1079px) {
+      padding-top: 488px;
+    }
+
+    @media only screen and (min-width: 1080px) {
+      padding-top: 0;
+    }
+
+  }
+
+  #werknemers {
+
+    @media only screen and (max-width: 639px) {
+      margin-top: -630px;
+    }
+
+    @media only screen and (min-width: 640px) and (max-width: 1079px) {
+      margin-top: -630px;
+    }
+
+    @media only screen and (min-width: 1080px) {
+      margin-top: -250px;
+    }
+
+    .swiper .swiper-pagination {
+      display: none !important;
+    }
+  }
+
+  #titel-tekst {
+    border-radius: 0px 0px 200px 0px !important;
+    padding: 100px 0px !important;
+    @apply -translate-y-1/2;
+
+    h2 {
+      @apply text-[46px] lg:text-[70px] lg:-mt-[14px];
+    }
+
+    div.inset-0 {
+      border-radius: 0px 0px 200px 0px !important;
+    }
+
+    .custom-margin {
+      margin-top: 200px !important;
+    }
+
+    @media only screen and (max-width: 639px) {
+      margin-top: 150px;
+    }
+
+    @media only screen and (min-width: 640px) and (max-width: 1079px) {
+      margin-top: 50px;
+    }
+
+    @media only screen and (min-width: 1080px) {
+      margin-top: 100px;
+    }
+  }
+
+  #activiteiten {
+    @apply pb-8 md:pb-16;
+
+    @media only screen and (max-width: 376px) {
+      margin-top: -400px;
+    }
+
+    @media only screen and (min-width: 377px) and (max-width: 767px) {
+      margin-top: -250px;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1079px) {
+      margin-top: -230px;
+    }
+
+    @media only screen and (min-width: 1080px) {
+      margin-top: -310px;
+    }
+  }
+
+
+  #cta-button {
+    .cta-block {
+      @media only screen and (max-width: 638px) {
+        border-radius: 0px;
+      }
+      @media only screen and (min-width: 639px) {
+        border-radius: 10px 0px 0px 10px;
+      }
+    }
+
+    .cta-custom {
+      z-index: 20;
+      margin-bottom: -45px;
+    }
+
+    .custom-width {
+      width: calc(100vw / 2);
+      z-index: 20;
+    }
+
+    .cta-block {
+      z-index: 20;
+    }
+  }
+
+  footer {
+    .footer {
+      position: relative;
+      z-index: 10;
+    }
+
+    .container {
+      padding-top: 55px;
+    }
+  }
+
+  @media only screen and (min-width: 1280px) {
+    #werknemers h2, #activiteiten h2, #nieuws h2 {
+      margin-left: 108px;
+    }
+  }
+}
+
+
+// Custom styling
+
+#header {
+
+  h1 {
+    @apply text-shadow-lg;
+  }
+
+  @media only screen and (max-width: 639px) {
+    .bg-cover {
+      border-radius: 0 0 0 100px;
+    }
+    .overlay {
+      border-radius: 0 0 0 100px;
+    }
+  }
+
+  @media only screen and (min-width: 640px) {
+    .bg-cover {
+      border-radius: 0 0 0 200px;
+    }
+    .overlay {
+      border-radius: 0 0 0 200px;
+    }
+  }
+}
+
+#prijs-pakketten {
+  a .btn-filled {
+    @apply text-primary;
+  }
+
+  a .btn-filled:hover {
+    @apply text-white;
+  }
+
+  .price-color {
+    border-radius: 10px 10px 60px 0px !important;
+  }
+}
+
+#usps {
+  .USP-item div {
+    @apply p-0;
+  }
+
+  div i {
+    @apply text-[50px] lg:text-[60px] w-full flex relative mx-auto aspect-square justify-center items-center rounded-full border border-2 border-primary max-w-[110px] lg:max-w-[120px];
+  }
+
+  p {
+    @apply mt-6;
+  }
+}
+
+#werkwijze {
+  .step {
+    @apply border border-2 border-primary;
+    background-color: unset;
+  }
+
+  .step {
+    @apply text-primary text-[90px];
+    font-family: 'Roboto';
+  }
+}
+
+#contact .contact-block {
+  @apply lg:-mt-[180px];
+}
+
+body:not(.home) {
+  #kaarten {
+    .content-in-card-item {
+
+      .card-background {
+        @apply items-start;
+      }
+
+      .page-title {
+        @apply text-[28px] text-left;
+        word-break: break-word !important;
+        order: 0;
+      }
+
+      .page-icon {
+        @apply text-[100px] xl:text-[140px] w-full;
+        order: 1;
+      }
+
+      .page-button {
+        order: 2;
+      }
+    }
+  }
+}
+
+#foto-slider .swiper {
+  .swiper-slide:nth-child(2n) {
+    img {
+      margin-top: 50px;
+    }
+  }
+}
+
+.footer i.fa-paper-plane {
+  @apply text-white transform transition-all ease-in-out duration-200 hover:scale-110 hover:text-secondary;
+}
+
+
+// Typography
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Roboto Condensed";
+}
+
+footer label {
+  font-family: "Roboto Condensed";
+}
+
+.main-navigation .menu .menu-item a {
+  font-family: "Roboto Condensed";
+  font-weight: 600 !important;
+}
+
+p, span, a, table, label, li, ul, ol {
+  font-family: "Roboto";
+  letter-spacing: .05rem;
+  line-height: 1.6;
+}
+
+.secondary-navigation {
+  font-family: "Roboto Condensed";
+}

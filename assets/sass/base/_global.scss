@@ -2,14 +2,6 @@
   transform: scaleX(-1);
 }
 
-body {
-
-  @screen lg {
-    @apply text-xl;
-  }
-
-}
-
 img {
   max-width: 100%;
   height: auto;
@@ -34,4 +26,36 @@ img {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+// Disable the underline on an a-class when only requiring the underline on an inner element, such as a span, instead of the a-tag itself which may contain e.g. an icon.
+// The name "no-underline" with dash is the same as the Tailwind class with the same effect.
+a.no-underline,
+	.woocommerce-LoopProduct-link {
+	text-decoration-line: none !important;
+}
+
+
+
+
+
+
+// Footer always at bottom of page
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+
+footer {
+  margin-top: auto;
 }

@@ -1,0 +1,775 @@
+{
+    "key": "group_62e0e6bcd1f37",
+    "title": "Header",
+    "fields": [
+        {
+            "key": "field_62e0ea733c1d5",
+            "label": "Header",
+            "name": "header",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_62e0ea795e9f1": {
+                    "key": "layout_62e0ea795e9f1",
+                    "name": "header-1",
+                    "label": "Header 1",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_62e9372ea6c86",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_632b3137d85b1",
+                            "label": "Achtergrondkleur 2",
+                            "name": "bg_color_2",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62e9391231bcd",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_6331ab1472126",
+                            "label": "Verticale spacing",
+                            "name": "vertical_space",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Kies hier hoeveel grootte je op desktop boven de titel en onder de (subtitel, knoppen, etc) wilt.",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "py-20": "klein",
+                                "py-36": "groot"
+                            },
+                            "default_value": "py-36",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "return_format": "value",
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_62e0ea853c1d6",
+                            "label": "Headerafbeelding",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "preview_size": "thumbnail",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_632c08318a70b",
+                            "label": "Video header",
+                            "name": "video",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "Optioneel, om een video te tonen in plaats van de afbeelding. Bij het gebruik van een videoachtergrond is het afbeelding veld nog steeds verplicht, zodat de header iets heeft om op terug te vallen indien de video niet correct werkt. Op mobiel wordt de video niet getoond.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_633ab0098fc82",
+                            "label": "Titel",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "collapsed": "",
+                            "min": 1,
+                            "max": 3,
+                            "layout": "block",
+                            "button_label": "Nieuwe regel",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_633ab04a8fc83",
+                                    "label": "Titel",
+                                    "name": "text",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": "",
+                                    "parent_repeater": "field_633ab0098fc82"
+                                },
+                                {
+                                    "key": "field_633ab0738fc84",
+                                    "label": "Type",
+                                    "name": "type",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "Kies hier het type dat de titel is. H1 is gereserveerd voor de eerste paginatitel.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "h1": "h1",
+                                        "h2": "h2",
+                                        "h3": "h3",
+                                        "h4": "h4",
+                                        "h5": "h5",
+                                        "h6": "h6",
+                                        "p": "tekst"
+                                    },
+                                    "default_value": false,
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "parent_repeater": "field_633ab0098fc82"
+                                },
+                                {
+                                    "key": "field_633ab0c38fc85",
+                                    "label": "Weergave (mobiel)",
+                                    "name": "display_type_mobile",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "Kies hier het type hoe je de tekst wilt weergeven op mobiel, als dit moet afwijken van het type dat het echt is. Wordt eventueel op desktop overschreven door een desktop weergavetype.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "h1": "h1",
+                                        "h2": "h2",
+                                        "h3": "h3",
+                                        "h4": "h4",
+                                        "h5": "h5",
+                                        "h6": "h6",
+                                        "p": "tekst",
+                                        "hidden": "verbergen"
+                                    },
+                                    "default_value": false,
+                                    "allow_null": 1,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "parent_repeater": "field_633ab0098fc82"
+                                },
+                                {
+                                    "key": "field_633ab0f18fc86",
+                                    "label": "Weergave (desktop)",
+                                    "name": "display_type_desktop",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "Kies hier het type hoe je de tekst wilt weergeven op desktop, als dit moet afwijken van het type dat het echt is. Overschrijft een eventueel mobiel weergavetype.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "h1": "h1",
+                                        "h2": "h2",
+                                        "h3": "h3",
+                                        "h4": "h4",
+                                        "h5": "h5",
+                                        "h6": "h6",
+                                        "p": "tekst",
+                                        "hidden": "verbergen"
+                                    },
+                                    "default_value": false,
+                                    "allow_null": 1,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "parent_repeater": "field_633ab0098fc82"
+                                },
+                                {
+                                    "key": "field_633ab10e8fc87",
+                                    "label": "Uitlijning",
+                                    "name": "align",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "left": "Links",
+                                        "center": "Midden",
+                                        "right": "Rechts"
+                                    },
+                                    "default_value": false,
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "ui": 0,
+                                    "return_format": "value",
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "parent_repeater": "field_633ab0098fc82"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_62e0eaa83c1d9",
+                            "label": "Call to Actions",
+                            "name": "call_to_actions",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Wil je een call-to-action toevoegen? Vul ze hier in! Maximaal 2.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "collapsed": "",
+                            "min": 0,
+                            "max": 2,
+                            "layout": "block",
+                            "button_label": "Nieuwe regel",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_62ea6810f5c2a",
+                                    "label": "Call-To-Action",
+                                    "name": "cta",
+                                    "aria-label": "",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_62e0eac93c1da",
+                                            "label": "Tekst",
+                                            "name": "button_text",
+                                            "aria-label": "",
+                                            "type": "text",
+                                            "instructions": "Dit is de tekst die wordt weergegeven.",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": ""
+                                        },
+                                        {
+                                            "key": "field_62e0eb163c1dd",
+                                            "label": "Type",
+                                            "name": "type",
+                                            "aria-label": "",
+                                            "type": "select",
+                                            "instructions": "Kies hier de weergave van de CTA.",
+                                            "required": 1,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "25",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "button": "Knop",
+                                                "link": "Link"
+                                            },
+                                            "default_value": "button",
+                                            "allow_null": 0,
+                                            "multiple": 0,
+                                            "ui": 0,
+                                            "return_format": "value",
+                                            "ajax": 0,
+                                            "placeholder": ""
+                                        },
+                                        {
+                                            "key": "field_62e0ead23c1db",
+                                            "label": "Link (pagina)",
+                                            "name": "internal_link",
+                                            "aria-label": "",
+                                            "type": "page_link",
+                                            "instructions": "Hiermee link je naar een bestaande pagina binnen de website.",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "post_type": "",
+                                            "taxonomy": "",
+                                            "allow_null": 0,
+                                            "allow_archives": 1,
+                                            "multiple": 0
+                                        },
+                                        {
+                                            "key": "field_62e0eb013c1dc",
+                                            "label": "Link (extern)",
+                                            "name": "external_link",
+                                            "aria-label": "",
+                                            "type": "url",
+                                            "instructions": "Hiermee link je naar een URL. Let op: als beide links zijn ingevuld wordt deze URL gebruikt!",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": ""
+                                        },
+                                        {
+                                            "key": "field_62ea67d94ec81",
+                                            "label": "Achtergrondkleur",
+                                            "name": "bg_color",
+                                            "aria-label": "",
+                                            "type": "Thema Kleur",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "theme_color": null,
+                                            "font_size": 14
+                                        },
+                                        {
+                                            "key": "field_62ea67ea4ec82",
+                                            "label": "Tekstkleur",
+                                            "name": "text_color",
+                                            "aria-label": "",
+                                            "type": "Thema Kleur",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "theme_color": null,
+                                            "font_size": 14
+                                        }
+                                    ],
+                                    "parent_repeater": "field_62e0eaa83c1d9"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_6454fdf2b8563",
+                            "label": "USP's",
+                            "name": "usps",
+                            "aria-label": "",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_6447a8ac4cd7c",
+                                    "label": "USP tonen in header afbeelding",
+                                    "name": "show_usp",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 0,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": ""
+                                },
+                                {
+                                    "key": "field_6454fe01b8564",
+                                    "label": "Globale USP's tonen?",
+                                    "name": "use_global_usps",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "Zodra deze aanstaat, worden de USP's uit de site instellingen ingeladen.",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6447a8ac4cd7c",
+                                                "operator": "==",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 1,
+                                    "ui": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": ""
+                                },
+                                {
+                                    "key": "field_6450b5edc0331",
+                                    "label": "USPs",
+                                    "name": "usps",
+                                    "aria-label": "",
+                                    "type": "repeater",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_6447a8ac4cd7c",
+                                                "operator": "==",
+                                                "value": "1"
+                                            },
+                                            {
+                                                "field": "field_6454fe01b8564",
+                                                "operator": "!=",
+                                                "value": "1"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "collapsed": "field_6450b601c0332",
+                                    "min": 0,
+                                    "max": 0,
+                                    "layout": "block",
+                                    "button_label": "Nieuwe regel",
+                                    "rows_per_page": 20,
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_6450b601c0332",
+                                            "label": "USP",
+                                            "name": "usp",
+                                            "aria-label": "",
+                                            "type": "text",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "",
+                                            "placeholder": "",
+                                            "prepend": "",
+                                            "append": "",
+                                            "maxlength": "",
+                                            "parent_repeater": "field_6450b5edc0331"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_632c0d4698cf2": {
+                    "key": "layout_632c0d4698cf2",
+                    "name": "header-2",
+                    "label": "Header 2 - DO NOT USE - WIP",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_632c0d4698cf3",
+                            "label": "Achtergrondkleur",
+                            "name": "bg_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_632c0d4698cf4",
+                            "label": "Achtergrondkleur 2",
+                            "name": "bg_color_2",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_632c0d4698cf5",
+                            "label": "Tekstkleur",
+                            "name": "text_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_632c0d4698cf6",
+                            "label": "Headerafbeelding",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "preview_size": "thumbnail",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_632c0d4698cf7",
+                            "label": "Video header",
+                            "name": "video",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "Optioneel, om een video te tonen in plaats van de afbeelding. Bij het gebruik van een videoachtergrond is het afbeelding veld nog steeds verplicht, zodat de header iets heeft om op terug te vallen indien de video niet correct werkt. Op mobiel wordt de video niet getoond.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_632c0d4698cf8",
+                            "label": "Titel",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_632c0d4698cf9",
+                            "label": "Subtitel",
+                            "name": "subtitle",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "Add Row",
+            "min": 0,
+            "max": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 34,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1698159407
+}

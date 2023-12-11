@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/google-maps",
+  "title": "Google Maps",
+  "description": "Een Google maps blok",
+  "category": "theme",
+  "icon": "location-alt",
+  "apiVersion": 2,
+  "keywords": [
+    "google maps"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "key": "group_6131e77384538",
+  "title": "Marketing codes",
+  "fields": [
+    {
+      "key": "field_6131e77b85029",
+      "label": "Header",
+      "name": "header_codes",
+      "type": "textarea",
+      "instructions": "Plak hier codes die in de <head> tag dienen te worden geplaatst.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "maxlength": "",
+      "rows": "",
+      "new_lines": ""
+    },
+    {
+      "key": "field_6131e7d38502a",
+      "label": "Body",
+      "name": "body_codes",
+      "type": "textarea",
+      "instructions": "Plak hier codes die in de <body> tag dienen te worden geplaatst.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "maxlength": "",
+      "rows": "",
+      "new_lines": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "company-settings_marketing_codes"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": ""
+}

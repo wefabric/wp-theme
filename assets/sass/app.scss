@@ -1,17 +1,44 @@
 @import "variables";
 
 @tailwind base;
-
 @tailwind components;
+
 @import "fonts/fontawesome";
+
+// Dinkla
+@import "base/dinkla_styling";
+@import "fonts/opensans";
+@import "fonts/roboto";
+@import "fonts/robotocondensed";
+
+//// Zijlstra
+//@import "base/zijlstra_styling";
+//@import "fonts/hind";
+//@import "fonts/dyno";
+
 @import "base/global";
 @import "base/typography";
 @import "base/buttons";
+@import "base/images";
 @import "base/forms";
-@import "components/slick-carousel";
+@import "base/animations";
+//@import "base/home"; // Custom home styling
+@import "base/custom_classes";
 @import "components/content";
 @import "components/navigation";
 @import "components/nav-mobile";
 @import "components/footer";
-
+@import "components/video-container";
+@import "components/wpcf7";
+@import "components/gravity_forms";
+@import "components/swiper";
+@import "components/faq";
+@import "components/workflow";
+@import "components/custom_tailwind";
+@import "components/rank_math";
+@import "components/webshop";
+@import "components/modal_style";
+@import "components/usp_banner";
 @tailwind utilities;
+
+@import "_fix_colors";

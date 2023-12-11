@@ -1,11 +1,8 @@
-$fa-font-path: "/content/themes/THEME_NAME/dist/fonts";
+$fa-font-path: "./../fonts";
 $fa-font-family: "Font Awesome 6 Pro";
 $fa-font-family-brands: "Font Awesome 6 Brands";
-$slick-font-path: "/content/themes/THEME_NAME/dist/fonts/";
 
-//$slick-font-path: "/assets/dist/fonts";
-//$slick-loader-path: "~slick-carousel/slick/";
-$themeColors: 'primary', 'secondary';
+$themeColors: 'primary', 'secondary', 'tertiary', 'quaternary', 'background';
 $screenSizes: (
                 (
                         'sm',

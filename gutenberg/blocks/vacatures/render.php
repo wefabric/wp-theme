@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.vacatures.index', ['block' => $block])->render(); ?>

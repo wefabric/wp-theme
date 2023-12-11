@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.cta-whitepaper.index', ['block' => $block])->render(); ?>

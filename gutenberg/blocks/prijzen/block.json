@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/prijzen",
+  "title": "Prijzen",
+  "description": "Een prijzen blok",
+  "category": "theme",
+  "icon": "money-alt",
+  "apiVersion": 2,
+  "keywords": [
+    "prijzen"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

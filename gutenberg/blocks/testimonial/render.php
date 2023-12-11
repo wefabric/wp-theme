@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.testimonial.index', ['block' => $block])->render(); ?>

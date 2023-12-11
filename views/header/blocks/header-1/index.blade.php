@@ -1,26 +1,68 @@
 @php
-  $imageId = $block->get('image') ? $block->get('image') : get_field('common', 'option')['default_header_image'];
+    $imageId = $block->get('image') ?? get_field('common', 'option')['default_header_image'];
+	$videoUrl = $block->get('video');
+	$bg = '';
+	$gradient = '';
+	if($block->get('bg_color')) {
+		if($block->get('bg_color_2')) { //gradient
+			$from = color_to_rgba($block->get('bg_color'));
+			$to = color_to_rgba($block->get('bg_color_2'));
+			$gradient = 'background: linear-gradient(180deg, '. $from .' 0%, '. $from .' 50%, '. $to .' 50%, '. $to .' 100%);';
+		} else { //solid bg.
+			$bg = 'bg-'. $block->get('bg_color');
+		}
+	}
 @endphp
-<div class="header-1 w-full" style="background: url('{{wp_get_attachment_image_url($imageId, 'full')}}')">
-    <div class="container mx-auto px-4 lg:px-0 py-20 xl:py-40">
-        <h1 class="text-white text-shadow-lg text-center lg:text-left text-4xl xl:text-6xl mx-a lg:w-3/4 xl:w-1/2">
-            {{ $block->get('title') }}
-        </h1>
-        @if($block->get('button_1') || $block->get('button_2'))
-            <div class="lg:flex lg:flex-row  mt-8 text-center lg:text-left">
 
-                @if($block->get('button_1'))
-                    <div class="mb-8 lg:mb-0">
-                        @include('components.buttons.default', ['classes' => 'text-shadow-lg shadow-lg btn-white bg-secondary border-0 lg:bg-transparent lg:border-2', 'button' => $block->get('button_1')] )
-                    </div>
-                @endif
-                @if($block->get('button_2'))
-                    <div>
-                        @include('components.buttons.default', ['classes' => 'text-shadow-lg lg:hidden border-b-2 border-transparent hover:border-white border-t-0 border-r-0 border-l-0 leading-8 disable-chevron text-white', 'button' => $block->get('button_2')])
-                        @include('components.buttons.default', ['classes' => 'text-shadow-lg hidden lg:inline-block lg:border-none btn-transparent text-white lg:ml-8', 'button' => $block->get('button_2')])
-                    </div>
-                @endif
+<div class="header header-1 w-full @if(!empty($bg)) {{ $bg }} @endif" @if(!empty($gradient)) style="{{ $gradient }}" @endif>
+    <div class="image py-15 lg:{{ $block->get('vertical_space') }} mx-4 lg:mx-20 bg-center bg-cover bg-no-repeat z-50 relative" style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}')">
+		<div class="bg-black opacity-20 -z-1 absolute h-full w-full top-0 left-0 rounded-lg"></div> {{-- black shade over image. --}}
+
+        @if(($block->get('usps') && $block->get('usps')->get('show_usp')) === true)
+            <div class="bg-tertiary h-8 absolute top-0 w-full rounded-t-lg ">
+                @include('header.blocks.header-1.usp-banner')
             </div>
         @endif
+
+		@if(!empty($videoUrl))
+			<div class="hidden lg:block"> {{-- only show on desktop, to prevent data usage when on mobile--}}
+				<video class="header-video" width="100%" height="100%" autoplay loop muted>
+					<source src="{{ $videoUrl }}" type="video/mp4" />
+					Your browser does not support HTML video.
+				</video>
+			</div>
+		@endif
+
+        <div class="container mx-auto px-4 w-full @if($block->get('vertical_space') == 'py-36') lg:w-3/4 @else lg:px-20 @endif py-14 lg:py-0 flex flex-col items-center text-center text-{{ $block->get('text_color') }}">
+
+			@include('components.headings.collection', [
+				'titles' => $block->get('title'),
+				'title_color' => $block->get('text_color') ?? 'white',
+				'disable_bottom_padding' => 'true'
+			])
+
+			@if(!empty($block->get('call_to_actions')))
+                <div class="flex flex-col lg:flex-row justify-center pt-4 lg:pt-8">
+                    @foreach($block->get('call_to_actions') as $item)
+                        @php
+                            $cta = $item->get('cta');
+                        @endphp
+
+                        @if($cta->get('type') === 'button')
+                            @include('components.buttons.default', [
+	                            'button' => $cta,
+                                'class' => ''
+                            ])
+                        @elseif($cta->get('type') === 'link')
+                            @include('components.buttons.default', [
+	                            'button' => $cta,
+                                'class' => 'btn-transparent text-white'
+                            ])
+                        @endif
+                    @endforeach
+                </div>
+            @endif
+
+        </div>
     </div>
 </div>

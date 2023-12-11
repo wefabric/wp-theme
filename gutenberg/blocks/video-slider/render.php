@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.video-slider.index', ['block' => $block])->render(); ?>

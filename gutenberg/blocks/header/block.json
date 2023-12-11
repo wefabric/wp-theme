@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/header",
+  "title": "Header",
+  "description": "Een header blok",
+  "category": "theme",
+  "icon": "align-center",
+  "apiVersion": 2,
+  "keywords": [
+    "header"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
