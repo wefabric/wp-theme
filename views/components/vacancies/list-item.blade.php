@@ -14,7 +14,7 @@
     <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
         @if ($vacancyThumbnailID)
             <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
-                <a href="{{ $vacancyUrl }}"
+                <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina"
                    class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
@@ -22,7 +22,7 @@
                             @php
                                 $categoryColor = get_field('category_color', $category);
                             @endphp
-                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full">
+                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full" aria-label="Ga naar {{ $category->name }}">
                                 {{ $category->name }}
                             </a>
                         @endforeach
@@ -39,7 +39,7 @@
         @endif
         <div class="flex flex-col w-full grow mt-5">
 
-            <a href="{{ $vacancyUrl }}" class="font-bold text-{{ $vacancyTitleColor }} text-lg group-hover:text-primary">{{ $vacancyTitle }}</a>
+            <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina" class="font-bold text-{{ $vacancyTitleColor }} text-lg group-hover:text-primary">{{ $vacancyTitle }}</a>
 
             <div class="vacancy-data mt-4 text-{{ $vacancyTextColor }}">
 

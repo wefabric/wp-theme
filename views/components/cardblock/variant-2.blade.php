@@ -3,7 +3,7 @@
         <div>
             <div class="h-[360px] relative overflow-hidden rounded-t-{{ $borderRadius }}">
                 @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId)
-                    <a href="{{ $pageUrl }}" aria-label="Open {{ $pageTitle }} pagina"
+                    <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                        class="absolute left-0  w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                     @include('components.image', [
                      'image_id' => $featuredImageId,
@@ -17,7 +17,7 @@
                         <i class="text-{{ $cardTitleColor }} relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
                     </div>
                 @elseif ($block['data']['block_visual'] == 'image' && $imageID)
-                    <a href="{{ $pageUrl }}" aria-label="Open {{ $pageTitle }} pagina"
+                    <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                        class="absolute left-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                     @include('components.image', [
                        'image_id' => $imageID,
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="h-full flex flex-col gap-y-4 p-6 xl:p-8">
-            <a href="{{ $pageUrl }}" aria-label="Open {{ $pageTitle }} pagina"
+            <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                class="text-{{ $cardTitleColor }} relative z-20 h3 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
                 {{ $pageTitle }}
             </a>

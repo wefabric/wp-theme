@@ -36,7 +36,7 @@
                 <div class="inline-flex gap-x-2">
                     @foreach ($socials as $social)
                         <a class="text-{{ $employeeTextColor }} text-2xl transform ease-in-out duration-300 hover:scale-110 hover:text-primary"
-                           href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer">
+                           href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer" aria-label="Ga naar social media pagina">
                             {!! $social['icon'] !!}
                         </a>
                     @endforeach
@@ -45,14 +45,14 @@
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements))
                 @if ($mail)
                     <p>
-                        <a href="mailto:{{ $mail }}" class="text-{{ $employeeTextColor }} hover:text-primary">
+                        <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" class="text-{{ $employeeTextColor }} hover:text-primary">
                             <i class="w-4 object-cover fas fa-envelope mr-3"></i>{{ $mail }}
                         </a>
                     </p>
                 @endif
                 @if ($phoneNumber)
                     <p>
-                        <a href="tel:{{$phoneNumber}}" class="text-{{ $employeeTextColor }} hover:text-primary">
+                        <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" class="text-{{ $employeeTextColor }} hover:text-primary">
                             <i class="w-4 object-cover fas fa-phone mr-3"></i>{{ $phoneNumber }}
                         </a>
                     </p>

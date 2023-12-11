@@ -54,7 +54,7 @@
                 <div class="mt-4 flex flex-wrap gap-2">
                     @foreach($links as $link)
                         @if($link['buttonText'] && $link['buttonLink'])
-                            <a href="{{ $link['buttonLink'] }}"
+                            <a href="{{ $link['buttonLink'] }}" aria-label="Ga naar {{ $link['buttonText'] }} pagina"
                                class="btn btn-{{ $link['buttonColor'] }} btn-filled">{{ $link['buttonText'] }}</a>
                         @endif
                     @endforeach

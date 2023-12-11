@@ -54,7 +54,7 @@
             <div class="flex flex-wrap gap-1 text-{{ $textColor }}">
                 @foreach($links as $index => $link)
                     @if ($link['text'] && $link['link'])
-                        <a href="{{ $link['link'] }}" class="underline hover:text-primary" target="{{ $link['target'] }}">{{ $link['text'] }}</a>
+                        <a href="{{ $link['link'] }}" class="underline hover:text-primary" target="{{ $link['target'] }}" aria-label="Ga naar {{ $link['text'] }}">{{ $link['text'] }}</a>
                         @if ($index < count($links) - 1)
                             <span class="separator">|</span>
                         @endif

@@ -21,7 +21,7 @@
     <div class="h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
         @if ($postThumbnailId)
             <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
-                <a href="{{ $postUrl }}"
+                <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina"
                    class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
@@ -29,7 +29,7 @@
                             @php
                                 $categoryColor = get_field('category_color', $category);
                             @endphp
-                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full">
+                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full" aria-label="Ga naar {{ $category->name }}">
                                 {{ $category->name }}
                             </a>
                         @endforeach
@@ -49,7 +49,7 @@
                 <p class="mb-2 text-{{ $newsTextColor }}">{{ $postDate }}</p>
             @endif
 
-            <a href="{{ $postUrl }}" class="text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{{ $postTitle }}</a>
+            <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina" class="text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{{ $postTitle }}</a>
 
             <div class="news-info">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($postSummary))
