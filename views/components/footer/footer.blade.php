@@ -187,7 +187,7 @@
                         @php
                             $theme = app('wp.theme');
                         @endphp
-                        <img src="{{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }}" class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:30px;"/>
+                        <img src="{{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }}" width="134" height="30" class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:30px;"/>
 						<span class="screen-reader-only">Wefabric</span>
                     @include('components.link.closing')
                 </div>
