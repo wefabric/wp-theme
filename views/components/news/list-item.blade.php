@@ -37,7 +37,7 @@
                 @endif
                 @include('components.image', [
                     'image_id' => $postThumbnailId,
-                    'size' => 'full',
+                    'size' => 'news-thumbnail',
                     'object_fit' => 'cover',
                     'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
                     'alt' => $postTitle,
