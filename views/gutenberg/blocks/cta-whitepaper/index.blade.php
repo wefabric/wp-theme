@@ -101,7 +101,7 @@
                         @endif
                     </div>
                     @if ($ctaForm)
-                        <div class="w-full mt-10 text-left text-white">
+                        <div class="w-full lg:w-2/3 xl:w-1/2 mx-auto mt-10 text-left text-white">
                             {!! gravity_form($ctaForm, false) ; !!}
                         </div>
                     @endif
