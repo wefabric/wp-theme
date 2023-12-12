@@ -39,7 +39,7 @@
         $textClass = 'lg:w-1/3';
     }
 
-    $imageHeightClass = $block['data']['full_height'] ? 'h-full' : '';
+    $imageHeightClass = $block['data']['full_height'] ?? false;
     $verticalCentered = $block['data']['vertical_centered'] ?? false;
 
     // Blokinstellingen
@@ -105,7 +105,7 @@
                             'image_id' => $imageID,
                             'size' => 'full',
                             'object_fit' => 'cover',
-                            'img_class' => 'w-full object-cover rounded-' . $borderRadius . ' ' . $imageHeightClass,
+                            'img_class' => 'w-full object-cover rounded-' . $borderRadius . ($imageHeightClass ? ' h-full' : ''),
                             'alt' => $imageAlt
                         ])
                     </div>
