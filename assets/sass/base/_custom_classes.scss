@@ -105,11 +105,30 @@
   overflow: hidden;
 }
 
-.top-diagonal-transition::after {
+
+
+
+
+// Top diagonal transition
+.top-white-diagonal-transition::after,
+.top-black-diagonal-transition::after,
+.top-primary-diagonal-transition::after,
+.top-primary-light-diagonal-transition::after,
+.top-primary-dark-diagonal-transition::after,
+.top-secondary-diagonal-transition::after,
+.top-secondary-light-diagonal-transition::after,
+.top-secondary-dark-diagonal-transition::after,
+.top-tertiary-diagonal-transition::after,
+.top-tertiary-light-diagonal-transition::after,
+.top-tertiary-dark-diagonal-transition::after,
+.top-quaternary-diagonal-transition::after,
+.top-quaternary-light-diagonal-transition::after,
+.top-quaternary-dark-diagonal-transition::after,
+.top-background-diagonal-transition::after,
+.top-cta-diagonal-transition::after {
   content: '';
-  @apply bg-background;
+  @apply top-[-50px] md:top-[-90px] xl:top-[-160px];
   position: absolute;
-  top: -160px;
   left: 0;
   width: calc(100% + 30px);
   height: 400px;
@@ -118,11 +137,26 @@
   border-radius: 50px;
 }
 
-.bottom-diagonal-transition::after {
+// bottom diagonal transition
+.bottom-white-diagonal-transition::after,
+.bottom-black-diagonal-transition::after,
+.bottom-primary-diagonal-transition::after,
+.bottom-primary-light-diagonal-transition::after,
+.bottom-primary-dark-diagonal-transition::after,
+.bottom-secondary-diagonal-transition::after,
+.bottom-secondary-light-diagonal-transition::after,
+.bottom-secondary-dark-diagonal-transition::after,
+.bottom-tertiary-diagonal-transition::after,
+.bottom-tertiary-light-diagonal-transition::after,
+.bottom-tertiary-dark-diagonal-transition::after,
+.bottom-quaternary-diagonal-transition::after,
+.bottom-quaternary-light-diagonal-transition::after,
+.bottom-quaternary-dark-diagonal-transition::after,
+.bottom-background-diagonal-transition::after,
+.bottom-cta-diagonal-transition::after {
   content: '';
-  @apply bg-background;
+  @apply bottom-[-50px] md:bottom-[-90px] xl:bottom-[-160px];
   position: absolute;
-  bottom: -160px;
   left: 0;
   width: calc(100% + 30px);
   height: 400px;
@@ -131,14 +165,118 @@
   border-radius: 50px;
 }
 
-
-.top-transition::after {
+// Top normal transition
+.top-white-transition::after,
+.top-black-transition::after,
+.top-primary-transition::after,
+.top-primary-light-transition::after,
+.top-primary-dark-transition::after,
+.top-secondary-transition::after,
+.top-secondary-light-transition::after,
+.top-secondary-dark-transition::after,
+.top-tertiary-transition::after,
+.top-tertiary-light-transition::after,
+.top-tertiary-dark-transition::after,
+.top-quaternary-transition::after,
+.top-quaternary-light-transition::after,
+.top-quaternary-dark-transition::after,
+.top-background-transition::after,
+.top-cta-transition::after {
   content: '';
-  @apply bg-primary-dark;
+  @apply top-[-50px] md:top-[-90px] xl:top-[-160px];
   position: absolute;
-  top: -160px;
   left: 0;
   width: 100%;
   height: 400px;
   z-index: 5;
+}
+
+// Bottom normal transition
+.bottom-white-transition::after,
+.bottom-black-transition::after,
+.bottom-primary-transition::after,
+.bottom-primary-light-transition::after,
+.bottom-primary-dark-transition::after,
+.bottom-secondary-transition::after,
+.bottom-secondary-light-transition::after,
+.bottom-secondary-dark-transition::after,
+.bottom-tertiary-transition::after,
+.bottom-tertiary-light-transition::after,
+.bottom-tertiary-dark-transition::after,
+.bottom-quaternary-transition::after,
+.bottom-quaternary-light-transition::after,
+.bottom-quaternary-dark-transition::after,
+.bottom-background-transition::after,
+.bottom-cta-transition::after {
+  content: '';
+  @apply bottom-[-50px] md:bottom-[-90px] xl:bottom-[-160px];
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  z-index: 5;
+}
+
+.bottom-white-diagonal-transition::after, .top-white-diagonal-transition::after, .top-white-transition::after, .bottom-white-transition::after {
+  @apply bg-white;
+}
+
+.bottom-black-diagonal-transition::after, .top-black-diagonal-transition::after, .top-black-transition::after, .bottom-black-transition::after {
+  @apply bg-black;
+}
+
+.bottom-primary-diagonal-transition::after, .top-primary-diagonal-transition::after, .top-primary-transition::after, .bottom-primary-transition::after {
+  @apply bg-primary;
+}
+
+.bottom-primary-light-diagonal-transition::after, .top-primary-light-diagonal-transition::after, .top-primary-light-transition::after, .bottom-primary-light-transition::after {
+  @apply bg-primary-light;
+}
+
+.bottom-primary-dark-diagonal-transition::after, .top-primary-dark-diagonal-transition::after, .top-primary-dark-transition::after, .bottom-primary-dark-transition::after {
+  @apply bg-primary-dark;
+}
+
+.bottom-secondary-diagonal-transition::after, .top-secondary-diagonal-transition::after, .top-secondary-transition::after, .bottom-secondary-transition::after {
+  @apply bg-secondary;
+}
+
+.bottom-secondary-light-diagonal-transition::after, .top-secondary-light-diagonal-transition::after, .top-secondary-light-transition::after, .bottom-secondary-light-transition::after {
+  @apply bg-secondary-light;
+}
+
+.bottom-secondary-dark-diagonal-transition::after, .top-secondary-dark-diagonal-transition::after, .top-secondary-dark-transition::after, .bottom-secondary-dark-transition::after {
+  @apply bg-secondary-dark;
+}
+
+.bottom-tertiary-diagonal-transition::after, .top-tertiary-diagonal-transition::after, .top-tertiary-transition::after, .bottom-tertiary-transition::after {
+  @apply bg-tertiary;
+}
+
+.bottom-tertiary-light-diagonal-transition::after, .top-tertiary-light-diagonal-transition::after, .top-tertiary-light-transition::after, .bottom-tertiary-light-transition::after {
+  @apply bg-tertiary-light;
+}
+
+.bottom-tertiary-dark-diagonal-transition::after, .top-tertiary-dark-diagonal-transition::after, .top-tertiary-dark-transition::after, .bottom-tertiary-dark-transition::after {
+  @apply bg-tertiary-dark;
+}
+
+.bottom-quaternary-diagonal-transition::after, .top-quaternary-diagonal-transition::after, .top-quaternary-transition::after, .bottom-quaternary-transition::after {
+  @apply bg-quaternary;
+}
+
+.bottom-quaternary-light-diagonal-transition::after, .top-quaternary-light-diagonal-transition::after, .top-quaternary-light-transition::after, .bottom-quaternary-light-transition::after {
+  @apply bg-quaternary-light;
+}
+
+.bottom-quaternary-dark-diagonal-transition::after, .top-quaternary-dark-diagonal-transition::after, .top-quaternary-dark-transition::after, .bottom-quaternary-dark-transition::after {
+  @apply bg-quaternary-dark;
+}
+
+.bottom-background-diagonal-transition::after, .top-background-diagonal-transition::after, .top-background-transition::after, .bottom-background-transition::after {
+  @apply bg-background;
+}
+
+.bottom-cta-diagonal-transition::after, .top-cta-diagonal-transition::after, .top-cta-transition::after, .bottom-cta-transition::after {
+  @apply bg-cta;
 }
