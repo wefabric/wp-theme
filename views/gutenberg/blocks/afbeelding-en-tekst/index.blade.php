@@ -39,7 +39,7 @@
         $textClass = 'lg:w-1/3';
     }
 
-    $imageHeightClass = '';
+    $imageHeightClass = $block['data']['full_height'] ? 'h-full' : '';
     $verticalCentered = $block['data']['vertical_centered'] ?? false;
 
     // Blokinstellingen
