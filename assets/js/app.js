@@ -4,6 +4,7 @@ import Swiper, { Navigation, Pagination, Autoplay, Zoom } from 'swiper';
 // import Swiper and modules styles
 
 
+
 // Import dependencies
 window.$ = window.jQuery = require('jquery');
 
@@ -16,6 +17,7 @@ import './offer-dynamic-url';
 import './dynamic-content';
 import './custom-cart';
 import './cad-download-toggle';
+import './../../../../child-theme-helper/import-child.js'; // Child theme js loader
 
 Swiper.use([Navigation, Pagination, Autoplay , Zoom]);
 

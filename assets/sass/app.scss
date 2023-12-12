@@ -11,10 +11,8 @@
 //@import "fonts/roboto";
 //@import "fonts/robotocondensed";
 
-// Zijlstra
-@import "base/zijlstra_styling";
-@import "fonts/hind";
-@import "fonts/dyno";
+// Child theme styling
+@import "./../../../../child-theme-helper/import-child";
 
 @import "base/global";
 @import "base/typography";
