@@ -39,7 +39,7 @@
         $textClass = 'lg:w-1/3';
     }
 
-    $imageHeightClass = isset($block['data']['full_height']) ? ($block['data']['full_height'] ? 'h-full' : '') : '';
+    $imageHeightClass = '';
     $verticalCentered = $block['data']['vertical_centered'] ?? false;
 
     // Blokinstellingen
