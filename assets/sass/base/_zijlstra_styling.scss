@@ -216,15 +216,16 @@ btn {
     padding-bottom: 4rem;
   }
 
-  .swiper-wrapper {
-    .swiper-slide:nth-child(odd) {
-      margin-top: 50px;
-    }
-  }
 
-  .swiper-wrapper {
-    .swiper-slide:nth-child(even) {
-      margin-bottom: 50px;
+  @media only screen and (min-width: 640px) {
+    .swiper-wrapper {
+      .swiper-slide:nth-child(odd) {
+        margin-top: 50px;
+      }
+
+      .swiper-slide:nth-child(even) {
+        margin-bottom: 50px;
+      }
     }
   }
 
