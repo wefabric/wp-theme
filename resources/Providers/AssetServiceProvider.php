@@ -2,10 +2,7 @@
 
 namespace Theme\Providers;
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
-use Themosis\Core\ThemeManager;
-use Themosis\Support\Facades\Asset;
 
 class AssetServiceProvider extends ServiceProvider
 {
