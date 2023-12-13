@@ -115,7 +115,7 @@
                 "show_all": "Toon alle klantencases",
                 "show_category": "Toon klantencases van een categorie",
                 "show_specific": "Toon specifieke klantencases",
-                "show_latest": "Toon laatste activiteiten"
+                "show_latest": "Toon laatste klantencases"
             },
             "default_value": "show_all",
             "return_format": "value",
@@ -269,36 +269,7 @@
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6579c9aff093d",
-                        "operator": "==",
-                        "value": "overview_text"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_6579c9aff093d",
-                        "operator": "==",
-                        "value": "category"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_6579c9aff093d",
-                        "operator": "==",
-                        "value": "category"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_6579c9aff093d",
-                        "operator": "==",
-                        "value": "category"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -308,8 +279,25 @@
             "font_size": 14
         },
         {
+            "key": "field_657a40003c96d",
+            "label": "Klantcase blok achtergrond kleur",
+            "name": "case_background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "background-color",
+            "font_size": 14
+        },
+        {
             "key": "field_6579c9aff0951",
-            "label": "Button in activiteit blok",
+            "label": "Button in klantcase blok",
             "name": "card_button",
             "aria-label": "",
             "type": "group",
@@ -925,5 +913,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702481750
+    "modified": 1702510682
 }

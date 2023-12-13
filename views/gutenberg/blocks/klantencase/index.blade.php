@@ -8,6 +8,7 @@
 
     $caseQuoteColor = $block['data']['case_quote_color'] ?? '';
     $caseTextColor = $block['data']['case_text_color'] ?? '';
+    $caseBackgroundColor = $block['data']['case_background_color'] ?? '';
 
     // Buttons
     $button1Text = $block['data']['button_button_1']['title'] ?? '';
@@ -25,7 +26,7 @@
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'klantencase',
+            'post_type' => 'klantcases',
         ];
 
         $query = new WP_Query($args);
@@ -35,7 +36,7 @@
         $selectedCategory = $block['data']['category'] ?? '';
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'klantencases',
+            'post_type' => 'klantcases',
             'tax_query' => [
                 [
                     'taxonomy' => 'category',
@@ -57,7 +58,7 @@
         $postAmount = $block['data']['post_amount'] ?? 3;
         $args = [
             'posts_per_page' => $postAmount,
-            'post_type' => 'klantencases',
+            'post_type' => 'klantcases',
             'orderby' => 'date',
             'order' => 'DESC',
         ];
