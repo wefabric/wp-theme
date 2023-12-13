@@ -159,7 +159,7 @@
         {
             "key": "field_6579c9aff092e",
             "label": "Specifieke activiteiten weergeven",
-            "name": "show_specific_activity",
+            "name": "show_specific_case",
             "aria-label": "",
             "type": "post_object",
             "instructions": "",
@@ -233,8 +233,6 @@
                 "id": ""
             },
             "choices": {
-                "category": "Categorie",
-                "overview_text": "Overzichtstekst",
                 "button": "Knop in activiteit blok",
                 "button_bottom": "Knop onder klantencases"
             },
@@ -248,8 +246,8 @@
         },
         {
             "key": "field_6579c9aff0944",
-            "label": "Activiteit titel kleur",
-            "name": "activity_title_color",
+            "label": "Klantcase quote kleur",
+            "name": "case_quote_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
@@ -265,8 +263,8 @@
         },
         {
             "key": "field_6579c9aff094a",
-            "label": "Activiteit tekst kleur",
-            "name": "activity_text_color",
+            "label": "Klantcase tekst kleur",
+            "name": "case_text_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
@@ -283,21 +281,21 @@
                     {
                         "field": "field_6579c9aff093d",
                         "operator": "==",
-                        "value": "location"
+                        "value": "category"
                     }
                 ],
                 [
                     {
                         "field": "field_6579c9aff093d",
                         "operator": "==",
-                        "value": "date"
+                        "value": "category"
                     }
                 ],
                 [
                     {
                         "field": "field_6579c9aff093d",
                         "operator": "==",
-                        "value": "time"
+                        "value": "category"
                     }
                 ]
             ],
@@ -335,7 +333,7 @@
             "sub_fields": [
                 {
                     "key": "field_6579c9b008591",
-                    "label": "Activiteit button tekst",
+                    "label": "Klantcase button tekst",
                     "name": "button_text",
                     "aria-label": "",
                     "type": "text",
@@ -363,7 +361,7 @@
                 },
                 {
                     "key": "field_6579c9b00859b",
-                    "label": "Activiteit button kleur",
+                    "label": "Klantcase button kleur",
                     "name": "button_color",
                     "aria-label": "",
                     "type": "select",
@@ -402,7 +400,7 @@
                 },
                 {
                     "key": "field_6579c9b0085a7",
-                    "label": "Activiteit button stijl",
+                    "label": "Klantcase button stijl",
                     "name": "button_style",
                     "aria-label": "",
                     "type": "select",
@@ -927,5 +925,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702480744
+    "modified": 1702481750
 }
