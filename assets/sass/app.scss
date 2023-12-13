@@ -5,14 +5,8 @@
 
 @import "fonts/fontawesome";
 
-//// Dinkla
-//@import "base/dinkla_styling";
-//@import "fonts/opensans";
-//@import "fonts/roboto";
-//@import "fonts/robotocondensed";
-
 // Child theme styling
-@import "./../../../../child-theme-helper/import-child";
+@import "./../../../theme-child/assets/sass/app.scss";
 
 @import "base/global";
 @import "base/typography";

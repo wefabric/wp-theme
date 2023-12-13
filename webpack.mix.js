@@ -1,6 +1,5 @@
 const mix = require('laravel-mix');
-const tailwindcss = require('tailwindcss')
-const childThemeHelper = require('./../../child-theme-helper/webpack-helper.js');
+const tailwindcss = require('tailwindcss');
 const {copyDirectory} = require("laravel-mix");
 /*
  |--------------------------------------------------------------------------
@@ -26,11 +25,11 @@ mix.js('assets/js/app.js', 'dist/js')
     })
     .copyDirectory('node_modules/@fortawesome/fontawesome-pro/webfonts', 'dist/fonts')
     .copyDirectory('assets/fonts', 'dist/fonts')
-    .copyDirectory('./../'+ childThemeHelper.childThemeSettings().name + '/assets/fonts', 'dist/fonts');
+    .copyDirectory('./../theme-child/assets/fonts', 'dist/fonts');
 
 
 if (mix.inProduction()) {
     mix.version();
 }
 
-mix.copyDirectory('dist', './../'+ childThemeHelper.childThemeSettings().name + '/dist');
+mix.copyDirectory('dist', './../theme-child/dist');
