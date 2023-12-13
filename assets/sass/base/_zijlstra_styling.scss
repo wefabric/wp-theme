@@ -211,21 +211,17 @@ btn {
 // Services kaarten styling
 .custom-services {
 
-
   .swiper {
-    padding-bottom: 4rem;
+    @apply sm:pb-16;
   }
 
+  .swiper-wrapper {
+    .swiper-slide:nth-child(odd) {
+      @apply lg:mt-[50px];
+    }
 
-  @media only screen and (min-width: 640px) {
-    .swiper-wrapper {
-      .swiper-slide:nth-child(odd) {
-        margin-top: 50px;
-      }
-
-      .swiper-slide:nth-child(even) {
-        margin-bottom: 50px;
-      }
+    .swiper-slide:nth-child(even) {
+      @apply lg:mt-[50px];
     }
   }
 
@@ -233,9 +229,8 @@ btn {
     padding: 1px;
 
     .card-background {
-      @apply border border-tertiary aspect-auto;
+      @apply border border-tertiary aspect-auto min-h-[450px];
       border-radius: 60px;
-      min-height: 450px;
 
       .page-icon {
         margin-top: 20px;
