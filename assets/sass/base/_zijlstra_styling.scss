@@ -222,6 +222,12 @@ btn {
     }
   }
 
+  .swiper-wrapper {
+    .swiper-slide:nth-child(even) {
+      margin-bottom: 50px;
+    }
+  }
+
   .card-item {
     padding: 1px;
 
