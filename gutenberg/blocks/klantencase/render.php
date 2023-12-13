@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.klantencase.index', ['block' => $block])->render(); ?>
