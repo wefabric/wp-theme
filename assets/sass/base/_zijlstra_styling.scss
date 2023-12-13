@@ -1,0 +1,305 @@
+/* Zijlstra styling */
+
+// Home styling
+
+.home {
+  .page-builder {
+    #header.big-header {
+      .content {
+        margin-bottom: 0.5rem !important;
+      }
+
+      h1 {
+        @apply text-[36px] sm:text-[48px] lg:text-[65px] #{!important};
+      }
+    }
+
+    #tekst {
+      padding-bottom: 300px !important;
+
+      div {
+        z-index: 30 !important;
+      }
+    }
+
+    #afbeelding {
+      z-index: 4;
+      @apply -mt-[450px] md:-mt-[600px] lg:-mt-[800px];
+
+      div {
+        padding: 0 !important;
+      }
+
+      img {
+        max-height: 1200px !important;
+        border-radius: 0px !important;
+      }
+    }
+
+
+    #werkwijze.top-diagonal-transition::after {
+      z-index: 35 !important;
+      background-color: white !important;
+    }
+
+    #werkwijze {
+      div {
+        z-index: 40 !important;
+      }
+    }
+  }
+}
+
+
+// Custom styling
+.page-builder {
+  #header.big-header, #header.medium-header {
+
+    z-index: 50;
+
+    @media only screen and (min-width: 640px) {
+      margin: 0 34px -100px !important;
+    }
+
+    .buttons {
+      @apply order-3;
+    }
+
+    .custom-styling, .custom-styling .overlay {
+      @apply sm:rounded-[10px];
+    }
+  }
+
+  > section:nth-child(2) {
+    @apply sm:mt-[30px] sm:pt-[70px];
+  }
+}
+
+
+// H1 Styling for small, medium and big headers
+.page-builder {
+  #header.small-header {
+    h1 {
+      @apply text-[30px] sm:text-[60px] lg:text-[120px] #{!important};
+    }
+  }
+
+  #header.big-header, #header.medium-header {
+    h1 {
+      @apply order-2 text-[32px] md:text-[60px] lg:text-[90px] text-shadow-xl #{!important};
+    }
+
+    .content {
+      @apply order-1 mt-0 -mb-2;
+
+      h1 {
+        @apply font-bold uppercase text-shadow-xl;
+        font-family: 'Dyno' !important;
+        font-size: 18px !important;
+      }
+    }
+  }
+}
+
+btn {
+  @apply uppercase;
+}
+
+// USP block
+#usps {
+
+  h2 {
+    @apply text-[24px];
+  }
+
+  .USP-item {
+
+    div {
+      @apply border-tertiary border-2 flex-col xl:flex-row;
+      border-radius: 10px;
+      padding: 36px;
+      display: flex;
+      text-align: left;
+      align-items: center;
+      justify-content: center;
+    }
+
+    i {
+      @media only screen and (max-width: 1279px) {
+        margin-bottom: 20px !important;
+      }
+      @media only screen and (min-width: 1280px) {
+        margin-right: 30px !important;
+      }
+    }
+
+    p {
+      @media only screen and (max-width: 1279px) {
+        text-align: center;
+      }
+    }
+  }
+}
+
+
+// Kaarten blok
+.custom-grid-overview {
+  h2 {
+    margin-bottom: 100px;
+  }
+
+  .grid {
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+      .card-item:nth-child(even) {
+        margin-top: -80px !important;
+      }
+    }
+    @media only screen and (min-width: 1024px) {
+      .card-item:nth-child(2), .card-item:nth-child(5), .card-item:nth-child(8), .card-item:nth-child(11), .card-item:nth-child(14), .card-item:nth-child(17) {
+        margin-top: -100px !important;
+      }
+    }
+  }
+}
+
+
+// Bedrijfskleding archive
+.custom-bedrijfskleding .grid {
+
+  .card-background, .card-background .card-overlay {
+    border-radius: 60px !important;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .card-item:nth-child(1), .card-item:nth-child(7), .card-item:nth-child(11), .card-item:nth-child(17), .card-item:nth-child(21), .card-item:nth-child(27) {
+      @apply col-span-2;
+
+      .card-background {
+        aspect-ratio: auto !important;
+      }
+    }
+  }
+}
+
+
+// usp-background
+.usp-background {
+  .w-full {
+    @apply bg-primary-dark p-12 lg:p-20;
+    border-radius: 10px;
+  }
+}
+
+
+nav ul li {
+  @apply uppercase;
+}
+
+footer .footer {
+  background-image: url('https://theme2023.test/content/themes/theme2023/assets/images/footer/footer-logo-zijlstra.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right 50px top 50px;
+}
+
+#kaarten {
+  .content-in-card-item {
+
+    a.page-title.relative {
+      @apply p-4 rounded-md bg-white text-primary ;
+    }
+
+    &:hover {
+      a.page-title.relative {
+        @apply bg-primary text-white;
+      }
+    }
+  }
+}
+
+
+// Typography
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Dyno";
+  @apply uppercase;
+}
+
+.btn {
+  @apply uppercase;
+}
+
+footer label {
+  font-family: "Dyno";
+}
+
+.main-navigation .menu .menu-item a {
+  font-family: "Dyno";
+  font-weight: 600 !important;
+}
+
+p, span, a, table, label, li, ul, ol {
+  font-family: "Hind";
+}
+
+.secondary-navigation {
+  font-family: "Dyno";
+}
+
+.breadcrumbs p span {
+  @apply uppercase;
+  font-family: "Dyno" !important;
+}
+
+
+// Lines under titles
+
+#tekst, #afbeelding-tekst {
+  h2:after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 50px;
+    @apply bg-quaternary;
+    margin: 5px 0 15px 30px;
+  }
+}
+
+#titel-tekst {
+  h2:after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 1px;
+    @apply bg-quaternary;
+
+    @media only screen and (max-width: 1023px) {
+      margin: 20px 0 0 0;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      margin: 20px 0 0 auto;
+    }
+  }
+}
+
+#kaarten {
+  h2:after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 1px;
+    @apply bg-quaternary;
+    margin: 20px auto 0;
+  }
+}
+
+#werkwijze {
+  h2:after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 1px;
+    @apply bg-quaternary;
+    margin: 20px auto 0;
+  }
+}
