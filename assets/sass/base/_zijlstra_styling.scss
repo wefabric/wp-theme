@@ -190,6 +190,35 @@ btn {
   }
 }
 
+// Hover effect for custom-bedrijfskleding and grid-overview classes
+#kaarten.custom-bedrijfskleding, #kaarten.custom-grid-overview {
+  .content-in-card-item {
+
+    a.page-title.relative {
+      @apply p-4 rounded-md bg-white text-primary ;
+    }
+
+    &:hover {
+      a.page-title.relative {
+        @apply bg-primary text-white;
+      }
+    }
+  }
+}
+
+
+
+
+// Services kaarten styling
+.custom-services .card-background {
+  @apply border border-tertiary;
+  border-radius: 60px;
+
+  .card-overlay {
+    border-radius: 60px;
+  }
+}
+
 
 // usp-background
 .usp-background {
@@ -211,20 +240,8 @@ footer .footer {
   background-position: right 50px top 50px;
 }
 
-#kaarten {
-  .content-in-card-item {
 
-    a.page-title.relative {
-      @apply p-4 rounded-md bg-white text-primary ;
-    }
 
-    &:hover {
-      a.page-title.relative {
-        @apply bg-primary text-white;
-      }
-    }
-  }
-}
 
 
 // Typography
