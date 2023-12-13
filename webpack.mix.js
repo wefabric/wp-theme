@@ -31,5 +31,3 @@ mix.js('assets/js/app.js', 'dist/js')
 if (mix.inProduction()) {
     mix.version();
 }
-
-mix.copyDirectory('dist', './../theme-child/dist');
