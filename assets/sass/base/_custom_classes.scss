@@ -1,12 +1,13 @@
 // Padding and margin classes
-.desktop-pb-100px {
+
+.desktop-pb-50px {
   @media only screen and (min-width: 1024px) {
-    padding-bottom: 100px !important;
+    padding-bottom: 50px !important;
   }
 }
 
-.mobile-pb-100px {
-  @media only screen and (max-width: 1023px) {
+.desktop-pb-100px {
+  @media only screen and (min-width: 1024px) {
     padding-bottom: 100px !important;
   }
 }
@@ -17,20 +18,37 @@
   }
 }
 
+.mobile-pb-50px {
+  @media only screen and (max-width: 1023px) {
+    padding-bottom: 50px !important;
+  }
+}
+
+.mobile-pb-100px {
+  @media only screen and (max-width: 1023px) {
+    padding-bottom: 100px !important;
+  }
+}
+
 .mobile-pb-200px {
   @media only screen and (max-width: 1023px) {
     padding-bottom: 200px !important;
   }
 }
 
-.-desktop-pb-100px {
+
+
+
+
+.-desktop-pb-50px {
   @media only screen and (min-width: 1024px) {
-    padding-bottom: -100px !important;
+    padding-bottom: -50px !important;
   }
 }
 
-.-mobile-pb-100px {
-  @media only screen and (max-width: 1023px) {
+
+.-desktop-pb-100px {
+  @media only screen and (min-width: 1024px) {
     padding-bottom: -100px !important;
   }
 }
@@ -41,11 +59,31 @@
   }
 }
 
+.-mobile-pb-50px {
+  @media only screen and (max-width: 1023px) {
+    padding-bottom: -50px !important;
+  }
+}
+
+.-mobile-pb-100px {
+  @media only screen and (max-width: 1023px) {
+    padding-bottom: -100px !important;
+  }
+}
+
 .-mobile-pb-200px {
   @media only screen and (max-width: 1023px) {
     padding-bottom: -200px !important;
   }
 }
+
+
+
+
+
+
+
+
 
 .desktop-mt-100px {
   @media only screen and (min-width: 1024px) {
