@@ -70,7 +70,7 @@
 
 <section id="header" class="relative bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }}">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
-         style="background-image: url('{{ $imageId ? wp_get_attachment_image_url($imageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId ?: $featuredImageId) }}">
+         style="background-image: url('{{ $imageId ? wp_get_attachment_image_url($imageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId ?: $featuredImageId) }}">
         @if ($overlayEnabled)
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
