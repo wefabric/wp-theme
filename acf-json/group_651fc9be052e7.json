@@ -192,10 +192,9 @@
                         "bedrijfskleding",
                         "klantcases",
                         "activiteiten",
-                        "opleidingen",
-                        "rijopleidingen",
                         "vacatures",
-                        "werknemers"
+                        "werknemers",
+                        "services"
                     ],
                     "post_status": "",
                     "taxonomy": "",
@@ -1036,5 +1035,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702050185
+    "modified": 1702466184
 }
