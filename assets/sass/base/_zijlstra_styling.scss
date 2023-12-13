@@ -210,122 +210,142 @@ btn {
 
 
 // Services kaarten styling
-.custom-services .card-background {
-  @apply border border-tertiary;
-  border-radius: 60px;
+.custom-services {
 
-  .card-overlay {
+  .card-item {
+    padding: 1px;
+
+  .card-background {
+    @apply border border-tertiary aspect-auto;
     border-radius: 60px;
-  }
-}
+    min-height: 450px;
 
-
-// usp-background
-.usp-background {
-  .w-full {
-    @apply bg-primary-dark p-12 lg:p-20;
-    border-radius: 10px;
-  }
-}
-
-
-nav ul li {
-  @apply uppercase;
-}
-
-footer .footer {
-  background-image: url('https://theme2023.test/content/themes/theme2023/assets/images/footer/footer-logo-zijlstra.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right 50px top 50px;
-}
-
-
-
-
-
-// Typography
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: "Dyno";
-  @apply uppercase;
-}
-
-.btn {
-  @apply uppercase;
-}
-
-footer label {
-  font-family: "Dyno";
-}
-
-.main-navigation .menu .menu-item a {
-  font-family: "Dyno";
-  font-weight: 600 !important;
-}
-
-p, span, a, table, label, li, ul, ol {
-  font-family: "Hind";
-}
-
-.secondary-navigation {
-  font-family: "Dyno";
-}
-
-.breadcrumbs p span {
-  @apply uppercase;
-  font-family: "Dyno" !important;
-}
-
-
-// Lines under titles
-
-#tekst, #afbeelding-tekst {
-  h2:after {
-    content: "";
-    display: block;
-    width: 1px;
-    height: 50px;
-    @apply bg-quaternary;
-    margin: 5px 0 15px 30px;
-  }
-}
-
-#titel-tekst {
-  h2:after {
-    content: "";
-    display: block;
-    width: 50px;
-    height: 1px;
-    @apply bg-quaternary;
-
-    @media only screen and (max-width: 1023px) {
-      margin: 20px 0 0 0;
+    .page-icon {
+      margin-top: 20px;
     }
 
-    @media only screen and (min-width: 1024px) {
-      margin: 20px 0 0 auto;
+    .page-title {
+      margin-top: 14px;
+    }
+
+    .page-button {
+      margin-top: auto;
+    }
+
+    .card-overlay {
+      border-radius: 60px;
     }
   }
 }
 
-#kaarten {
-  h2:after {
-    content: "";
-    display: block;
-    width: 50px;
-    height: 1px;
-    @apply bg-quaternary;
-    margin: 20px auto 0;
-  }
-}
 
-#werkwijze {
-  h2:after {
-    content: "";
-    display: block;
-    width: 50px;
-    height: 1px;
-    @apply bg-quaternary;
-    margin: 20px auto 0;
+  // usp-background
+  .usp-background {
+    .w-full {
+      @apply bg-primary-dark p-12 lg:p-20;
+      border-radius: 10px;
+    }
+  }
+
+
+  nav ul li {
+    @apply uppercase;
+  }
+
+  footer .footer {
+    background-image: url('https://theme2023.test/content/themes/theme2023/assets/images/footer/footer-logo-zijlstra.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right 50px top 50px;
+  }
+
+
+
+
+
+  // Typography
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Dyno";
+    @apply uppercase;
+  }
+
+  .btn {
+    @apply uppercase;
+  }
+
+  footer label {
+    font-family: "Dyno";
+  }
+
+  .main-navigation .menu .menu-item a {
+    font-family: "Dyno";
+    font-weight: 600 !important;
+  }
+
+  p, span, a, table, label, li, ul, ol {
+    font-family: "Hind";
+  }
+
+  .secondary-navigation {
+    font-family: "Dyno";
+  }
+
+  .breadcrumbs p span {
+    @apply uppercase;
+    font-family: "Dyno" !important;
+  }
+
+
+  // Lines under titles
+
+  #tekst, #afbeelding-tekst {
+    h2:after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 50px;
+      @apply bg-quaternary;
+      margin: 5px 0 15px 30px;
+    }
+  }
+
+  #titel-tekst {
+    h2:after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 1px;
+      @apply bg-quaternary;
+
+      @media only screen and (max-width: 1023px) {
+        margin: 20px 0 0 0;
+      }
+
+      @media only screen and (min-width: 1024px) {
+        margin: 20px 0 0 auto;
+      }
+    }
+  }
+
+  #kaarten {
+    h2:after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 1px;
+      @apply bg-quaternary;
+      margin: 20px auto 0;
+    }
+  }
+
+  #werkwijze {
+    h2:after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 1px;
+      @apply bg-quaternary;
+      margin: 20px auto 0;
+    }
   }
 }
