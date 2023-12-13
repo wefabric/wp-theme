@@ -217,11 +217,11 @@ btn {
 
   .swiper-wrapper {
     .swiper-slide:nth-child(odd) {
-      @apply lg:mt-[50px];
+      @apply sm:mt-[50px];
     }
 
     .swiper-slide:nth-child(even) {
-      @apply lg:mb-[50px];
+      @apply sm:mb-[50px];
     }
   }
 
