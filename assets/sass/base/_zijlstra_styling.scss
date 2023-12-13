@@ -217,7 +217,7 @@ btn {
   }
 
   .swiper-wrapper {
-    .swiper-slide:nth-child(even) {
+    .swiper-slide:nth-child(2n) {
       margin-top: 50px;
     }
   }
