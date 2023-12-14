@@ -27,7 +27,7 @@
                         </a>
                     @endif
 
-                    <a class="group flex items-center gap-2 bg-primary rounded-b-md p-4 h-5/6" target="_blank"
+                    <a class="group flex items-center gap-2 bg-primary hover:bg-primary-light rounded-b-md p-4 h-5/6" target="_blank"
                        href="https://kms3.zijlstraberoepskleding.nl/u/inloggen" title="Inloggen KMS">
                         <i class="p-1.5 flex text-md justify-center items-center font-dyno rounded-lg fa-solid fa-user"></i>
                         <span class="align-middle text-white">Inloggen KMS</span>
