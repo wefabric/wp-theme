@@ -38,11 +38,12 @@
                 @endforeach
                 @php
                     $menuLocations = get_nav_menu_locations();
+                    $menuID = null;
                     if(isset($menuLocations['top-navigation'])) {
                         $menuID = $menuLocations['top-navigation'];
                     }
                 @endphp
-                @if(isset($menuID) && $menuID)
+                @if(isset($menuID) && !is_null($menuID))
                     {!! wp_nav_menu([
                         'theme_location' => 'top-navigation',
                         'menu_id' => $menuID,
