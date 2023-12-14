@@ -21,20 +21,18 @@
                         $email = $establishment ? $establishment->getContactEmailAddress() : '';
                     @endphp
                     @if (in_array('phone', $options['secondary_menu_show_elements']))
-                        <a class="group flex items-center gap-2" href="tel:{{ $phone }} " title="Telefoonnummer">
+                        <a class="group flex items-center hover:text-primary-light gap-2" href="tel:{{ $phone }} " title="Telefoonnummer">
                             <i class="p-1.5 flex text-md justify-center items-center  rotate-[270deg] rounded-lg fa-solid fa-phone"></i>
                             <span class="align-middle ">{{ $phone }}</span>
                         </a>
                     @endif
-
                     <a class="group flex items-center gap-2 bg-primary hover:bg-primary-light rounded-b-md p-4 h-5/6" target="_blank"
                        href="https://kms3.zijlstraberoepskleding.nl/u/inloggen" title="Inloggen KMS">
                         <i class="p-1.5 flex text-md justify-center items-center font-dyno rounded-lg fa-solid fa-user"></i>
                         <span class="align-middle text-white">Inloggen KMS</span>
                     </a>
-
                     @if (in_array('email', $options['secondary_menu_show_elements']))
-                        <a class="group flex items-center gap-2" href="mailto:{{ $email }}" title="E-mailadres">
+                        <a class="group flex items-center gap-2 hover:text-primary-light" href="mailto:{{ $email }}" title="E-mailadres">
                             <i class="p-1.5 flex justify-center items-center  rounded-lg fa-solid fa-envelope"></i>
                             <span class="align-middle">{{ $email }}</span>
                         </a>
