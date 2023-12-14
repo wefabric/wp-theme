@@ -29,6 +29,7 @@
     "testimonial/block.json",
     "faq/block.json",
     "google-maps/block.json",
+    "brochure/block.json",
     "embed/block.json",
     "sebastiaan/block.json"
   ]
