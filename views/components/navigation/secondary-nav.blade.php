@@ -36,6 +36,23 @@
                         </a>
                     @endif
                 @endforeach
+                @php
+                    $menuLocations = get_nav_menu_locations();
+                    if(isset($menuLocations['top-navigation'])) {
+                        $menuID = $menuLocations['top-navigation'];
+                    }
+                @endphp
+                @if($menuID)
+                    {!! wp_nav_menu([
+                        'theme_location' => 'top-navigation',
+                        'menu_id' => $menuID,
+                        'container_class' => 'flex',
+                        'li_class'  => 'group flex items-center gap-2 bg-primary hover:bg-primary-light rounded-b-md p-4 h-5/6 text-white',
+                        'li_active_class'  => '',
+                        'before'  => '<i class="p-1.5 flex text-md justify-center items-center rounded-lg fa-solid fa-user"></i>',
+                        'echo' => false
+                    ]) !!}
+                @endif
             </div>
         @endif
     </div>
