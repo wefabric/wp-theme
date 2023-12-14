@@ -20,7 +20,12 @@
             <div class="swiper-wrapper">
                 @foreach ($cases as $case)
                     <div class="swiper-slide h-auto">
-                        @include('components.cases.list-item')
+                        @if ($layoutVersion == 'featured_layout')
+                            @include('components.cases.featured-list-item')
+                        @endif
+                        @if ($layoutVersion == 'overview_layout')
+                            @include('components.cases.overview-list-item')
+                        @endif
                     </div>
                 @endforeach
             </div>
@@ -34,7 +39,12 @@
 @else
     <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
         @foreach ($cases as $case)
-            @include('components.cases.list-item')
+            @if ($layoutVersion == 'featured_layout')
+                @include('components.cases.featured-list-item')
+            @endif
+            @if ($layoutVersion == 'overview_layout')
+                @include('components.cases.overview-list-item')
+            @endif
         @endforeach
     </div>
 @endif

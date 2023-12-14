@@ -10,6 +10,8 @@
     $caseTextColor = $block['data']['case_text_color'] ?? '';
     $caseBackgroundColor = $block['data']['case_background_color'] ?? '';
 
+    $layoutVersion = $block['data']['version'] ?? 'featured_layout';
+
     // Buttons
     $button1Text = $block['data']['button_button_1']['title'] ?? '';
     $button1Link = $block['data']['button_button_1']['url'] ?? '';

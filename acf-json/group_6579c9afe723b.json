@@ -20,6 +20,32 @@
             "endpoint": 0
         },
         {
+            "key": "field_657ae14ac4e60",
+            "label": "Versie",
+            "name": "version",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "featured_layout": "Slider weergave",
+                "overview_layout": "Overzicht weergave"
+            },
+            "default_value": "featured_layout",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_6579c9aff090b",
             "label": "Titel",
             "name": "title",
@@ -233,7 +259,7 @@
                 "id": ""
             },
             "choices": {
-                "button": "Knop in activiteit blok",
+                "button": "Knop in klantcase blok",
                 "button_bottom": "Knop onder klantencases"
             },
             "default_value": [],
@@ -913,5 +939,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702510682
+    "modified": 1702561878
 }
