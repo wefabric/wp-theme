@@ -12,7 +12,7 @@
 @endphp
 
 <div class="klantcase-item w-full text-{{ $caseTextColor }}">
-    <div class="relative flex h-full rounded-{{ $borderRadius }}">
+    <div class="relative flex flex-col md:flex-row h-full rounded-{{ $borderRadius }} overflow-hidden">
         <div class="absolute left-[30px] h-full top-0">
             <div class="h-full py-12 flex flex-col items-center gap-4">
                 <div class="h6 text-quaternary-color vertical-text">Case</div>
@@ -20,8 +20,8 @@
             </div>
         </div>
 
-        <div class="flex w-3/5">
-            <div class="h-full flex flex-col flex-1 justify-start bg-{{ $caseBackgroundColor }} py-12 pl-24 pr-12 rounded-l-{{ $borderRadius }}">
+        <div class="flex w-full md:w-3/5 order-2 md:order-1">
+            <div class="h-full flex flex-col flex-1 justify-start bg-{{ $caseBackgroundColor }} py-12 pl-16 md:pl-24 pr-12">
                 <div class="flex flex-col justify-between h-full">
                     <div class="flex justify-end logo">
                         @if ($caseLogo)
@@ -62,13 +62,13 @@
                 </div>
             </div>
         </div>
-        <div class="w-2/5">
+        <div class="case-image w-full md:w-2/5 order-1 md:order-2">
             @if ($caseImage)
                 @include('components.image', [
                     'image_id' => $caseImage,
                     'size' => 'full',
                     'object_fit' => 'cover',
-                    'img_class' => 'w-full h-full object-cover rounded-r-' . $borderRadius,
+                    'img_class' => 'w-full h-[200px] md:h-full object-cover',
                     'alt' => 'Case afbeelding'
                 ])
             @endif
