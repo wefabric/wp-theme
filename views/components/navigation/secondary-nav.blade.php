@@ -54,6 +54,32 @@
                         'echo' => false
                     ]) !!}
                 @endif
+                @if (in_array('search', $options['secondary_menu_show_elements']))
+                        <form class="hidden search-form  justify-center items-center">
+                            <input type="search" class=" " placeholder="Zoeken..." name="s">
+                            <input type="submit" class="ml-4" value="Zoek" >
+                        </form>
+                    <a class="search-link group flex items-center gap-2" href="#">
+                        <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-search"></i>
+                    </a>
+
+                    <script>
+                        // Zoek het element met de class 'search-link'
+                        const searchLink = document.querySelector('.search-link');
+
+                        // Voeg een click event listener toe aan het gevonden element
+                        searchLink.addEventListener('click', function (e) {
+                            searchLink.classList.toggle('hidden');
+                            // Voorkom het standaardgedrag van de link
+                            e.preventDefault();
+                            // Toon/verberg het element met de class 'search-form'
+                            const searchForm = document.querySelector('.search-form');
+                            searchForm.classList.toggle('hidden');
+                            searchForm.classList.toggle('flex');
+                        });
+                    </script>
+                @endif
+
             </div>
         @endif
     </div>
