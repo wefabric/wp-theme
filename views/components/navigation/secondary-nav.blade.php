@@ -42,7 +42,7 @@
                         $menuID = $menuLocations['top-navigation'];
                     }
                 @endphp
-                @if($menuID)
+                @if(isset($menuID) && $menuID)
                     {!! wp_nav_menu([
                         'theme_location' => 'top-navigation',
                         'menu_id' => $menuID,
