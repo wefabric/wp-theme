@@ -121,14 +121,14 @@
                                 @endif
                                     @include('components.image', [
                                         'image_id' => $item['logo'],
-                                        'size' => 'footer-thumbnail',
+                                        'size' => 'usp_icon',
                                         'class' => 'disable-rounded',
                                     ])
                                 @if($item['url'])
                                     @include('components.link.closing')
                                 @endif
                             </div>
-                        @endforeach {{-- Logos van partners --}}
+                        @endforeach
                     @endif
                 </div>
 
