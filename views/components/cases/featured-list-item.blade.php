@@ -11,7 +11,7 @@
     $visibleElements = $block['data']['show_element'] ?? [];
 @endphp
 
-<div class="klantcase-item w-full text-{{ $caseTextColor }}">
+<div class="klantcase-item w-full h-full text-{{ $caseTextColor }}">
     <div class="relative flex flex-col md:flex-row h-full rounded-{{ $borderRadius }} overflow-hidden">
         <div class="absolute left-[30px] h-full top-0">
             <div class="h-full py-12 flex flex-col items-center gap-4">
