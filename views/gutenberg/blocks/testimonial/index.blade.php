@@ -41,7 +41,7 @@
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 md:px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto">
+        <div class="custom-styling {{ $blockClass }} mx-auto">
             @if ($title)
                 <h2 class="text-{{ $titleColor }} container mx-auto mb-4 px-8 md:px-0 {{ $titleClass }}">{!! $title !!}</h2>
             @endif
@@ -70,8 +70,8 @@
                             @endif
                             <div>
                                 @if ($testimonialTitle)
-                                    <p class="font-bold text-lg">{{ $testimonialTitle }}</p>
-                                    <p class="">{{ $testimonialFunction }}</p>
+                                    <p class="name-text font-bold text-lg">{{ $testimonialTitle }}</p>
+                                    <p class="function-text">{{ $testimonialFunction }}</p>
                                 @endif
                             </div>
                         </div>
