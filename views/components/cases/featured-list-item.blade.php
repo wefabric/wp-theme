@@ -37,7 +37,7 @@
                     <div class="case-content">
                         @if($caseQuote)
                             <div class="case-quote">
-                                <p class="quote-style mb-4 text-[24px] md:text-[36px] text-{{ $caseQuoteColor }}">{!! $caseQuote !!}</p>
+                                <p class="quote-text mb-4 text-[24px] md:text-[36px] text-{{ $caseQuoteColor }}">{!! $caseQuote !!}</p>
                             </div>
                         @endif
                         @if ($caseText)
