@@ -15,7 +15,7 @@
     $button1Style = $block['data']['button_button_1_style'] ?? '';
 
     // Show logos
-    $displayType = $block['data']['display_type'];
+    $displayType = $block['data']['display_type'] ?? '';
 
     if ($displayType == 'show_all') {
         $args = [
