@@ -267,6 +267,28 @@
             ]
         },
         {
+            "key": "field_657c37a71032b",
+            "label": "Horizontale ruimte tussen foto's",
+            "name": "space_between",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 20,
+            "min": 0,
+            "max": 300,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_65253c5dbb662",
             "label": "Autoplay swiper?",
             "name": "autoplay",
@@ -492,7 +514,7 @@
             }
         ]
     ],
-    "menu_order": 10,
+    "menu_order": 9,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -501,5 +523,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701340750
+    "modified": 1702639629
 }
