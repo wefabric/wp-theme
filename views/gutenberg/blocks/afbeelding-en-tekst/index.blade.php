@@ -67,7 +67,7 @@
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="custom-styling {{ $blockClass }} mx-auto">
+        <div class="{{ $blockClass }} mx-auto">
             <div class="text-image flex flex-col lg:flex-row gap-8 xl:gap-20 @if ($verticalCentered) items-center @endif">
                 <div class="text {{ $textClass }} order-2 {{ $textOrder }}">
                     @if ($title)

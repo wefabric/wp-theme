@@ -126,10 +126,26 @@
 
 // Lift content
 
+.desktop-content-up-100px {
+  @media only screen and (min-width: 1024px) {
+    .custom-styling {
+      margin-top: -100px;
+    }
+  }
+}
+
 .desktop-content-up-200px {
   @media only screen and (min-width: 1024px) {
     .custom-styling {
       margin-top: -200px;
+    }
+  }
+}
+
+.mobile-content-up-100px {
+  @media only screen and (max-width: 1023px) {
+    .custom-styling {
+      margin-top: -100px;
     }
   }
 }
