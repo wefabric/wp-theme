@@ -278,7 +278,8 @@
             },
             "choices": {
                 "page_link": "Ga naar logo pagina",
-                "external_link": "Gebruik ingestelde link van Logo"
+                "external_link": "Gebruik externe ingestelde link van logo",
+                "no_link": "Geen link"
             },
             "default_value": "page_link",
             "return_format": "value",
@@ -807,5 +808,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702627885
+    "modified": 1702636214
 }

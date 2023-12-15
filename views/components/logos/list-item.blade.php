@@ -12,6 +12,8 @@
             $logoUrl = get_permalink($logo);
         } elseif ($logoLinkType === 'external_link') {
             $logoUrl = $fields['link'] ?? '';
+        } elseif ($logoLinkType === 'no_link') {
+             $logoUrl = '';
         } else {
             $logoUrl = '';
         }
