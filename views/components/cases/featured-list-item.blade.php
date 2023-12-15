@@ -16,14 +16,14 @@
         <div class="absolute left-[30px] h-full top-0">
             <div class="h-full py-12 flex flex-col items-center gap-4">
                 <div class="h6 text-quaternary-color vertical-text">Case</div>
-                <div class="h-full w-[1px] bg-quaternary-color"></div>
+                <div class="hidden md:block h-full w-[1px] bg-quaternary-color"></div>
             </div>
         </div>
 
         <div class="flex w-full md:w-3/5 order-2 md:order-1">
-            <div class="h-full flex flex-col flex-1 justify-start bg-{{ $caseBackgroundColor }} py-12 pl-16 md:pl-24 pr-12">
+            <div class="h-full flex flex-col flex-1 justify-start bg-{{ $caseBackgroundColor }} py-6 md:py-12 pl-6 md:pl-24 pr-6 md:pr-12">
                 <div class="flex flex-col justify-between h-full">
-                    <div class="flex justify-end logo">
+                    <div class="flex justify-center md:justify-end mb-4 logo">
                         @if ($caseLogo)
                             @include('components.image', [
                                 'image_id' => $caseLogo,
@@ -37,7 +37,7 @@
                     <div class="case-content">
                         @if($caseQuote)
                             <div class="case-quote">
-                                <p class="quote-style mb-4 text-[36px] text-{{ $caseQuoteColor }}">{!! $caseQuote !!}</p>
+                                <p class="quote-style mb-4 text-[24px] md:text-[36px] text-{{ $caseQuoteColor }}">{!! $caseQuote !!}</p>
                             </div>
                         @endif
                         @if ($caseText)
