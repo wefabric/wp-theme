@@ -94,7 +94,7 @@
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
         <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-            <div class="{{ $blockClass }} mx-auto">
+            <div class="custom-styling {{ $blockClass }} mx-auto">
                 @if ($title)
                     <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
                 @endif

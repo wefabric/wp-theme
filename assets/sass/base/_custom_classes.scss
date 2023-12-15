@@ -37,9 +37,6 @@
 }
 
 
-
-
-
 .-desktop-pb-50px {
   @media only screen and (min-width: 1024px) {
     padding-bottom: -50px !important;
@@ -76,13 +73,6 @@
     padding-bottom: -200px !important;
   }
 }
-
-
-
-
-
-
-
 
 
 .desktop-mt-100px {
@@ -134,18 +124,29 @@
 }
 
 
+// Lift content
 
+.desktop-content-up-200px {
+  @media only screen and (min-width: 1024px) {
+    .custom-styling {
+      margin-top: -200px;
+    }
+  }
+}
 
+.mobile-content-up-200px {
+  @media only screen and (max-width: 1023px) {
+    .custom-styling {
+      margin-top: -200px;
+    }
+  }
+}
 
 
 // Block transition blocks
 .site {
   overflow: hidden;
 }
-
-
-
-
 
 // Top diagonal transition
 .top-white-diagonal-transition::after,
