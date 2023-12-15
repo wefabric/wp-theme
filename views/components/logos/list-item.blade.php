@@ -21,10 +21,10 @@
 
 <div class="logo-item group rounded-{{ $borderRadius }}">
     <div class="h-full @if($logoUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
-        <div class="overflow-hidden w-full relative bg-{{ $logoBackgroundColor }} rounded-{{ $borderRadius }}">
+        <div class="overflow-hidden w-full relative p-4 md:p-6 bg-{{ $logoBackgroundColor }} rounded-{{ $borderRadius }}">
             @if ($logoUrl)
                 <a href="{{ $logoUrl }}" @if($logoLinkType === 'external_link') target="_blank"
-                   @endif class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
+                   @endif class="absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
             @endif
             @if ($logoImage)
                 @include('components.image', [
