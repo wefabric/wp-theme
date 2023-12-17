@@ -12,14 +12,14 @@
         "singular_name": "Klantcase",
         "menu_name": "Klantcases",
         "all_items": "Alle klantcases",
-        "edit_item": "Klantcases bewerken",
+        "edit_item": "Klantcase bewerken",
         "view_item": "Klantcase bekijken",
         "view_items": "Klantcases bekijken",
         "add_new_item": "Nieuwe klantcase toevoegen",
         "add_new": "Nieuwe klantcase",
-        "new_item": "",
+        "new_item": "Nieuwe klantcase",
         "parent_item_colon": "",
-        "search_items": "Klantencases zoeken",
+        "search_items": "Klantcases zoeken",
         "not_found": "Geen klantcases gevonden",
         "not_found_in_trash": "Geen klantcases gevonden in de prullenbak",
         "archives": "",
@@ -83,5 +83,5 @@
     "can_export": true,
     "delete_with_user": false,
     "register_meta_box_cb": "",
-    "modified": 1701792304
+    "modified": 1702817101
 }

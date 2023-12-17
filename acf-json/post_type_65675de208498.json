@@ -9,14 +9,14 @@
     "import_date": "",
     "labels": {
         "name": "Branches",
-        "singular_name": "Branch",
+        "singular_name": "Branche",
         "menu_name": "Branches",
         "all_items": "Alle branches",
-        "edit_item": "Branches bewerken",
-        "view_item": "Branch bekijken",
+        "edit_item": "Branche bewerken",
+        "view_item": "Branche bekijken",
         "view_items": "Branches bekijken",
-        "add_new_item": "Nieuwe branch toevoegen",
-        "add_new": "Nieuwe branch",
+        "add_new_item": "Nieuwe branche toevoegen",
+        "add_new": "Nieuwe branche",
         "new_item": "",
         "parent_item_colon": "",
         "search_items": "Branches zoeken",
@@ -83,5 +83,5 @@
     "can_export": true,
     "delete_with_user": false,
     "register_meta_box_cb": "",
-    "modified": 1701960593
+    "modified": 1702817031
 }
