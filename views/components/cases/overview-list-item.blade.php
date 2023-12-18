@@ -22,24 +22,30 @@
         <a href="{{ $caseUrl }}" aria-label="Ga naar {{ $caseTitle }} pagina"
            class="card-overlay top-0 left-0 absolute h-full w-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
 
-        <a href="{{ $caseUrl }} " aria-label="Ga naar {{ $caseTitle }} pagina"
-           class="text-{{ $caseTextColor }} page-title relative z-20 h3 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
-            {!! $caseTitle !!}
-        </a>
+        <div class="absolute bottom-0 w-full opacity-50 group-hover:opacity-0 transition-opacity duration-300 ease-in-out h-1/3 bg-primary rounded-b-{{ $borderRadius }}">
 
-        @if (!empty($visibleElements) && in_array('button', $visibleElements))
-            @if ($buttonCardText)
-                <div class="page-button relative z-20 flex items-center">
-                    @include('components.buttons.default', [
-                       'text' => $buttonCardText,
-                       'href' => $caseUrl,
-                       'alt' => $buttonCardText,
-                       'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
-                       'class' => 'rounded-lg',
-                   ])
-                </div>
+        </div>
+
+
+            <a href="{{ $caseUrl }} " aria-label="Ga naar {{ $caseTitle }} pagina"
+               class="text-{{ $caseTextColor }} page-title relative z-20 h3 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
+                {!! $caseTitle !!}
+            </a>
+
+            @if (!empty($visibleElements) && in_array('button', $visibleElements))
+                @if ($buttonCardText)
+                    <div class="page-button relative z-20 flex items-center">
+                        @include('components.buttons.default', [
+                           'text' => $buttonCardText,
+                           'href' => $caseUrl,
+                           'alt' => $buttonCardText,
+                           'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
+                           'class' => 'rounded-lg',
+                       ])
+                    </div>
+                @endif
             @endif
-        @endif
+
 
     </div>
 </div>
