@@ -24,7 +24,7 @@
 
         <a href="{{ $caseUrl }} " aria-label="Ga naar {{ $caseTitle }} pagina"
            class="text-{{ $caseTextColor }} page-title relative z-20 h3 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
-            {{ $caseTitle }}
+            {!! $caseTitle !!}
         </a>
 
         @if (!empty($visibleElements) && in_array('button', $visibleElements))
