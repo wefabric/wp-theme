@@ -8,7 +8,9 @@
     $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
+
     $imageID = $block['data']['image'] ?? '';
+    $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
 
     // Buttons
     $button1Text = $block['data']['button_button_1']['title'] ?? '';
@@ -62,7 +64,7 @@
                             'size' => 'full',
                             'object_fit' => 'contain',
                             'img_class' => 'object-contain',
-                            'alt' => 'test',
+                            'alt' => $imageAlt,
                         ])
                     </div>
                 @endif
