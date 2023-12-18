@@ -20,12 +20,9 @@
              style="background-image: url('{{ wp_get_attachment_image_url($caseImage, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($caseImage) }}">
         @endif
 
-        <a href="{{ $caseUrl }}" aria-label="Ga naar {{ $caseTitle }} pagina"
-           class="card-overlay top-0 left-0 absolute h-full w-full bg-primary z-10 opacity-0 group-hover:opacity-80 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
-
-        <div class="absolute bottom-0 w-full opacity-80 group-hover:opacity-0 transition-opacity duration-300 ease-in-out h-3/5 sm:h-1/2 lg:h-2/5 bg-primary rounded-b-{{ $borderRadius }}"></div>
+        <a href="{{ $caseUrl }}" aria-label="Ga naar {{ $caseTitle }} pagina" class="card-overlay absolute bottom-0 w-full opacity-80 transition-all duration-300 ease-in-out group-hover:h-full h-3/5 sm:h-1/2 lg:h-2/5 bg-primary rounded-b-{{ $borderRadius }} group-hover:rounded-t-{{ $borderRadius }}"></a>
         @if($caseExcerpt)
-            <a href="{{ $caseUrl }} " aria-label="Ga naar {{ $caseTitle }} pagina" class="hidden lg:block absolute z-20 -translate-x-1/2 -translate-y-full left-1/2 top-1/2 opacity-0 group-hover:opacity-100 h5 transition-opacity duration-300 ease-in-out">{{ $caseExcerpt }}</a>
+            <a href="{{ $caseUrl }} " aria-label="Ga naar {{ $caseTitle }} pagina" class="hidden lg:block absolute z-20 -translate-x-1/2 -translate-y-full left-1/2 top-1/2 opacity-0 group-hover:opacity-100 h5 transition-all duration-300 ease-in-out">{{ $caseExcerpt }}</a>
         @endif
 
         <a href="{{ $caseUrl }} " aria-label="Ga naar {{ $caseTitle }} pagina"

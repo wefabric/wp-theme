@@ -38,4 +38,4 @@
 <div class="group-hover:bg-primary-dark"></div>
 
 
-<div class="lg:text-left lg:justify-start"></div>
+<div class="lg:text-left lg:justify-start group-hover:rounded-t-[10px]"></div>
