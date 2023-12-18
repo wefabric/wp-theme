@@ -101,12 +101,12 @@
                             @endif
                         </div>
                         @if ($sideImage)
-                            <div class="@if($ctaLayout == 'horizontal') order-1 lg:order-2 @else order-1 @endif w-full lg:w-auto -mt-[200px]">
+                            <div class="@if($ctaLayout == 'horizontal') order-1 lg:order-2 @else order-1 @endif w-full lg:w-auto -mt-[150px]">
                                 @include('components.image', [
                                    'image_id' => $sideImage,
                                    'size' => 'full',
                                    'object_fit' => 'contain',
-                                   'img_class' => 'h-[300px] w-auto lg:h-auto object-contain lg:w-[300px] mx-auto',
+                                   'img_class' => 'h-[300px] lg:h-auto w-auto lg:w-[380px]  object-contain  mx-auto',
                                    'alt' => get_post_meta($sideImage, '_wp_attachment_image_alt', true) ?: 'Whitepaper',
                                ])
                             </div>
