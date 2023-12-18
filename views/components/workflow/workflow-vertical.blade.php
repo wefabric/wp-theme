@@ -51,9 +51,9 @@
                         ])
                     </div>
                 @endif
-                <div class="flex-grow sm:pl-6 mt-6 sm:mt-0 text-{{ $stepTextColor }}">
+                <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
                     @if($stepTitle)
-                        <h3 class="mb-1 text-xl">{{ $stepTitle }}</h3>
+                        <h3 class="mb-1 text-xl text-{{ $stepTitleColor }}">{{ $stepTitle }}</h3>
                     @endif
                     @if ($stepText)
                         @include('components.content', ['content' => apply_filters('the_content', $stepText), 'class' => 'text-' . $stepTextColor])

@@ -55,9 +55,9 @@
                        ])
                     </div>
                 @endif
-                <div class="text-center text-{{ $stepTextColor }}">
+                <div class="text-center">
                     @if($stepTitle)
-                        <h3 class="mb-2 text-xl">{{ $stepTitle }}</h3>
+                        <h3 class="mb-2 text-xl text-{{ $stepTitleColor }}">{{ $stepTitle }}</h3>
                     @endif
                     @if ($stepText)
                         @include('components.content', ['content' => apply_filters('the_content', $stepText), 'class' => 'text-' . $stepTextColor])

@@ -334,6 +334,30 @@
             ]
         },
         {
+            "key": "field_6580484ad0134",
+            "label": "Stap titel kleur",
+            "name": "step_title_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_649e7ecd70678",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
             "key": "field_6523c7249e6aa",
             "label": "Stap tekst kleur",
             "name": "step_text_color",
@@ -356,6 +380,39 @@
             },
             "theme_color": null,
             "font_size": 14
+        },
+        {
+            "key": "field_6580485dd0135",
+            "label": "Afbeelding naast stappen",
+            "name": "image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6523ae22e09a1",
+                        "operator": "==",
+                        "value": "vertical"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
         },
         {
             "key": "field_6512e1613e2e9",
@@ -563,7 +620,7 @@
             }
         ]
     ],
-    "menu_order": 16,
+    "menu_order": 15,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -572,5 +629,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701341572
+    "modified": 1702906187
 }
