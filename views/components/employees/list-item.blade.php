@@ -16,7 +16,7 @@
 
 <div class="werknemer-item group h-full">
     <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out ">
-        <div class="max-h-[360px] overflow-hidden w-full rounded-{{ $borderRadius }}">
+        <div class="custom-height max-h-[360px] overflow-hidden w-full rounded-{{ $borderRadius }}">
             @include('components.image', [
                  'image_id' => $imageID,
                  'size' => 'job-thumbnail',
