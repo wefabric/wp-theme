@@ -132,7 +132,7 @@
                                     'image_id' => $employeeImageId,
                                     'size' => 'full',
                                     'object_fit' => 'cover',
-                                    'img_class' => 'h-[200px] lg:h-auto w-auto lg:w-[350px] object-contain mx-auto rounded-full',
+                                    'img_class' => 'h-[200px] lg:h-auto w-auto lg:w-[350px] object-cover mx-auto rounded-full aspect-square',
                                     'alt' => $employeeTitle,
                                 ])
                             </div>
