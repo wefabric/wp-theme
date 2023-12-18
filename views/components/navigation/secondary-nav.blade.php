@@ -55,9 +55,9 @@
                     ]) !!}
                 @endif
                 @if (in_array('search', $options['secondary_menu_show_elements']))
-                        <form class="hidden search-form  justify-center items-center">
-                            <input type="search" class=" " placeholder="Zoeken..." name="s">
-                            <input type="submit" class="px-8 text-white font-bold bg-primary-light h-full uppercase text-primary hover:bg-primary-dark cursor-pointer" value="Zoek" >
+                        <form class="hidden search-form py-[6px] justify-center items-center">
+                            <input type="search" class="rounded-l-lg" placeholder="Zoeken..." name="s">
+                            <input type="submit" class="rounded-r-lg px-8 text-white font-bold bg-primary-light h-full uppercase text-primary hover:bg-primary-dark cursor-pointer" value="Zoek" >
                         </form>
                     <a class="search-link group flex items-center gap-2" href="#">
                         <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-search"></i>

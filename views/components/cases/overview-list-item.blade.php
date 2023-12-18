@@ -28,25 +28,23 @@
             <div class="hidden lg:block absolute z-20 -translate-x-1/2 -translate-y-2/3 left-1/2 top-1/2 opacity-0 group-hover:opacity-100 h5 transition-opacity duration-300 ease-in-out">{{ $caseExcerpt }}</div>
         @endif
 
-            <a href="{{ $caseUrl }} " aria-label="Ga naar {{ $caseTitle }} pagina"
-               class="text-{{ $caseTextColor }} page-title relative z-20 h3 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
-                {!! $caseTitle !!}
-            </a>
+        <a href="{{ $caseUrl }} " aria-label="Ga naar {{ $caseTitle }} pagina"
+           class="text-{{ $caseTextColor }} page-title relative z-20 h3 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
+            {!! $caseTitle !!}
+        </a>
 
-            @if (!empty($visibleElements) && in_array('button', $visibleElements))
-                @if ($buttonCardText)
-                    <div class="page-button relative z-20 flex items-center">
-                        @include('components.buttons.default', [
-                           'text' => $buttonCardText,
-                           'href' => $caseUrl,
-                           'alt' => $buttonCardText,
-                           'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
-                           'class' => 'rounded-lg',
-                       ])
-                    </div>
-                @endif
+        @if (!empty($visibleElements) && in_array('button', $visibleElements))
+            @if ($buttonCardText)
+                <div class="page-button relative z-20 flex items-center">
+                    @include('components.buttons.default', [
+                       'text' => $buttonCardText,
+                       'href' => $caseUrl,
+                       'alt' => $buttonCardText,
+                       'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
+                       'class' => 'rounded-lg',
+                   ])
+                </div>
             @endif
-
-
+        @endif
     </div>
 </div>
