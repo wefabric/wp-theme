@@ -25,7 +25,7 @@
 
         <div class="absolute bottom-0 w-full opacity-50 group-hover:opacity-0 transition-opacity duration-300 ease-in-out h-3/5 sm:h-1/2 lg:h-1/3 bg-primary rounded-b-{{ $borderRadius }}"></div>
         @if($caseExcerpt)
-            <div class="hidden lg:block absolute z-20 -translate-x-1/2 -translate-y-full left-1/2 top-1/2 opacity-0 group-hover:opacity-100 h5 transition-opacity duration-300 ease-in-out">{{ $caseExcerpt }}</div>
+            <a href="{{ $caseUrl }} " aria-label="Ga naar {{ $caseTitle }} pagina" class="hidden lg:block absolute z-20 -translate-x-1/2 -translate-y-full left-1/2 top-1/2 opacity-0 group-hover:opacity-100 h5 transition-opacity duration-300 ease-in-out">{{ $caseExcerpt }}</a>
         @endif
 
         <a href="{{ $caseUrl }} " aria-label="Ga naar {{ $caseTitle }} pagina"
