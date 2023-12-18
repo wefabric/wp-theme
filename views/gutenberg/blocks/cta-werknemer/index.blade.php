@@ -98,7 +98,7 @@
                                 @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 md:mt-4 text-' . $textColor])
                             @endif
                             @if (($button1Text) && ($button1Link))
-                                <div class="flex gap-4 w-full mt-4 md:mt-8 justify-center lg:{{ $flexClass }}">
+                                <div class="flex gap-4 w-full mt-4 md:mt-8 @if($employeeImage) justify-center @endif lg:{{ $flexClass }}">
                                     @include('components.buttons.default', [
                                        'text' => $button1Text,
                                        'href' => $button1Link,
