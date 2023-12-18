@@ -27,10 +27,10 @@
         </div>
         <div class="w-full mt-5">
             @if (!empty($visibleElements) && in_array('name', $visibleElements))
-                <p class="font-bold text-lg text-{{ $employeeTitleColor }}">{{ $firstName }} {{ $lastName }}</p>
+                <p class="name-text font-bold text-lg text-{{ $employeeTitleColor }}">{{ $firstName }} {{ $lastName }}</p>
             @endif
             @if (!empty($visibleElements) && in_array('function', $visibleElements))
-                <p class="text-{{ $employeeTextColor }} font-medium">{{ $function }}</p>
+                <p class="function-text text-{{ $employeeTextColor }} font-medium">{{ $function }}</p>
             @endif
             @if (!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($socials))
                 <div class="inline-flex gap-x-2">
@@ -46,20 +46,20 @@
                 @if ($mail)
                     <p>
                         <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" class="text-{{ $employeeTextColor }} hover:text-primary">
-                            <i class="w-4 object-cover fas fa-envelope mr-3"></i>{{ $mail }}
+                            <i class="contact-text w-4 object-cover fas fa-envelope mr-3"></i>{{ $mail }}
                         </a>
                     </p>
                 @endif
                 @if ($phoneNumber)
                     <p>
                         <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" class="text-{{ $employeeTextColor }} hover:text-primary">
-                            <i class="w-4 object-cover fas fa-phone mr-3"></i>{{ $phoneNumber }}
+                            <i class="contact-text w-4 object-cover fas fa-phone mr-3"></i>{{ $phoneNumber }}
                         </a>
                     </p>
                 @endif
             @endif
             @if (!empty($visibleElements) && in_array('overview_text', $visibleElements))
-                <p class="text-{{ $employeeTextColor }} mt-3 mb-2">{{ $overviewText }}</p>
+                <p class="overview-text text-{{ $employeeTextColor }} mt-3 mb-2">{{ $overviewText }}</p>
             @endif
         </div>
     </div>
