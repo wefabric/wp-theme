@@ -38,4 +38,4 @@
 <div class="group-hover:bg-primary-dark"></div>
 
 
-<div class="lg-text-left"></div>
+<div class="lg:text-left"></div>
