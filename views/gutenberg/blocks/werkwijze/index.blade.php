@@ -8,6 +8,14 @@
     $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
+    $imageID = $block['data']['image'] ?? '';
+
+    // Buttons
+    $button1Text = $block['data']['button_button_1']['title'] ?? '';
+    $button1Link = $block['data']['button_button_1']['url'] ?? '';
+    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+    $button1Color = $block['data']['button_button_1_color'] ?? '';
+    $button1Style = $block['data']['button_button_1_style'] ?? '';
 
     // Show steps
     $steps = $block['data']['steps'];
@@ -45,11 +53,40 @@
             @if ($title)
                 <h2 class="container mx-auto mb-8 lg:mb-20 {{ $titleClass }} text-{{ $titleColor }}">{!! $title !!}</h2>
             @endif
-            @if ($workflowVariant == 'horizontal')
-                @include('components.workflow.workflow-horizontal')
-            @elseif ($workflowVariant == 'vertical')
-                @include('components.workflow.workflow-vertical')
-            @endif
+
+            <div class="flex flex-col lg:flex-row gap-x-8">
+                @if ($imageID)
+                    <div class="workflow-image w-full lg:w-1/2">
+                        @include('components.image', [
+                            'image_id' => $imageID,
+                            'size' => 'full',
+                            'object_fit' => 'contain',
+                            'img_class' => 'object-contain',
+                            'alt' => 'test',
+                        ])
+                    </div>
+                @endif
+                <div class="@if($imageID) w-full lg:w-1/2 @else w-full @endif">
+                    @if ($workflowVariant == 'horizontal')
+                        @include('components.workflow.workflow-horizontal')
+                    @elseif ($workflowVariant == 'vertical')
+                        @include('components.workflow.workflow-vertical')
+                    @endif
+
+                    @if (($button1Text) && ($button1Link))
+                        <div class="w-full flex sm:flex-row gap-4 mt-4 md:mt-8 pl-6 sm:pl-12 md:pl-14">
+                            @include('components.buttons.default', [
+                               'text' => $button1Text,
+                               'href' => $button1Link,
+                               'alt' => $button1Text,
+                               'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                               'class' => 'rounded-lg',
+                               'target' => $button1Target,
+                           ])
+                        </div>
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
 </section>

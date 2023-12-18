@@ -1,4 +1,4 @@
-<div class="grid grid-cols-2 lg:grid-cols-4 mx-auto gap-y-16 gap-x-8 lg:gap-x-16">
+<div class="steps grid grid-cols-2 lg:grid-cols-4 mx-auto gap-y-16 gap-x-8 lg:gap-x-16">
     @for ($i = 0; $i < $steps; $i++)
         @php
             $stepTitleKey = "steps_{$i}_step_title";
@@ -24,7 +24,7 @@
             }
         @endphp
 
-        <div class="relative flex flex-col sm:items-center gap-y-8">
+        <div class="step relative flex flex-col sm:items-center gap-y-8">
             @if ($showStepNumber)
                 <div class="w-full flex items-center justify-center relative">
                     <div class="step flex-shrink-0 w-36 h-36 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-primary bg-{{ $stepIconColor }} text-white z-10 text-3xl">{{ $i + 1 }}</div>
