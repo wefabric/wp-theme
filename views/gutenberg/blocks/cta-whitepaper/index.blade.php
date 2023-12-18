@@ -4,9 +4,15 @@
    $titleColor = $block['data']['title_color'] ?? '';
    $text = $block['data']['text'] ?? '';
    $textColor = $block['data']['text_color'] ?? '';
-//    $textPosition = $block['data']['text_position'] ?? '';
-//    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-//    $textClass = $titleClassMap[$textPosition] ?? '';
+
+    $textPosition = $block['data']['text_position'] ?? '';
+    $textClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+    $textClass = $textClassMap[$textPosition] ?? 'text-center';
+    $flexClassMap = ['left' => 'items-start', 'center' => 'items-center', 'right' => 'items-end',];
+    $flexClass = $flexClassMap[$textPosition] ?? 'items-center';
+    $ctaLayout = $block['data']['cta_layout'] ?? '';
+    $flexDirection = ($ctaLayout === 'vertical') ? 'flex-col' : (($ctaLayout === 'horizontal') ? 'flex-row' : '');
+
 
    $ctaForm = $block['data']['form'] ?? '';
    $sideImage = $block['data']['side_image'] ?? '';
@@ -53,7 +59,7 @@
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="cta-custom {{ $fullScreenClass }} @if ($topImage) pt-24 lg:pt-28 @else pt-8 lg:pt-16 xl:pt-20 @endif">
+    <div class="cta-custom {{ $fullScreenClass }} @if($topImage && !$sideImage) pt-24 lg:pt-28 @elseif(!$topImage && $sideImage) pt-32 @else pt-8 lg:pt-16 xl:pt-20 @endif">
 
         <div class="custom-width background-container absolute top-0 right-0 h-full @if ($topImage) pt-24 lg:pt-28 @else pt-8 lg:pt-16 xl:pt-20 @endif">
             <div class="bg-{{ $blockBackgroundColor }} w-full h-full"></div>
@@ -78,34 +84,37 @@
                     <div class="absolute inset-0 @if($blockWidth !== 'fullscreen') md:mx-8 @endif bg-{{ $blockOverlayColor }} opacity-{{ $blockOverlayOpacity }}"></div>
                 @endif
 
-                <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
-                    <div class="flex flex-col md:flex-row md:items-center gap-y-4 md:gap-y-0 @if($topImage) mt-16 md:mt-20 @endif">
-                        <div class="w-full text-center @if($sideImage) md:w-2/3 @else md:w-full @endif">
+                <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full @endif relative z-10">
+                    <div class="flex flex-col lg:{{ $flexDirection }} {{ $flexClass }} justify-center gap-y-4 gap-x-8 @if($topImage) mt-16 md:mt-20 @endif px-8 lg:px-16">
+
+                        <div class="@if ($ctaLayout == 'horizontal') order-2 lg:order-1 @else order-2 @endif @if($sideImage) w-full lg:w-4/5 {{$textClass}} @else w-full lg:w-full {{ $textClass }} @endif">
                             @if ($title)
                                 <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
                             @endif
                             @if ($text)
                                 @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 md:mt-4 text-' . $textColor])
                             @endif
+                            @if ($ctaForm)
+                                <div class="w-full mx-auto mt-10 text-left text-white">
+                                    {!! gravity_form($ctaForm, false) ; !!}
+                                </div>
+                            @endif
                         </div>
                         @if ($sideImage)
-                            <div class="w-full md:w-1/3 md:justify-center text-center md:mt-[-100px]">
+                            <div class="@if($ctaLayout == 'horizontal') order-1 lg:order-2 @else order-1 @endif w-full lg:w-auto -mt-[200px]">
                                 @include('components.image', [
                                    'image_id' => $sideImage,
                                    'size' => 'full',
-                                   'object_fit' => 'cover',
-                                   'img_class' => 'w-full object-cover',
+                                   'object_fit' => 'contain',
+                                   'img_class' => 'h-[300px] w-auto lg:h-auto object-contain lg:w-[300px] mx-auto',
                                    'alt' => get_post_meta($sideImage, '_wp_attachment_image_alt', true) ?: 'Whitepaper',
                                ])
                             </div>
                         @endif
+
                     </div>
-                    @if ($ctaForm)
-                        <div class="w-full lg:w-2/3 xl:w-1/2 mx-auto mt-10 text-left text-white">
-                            {!! gravity_form($ctaForm, false) ; !!}
-                        </div>
-                    @endif
                 </div>
+
             </div>
         </div>
     </div>

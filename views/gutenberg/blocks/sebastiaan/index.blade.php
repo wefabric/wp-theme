@@ -36,3 +36,6 @@
 <div class="border-cta-color"></div>
 <div class="h-fit"></div>
 <div class="group-hover:bg-primary-dark"></div>
+
+
+<div class="lg-text-left"></div>
