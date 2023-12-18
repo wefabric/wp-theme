@@ -13,14 +13,14 @@
 @endphp
 
 <div class="klantcase-item group h-full w-full text-{{ $caseTextColor }}">
-    <div class="card-background p-6 xl:p-8 h-full mx-auto relative bg-{{ $caseBackgroundColor }} w-full aspect-square flex flex-col gap-y-4 items-center justify-center text-center rounded-{{ $borderRadius }} group-hover:-translate-y-4 duration-300 ease-in-out"
+    <div class="card-background p-6 xl:p-8 h-full mx-auto relative bg-{{ $caseBackgroundColor }} w-full aspect-square flex flex-col gap-y-4 items-center justify-end text-center rounded-{{ $borderRadius }} group-hover:-translate-y-4 duration-300 ease-in-out"
 
          @if ($caseImage)
              style="background-image: url('{{ wp_get_attachment_image_url($caseImage, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($caseImage) }}">
         @endif
 
         <a href="{{ $caseUrl }}" aria-label="Ga naar {{ $caseTitle }} pagina"
-           class="card-overlay left-0 right-0 absolute h-full w-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
+           class="card-overlay top-0 left-0 absolute h-full w-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
 
         <a href="{{ $caseUrl }} " aria-label="Ga naar {{ $caseTitle }} pagina"
            class="text-{{ $caseTextColor }} page-title relative z-20 h3 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
