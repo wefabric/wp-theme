@@ -8,7 +8,6 @@
         $maxSummaryLength = 300;
         if (strlen($caseText) > $maxSummaryLength) {
             $mobileText = substr($mobileText, 0, $maxSummaryLength - 3) . '...';
-            @dd($mobileText);
         }
 
     $caseLogo = $fields['logo'] ?? '';
