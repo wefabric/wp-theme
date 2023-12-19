@@ -174,7 +174,14 @@ header.banner {
   }
 
   .sub-menu {
-    display: none;
+    max-height: 0 !important;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .menu-item-has-children.open > .sub-menu {
+    display: block;
+    max-height: 500px !important; /* Set a reasonable maximum height */
   }
 
   .menu-item-has-children.open > .sub-menu {
@@ -240,7 +247,6 @@ header.banner {
     }
 
   }
-
 }
 
 .main-navigation .mobile-menu ul.sub-menu li a {
