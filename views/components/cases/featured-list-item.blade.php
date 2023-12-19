@@ -1,12 +1,11 @@
 @php
     $fields = get_fields($case);
-
     $caseQuote = $fields['case_quote'] ?? '';
 
     $caseText = $fields['case_text'] ?? '';
-    $mobileText = $caseText;
-        $maxSummaryLength = 300;
-        if (strlen($caseText) > $maxSummaryLength) {
+    $mobileText= strip_tags($caseText);
+        $maxSummaryLength = 250;
+        if (strlen($mobileText) > $maxSummaryLength) {
             $mobileText = substr($mobileText, 0, $maxSummaryLength - 3) . '...';
         }
 
@@ -27,7 +26,7 @@
             </div>
         </div>
 
-        <div class="flex w-full md:w-3/5 order-2 md:order-1">
+        <div class="flex w-full h-full md:w-3/5 order-2 md:order-1">
             <div class="h-full flex flex-col flex-1 justify-start bg-{{ $caseBackgroundColor }} py-6 md:py-12 pl-6 md:pl-24 pr-6 md:pr-12">
                 <div class="flex flex-col justify-between h-full">
                     <div class="flex justify-center md:justify-end mb-4 logo">
@@ -49,7 +48,12 @@
                         @endif
                         @if ($caseText)
                             <div class="case-text">
-                                @include('components.content', ['content' => apply_filters('the_content', $caseText), 'class' => 'mb-6'])
+                                <div class="block lg:hidden">
+                                    @include('components.content', ['content' => apply_filters('the_content', $mobileText), 'class' => 'mb-6'])
+                                </div>
+                                <div class="hidden lg:block">
+                                    @include('components.content', ['content' => apply_filters('the_content', $caseText), 'class' => 'mb-6'])
+                                </div>
                             </div>
                         @endif
                         @if (!empty($visibleElements) && in_array('button', $visibleElements))
