@@ -49,12 +49,7 @@
                         @endif
                         @if ($caseText)
                             <div class="case-text">
-                                <div class="hidden lg:block">
-                                    @include('components.content', ['content' => apply_filters('the_content', $caseText), 'class' => 'mb-6'])
-                                </div>
-                                <div class="block lg:hidden">
-                                    @include('components.content', ['content' => apply_filters('the_content', $mobileText), 'class' => 'mb-6'])
-                                </div>
+                                @include('components.content', ['content' => apply_filters('the_content', $mobileText), 'class' => 'mb-6'])
                             </div>
                         @endif
                         @if (!empty($visibleElements) && in_array('button', $visibleElements))
