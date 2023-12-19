@@ -10,7 +10,7 @@
 <div class="secondary-navigation hidden lg:block w-full bg-{{ $options['secondary_menu_background_color'] ?? 'primary-color' }}">
     <div class="flex items-center justify-between flex-row container mx-auto h-12 px-4">
         @if(isset($options['secondary_menu_text']))
-            <div class="secondary-menu-text font-bold text-sm text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">{{ $options['secondary_menu_text'] }}</div>
+            <div class="secondary-menu-text text-sm text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">{{ $options['secondary_menu_text'] }}</div>
         @endif
         @if (!empty($options['secondary_menu_show_elements']))
             <div class="flex gap-4 text-sm h-full text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
@@ -55,7 +55,7 @@
                     ]) !!}
                 @endif
                 @if (in_array('search', $options['secondary_menu_show_elements']))
-                    <form class="hidden search-form-hidden search-form py-[8px] justify-center items-center">
+                    <form class="hidden search-form-hidden search-form py-[8px] justify-center items-center" action="/">
                         <input type="search" class="rounded-l-lg w-[180px]" placeholder="Zoeken..." name="s">
                         <input type="submit"
                                class="rounded-r-lg w-[82px] flex justify-center px-8 text-white font-bold bg-primary-light h-full uppercase text-primary hover:bg-primary-dark cursor-pointer"
