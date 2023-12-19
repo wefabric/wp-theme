@@ -78,9 +78,11 @@
 
 
 			&:after {
-				@apply text-xs pl-1;
-				font-family: $fa-font-family;
-				content: '\f078';
+				@screen xl {
+					@apply text-xs pl-1;
+					font-family: $fa-font-family;
+					content: '\f078';
+				}
 			}
 
 

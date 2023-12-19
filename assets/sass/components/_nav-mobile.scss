@@ -69,6 +69,10 @@ header.banner {
   transition: 0.2s;
 }
 
+.mobile-logo {
+  padding: 20px;
+}
+
 #nav-mobile-active:checked {
   ~ .nav-mobile-toggle-visibility,
   ~ .banner .nav-mobile-toggle-visibility {
@@ -162,10 +166,18 @@ header.banner {
   min-height: 100%;
   transition: right 300ms ease;
   color: #000;
-  padding: 20px;
+  //padding: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 
   .menu {
+    display: block;
+  }
+
+  .sub-menu {
+    display: none;
+  }
+
+  .menu-item-has-children.open > .sub-menu {
     display: block;
   }
 
@@ -173,45 +185,63 @@ header.banner {
     display: block;
   }
 
+  li, ul, lo {
+    line-height: 1.875rem !important;
+  }
+
   li {
     position: relative;
     display: block !important;
-    padding: 0.5rem 0 0.25rem !important;
+    padding: 0.5rem 20px !important;
+
+    ul.sub-menu li {
+      padding: 0.25rem 0 0.25rem 10px !important;
+      margin: 0 !important;
+      font-size: 12px;
+    }
+
+    a {
+      @apply text-white w-full;
+      padding: 0.5rem 0;
+    }
 
     &.active {
       text-decoration: underline;
     }
 
-    &:after {
-      display: none;
-      content: '\f138';
-      font-family: $fa-font-family;
-    }
-
-    //&.current_page_parent > a:first-child {
-    //  @apply text-secondary #{!important};
-    //}
-
     &.current-menu-item > a:first-child {
       @apply text-secondary #{!important};
     }
 
-    a {
-      @apply text-white;
-      padding: 0.5rem 0 0.25rem;
+    &.menu-item-has-children > a {
+     //color: red !important;
     }
 
-    &:first-child {
-      a {
-        border-top: none;
-      }
+    &.menu-item-has-children:after {
+      border-style: solid;
+      border-width: 2px 2px 0 0;
+      content: " ";
+      border-color: white;
+      display: inline-block;
+      float: right;
+      height: 12px;
+      position: absolute;
+      top: 0;
+      right: 20px;
+      transform: translateY(100%) rotate(135deg);
+      transition: 0.35s ease-in-out;
+      vertical-align: top;
+      width: 12px;
     }
+
+    &.custom.btn {
+      padding: 0 !important;
+      margin: 20px 20px 0 !important;
+      text-align: center;
+    }
+
   }
 
-  li.custom.btn {
-    @apply text-center mt-4 mb-12;
-    padding: 0 3rem !important;
-  }
 }
 
 .main-navigation .mobile-menu ul.sub-menu li a {
