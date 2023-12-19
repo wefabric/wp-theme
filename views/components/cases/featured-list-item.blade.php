@@ -2,15 +2,10 @@
     $fields = get_fields($case);
 
     $caseQuote = $fields['case_quote'] ?? '';
+    $caseText = $fields['case_text'] ?? '';
     $caseLogo = $fields['logo'] ?? '';
     $caseImage = $fields['case_image'] ?? '';
     $caseUrl = get_permalink($case);
-
-    $caseText = $fields['case_text'] ?? '';
-        $maxTextLength = 300;
-        if (strlen($caseText) > $maxTextLength) {
-            $caseText = substr($caseText, 0, $maxTextLength - 3) . '...';
-        }
 
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
