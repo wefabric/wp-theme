@@ -1,6 +1,8 @@
 <article id="post-{{ Loop::id() }}" class="grid grid-cols-2 gap-x-16 mt-8" {!! post_class() !!}>
-    <div class="">
-        {!! the_post_thumbnail('small') !!}
+    <div class="w-full h-auto">
+        <a href="{{ esc_url(get_permalink()) }}" rel="bookmark">
+            {!! the_post_thumbnail('small') !!}
+        </a>
     </div>
     <div>
         <h2 class="entry-title">
