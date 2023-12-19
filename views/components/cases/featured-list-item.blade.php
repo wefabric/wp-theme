@@ -8,6 +8,7 @@
         $maxSummaryLength = 300;
         if (strlen($caseText) > $maxSummaryLength) {
             $mobileText = substr($mobileText, 0, $maxSummaryLength - 3) . '...';
+            @dd($mobileText);
         }
 
     $caseLogo = $fields['logo'] ?? '';
@@ -49,7 +50,7 @@
                         @endif
                         @if ($caseText)
                             <div class="case-text">
-                                @include('components.content', ['content' => apply_filters('the_content', $mobileText), 'class' => 'mb-6'])
+                                @include('components.content', ['content' => apply_filters('the_content', $caseText), 'class' => 'mb-6'])
                             </div>
                         @endif
                         @if (!empty($visibleElements) && in_array('button', $visibleElements))
