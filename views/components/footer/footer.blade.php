@@ -102,7 +102,7 @@
             </div>
 
             <div class="w-full md:w-1/2 flex flex-col self-end">
-                <div class="flex flex-row mb-5">
+                <div class="flex flex-row mb-5 gap-x-4 justify-center md:justify-start">
                     @php
                         $footer = [];
                         if(!empty($option) && array_key_exists('footer_partners', $option)) {
@@ -112,7 +112,7 @@
 
                     @if($footer)
                         @foreach($footer as $item)
-                            <div class="pr-5">
+                            <div class="">
                                 @if($item['url'])
                                     @include('components.link.opening', [
                                         'href' => $item['url'],
