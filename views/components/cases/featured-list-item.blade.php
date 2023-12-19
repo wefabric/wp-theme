@@ -2,7 +2,14 @@
     $fields = get_fields($case);
 
     $caseQuote = $fields['case_quote'] ?? '';
+
     $caseText = $fields['case_text'] ?? '';
+    $mobileText = $caseText;
+        $maxSummaryLength = 300;
+        if (strlen($caseText) > $maxSummaryLength) {
+            $mobileText = substr($mobileText, 0, $maxSummaryLength - 3) . '...';
+        }
+
     $caseLogo = $fields['logo'] ?? '';
     $caseImage = $fields['case_image'] ?? '';
     $caseUrl = get_permalink($case);
@@ -42,7 +49,12 @@
                         @endif
                         @if ($caseText)
                             <div class="case-text">
-                                @include('components.content', ['content' => apply_filters('the_content', $caseText), 'class' => 'mb-6'])
+                                <div class="hidden lg:block">
+                                    @include('components.content', ['content' => apply_filters('the_content', $caseText), 'class' => 'mb-6'])
+                                </div>
+                                <div class="block lg:hidden">
+                                    @include('components.content', ['content' => apply_filters('the_content', $mobileText), 'class' => 'mb-6'])
+                                </div>
                             </div>
                         @endif
                         @if (!empty($visibleElements) && in_array('button', $visibleElements))
