@@ -1,7 +1,10 @@
 .nav-mobile-toggle-visibility {
   opacity: 0;
+  // Visibility supports transition, display doesn't
   visibility: hidden;
-  transition: visibility 0s linear 0.3s, opacity 0.3s ease-out;
+  // Visibility change comes after the opacity change
+  transition: visibility 0s linear 0.3s,
+  opacity 0.3s ease-out;
 }
 
 .nav-mobile-toggler {
@@ -14,17 +17,18 @@
   left: 0;
   width: 100%;
   height: 100%;
+  //background-color: rgba(0, 0, 0, 0.6);
   z-index: 10;
 }
 
 .hamburger-button {
   .hamburger-button-bar {
-    @apply bg-white;
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
     border-radius: 10px;
-    width: 20px;
+    width: 25px;
     height: 3px;
+    @apply bg-primary;
     transition-property: transform, opacity, width;
     transition-duration: 0.3s;
     transition-timing-function: ease-out;
@@ -34,13 +38,13 @@
     }
 
     &:nth-child(2) {
-      width: 75%;
-      display: flex;
-      align-self: end;
     }
 
     &:nth-child(3) {
       transform-origin: bottom left;
+    }
+
+    &:last-child {
       margin-bottom: 0;
     }
   }
@@ -66,12 +70,6 @@ header.banner {
 }
 
 #nav-mobile-active:checked {
-  ~ .logo-mobile {
-    .site-title {
-      opacity: 0;
-    }
-  }
-
   ~ .nav-mobile-toggle-visibility,
   ~ .banner .nav-mobile-toggle-visibility {
     visibility: visible;
@@ -79,7 +77,6 @@ header.banner {
     // Change visibility without a delay when showing (opacity already has 0s delay)
     transition-delay: 0s;
   }
-
 
   ~ header .mobile-menu {
     right: 0;
@@ -96,11 +93,6 @@ header.banner {
     .hamburger-menu {
       right: 270px;
       position: fixed;
-
-      label {
-        margin-right: -7px;
-        padding-left: 2px;
-      }
     }
 
     .header-logo {
@@ -112,9 +104,8 @@ header.banner {
         opacity: 100;
       }
     }
-
     .hamburger-button-bar {
-      width: 21px;
+      width: 24px;
 
       &:nth-child(1) {
         transform: rotate(45deg);
@@ -132,11 +123,20 @@ header.banner {
 }
 
 .hamburger-menu {
-  @apply bg-black rounded-full p-2;
-
   position: absolute;
   right: 30px;
   transition: right 300ms ease;
+}
+
+.nav-mobile {
+  padding: 0 15px 0 15px;
+  margin-top: 110px;
+  background-color: white;
+  z-index: 20;
+
+  .nav {
+    display: block;
+  }
 }
 
 .nav-mobile {
@@ -207,7 +207,6 @@ header.banner {
       }
     }
   }
-
 
   li.custom.btn {
     @apply text-center mt-4 mb-12;

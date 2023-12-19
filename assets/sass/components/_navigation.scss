@@ -14,7 +14,7 @@
         }
 	
 		li {
-            @apply inline-block pr-1 pb-1 md:px-4;
+            @apply inline-block pb-1 px-2 lg:px-3 2xl:px-4;
 			
 			//&:hover {
 			//	@apply text-secondary;
@@ -24,7 +24,7 @@
 				padding: 0;
 				font-size: 16px;
 
-				@media only screen and (min-width: 1024px) {
+				@media only screen and (min-width: 1280px) {
 					margin-left: 12px;
 				}
 
@@ -43,7 +43,6 @@
 		.menu-item:not(.current_page_item) {
 		 	>a {
 				@apply font-normal no-underline;
-			
 			}
 		}
 		
@@ -58,17 +57,16 @@
 		}
 
 		.home-icon { //this is the menu item
-			@screen lg {
+			@screen xl {
 				@apply hidden;
 			}
 		}
 		
 		.menu-btn {
-			@screen lg {
+			@screen xl {
 				@apply btn btn-small btn-primary hover:text-white h-10 flex items-center text-sm;
 				@apply text-white  #{!important};
 			}
-
 
 			&:after {
 				line-height: 0.9;
@@ -86,7 +84,7 @@
 			}
 
 
-			@screen lg {
+			@screen xl {
 				padding-bottom: 25px; // to allow someone to hover the menu, and then go down to the submenu without the latter closing
 			}
 			
@@ -98,7 +96,7 @@
 					margin-left: 20px;
 				}
 				
-				@screen lg {
+				@screen xl {
 					@apply shadow-md shadow-gray-600;
 					display: none; //hide when not hovered.
 				
@@ -110,18 +108,7 @@
             }
 
             &:hover > .sub-menu {
-				@screen lg {
-					//&::before { //The border is to extra accentuate the shadow.
-					//	@apply block absolute z-0 p-2 shadow-md shadow-gray-600 border border-gray-100;
-					//	rotate: 45deg;
-					//	left: calc(50% - 50px);
-					//	top: -9px;
-					//
-					//	content: ""; // Important!
-					//	-webkit-clip-path: polygon(0 100%, 0 0, 100% 0);
-					//	clip-path: polygon(0 100%, 0 0, 100% 0);
-					//	background-color: #ffffff;
-					//}
+				@screen xl {
 
 					@apply bg-white p-3 block z-10 border border-gray-100;
 					z-index: 66;
