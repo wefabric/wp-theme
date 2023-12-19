@@ -7,10 +7,9 @@
     $caseUrl = get_permalink($case);
 
     $caseText = $fields['case_text'] ?? '';
-    $mobileText = $caseText;
         $maxTextLength = 300;
         if (strlen($caseText) > $maxTextLength) {
-            $mobileText = substr($caseText, 0, $maxTextLength - 3) . '...';
+            $caseText = substr($caseText, 0, $maxTextLength - 3) . '...';
         }
 
     // Weergave
@@ -47,11 +46,8 @@
                             </div>
                         @endif
                         @if ($caseText)
-                            <div class="case-text hidden lg:block">
+                            <div class="case-text">
                                 @include('components.content', ['content' => apply_filters('the_content', $caseText), 'class' => 'mb-6'])
-                            </div>
-                            <div class="case-text block lg:hidden">
-                                @include('components.content', ['content' => apply_filters('the_content', $mobileText), 'class' => 'mb-6'])
                             </div>
                         @endif
                         @if (!empty($visibleElements) && in_array('button', $visibleElements))
