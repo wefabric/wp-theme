@@ -68,7 +68,7 @@
                         ])
                     </div>
                 @endif
-                <div class="@if($imageID) w-full lg:w-1/2 @else w-full @endif">
+                <div class="custom-layout @if($imageID) w-full lg:w-1/2 @else w-full @endif">
                     @if ($workflowVariant == 'horizontal')
                         @include('components.workflow.workflow-horizontal')
                     @elseif ($workflowVariant == 'vertical')
