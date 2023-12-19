@@ -1,4 +1,4 @@
-<input type="checkbox" class="hidden" id="nav-mobile-active">
+<input type="checkbox" class="hidden" id="nav-mobile-active" autocomplete="off">
 
 <div class="logo-mobile float-left xl:hidden z-10 relative">
     <div class="site-title">
