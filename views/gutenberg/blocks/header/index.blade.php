@@ -73,7 +73,7 @@
 
 <section id="header" class="relative bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }}">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
-         style="background-image: url('{{ $imageId ? wp_get_attachment_image_url($imageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \App\Helpers\FocalPoint::getBackgroundPosition($imageId ?: $featuredImageId) }}">
+         style="background-image: url('{{ $imageId ? wp_get_attachment_image_url($imageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
             <video autoplay muted loop class="video-background absolute inset-0 w-full h-full object-cover">
                 <source src="{{ esc_url($backgroundVideoURL) }}" type="video/mp4">
