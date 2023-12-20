@@ -12,6 +12,8 @@
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'photoSliderSwiper-' . $randomNumber;
+
+    $spaceBetween = $block['data']['space_between'] ?? 20;
 @endphp
 
 <div class="block relative">
@@ -34,7 +36,7 @@
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var photoSliderSwiper = new Swiper(".{{ $randomId }}", {
-            spaceBetween: 20,
+            spaceBetween: {{ $spaceBetween }},
             centeredSlides: false,
             @if ($swiperAutoplay)
             autoplay: {

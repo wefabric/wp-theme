@@ -26,10 +26,10 @@
             @endif
             <div class="main-navigation bg-{{ $options['menu_background_color'] }} text-{{ $options['menu_text_color'] ?? 'white' }}">
                 <div class="flex flex-row container mx-auto py-3 px-4">
-                    <div class="hidden lg:block w-1/6 items-center">
+                    <div class="hidden xl:block w-1/6 items-center">
                         @include('components.header.logo')
                     </div>
-                    <div class="lg:w-5/6 lg:flex items-center justify-end h-16 lg:h-auto">
+                    <div class="xl:w-5/6 flex items-center justify-end h-16 xl:h-auto">
                         @include('components.navigation.main-nav')
                         @include('components.navigation.header-mobile')
                     </div>

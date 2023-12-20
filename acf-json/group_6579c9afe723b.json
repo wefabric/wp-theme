@@ -1,35 +1,9 @@
 {
-    "key": "group_651fc9be052e7",
-    "title": "Block: Kaartenblok",
+    "key": "group_6579c9afe723b",
+    "title": "Block: Klantencase",
     "fields": [
         {
-            "key": "field_6527b2439ad98",
-            "label": "Kaartenblok variant",
-            "name": "cardblock_version",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "variant1": "Content in kaart",
-                "variant2": "Content onder kaart"
-            },
-            "default_value": "variant1",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_651fc9be0ee9c",
+            "key": "field_6579c9aff0903",
             "label": "Content",
             "name": "",
             "aria-label": "",
@@ -46,7 +20,33 @@
             "endpoint": 0
         },
         {
-            "key": "field_651fc9be0eea5",
+            "key": "field_657ae14ac4e60",
+            "label": "Versie",
+            "name": "version",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "featured_layout": "Slider weergave",
+                "overview_layout": "Overzicht weergave"
+            },
+            "default_value": "featured_layout",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6579c9aff090b",
             "label": "Titel",
             "name": "title",
             "aria-label": "",
@@ -66,7 +66,7 @@
             "append": ""
         },
         {
-            "key": "field_651fc9be0eec7",
+            "key": "field_6579c9aff0912",
             "label": "Titel kleur",
             "name": "title_color",
             "aria-label": "",
@@ -76,7 +76,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_651fc9be0eea5",
+                        "field": "field_6579c9aff090b",
                         "operator": "!=empty"
                     }
                 ]
@@ -90,7 +90,7 @@
             "font_size": 14
         },
         {
-            "key": "field_651fc9be0eed1",
+            "key": "field_6579c9aff0919",
             "label": "Titel positie",
             "name": "title_position",
             "aria-label": "",
@@ -100,7 +100,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_651fc9be0eea5",
+                        "field": "field_6579c9aff090b",
                         "operator": "!=empty"
                     }
                 ]
@@ -124,11 +124,11 @@
             "placeholder": ""
         },
         {
-            "key": "field_6525652c4ff5b",
-            "label": "Blok visual",
-            "name": "block_visual",
+            "key": "field_6579c9aff0920",
+            "label": "Welke klantencases wil je tonen?",
+            "name": "display_type",
             "aria-label": "",
-            "type": "radio",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -138,151 +138,114 @@
                 "id": ""
             },
             "choices": {
-                "featured_image": "Toon uitgelichte afbeelding",
-                "icon": "Toon icoon",
-                "image": "Toon afbeelding"
+                "show_all": "Toon alle klantencases",
+                "show_category": "Toon klantencases van een categorie",
+                "show_specific": "Toon specifieke klantencases",
+                "show_latest": "Toon laatste klantencases"
             },
-            "default_value": "",
+            "default_value": "show_all",
             "return_format": "value",
+            "multiple": 0,
             "allow_null": 0,
-            "other_choice": 0,
-            "layout": "vertical",
-            "save_other_choice": 0
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
-            "key": "field_65254f6289fbf",
-            "label": "Paginas",
-            "name": "pages",
+            "key": "field_6579c9aff0927",
+            "label": "Categorie",
+            "name": "category",
             "aria-label": "",
-            "type": "repeater",
+            "type": "taxonomy",
             "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6579c9aff0920",
+                        "operator": "==",
+                        "value": "show_category"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Nieuwe regel",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_65254f6c89fc0",
-                    "label": "Pagina",
-                    "name": "page",
-                    "aria-label": "",
-                    "type": "page_link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "page",
-                        "post",
-                        "branches",
-                        "bedrijfskleding",
-                        "klantcases",
-                        "activiteiten",
-                        "vacatures",
-                        "werknemers",
-                        "services"
-                    ],
-                    "post_status": "",
-                    "taxonomy": "",
-                    "allow_archives": 1,
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "parent_repeater": "field_65254f6289fbf"
-                },
-                {
-                    "key": "field_652564f84427f",
-                    "label": "Icoon",
-                    "name": "icon",
-                    "aria-label": "",
-                    "type": "font-awesome",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_6525652c4ff5b",
-                                "operator": "==",
-                                "value": "icon"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "icon_sets": [
-                        "solid",
-                        "regular",
-                        "light",
-                        "thin",
-                        "duotone",
-                        "fak",
-                        "brands"
-                    ],
-                    "custom_icon_set": "",
-                    "default_label": "",
-                    "default_value": "",
-                    "save_format": "element",
-                    "allow_null": 0,
-                    "show_preview": 1,
-                    "enqueue_fa": 0,
-                    "fa_live_preview": "",
-                    "choices": [],
-                    "parent_repeater": "field_65254f6289fbf"
-                },
-                {
-                    "key": "field_652564fb44280",
-                    "label": "Afbeelding",
-                    "name": "image",
-                    "aria-label": "",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_6525652c4ff5b",
-                                "operator": "==",
-                                "value": "image"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "preview_size": "medium",
-                    "parent_repeater": "field_65254f6289fbf"
-                }
-            ]
+            "taxonomy": "category",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "multiple": 0
         },
         {
-            "key": "field_6527da09ae373",
+            "key": "field_6579c9aff092e",
+            "label": "Specifieke activiteiten weergeven",
+            "name": "show_specific_case",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6579c9aff0920",
+                        "operator": "==",
+                        "value": "show_specific"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "klantcases"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 1,
+            "allow_null": 0,
+            "ui": 1
+        },
+        {
+            "key": "field_6579c9aff0935",
+            "label": "Hoeveel klantencases wil je tonen?",
+            "name": "post_amount",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6579c9aff0920",
+                        "operator": "==",
+                        "value": "show_latest"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "min": 1,
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6579c9aff093d",
             "label": "Weergave",
             "name": "show_element",
             "aria-label": "",
@@ -296,12 +259,11 @@
                 "id": ""
             },
             "choices": {
-                "overview_text": "Samenvattingstekst",
-                "button": "Knop in kaart blok",
-                "button_bottom": "Knop onder kaarten"
+                "button": "Knop in klantcase blok",
+                "button_bottom": "Knop onder klantencases"
             },
             "default_value": [],
-            "return_format": "value",
+            "return_format": "array",
             "allow_custom": 0,
             "layout": "vertical",
             "toggle": 0,
@@ -309,21 +271,48 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
-            "key": "field_6527ab5c852ba",
-            "label": "Kaart achtergrond kleur",
-            "name": "card_background_color",
+            "key": "field_6579c9aff0944",
+            "label": "Klantcase quote kleur",
+            "name": "case_quote_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_65254f6289fbf",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_6579c9aff094a",
+            "label": "Klantcase tekst kleur",
+            "name": "case_text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_657a40003c96d",
+            "label": "Klantcase blok achtergrond kleur",
+            "name": "case_background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -333,57 +322,8 @@
             "font_size": 14
         },
         {
-            "key": "field_6569df636c728",
-            "label": "Kaart titel kleur",
-            "name": "card_title_color",
-            "aria-label": "",
-            "type": "Thema Kleur",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_65254f6289fbf",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "theme_color": null,
-            "font_size": 14
-        },
-        {
-            "key": "field_6527ab93852bb",
-            "label": "Kaart tekst kleur",
-            "name": "card_text_color",
-            "aria-label": "",
-            "type": "Thema Kleur",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6527da09ae373",
-                        "operator": "==",
-                        "value": "overview_text"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "theme_color": null,
-            "font_size": 14
-        },
-        {
-            "key": "field_654a35109b823",
-            "label": "Button in kaart",
+            "key": "field_6579c9aff0951",
+            "label": "Button in klantcase blok",
             "name": "card_button",
             "aria-label": "",
             "type": "group",
@@ -392,7 +332,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6527da09ae373",
+                        "field": "field_6579c9aff093d",
                         "operator": "==",
                         "value": "button"
                     }
@@ -406,8 +346,8 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_654a35109b824",
-                    "label": "Kaart button tekst",
+                    "key": "field_6579c9b008591",
+                    "label": "Klantcase button tekst",
                     "name": "button_text",
                     "aria-label": "",
                     "type": "text",
@@ -416,7 +356,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_6527da09ae373",
+                                "field": "field_6579c9aff093d",
                                 "operator": "==",
                                 "value": "button"
                             }
@@ -434,8 +374,8 @@
                     "append": ""
                 },
                 {
-                    "key": "field_654a35109b825",
-                    "label": "Kaart button kleur",
+                    "key": "field_6579c9b00859b",
+                    "label": "Klantcase button kleur",
                     "name": "button_color",
                     "aria-label": "",
                     "type": "select",
@@ -444,7 +384,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_654a35109b824",
+                                "field": "field_6579c9b008591",
                                 "operator": "!=empty"
                             }
                         ]
@@ -473,8 +413,8 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_654a35109b826",
-                    "label": "Kaart button stijl",
+                    "key": "field_6579c9b0085a7",
+                    "label": "Klantcase button stijl",
                     "name": "button_style",
                     "aria-label": "",
                     "type": "select",
@@ -483,7 +423,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_654a35109b824",
+                                "field": "field_6579c9b008591",
                                 "operator": "!=empty"
                             }
                         ]
@@ -509,9 +449,9 @@
             ]
         },
         {
-            "key": "field_654a0df0b6d96",
-            "label": "Button onder kaarten",
-            "name": "button_bottom",
+            "key": "field_6579c9aff0958",
+            "label": "Button onder klantencases",
+            "name": "button",
             "aria-label": "",
             "type": "group",
             "instructions": "",
@@ -519,7 +459,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6527da09ae373",
+                        "field": "field_6579c9aff093d",
                         "operator": "==",
                         "value": "button_bottom"
                     }
@@ -533,7 +473,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_654a0e0db6d97",
+                    "key": "field_6579c9b00bd51",
                     "label": "Button 1 tekst en link",
                     "name": "button_1",
                     "aria-label": "",
@@ -543,7 +483,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_6527da09ae373",
+                                "field": "field_6579c9aff093d",
                                 "operator": "==",
                                 "value": "button_bottom"
                             }
@@ -557,7 +497,7 @@
                     "return_format": "array"
                 },
                 {
-                    "key": "field_654a0e3db6d98",
+                    "key": "field_6579c9b00bd5b",
                     "label": "Button 1 kleur",
                     "name": "button_1_color",
                     "aria-label": "",
@@ -567,7 +507,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_654a0e0db6d97",
+                                "field": "field_6579c9b00bd51",
                                 "operator": "!=empty"
                             }
                         ]
@@ -596,7 +536,7 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_654a0f16b6d99",
+                    "key": "field_6579c9b00bd63",
                     "label": "Button 1 stijl",
                     "name": "button_1_style",
                     "aria-label": "",
@@ -606,7 +546,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_654a0e0db6d97",
+                                "field": "field_6579c9b00bd51",
                                 "operator": "!=empty"
                             }
                         ]
@@ -632,8 +572,8 @@
             ]
         },
         {
-            "key": "field_652550c58bb34",
-            "label": "Layout (aantal blokken op een rij)",
+            "key": "field_6579c9aff095f",
+            "label": "Layout (aantal klantencases op een rij)",
             "name": "layout",
             "aria-label": "",
             "type": "group",
@@ -648,7 +588,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_652550e28bb35",
+                    "key": "field_6579c9b013e54",
                     "label": "Mobiel",
                     "name": "mobile",
                     "aria-label": "",
@@ -677,7 +617,7 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_652550f88bb36",
+                    "key": "field_6579c9b013e5e",
                     "label": "Tablet",
                     "name": "tablet",
                     "aria-label": "",
@@ -697,7 +637,7 @@
                         "4": "4 per rij",
                         "5": "5 per rij"
                     },
-                    "default_value": 2,
+                    "default_value": 1,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
@@ -706,7 +646,7 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_652551018bb37",
+                    "key": "field_6579c9b013e66",
                     "label": "Desktop",
                     "name": "desktop",
                     "aria-label": "",
@@ -726,7 +666,7 @@
                         "4": "4 per rij",
                         "5": "5 per rij"
                     },
-                    "default_value": 3,
+                    "default_value": 1,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
@@ -737,8 +677,8 @@
             ]
         },
         {
-            "key": "field_6525514efdc03",
-            "label": "Blokken in slider weergeven?",
+            "key": "field_6579c9aff0966",
+            "label": "Klantencases in slider weergeven?",
             "name": "show_slider",
             "aria-label": "",
             "type": "true_false",
@@ -757,35 +697,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_6569c74b8fb2d",
-            "label": "Actieve slide in het midden?",
-            "name": "centered_slides",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6525514efdc03",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_6525517828af3",
+            "key": "field_6579c9aff096c",
             "label": "Autoplay swiper",
             "name": "autoplay",
             "aria-label": "",
@@ -795,7 +707,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6525514efdc03",
+                        "field": "field_6579c9aff0966",
                         "operator": "==",
                         "value": "1"
                     }
@@ -813,7 +725,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_651fc9be0eed8",
+            "key": "field_6579c9aff0973",
             "label": "Blokinstellingen",
             "name": "",
             "aria-label": "",
@@ -830,7 +742,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_651fc9be0eee2",
+            "key": "field_6579c9aff097a",
             "label": "Breedte blok",
             "name": "block_width",
             "aria-label": "",
@@ -859,22 +771,14 @@
             "placeholder": ""
         },
         {
-            "key": "field_651fc9be0eee9",
+            "key": "field_6579c9aff0981",
             "label": "Achtergrond kleur",
             "name": "background_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_649d562c20a1b",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -884,7 +788,7 @@
             "font_size": 14
         },
         {
-            "key": "field_651fc9be0eef0",
+            "key": "field_6579c9aff0988",
             "label": "Achtergrond afbeelding",
             "name": "background_image",
             "aria-label": "",
@@ -909,7 +813,7 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_651fc9be0eefa",
+            "key": "field_6579c9aff098f",
             "label": "Overlay op afbeelding?",
             "name": "overlay_image",
             "aria-label": "",
@@ -919,7 +823,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_651fc9be0eef0",
+                        "field": "field_6579c9aff0988",
                         "operator": "!=empty"
                     }
                 ]
@@ -936,7 +840,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_651fc9be0ef01",
+            "key": "field_6579c9aff0996",
             "label": "Overlay kleur",
             "name": "overlay_color",
             "aria-label": "",
@@ -946,7 +850,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_651fc9be0eefa",
+                        "field": "field_6579c9aff098f",
                         "operator": "==",
                         "value": "1"
                     }
@@ -961,7 +865,7 @@
             "font_size": 14
         },
         {
-            "key": "field_651fc9be0ef08",
+            "key": "field_6579c9aff099d",
             "label": "Overlay sterkte",
             "name": "overlay_opacity",
             "aria-label": "",
@@ -971,7 +875,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_651fc9be0eefa",
+                        "field": "field_6579c9aff098f",
                         "operator": "==",
                         "value": "1"
                     }
@@ -997,7 +901,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_65686a488ae42",
+            "key": "field_6579c9aff09a4",
             "label": "Custom CSS klasses",
             "name": "custom_css_classes",
             "aria-label": "",
@@ -1022,11 +926,11 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "wefabric\/kaartenblok"
+                "value": "wefabric\/klantencase"
             }
         ]
     ],
-    "menu_order": 20,
+    "menu_order": 24,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -1035,5 +939,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702466184
+    "modified": 1702561878
 }

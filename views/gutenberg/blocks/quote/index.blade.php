@@ -50,13 +50,13 @@
                 <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
             @endif
             @if ($quote)
-                @include('components.content', ['content' => apply_filters('the_content', $quote), 'class' => 'text-' . $quoteTextColor])
+                @include('components.content', ['content' => apply_filters('the_content', $quote), 'class' => 'quote-text text-' . $quoteTextColor])
             @endif
             @if ($name)
-                <p class="mt-5 h6 text-{{ $personTextColor }}">{{ $name }}</p>
+                <p class="name-text mt-5 h6 text-{{ $personTextColor }}">{{ $name }}</p>
             @endif
             @if ($function)
-                <p class="mt-1 text-{{ $personTextColor }}">{{ $function }}</p>
+                <p class="function-text mt-1 text-{{ $personTextColor }}">{{ $function }}</p>
             @endif
             @if (($button1Text) && ($button1Link))
                 <div class="{{ $textClass }} w-full flex sm:flex-row gap-4 mt-4 md:mt-8">

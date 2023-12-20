@@ -99,6 +99,7 @@
       }
     }
   }
+
   .medium-header + .breadcrumbs,
   .large-header + .breadcrumbs {
     @media only screen and (max-width: 639px) {
@@ -190,6 +191,65 @@ btn {
   }
 }
 
+// Hover effect for custom-bedrijfskleding and grid-overview classes
+#kaarten.custom-bedrijfskleding, #kaarten.custom-grid-overview {
+  .content-in-card-item {
+
+    a.page-title.relative {
+      @apply p-4 rounded-md bg-white text-primary ;
+    }
+
+    &:hover {
+      a.page-title.relative {
+        @apply bg-primary text-white;
+      }
+    }
+  }
+}
+
+
+// Services kaarten styling
+.custom-services {
+
+  .swiper {
+    @apply sm:pb-16;
+  }
+
+  .swiper-wrapper {
+    .swiper-slide:nth-child(odd) {
+      @apply sm:mt-[50px];
+    }
+
+    .swiper-slide:nth-child(even) {
+      @apply sm:mb-[50px];
+    }
+  }
+
+  .card-item {
+    padding: 1px;
+
+    .card-background {
+      @apply border border-tertiary aspect-auto min-h-[450px];
+      border-radius: 60px;
+
+      .page-icon {
+        margin-top: 20px;
+      }
+
+      .page-title {
+        margin-top: 14px;
+      }
+
+      .page-button {
+        margin-top: auto;
+      }
+
+      .card-overlay {
+        border-radius: 60px;
+      }
+    }
+  }
+}
 
 // usp-background
 .usp-background {
@@ -209,21 +269,6 @@ footer .footer {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right 50px top 50px;
-}
-
-#kaarten {
-  .content-in-card-item {
-
-    a.page-title.relative {
-      @apply p-4 rounded-md bg-white text-primary ;
-    }
-
-    &:hover {
-      a.page-title.relative {
-        @apply bg-primary text-white;
-      }
-    }
-  }
 }
 
 

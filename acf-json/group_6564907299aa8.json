@@ -340,8 +340,8 @@
                 "id": ""
             },
             "choices": {
-                "horizontal": "Buttons naast titel",
-                "vertical": "Buttons onder titel"
+                "horizontal": "Buttons naast tekst weergeven",
+                "vertical": "Buttons onder tekst weergeven"
             },
             "default_value": "horizontal",
             "return_format": "value",
@@ -756,5 +756,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701940685
+    "modified": 1702889379
 }

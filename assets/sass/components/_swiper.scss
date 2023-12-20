@@ -59,6 +59,11 @@
 	@apply bg-primary opacity-100;
 }
 
+// Hide bulletpoints if there are more than 12 items
+.swiper .swiper-pagination:has(.swiper-pagination-bullet:nth-child(n+13)) {
+	display: none;
+}
+
 
 
 

@@ -1,9 +1,9 @@
 {
-    "key": "group_65253ae6d084a",
-    "title": "Block: Foto slider",
+    "key": "group_657ae4c0b0439",
+    "title": "Block: Brochure",
     "fields": [
         {
-            "key": "field_65253ae6d92bc",
+            "key": "field_657ae4c0ba0ff",
             "label": "Content",
             "name": "",
             "aria-label": "",
@@ -20,7 +20,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_65253ae6d92c5",
+            "key": "field_657ae4c0ba108",
             "label": "Titel",
             "name": "title",
             "aria-label": "",
@@ -40,7 +40,7 @@
             "append": ""
         },
         {
-            "key": "field_65253ae6d92cc",
+            "key": "field_657ae4c0ba10f",
             "label": "Titel kleur",
             "name": "title_color",
             "aria-label": "",
@@ -50,7 +50,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_65253ae6d92c5",
+                        "field": "field_657ae4c0ba108",
                         "operator": "!=empty"
                     }
                 ]
@@ -64,9 +64,73 @@
             "font_size": 14
         },
         {
-            "key": "field_65253ae6d92ed",
-            "label": "Titel positie",
-            "name": "title_position",
+            "key": "field_657ae4c0ba116",
+            "label": "Tekst",
+            "name": "text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_657ae4d29b49c",
+            "label": "Shortcode",
+            "name": "shortcode",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_657ae4c0ba11d",
+            "label": "Tekst kleur",
+            "name": "text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_657ae4c0ba116",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_657ae4c0ba133",
+            "label": "Tekst positie",
+            "name": "text_position",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -91,225 +155,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_65253b0ae17a4",
-            "label": "Afbeeldingen",
-            "name": "images",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Nieuwe regel",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_65253b34e17a5",
-                    "label": "Afbeelding",
-                    "name": "image",
-                    "aria-label": "",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "id",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "preview_size": "medium",
-                    "parent_repeater": "field_65253b0ae17a4"
-                },
-                {
-                    "key": "field_65253b4ae17a6",
-                    "label": "Onderschrift",
-                    "name": "caption",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_65253b0ae17a4"
-                }
-            ]
-        },
-        {
-            "key": "field_65253be745a48",
-            "label": "Layout (aantal foto's op een rij)",
-            "name": "layout",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_65253c0645a49",
-                    "label": "Mobiel",
-                    "name": "mobile",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "1": "1 per rij",
-                        "2": "2 per rij",
-                        "3": "3 per rij",
-                        "4": "4 per rij",
-                        "5": "5 per rij"
-                    },
-                    "default_value": 1,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_65253c2245a4a",
-                    "label": "Tablet",
-                    "name": "tablet",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "1": "1 per rij",
-                        "2": "2 per rij",
-                        "3": "3 per rij",
-                        "4": "4 per rij",
-                        "5": "5 per rij"
-                    },
-                    "default_value": 2,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_65253c3245a4b",
-                    "label": "Desktop",
-                    "name": "desktop",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "1": "1 per rij",
-                        "2": "2 per rij",
-                        "3": "3 per rij",
-                        "4": "4 per rij",
-                        "5": "5 per rij"
-                    },
-                    "default_value": 3,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": ""
-                }
-            ]
-        },
-        {
-            "key": "field_657c37a71032b",
-            "label": "Horizontale ruimte tussen foto's",
-            "name": "space_between",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": 20,
-            "min": 0,
-            "max": 300,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_65253c5dbb662",
-            "label": "Autoplay swiper?",
-            "name": "autoplay",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_65253ae6d92f4",
+            "key": "field_657ae4c0ba13a",
             "label": "Blokinstellingen",
             "name": "",
             "aria-label": "",
@@ -326,7 +172,7 @@
             "endpoint": 0
         },
         {
-            "key": "field_65253ae6d92fb",
+            "key": "field_657ae4c0ba142",
             "label": "Breedte blok",
             "name": "block_width",
             "aria-label": "",
@@ -346,7 +192,7 @@
                 "100": "100%",
                 "fullscreen": "Volledig scherm"
             },
-            "default_value": 80,
+            "default_value": 100,
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -355,7 +201,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_65253ae6d9302",
+            "key": "field_657ae4c0ba149",
             "label": "Achtergrond kleur",
             "name": "background_color",
             "aria-label": "",
@@ -372,7 +218,7 @@
             "font_size": 14
         },
         {
-            "key": "field_65253ae6d930a",
+            "key": "field_657ae4c0ba150",
             "label": "Achtergrond afbeelding",
             "name": "background_image",
             "aria-label": "",
@@ -397,7 +243,7 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_65253ae6d9311",
+            "key": "field_657ae4c0ba157",
             "label": "Overlay op afbeelding?",
             "name": "overlay_image",
             "aria-label": "",
@@ -407,7 +253,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_65253ae6d930a",
+                        "field": "field_657ae4c0ba150",
                         "operator": "!=empty"
                     }
                 ]
@@ -424,7 +270,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_65253ae6d9318",
+            "key": "field_657ae4c0ba15e",
             "label": "Overlay kleur",
             "name": "overlay_color",
             "aria-label": "",
@@ -434,7 +280,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_65253ae6d9311",
+                        "field": "field_657ae4c0ba157",
                         "operator": "==",
                         "value": "1"
                     }
@@ -449,7 +295,7 @@
             "font_size": 14
         },
         {
-            "key": "field_65253ae6d9320",
+            "key": "field_657ae4c0ba166",
             "label": "Overlay sterkte",
             "name": "overlay_opacity",
             "aria-label": "",
@@ -459,7 +305,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_65253ae6d9311",
+                        "field": "field_657ae4c0ba157",
                         "operator": "==",
                         "value": "1"
                     }
@@ -485,7 +331,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_6568663628c3c",
+            "key": "field_657ae4c0ba16d",
             "label": "Custom CSS klasses",
             "name": "custom_css_classes",
             "aria-label": "",
@@ -510,11 +356,11 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "wefabric\/foto-slider"
+                "value": "wefabric\/brochure"
             }
         ]
     ],
-    "menu_order": 9,
+    "menu_order": 1,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -523,5 +369,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702639629
+    "modified": 1702553085
 }

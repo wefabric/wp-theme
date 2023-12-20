@@ -45,16 +45,16 @@
             @if ($title)
                 <h2 class="text-{{ $titleColor }} container mx-auto mb-4 px-8 md:px-0 {{ $titleClass }}">{!! $title !!}</h2>
             @endif
-            <div class="w-full text-{{ $textColor }}">
-                <div class="relative flex items-center text-center md:text-left justify-center md:justify-start h-full min-h-full bg-{{ $testimonialBackground }} rounded-{{ $borderRadius }}">
+            <div class="custom-styling w-full text-{{ $textColor }}">
+                <div class="testimonial-block relative h-full min-h-full bg-{{ $testimonialBackground }} rounded-{{ $borderRadius }}">
                     <div class="w-full md:w-3/5 p-8 lg:p-16">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                             class="block mx-auto md:mx-0 w-8 h-8 mb-4"
+                             class="quote-icon block mx-auto md:mx-0 w-8 h-8 mb-4"
                              viewBox="0 0 975.036 975.036">
                             <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
                         </svg>
                         @if ($testimonialText)
-                            @include('components.content', ['content' => apply_filters('the_content', $testimonialText), 'class' => 'mb-6'])
+                            @include('components.content', ['content' => apply_filters('the_content', $testimonialText), 'class' => 'testimonial-text mb-6'])
                         @endif
                         <div class="flex flex-col md:flex-row items-center gap-x-4 md:gap-x-6 gap-y-4">
                             @if ($testimonialAvatarID)
@@ -70,8 +70,8 @@
                             @endif
                             <div>
                                 @if ($testimonialTitle)
-                                    <p class="font-bold text-lg">{{ $testimonialTitle }}</p>
-                                    <p class="">{{ $testimonialFunction }}</p>
+                                    <p class="name-text font-bold text-lg">{{ $testimonialTitle }}</p>
+                                    <p class="function-text">{{ $testimonialFunction }}</p>
                                 @endif
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                                 'image_id' => $testimonialImageID,
                                 'size' => 'full',
                                 'object_fit' => 'cover',
-                                'img_class' => 'w-full h-full aspect-square object-cover rounded-' . $borderRadius,
+                                'img_class' => 'testimonial-image absolute bottom-0 w-full h-full aspect-square object-cover rounded-' . $borderRadius,
                                 'alt' => $testimonialTitle,
                             ])
                         </div>

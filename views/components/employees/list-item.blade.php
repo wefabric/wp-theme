@@ -12,11 +12,13 @@
     $mail = $fields['email'] ?? '';
     $phoneNumber = $fields['phone_number'] ?? '';
     $socials = $fields['socials'] ?? [];
+
+    $showFullContactInfo = $block['data']['show_full_contact_info'] ?? false;
 @endphp
 
 <div class="werknemer-item group h-full">
     <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out ">
-        <div class="max-h-[360px] overflow-hidden w-full rounded-{{ $borderRadius }}">
+        <div class="custom-height max-h-[360px] overflow-hidden w-full rounded-{{ $borderRadius }}">
             @include('components.image', [
                  'image_id' => $imageID,
                  'size' => 'job-thumbnail',
@@ -27,10 +29,10 @@
         </div>
         <div class="w-full mt-5">
             @if (!empty($visibleElements) && in_array('name', $visibleElements))
-                <p class="font-bold text-lg text-{{ $employeeTitleColor }}">{{ $firstName }} {{ $lastName }}</p>
+                <p class="name-text font-bold text-lg text-{{ $employeeTitleColor }}">{{ $firstName }} {{ $lastName }}</p>
             @endif
             @if (!empty($visibleElements) && in_array('function', $visibleElements))
-                <p class="text-{{ $employeeTextColor }} font-medium">{{ $function }}</p>
+                <p class="function-text text-{{ $employeeTextColor }} font-medium">{{ $function }}</p>
             @endif
             @if (!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($socials))
                 <div class="inline-flex gap-x-2">
@@ -43,23 +45,25 @@
                 </div>
             @endif
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements))
-                @if ($mail)
-                    <p>
-                        <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" class="text-{{ $employeeTextColor }} hover:text-primary">
-                            <i class="w-4 object-cover fas fa-envelope mr-3"></i>{{ $mail }}
-                        </a>
-                    </p>
-                @endif
-                @if ($phoneNumber)
-                    <p>
-                        <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" class="text-{{ $employeeTextColor }} hover:text-primary">
-                            <i class="w-4 object-cover fas fa-phone mr-3"></i>{{ $phoneNumber }}
-                        </a>
-                    </p>
-                @endif
+                <div class="contact-items">
+                    @if ($mail)
+                        <p>
+                            <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" class="text-{{ $employeeTextColor }} hover:text-primary">
+                                <i class="contact-text w-4 object-cover fas fa-envelope mr-3"></i>@if($showFullContactInfo) {{ $mail }} @endif
+                            </a>
+                        </p>
+                    @endif
+                    @if ($phoneNumber)
+                        <p>
+                            <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" class="text-{{ $employeeTextColor }} hover:text-primary">
+                                <i class="contact-text w-4 object-cover fas fa-phone mr-3"></i>@if($showFullContactInfo) {{ $phoneNumber }} @endif
+                            </a>
+                        </p>
+                    @endif
+                </div>
             @endif
             @if (!empty($visibleElements) && in_array('overview_text', $visibleElements))
-                <p class="text-{{ $employeeTextColor }} mt-3 mb-2">{{ $overviewText }}</p>
+                <p class="overview-text text-{{ $employeeTextColor }} mt-3 mb-2">{{ $overviewText }}</p>
             @endif
         </div>
     </div>

@@ -185,6 +185,34 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
+            "key": "field_658060427280c",
+            "label": "Contactgegevens volledig uitschrijven?",
+            "name": "show_full_contact_info",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a2e7d645184",
+                        "operator": "==",
+                        "value": "contact_info"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6569e438e1ec1",
             "label": "Werknemer naam kleur",
             "name": "employee_title_color",
@@ -746,5 +774,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702049990
+    "modified": 1702912131
 }

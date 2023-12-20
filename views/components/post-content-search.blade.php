@@ -1,5 +1,10 @@
-<article id="post-{{ Loop::id() }}" {!! post_class() !!}>
-    <header class="entry-header">
+<article id="post-{{ Loop::id() }}" class="grid grid-cols-2 gap-x-16 mt-8" {!! post_class() !!}>
+    <div class="w-full h-auto">
+        <a href="{{ esc_url(get_permalink()) }}" rel="bookmark">
+            {!! the_post_thumbnail('small') !!}
+        </a>
+    </div>
+    <div>
         <h2 class="entry-title">
             <a href="{{ esc_url(get_permalink()) }}" rel="bookmark">{!! Loop::title() !!}</a>
         </h2>
@@ -9,12 +14,8 @@
                 {!! posted_by() !!}
             </div>
         @endif
-    </header>
-    {!! post_thumbnail() !!}
-    <div class="entry-summary">
-        {!! Loop::excerpt() !!}
+        <div class="entry-summary">
+            {!! Loop::excerpt() !!}
+        </div>
     </div>
-    <footer class="entry-footer">
-        @php(entry_footer())
-    </footer>
-</article><!-- #post-{{ Loop::id() }} -->
+</article>

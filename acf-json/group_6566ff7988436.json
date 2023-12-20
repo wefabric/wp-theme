@@ -263,6 +263,33 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
+            "key": "field_657ab7b74896e",
+            "label": "Link van logo",
+            "name": "logo_link",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "page_link": "Ga naar logo pagina",
+                "external_link": "Gebruik externe ingestelde link van logo",
+                "no_link": "Geen link"
+            },
+            "default_value": "page_link",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_6566ff79947c3",
             "label": "Button onder logo's",
             "name": "button",
@@ -781,5 +808,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701859393
+    "modified": 1702636214
 }

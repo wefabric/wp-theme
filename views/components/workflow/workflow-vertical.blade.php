@@ -1,4 +1,4 @@
-<div class="flex flex-wrap mx-auto">
+<div class="steps flex flex-wrap mx-auto">
     @for ($i = 0; $i < $steps; $i++)
         @php
             $stepTitleKey = "steps_{$i}_step_title";
@@ -24,7 +24,7 @@
             }
         @endphp
 
-        <div class="flex relative py-6 sm:items-center w-full">
+        <div class="step flex relative py-6 sm:items-center w-full">
             @if ($showStepNumber)
                 <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
                     <div class="h-full w-1 bg-gray-200"></div>
@@ -51,9 +51,9 @@
                         ])
                     </div>
                 @endif
-                <div class="flex-grow sm:pl-6 mt-6 sm:mt-0 text-{{ $stepTextColor }}">
+                <div class="flex-grow sm:pl-6">
                     @if($stepTitle)
-                        <h3 class="mb-1 text-xl">{{ $stepTitle }}</h3>
+                        <h3 class="mb-1 text-xl text-{{ $stepTitleColor }}">{{ $stepTitle }}</h3>
                     @endif
                     @if ($stepText)
                         @include('components.content', ['content' => apply_filters('the_content', $stepText), 'class' => 'text-' . $stepTextColor])

@@ -1,7 +1,10 @@
 .nav-mobile-toggle-visibility {
   opacity: 0;
+  // Visibility supports transition, display doesn't
   visibility: hidden;
-  transition: visibility 0s linear 0.3s, opacity 0.3s ease-out;
+  // Visibility change comes after the opacity change
+  transition: visibility 0s linear 0.3s,
+  opacity 0.3s ease-out;
 }
 
 .nav-mobile-toggler {
@@ -14,17 +17,18 @@
   left: 0;
   width: 100%;
   height: 100%;
+  //background-color: rgba(0, 0, 0, 0.6);
   z-index: 10;
 }
 
 .hamburger-button {
   .hamburger-button-bar {
-    @apply bg-white;
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
     border-radius: 10px;
-    width: 20px;
+    width: 25px;
     height: 3px;
+    @apply bg-primary;
     transition-property: transform, opacity, width;
     transition-duration: 0.3s;
     transition-timing-function: ease-out;
@@ -34,13 +38,13 @@
     }
 
     &:nth-child(2) {
-      width: 75%;
-      display: flex;
-      align-self: end;
     }
 
     &:nth-child(3) {
       transform-origin: bottom left;
+    }
+
+    &:last-child {
       margin-bottom: 0;
     }
   }
@@ -65,13 +69,11 @@ header.banner {
   transition: 0.2s;
 }
 
-#nav-mobile-active:checked {
-  ~ .logo-mobile {
-    .site-title {
-      opacity: 0;
-    }
-  }
+.mobile-logo {
+  padding: 20px;
+}
 
+#nav-mobile-active:checked {
   ~ .nav-mobile-toggle-visibility,
   ~ .banner .nav-mobile-toggle-visibility {
     visibility: visible;
@@ -79,7 +81,6 @@ header.banner {
     // Change visibility without a delay when showing (opacity already has 0s delay)
     transition-delay: 0s;
   }
-
 
   ~ header .mobile-menu {
     right: 0;
@@ -96,11 +97,6 @@ header.banner {
     .hamburger-menu {
       right: 270px;
       position: fixed;
-
-      label {
-        margin-right: -7px;
-        padding-left: 2px;
-      }
     }
 
     .header-logo {
@@ -112,9 +108,8 @@ header.banner {
         opacity: 100;
       }
     }
-
     .hamburger-button-bar {
-      width: 21px;
+      width: 24px;
 
       &:nth-child(1) {
         transform: rotate(45deg);
@@ -132,11 +127,20 @@ header.banner {
 }
 
 .hamburger-menu {
-  @apply bg-black rounded-full p-2;
-
   position: absolute;
   right: 30px;
   transition: right 300ms ease;
+}
+
+.nav-mobile {
+  padding: 0 15px 0 15px;
+  margin-top: 110px;
+  background-color: white;
+  z-index: 20;
+
+  .nav {
+    display: block;
+  }
 }
 
 .nav-mobile {
@@ -162,10 +166,25 @@ header.banner {
   min-height: 100%;
   transition: right 300ms ease;
   color: #000;
-  padding: 20px;
+  padding-bottom: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 
   .menu {
+    display: block;
+  }
+
+  .sub-menu {
+    max-height: 0 !important;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .menu-item-has-children.open > .sub-menu {
+    display: block;
+    max-height: 500px !important; /* Set a reasonable maximum height */
+  }
+
+  .menu-item-has-children.open > .sub-menu {
     display: block;
   }
 
@@ -173,45 +192,60 @@ header.banner {
     display: block;
   }
 
+  li, ul, lo {
+    line-height: 1.875rem !important;
+  }
+
   li {
     position: relative;
     display: block !important;
-    padding: 0.5rem 0 0.25rem !important;
+    padding: 0.5rem 20px !important;
+
+    ul.sub-menu li {
+      padding: 0.3rem 0 0.3rem 10px !important;
+      margin: 0 !important;
+      font-size: 14px;
+    }
+
+    a {
+      @apply text-white w-full;
+      padding: 0.5rem 0;
+    }
 
     &.active {
       text-decoration: underline;
     }
 
-    &:after {
-      display: none;
-      content: '\f138';
-      font-family: $fa-font-family;
-    }
-
-    //&.current_page_parent > a:first-child {
-    //  @apply text-secondary #{!important};
-    //}
-
     &.current-menu-item > a:first-child {
       @apply text-secondary #{!important};
     }
 
-    a {
-      @apply text-white;
-      padding: 0.5rem 0 0.25rem;
+    &.menu-item-has-children > a {
+     //color: red !important;
     }
 
-    &:first-child {
-      a {
-        border-top: none;
-      }
+    &.menu-item-has-children:after {
+      padding-left: 0rem;
+      font-family: "Font Awesome 6 Pro";
+      content: "\f078";
+      color: white;
+      position: absolute;
+      top: 7px;
+      right: 20px;
+      transition: 0.35s ease-in-out;
+      transform: rotate(0deg);
     }
-  }
 
+    &.menu-item-has-children.open:after {
+      transform: rotate(-180deg);
+    }
 
-  li.custom.btn {
-    @apply text-center mt-4 mb-12;
-    padding: 0 3rem !important;
+    &.custom.btn {
+      padding: 0 !important;
+      margin: 20px !important;
+      text-align: center;
+    }
+
   }
 }
 
