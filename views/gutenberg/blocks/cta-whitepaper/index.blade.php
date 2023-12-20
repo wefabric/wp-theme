@@ -95,7 +95,7 @@
                                 @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 md:mt-4 text-' . $textColor])
                             @endif
                             @if ($ctaForm)
-                                <div class="w-full mx-auto mt-10 text-left text-white">
+                                <div class="w-full @if($blockWidth == 'fullscreen') xl:w-1/2 @endif mx-auto mt-10 text-left text-white">
                                     {!! gravity_form($ctaForm, false) ; !!}
                                 </div>
                             @endif
