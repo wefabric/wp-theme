@@ -155,6 +155,26 @@
             "font_size": 14
         },
         {
+            "key": "field_658407fbcd2ef",
+            "label": "Submenu sticky maken?",
+            "name": "sticky_submenu",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_654df60ab7904",
             "label": "Blokinstellingen",
             "name": "",
@@ -369,5 +389,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701341105
+    "modified": 1703151662
 }

@@ -23,6 +23,8 @@
         ];
     }
 
+    $stickyMenu = $block['data']['sticky_submenu'] ?? true;
+
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
     $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
@@ -38,12 +40,12 @@
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
 @endphp
 
-<section id="submenu" class="relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
+<section id="submenu" class="@if($stickyMenu) sticky-submenu sticky z-40 @else relative @endif bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="relative z-10 px-8 py-8 2xl:py-16 {{ $fullScreenClass }}">
+    <div class="relative z-10 px-8 @if($stickyMenu) py-8 @else py-8 2xl:py-16 @endif {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($title)
                 <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
@@ -64,3 +66,32 @@
         </div>
     </div>
 </section>
+
+@if ($stickyMenu)
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var mastheadHeight = $('#masthead').outerHeight();
+            var submenuHeight = $('.sticky-submenu').outerHeight();
+            var combinedHeight = mastheadHeight + submenuHeight;
+            var submenu = $('.sticky-submenu');
+
+            // Apply scroll-margin to all elements using a style tag
+            $('head').append('<style>* { scroll-margin: ' + combinedHeight + 'px !important; }</style>');
+
+            // Initial positioning
+            submenu.css('top', mastheadHeight + 'px');
+
+            $(window).scroll(function() {
+                // Check if the user has scrolled past the masthead
+                if ($(window).scrollTop() > mastheadHeight) {
+                    // Add shadow-xl class when scrolled
+                    submenu.addClass('shadow-xl');
+                } else {
+                    // Remove shadow-xl class when not scrolled
+                    submenu.removeClass('shadow-xl');
+                }
+            });
+        });
+    </script>
+@endif
