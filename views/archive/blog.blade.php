@@ -18,7 +18,7 @@
 
 	<section class="news-archive-grid relative">
 		<div class="container mx-auto my-12 lg:my-12">
-			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-4 lg:gap-x-8 px-8">
 				@loop
 					@include('components.cards.newsitem', [
 						'item' => get_the_ID()
