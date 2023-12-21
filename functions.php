@@ -431,38 +431,3 @@ function get_free_shipping_minimum($zone_name = 'Netherlands') {
 
     return $result;
 }
-
-
-
-// Temporarly disabled because multiple dates
-//
-//add_action('wp_loaded', 'check_activity_date');
-//function check_activity_date() {
-//    if (is_admin()) {
-//        $post_id = isset($_GET['post']) ? intval($_GET['post']) : 0;
-//
-//        if ($post_id > 0) {
-//            $post_type = get_post_type($post_id);
-//
-//            if ($post_type === 'activities') {
-//                $datum = get_field('date', $post_id);
-//
-//                if ($datum) {
-//                    $timestamp = DateTime::createFromFormat('d/m/Y', $datum)->getTimestamp();
-//                    $current_timestamp = time();
-//
-//                    $new_status = ($current_timestamp > $timestamp) ? 'draft' : 'publish';
-//                } else {
-//                    $new_status = 'publish';
-//                }
-//
-//                $post_data = array(
-//                    'ID' => $post_id,
-//                    'post_status' => $new_status,
-//                );
-//
-//                wp_update_post($post_data);
-//            }
-//        }
-//    }
-//}
