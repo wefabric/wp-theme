@@ -12,8 +12,7 @@
 
 <label for="nav-mobile-active" class="nav-mobile-toggle-visibility nav-mobile-toggler nav-mobile-overlay z-0"></label>
 <header class="banner absolute left-0 w-full">
-    <div>
-        <div class="py-2 pr-16 flex items-center justify-end relative xl:hidden">
+        <div class="flex xl:hidden pt-[28px]">
 
             <div class="hamburger-menu z-50">
                 <label for="nav-mobile-active"
@@ -41,7 +40,6 @@
             </nav>
         </div>
 
-    </div>
 </header>
 
 <script>
