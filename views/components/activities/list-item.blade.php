@@ -8,6 +8,21 @@
     $visibleElements = $block['data']['show_element'] ?? [];
     $activitySummary = get_the_excerpt($activity);
     $activityCategories = get_the_category($activity);
+
+    // Sort dates array based on date
+    usort($fields['dates'], function ($a, $b) {
+        $dateA = DateTime::createFromFormat('d/m/Y', $a['date']);
+        $dateB = DateTime::createFromFormat('d/m/Y', $b['date']);
+
+        // If dates are the same, compare start times
+        if ($dateA == $dateB) {
+            $startTimeA = DateTime::createFromFormat('H:i', $a['start_time']);
+            $startTimeB = DateTime::createFromFormat('H:i', $b['start_time']);
+
+            return $startTimeA <=> $startTimeB;
+        }
+        return $dateA <=> $dateB;
+    });
 @endphp
 
 <div class="activiteit-item group h-full">
