@@ -10,6 +10,7 @@
 
         @php
             $menuLocations = get_nav_menu_locations();
+            $menuID = null;
             if(isset($menuLocations['menu-1'])) {
                 $menuID = $menuLocations['menu-1'];
                 $menu = wp_get_nav_menu_items($menuID);
