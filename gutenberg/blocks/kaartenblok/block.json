@@ -2,7 +2,7 @@
   "name": "wefabric/kaartenblok",
   "title": "Kaartenblok",
   "description": "Een kaarten blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "grid-view",
   "apiVersion": 2,
   "keywords": [

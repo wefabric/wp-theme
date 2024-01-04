@@ -2,7 +2,7 @@
   "name": "wefabric/header",
   "title": "Header",
   "description": "Een header blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "align-center",
   "apiVersion": 2,
   "keywords": [

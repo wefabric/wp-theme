@@ -2,7 +2,7 @@
   "name": "wefabric/faq",
   "title": "FAQ",
   "description": "Een veelgestelde vragen blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "format-chat",
   "apiVersion": 2,
   "keywords": [

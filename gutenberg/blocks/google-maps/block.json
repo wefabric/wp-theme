@@ -2,7 +2,7 @@
   "name": "wefabric/google-maps",
   "title": "Google Maps",
   "description": "Een Google maps blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "location-alt",
   "apiVersion": 2,
   "keywords": [

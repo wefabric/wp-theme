@@ -2,7 +2,7 @@
   "name": "wefabric/cta-whitepaper",
   "title": "Call to action - whitepaper",
   "description": "Een call to action blok met whitepaper",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "button",
   "apiVersion": 2,
   "keywords": [

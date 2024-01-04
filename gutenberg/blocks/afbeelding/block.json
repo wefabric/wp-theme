@@ -2,7 +2,7 @@
   "name": "wefabric/afbeelding",
   "title": "Afbeelding",
   "description": "Een afbeelding blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "format-image",
   "apiVersion": 2,
   "keywords": [

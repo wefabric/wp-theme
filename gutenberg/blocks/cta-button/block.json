@@ -2,7 +2,7 @@
   "name": "wefabric/cta-button",
   "title": "Call to action - button",
   "description": "Een call to action blok met button(s)",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "button",
   "apiVersion": 2,
   "keywords": [

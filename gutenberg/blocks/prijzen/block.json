@@ -2,7 +2,7 @@
   "name": "wefabric/prijzen",
   "title": "Prijzen",
   "description": "Een prijzen blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "money-alt",
   "apiVersion": 2,
   "keywords": [

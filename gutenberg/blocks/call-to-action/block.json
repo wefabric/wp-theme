@@ -2,7 +2,7 @@
   "name": "wefabric/call-to-action",
   "title": "Call to action",
   "description": "Een call to action blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "button",
   "apiVersion": 2,
   "keywords": [

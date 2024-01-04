@@ -2,7 +2,7 @@
   "name": "wefabric/foto-slider",
   "title": "Foto slider",
   "description": "Een foto slider blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "format-gallery",
   "apiVersion": 2,
   "keywords": [

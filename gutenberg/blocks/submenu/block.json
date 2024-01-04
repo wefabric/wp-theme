@@ -2,7 +2,7 @@
   "name": "wefabric/submenu",
   "title": "Submenu",
   "description": "Een submenu blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "admin-links",
   "apiVersion": 2,
   "keywords": [

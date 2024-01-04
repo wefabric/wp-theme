@@ -2,7 +2,7 @@
   "name": "wefabric/embed",
   "title": "Embed",
   "description": "Een embed blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "media-code",
   "apiVersion": 2,
   "keywords": [

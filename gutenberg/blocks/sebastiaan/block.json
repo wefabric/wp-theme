@@ -2,7 +2,7 @@
   "name": "wefabric/sebastiaan",
   "title": "Sebastiaan",
   "description": "A custom sebastiaan block",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "admin-comments",
   "apiVersion": 2,
   "keywords": [

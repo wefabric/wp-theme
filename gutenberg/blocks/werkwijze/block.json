@@ -2,7 +2,7 @@
   "name": "wefabric/werkwijze",
   "title": "Werkwijze",
   "description": "Een werkwijze blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "editor-ol",
   "apiVersion": 2,
   "keywords": [

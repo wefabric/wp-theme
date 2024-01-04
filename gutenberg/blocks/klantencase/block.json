@@ -2,7 +2,7 @@
   "name": "wefabric/klantencase",
   "title": "Klantencase",
   "description": "Een klantencase blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "open-folder",
   "apiVersion": 2,
   "keywords": [

@@ -2,7 +2,7 @@
   "name": "wefabric/nieuws",
   "title": "Nieuws overzicht",
   "description": "Een nieuws overzicht blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "index-card",
   "apiVersion": 2,
   "keywords": [

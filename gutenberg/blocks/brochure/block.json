@@ -2,7 +2,7 @@
   "name": "wefabric/brochure",
   "title": "Brochure",
   "description": "Een brochure blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "book",
   "apiVersion": 2,
   "keywords": [

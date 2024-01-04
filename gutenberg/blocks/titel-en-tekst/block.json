@@ -2,7 +2,7 @@
   "name": "wefabric/titel-en-tekst",
   "title": "Titel en tekst",
   "description": "Een titel en tekst blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "editor-paragraph",
   "apiVersion": 2,
   "keywords": [

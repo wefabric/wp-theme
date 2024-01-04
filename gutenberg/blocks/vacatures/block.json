@@ -2,7 +2,7 @@
   "name": "wefabric/vacatures",
   "title": "Vacatures overzicht",
   "description": "Een vacatures blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "portfolio",
   "apiVersion": 2,
   "keywords": [

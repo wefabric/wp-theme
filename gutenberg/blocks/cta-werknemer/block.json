@@ -2,7 +2,7 @@
   "name": "wefabric/cta-werknemer",
   "title": "Call to action - werknemer",
   "description": "Een call to action blok met werknemer",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "button",
   "apiVersion": 2,
   "keywords": [

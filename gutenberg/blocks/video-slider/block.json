@@ -2,7 +2,7 @@
   "name": "wefabric/video-slider",
   "title": "Video slider",
   "description": "Een video slider blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "format-video",
   "apiVersion": 2,
   "keywords": [

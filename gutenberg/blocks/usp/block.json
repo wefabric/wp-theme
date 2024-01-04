@@ -2,7 +2,7 @@
   "name": "wefabric/usp",
   "title": "USPs",
   "description": "Een USP blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "awards",
   "apiVersion": 2,
   "keywords": [

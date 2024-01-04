@@ -2,7 +2,7 @@
   "name": "wefabric/historie",
   "title": "Historie",
   "description": "Een historie blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "hourglass",
   "apiVersion": 2,
   "keywords": [

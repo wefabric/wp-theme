@@ -2,7 +2,7 @@
   "name": "wefabric/werknemers",
   "title": "Werknemers overzicht",
   "description": "Een werknemers overzicht blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "groups",
   "apiVersion": 2,
   "keywords": [

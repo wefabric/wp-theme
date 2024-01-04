@@ -2,7 +2,7 @@
   "name": "wefabric/quote",
   "title": "Quote",
   "description": "Een quote blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "format-quote",
   "apiVersion": 2,
   "keywords": [

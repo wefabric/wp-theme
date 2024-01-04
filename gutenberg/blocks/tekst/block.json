@@ -2,7 +2,7 @@
   "name": "wefabric/tekst",
   "title": "Tekst",
   "description": "Een tekst blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "editor-paragraph",
   "apiVersion": 2,
   "keywords": [

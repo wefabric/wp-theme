@@ -2,7 +2,7 @@
   "name": "wefabric/logos",
   "title": "Logo overzicht",
   "description": "Een logo overzicht blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "format-gallery",
   "apiVersion": 2,
   "keywords": [

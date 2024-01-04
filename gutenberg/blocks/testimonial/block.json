@@ -2,7 +2,7 @@
   "name": "wefabric/testimonial",
   "title": "Testimonial",
   "description": "Een testimonial blok",
-  "category": "theme",
+  "category": "wefabric-theme",
   "icon": "format-quote",
   "apiVersion": 2,
   "keywords": [
