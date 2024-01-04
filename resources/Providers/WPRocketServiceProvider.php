@@ -10,11 +10,13 @@ class WPRocketServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        if( !function_exists('is_plugin_active') ) {
+            include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+        }
 
         if(is_plugin_active('wp-rocket/wp-rocket.php') && App::environment() !== 'production') {
             $this->disablePageCaching();
         }
-
     }
 
     private function disablePageCaching()
