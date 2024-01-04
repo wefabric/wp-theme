@@ -17,7 +17,7 @@
     <div class="card-background p-6 xl:p-8 h-full mx-auto relative bg-{{ $caseBackgroundColor }} w-full aspect-square flex flex-col gap-y-4 items-center justify-end text-center rounded-{{ $borderRadius }} group-hover:-translate-y-4 duration-300 ease-in-out"
 
          @if ($caseImage)
-             style="background-image: url('{{ wp_get_attachment_image_url($caseImage, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \App\Helpers\FocalPoint::getBackgroundPosition($caseImage) }}">
+             style="background-image: url('{{ wp_get_attachment_image_url($caseImage, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($caseImage) }}">
         @endif
 
         <a href="{{ $caseUrl }}" aria-label="Ga naar {{ $caseTitle }} pagina" class="card-overlay absolute bottom-0 w-full opacity-80 transition-all duration-300 ease-in-out group-hover:h-full h-3/5 sm:h-1/2 lg:h-2/5 bg-primary rounded-b-{{ $borderRadius }} group-hover:rounded-t-{{ $borderRadius }}"></a>
