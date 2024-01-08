@@ -434,3 +434,17 @@ function get_free_shipping_minimum($zone_name = 'Netherlands') {
 
 // Disable WP rocket comments in files
 define ('WP_ROCKET_WHITE_LABEL_FOOTPRINT', false);
+
+
+/**
+ * Set 'with_front' to false for the 'experts' post type.
+ */
+add_filter( 'register_post_type_args', function( $args, $post_type )
+{
+    if( 'post' !== $post_type && is_array( $args ) ) {
+        $args['rewrite']['with_front'] = false;
+    }
+
+
+    return $args;
+}, 99, 2 );
