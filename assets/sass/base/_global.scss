@@ -1,6 +1,6 @@
 // Makes sure there is no horizontal overflow
 .page-builder {
-  contain: overflow;
+  overflow: hidden;
 }
 
 .flip-horizontal {
