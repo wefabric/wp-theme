@@ -35,7 +35,7 @@
                                 'image_id' => $caseLogo,
                                 'size' => 'full',
                                 'object_fit' => 'contain',
-                                'img_class' => 'w-[120px] h-auto object-contain',
+                                'img_class' => 'w-auto max-h-[120px] object-contain',
                                 'alt' => 'test'
                             ])
                         @endif
