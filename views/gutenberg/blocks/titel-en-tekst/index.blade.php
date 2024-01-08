@@ -68,9 +68,29 @@
             </div>
             <div class="w-full lg:w-2/5 order-1 {{ $titleOrder }}">
                 @if ($title)
-                    <h2 class="h1 lg:-mt-[6px] mb-4 text-{{ $titleColor }} lg:text-{{ $textAlignment }}">{!! $title !!}</h2>
+                    <h2 class="title-text h1 lg:-mt-[6px] mb-4 text-{{ $titleColor }} lg:text-{{ $textAlignment }}">{!! $title !!}</h2>
                 @endif
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    .title-text {
+        word-wrap: normal;
+    }
+
+    @if ($textAlignment == 'right')
+        @media only screen and (min-width: 1024px) {
+            .title-text {
+                direction: rtl;
+            }
+        }
+    @elseif ($textAlignment == 'left')
+        @media only screen and (min-width: 1024px) {
+            .title-text {
+                direction: ltr;
+            }
+        }
+    @endif
+</style>
