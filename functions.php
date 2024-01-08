@@ -431,3 +431,6 @@ function get_free_shipping_minimum($zone_name = 'Netherlands') {
 
     return $result;
 }
+
+// Disable WP rocket comments in files
+define ('WP_ROCKET_WHITE_LABEL_FOOTPRINT', false);
