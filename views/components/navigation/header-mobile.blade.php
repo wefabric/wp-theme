@@ -1,3 +1,12 @@
+@php
+    $options = get_fields('option');
+    $footer_establishments = array_key_exists('footer_establishments', $options) ? $options['footer_establishments'] : [];
+
+    if (empty($footer_establishments) || empty($footer_establishments[0])) {
+        $footer_establishments = [\Wefabric\WPEstablishments\Establishment::primary()];
+    }
+@endphp
+
 <input type="checkbox" class="hidden" id="nav-mobile-active" autocomplete="off">
 
 <div class="logo-mobile float-left xl:hidden z-10 relative">
@@ -29,6 +38,32 @@
                 <div class="mobile-logo">
                     @include('components.header.logo', ['type' => 'white'])
                 </div>
+
+                @if (!empty($options['secondary_menu_show_elements']))
+                    <div class="flex gap-2 text-md px-4 pb-4 text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
+                        @foreach($footer_establishments as $key => $establishment_config)
+                            @php
+                                $establishment = $establishment_config ? new \Wefabric\WPEstablishments\Establishment($establishment_config['establishment']) : null;
+                                $phone = $establishment ? $establishment->getContactPhone() : '';
+                                $email = $establishment ? $establishment->getContactEmailAddress() : '';
+                            @endphp
+                            @if (in_array('phone', $options['secondary_menu_show_elements']))
+                                <a class="phone-link group flex items-center" href="tel:{{ $phone }}"
+                                   title="Telefoonnummer">
+                                    <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone"></i>
+                                    <span class="align-middle"></span>
+                                </a>
+                            @endif
+                            @if (in_array('email', $options['secondary_menu_show_elements']))
+                                <a class="mail-link group flex items-center" href="mailto:{{ $email }}"
+                                   title="E-mailadres">
+                                    <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-envelope"></i>
+                                    <span class="align-middle"></span>
+                                </a>
+                            @endif
+                        @endforeach
+                    </div>
+                @endif
 
                 <nav id="site-navigation" class="main-navigation">
                     {!! wp_nav_menu([

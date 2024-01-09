@@ -24,7 +24,7 @@
                         <a class="phone-link group flex items-center gap-2" href="tel:{{ $phone }}"
                            title="Telefoonnummer">
                             <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone"></i>
-                            <span class="align-middle ">{{ $phone }}</span>
+                            <span class="align-middle">{{ $phone }}</span>
                         </a>
                     @endif
 
