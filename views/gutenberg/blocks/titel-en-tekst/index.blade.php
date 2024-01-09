@@ -68,7 +68,7 @@
             </div>
             <div class="w-full lg:w-2/5 order-1 {{ $titleOrder }}">
                 @if ($title)
-                    <h2 class="title-text @if($textAlignment == 'right') flex justify-end @endif h1 lg:-mt-[6px] mb-4 text-{{ $titleColor }} lg:text-{{ $textAlignment }}">{!! $title !!}</h2>
+                    <h2 class="title-text @if($textAlignment == 'right') flex flex-col justify-end @endif h1 lg:-mt-[6px] mb-4 text-{{ $titleColor }} lg:text-{{ $textAlignment }}">{!! $title !!}</h2>
                 @endif
             </div>
         </div>
