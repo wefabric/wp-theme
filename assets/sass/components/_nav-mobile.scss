@@ -169,35 +169,46 @@ header.banner {
   padding-bottom: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 
+
+
   .menu {
     display: block;
-  }
 
-  .sub-menu {
-    max-height: 0 !important;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out;
+    .sub-menu {
+      max-height: 0 !important;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
 
-    > li:first-child {
-      margin-top: 0.5rem !important;
+      > li:first-child {
+        margin-top: 0.5rem !important;
+      }
     }
-  }
 
-  .menu-item-has-children.open > .sub-menu {
-    display: block;
-    max-height: 1000px !important;
-  }
+    .menu-item-has-children.open > .sub-menu {
+      display: block;
+      max-height: 1000px !important;
+    }
 
-  .menu-item-has-children.open > .sub-menu {
-    display: block;
-  }
-
-  .nav {
-    display: block;
+    .menu-item-has-children.open > .sub-menu {
+      display: block;
+    }
   }
 
   li, ul, lo {
     line-height: 1.875rem !important;
+  }
+
+  li.top-navigation {
+    display: flex !important;
+    padding: 0 0px !important;
+
+    a, i {
+      padding: 0 !important;
+    }
+
+    a  {
+      padding: 0 18px !important;
+    }
   }
 
   li {
@@ -224,10 +235,6 @@ header.banner {
       @apply text-secondary #{!important};
     }
 
-    &.menu-item-has-children > a {
-     //color: red !important;
-    }
-
     &.menu-item-has-children:after {
       padding-left: 0rem;
       font-family: "Font Awesome 6 Pro";
@@ -250,8 +257,8 @@ header.banner {
       margin: 20px !important;
       text-align: center;
     }
-
   }
+
 }
 
 .main-navigation .mobile-menu ul.sub-menu li a {

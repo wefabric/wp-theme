@@ -62,6 +62,24 @@
                                 </a>
                             @endif
                         @endforeach
+
+                            @php
+                                $menuLocations = get_nav_menu_locations();
+                                $menuID = null;
+                                if(isset($menuLocations['top-navigation'])) {
+                                    $menuID = $menuLocations['top-navigation'];
+                                }
+                            @endphp
+                            @if(isset($menuID) && !is_null($menuID))
+                                {!! wp_nav_menu([
+                                    'theme_location' => 'top-navigation',
+                                    'menu_id' => $menuID,
+                                    'container_class' => 'flex',
+                                    'li_class'  => 'top-navigation h-full text-sm group flex items-center gap-2 bg-primary-light hover:bg-primary-dark rounded-md text-white',
+                                    'li_active_class'  => '',
+                                    'echo' => false
+                                ]) !!}
+                            @endif
                     </div>
                 @endif
 
@@ -92,3 +110,13 @@
         });
     });
 </script>
+
+<style>
+    .main-navigation .menu {
+        margin-bottom: 0 !important;
+    }
+
+    .hamburger-secondary-menu {
+        display: flex !important;
+    }
+</style>
