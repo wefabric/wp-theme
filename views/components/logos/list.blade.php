@@ -14,6 +14,17 @@
     $randomId = 'logosSwiper-' . $randomNumber;
 
     $logoCount = count($logos);
+
+    // Determine $gridStartClass based on $logoCount
+    if ($logoCount === 1) {
+        $gridStartClass = 'col-start-4';
+    } elseif ($logoCount === 2) {
+        $gridStartClass = 'col-start-3';
+    } elseif ($logoCount === 3) {
+        $gridStartClass = 'col-start-2';
+    } else {
+        $gridStartClass = '';
+    }
 @endphp
 
 @if($block['data']['show_slider'])
@@ -37,7 +48,7 @@
 @elseif($block['data']['alternative_row_layout'])
     <div class="hidden md:grid grid-cols-8 gap-y-4 gap-x-4 py-8">
         @foreach ($logos as $index => $logo)
-            <div class="col-span-2 {{ ($index + 1) % 7 === 5 ? 'col-start-2' : '' }}">
+            <div class="col-span-2 {{ ($index + 1) % 7 === 5 ? 'col-start-2' : '' }} {{ $index === 0 ? $gridStartClass : '' }}">
                 @include('components.logos.list-item')
             </div>
         @endforeach
