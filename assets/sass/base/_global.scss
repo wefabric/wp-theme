@@ -12,6 +12,10 @@ img {
   height: auto;
 }
 
+.lazyloaded {
+  transition: 300ms ease-in-out;
+}
+
 // Hide the cookiebot and recaptcha sticky badges from page
 #CookiebotWidget,
 .grecaptcha-badge {
