@@ -75,7 +75,9 @@
     </div>
 </section>
 
+
 <style>
+    /* Makes sure that the words do not break */
     .title-text {
         word-wrap: normal;
     }

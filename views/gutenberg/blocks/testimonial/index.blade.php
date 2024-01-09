@@ -16,6 +16,8 @@
     $testimonialAvatarID = $selectedTestimonialFields['avatar'] ?? '';
     $testimonialImageID = $selectedTestimonialFields['image'] ?? '';
 
+    $imagePosition = $block['data']['image_position'] ?? 'right';
+
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
     $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
@@ -46,8 +48,8 @@
                 <h2 class="text-{{ $titleColor }} container mx-auto mb-4 px-8 md:px-0 {{ $titleClass }}">{!! $title !!}</h2>
             @endif
             <div class="custom-styling w-full text-{{ $textColor }}">
-                <div class="testimonial-block relative h-full min-h-full bg-{{ $testimonialBackground }} rounded-{{ $borderRadius }}">
-                    <div class="w-full md:w-3/5 p-8 lg:p-16">
+                <div class="testimonial-block relative h-full min-h-full flex @if($imagePosition == 'right') justify-start @else justify-end @endif bg-{{ $testimonialBackground }} rounded-{{ $borderRadius }}">
+                    <div class="w-full md:w-3/5 p-8 lg:p-16 justify-end">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                              class="quote-icon block mx-auto md:mx-0 w-8 h-8 mb-4"
                              viewBox="0 0 975.036 975.036">
@@ -77,7 +79,7 @@
                         </div>
                     </div>
                     @if ($testimonialImageID)
-                        <div class="hidden md:block absolute bottom-0 right-0 w-2/5 h-full">
+                        <div class="hidden md:block absolute bottom-0 @if($imagePosition == 'right') right-0 @else left-0 @endif w-2/5 h-full">
                             @include('components.image', [
                                 'image_id' => $testimonialImageID,
                                 'size' => 'full',
