@@ -12,8 +12,12 @@ img {
   height: auto;
 }
 
+// Apply this so lazy loading works with swiper and hover animations
 .lazyloaded {
   transition: 300ms ease-in-out !important;
+}
+.lazyload, .lazyloading {
+  opacity: 1 !important;
 }
 
 // Hide the cookiebot and recaptcha sticky badges from page
