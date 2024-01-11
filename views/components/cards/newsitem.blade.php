@@ -5,7 +5,7 @@
     $fields = get_fields($postId);
     $service = get_post($postId);
 
-    $categories = get_the_category($postId);
+    $postCategories = get_the_terms($postId, 'news_categories');
 
     $postSummary = get_the_excerpt($postId);
         $maxSummaryLength = 180;
@@ -84,6 +84,22 @@
         <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
             <a href="{{ get_permalink($postId) }}"
                class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+
+
+            <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                @if($postCategories)
+                    @foreach ($postCategories as $category)
+                        @php
+                            $categoryColor = get_field('category_color', $category);
+                        @endphp
+                        <div style="background-color: {{ $categoryColor }}"
+                             class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full">
+                            {{ $category->name }}
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+
 
             @include('components.image', [
                 'image_id' => get_post_thumbnail_id($postId),
