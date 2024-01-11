@@ -7,7 +7,7 @@
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
     $vacancySummary = $fields['excerpt'] ?? '';
-    $vacancyCategories = get_the_category($vacancy);
+    $vacancyCategories = get_the_terms($vacancy, 'vacature_categories');
 @endphp
 
 <div class="vacature-item group h-full">
@@ -17,16 +17,18 @@
                 <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina"
                    class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
-                    <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
-                        @foreach ($vacancyCategories as $category)
-                            @php
-                                $categoryColor = get_field('category_color', $category);
-                            @endphp
-                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full" aria-label="Ga naar {{ $category->name }}">
-                                {{ $category->name }}
-                            </a>
-                        @endforeach
-                    </div>
+                    @if ($vacancyCategories && !is_bool($vacancyCategories))
+                        <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                            @foreach ($vacancyCategories as $category)
+                                @php
+                                    $categoryColor = get_field('category_color', $category);
+                                @endphp
+                                <div style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
+                                    {{ $category->name }}
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 @endif
                 @include('components.image', [
                    'image_id' => $vacancyThumbnailID,

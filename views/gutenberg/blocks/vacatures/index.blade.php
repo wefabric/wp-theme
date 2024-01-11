@@ -40,7 +40,7 @@
             'post_status' => 'publish',
             'tax_query' => [
                 [
-                    'taxonomy' => 'category',
+                    'taxonomy' => 'vacature_categories',
                     'field' => 'id',
                     'terms' => $selectedCategory,
                 ],
