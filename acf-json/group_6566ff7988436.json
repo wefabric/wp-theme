@@ -147,14 +147,16 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "category",
+            "taxonomy": "brand_categories",
             "add_term": 1,
             "save_terms": 0,
             "load_terms": 0,
             "return_format": "object",
             "field_type": "multi_select",
             "allow_null": 0,
-            "multiple": 0
+            "bidirectional": 0,
+            "multiple": 0,
+            "bidirectional_target": []
         },
         {
             "key": "field_6566ff79947a4",
@@ -186,11 +188,12 @@
             "return_format": "id",
             "multiple": 1,
             "allow_null": 0,
-            "ui": 1
+            "ui": 1,
+            "bidirectional_target": []
         },
         {
             "key": "field_6566ff79947ac",
-            "label": "Hoeveel nieuwsberichten wil je tonen?",
+            "label": "Hoeveel logo's wil je tonen?",
             "name": "post_amount",
             "aria-label": "",
             "type": "number",
@@ -808,5 +811,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702636214
+    "modified": 1704970596
 }
