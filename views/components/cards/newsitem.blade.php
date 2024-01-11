@@ -5,7 +5,7 @@
     $fields = get_fields($postId);
     $service = get_post($postId);
 
-    $postCategories = get_the_terms($postId, 'news_categories');
+    $postCategories = get_the_category($postId);
 
     $postSummary = get_the_excerpt($postId);
         $maxSummaryLength = 180;

@@ -12,9 +12,9 @@
 
 {{--	@include('components.breadcrumbs.index', ['classes' => ''])--}}
 
-{{--	<div class="container px-8 pt-6 lg:pt-12 mx-auto">--}}
-{{--		@include('components.news.category-links')--}}
-{{--	</div>--}}
+	<div class="container px-8 pt-6 lg:pt-12 mx-auto">
+		@include('components.news.category-list')
+	</div>
 
 	<section class="news-archive-grid relative">
 		<div class="container mx-auto my-12 lg:my-12">
