@@ -20,6 +20,7 @@
         $args = [
             'posts_per_page' => -1,
             'post_type' => 'prijzen',
+            'post_status' => 'publish',
         ];
         $query = new WP_Query($args);
         foreach ($query->posts as $post) {

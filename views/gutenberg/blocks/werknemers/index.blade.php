@@ -23,6 +23,7 @@
         $args = [
             'posts_per_page' => -1,
             'post_type' => 'werknemers',
+            'post_status' => 'publish',
         ];
 
         $query = new WP_Query($args);

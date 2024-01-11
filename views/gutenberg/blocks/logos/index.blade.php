@@ -21,6 +21,7 @@
         $args = [
             'posts_per_page' => -1,
             'post_type' => 'logo',
+            'post_status' => 'publish',
         ];
         $query = new WP_Query($args);
         $logos = wp_list_pluck($query->posts, 'ID');
@@ -30,6 +31,7 @@
         $args = [
             'posts_per_page' => -1,
             'post_type' => 'logo',
+            'post_status' => 'publish',
             'tax_query' => [
                 [
                     'taxonomy' => 'category',
@@ -52,6 +54,7 @@
         $args = [
             'posts_per_page' => $postAmount,
             'post_type' => 'logo',
+            'post_status' => 'publish',
             'orderby' => 'date',
             'order' => 'DESC',
         ];
