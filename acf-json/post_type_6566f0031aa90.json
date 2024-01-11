@@ -1,6 +1,6 @@
 {
     "key": "post_type_6566f0031aa90",
-    "title": "Logos",
+    "title": "Merken",
     "menu_order": 0,
     "active": true,
     "post_type": "logo",
@@ -8,20 +8,20 @@
     "import_source": "",
     "import_date": "",
     "labels": {
-        "name": "Logos",
-        "singular_name": "Logo",
-        "menu_name": "Logo's",
-        "all_items": "Alle logo's",
-        "edit_item": "Logo bewerken",
-        "view_item": "Logo bekijken",
-        "view_items": "Logo's bekijken",
-        "add_new_item": "Nieuw logo toevoegen",
-        "add_new": "Nieuw logo toevoegen",
-        "new_item": "Nieuw logo",
+        "name": "Merken",
+        "singular_name": "Merk",
+        "menu_name": "Merken",
+        "all_items": "Alle merken",
+        "edit_item": "Merk bewerken",
+        "view_item": "Merk bekijken",
+        "view_items": "Merken bekijken",
+        "add_new_item": "Nieuw merk toevoegen",
+        "add_new": "Nieuw merk toevoegen",
+        "new_item": "Nieuw merk",
         "parent_item_colon": "",
-        "search_items": "Logo's zoeken",
-        "not_found": "Geen logo's gevonden",
-        "not_found_in_trash": "Geen logo's gevonden in de prullenbak",
+        "search_items": "Merken zoeken",
+        "not_found": "Geen merken gevonden",
+        "not_found_in_trash": "Geen merken gevonden in de prullenbak",
         "archives": "",
         "attributes": "",
         "featured_image": "",
@@ -43,7 +43,7 @@
         "item_link_description": ""
     },
     "description": "",
-    "public": true,
+    "public": false,
     "hierarchical": false,
     "exclude_from_search": false,
     "publicly_queryable": true,
@@ -73,7 +73,8 @@
     "has_archive": false,
     "has_archive_slug": "",
     "rewrite": {
-        "permalink_rewrite": "post_type_key",
+        "permalink_rewrite": "custom_permalink",
+        "slug": "merken",
         "with_front": "1",
         "feeds": "0",
         "pages": "1"
@@ -83,5 +84,6 @@
     "can_export": true,
     "delete_with_user": false,
     "register_meta_box_cb": "",
-    "modified": 1702682427
+    "enter_title_here": "",
+    "modified": 1704962986
 }
