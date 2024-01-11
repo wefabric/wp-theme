@@ -147,7 +147,7 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "news_categories",
+            "taxonomy": "category",
             "add_term": 1,
             "save_terms": 0,
             "load_terms": 0,
@@ -925,5 +925,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1704968195
+    "modified": 1704984997
 }
