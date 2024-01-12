@@ -68,7 +68,6 @@
         "thumbnail"
     ],
     "taxonomies": [
-        "post_tag",
         "vacature_categories"
     ],
     "has_archive": false,
@@ -84,6 +83,5 @@
     "can_export": true,
     "delete_with_user": false,
     "register_meta_box_cb": "",
-    "enter_title_here": "",
-    "modified": 1704985501
+    "modified": 1705057234
 }
