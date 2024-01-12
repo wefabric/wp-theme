@@ -147,7 +147,7 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "category",
+            "taxonomy": "vacature_categories",
             "add_term": 1,
             "save_terms": 0,
             "load_terms": 0,
@@ -930,5 +930,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702050229
+    "modified": 1705051175
 }

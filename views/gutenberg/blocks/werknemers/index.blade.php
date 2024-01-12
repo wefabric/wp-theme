@@ -29,6 +29,23 @@
         $query = new WP_Query($args);
         $employees = wp_list_pluck($query->posts, 'ID');
     }
+    elseif ($displayType == 'show_category') {
+        $selectedCategory = $block['data']['category'] ?? '';
+        $args = [
+            'posts_per_page' => -1,
+            'post_type' => 'werknemers',
+            'post_status' => 'publish',
+            'tax_query' => [
+                [
+                    'taxonomy' => 'employee_categories',
+                    'field' => 'id',
+                    'terms' => $selectedCategory,
+                ],
+            ],
+        ];
+        $query = new WP_Query($args);
+        $employees = wp_list_pluck($query->posts, 'ID');
+    }
     elseif ($displayType == 'show_specific') {
         $employees = $block['data']['show_specific_employees'];
             if (!is_array($employees) || empty($employees)) {

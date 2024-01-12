@@ -102,7 +102,7 @@
             "label": "Welke werknemers wil je tonen?",
             "name": "display_type",
             "aria-label": "",
-            "type": "radio",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -113,14 +113,47 @@
             },
             "choices": {
                 "show_all": "Toon alle werknemers",
+                "show_category": "Toon werknemers van een categorie",
                 "show_specific": "Toon specifieke werknemers"
             },
             "default_value": "show_all",
             "return_format": "value",
+            "multiple": 0,
             "allow_null": 0,
-            "other_choice": 0,
-            "layout": "vertical",
-            "save_other_choice": 0
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_65a103eadc655",
+            "label": "Categorie",
+            "name": "category",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a28066000da",
+                        "operator": "==",
+                        "value": "show_category"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "employee_categories",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "multiple": 0
         },
         {
             "key": "field_64a28054000d9",
@@ -774,5 +807,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702912131
+    "modified": 1705051379
 }
