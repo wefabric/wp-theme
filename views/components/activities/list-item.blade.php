@@ -7,7 +7,7 @@
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
     $activitySummary = get_the_excerpt($activity);
-    $activityCategories = get_the_category($activity);
+    $activityCategories = get_the_terms($activity, 'activiteit_categories');
 
     // Sort dates array based on date
     usort($fields['dates'], function ($a, $b) {
@@ -36,16 +36,19 @@
                        class="absolute w-full h-full bg-white z-10 opacity-70 transition-opacity"></a>
                 @endif
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
-                    <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
-                        @foreach ($activityCategories as $category)
-                            @php
-                                $categoryColor = get_field('category_color', $category);
-                            @endphp
-                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full" aria-label="Ga naar {{ $category->name }}">
-                                {{ $category->name }}
-                            </a>
-                        @endforeach
-                    </div>
+                    @if ($activityCategories && !is_bool($activityCategories))
+                        <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                            @foreach ($activityCategories as $category)
+                                @php
+                                    $categoryColor = get_field('category_color', $category);
+                                @endphp
+                                <div style="background-color: {{ $categoryColor }}"
+                                     class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full">
+                                    {{ $category->name }}
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 @endif
                 @if ($fields['activity_full'])
                     <div class="absolute z-20 top-[15px] right-[15px] bg-red-500 px-4 py-2 rounded-full text-white">
@@ -63,7 +66,8 @@
         @endif
         <div class="flex flex-col w-full grow mt-5">
 
-            <a href="{{ $activityUrl }}" aria-label="Ga naar {{ $activityTitle }}" class="font-bold text-{{ $activityTitleColor }} text-lg group-hover:text-primary">{{ $activityTitle }}</a>
+            <a href="{{ $activityUrl }}" aria-label="Ga naar {{ $activityTitle }}"
+               class="font-bold text-{{ $activityTitleColor }} text-lg group-hover:text-primary">{{ $activityTitle }}</a>
 
             <div class="activity-data mt-4 text-{{ $activityTextColor }}">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($activitySummary))
