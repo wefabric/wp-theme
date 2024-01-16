@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.organisaties.index', ['block' => $block])->render(); ?>

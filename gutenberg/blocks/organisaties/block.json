@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/organisaties",
+  "title": "Organisaties overzicht",
+  "description": "Een organisaties overzicht blok",
+  "category": "wefabric-theme",
+  "icon": "building",
+  "apiVersion": 2,
+  "keywords": [
+    "organisaties overzicht"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
