@@ -39,7 +39,7 @@
         @if (!empty($visibleElements) && in_array('name', $visibleElements) && ($logoTitle))
             @if ($logoUrl)
                 <a href="{{ $logoUrl }}" @if($logoLinkType === 'external_link') target="_blank" @endif>@endif
-                    <p class="mt-2 text-lg font-bold @if($logoUrl) group-hover:text-primary @endif">{{ $logoTitle }}</p>
+                    <p class="mt-2 text-lg font-bold @if($logoUrl) group-hover:text-primary @endif">{!! $logoTitle !!}</p>
                     @if ($logoUrl) </a>
             @endif
         @endif
