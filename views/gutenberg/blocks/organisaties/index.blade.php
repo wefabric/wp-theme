@@ -19,7 +19,6 @@
 
     // Show organisations
     $displayType = $block['data']['display_type'];
-//    @dd($block['data']['show_specific_organisations']);
 
     if ($displayType == 'show_all') {
         $args = [
@@ -67,10 +66,6 @@
         $organisations = wp_list_pluck($query->posts, 'ID');
     }
 
-
-//
-//    @dd($organisations);
-
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
     $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
@@ -95,7 +90,7 @@
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+    <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($title)
                 <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
