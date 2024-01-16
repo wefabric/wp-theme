@@ -29,13 +29,13 @@
                 @endif
             </div>
         </div>
-        <div class="h-full flex flex-col gap-y-4 p-6 xl:p-8">
+        <div class="content-box h-full flex flex-col gap-y-4 p-6 xl:p-8">
             <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
-               class="text-{{ $cardTitleColor }} relative z-20 h3 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
-                {{ $pageTitle }}
+               class="card-title text-{{ $cardTitleColor }} relative z-20 h3 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
+                {!! $pageTitle !!}
             </a>
             @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && $pageExcerpt)
-                <p class="text-{{ $cardTextColor }}">{{ $pageExcerpt }}</p>
+                <p class="card-excerpt text-{{ $cardTextColor }}">{{ $pageExcerpt }}</p>
             @endif
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
                 @if ($buttonCardText)
