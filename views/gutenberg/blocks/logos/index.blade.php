@@ -44,9 +44,13 @@
         $logos = wp_list_pluck($query->posts, 'ID');
     }
     elseif ($displayType == 'show_specific') {
-        $logos = $block['data']['show_specific_logos'];
+    $logos = $block['data']['show_specific_logos'];
         if (!is_array($logos) || empty($logos)) {
             $logos = [];
+        } else {
+            $logos = array_filter($logos, function ($postID) {
+                return get_post_status($postID) === 'publish';
+            });
         }
     }
     elseif ($displayType == 'show_latest') {
