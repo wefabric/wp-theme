@@ -49,8 +49,12 @@
     }
     elseif ($displayType == 'show_specific') {
         $organisations = $block['data']['show_specific_organisations'];
-        if (!is_array($organisations) || empty($organisations)) {
+         if (!is_array($organisations) || empty($organisations)) {
             $organisations = [];
+        } else {
+            $organisations = array_filter($organisations, function ($postID) {
+                return get_post_status($postID) === 'publish';
+            });
         }
     }
     elseif ($displayType == 'show_latest') {
