@@ -1,11 +1,12 @@
 @php
     $options = get_fields('option');
 	$forceWebshop = true;
+    $isHomePage = is_front_page();
 @endphp
 <div class="hidden xl:flex lg:flex-col py-4 text-base">
     <nav id="site-navigation" class="main-navigation flex justify-end">
         @include('components.header.home-house', [
-            'class' => 'md:px-4 text-xl hover:text-' . (isset($options['menu_active_text_color']) ? str_replace('-color', '', $options['menu_active_text_color']) : 'cta') . ' text-'. (isset($options['menu_text_color']) ? str_replace('-color', '', $options['menu_text_color']) : 'black'),
+            'class' => 'md:px-4 text-xl hover:text-' . (isset($options['menu_active_text_color']) ? str_replace('-color', '', $options['menu_active_text_color']) : 'cta') . ' text-' . ($isHomePage && isset($options['menu_active_text_color']) ? str_replace('-color', '', $options['menu_active_text_color']) : 'primary') . ' text-'. (isset($options['menu_text_color']) ? str_replace('-color', '', $options['menu_text_color']) : 'black'),
         ])
 
         @php
