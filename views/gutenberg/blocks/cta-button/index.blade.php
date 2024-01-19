@@ -65,7 +65,7 @@
         </div>
 
         @if ($topImage)
-            <div class="overlay absolute z-30 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div class="top-image overlay absolute z-30 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 @include('components.image', [
                     'image_id' => $topImage,
                     'size' => 'full',

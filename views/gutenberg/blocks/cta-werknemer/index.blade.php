@@ -70,7 +70,7 @@
         </div>
 
         @if ($employeeImage && $ctaLayout == 'vertical')
-            <div class="overlay absolute z-30 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div class="employee-image overlay absolute z-30 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 @include('components.image', [
                  'image_id' => $employeeImageId,
                  'size' => 'full',

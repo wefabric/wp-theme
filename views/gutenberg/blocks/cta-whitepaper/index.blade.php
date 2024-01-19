@@ -66,7 +66,7 @@
         </div>
 
         @if ($topImage)
-            <div class="overlay absolute z-30 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div class="top-image overlay absolute z-30 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 @include('components.image', [
                     'image_id' => $topImage,
                     'size' => 'full',
@@ -85,7 +85,7 @@
                 @endif
 
                 <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full @endif relative z-10">
-                    <div class="flex flex-col lg:{{ $flexDirection }} {{ $flexClass }} items-center justify-center sm:px-8 lg:px-16 gap-y-4 gap-x-8 @if($topImage) mt-16 md:mt-20 @endif ">
+                    <div class="flex flex-col lg:{{ $flexDirection }} {{ $flexClass }} justify-center sm:px-8 lg:px-16 gap-y-4 gap-x-8 @if($topImage) mt-16 md:mt-20 @endif ">
 
                         <div class="@if ($ctaLayout == 'horizontal') order-2 lg:order-1 @else order-2 @endif @if($sideImage) w-full lg:w-4/5 text-center lg:{{$textClass}} @else w-full lg:w-full {{ $textClass }} @endif">
                             @if ($title)
@@ -100,7 +100,7 @@
                                 </div>
                             @endif
                             @if (($button1Text) && ($button1Link))
-                                <div class="flex flex-col sm:flex-row gap-x-4 w-fit justify-center md:justify-start">
+                                <div class="w-full flex flex-col sm:flex-row gap-x-4 w-fit justify-center lg:justify-start">
                                     @include('components.buttons.default', [
                                        'text' => $button1Text,
                                        'href' => $button1Link,
@@ -123,7 +123,7 @@
                             @endif
                         </div>
                         @if ($sideImage)
-                            <div class="@if($ctaLayout == 'horizontal') order-1 lg:order-2 @else order-1 @endif w-full lg:w-auto -mt-[150px]">
+                            <div class="side-image @if($ctaLayout == 'horizontal') order-1 lg:order-2 @else order-1 @endif w-full lg:w-auto -mt-[150px]">
                                 @include('components.image', [
                                    'image_id' => $sideImage,
                                    'size' => 'full',
