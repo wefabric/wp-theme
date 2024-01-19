@@ -99,6 +99,28 @@
                                     {!! gravity_form($ctaForm, false) ; !!}
                                 </div>
                             @endif
+                            @if (($button1Text) && ($button1Link))
+                                <div class="flex flex-col sm:flex-row gap-x-4 w-fit justify-center md:justify-start">
+                                    @include('components.buttons.default', [
+                                       'text' => $button1Text,
+                                       'href' => $button1Link,
+                                       'alt' => $button1Text,
+                                       'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                                       'class' => 'rounded-lg',
+                                       'target' => $button1Target,
+                                   ])
+                                    @if (($button2Text) && ($button2Link))
+                                        @include('components.buttons.default', [
+                                           'text' => $button2Text,
+                                           'href' => $button2Link,
+                                           'alt' => $button2Text,
+                                           'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                           'class' => 'rounded-lg',
+                                           'target' => $button2Target,
+                                       ])
+                                    @endif
+                                </div>
+                            @endif
                         </div>
                         @if ($sideImage)
                             <div class="@if($ctaLayout == 'horizontal') order-1 lg:order-2 @else order-1 @endif w-full lg:w-auto -mt-[150px]">
