@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/byzondr-nieuws-activiteit",
+  "title": "Byzondr nieuws activiteit overzicht",
+  "description": "Een Byzondr nieuws activiteit overzicht blok",
+  "category": "wefabric-theme",
+  "icon": "index-card",
+  "apiVersion": 2,
+  "keywords": [
+    "Byzondr nieuws activiteit overzicht"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
