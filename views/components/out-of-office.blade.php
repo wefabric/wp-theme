@@ -12,6 +12,6 @@ if(isset($outOfOffice['content']) && $outOfOffice['content']) {
     </div>
     <div class="bg-white text-base p-3 rounded-b-md">
         {!! apply_filters('the_content', $content) !!}
-        <a class="btn btn-small btn-primary text-sm mt-5" id="popup-close">{!! $outOfOffice['btn_text'] === '' ? 'Sluiten' : $outOfOffice['btn_text']  !!}</a>
+        <a class="btn btn-filled btn-primary text-sm mt-5 rounded-lg" id="popup-close">{!! $outOfOffice['btn_text'] === '' ? 'Sluiten' : $outOfOffice['btn_text']  !!}</a>
     </div>
 </div>
