@@ -1,5 +1,21 @@
 // Padding and margin classes
 
+.no-padding-bottom > div:first-child {
+  @apply pb-0 #{!important};
+}
+
+.no-padding-top > div:first-child {
+  @apply pt-0 #{!important};
+}
+
+.small-padding-bottom > div:first-child {
+  @apply pb-2 #{!important};
+}
+
+.small-padding-top > div:first-child {
+  @apply pt-2 #{!important};
+}
+
 .desktop-pb-50px {
   @media only screen and (min-width: 1024px) {
     padding-bottom: 50px !important;
