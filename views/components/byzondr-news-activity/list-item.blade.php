@@ -48,7 +48,9 @@
                             @php
                                 $categoryColor = get_field('category_color', $category);
                             @endphp
-                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full" aria-label="Ga naar {{ $category->name }}">
+                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}"
+                               class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full"
+                               aria-label="Ga naar {{ $category->name }}">
                                 {{ $category->name }}
                             </a>
                         @endforeach
@@ -68,7 +70,8 @@
                 <p class="mb-2 text-{{ $newsTextColor }}">{{ $postDate }}</p>
             @endif
 
-            <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina" class="text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{{ $postTitle }}</a>
+            <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina"
+               class="text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{{ $postTitle }}</a>
 
             <div class="news-info">
 
@@ -78,6 +81,13 @@
                             <p class="mt-3 flex items-baseline leading-[1.5] text-{{ $newsTextColor }} font-bold">
                                 <i class="w-4 fas fa-map-marker-alt mr-3 inline flex-shrink-0 text-secondary"></i>
                                 {{ $fields['location'] }}
+                            </p>
+                        @endif
+
+                        @if (!empty($visibleElements) && in_array('access', $visibleElements))
+                            <p class="flex items-baseline leading-[1.5] text-{{ $newsTextColor }} font-bold">
+                                <i class="w-4 fas fa-user mr-3 inline flex-shrink-0 text-secondary"></i>
+                                {{ $fields['access'] === 'public' ? 'Iedereen' : ($fields['access'] === 'private' ? 'Besloten' : $fields['access']) }}
                             </p>
                         @endif
 
