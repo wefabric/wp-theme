@@ -117,7 +117,8 @@
             "choices": {
                 "establishments": "Toon vestigingen",
                 "kvk_number": "Toon KVK",
-                "btw_number": "Toon BTW nummer"
+                "btw_number": "Toon BTW nummer",
+                "route_description": "Route beschrijving"
             },
             "default_value": [],
             "return_format": "value",
@@ -377,5 +378,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701437219
+    "modified": 1706171048
 }

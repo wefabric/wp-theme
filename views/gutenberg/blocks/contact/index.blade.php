@@ -66,7 +66,7 @@
                             @if($zipcode && $city)
                                 <p>{{ $zipcode }}, {{ $city }}</p>
                             @endif
-                            @if($street)
+                            @if($street && $visibleElements && in_array('route_description', $visibleElements))
                                 <a href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}"
                                    target="_blank" class="hover:text-primary underline">Routebeschrijving ></a>
                             @endif
