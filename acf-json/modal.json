@@ -177,6 +177,32 @@
                     "preview_size": "medium"
                 },
                 {
+                    "key": "field_65b7c81e7230b",
+                    "label": "Afbeelding positie",
+                    "name": "image_position",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "horizontal": "Afbeelding naast tekst tonen",
+                        "vertical": "Afbeelding boven tekst tonen"
+                    },
+                    "default_value": "horizontal",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
                     "key": "field_65b26d5499caa",
                     "label": "Button",
                     "name": "button",
@@ -380,6 +406,26 @@
                     ]
                 },
                 {
+                    "key": "field_65b7cb3cf04b0",
+                    "label": "Modal sluiten button",
+                    "name": "close_modal_button",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
                     "key": "field_65b26d5499cb4",
                     "label": "Tekst positie",
                     "name": "text_position",
@@ -443,5 +489,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1706540390
+    "modified": 1706543973
 }

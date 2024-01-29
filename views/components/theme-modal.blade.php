@@ -16,8 +16,12 @@
     $button2Color = $custom_modal['button']['button_2_color'] ?? '';
     $button2Style = $custom_modal['button']['button_2_style'] ?? '';
 
+    $closeModalButton = $custom_modal['close_modal_button'] ?? '';
+
     $imageID = $custom_modal['image'] ?? '';
     $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
+
+    $imagePosition = $custom_modal['image_position'] ?? '';
 
     $textPosition = $custom_modal['text_position'] ?? '';
     $titleClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center'];
@@ -39,65 +43,64 @@
             </h2>
         </div>
 
-        <button type="button"
-                class="absolute top-[10px] right-[10px] theme-modal-close text-gray-400 hover:text-gray-700 text-lg w-8 h-8 inline-flex justify-center items-center"
-                data-modal-hide="default-modal">
+        <button class="theme-modal-close absolute top-[10px] right-[10px]  text-gray-400 hover:text-gray-700 text-lg w-8 h-8 inline-flex justify-center items-center">
             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                       d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
             </svg>
-            <span class="sr-only">Close modal</span>
+            <span class="sr-only">Modal sluiten</span>
         </button>
 
         {{--        Modal content--}}
         <div class="px-5 py-12 {{ $textClass }}">
-            <div class="flex flex-col md:flex-row items-center gap-8">
-            @if ($text)
-                <div class="order-1 md:order-0 w-full md:w-2/3">
-                    @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])
+            <div class="flex @if($imagePosition == 'horizontal') flex-col md:flex-row @elseif($imagePosition == 'vertical') flex-col @endif items-center gap-8">
+                @if ($text)
+                    <div class="@if($imagePosition == 'horizontal') order-1 md:order-0 w-full md:w-2/3 @elseif($imagePosition == 'vertical') order-1 md:order-1 w-full @endif">
+                        @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])
 
-
-                    @if (($button1Text) && ($button1Link))
-                        <div class="{{ $textClass }} w-full flex flex-col sm:flex-row gap-y-2 gap-x-4 mt-4 md:mt-8">
-                            @include('components.buttons.default', [
-                               'text' => $button1Text,
-                               'href' => $button1Link,
-                               'alt' => $button1Text,
-                               'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                               'class' => 'rounded-lg',
-                               'target' => $button1Target,
-                           ])
-                            @if (($button2Text) && ($button2Link))
+                        @if (($button1Text) && ($button1Link))
+                            <div class="{{ $textClass }} w-full flex flex-col sm:flex-row gap-y-2 gap-x-4 mt-4 md:mt-8">
                                 @include('components.buttons.default', [
-                                   'text' => $button2Text,
-                                   'href' => $button2Link,
-                                   'alt' => $button2Text,
-                                   'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                   'text' => $button1Text,
+                                   'href' => $button1Link,
+                                   'alt' => $button1Text,
+                                   'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
                                    'class' => 'rounded-lg',
-                                   'target' => $button2Target,
+                                   'target' => $button1Target,
                                ])
-                            @endif
-                        </div>
-                    @endif
+                                @if (($button2Text) && ($button2Link))
+                                    @include('components.buttons.default', [
+                                       'text' => $button2Text,
+                                       'href' => $button2Link,
+                                       'alt' => $button2Text,
+                                       'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                       'class' => 'rounded-lg',
+                                       'target' => $button2Target,
+                                   ])
+                                @endif
+                            </div>
+                        @endif
+                    </div>
+                @endif
 
-                </div>
-
-
-            @endif
-
-
-            @if ($imageID)
-                <div class="order-0 md:order-1 w-full md:w-1/3">
-                    @include('components.image', [
-                       'image_id' => $imageID,
-                       'size' => 'full',
-                       'object_fit' => 'contain',
-                       'img_class' => 'w-full max-h-[180px] h-auto object-contain rounded-',
-                       'alt' => $imageAlt
-                   ])
-                </div>
-            @endif
+                @if ($imageID)
+                    <div class="@if($imagePosition == 'horizontal') order-0 md:order-1 w-full md:w-1/3 @elseif($imagePosition == 'vertical') order-0 md:order-0 w-full @endif">
+                        @include('components.image', [
+                           'image_id' => $imageID,
+                           'size' => 'full',
+                           'object_fit' => 'contain',
+                           'img_class' => 'w-full max-h-[180px] h-auto object-contain rounded-',
+                           'alt' => $imageAlt
+                       ])
+                    </div>
+                @endif
             </div>
+
+            @if($closeModalButton)
+                <div class="flex justify-end">
+                    <div class=" mt-4 btn btn-primary btn-filled rounded-lg theme-modal-close cursor-pointer">Sluiten</div>
+                </div>
+            @endif
         </div>
 
     </div>
