@@ -10,6 +10,7 @@ window.$ = window.jQuery = require('jquery');
 
 // Import custom JS files
 import './outOfOffice';
+import './theme-modal';
 import './forms';
 import './wc-search';
 import './wc-single-product';

@@ -37,6 +37,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
 
+            if (typeof response.theme_modal !== 'undefined' && response.theme_modal) {
+                if(sessionStorage.getItem('modalStatus') === 'closed') {
+                    return;
+                }
+                $('body').append(response.theme_modal);
+
+                if (sessionStorage.getItem("modalStatus") !== "closed") {
+                    $("#theme-modal").delay(500).fadeIn();
+                }
+
+                $('.theme-modal-close').click(function (e) {
+                    $('#theme-modal').fadeOut();
+                    sessionStorage.setItem("modalStatus", "closed")
+                });
+                console.log('test');
+                console.log(sessionStorage.getItem("modalStatus"));
+            }
+
         },
     });
 

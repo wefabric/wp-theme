@@ -29,6 +29,7 @@ return [
         Theme\Providers\AssetServiceProvider::class,
         Theme\Providers\RouteServiceProvider::class,
         Theme\Providers\WPRocketServiceProvider::class,
+        Theme\Providers\ThemeServiceProvider::class
     ],
 
     /*
