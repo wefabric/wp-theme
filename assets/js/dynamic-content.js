@@ -51,8 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     $('#theme-modal').fadeOut();
                     sessionStorage.setItem("modalStatus", "closed")
                 });
-                console.log('test');
-                console.log(sessionStorage.getItem("modalStatus"));
             }
 
         },

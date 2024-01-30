@@ -89,7 +89,7 @@
                            'image_id' => $imageID,
                            'size' => 'full',
                            'object_fit' => 'contain',
-                           'img_class' => 'w-full max-h-[180px] h-auto object-contain rounded-',
+                           'img_class' => 'w-full max-h-[180px] h-auto object-contain',
                            'alt' => $imageAlt
                        ])
                     </div>
