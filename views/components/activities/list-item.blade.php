@@ -9,20 +9,26 @@
     $activitySummary = get_the_excerpt($activity);
     $activityCategories = get_the_terms($activity, 'activiteit_categories');
 
-    // Sort dates array based on date
-    usort($fields['dates'], function ($a, $b) {
-        $dateA = DateTime::createFromFormat('d/m/Y', $a['date']);
-        $dateB = DateTime::createFromFormat('d/m/Y', $b['date']);
+    // Check if $fields['dates'] is an array
+    if (isset($fields['dates']) && is_array($fields['dates'])) {
+        // Sort dates array based on date
+        usort($fields['dates'], function ($a, $b) {
+            $dateA = DateTime::createFromFormat('d/m/Y', $a['date']);
+            $dateB = DateTime::createFromFormat('d/m/Y', $b['date']);
 
-        // If dates are the same, compare start times
-        if ($dateA == $dateB) {
-            $startTimeA = DateTime::createFromFormat('H:i', $a['start_time']);
-            $startTimeB = DateTime::createFromFormat('H:i', $b['start_time']);
+            // If dates are the same, compare start times
+            if ($dateA == $dateB) {
+                $startTimeA = DateTime::createFromFormat('H:i', $a['start_time']);
+                $startTimeB = DateTime::createFromFormat('H:i', $b['start_time']);
 
-            return $startTimeA <=> $startTimeB;
-        }
-        return $dateA <=> $dateB;
-    });
+                return $startTimeA <=> $startTimeB;
+            }
+            return $dateA <=> $dateB;
+        });
+    } else {
+        // Set $fields['dates'] to an empty array if it's not an array
+        $fields['dates'] = [];
+    }
 @endphp
 
 <div class="activiteit-item group h-full">

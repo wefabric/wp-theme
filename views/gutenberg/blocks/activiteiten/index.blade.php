@@ -21,6 +21,7 @@
 
     // Show activities
     $displayType = $block['data']['display_type'];
+    $activities = [];
 
     if ($displayType == 'show_all') {
         $args = [
@@ -30,7 +31,7 @@
         ];
 
         $query = new WP_Query($args);
-        $activities = wp_list_pluck($query->posts, 'ID');
+        $activities = $query->posts;
     }
     elseif ($displayType == 'show_category') {
         $selectedCategory = $block['data']['category'] ?? '';
@@ -47,13 +48,13 @@
             ],
         ];
         $query = new WP_Query($args);
-        $activities = wp_list_pluck($query->posts, 'ID');
+        $activities = $query->posts;
     }
     elseif ($displayType == 'show_specific') {
         $activities = $block['data']['show_specific_activity'];
-            if (!is_array($activities) || empty($activities)) {
-                $activities = [];
-            }
+        if (!is_array($activities) || empty($activities)) {
+            $activities = [];
+        }
     }
     elseif ($displayType == 'show_latest') {
         $postAmount = $block['data']['post_amount'] ?? 3;
@@ -65,8 +66,22 @@
             'order' => 'DESC',
         ];
         $query = new WP_Query($args);
-        $activities = wp_list_pluck($query->posts, 'ID');
+        $activities = $query->posts;
     }
+
+        // Sort activities based on the date field
+        usort($activities, function ($a, $b) {
+            $dateA = get_field('dates_0_date', $a);
+            $dateB = get_field('dates_0_date', $b);
+
+            $dateA = DateTime::createFromFormat('d/m/Y', $dateA);
+            $dateB = DateTime::createFromFormat('d/m/Y', $dateB);
+
+            return $dateA <=> $dateB;
+        });
+
+    // Extract IDs
+    $activities = wp_list_pluck($activities, 'ID');
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
