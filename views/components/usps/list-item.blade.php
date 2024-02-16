@@ -9,7 +9,7 @@
 @endphp
 
 <div class="USP-item h-full">
-    <div class="h-full text-center">
+    <div class="item-styling h-full text-center">
         @if ($icon)
             <i class="fa-{{ $icon['style'] }} fa-{{ $icon['id'] }} text-{{ $iconColor }} text-[70px] mb-3 inline-block"
                aria-hidden="true"></i>
@@ -24,7 +24,7 @@
             ])
         @endif
         @if ($title)
-            <p class="text-{{$textColor}} font-bold h4">{!! $title !!}</p>
+            <p class="usp-title text-{{$textColor}} font-bold h4">{!! $title !!}</p>
         @endif
         @if ($text)
             @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 text-' . $textColor])
