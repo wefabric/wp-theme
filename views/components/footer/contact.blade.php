@@ -22,9 +22,11 @@
 		@php
 			/* @var WP_Post $establishment_config */
 			$establishment = null;
-			if($establishment_config) {
+            if ($establishment_config instanceof \Wefabric\WPEstablishments\Establishment) {
+                $establishment = $establishment_config;
+            } elseif (is_array($establishment_config) && array_key_exists('establishment', $establishment_config)) {
                 $establishment = new \Wefabric\WPEstablishments\Establishment($establishment_config['establishment']);
-			}
+            }
 		@endphp
 
 		<div class="mb-10 footer-address">
