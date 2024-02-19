@@ -27,7 +27,7 @@
                  'alt' => $fullName,
          ])
         </div>
-        <div class="w-full mt-5">
+        <div class="w-full mt-5 flex flex-col">
             @if (!empty($visibleElements) && in_array('name', $visibleElements))
                 <p class="name-text font-bold text-lg text-{{ $employeeTitleColor }}">{{ $firstName }} {{ $lastName }}</p>
             @endif
