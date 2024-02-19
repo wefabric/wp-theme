@@ -28,7 +28,7 @@
 @endphp
 
 @if($block['data']['show_slider'])
-    <div class="block relative">
+    <div class="brands-list block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($brands as $brand)
@@ -71,7 +71,7 @@
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var brandsSwiper = new Swiper(".{{ $randomId }}", {
-            spaceBetween: 20,
+            spaceBetween: 0,
             centeredSlides: false,
             @if ($swiperAutoplay)
             autoplay: {
