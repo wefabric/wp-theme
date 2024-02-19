@@ -73,6 +73,7 @@
         var brandsSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 0,
             centeredSlides: false,
+            loop: true,
             @if ($swiperAutoplay)
             autoplay: {
                 disableOnInteraction: false,
