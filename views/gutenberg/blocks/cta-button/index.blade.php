@@ -15,6 +15,8 @@
 
     $ctaForm = $block['data']['form'] ?? '';
     $topImage = $block['data']['top_image'] ?? '';
+    $sideImage = $block['data']['side_image'] ?? '';
+
     $blockBackgroundColor = $block['data']['block_background_color'] ?? '';
     $blockBackgroundImage = $block['data']['block_background_image'] ?? '';
     $blockOverlayEnabled = $block['data']['block_overlay_image'] ?? false;
@@ -78,15 +80,16 @@
 
         <div class="cta-block relative z-10 mx-auto {{ $blockClass }} @if($blockWidth !== 'fullscreen') md:px-8 @endif">
 
-            <div class="px-8 py-16 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif"
+            <div class="background px-8 py-16 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif"
                  style="background-image: url('{{ wp_get_attachment_image_url($blockBackgroundImage, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($blockBackgroundImage) }}">
                 @if ($blockOverlayEnabled)
                     <div class="absolute inset-0 @if($blockWidth !== 'fullscreen') md:mx-8 @endif bg-{{ $blockOverlayColor }} opacity-{{ $blockOverlayOpacity }}"></div>
                 @endif
 
-                <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 ">
-                    <div class="flex flex-col md:{{ $flexDirection }} {{ $flexClass }} justify-center gap-x-16 gap-y-4 @if($topImage) mt-16 md:mt-20 @endif">
-                        <div class="w-fit @if($ctaLayout == 'vertical' && $textPosition !== 'center') {{ $textClass }} @else text-center @endif md:{{ $textClass }}">
+                <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 @if($sideImage) flex justify-between gap-x-8 @endif">
+
+                    <div class="flex flex-col @if($sideImage) w-1/2 @endif md:{{ $flexDirection }} {{ $flexClass }} justify-center gap-x-16 gap-y-4 @if($topImage) mt-16 md:mt-20 @endif">
+                        <div class=" w-fit  @if($ctaLayout == 'vertical' && $textPosition !== 'center') {{ $textClass }} @else text-center @endif md:{{ $textClass }}">
                             @if ($title)
                                 <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
                             @endif
@@ -117,6 +120,19 @@
                             </div>
                         @endif
                     </div>
+
+                    @if ($sideImage)
+                        <div class="side-image w-1/2">
+                            @include('components.image', [
+                                'image_id' => $sideImage,
+                                'size' => 'full',
+                                'object_fit' => 'contain',
+                                'img_class' => 'w-full aspect-square object-contain',
+                                'alt' => get_post_meta($sideImage, '_wp_attachment_image_alt', true) ?: 'Side image',
+                            ])
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>
