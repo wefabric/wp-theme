@@ -293,9 +293,33 @@
             ]
         },
         {
+            "key": "field_65d4ccebfd0bd",
+            "label": "USP titel kleur",
+            "name": "usp_title_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6494439a50244",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "black",
+            "font_size": 14
+        },
+        {
             "key": "field_6512d342fc560",
-            "label": "Tekst kleur",
-            "name": "text_color",
+            "label": "USP tekst kleur",
+            "name": "usp_text_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
@@ -791,5 +815,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701867520
+    "modified": 1708445142
 }
