@@ -12,7 +12,7 @@
             $serviceSummary = substr($serviceSummary, 0, $maxSummaryLength - 3) . '...';
         }
 
-    $serviceCategories = get_the_category($service);
+    $serviceCategories = get_the_terms($service, 'division_categories');
 @endphp
 
 <div class="service-item group h-full">
@@ -27,9 +27,10 @@
                             @php
                                 $categoryColor = get_field('category_color', $category);
                             @endphp
-                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full" aria-label="Ga naar {{ $category->name }}">
+                            <div style="background-color: {{ $categoryColor }}"
+                                 class="@if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
                                 {{ $category->name }}
-                            </a>
+                            </div>
                         @endforeach
                     </div>
                 @endif
@@ -44,7 +45,8 @@
         @endif
         <div class="service-data flex flex-col w-full grow mt-5">
 
-            <a href="{{ $serviceUrl }}" aria-label="Ga naar {{ $serviceTitle }} pagina" class="service-title text-{{ $serviceTitleColor }} font-bold text-lg group-hover:text-primary">{{ $serviceTitle }}</a>
+            <a href="{{ $serviceUrl }}" aria-label="Ga naar {{ $serviceTitle }} pagina"
+               class="service-title text-{{ $serviceTitleColor }} font-bold text-lg group-hover:text-primary">{{ $serviceTitle }}</a>
 
             <div class="service-info">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($serviceSummary))
