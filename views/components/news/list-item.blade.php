@@ -18,13 +18,13 @@
 @endphp
 
 <div class="nieuws-item group h-full">
-    <div class="h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
+    <div class="news-wrapper relative h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
         @if ($postThumbnailId)
-            <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
+            <div class="news-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina"
                    class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
-                    <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                    <div class="news-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                         @foreach ($postCategories as $category)
                             @php
                                 $categoryColor = get_field('category_color', $category);
@@ -44,20 +44,20 @@
             ])
             </div>
         @endif
-        <div class="flex flex-col w-full grow mt-5">
+        <div class="news-data flex flex-col w-full grow mt-5">
             @if (!empty($visibleElements) && in_array('date', $visibleElements) && !empty($postDate))
                 <p class="mb-2 text-{{ $newsTextColor }}">{{ $postDate }}</p>
             @endif
 
-            <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina" class="text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{{ $postTitle }}</a>
+            <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina" class="news-title text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{{ $postTitle }}</a>
 
             <div class="news-info">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($postSummary))
-                    <p class="text-{{ $newsTextColor }} mt-3 mb-2">{{ $postSummary }} </p>
+                    <p class="news-summary text-{{ $newsTextColor }} mt-3 mb-2">{{ $postSummary }} </p>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('author', $visibleElements) && !empty($postAuthorName))
-                    <p class="mt-4 text-{{ $newsTextColor }}">Geschreven door {{ $postAuthorName }}</p>
+                    <p class="news-author mt-4 text-{{ $newsTextColor }}">Geschreven door {{ $postAuthorName }}</p>
                 @endif
             </div>
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
