@@ -34,6 +34,7 @@
     "brochure/block.json",
     "embed/block.json",
     "sebastiaan/block.json",
-    "byzondr-nieuws-activiteit/block.json"
+    "byzondr-nieuws-activiteit/block.json",
+    "producten/block.json"
   ]
 }
