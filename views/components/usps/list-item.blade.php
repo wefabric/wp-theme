@@ -23,11 +23,15 @@
                 'alt' => $altText,
             ])
         @endif
-        @if ($title)
-            <p class="usp-title text-{{$textColor}} font-bold h4">{!! $title !!}</p>
-        @endif
-        @if ($text)
-            @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 text-' . $textColor])
+        @if ($title || $text)
+            <div class="usp-data">
+                @if ($title)
+                    <p class="usp-title text-{{$textColor}} font-bold h4">{!! $title !!}</p>
+                @endif
+                @if ($text)
+                    @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 text-' . $textColor])
+                @endif
+            </div>
         @endif
     </div>
 </div>
