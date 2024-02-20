@@ -86,9 +86,9 @@
                     <div class="absolute inset-0 @if($blockWidth !== 'fullscreen') md:mx-8 @endif bg-{{ $blockOverlayColor }} opacity-{{ $blockOverlayOpacity }}"></div>
                 @endif
 
-                <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full xl:w-2/3 @endif relative z-10 @if($sideImage) flex justify-between gap-x-8 @endif">
+                <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full px-16 @endif relative z-10 @if($sideImage) flex flex-col xl:flex-row justify-between items-center gap-8 @endif">
 
-                    <div class="flex flex-col @if($sideImage) w-1/2 @endif md:{{ $flexDirection }} {{ $flexClass }} justify-center gap-x-16 gap-y-4 @if($topImage) mt-16 md:mt-20 @endif">
+                    <div class="flex flex-col @if($sideImage) order-2 xl:order-1 w-full xl:w-1/2 flex-col @endif md:{{ $flexDirection }} {{ $flexClass }} justify-center gap-x-16 gap-y-4 @if($topImage) mt-16 md:mt-20 @endif">
                         <div class=" w-fit  @if($ctaLayout == 'vertical' && $textPosition !== 'center') {{ $textClass }} @else text-center @endif md:{{ $textClass }}">
                             @if ($title)
                                 <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
@@ -122,12 +122,12 @@
                     </div>
 
                     @if ($sideImage)
-                        <div class="side-image w-1/2">
+                        <div class="side-image w-full xl:w-1/2 order-1 xl:order-2">
                             @include('components.image', [
                                 'image_id' => $sideImage,
                                 'size' => 'full',
                                 'object_fit' => 'contain',
-                                'img_class' => 'w-full aspect-square object-contain',
+                                'img_class' => 'w-full',
                                 'alt' => get_post_meta($sideImage, '_wp_attachment_image_alt', true) ?: 'Side image',
                             ])
                         </div>
