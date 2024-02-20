@@ -109,7 +109,7 @@
                        'href' => $button1Link,
                        'alt' => $button1Text,
                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                       'class' => 'rounded-lg',
+                       'class' => 'rounded-lg text-left',
                        'target' => $button1Target,
                    ])
                 </div>
