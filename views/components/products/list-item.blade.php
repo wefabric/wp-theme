@@ -8,12 +8,17 @@
 
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
-    $productSummary = $fields['excerpt'] ?? '';
-    $productCategories = get_the_terms($product, 'division_categories');
+        $productSummary = get_the_excerpt($product);
+        $maxSummaryLength = 180;
+        if (strlen($productSummary) > $maxSummaryLength) {
+            $productSummary = substr($productSummary, 0, $maxSummaryLength - 3) . '...';
+        }
+
+    $serviceCategories = get_the_terms($product, 'division_categories');
 @endphp
 
 <div class="product-item group h-full">
-    <div class="product-wrapper relative h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
+    <div class="product-wrapper relative h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
         @if ($productImage)
             <div class="product-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $productUrl }}" target="_blank" aria-label="Ga naar {{ $productTitle }} pagina"

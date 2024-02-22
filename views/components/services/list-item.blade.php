@@ -58,7 +58,7 @@
                     <div class="mt-auto pt-8 z-10">
                         @include('components.buttons.default', [
                            'text' => $buttonCardText,
-                           'href' => $postUrl,
+                           'href' => $serviceUrl,
                            'alt' => $buttonCardText,
                            'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
                            'class' => 'rounded-lg text-left',
