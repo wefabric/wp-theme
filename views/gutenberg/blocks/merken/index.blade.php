@@ -34,7 +34,7 @@
             'post_status' => 'publish',
             'tax_query' => [
                 [
-                    'taxonomy' => 'brand_categories',
+                    'taxonomy' => 'division_categories',
                     'field' => 'id',
                     'terms' => $selectedCategory,
                 ],
