@@ -83,7 +83,7 @@
             <div class="background px-8 py-16 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif"
                  style="background-image: url('{{ wp_get_attachment_image_url($blockBackgroundImage, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($blockBackgroundImage) }}">
                 @if ($blockOverlayEnabled)
-                    <div class="absolute inset-0 @if($blockWidth !== 'fullscreen') md:mx-8 @endif bg-{{ $blockOverlayColor }} opacity-{{ $blockOverlayOpacity }}"></div>
+                    <div class="absolute inset-0 bg-{{ $blockOverlayColor }} opacity-{{ $blockOverlayOpacity }} md:rounded-{{ $borderRadius }}"></div>
                 @endif
 
                 <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full px-16 @endif relative z-10 @if($sideImage) flex flex-col xl:flex-row justify-between items-center gap-8 !px-0 xl:!px-16 @endif">
