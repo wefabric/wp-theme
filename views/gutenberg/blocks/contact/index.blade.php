@@ -82,7 +82,9 @@
             @if ($form)
                 <div class="form-block w-full lg:w-2/3 order-0 lg:order-1 sm:px-8">
                     <div class="contact-block bg-{{ $formBackgroundColor }} p-12 lg:shadow-xl rounded-{{ $borderRadius }}">
-                        {!! gravity_form($form) !!}
+                        <div class="form h-full w-full">
+                            {!! gravity_form($form) !!}
+                        </div>
                     </div>
                 </div>
             @endif
