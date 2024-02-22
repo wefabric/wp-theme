@@ -13,19 +13,20 @@
 @endphp
 
 <div class="product-item group h-full">
-    <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
+    <div class="product-wrapper relative h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
         @if ($productImage)
-            <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
+            <div class="product-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $productUrl }}" target="_blank" aria-label="Ga naar {{ $productTitle }} pagina"
                    class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     @if ($productCategories && !is_bool($productCategories))
-                        <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                        <div class="product-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                             @foreach ($productCategories as $category)
                                 @php
                                     $categoryColor = get_field('category_color', $category);
                                 @endphp
-                                <div style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
+                                <div style="background-color: {{ $categoryColor }}"
+                                     class="@if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
                                     {{ $category->name }}
                                 </div>
                             @endforeach
@@ -41,14 +42,14 @@
            ])
             </div>
         @endif
-        <div class="flex flex-col w-full grow mt-5">
+        <div class="product-data flex flex-col w-full grow mt-5">
 
-            <a href="{{ $productUrl }}" aria-label="Ga naar {{ $productTitle }} pagina" class="font-bold text-{{ $productTitleColor }} text-lg group-hover:text-primary">{{ $productTitle }}</a>
+            <a href="{{ $productUrl }}" aria-label="Ga naar {{ $productTitle }} pagina"
+               class="product-title text-{{ $productTitleColor }} font-bold text-lg group-hover:text-primary">{{ $productTitle }}</a>
 
-            <div class="vacancy-data mt-4 text-{{ $vacancyTextColor }}">
-
-                @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($vacancySummary))
-                    <p class="mt-3 mb-3">{{ $vacancySummary }}</p>
+            <div class="product-info mt-4 text-{{ $productTextColor }}">
+                @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($productSummary))
+                    <p class="product-summary mt-3 mb-3">{{ $productSummary }}</p>
                 @endif
             </div>
 
@@ -57,10 +58,10 @@
                     <div class="mt-auto pt-8 z-10">
                         @include('components.buttons.default', [
                            'text' => $buttonCardText,
-                           'href' => $vacancyUrl,
+                           'href' => $productUrl,
                            'alt' => $buttonCardText,
                            'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
-                           'class' => 'rounded-lg',
+                           'class' => 'rounded-lg text-left',
                        ])
                     </div>
                 @endif

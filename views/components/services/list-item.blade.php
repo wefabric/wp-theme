@@ -61,7 +61,7 @@
                            'href' => $postUrl,
                            'alt' => $buttonCardText,
                            'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
-                           'class' => 'rounded-lg',
+                           'class' => 'rounded-lg text-left',
                        ])
                     </div>
                 @endif
