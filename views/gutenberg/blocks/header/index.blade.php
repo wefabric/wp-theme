@@ -82,7 +82,7 @@
         @if ($overlayEnabled)
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
-        <div class="relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }}">
+        <div class="custom-width relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }}">
             <div class="header-info flex flex-col {{ $textWidthClass }}">
                 <h1 class="text-{{ $titleColor }}">{!! $title !!}</h1>
                 @if ($subTitle)
