@@ -91,6 +91,18 @@
 }
 
 
+.desktop-mt-50px {
+  @media only screen and (min-width: 1024px) {
+    margin-top: 50px !important;
+  }
+}
+
+.mobile-mt-50px {
+  @media only screen and (max-width: 1023px) {
+    margin-top: 50px !important;
+  }
+}
+
 .desktop-mt-100px {
   @media only screen and (min-width: 1024px) {
     margin-top: 100px !important;
