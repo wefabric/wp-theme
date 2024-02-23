@@ -58,6 +58,8 @@
                                 $house_number = get_post_meta($establishment_id, 'house_number', true);
                                 $house_number_addition = get_post_meta($establishment_id, 'house_number_addition', true);
                                 $city = get_post_meta($establishment_id, 'city', true);
+                                $phone = get_post_meta($establishment_id, 'common_phone', true);
+                                $email = get_post_meta($establishment_id, 'common_email', true);
                             @endphp
                             <div class="establishment mb-4 text-{{ $textColor }}">
                                 <p class="establishment-title font-bold">{{ $establishment_title }}</p>
@@ -66,6 +68,26 @@
                                 @endif
                                 @if($zipcode && $city)
                                     <p class="establishment-zipcode">{{ $zipcode }}, {{ $city }}</p>
+                                @endif
+                                @if($visibleElements && in_array('contact', $visibleElements))
+                                    <div class="contact-info">
+                                        @if($phone)
+                                            <a class="phone-link group flex items-center gap-2"
+                                               href="tel:{{ $phone['number'] }}"
+                                               title="Telefoonnummer">
+                                                <i class="fa-solid fa-phone p-1.5 flex justify-center items-center rounded-lg "></i>
+                                                <span class="align-middle">{{ $phone['number'] }}</span>
+                                            </a>
+                                        @endif
+                                        @if($email)
+                                            <a class="email-link group flex items-center gap-2"
+                                               href="mailto:{{ $email }}"
+                                               title="Email">
+                                                <i class="fa-solid fa-envelope p-1.5 flex justify-center items-center rounded-lg "></i>
+                                                <span class="align-middle">{{ $email }}</span>
+                                            </a>
+                                        @endif
+                                    </div>
                                 @endif
                                 @if($street && $visibleElements && in_array('route_description', $visibleElements))
                                     <a href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}"

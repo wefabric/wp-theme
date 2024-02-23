@@ -116,6 +116,7 @@
             },
             "choices": {
                 "establishments": "Toon vestigingen",
+                "contact": "Mail en telefoonnummer",
                 "kvk_number": "Toon KVK",
                 "btw_number": "Toon BTW nummer",
                 "route_description": "Route beschrijving"
@@ -378,5 +379,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1706171048
+    "modified": 1708681106
 }
