@@ -15,6 +15,8 @@
 		}
 	}
 
+    $visibleFooterElements = $option['footer_elements'] ?? [];
+
     $privacyPage = $option['pages']['privacy_page'] ?? '';
     $termsPage = $option['pages']['terms_page'] ?? '';
 @endphp
@@ -84,24 +86,29 @@
             </div>
         </div>
 
-        <div class="flex flex-col md:flex-row">
-            <div class="hidden lg:block lg:w-1/4 lg:pr-8">
-                @php
-                    $settings = get_field('common', 'option');
-                    if(!empty($settings)) {
-						if(array_key_exists('logo_white', $settings)) {
-							$logoId = $settings['logo_white'];
-						} elseif(array_key_exists('logo', $settings)) {
-							$logoId = $settings['logo'];
-						}
-                    }
-                @endphp
-                @if(!empty($logoId))
-                    {!! wp_get_attachment_image($logoId, 'footer_logo', false, ['class' => 'mx-auto lg:mx-0 inline-block']) !!}
+        <div class="bottom-info flex flex-col md:flex-row">
+            <div class="logo-section hidden lg:flex flex-col justify-end lg:w-1/4 lg:pr-8">
+                @if (!empty($visibleFooterElements) && in_array('logo', $visibleFooterElements))
+                    @php
+                        $settings = get_field('common', 'option');
+                        if(!empty($settings)) {
+                            if(array_key_exists('logo_white', $settings)) {
+                                $logoId = $settings['logo_white'];
+                            } elseif(array_key_exists('logo', $settings)) {
+                                $logoId = $settings['logo'];
+                            }
+                        }
+                    @endphp
+                    @if(!empty($logoId))
+                        {!! wp_get_attachment_image($logoId, 'footer_logo', false, ['class' => 'mx-auto lg:mx-0 inline-block']) !!}
+                    @endif
                 @endif
+                    @if (!empty($visibleFooterElements) && in_array('copyright', $visibleFooterElements))
+                        <div class="copyright-text">© {{ date('Y') }} {{ get_bloginfo('name') }}</div>
+                    @endif
             </div>
 
-            <div class="w-full md:w-1/2 flex flex-col self-end">
+            <div class="partners w-full md:w-1/2 flex flex-col self-end">
                 <div class="flex flex-row mb-5 gap-x-4 justify-center md:justify-start">
                     @php
                         $footer = [];
