@@ -166,10 +166,10 @@
 
                 <div class="text-center md:text-left text-[14px]">
                     @if($termsPage)
-                        <a class="underline" href="{{ get_permalink($termsPage) }}">Algemene voorwaarden</a> @if($termsPage && $privacyPage) | @endif
+                        <a class="terms-text underline" href="{{ get_permalink($termsPage) }}">Algemene voorwaarden</a> @if($termsPage && $privacyPage) | @endif
                     @endif
                     @if($privacyPage)
-                        <a class="underline" href="{{ get_permalink($privacyPage) }}">Privacybeleid</a>
+                        <a class="privacy-text underline" href="{{ get_permalink($privacyPage) }}">Privacybeleid</a>
                     @endif
                 </div>
 
@@ -177,7 +177,7 @@
 
             <div class="w-full md:w-1/2 xl:w-1/4 flex">
                 <div class="flex w-full pt-8 lg:pt-0 self-end md:text-right md:justify-end items-center justify-center">
-                    <span class="pr-1">
+                    <span class="created-text pr-1">
                         Gerealiseerd door:
                     </span>
                     @include('components.link.opening', [
