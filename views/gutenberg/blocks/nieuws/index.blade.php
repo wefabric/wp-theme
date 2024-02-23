@@ -94,7 +94,7 @@
                 <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
             @endif
             @if (!empty($block['data']['show_element']) && in_array('category', $block['data']['show_element']))
-                <div class="mt-6">
+                <div class="categories mt-6">
                     @include('components.news.category-list')
                 </div>
             @endif
