@@ -20,7 +20,7 @@
 	</div>
 </form>
 <div>
-	<p class="text-xs mt-2 italic text-{{ $text_color }}">
+	<p class="agreement-text text-xs mt-2 italic text-{{ $text_color }}">
 		Door je aan te melden ga je ermee akkoord dat we je maximaal 1x per maand marketingmails sturen. Alles in overeenstemming met onze
 		@include('components.link.simple', [
 			'href' => get_privacy_policy_url(),
