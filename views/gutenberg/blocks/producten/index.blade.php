@@ -49,6 +49,25 @@
         $query = new WP_Query($args);
         $products = wp_list_pluck($query->posts, 'ID');
     }
+    elseif ($displayType == 'show_brand') {
+        $selectedBrand = $block['data']['brand'] ?? '';
+
+        $args = [
+            'posts_per_page' => -1,
+            'post_type' => 'products',
+            'post_status' => 'publish',
+            'meta_query' => [
+                [
+                    'key' => 'brand',
+                    'value' => $selectedBrand,
+                    'compare' => '=',
+                ],
+            ],
+        ];
+
+        $query = new WP_Query($args);
+        $products = wp_list_pluck($query->posts, 'ID');
+    }
     elseif ($displayType == 'show_specific') {
         $products = $block['data']['show_specific_products'];
             if (!is_array($products) || empty($products)) {

@@ -46,7 +46,7 @@
         <div class="service-data flex flex-col w-full grow mt-5">
 
             <a href="{{ $serviceUrl }}" aria-label="Ga naar {{ $serviceTitle }} pagina"
-               class="service-title text-{{ $serviceTitleColor }} font-bold text-lg group-hover:text-primary">{{ $serviceTitle }}</a>
+               class="service-title text-{{ $serviceTitleColor }} font-bold text-lg group-hover:text-primary">{!! $serviceTitle !!}</a>
 
             <div class="service-info">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($serviceSummary))

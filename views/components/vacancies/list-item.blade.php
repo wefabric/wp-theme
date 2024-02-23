@@ -41,7 +41,7 @@
         @endif
         <div class="flex flex-col w-full grow mt-5">
 
-            <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina" class="font-bold text-{{ $vacancyTitleColor }} text-lg group-hover:text-primary">{{ $vacancyTitle }}</a>
+            <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina" class="font-bold text-{{ $vacancyTitleColor }} text-lg group-hover:text-primary">{!! $vacancyTitle !!}</a>
 
             <div class="vacancy-data mt-4 text-{{ $vacancyTextColor }}">
 

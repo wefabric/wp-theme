@@ -50,7 +50,7 @@
         <div class="product-data flex flex-col w-full grow mt-5">
 
             <a href="{{ $productUrl }}" aria-label="Ga naar {{ $productTitle }} pagina"
-               class="product-title text-{{ $productTitleColor }} font-bold text-lg group-hover:text-primary">{{ $productTitle }}</a>
+               class="product-title text-{{ $productTitleColor }} font-bold text-lg group-hover:text-primary">{!! $productTitle !!}</a>
 
             <div class="product-info mt-4 text-{{ $productTextColor }}">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($productSummary))
