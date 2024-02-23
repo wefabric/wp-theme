@@ -75,7 +75,7 @@
                                             <a class="phone-link group flex items-center gap-2"
                                                href="tel:{{ $phone['number'] }}"
                                                title="Telefoonnummer">
-                                                <i class="fa-solid fa-phone p-1.5 flex justify-center items-center rounded-lg "></i>
+                                                <i class="fa-solid fa-phone"></i>
                                                 <span class="align-middle">{{ $phone['number'] }}</span>
                                             </a>
                                         @endif
@@ -83,7 +83,7 @@
                                             <a class="email-link group flex items-center gap-2"
                                                href="mailto:{{ $email }}"
                                                title="Email">
-                                                <i class="fa-solid fa-envelope p-1.5 flex justify-center items-center rounded-lg "></i>
+                                                <i class="fa-solid fa-envelope"></i>
                                                 <span class="align-middle">{{ $email }}</span>
                                             </a>
                                         @endif
