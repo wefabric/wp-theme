@@ -34,7 +34,7 @@
         </div>
     </div>
 @else
-    <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-4 gap-x-4 lg:gap-x-8 lg:gap-y-8 py-8">
+    <div class="card-list grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-4 gap-x-4 lg:gap-x-8 lg:gap-y-8 py-8">
         @foreach ($pagesData as $page)
             @include('components.cardblock.list-item')
         @endforeach

@@ -33,7 +33,7 @@
     </div>
 
 @else
-    <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-12 gap-x-4 py-8">
+    <div class="organisation-list grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-12 gap-x-4 py-8">
         @foreach ($organisations as $organisation)
             @include('components.organisations.list-item')
         @endforeach

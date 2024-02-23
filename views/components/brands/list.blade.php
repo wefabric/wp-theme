@@ -46,7 +46,7 @@
     </div>
 
 @elseif($block['data']['alternative_row_layout'])
-    <div class="hidden md:grid grid-cols-8 gap-y-4 gap-x-4 py-8">
+    <div class="brand-list hidden md:grid grid-cols-8 gap-y-4 gap-x-4 py-8">
         @foreach ($brands as $index => $brand)
             <div class="col-span-2 {{ ($index + 1) % 7 === 5 ? 'col-start-2' : '' }} {{ $index === 0 ? $gridStartClass : '' }}">
                 @include('components.brands.list-item')
@@ -54,14 +54,14 @@
         @endforeach
     </div>
 
-    <div class="grid md:hidden {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-4 gap-x-4 py-8">
+    <div class="brand-list grid md:hidden {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-4 gap-x-4 py-8">
         @foreach ($brands as $brand)
             @include('components.brands.list-item')
         @endforeach
     </div>
 
 @else
-    <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-4 gap-x-4 py-8">
+    <div class="brand-list grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-4 gap-x-4 py-8">
         @foreach ($brands as $brand)
             @include('components.brands.list-item')
         @endforeach
