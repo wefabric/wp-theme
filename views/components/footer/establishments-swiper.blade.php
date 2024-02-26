@@ -71,7 +71,7 @@
                 </div>
             @endforeach
         </div>
-        <div class="lg:hidden swiper-pagination"></div>
+        <div class="xl:hidden swiper-pagination"></div>
     </div>
 </div>
 
