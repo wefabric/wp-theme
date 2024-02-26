@@ -29,12 +29,12 @@
             }
 		@endphp
 
-		<div class="mb-10 footer-address">
+		<div class="establishments mb-10 footer-address">
 			@if($establishment)
-				<p class="leading-8 {{ '' ?? $establishment_config['show_title'] }}">
+				<p class="establishment-title leading-8 {{ '' ?? $establishment_config['show_title'] }}">
 					{{ $establishment->name }}
 				</p>
-				<p class="leading-8">
+				<p class="establishment-address leading-8">
 					{{ $establishment->getAddress()->street }} {{ $establishment->getAddress()->full_housenumber }} <br/>
 					{{ $establishment->getAddress()->postcode }} {{ $establishment->getAddress()->city }}
 				</p>
@@ -43,7 +43,7 @@
 					@include('components.link.opening', [
 						'href' => $phone->uri(), //comes with a 'tel:' already
 						'alt' => 'Telefoonnummer',
-						'class' => 'flex'
+						'class' => 'phone-text flex'
 					])
 					<i class="fa-solid fa-phone mr-4 text-{{ $title_color }} text-md pt-1"></i>
 					<span class="inline-block pt-1">{{ $phone->national() }}</span>
@@ -54,7 +54,7 @@
 					@include('components.link.opening', [
 						'href' => 'mailto:'. $email,
 						'alt' => 'E-mailadres',
-						'class' => 'flex'
+						'class' => 'email-text flex'
 					])
 					<i class="fa-solid fa-envelope text-{{ $title_color }} mr-4 text-md pt-1"></i>
 					<span class="inline-block pt-1">{{ $email }}</span>
