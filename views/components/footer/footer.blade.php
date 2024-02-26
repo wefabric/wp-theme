@@ -85,8 +85,18 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="bottom-info flex flex-col md:flex-row">
+
+        @if($option['footer_secondary_establishments'])
+            <div class="establishments-list relative py-8 my-8">
+                <div class="container mx-auto px-8">
+                    @include ('components.footer.establishments-swiper')
+                </div>
+            </div>
+        @endif
+
+        <div class="container mx-auto px-8 relative bottom-info flex flex-col md:flex-row">
             <div class="logo-section flex flex-col justify-end lg:w-1/4 lg:pr-8">
                 @if (!empty($visibleFooterElements) && in_array('logo', $visibleFooterElements))
                     <div class="hidden lg:block">
@@ -106,9 +116,9 @@
                     </div>
                 @endif
 
-                    @if (!empty($visibleFooterElements) && in_array('copyright', $visibleFooterElements))
-                        <div class="copyright-text">© {{ date('Y') }} {{ get_bloginfo('name') }}</div>
-                    @endif
+                @if (!empty($visibleFooterElements) && in_array('copyright', $visibleFooterElements))
+                    <div class="copyright-text">© {{ date('Y') }} {{ get_bloginfo('name') }}</div>
+                @endif
             </div>
 
             <div class="partners-section w-full md:w-1/2 flex flex-col self-end">
@@ -129,11 +139,11 @@
                                         'alt' => $item['alt_text']
                                     ])
                                 @endif
-                                    @include('components.image', [
-                                        'image_id' => $item['logo'],
-                                        'size' => 'usp_icon',
-                                        'class' => 'disable-rounded',
-                                    ])
+                                @include('components.image', [
+                                    'image_id' => $item['logo'],
+                                    'size' => 'usp_icon',
+                                    'class' => 'disable-rounded',
+                                ])
                                 @if($item['url'])
                                     @include('components.link.closing')
                                 @endif
@@ -155,22 +165,22 @@
                     @endphp
 
                     @if($menu)
-						<div id="footer_menu_three" class="bottom-footer">
-							@foreach($menu as $post)
-								@include('components.link.simple', [
-									'href' => $post->url,
-									'class' => $class,
-									'text' => __($post->title, 'wefabric')
-								])
-	
-								@php
-									$last = (in_array($post, $menu) && $post == end($menu));
-								@endphp
-								@if(!$last)
-									<span class="divider"> / </span>
-								@endif
-							@endforeach
-						</div>
+                        <div id="footer_menu_three" class="bottom-footer">
+                            @foreach($menu as $post)
+                                @include('components.link.simple', [
+                                    'href' => $post->url,
+                                    'class' => $class,
+                                    'text' => __($post->title, 'wefabric')
+                                ])
+
+                                @php
+                                    $last = (in_array($post, $menu) && $post == end($menu));
+                                @endphp
+                                @if(!$last)
+                                    <span class="divider"> / </span>
+                                @endif
+                            @endforeach
+                        </div>
                     @endif
                 </div>
 
@@ -194,15 +204,13 @@
                         'href' => 'https://wefabric.nl/',
                         'alt' => 'Wefabric.nl'
                     ])
-                        @php
-                            $theme = app('wp.theme');
-                        @endphp
-                        <img src="{{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }}" width="92" height="20" class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:20px;"/>
-						<span class="screen-reader-only">Wefabric</span>
+                    @php
+                        $theme = app('wp.theme');
+                    @endphp
+                    <img src="{{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }}" width="92" height="20" class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:20px;"/>
+                    <span class="screen-reader-only">Wefabric</span>
                     @include('components.link.closing')
                 </div>
             </div>
         </div>
-
-    </div>
 </div>

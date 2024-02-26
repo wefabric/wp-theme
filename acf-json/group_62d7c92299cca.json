@@ -244,7 +244,7 @@
         },
         {
             "key": "field_6329d0bc5b549",
-            "label": "Footer vestigingen",
+            "label": "Footer contact vestigingen",
             "name": "footer_establishments",
             "aria-label": "",
             "type": "repeater",
@@ -256,10 +256,11 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "",
+            "layout": "table",
+            "pagination": 0,
             "min": 0,
             "max": 0,
-            "layout": "table",
+            "collapsed": "",
             "button_label": "Nieuwe regel",
             "rows_per_page": 20,
             "sub_fields": [
@@ -287,6 +288,57 @@
                     "ui": 1,
                     "parent_repeater": "field_6329d0bc5b549",
                     "bidirectional_target": []
+                }
+            ]
+        },
+        {
+            "key": "field_65dc76b20a021",
+            "label": "Footer vestigingen slider",
+            "name": "footer_secondary_establishments",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Selecteer hier de vestigingen. Deze komen onder de footer kolommen te staan.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Nieuwe regel",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_65dc76b20a026",
+                    "label": "Vestiging",
+                    "name": "establishment",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "establishments"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "return_format": "id",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": [],
+                    "parent_repeater": "field_65dc76b20a021"
                 }
             ]
         },
@@ -335,5 +387,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1708702449
+    "modified": 1708954425
 }
