@@ -46,7 +46,7 @@
         @endif
         <div class="news-data flex flex-col w-full grow mt-5">
             @if (!empty($visibleElements) && in_array('date', $visibleElements) && !empty($postDate))
-                <p class="mb-2 text-{{ $newsTextColor }}">{{ $postDate }}</p>
+                <p class="news-post-date mb-2 text-{{ $newsTextColor }}">{{ $postDate }}</p>
             @endif
 
             <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina" class="news-title text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{{ $postTitle }}</a>
