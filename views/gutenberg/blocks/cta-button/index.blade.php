@@ -89,7 +89,7 @@
                 <div class="container mx-auto @if($blockWidth == 'fullscreen') px-8 @else w-full md:px-16 @endif relative z-10 @if($sideImage) flex flex-col xl:flex-row justify-between items-center gap-8 !px-0 xl:!px-16 @endif">
 
                     <div class="cta-data flex flex-col @if($sideImage) order-2 xl:order-1 w-full xl:w-1/2 flex-col @endif md:{{ $flexDirection }} {{ $flexClass }} justify-center gap-x-16 gap-y-4 @if($topImage) mt-16 md:mt-20 @endif">
-                        <div class=" w-fit  @if($ctaLayout == 'vertical' && $textPosition !== 'center') {{ $textClass }} @else text-center @endif md:{{ $textClass }}">
+                        <div class="w-fit @if($ctaLayout == 'vertical' && $textPosition !== 'center') {{ $textClass }} @else text-center @endif md:{{ $textClass }}">
                             @if ($title)
                                 <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
                             @endif
