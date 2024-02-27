@@ -20,8 +20,6 @@
 				</div>
 				
 				<div class="order-3 lg:col-span-9">
-					@include('woocommerce.single-product.extra-files')
-					@include('woocommerce.single-product.cad-downloads')
 					@php(do_action('woocommerce_after_single_product_summary'))
 				</div>
 			</div>

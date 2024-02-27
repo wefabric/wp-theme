@@ -371,11 +371,11 @@ function hideFlatRateWhenFreeIsAvailable( $rates ) : array
 add_filter( 'woocommerce_package_rates', 'hideFlatRateWhenFreeIsAvailable', 100 );
 
 
-if ( !is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-    function wc_get_page_id() {
-        return '';
-    }
-}
+//if ( !is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+//    function wc_get_page_id() {
+//        return '';
+//    }
+//}
 
 // Enable the login form by default for unlogged users
 add_action( 'woocommerce_before_checkout_form', 'force_checkout_login_for_unlogged_customers', 4 );
