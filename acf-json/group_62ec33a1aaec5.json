@@ -266,7 +266,8 @@
                     "allow_null": 0,
                     "multiple": 0,
                     "return_format": "id",
-                    "ui": 1
+                    "ui": 1,
+                    "bidirectional_target": []
                 },
                 {
                     "key": "field_6551e3665cece",
@@ -290,7 +291,8 @@
                     "return_format": "id",
                     "multiple": 0,
                     "allow_null": 0,
-                    "ui": 1
+                    "ui": 1,
+                    "bidirectional_target": []
                 },
                 {
                     "key": "field_6551e4055cecf",
@@ -314,7 +316,8 @@
                     "return_format": "id",
                     "multiple": 0,
                     "allow_null": 0,
-                    "ui": 1
+                    "ui": 1,
+                    "bidirectional_target": []
                 },
                 {
                     "key": "field_637b22f258e52",
@@ -335,7 +338,34 @@
                     "allow_null": 0,
                     "multiple": 0,
                     "return_format": "id",
-                    "ui": 1
+                    "ui": 1,
+                    "bidirectional_target": []
+                },
+                {
+                    "key": "field_65ddfa9639420",
+                    "label": "Zoekpagina",
+                    "name": "search_page",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "return_format": "id",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": []
                 }
             ]
         },
@@ -420,5 +450,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1699865885
+    "modified": 1709046478
 }

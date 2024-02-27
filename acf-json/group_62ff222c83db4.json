@@ -195,7 +195,9 @@
             },
             "choices": {
                 "phone": "Telefoonnummer",
-                "email": "E-mail"
+                "email": "E-mail",
+                "top_navigation": "Top navigatie",
+                "search": "Zoekfunctie"
             },
             "default_value": [],
             "return_format": "value",
@@ -224,5 +226,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1700213109
+    "modified": 1709046637
 }

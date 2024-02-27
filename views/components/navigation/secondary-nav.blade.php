@@ -47,24 +47,28 @@
                         </a>
                     @endif
                 @endforeach
-                @php
-                    $menuLocations = get_nav_menu_locations();
-                    $menuID = null;
-                    if(isset($menuLocations['top-navigation'])) {
-                        $menuID = $menuLocations['top-navigation'];
-                    }
-                @endphp
-                @if(isset($menuID) && !is_null($menuID))
-                    {!! wp_nav_menu([
-                        'theme_location' => 'top-navigation',
-                        'menu_id' => $menuID,
-                        'container_class' => 'flex',
-                        'li_class'  => 'li-class',
-                        'li_active_class'  => '',
-                        'before'  => '<i class="before-class"></i>',
-                        'echo' => false
-                    ]) !!}
+
+                @if (in_array('top_navigation', $options['secondary_menu_show_elements']))
+                    @php
+                        $menuLocations = get_nav_menu_locations();
+                        $menuID = null;
+                        if(isset($menuLocations['top-navigation'])) {
+                            $menuID = $menuLocations['top-navigation'];
+                        }
+                    @endphp
+                    @if(isset($menuID) && !is_null($menuID))
+                        {!! wp_nav_menu([
+                            'theme_location' => 'top-navigation',
+                            'menu_id' => $menuID,
+                            'container_class' => 'flex',
+                            'li_class'  => 'li-class',
+                            'li_active_class'  => '',
+                            'before'  => '<i class="before-class"></i>',
+                            'echo' => false
+                        ]) !!}
+                    @endif
                 @endif
+
                 @if (in_array('search', $options['secondary_menu_show_elements']))
                     <form class="hidden search-form-hidden search-form py-[8px] justify-center items-center" action="/">
                         <input type="search" class="rounded-l-lg w-[180px]" placeholder="Zoeken..." name="s">
