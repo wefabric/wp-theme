@@ -16,14 +16,19 @@
             <div class="flex gap-4 text-sm h-full text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
                 @foreach($footer_establishments as $key => $establishment)
                     @php
-                        // Ensure $establishment is an object
-                        if(is_object($establishment)) {
-                            $phone = $establishment->getContactPhone();
-                            $email = $establishment->getContactEmailAddress();
+                        if ($establishment instanceof \Wefabric\WPEstablishments\Establishment) {
+                           // If $establishment is an object
+                           $phone = $establishment->getContactPhone();
+                           $email = $establishment->getContactEmailAddress();
+                        } elseif (is_array($establishment)) {
+                           // If $establishment is an array
+                           $establishment = new \Wefabric\WPEstablishments\Establishment($establishment['establishment']);
+                           $phone = $establishment->getContactPhone();
+                           $email = $establishment->getContactEmailAddress();
                         } else {
-                            // Handle the case when $establishment is not an object
-                            $phone = '';
-                            $email = '';
+                           // Handle other cases if needed
+                           $phone = '';
+                           $email = '';
                         }
                     @endphp
                     @if (in_array('phone', $options['secondary_menu_show_elements']))

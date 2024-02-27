@@ -43,17 +43,9 @@
                     <div class="flex gap-2 text-md px-4 pb-4 text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
                         @foreach($footer_establishments as $key => $establishment_config)
                             @php
-                                if ($establishment_config instanceof \Wefabric\WPEstablishments\Establishment) {
-                                  $phone = $establishment_config->getContactPhone();
-                                  $email = $establishment_config->getContactEmailAddress();
-                              } elseif (is_array($establishment_config)) {
-
-                                  $phone = isset($establishment_config['phone']) ? $establishment_config['phone'] : '';
-                                  $email = isset($establishment_config['email']) ? $establishment_config['email'] : '';
-                              } else {
-                                  $phone = '';
-                                  $email = '';
-                              }
+                                $establishment = $establishment_config ? new \Wefabric\WPEstablishments\Establishment($establishment_config['establishment']) : null;
+                                $phone = $establishment ? $establishment->getContactPhone() : '';
+                                $email = $establishment ? $establishment->getContactEmailAddress() : '';
                             @endphp
                             @if (in_array('phone', $options['secondary_menu_show_elements']))
                                 <a class="phone-link group flex items-center" href="tel:{{ $phone }}"
