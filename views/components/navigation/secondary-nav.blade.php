@@ -16,8 +16,15 @@
             <div class="flex gap-4 text-sm h-full text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
                 @foreach($footer_establishments as $key => $establishment)
                     @php
-                        $phone = $establishment->getContactPhone();
-                        $email = $establishment->getContactEmailAddress();
+                        // Ensure $establishment is an object
+                        if(is_object($establishment)) {
+                            $phone = $establishment->getContactPhone();
+                            $email = $establishment->getContactEmailAddress();
+                        } else {
+                            // Handle the case when $establishment is not an object
+                            $phone = '';
+                            $email = '';
+                        }
                     @endphp
                     @if (in_array('phone', $options['secondary_menu_show_elements']))
                         <a class="phone-link group flex items-center gap-2" href="tel:{{ $phone }}"

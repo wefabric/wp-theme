@@ -88,7 +88,7 @@
     </div>
 
 
-    @if($option['footer_secondary_establishments'])
+    @if(isset($option['footer_secondary_establishments']) && $option['footer_secondary_establishments'])
         <div class="establishments-list relative py-8 my-8">
             <div class="container mx-auto px-8">
                 @include ('components.footer.establishments-swiper')
@@ -214,7 +214,7 @@
                      class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:20px;"/>
                 <span class="screen-reader-only">Wefabric</span>
                 @include('components.link.closing')
-                </div>
             </div>
         </div>
+    </div>
 </div>

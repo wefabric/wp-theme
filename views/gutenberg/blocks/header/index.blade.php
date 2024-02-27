@@ -114,6 +114,6 @@
         </div>
     </div>
 </section>
-@if ($breadcrumbsEnabled && !is_front_page() && get_the_ID() !== wc_get_page_id( 'cart' ))
+@if ($breadcrumbsEnabled && !is_front_page() && get_the_ID())
     @include('components.breadcrumbs.index')
 @endif
