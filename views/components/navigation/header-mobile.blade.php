@@ -43,7 +43,6 @@
                     <div class="flex gap-2 text-md px-4 pb-4 text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
                         @foreach($footer_establishments as $key => $establishment_config)
                             @php
-                                $establishment = $establishment_config ? new \Wefabric\WPEstablishments\Establishment($establishment_config['establishment']) : null;
                                 $phone = $establishment ? $establishment->getContactPhone() : '';
                                 $email = $establishment ? $establishment->getContactEmailAddress() : '';
                             @endphp

@@ -8,17 +8,16 @@
 @endphp
 
 <div class="secondary-navigation hidden xl:block w-full bg-{{ $options['secondary_menu_background_color'] ?? 'primary-color' }}">
-    <div class="flex items-center justify-between flex-row container mx-auto h-12 px-4">
+    <div class="secondary-navigation-items flex items-center justify-between flex-row container mx-auto h-12 px-4">
         @if(isset($options['secondary_menu_text']))
             <div class="secondary-menu-text text-sm text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">{{ $options['secondary_menu_text'] }}</div>
         @endif
         @if (!empty($options['secondary_menu_show_elements']))
             <div class="flex gap-4 text-sm h-full text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
-                @foreach($footer_establishments as $key => $establishment_config)
+                @foreach($footer_establishments as $key => $establishment)
                     @php
-                        $establishment = $establishment_config ? new \Wefabric\WPEstablishments\Establishment($establishment_config['establishment']) : null;
-                        $phone = $establishment ? $establishment->getContactPhone() : '';
-                        $email = $establishment ? $establishment->getContactEmailAddress() : '';
+                        $phone = $establishment->getContactPhone();
+                        $email = $establishment->getContactEmailAddress();
                     @endphp
                     @if (in_array('phone', $options['secondary_menu_show_elements']))
                         <a class="phone-link group flex items-center gap-2" href="tel:{{ $phone }}"
@@ -48,9 +47,9 @@
                         'theme_location' => 'top-navigation',
                         'menu_id' => $menuID,
                         'container_class' => 'flex',
-                        'li_class'  => 'group flex items-center gap-2 bg-primary hover:bg-primary-light rounded-b-md p-4 h-5/6 text-white',
+                        'li_class'  => 'li-class',
                         'li_active_class'  => '',
-                        'before'  => '<i class="p-1.5 flex text-md justify-center items-center rounded-lg fa-solid fa-user"></i>',
+                        'before'  => '<i class="before-class"></i>',
                         'echo' => false
                     ]) !!}
                 @endif
