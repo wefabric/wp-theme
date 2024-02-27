@@ -221,3 +221,11 @@ header {
 	left: 0;
 	@apply hover:text-secondary;
 }
+
+// Secondary navigation
+
+.secondary-navigation {
+	ul.menu {
+		@apply flex items-center gap-x-2;
+	}
+}
