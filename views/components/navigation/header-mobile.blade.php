@@ -40,7 +40,7 @@
                 </div>
 
                 @if (!empty($options['secondary_menu_show_elements']))
-                    <div class="flex gap-2 text-md px-4 pb-4 text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
+                    <div class="top-navigation flex gap-2 text-md px-4 pb-4 text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
                         @foreach($footer_establishments as $key => $establishment_config)
                             @php
                                 $establishment = $establishment_config ? new \Wefabric\WPEstablishments\Establishment($establishment_config['establishment']) : null;
@@ -63,6 +63,8 @@
                             @endif
                         @endforeach
 
+
+                        @if (in_array('top_navigation', $options['secondary_menu_show_elements']))
                             @php
                                 $menuLocations = get_nav_menu_locations();
                                 $menuID = null;
@@ -75,11 +77,13 @@
                                     'theme_location' => 'top-navigation',
                                     'menu_id' => $menuID,
                                     'container_class' => 'flex',
-                                    'li_class'  => 'top-navigation h-full text-sm group flex items-center gap-2 bg-primary-light hover:bg-primary-dark rounded-md text-white',
+                                    'li_class'  => 'li-class',
                                     'li_active_class'  => '',
                                     'echo' => false
                                 ]) !!}
                             @endif
+
+                        @endif
                     </div>
                 @endif
 
