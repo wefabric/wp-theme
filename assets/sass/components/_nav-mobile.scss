@@ -232,7 +232,7 @@ header.banner {
     }
 
     &.current-menu-item > a:first-child:not(.custom) {
-      @apply text-secondary #{!important};
+      @apply text-secondary;
     }
 
     &.menu-item-has-children:after {
