@@ -120,3 +120,19 @@
         display: flex !important;
     }
 </style>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var checkbox = document.getElementById('nav-mobile-active');
+        var logo = document.querySelector('.logo-mobile');
+
+        checkbox.addEventListener('change', function () {
+            if (checkbox.checked) {
+                logo.style.opacity = '0';
+            } else {
+                logo.style.opacity = '100';
+            }
+        });
+    });
+</script>
