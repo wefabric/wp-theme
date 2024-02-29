@@ -18,11 +18,13 @@
 @endphp
 
 <div class="product-item group h-full">
-    <div class="product-wrapper relative h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
+    <div class="product-wrapper relative h-full flex flex-col @if($productUrl)group-hover:-translate-y-4 duration-300 ease-in-out @endif">
         @if ($productImage)
             <div class="product-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
-                <a href="{{ $productUrl }}" target="_blank" aria-label="Ga naar {{ $productTitle }} pagina"
+                @if($productUrl)
+                    <a href="{{ $productUrl }}" target="_blank" aria-label="Ga naar {{ $productTitle }} pagina"
                    class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                @endif
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     @if ($productCategories && !is_bool($productCategories))
                         <div class="product-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
@@ -49,8 +51,12 @@
         @endif
         <div class="product-data flex flex-col w-full grow mt-5">
 
-            <a href="{{ $productUrl }}" aria-label="Ga naar {{ $productTitle }} pagina"
-               class="product-title text-{{ $productTitleColor }} font-bold text-lg group-hover:text-primary">{!! $productTitle !!}</a>
+            @if($productUrl)
+                <a href="{{ $productUrl }}" aria-label="Ga naar {{ $productTitle }} pagina"
+                   class="product-title text-{{ $productTitleColor }} font-bold text-lg group-hover:text-primary">{!! $productTitle !!}</a>
+            @else
+                <div class="product-title text-{{ $productTitleColor }} font-bold text-lg">{!! $productTitle !!}</div>
+            @endif
 
             <div class="product-info mt-4 text-{{ $productTextColor }}">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($productSummary))
