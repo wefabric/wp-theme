@@ -38,9 +38,7 @@ $wrapper_classes   = apply_filters(
 ?>
 
 <?php
-// Display product title above the image
-the_title( '<h1 class="h2 product_title entry-title">', ' - ' . $product->get_sku(). '</h1>' );
-
+    the_title( '<h1 class="h2 product_title entry-title">', '  ' . $product->get_sku(). '</h1>' );
 ?>
 
 

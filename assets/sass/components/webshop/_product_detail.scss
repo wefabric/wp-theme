@@ -21,15 +21,15 @@ ins {
 form.cart {
 	input, select {
 		@apply mt-0 mb-2 #{!important}; //to override the default margin-y;
-		
+
 		&.qty {
 			@apply mr-4 w-24 max-w-xs #{!important};
 		}
 	}
-	
+
 	&.variations_form {
 		@apply w-full #{!important};
-		
+
 		table.variations {
 			th.label {
 				@apply text-left;
@@ -64,15 +64,15 @@ form.cart {
 		&::before, ::before, ::after, li { //first is ul
 			@apply border-0 shadow-none #{!important};
 		}
-		
+
 		li {
 			@apply rounded-2xl mr-4 #{!important};
-			
+
 			a {
 				@apply h5;
 				@apply no-underline #{!important};
 			}
-			
+
 			&.active {
 				@apply bg-primary text-white #{!important};
 			}
@@ -83,10 +83,10 @@ form.cart {
 .woocommerce-product-container {
 	.product {
 		@apply grid #{!important};
-		
+
 		div.images, div.summary {
 			@apply w-full #{!important};
-			
+
 			img {
 				@apply w-auto mx-auto max-h-[500px] #{!important};
 			}
@@ -105,7 +105,7 @@ form.cart {
 	th {
 		text-align: left;
 	}
-	
+
 	.woocommerce-product-attributes-item__label, .woocommerce-product-attributes-item__value {
 		@apply text-base font-normal not-italic #{!important};
 	}

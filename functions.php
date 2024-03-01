@@ -178,6 +178,11 @@ add_action('woocommerce_single_product_summary', function() {
 	global $product;
 	echo '<span class="h5 pb-2">'. $product->get_attribute('brand') .'</span>';
 }, 3);
+
+// Remove title from before single product summary
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+
+
 add_action('woocommerce_single_product_summary', function() {
     global $product;
 	echo view('woocommerce.single-product.additional-summary', ['product' => $product])->render();
