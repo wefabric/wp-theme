@@ -2,7 +2,9 @@
 
 @section('content')
 
-	<div class="container mx-auto px-4 md:px-8 lg:px-0">
+	@include('components.breadcrumbs.index')
+
+	<div class="container mx-auto px-8">
 		@php(do_action('woocommerce_before_main_content'))
 		
 		<div class="woocommerce-product-container">

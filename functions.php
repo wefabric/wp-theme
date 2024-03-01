@@ -142,24 +142,24 @@ $theme->templates($theme->config('templates', []));
 add_theme_support( 'post-thumbnails' );
 
 
-add_action( 'woocommerce_before_shop_loop', function () {
-	$terms = get_terms( 'product_cat', [
-		'parent' => get_queried_object_id(),
-		'exclude' => [
-			'24', //term id of 'uncategorized'
-		],
-	]);
-
-	if ($terms) {
-		echo view('components.slider.grid', [
-			'items' => $terms,
-			'card_type' => 'category',
-			'grid_class' => 'product-cats w-full',
-		])->render();
-
-		echo '<h2 id="products-start" class="text-36 font-head mt-4 lg:mt-0 lg:pt-20 lg:pb-12">Alle producten</h2>';
-	}
-}, 50);
+//add_action( 'woocommerce_before_shop_loop', function () {
+//	$terms = get_terms( 'product_cat', [
+//		'parent' => get_queried_object_id(),
+//		'exclude' => [
+//			'24', //term id of 'uncategorized'
+//		],
+//	]);
+//
+//	if ($terms) {
+//		echo view('components.slider.grid', [
+//			'items' => $terms,
+//			'card_type' => 'category',
+//			'grid_class' => 'product-cats w-full',
+//		])->render();
+//
+//		echo '<h2 id="products-start" class="text-36 font-head mt-4 lg:mt-0 lg:pt-20 lg:pb-12">Alle producten</h2>';
+//	}
+//}, 50);
 
 add_filter( 'loop_shop_per_page', function ($number_of_posts) {
 	return 12; //products per page

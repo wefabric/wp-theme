@@ -16,7 +16,6 @@
 			 $active = true;
 		 }
 
-
          $categories[$parentCategory->term_id] = $parentCategory;
          $categories[$parentCategory->term_id]->active  = $active;
 		 $categories[$parentCategory->term_id]->subcategories = [];
@@ -40,7 +39,6 @@
                     $childCategory->active = $active;
                     $childCategory->activeClass = $activeClass;
                     $categories[$parentCategory->term_id]->subcategories[] = $childCategory;
-
              }
          }
 	}
@@ -48,6 +46,9 @@
 @endphp
 
 <div class="sidebar-widget sidebar-widget--category-tree">
+
+	<div class="title-text">Categorie</div>
+
 	@foreach($categories as $category)
 
 
@@ -66,21 +67,21 @@
 				'text' => $category->name,
 				'class' => $linkClass
 			])
-			
+
+
 			<input class="product-category__trigger" @if($category->active) checked="checked" @endif id="product-category-{{ $category->slug }}" type="checkbox" />
 			<label class="product-category__title " for="product-category-{{ $category->slug }}">{{ '' ?? $category->name }}</label>
-			
+
 			@if($category->subcategory_count > 0)
 				<div class="product-subcategories">
 					@foreach($category->subcategories as $subcategory)
 						<div class="product-subcategory">
-							
+
 							@include('components.link.simple', [
 								'href' => get_category_link($subcategory->term_taxonomy_id),
 								'text' => $subcategory->name,
 								'class' => 'inline-block '. $subcategory->activeClass
 							])
-
 
 							@if($subcategory->subcategory_count > 0)
 								<div class="product-subcategories">
@@ -97,13 +98,13 @@
 									@endforeach
 								</div>
 							@endif
-							
+
 						</div>
 					@endforeach
 				</div>
 			@endif
-			
+
 		</div>
 	@endforeach
-	
+
 </div>

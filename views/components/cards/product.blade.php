@@ -4,22 +4,22 @@
 	}
 @endphp
 
-<div class="card flex flex-col p-5 pb-32 bg-white  relative min-h-[488px] lg:min-h-[465px]"> {{-- max-w-[310px] --}}
+<div class="card flex flex-col p-5 pb-32 bg-white relative min-h-[488px] lg:min-h-[465px]"> {{-- max-w-[310px] --}}
 	@include('components.image', [
 		'image_id' => $item['image'],
 		'size' => 'product_card',
 		'class' => ' mx-auto h-[225px]',
 		'img_class' => 'bg-center bg-no-repeat',
 	])
-	
+
 	<div class="card-category-title w-full">
 		{{ $product['brand'] }}
 	</div>
-	
+
 	<div class="h5 py-2">
 		{{ $product['title'] }}
 	</div>
-	
+
 	<div class="absolute bottom-0 flex flex-col w-full pt-2.5 pb-5">
 		<div class="h5 text-primary pb-6">
 			€ {{ $product['price'] }},-
@@ -31,9 +31,9 @@
 				'text' => 'Meer info',
 				'colors' => 'btn-black text-white'
 			])
-			
+
 			<div class="flex grow"></div> {{-- TODO fix below so this isn't required. --}}
-			
+
 			@include('components.buttons.icon', [
 				'href' => '#',
 				'alt' => 'Voeg toe aan winkelwagen',
@@ -44,5 +44,5 @@
 			])
 		</div>
 	</div>
-	
+
 </div>

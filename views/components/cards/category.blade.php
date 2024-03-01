@@ -11,10 +11,10 @@
 			'class' => 'block h-[200px] disable-rounded align-center flex',
 			'img_class' => 'mx-auto h-full block self-center',
 		])
-	
+
 		<h3 class="block mt-4 h5 text-center">
 			{{ $item->name }}
 		</h3>
-	
+
 	@include('components.link.closing')
 </div>
