@@ -36,6 +36,14 @@ $wrapper_classes   = apply_filters(
 	)
 );
 ?>
+
+<?php
+// Display product title above the image
+the_title( '<h1 class="h2 product_title entry-title">', ' - ' . $product->get_sku(). '</h1>' );
+
+?>
+
+
 <div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
 	<figure class="woocommerce-product-gallery__wrapper">
 		<?php

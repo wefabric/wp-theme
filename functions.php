@@ -182,10 +182,10 @@ add_action('woocommerce_single_product_summary', function() {
     global $product;
 	echo view('woocommerce.single-product.additional-summary', ['product' => $product])->render();
 }, 8);
-add_action('woocommerce_single_product_summary', function() {
-	global $product;
-	echo '<div class="text-xs font-bold pt-2 pb-8">'. wc_price(wc_get_price_excluding_tax($product)) .' excl. BTW</div>';
-}, 11);
+//add_action('woocommerce_single_product_summary', function() {
+//	global $product;
+//	echo '<div class="text-xs font-bold pt-2 pb-8">'. wc_price(wc_get_price_excluding_tax($product)) .' excl. BTW</div>';
+//}, 11);
 remove_action('woocommerce_single_product_summary','woocommerce_template_single_meta', 40);
 add_action('woocommerce_single_product_summary', function() {
     global $product;
