@@ -34,7 +34,7 @@
                         @endphp
                         <div style="background-color: {{ $categoryColor }}"
                              class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full">
-                            {{ $category->name }}
+                            {!! $category->name !!}
                         </div>
                     @endforeach
                 @endif
@@ -52,10 +52,10 @@
         <div class="flex flex-col w-full grow mt-5">
 
             <a href="{{ get_permalink($postId) }}"
-               class="font-bold text-lg group-hover:text-primary">{{ get_the_title($postId) }}</a>
+               class="font-bold text-lg group-hover:text-primary">{!! get_the_title($postId) !!}</a>
 
             <div class="news-info">
-                <p class="mt-3 mb-2">{{ $postSummary }} </p>
+                <p class="mt-3 mb-2">{!! $postSummary !!}</p>
             </div>
 
             <div class="mt-auto pt-8 z-10">
