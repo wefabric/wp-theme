@@ -75,7 +75,7 @@
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
          style="background-image: url('{{ $imageId ? wp_get_attachment_image_url($imageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
-            <video autoplay muted loop class="video-background absolute inset-0 w-full h-full object-cover">
+            <video autoplay muted loop playsinline class="video-background absolute inset-0 w-full h-full object-cover" poster="one-does-not-simply.jpg">
                 <source src="{{ esc_url($backgroundVideoURL) }}" type="video/mp4">
             </video>
         @endif
