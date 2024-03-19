@@ -13,8 +13,9 @@ class ThemeServiceProvider extends ServiceProvider
         $dynamicContent = new DynamicContent();
         $dynamicContent->addAction('theme_modal', function () {
             $options = get_fields('option');
-            if(!$options['custom_modal']['active'])
+            if(empty($options['custom_modal']) || !$options['custom_modal']['active']) {
                 return '';
+            }
             return view('components.theme-modal', ['custom_modal' => $options['custom_modal']])->render();
         });
     }
