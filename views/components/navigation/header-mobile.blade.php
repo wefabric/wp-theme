@@ -130,13 +130,23 @@
     document.addEventListener('DOMContentLoaded', function () {
         var checkbox = document.getElementById('nav-mobile-active');
         var logo = document.querySelector('.logo-mobile');
+        var anchor = logo.querySelector('.site-title a');
+        var originalHref = anchor.getAttribute('href');
 
         checkbox.addEventListener('change', function () {
             if (checkbox.checked) {
                 logo.style.opacity = '0';
+                anchor.removeAttribute('href');
+                anchor.addEventListener('click', preventDefault);
             } else {
                 logo.style.opacity = '100';
+                anchor.setAttribute('href', originalHref);
+                anchor.removeEventListener('click', preventDefault);
             }
         });
+
+        function preventDefault(event) {
+            event.preventDefault();
+        }
     });
 </script>
