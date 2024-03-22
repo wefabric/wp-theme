@@ -454,3 +454,7 @@ add_filter( 'register_post_type_args', function( $args, $post_type )
 
     return $args;
 }, 99, 2 );
+
+add_filter('rank_math/frontend/breadcrumb/html', function ($html){
+    return str_replace(['Home', 'home', 'HOME'], '', $html);
+});
