@@ -40,7 +40,7 @@
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
 @endphp
 
-<section id="submenu" class="@if($stickyMenu) sticky-submenu sticky z-40 @else relative @endif bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
+<section id="submenu" class="block-submenu @if($stickyMenu) sticky-submenu sticky z-40 @else relative @endif bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>

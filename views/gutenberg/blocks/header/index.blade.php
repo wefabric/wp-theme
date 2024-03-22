@@ -71,7 +71,7 @@
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
 @endphp
 
-<section id="header" class="relative bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }}">
+<section id="header" class="block-header relative bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }}">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
          style="background-image: url('{{ $imageId ? wp_get_attachment_image_url($imageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
@@ -89,7 +89,7 @@
                     @include('components.content', ['content' => apply_filters('the_content', $subTitle), 'class' => 'mt-4 text-lg mb-4 text-' . $textColor])
                 @endif
                 @if (($button1Text) && ($button1Link))
-                    <div class="buttons w-full flex sm:flex-row gap-4 mt-4 {{ $textPositionClass }}">
+                    <div class="buttons w-full flex flex-col sm:flex-row gap-y-2 gap-x-6 mt-4 {{ $textPositionClass }}">
                         @include('components.buttons.default', [
                            'text' => $button1Text,
                            'href' => $button1Link,

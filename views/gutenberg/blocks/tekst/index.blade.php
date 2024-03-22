@@ -36,7 +36,7 @@
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
 @endphp
 
-<section id="tekst" class="relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
+<section id="tekst" class="block-tekst relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>

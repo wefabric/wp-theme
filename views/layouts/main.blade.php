@@ -21,7 +21,7 @@
     @if(isset($options['show_menu']) && $options['show_menu'])
 
         <header id="masthead">
-            @if (isset($options['show_secondary_menu']))
+            @if (isset($options['show_secondary_menu']) && $options['show_secondary_menu'])
                @include('components.navigation.secondary-nav')
             @endif
             <div class="main-navigation main-navigation-bar bg-{{ $options['menu_background_color'] }} text-{{ $options['menu_text_color'] ?? 'white' }}">
