@@ -6,7 +6,10 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
-    $location = $block['data']['location']['adress']  ?? '';
+    $mapsCity = $block['data']['maps_city'] ?? '';
+    $mapsStreet = $block['data']['maps_street'] ?? '';
+    $mapsHouseNumber = $block['data']['maps_house_number'] ?? '';
+
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -36,7 +39,7 @@
             <iframe width="100%" height="600"
                     class="h-[300px] lg:h-[600px] @if($blockWidth !== 'fullscreen') px-8 @endif"
                     frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{ $location }}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{ $mapsCity }} {{ $mapsStreet }} {{$mapsHouseNumber}}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
             </iframe>
         </div>
     </div>

@@ -98,23 +98,71 @@
             "placeholder": ""
         },
         {
-            "key": "field_651bdd68984f1",
-            "label": "Locatie",
-            "name": "location",
+            "key": "field_66029d6c9436d",
+            "label": "Plaats",
+            "name": "maps_city",
             "aria-label": "",
-            "type": "google_map",
+            "type": "text",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "center_lat": "",
-            "center_lng": "",
-            "zoom": "",
-            "height": ""
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Sneek",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66029d7f9436e",
+            "label": "Straatnaam",
+            "name": "maps_street",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Iepenlaan",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66029d929436f",
+            "label": "Huisnummer",
+            "name": "maps_house_number",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66029d7f9436e",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "7a",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_651bdd529fc28",
@@ -331,5 +379,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701341599
+    "modified": 1711447743
 }
