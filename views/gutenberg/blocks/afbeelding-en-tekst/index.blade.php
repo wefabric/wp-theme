@@ -19,8 +19,8 @@
     $button2Color = $block['data']['button_button_2_color'] ?? '';
     $button2Style = $block['data']['button_button_2_style'] ?? '';
 
-    $textOrder = $textPosition === 'left' ? 'lg:order-1' : 'lg:order-2';
-    $imageOrder = $textPosition === 'left' ? 'lg:order-2' : 'lg:order-1';
+    $textOrder = $textPosition === 'left' ? 'lg:order-1 left' : 'lg:order-2 right';
+    $imageOrder = $textPosition === 'left' ? 'lg:order-2 right' : 'lg:order-1 left';
 
     $imageID = $block['data']['image'] ?? '';
     $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
