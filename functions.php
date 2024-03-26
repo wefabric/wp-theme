@@ -458,3 +458,10 @@ add_filter( 'register_post_type_args', function( $args, $post_type )
 add_filter('rank_math/frontend/breadcrumb/html', function ($html){
     return str_replace(['Home', 'home', 'HOME'], '', $html);
 });
+
+
+/** *
+ * Allow editing the robots.txt & htaccess data. *
+ * @param bool Can edit the robots & htaccess data.
+ */
+add_filter( 'rank_math/can_edit_file', '__return_true' );
