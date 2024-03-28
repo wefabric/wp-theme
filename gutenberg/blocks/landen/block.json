@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/landen",
+  "title": "Landen overzicht",
+  "description": "Een landen overzicht blok",
+  "category": "wefabric-theme",
+  "icon": "flag",
+  "apiVersion": 2,
+  "keywords": [
+    "landen overzicht"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

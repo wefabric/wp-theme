@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.landen.index', ['block' => $block])->render(); ?>
