@@ -94,6 +94,83 @@
   }
 }
 
+// Desktop padding top
+
+.desktop-pt-50px {
+  @media only screen and (min-width: 1024px) {
+    padding-top: 50px !important;
+  }
+}
+
+.desktop-pt-100px {
+  @media only screen and (min-width: 1024px) {
+    padding-top: 100px !important;
+  }
+}
+
+.desktop-pt-200px {
+  @media only screen and (min-width: 1024px) {
+    padding-top: 200px !important;
+  }
+}
+
+.-desktop-pt-50px {
+  @media only screen and (min-width: 1024px) {
+    padding-top: -50px !important;
+  }
+}
+
+.-desktop-pt-100px {
+  @media only screen and (min-width: 1024px) {
+    padding-top: -100px !important;
+  }
+}
+
+.-desktop-pt-200px {
+  @media only screen and (min-width: 1024px) {
+    padding-top: -200px !important;
+  }
+}
+
+
+// Mobile padding top
+
+.mobile-pt-50px {
+  @media only screen and (max-width: 1023px) {
+    padding-top: 50px !important;
+  }
+}
+
+.mobile-pt-100px {
+  @media only screen and (max-width: 1023px) {
+    padding-top: 100px !important;
+  }
+}
+
+.mobile-pt-200px {
+  @media only screen and (max-width: 1023px) {
+    padding-top: 200px !important;
+  }
+}
+
+.-mobile-pt-50px {
+  @media only screen and (max-width: 1023px) {
+    padding-top: -50px !important;
+  }
+}
+
+.-mobile-pt-100px {
+  @media only screen and (max-width: 1023px) {
+    padding-top: -100px !important;
+  }
+}
+
+.-mobile-pt-200px {
+  @media only screen and (max-width: 1023px) {
+    padding-top: -200px !important;
+  }
+}
+
 
 // Desktop margin top
 
