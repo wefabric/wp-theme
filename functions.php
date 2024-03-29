@@ -465,3 +465,7 @@ add_filter('rank_math/frontend/breadcrumb/html', function ($html){
  * @param bool Can edit the robots & htaccess data.
  */
 add_filter( 'rank_math/can_edit_file', '__return_true' );
+
+
+// Hide Wordpress version
+remove_action('wp_head', 'wp_generator');
