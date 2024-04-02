@@ -150,47 +150,43 @@
 <style>
     .afbeelding-tekst-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
-            padding-top: {{ $mobilePaddingTop }}px;
-            padding-right: {{ $mobilePaddingRight }}px;
-            padding-bottom: {{ $mobilePaddingBottom }}px;
-            padding-left: {{ $mobilePaddingLeft }}px;
+            @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
+            @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
+            @if($mobilePaddingBottom) padding-bottom: {{ $mobilePaddingBottom }}px; @endif
+            @if($mobilePaddingLeft) padding-left: {{ $mobilePaddingLeft }}px; @endif
         }
-
         @media only screen and (min-width: 768px) {
-            padding-top: {{ $tabletPaddingTop }}px;
-            padding-right: {{ $tabletPaddingRight }}px;
-            padding-bottom: {{ $tabletPaddingBottom }}px;
-            padding-left: {{ $tabletPaddingLeft }}px;
+            @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
+            @if($tabletPaddingRight) padding-right: {{ $tabletPaddingRight }}px; @endif
+            @if($tabletPaddingBottom) padding-bottom: {{ $tabletPaddingBottom }}px; @endif
+            @if($tabletPaddingLeft) padding-left: {{ $tabletPaddingLeft }}px; @endif
         }
-
         @media only screen and (min-width: 1024px) {
-            padding-top: {{ $desktopPaddingTop }}px;
-            padding-right: {{ $desktopPaddingRight }}px;
-            padding-bottom: {{ $desktopPaddingBottom }}px;
-            padding-left: {{ $desktopPaddingLeft }}px;
+            @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
+            @if($desktopPaddingRight) padding-right: {{ $desktopPaddingRight }}px; @endif
+            @if($desktopPaddingBottom) padding-bottom: {{ $desktopPaddingBottom }}px; @endif
+            @if($desktopPaddingLeft) padding-left: {{ $desktopPaddingLeft }}px; @endif
         }
     }
 
     .afbeelding-tekst-{{ $randomNumber }}-custom-margin {
         @media only screen and (min-width: 0px) {
-            margin-top: {{ $mobileMarginTop }}px;
-            margin-right: {{ $mobileMarginRight }}px;
-            margin-bottom: {{ $mobileMarginBottom }}px;
-            margin-left: {{ $mobileMarginLeft }}px;
+            @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
+            @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif
+            @if($mobileMarginBottom) margin-bottom: {{ $mobileMarginBottom }}px; @endif
+            @if($mobileMarginLeft) margin-left: {{ $mobileMarginLeft }}px; @endif
         }
-
         @media only screen and (min-width: 768px) {
-            margin-top: {{ $tabletMarginTop }}px;
-            margin-right: {{ $tabletMarginRight }}px;
-            margin-bottom: {{ $tabletMarginBottom }}px;
-            margin-left: {{ $tabletMarginLeft }}px;
+            @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
+            @if($tabletMarginRight) margin-right: {{ $tabletMarginRight }}px; @endif
+            @if($tabletMarginBottom) margin-bottom: {{ $tabletMarginBottom }}px; @endif
+            @if($tabletMarginLeft) margin-left: {{ $tabletMarginLeft }}px; @endif
         }
-
         @media only screen and (min-width: 1024px) {
-            margin-top: {{ $desktopMarginTop }}px;
-            margin-right: {{ $desktopMarginRight }}px;
-            margin-bottom: {{ $desktopMarginBottom }}px;
-            margin-left: {{ $desktopMarginLeft }}px;
+            @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
+            @if($desktopMarginRight) margin-right: {{ $desktopMarginRight }}px; @endif
+            @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
+            @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
 </style>

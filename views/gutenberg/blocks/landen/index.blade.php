@@ -37,7 +37,7 @@
             'post_type' => 'countries',
             'tax_query' => [
                 [
-                    'taxonomy' => 'country_category',
+                    'taxonomy' => 'country_categories',
                     'field' => 'id',
                     'terms' => $selectedCategory,
                 ],
