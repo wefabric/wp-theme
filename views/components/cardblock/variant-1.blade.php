@@ -19,7 +19,7 @@
             {{ $pageTitle }}
         </a>
         @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && $pageExcerpt)
-            <p class="text-{{ $cardTextColor }} relative z-20 group-hover:text-white transition-all duration-300 ease-in-out">{{ $pageExcerpt }}</p>
+            <p class="text-{{ $cardTextColor }} page-excerpt relative z-20 group-hover:text-white transition-all duration-300 ease-in-out">{!! $pageExcerpt !!}</p>
         @endif
         @if (!empty($visibleElements) && in_array('button', $visibleElements))
             @if ($buttonCardText)
