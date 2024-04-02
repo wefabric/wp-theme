@@ -185,18 +185,10 @@
                         "class": "",
                         "id": ""
                     },
-                    "post_type": [
-                        "page",
-                        "post",
-                        "branches",
-                        "bedrijfskleding",
-                        "klantcases",
-                        "activiteiten",
-                        "vacatures",
-                        "werknemers",
-                        "services"
+                    "post_type": "",
+                    "post_status": [
+                        "publish"
                     ],
-                    "post_status": "",
                     "taxonomy": "",
                     "allow_archives": 1,
                     "multiple": 0,
@@ -1035,5 +1027,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702466184
+    "modified": 1712053991
 }
