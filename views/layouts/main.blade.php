@@ -47,9 +47,6 @@
     </div><!-- #content -->
     <footer id="colophon" class="site-footer">
         @include('components.footer.footer')
-        @if(isset($options['footer_codes']) && $options['footer_codes'])
-            {!! $options['footer_codes'] !!}
-        @endif
     </footer><!-- #colophon -->
 </div><!-- #page -->
 
@@ -57,5 +54,8 @@
 
 {!! styleCustomizer()->renderCustomColors() !!}
 
+@if(isset($options['footer_codes']) && $options['footer_codes'])
+    {!! $options['footer_codes'] !!}
+@endif
 </body>
 </html>
