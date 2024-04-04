@@ -210,8 +210,9 @@
                 @php
                     $theme = app('wp.theme');
                 @endphp
-                <img src="{{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }}" width="92" height="20"
-                     class="wefabric-logo" alt="Wefabric logo - wefabric.nl" style="height:20px;"/>
+
+                <img src="@if ($options['wefabric_logo_color'] == 'white') {{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }} @elseif($options['wefabric_logo_color'] == 'black') {{ $theme->getUrl('assets/images/footer/logo-wefabric-black.png') }} @endif" width="92" height="20"
+                     class="wefabric-logo hover:scale-105 transition-all ease-in-out" alt="Wefabric logo - wefabric.nl" style="height:20px;"/>
                 <span class="screen-reader-only">Wefabric</span>
                 @include('components.link.closing')
             </div>
