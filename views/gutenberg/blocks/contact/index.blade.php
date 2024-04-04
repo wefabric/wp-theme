@@ -46,60 +46,62 @@
                 @if ($title)
                     <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
                 @endif
-                @if (!empty($visibleElements) && in_array('establishments', $visibleElements) && $establishment_query->have_posts())
-                    <div class="establishment-list">
-                        @while ($establishment_query->have_posts())
-                            @php
-                                $establishment_query->the_post();
-                                $establishment_title = get_the_title();
-                                $establishment_id = get_the_ID();
-                                $street = get_post_meta($establishment_id, 'street', true);
-                                $zipcode = get_post_meta($establishment_id, 'postcode', true);
-                                $house_number = get_post_meta($establishment_id, 'house_number', true);
-                                $house_number_addition = get_post_meta($establishment_id, 'house_number_addition', true);
-                                $city = get_post_meta($establishment_id, 'city', true);
-                                $phone = get_post_meta($establishment_id, 'common_phone', true);
-                                $email = get_post_meta($establishment_id, 'common_email', true);
-                            @endphp
-                            <div class="establishment mb-4 text-{{ $textColor }}">
-                                <p class="establishment-title font-bold">{{ $establishment_title }}</p>
-                                @if($street && $house_number)
-                                    <p class="establishment-street">{{ $street }} {{ $house_number }} {{ $house_number_addition }}</p>
-                                @endif
-                                @if($zipcode && $city)
-                                    <p class="establishment-zipcode">{{ $zipcode }}, {{ $city }}</p>
-                                @endif
-                                @if($visibleElements && in_array('contact', $visibleElements))
-                                    <div class="contact-info">
-                                        @if($phone)
-                                            <a class="phone-link group flex items-center gap-2"
-                                               href="tel:{{ $phone['number'] }}"
-                                               title="Telefoonnummer">
-                                                <i class="fa-solid fa-phone"></i>
-                                                <span class="align-middle">{{ $phone['number'] }}</span>
-                                            </a>
-                                        @endif
-                                        @if($email)
-                                            <a class="email-link group flex items-center gap-2"
-                                               href="mailto:{{ $email }}"
-                                               title="Email">
-                                                <i class="fa-solid fa-envelope"></i>
-                                                <span class="align-middle">{{ $email }}</span>
-                                            </a>
-                                        @endif
-                                    </div>
-                                @endif
-                                @if($street && $visibleElements && in_array('route_description', $visibleElements))
-                                    <a href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}"
-                                       target="_blank" class="hover:text-primary underline">Routebeschrijving ></a>
-                                @endif
-                            </div>
-                        @endwhile
-                    </div>
-                @endif
-                @if ($text)
-                    @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 text-' . $textColor])
-                @endif
+                <div class="flex flex-col">
+                    @if (!empty($visibleElements) && in_array('establishments', $visibleElements) && $establishment_query->have_posts())
+                        <div class="establishment-list">
+                            @while ($establishment_query->have_posts())
+                                @php
+                                    $establishment_query->the_post();
+                                    $establishment_title = get_the_title();
+                                    $establishment_id = get_the_ID();
+                                    $street = get_post_meta($establishment_id, 'street', true);
+                                    $zipcode = get_post_meta($establishment_id, 'postcode', true);
+                                    $house_number = get_post_meta($establishment_id, 'house_number', true);
+                                    $house_number_addition = get_post_meta($establishment_id, 'house_number_addition', true);
+                                    $city = get_post_meta($establishment_id, 'city', true);
+                                    $phone = get_post_meta($establishment_id, 'common_phone', true);
+                                    $email = get_post_meta($establishment_id, 'common_email', true);
+                                @endphp
+                                <div class="establishment mb-4 text-{{ $textColor }}">
+                                    <p class="establishment-title font-bold">{{ $establishment_title }}</p>
+                                    @if($street && $house_number)
+                                        <p class="establishment-street">{{ $street }} {{ $house_number }} {{ $house_number_addition }}</p>
+                                    @endif
+                                    @if($zipcode && $city)
+                                        <p class="establishment-zipcode">{{ $zipcode }}, {{ $city }}</p>
+                                    @endif
+                                    @if($visibleElements && in_array('contact', $visibleElements))
+                                        <div class="contact-info">
+                                            @if($phone)
+                                                <a class="phone-link group flex items-center gap-2 w-fit"
+                                                   href="tel:{{ $phone['number'] }}"
+                                                   title="Telefoonnummer">
+                                                    <i class="fa-solid fa-phone"></i>
+                                                    <span class="align-middle">{{ $phone['number'] }}</span>
+                                                </a>
+                                            @endif
+                                            @if($email)
+                                                <a class="email-link group flex items-center gap-2 w-fit"
+                                                   href="mailto:{{ $email }}"
+                                                   title="Email">
+                                                    <i class="fa-solid fa-envelope"></i>
+                                                    <span class="align-middle">{{ $email }}</span>
+                                                </a>
+                                            @endif
+                                        </div>
+                                    @endif
+                                    @if($street && $visibleElements && in_array('route_description', $visibleElements))
+                                        <a href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}"
+                                           target="_blank" class="hover:text-primary underline">Routebeschrijving ></a>
+                                    @endif
+                                </div>
+                            @endwhile
+                        </div>
+                    @endif
+                    @if ($text)
+                        @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 text-' . $textColor])
+                    @endif
+                </div>
             </div>
             @if ($form)
                 <div class="form-block w-full lg:w-2/3 order-0 lg:order-1 sm:px-8">
