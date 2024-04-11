@@ -33,7 +33,7 @@
         'alt' => $alt ?? $text,
         'rel' => $rel ?? '',
         'target' => $target ?? '',
-        'class' => ($a_class ?? ''). ' no-underline',
+        'class' => ($a_class ?? ''). 'w-fit no-underline',
     ])
         <span class="btn {{ $size ?? '' }} {{ $colors }} {{ $class ?? '' }}">
             {{ $text }}
