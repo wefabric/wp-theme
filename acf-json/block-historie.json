@@ -139,6 +139,40 @@
                     "parent_repeater": "field_6573122856768"
                 },
                 {
+                    "key": "field_661e3172c86d1",
+                    "label": "Afbeelding weergave",
+                    "name": "image_display",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_65731278627f1",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "cover": "Maak de afbeelding element vullend (cover)",
+                        "contain": "Maak de afbeelding volledig zichtbaar binnen het element (contain)"
+                    },
+                    "default_value": "cover",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_6573122856768"
+                },
+                {
                     "key": "field_657312285b77e",
                     "label": "Jaartal",
                     "name": "year",
@@ -493,5 +527,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702048418
+    "modified": 1713254998
 }

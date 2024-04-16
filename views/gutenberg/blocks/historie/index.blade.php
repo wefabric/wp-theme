@@ -19,8 +19,11 @@
         $imageKey = "timeline_{$i}_image";
         $yearKey = "timeline_{$i}_year";
         $textKey = "timeline_{$i}_text";
+        $displayKey = "timeline_{$i}_image_display";
 
         $imageID = $block['data'][$imageKey] ?? '';
+        $display = $block['data'][$displayKey] ?? 'cover';
+
         $year = $block['data'][$yearKey] ?? '';
         $text = $block['data'][$textKey] ?? '';
 
@@ -31,6 +34,7 @@
             'year' => $year,
             'text' => $text,
             'alt' => $imageAlt,
+            'display' => $display,
         ];
     }
 
@@ -90,7 +94,7 @@
                                         @include('components.image', [
                                             'image_id' => $item['imageId'],
                                             'size' => 'full',
-                                            'object_fit' => 'cover',
+                                            'object_fit' => $item['display'],
                                             'img_class' => 'h-[170px] w-full',
                                             'alt' => $item['alt']
                                         ])
