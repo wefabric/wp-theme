@@ -71,7 +71,7 @@
             @endif
 
             <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina"
-               class="text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{{ $postTitle }}</a>
+               class="text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{!! $postTitle !!}</a>
 
             <div class="news-info">
 
@@ -111,7 +111,7 @@
                 @endif
 
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($postSummary))
-                    <p class="text-{{ $newsTextColor }} mt-3 mb-2">{{ $postSummary }} </p>
+                    <p class="text-{{ $newsTextColor }} mt-3 mb-2">{!! $postSummary !!}</p>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('author', $visibleElements) && !empty($postAuthorName))

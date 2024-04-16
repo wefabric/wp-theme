@@ -49,11 +49,11 @@
                 <p class="news-post-date mb-2 text-{{ $newsTextColor }}">{{ $postDate }}</p>
             @endif
 
-            <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina" class="news-title text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{{ $postTitle }}</a>
+            <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina" class="news-title text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{!! $postTitle !!}</a>
 
             <div class="news-info">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($postSummary))
-                    <p class="news-summary text-{{ $newsTextColor }} mt-3 mb-2">{{ $postSummary }} </p>
+                    <p class="news-summary text-{{ $newsTextColor }} mt-3 mb-2">{!! $postSummary !!}</p>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('author', $visibleElements) && !empty($postAuthorName))
