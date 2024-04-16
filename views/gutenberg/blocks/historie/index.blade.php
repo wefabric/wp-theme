@@ -65,7 +65,7 @@
             @endif
 
             <div class="mt-8 lg:mt-16 relative h-full">
-                <div class="w-[4px] bg-{{ $timelineLineColor }} h-full absolute lg:left-1/2 -translate-x-1/2">
+                <div class="history-vertical-line w-[4px] bg-{{ $timelineLineColor }} h-full absolute lg:left-1/2 -translate-x-1/2">
                     <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
                     <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"></div>
                 </div>
@@ -81,27 +81,29 @@
                         @endphp
 
                         <div class="{{ $cardClass }} timeline-card relative h-fit pl-10 {{ $marginLeftClass }}">
-                            <div class="w-[20px] lg:w-[30px] h-[4px] bg-{{ $timelineLineColor }} absolute left-0 {{ $timelineLinePosition }}">
+                            <div class="history-horizontal-line w-[20px] lg:w-[30px] h-[4px] bg-{{ $timelineLineColor }} absolute left-0 {{ $timelineLinePosition }}">
                                 <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute {{ $roundedFullPosition }}"></div>
                             </div>
-                            @if($item['imageId'])
-                                <div class="relative h-[170px]">
-                                    @include('components.image', [
-                                        'image_id' => $item['imageId'],
-                                        'size' => 'full',
-                                        'object_fit' => 'cover',
-                                        'img_class' => 'h-[170px] w-full',
-                                        'alt' => $item['alt']
-                                    ])
+                            <div class="flex flex-col">
+                                @if($item['imageId'])
+                                    <div class="history-image relative h-[170px]">
+                                        @include('components.image', [
+                                            'image_id' => $item['imageId'],
+                                            'size' => 'full',
+                                            'object_fit' => 'cover',
+                                            'img_class' => 'h-[170px] w-full',
+                                            'alt' => $item['alt']
+                                        ])
+                                    </div>
+                                @endif
+                                <div class="history-data relative p-4 lg:p-8 bg-{{ $timelineBlockBackgroundColor }}">
+                                    @if($item['year'])
+                                        <p class="h3 text-{{ $timelineYearTextColor }}">{{ $item['year'] }}</p>
+                                    @endif
+                                    @if($item['text'])
+                                        @include('components.content', ['content' => apply_filters('the_content', $item['text']), 'class' => 'text-' . $timelineTextColor])
+                                    @endif
                                 </div>
-                            @endif
-                            <div class="relative p-4 lg:p-8 bg-{{ $timelineBlockBackgroundColor }}">
-                                @if($item['year'])
-                                    <p class="h3 text-{{ $timelineYearTextColor }}">{{ $item['year'] }}</p>
-                                @endif
-                                @if($item['text'])
-                                    @include('components.content', ['content' => apply_filters('the_content', $item['text']), 'class' => 'text-' . $timelineTextColor])
-                                @endif
                             </div>
                         </div>
                     @endforeach

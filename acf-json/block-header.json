@@ -84,6 +84,26 @@
             "font_size": 14
         },
         {
+            "key": "field_661d431ce44c1",
+            "label": "Titel tonen?",
+            "name": "show_title",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_64a430e4d8e3e",
             "label": "Subtitel",
             "name": "subtitle",
@@ -654,5 +674,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702926552
+    "modified": 1713193800
 }
