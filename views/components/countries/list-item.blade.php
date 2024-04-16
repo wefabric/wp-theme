@@ -31,7 +31,7 @@
                             @endphp
                             <div style="background-color: {{ $categoryColor }}"
                                  class="@if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
-                                {{ $category->name }}
+                                {!! $category->name !!}
                             </div>
                         @endforeach
                     </div>

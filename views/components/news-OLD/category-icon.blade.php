@@ -10,5 +10,5 @@
 	@if(isset($categoryFields['icon']) && $categoryFields['icon'])
 		{!! wp_get_attachment_image($categoryFields['icon'], 'thumbnail', false, ['class' => 'w-full h-5 md:h-auto mr-2']) !!}
 	@endif
-    <span class="self-center leading-none font-bold">{{ $category->name }}</span>
+    <span class="self-center leading-none font-bold">{!! $category->name !!}</span>
 </span>
