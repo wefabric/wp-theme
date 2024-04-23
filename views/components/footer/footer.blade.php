@@ -132,7 +132,7 @@
 
                 @if($footer)
                     @foreach($footer as $item)
-                        <div class="">
+                        <div class="flex items-center">
                             @if($item['url'])
                                 @include('components.link.opening', [
                                     'href' => $item['url'],
