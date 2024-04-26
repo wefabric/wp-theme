@@ -35,7 +35,7 @@
 					{{ $establishment->name }}
 				</p>
 				<p class="establishment-address leading-8">
-					{{ $establishment->getAddress()->street }} {{ $establishment->getAddress()->full_housenumber }} <br/>
+					{{ $establishment->getAddress()->street }} @if($establishment->getAddress()->full_housenumber > 0) {{ $establishment->getAddress()->full_housenumber }} @endif <br/>
 					{{ $establishment->getAddress()->postcode }} {{ $establishment->getAddress()->city }}
 				</p>
 
