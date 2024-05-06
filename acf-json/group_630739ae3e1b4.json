@@ -1,6 +1,6 @@
 {
     "key": "group_630739ae3e1b4",
-    "title": "MailChimp",
+    "title": "Nieuwsbrief",
     "fields": [
         {
             "key": "field_6307451cf2089",
@@ -67,19 +67,51 @@
                     "maxlength": ""
                 },
                 {
+                    "key": "field_6638acb852ca7",
+                    "label": "Type nieuwsbrief doorverwijzing",
+                    "name": "newsletter_type",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "mailchimp": "Mailchimp",
+                        "zoho": "Zoho",
+                        "brevo": "Brevo"
+                    },
+                    "default_value": "mailchimp",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
                     "key": "field_630739b2c7e7c",
-                    "label": "Inschrijf url",
+                    "label": "Inschrijf url Mailchimp",
                     "name": "embed_subscribe_url",
                     "aria-label": "",
                     "type": "url",
                     "instructions": "Lees hier meer over de Inschrijf url: https:\/\/www.notion.so\/wefabric\/Nieuwsbriefinschrijving-Mailchimp-364fea4b0c6b41c2b32736620bd42f09",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": [
                         [
                             {
                                 "field": "field_63074223c7e7d",
                                 "operator": "==",
                                 "value": "1"
+                            },
+                            {
+                                "field": "field_6638acb852ca7",
+                                "operator": "==",
+                                "value": "mailchimp"
                             }
                         ]
                     ],
@@ -89,6 +121,36 @@
                         "id": ""
                     },
                     "default_value": "https:\/\/wefabric.us16.list-manage.com\/subscribe\/post?u=97458c1812b52842329db8e54&amp;id=5af5026eaf&amp;f_id=005f67e0f0",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_6638a7c84e0c9",
+                    "label": "Inschrijf url Zoho",
+                    "name": "zoho_subscribe_url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_63074223c7e7d",
+                                "operator": "==",
+                                "value": "1"
+                            },
+                            {
+                                "field": "field_6638acb852ca7",
+                                "operator": "==",
+                                "value": "zoho"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "https:\/\/forms.zohopublic.eu\/marketing128\/form\/Emailabonnement\/formperma\/tSQIp6-8fqEuBIyjuqPFnO8Q0yT-rzMcEhCWBenFVOM\/htmlRecords\/submit",
                     "placeholder": ""
                 }
             ]
@@ -103,7 +165,7 @@
             }
         ]
     ],
-    "menu_order": 32,
+    "menu_order": 39,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -112,5 +174,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698159397
+    "modified": 1714990489
 }

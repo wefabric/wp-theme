@@ -16,16 +16,31 @@
 	@php
 		$title = !empty($option['newsletter_footer']['title']) ? $option['newsletter_footer']['title'] : 'Blijf op de hoogte';
 
-		$url = $option['newsletter_footer']['embed_subscribe_url'] ?? '';
+		$mailChimpUrl = $option['newsletter_footer']['embed_subscribe_url'] ?? '';
+        $zohoUrl = $option['newsletter_footer']['zoho_subscribe_url'] ?? '';
 	@endphp
 	<span class="newsletter-title h5 text-{{ $title_color }} py-4 pr-6 inline-block">
 		{{ $title }}
 	</span>
     <div>
+		@if($option['newsletter_footer']['newsletter_type'] == 'mailchimp' && $mailChimpUrl)
         <div id="mc_embed_signup">
 			@include('components.footer.mailchimp', [
-				'mailChimpSubscribeUrl' => $url,
+				'mailChimpSubscribeUrl' => $mailChimpUrl,
 			])
         </div>
+		@endif
+
+		@if($option['newsletter_footer']['newsletter_type'] == 'zoho' && $zohoUrl)
+		<div id="mc_embed_signup2">
+			@include('components.footer.zoho', [
+				'ZohoSubscribeUrl' => $zohoUrl,
+			])
+		</div>
+			@endif
+
+			@if($option['newsletter_footer']['newsletter_type'] == 'zoho')
+{{--				Todo--}}
+			@endif
     </div>
 @endif
