@@ -469,3 +469,9 @@ add_filter( 'rank_math/can_edit_file', '__return_true' );
 
 // Hide Wordpress version
 remove_action('wp_head', 'wp_generator');
+
+
+function add_excerpt_to_pages() {
+    add_post_type_support('page', 'excerpt');
+}
+add_action('init', 'add_excerpt_to_pages');
