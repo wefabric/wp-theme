@@ -41,7 +41,7 @@
 
     if ($textPosition === 'left') {
         $textPositionClass = 'justify-start text-left';
-        $textWidthClass = ($headerHeight == 3) ? 'w-full' : 'w-full md:w-1/2 xl:w-1/3';
+        $textWidthClass = ($headerHeight == 3) ? 'w-full' : 'w-full md:w-2/3 xl:w-2/3';
     } elseif ($textPosition === 'center') {
         $textPositionClass = 'justify-center text-center';
            $textWidthClass = ($headerHeight == 3) ? 'w-full' : 'w-full xl:w-3/4';
