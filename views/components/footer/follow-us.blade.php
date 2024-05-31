@@ -24,7 +24,7 @@
 	</span>
     <div>
 		@if($option['newsletter_footer']['newsletter_type'] == 'mailchimp' && $mailChimpUrl)
-        <div id="mc_embed_signup">
+        <div id="mc_embed_signup" class="newsletter-signup">
 			@include('components.footer.mailchimp', [
 				'mailChimpSubscribeUrl' => $mailChimpUrl,
 			])
@@ -32,7 +32,7 @@
 		@endif
 
 		@if($option['newsletter_footer']['newsletter_type'] == 'zoho' && $zohoUrl)
-		<div id="mc_embed_signup2">
+		<div id="mc_embed_signup2" class="newsletter-signup">
 			@include('components.footer.zoho', [
 				'ZohoSubscribeUrl' => $zohoUrl,
 			])
@@ -40,7 +40,7 @@
 			@endif
 
 			@if($option['newsletter_footer']['newsletter_type'] == 'zoho')
-{{--				Todo--}}
+				{{-- Todo: maak koppeling met Zoho --}}
 			@endif
     </div>
 @endif
