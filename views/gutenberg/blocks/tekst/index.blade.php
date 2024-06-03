@@ -1,6 +1,7 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
@@ -74,6 +75,9 @@
     @endif
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} {{ $textClass }} mx-auto">
+            @if ($subTitle)
+                <span class="block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+            @endif
             @if ($title)
                 <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
             @endif

@@ -20,6 +20,7 @@
     $title = !empty($block['data']['title']) ? $block['data']['title'] : get_the_title();
     $titleColor = $block['data']['title_color'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
+    $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
     $showTitle = $block['data']['show_title'] ?? true;
 
@@ -86,10 +87,13 @@
         <div class="custom-width relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }}">
             <div class="header-info flex flex-col {{ $textWidthClass }}">
                 @if ($showTitle)
+                    @if ($subTitle)
+                        <span class="block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                    @endif
                     <h1 class="text-{{ $titleColor }}">{!! $title !!}</h1>
                 @endif
-                @if ($subTitle)
-                    @include('components.content', ['content' => apply_filters('the_content', $subTitle), 'class' => 'mt-4 text-lg mb-4 text-' . $textColor])
+                @if ($text)
+                    @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 text-lg mb-4 text-' . $textColor])
                 @endif
                 @if (($button1Text) && ($button1Link))
                     <div class="buttons w-full flex flex-col sm:flex-row gap-y-2 gap-x-6 mt-4 {{ $textPositionClass }}">

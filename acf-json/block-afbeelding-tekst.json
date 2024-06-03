@@ -40,6 +40,33 @@
             "append": ""
         },
         {
+            "key": "field_665d764884c0f",
+            "label": "Subtitel",
+            "name": "subtitle",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Voeg &lt;br&gt; toe om een nieuwe regel te beginnen.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_649059427854a",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_651c2faa30470",
             "label": "Titel kleur",
             "name": "title_color",
@@ -1413,5 +1440,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1711638632
+    "modified": 1717401322
 }

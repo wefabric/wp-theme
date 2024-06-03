@@ -1,6 +1,7 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
 
     $text = $block['data']['text'] ?? '';
@@ -39,7 +40,7 @@
         $textClass = 'lg:w-1/3';
     }
 
-    $imageHeightClass = isset($block['data']['full_height']) && is_bool($block['data']['full_height']) && $block['data']['full_height'] ? 'h-full' : '';
+    $imageHeightClass = $block['data']['full_height'] ? 'h-full' : '';
     $verticalCentered = $block['data']['vertical_centered'] ?? false;
 
 
@@ -102,6 +103,9 @@
         <div class="{{ $blockClass }} mx-auto">
             <div class="text-image flex flex-col lg:flex-row gap-8 xl:gap-20 @if ($verticalCentered) items-center @endif">
                 <div class="text {{ $textClass }} order-2 {{ $textOrder }}">
+                    @if ($subTitle)
+                        <span class="block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                    @endif
                     @if ($title)
                         <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
                     @endif
