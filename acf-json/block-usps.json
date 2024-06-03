@@ -98,6 +98,32 @@
             "placeholder": ""
         },
         {
+            "key": "field_665daae142d17",
+            "label": "Weergave van de usps",
+            "name": "usp_layout",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "horizontal": "Horizontaal",
+                "vertical": "Verticaal"
+            },
+            "default_value": "vertical",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_64a51c4198fb5",
             "label": "Visual bij USPs",
             "name": "visual_type",
@@ -795,6 +821,26 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_665daabc42d16",
+            "label": "",
+            "name": "",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -815,5 +861,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1708445142
+    "modified": 1717419049
 }

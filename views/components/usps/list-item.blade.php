@@ -9,10 +9,10 @@
     $altText = get_post_meta($imageID, '_wp_attachment_image_alt', true) ?: 'usp-image';
 @endphp
 
-<div class="USP-item h-full">
-    <div class="item-styling h-full text-center">
+<div class="USP-item h-full usp-{{ $uspLayout }} ">
+    <div class="item-styling h-full @if( $uspLayout == 'horizontal') flex flex-row gap-x-6 items-center text-left @elseif( $uspLayout == 'vertical') flex flex-col gap-y-4 text-center  @endif ">
         @if ($icon)
-            <i class="fa-{{ $icon['style'] }} fa-{{ $icon['id'] }} text-{{ $iconColor }} text-[70px] mb-3 inline-block"
+            <i class="fa-{{ $icon['style'] }} fa-{{ $icon['id'] }} text-{{ $iconColor }} text-[70px] inline-block"
                aria-hidden="true"></i>
         @endif
         @if ($imageID)
@@ -20,7 +20,7 @@
                 'image_id' => $imageID,
                 'size' => 'full',
                 'object_fit' => 'cover',
-                'img_class' => 'mx-auto w-auto h-auto max-w-full max-h-20 mb-8',
+                'img_class' => 'mx-auto w-auto h-auto max-w-full max-h-20',
                 'alt' => $altText,
             ])
         @endif

@@ -7,6 +7,8 @@
     $titleClass = $titleClassMap[$titlePosition] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
+    $uspLayout = $block['data']['usp_layout'] ?? 'vertical';
+
     // Buttons
     $button1Text = $block['data']['button_button_1']['title'] ?? '';
     $button1Link = $block['data']['button_button_1']['url'] ?? '';
@@ -56,12 +58,12 @@
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
 @endphp
 
-<section id="usps" class="block-usps relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
+<section id="usps" class="block-usps relative layout-{{ $uspLayout }} bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+    <div class="layout relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="custom-styling {{ $blockClass }} mx-auto relative">
             @if ($title)
                 <h2 class="container mx-auto lg:mb-8 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }} text-{{ $titleColor }}">{!! $title !!}</h2>
