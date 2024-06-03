@@ -17,7 +17,7 @@
 @endphp
 
 <div class="werknemer-item group h-full">
-    <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out ">
+    <div class="werknemer-card h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out ">
         <div class="custom-height max-h-[360px] overflow-hidden w-full rounded-{{ $borderRadius }}">
             @include('components.image', [
                  'image_id' => $imageID,
@@ -27,7 +27,7 @@
                  'alt' => $fullName,
          ])
         </div>
-        <div class="w-full mt-5 flex flex-col">
+        <div class="contact-info w-full mt-5 flex flex-col">
             @if (!empty($visibleElements) && in_array('name', $visibleElements))
                 <p class="name-text font-bold text-lg text-{{ $employeeTitleColor }}">{{ $firstName }} {{ $lastName }}</p>
             @endif
