@@ -15,6 +15,8 @@
 		}
 	}
 
+    $footerTitles = $option['footer_titles'] ?? [];
+
     $visibleFooterElements = $option['footer_elements'] ?? [];
 
     $privacyPage = $option['pages']['privacy_page'] ?? '';
