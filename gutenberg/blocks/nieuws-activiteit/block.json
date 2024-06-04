@@ -1,12 +1,12 @@
 {
-  "name": "wefabric/byzondr-nieuws-activiteit",
-  "title": "Byzondr nieuws activiteit overzicht",
-  "description": "Een Byzondr nieuws activiteit overzicht blok",
+  "name": "wefabric/nieuws-activiteit",
+  "title": "Nieuws activiteit overzicht",
+  "description": "Een nieuws activiteit overzicht blok",
   "category": "wefabric-theme",
   "icon": "index-card",
   "apiVersion": 2,
   "keywords": [
-    "Byzondr nieuws activiteit overzicht"
+    "Nieuws activiteit overzicht"
   ],
   "acf": {
     "mode": "preview",

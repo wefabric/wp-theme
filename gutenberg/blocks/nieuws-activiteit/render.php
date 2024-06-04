@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.nieuws-activiteit.index', ['block' => $block])->render(); ?>

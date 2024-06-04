@@ -83,7 +83,7 @@
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
 @endphp
 
-<section id="nieuws" class="block-byzondr-nieuws relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
+<section id="nieuws-activiteit" class="block-nieuws-activiteit relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
@@ -93,13 +93,13 @@
             @if ($title)
                 <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
             @endif
-            @if (!empty($block['data']['show_element']) && in_array('category', $block['data']['show_element']))
+            @if (!empty($block['data']['show_element']) && in_array('category_filter', $block['data']['show_element']))
                 <div class="mt-6">
                     @include('components.news.category-list')
                 </div>
             @endif
             @if($posts)
-                @include('components.byzondr-news-activity.list', ['posts' => $posts])
+                @include('components.news-activity.list', ['posts' => $posts])
             @endif
             @if (($button1Text) && ($button1Link))
                 <div class="bottom-button w-full text-center mt-4 md:mt-8">

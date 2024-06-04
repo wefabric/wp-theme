@@ -20,7 +20,7 @@
             <div class="swiper-wrapper">
                 @foreach ($posts as $post)
                     <div class="swiper-slide h-auto">
-                        @include('components.byzondr-news-activity.list-item')
+                        @include('components.news-activity.list-item')
                     </div>
                 @endforeach
             </div>
@@ -34,7 +34,7 @@
 @else
     <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-16 gap-x-4 lg:gap-x-8 py-8">
         @foreach ($posts as $post)
-            @include('components.byzondr-news-activity.list-item')
+            @include('components.news-activity.list-item')
         @endforeach
     </div>
 @endif

@@ -37,9 +37,9 @@
 @endphp
 
 <div class="nieuws-item group h-full">
-    <div class="h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
+    <div class="nieuws-container h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
         @if ($postThumbnailId)
-            <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
+            <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina"
                    class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
@@ -65,7 +65,7 @@
             ])
             </div>
         @endif
-        <div class="flex flex-col w-full grow mt-5">
+        <div class="news-elements flex flex-col w-full grow mt-5">
             @if (!empty($visibleElements) && in_array('written_date', $visibleElements) && !empty($postDate))
                 <p class="mb-2 text-{{ $newsTextColor }}">{{ $postDate }}</p>
             @endif
@@ -120,7 +120,7 @@
             </div>
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
                 @if ($buttonCardText)
-                    <div class="mt-auto pt-8 z-10">
+                    <div class="news-button mt-auto pt-8 z-10">
                         @include('components.buttons.default', [
                            'text' => $buttonCardText,
                            'href' => $postUrl,
