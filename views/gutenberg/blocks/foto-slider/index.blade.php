@@ -37,7 +37,16 @@
     $blockWidth = $block['data']['block_width'] ?? 100;
     $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
     $blockClass = $blockClassMap[$blockWidth] ?? '';
-    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
+
+//    todo: dit kan weg
+//    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
+
+    if ($blockWidth !== 'fullscreen') {
+        $customContainer = $block['data']['custom_container'] ?? 'full-container';
+        $containerClassMap = ['full-container' => 'container mx-auto', 'left-container' => 'left-container', 'right-container' => 'right-container'];
+        $containerClass = $containerClassMap[$customContainer] ?? '';
+    }
+
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
     $imageId = ($block['data']['background_image']) ?? '';
@@ -57,10 +66,10 @@
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+    <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $containerClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($title)
-                <h2 class="lg:mb-4 text-{{ $titleColor }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
+                <h2 class="lg:mb-4 text-{{ $titleColor }}  @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
             @endif
             @include('components.photo-slider.list')
         </div>

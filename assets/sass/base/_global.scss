@@ -72,3 +72,36 @@ body {
 footer {
   margin-top: auto;
 }
+
+
+
+
+
+
+
+
+
+
+
+// Custom container styling blocks
+
+.left-container {
+  @media only screen and (min-width: 1280px) and (max-width: 1535px) {
+    margin-left: calc((100vw - 1280px)/ 2) ;
+  }
+
+  @media only screen and (min-width: 1536px) {
+    margin-left: calc((100vw - 1535px)/ 2) ;
+  }
+}
+
+
+.right-container {
+  @media only screen and (min-width: 1280px) and (max-width: 1535px) {
+    margin-right: calc((100vw - 1280px)/ 2) ;
+  }
+
+  @media only screen and (min-width: 1536px) {
+    margin-right: calc((100vw - 1535px)/ 2) ;
+  }
+}

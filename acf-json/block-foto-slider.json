@@ -355,6 +355,41 @@
             "placeholder": ""
         },
         {
+            "key": "field_665f276d6e4db",
+            "label": "Uitlijning blok",
+            "name": "custom_container",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65253ae6d92fb",
+                        "operator": "==",
+                        "value": "100"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "full-container": "Links en rechts uitgelijnd (gecentreerd)",
+                "left-container": "Alleen links uitgelijnd",
+                "right-container": "Alleen rechts uitgelijnd"
+            },
+            "default_value": "full-container",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_65253ae6d9302",
             "label": "Achtergrond kleur",
             "name": "background_color",
@@ -523,5 +558,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702639629
+    "modified": 1717513625
 }

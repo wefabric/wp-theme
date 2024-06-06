@@ -17,11 +17,11 @@
                 "id": ""
             },
             "choices": {
-                "1": "Groot",
+                "3": "Klein",
                 "2": "Gemiddeld",
-                "3": "Klein"
+                "1": "Groot"
             },
-            "default_value": 1,
+            "default_value": 3,
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -701,5 +701,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1717405442
+    "modified": 1717511743
 }
