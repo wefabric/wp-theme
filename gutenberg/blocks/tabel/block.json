@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/tabel",
+  "title": "Tabel",
+  "description": "Een tabel blok",
+  "category": "wefabric-theme",
+  "icon": "grid-view",
+  "apiVersion": 2,
+  "keywords": [
+    "tekst"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

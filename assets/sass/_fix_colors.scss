@@ -1,165 +1,280 @@
-// Primary
-
+// Primary colors
 .bg-primary-color {
-  @apply bg-primary
+  @apply bg-primary;
 }
 .bg-primary-color-light {
-  @apply bg-primary-light
+  @apply bg-primary-light;
 }
 .bg-primary-color-dark {
-  @apply bg-primary-dark
+  @apply bg-primary-dark;
 }
 .text-primary-color {
-  @apply text-primary
+  @apply text-primary;
 }
 .text-primary-color-light {
-  @apply text-primary-light
+  @apply text-primary-light;
 }
 .text-primary-color-dark {
-  @apply text-primary-dark
+  @apply text-primary-dark;
 }
 .btn-primary-color {
-  @apply btn-primary
+  @apply btn-primary;
 }
 .btn-primary-color-light {
-  @apply btn-primary-light
+  @apply btn-primary-light;
 }
 .btn-primary-color-dark {
-  @apply btn-primary-dark
+  @apply btn-primary-dark;
+}
+.even-bg-primary-color {
+  @apply even:bg-primary;
+}
+.odd-bg-primary-color {
+  @apply odd:bg-primary;
+}
+.even-bg-primary-color-light {
+  @apply even:bg-primary-light;
+}
+.odd-bg-primary-color-light {
+  @apply odd:bg-primary-light;
+}
+.even-bg-primary-color-dark {
+  @apply even:bg-primary-dark;
+}
+.odd-bg-primary-color-dark {
+  @apply odd:bg-primary-dark;
 }
 
 
 // Secondary colors
 .bg-secondary-color {
-  @apply bg-secondary
+  @apply bg-secondary;
 }
 .bg-secondary-color-light {
-  @apply bg-secondary-light
+  @apply bg-secondary-light;
 }
 .bg-secondary-color-dark {
-  @apply bg-secondary-dark
+  @apply bg-secondary-dark;
 }
 .text-secondary-color {
-  @apply text-secondary
+  @apply text-secondary;
 }
 .text-secondary-color-light {
-  @apply text-secondary-light
+  @apply text-secondary-light;
 }
 .text-secondary-color-dark {
-  @apply text-secondary-dark
+  @apply text-secondary-dark;
 }
 .btn-secondary-color {
-  @apply btn-secondary
+  @apply btn-secondary;
 }
 .btn-secondary-color-light {
-  @apply btn-secondary-light
+  @apply btn-secondary-light;
 }
 .btn-secondary-color-dark {
-  @apply btn-secondary-dark
+  @apply btn-secondary-dark;
+}
+.even-bg-secondary-color {
+  @apply even:bg-secondary;
+}
+.odd-bg-secondary-color {
+  @apply odd:bg-secondary;
+}
+.even-bg-secondary-color-light {
+  @apply even:bg-secondary-light;
+}
+.odd-bg-secondary-color-light {
+  @apply odd:bg-secondary-light;
+}
+.even-bg-secondary-color-dark {
+  @apply even:bg-secondary-dark;
+}
+.odd-bg-secondary-color-dark {
+  @apply odd:bg-secondary-dark;
 }
 
 
 // Tertiary colors
 .bg-tertiary-color {
-  @apply bg-tertiary
+  @apply bg-tertiary;
 }
 .bg-tertiary-color-light {
-  @apply bg-tertiary-light
+  @apply bg-tertiary-light;
 }
 .bg-tertiary-color-dark {
-  @apply bg-tertiary-dark
+  @apply bg-tertiary-dark;
 }
 .text-tertiary-color {
-  @apply text-tertiary
+  @apply text-tertiary;
 }
 .text-tertiary-color-light {
-  @apply text-tertiary-light
+  @apply text-tertiary-light;
 }
 .text-tertiary-color-dark {
-  @apply text-tertiary-dark
+  @apply text-tertiary-dark;
 }
 .btn-tertiary-color {
-  @apply btn-tertiary
+  @apply btn-tertiary;
 }
 .btn-tertiary-color-light {
-  @apply btn-tertiary-light
+  @apply btn-tertiary-light;
 }
 .btn-tertiary-color-dark {
-  @apply btn-tertiary-dark
+  @apply btn-tertiary-dark;
 }
+.even-bg-tertiary-color {
+  @apply even:bg-tertiary;
+}
+.odd-bg-tertiary-color {
+  @apply odd:bg-tertiary;
+}
+.even-bg-tertiary-color-light {
+  @apply even:bg-tertiary-light;
+}
+.odd-bg-tertiary-color-light {
+  @apply odd:bg-tertiary-light;
+}
+.even-bg-tertiary-color-dark {
+  @apply even:bg-tertiary-dark;
+}
+.odd-bg-tertiary-color-dark {
+  @apply odd:bg-tertiary-dark;
+}
+
 
 // Quaternary colors
 .bg-quaternary-color {
-  @apply bg-quaternary
+  @apply bg-quaternary;
 }
 .bg-quaternary-color-light {
-  @apply bg-quaternary-light
+  @apply bg-quaternary-light;
 }
 .bg-quaternary-color-dark {
-  @apply bg-quaternary-dark
+  @apply bg-quaternary-dark;
 }
 .text-quaternary-color {
-  @apply text-quaternary
+  @apply text-quaternary;
 }
 .text-quaternary-color-light {
-  @apply text-quaternary-light
+  @apply text-quaternary-light;
 }
 .text-quaternary-color-dark {
-  @apply text-quaternary-dark
+  @apply text-quaternary-dark;
 }
 .btn-quaternary-color {
-  @apply btn-quaternary
+  @apply btn-quaternary;
 }
 .btn-quaternary-color-light {
-  @apply btn-quaternary-light
+  @apply btn-quaternary-light;
 }
 .btn-quaternary-color-dark {
-  @apply btn-quaternary-dark
+  @apply btn-quaternary-dark;
+}
+.even-bg-quaternary-color {
+  @apply even:bg-quaternary;
+}
+.odd-bg-quaternary-color {
+  @apply odd:bg-quaternary;
+}
+.even-bg-quaternary-color-light {
+  @apply even:bg-quaternary-light;
+}
+.odd-bg-quaternary-color-light {
+  @apply odd:bg-quaternary-light;
+}
+.even-bg-quaternary-color-dark {
+  @apply even:bg-quaternary-dark;
+}
+.odd-bg-quaternary-color-dark {
+  @apply odd:bg-quaternary-dark;
 }
 
 
 // Background colors
 .bg-background-color {
-  @apply bg-background
+  @apply bg-background;
 }
 .bg-background-color-light {
-  @apply bg-background-light
+  @apply bg-background-light;
 }
 .bg-background-color-dark {
-  @apply bg-background-dark
+  @apply bg-background-dark;
 }
 .text-background-color {
-  @apply text-background
+  @apply text-background;
 }
 .text-background-color-light {
-  @apply text-background-light
+  @apply text-background-light;
 }
 .text-background-color-dark {
-  @apply text-background-dark
+  @apply text-background-dark;
 }
 .btn-background-color {
-  @apply btn-background
+  @apply btn-background;
 }
 .btn-background-color-light {
-  @apply btn-background-light
+  @apply btn-background-light;
 }
 .btn-background-color-dark {
-  @apply btn-background-dark
+  @apply btn-background-dark;
 }
+.even-bg-background-color {
+  @apply even:bg-background;
+}
+.odd-bg-background-color {
+  @apply odd:bg-background;
+}
+.even-bg-background-color-light {
+  @apply even:bg-background-light;
+}
+.odd-bg-background-color-light {
+  @apply odd:bg-background-light;
+}
+.even-bg-background-color-dark {
+  @apply even:bg-background-dark;
+}
+.odd-bg-background-color-dark {
+  @apply odd:bg-background-dark;
+}
+
+
+//Black color
+.even-bg-black {
+  @apply even:bg-black;
+}
+.odd-bg-black {
+  @apply odd:bg-black;
+}
+
+
+//White color
+.even-bg-white {
+  @apply even:bg-white;
+}
+.odd-bg-white {
+  @apply odd:bg-white;
+}
+
 
 
 // CTA color
 .bg-cta-color {
-  @apply bg-cta
+  @apply bg-cta;
 }
 .text-cta-color {
-  @apply text-cta
+  @apply text-cta;
 }
 .btn-cta-color {
-  @apply btn-cta
+  @apply btn-cta;
 }
 .border-cta-color {
-  @apply border-cta
+  @apply border-cta;
+}
+.even-bg-cta-color {
+  @apply even:bg-cta;
+}
+.odd-bg-cta-color {
+  @apply odd:bg-cta;
 }
 
 
