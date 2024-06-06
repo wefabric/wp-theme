@@ -1,7 +1,7 @@
 <div id="{{ str_replace(' ', '-', strtolower($pageTitle)) }}" class="content-under-card-item card-item group h-full">
     <div class="bg-{{ $cardBackgroundColor }} rounded-{{ $borderRadius }} h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out overflow-hidden">
         <div>
-            <div class="h-[360px] relative overflow-hidden rounded-t-{{ $borderRadius }}">
+            <div class="image-container h-[360px] relative overflow-hidden rounded-t-{{ $borderRadius }}">
                 @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                        class="absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
