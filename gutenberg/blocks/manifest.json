@@ -35,12 +35,10 @@
     "brochure/block.json",
     "embed/block.json",
     "sebastiaan/block.json",
-
     "nieuws-activiteit/block.json",
-
+    "technologies/block.json",
     "producten/block.json",
     "services/block.json",
-
     "landen/block.json"
   ]
 }

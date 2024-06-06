@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/technologies",
+  "title": "Technologieën overzicht",
+  "description": "Een technologie overzicht blok",
+  "category": "wefabric-theme",
+  "icon": "lightbulb",
+  "apiVersion": 2,
+  "keywords": [
+    "technologie"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

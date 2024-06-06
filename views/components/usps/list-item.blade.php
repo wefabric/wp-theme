@@ -10,7 +10,7 @@
 @endphp
 
 <div class="USP-item h-full usp-{{ $uspLayout }} ">
-    <div class="item-styling h-full @if( $uspLayout == 'horizontal') flex flex-row gap-x-6 items-center text-left @elseif( $uspLayout == 'vertical') flex flex-col gap-y-4 text-center  @endif ">
+    <div class="item-styling h-full @if( $uspLayout == 'horizontal') flex flex-row gap-x-6 items-center text-left @elseif( $uspLayout == 'vertical') flex flex-col gap-y-4 text-center @endif">
         @if ($icon)
             <i class="fa-{{ $icon['style'] }} fa-{{ $icon['id'] }} text-{{ $iconColor }} text-[70px] inline-block"
                aria-hidden="true"></i>
