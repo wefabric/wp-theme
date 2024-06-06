@@ -3,18 +3,16 @@
     $title = $block['data']['title'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-    $text = $block['data']['text'] ?? '';
-    $textColor = $block['data']['text_color'] ?? '';
-
 
     $columnCount = $block['data']['table_options_column_count'] ?? 1;
     $tableDataCount = $block['data']['table_data'] ?? [];
     $showTableHeaders = $block['data']['table_options_show_table_header'] ?? false;
+    $tableHeaderTextColor = $block['data']['table_options_table_header_text_color'] ?? '';
+    $tableTextColor = $block['data']['table_options_row_color'] ?? '';
+    $headerRowColor = $block['data']['table_options_header_row_color'] ?? '';
     $evenRowColor = $block['data']['table_options_even_row_color'] ?? '';
     $oddRowColor = $block['data']['table_options_odd_row_color'] ?? '';
 
-
-//    @dd($block['data']);
 
         // Buttons
         $button1Text = $block['data']['button_button_1']['title'] ?? '';
@@ -92,36 +90,36 @@
                 <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
             @endif
 
-            <table class="">
-                @if($showTableHeaders)
-                    <thead>
-                        @for ($row = 0; $row < $tableDataCount; $row++)
-                            <tr>
+            <div class="overflow-x-auto ">
+                <table class="table-auto">
+                    @if($showTableHeaders)
+                        <thead>
+                            <tr class="text-{{ $tableHeaderTextColor }} bg-{{ $headerRowColor }}">
                                 @for ($col = 1; $col <= $columnCount; $col++)
                                     @php
-                                        $field_key = "table_headers_{$row}_column_header_{$col}";
+                                        $field_key = "table_headers_0_column_header_{$col}";
                                         $field_value = get_field($field_key);
-                                        @endphp
-                                    <th>{{ $field_value }}</th>
+                                    @endphp
+                                    <th class="p-4">{{ $field_value }}</th>
+                                @endfor
+                            </tr>
+                        </thead>
+                    @endif
+                    <tbody>
+                        @for ($row = 0; $row < $tableDataCount; $row++)
+                            <tr class="text-{{ $tableTextColor }} even-bg-{{ $evenRowColor }} odd-bg-{{ $oddRowColor }} ">
+                                @for ($col = 1; $col <= $columnCount; $col++)
+                                    @php
+                                        $field_key = "table_data_{$row}_column_{$col}";
+                                        $field_value = get_field($field_key);
+                                    @endphp
+                                    <td class="p-4">{{ $field_value }}</td>
                                 @endfor
                             </tr>
                         @endfor
-                    </thead>
-                @endif
-                <tbody>
-                    @for ($row = 0; $row < $tableDataCount; $row++)
-                        <tr class="even-bg-{{ $evenRowColor }} odd-bg-{{ $oddRowColor }}">
-                            @for ($col = 1; $col <= $columnCount; $col++)
-                                @php
-                                    $field_key = "table_data_{$row}_column_{$col}";
-                                    $field_value = get_field($field_key);
-                                @endphp
-                                <td>{{ $field_value }}</td>
-                            @endfor
-                        </tr>
-                    @endfor
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
 
             @if ($text)
                 @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])

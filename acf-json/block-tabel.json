@@ -135,6 +135,57 @@
                     "placeholder": ""
                 },
                 {
+                    "key": "field_666180dfeeaae",
+                    "label": "Tabel tekst kleur",
+                    "name": "table_text_color",
+                    "aria-label": "",
+                    "type": "Thema Kleur",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "theme_color": null,
+                    "font_size": 14
+                },
+                {
+                    "key": "field_6661905f84c2b",
+                    "label": "Even rij achtergrond kleur",
+                    "name": "even_row_color",
+                    "aria-label": "",
+                    "type": "Thema Kleur",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "theme_color": null,
+                    "font_size": 14
+                },
+                {
+                    "key": "field_6661907584c2c",
+                    "label": "Oneven rij achtergrond kleur",
+                    "name": "odd_row_color",
+                    "aria-label": "",
+                    "type": "Thema Kleur",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "theme_color": null,
+                    "font_size": 14
+                },
+                {
                     "key": "field_6661878578d53",
                     "label": "Tabel headers tonen?",
                     "name": "show_table_header",
@@ -155,14 +206,22 @@
                     "ui_off_text": ""
                 },
                 {
-                    "key": "field_6661905f84c2b",
-                    "label": "Even rij kleur",
-                    "name": "even_row_color",
+                    "key": "field_6661a4c8b5fcd",
+                    "label": "Tabel header tekst kleur",
+                    "name": "table_header_text_color",
                     "aria-label": "",
                     "type": "Thema Kleur",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6661878578d53",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -172,14 +231,22 @@
                     "font_size": 14
                 },
                 {
-                    "key": "field_6661907584c2c",
-                    "label": "Oneven rij kleur",
-                    "name": "odd_row_color",
+                    "key": "field_6661a3fdea78a",
+                    "label": "Header rij achtergrond kleur",
+                    "name": "header_row_color",
                     "aria-label": "",
                     "type": "Thema Kleur",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6661878578d53",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -561,50 +628,6 @@
                     "parent_repeater": "field_6661842ffb3f2"
                 }
             ]
-        },
-        {
-            "key": "field_666180dfeeaa7",
-            "label": "Tekst",
-            "name": "text",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
-        },
-        {
-            "key": "field_666180dfeeaae",
-            "label": "Tekst kleur",
-            "name": "text_color",
-            "aria-label": "",
-            "type": "Thema Kleur",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_666180dfeeaa7",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "theme_color": null,
-            "font_size": 14
         },
         {
             "key": "field_666180dfeeab5",
@@ -1807,5 +1830,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1717670018
+    "modified": 1717675415
 }
