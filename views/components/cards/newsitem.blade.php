@@ -26,7 +26,7 @@
                class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
 
 
-            <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+            <div class="news-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                 @if($postCategories)
                     @foreach ($postCategories as $category)
                         @php

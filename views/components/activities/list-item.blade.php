@@ -43,7 +43,7 @@
                 @endif
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     @if ($activityCategories && !is_bool($activityCategories))
-                        <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                        <div class="activity-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                             @foreach ($activityCategories as $category)
                                 @php
                                     $categoryColor = get_field('category_color', $category);
