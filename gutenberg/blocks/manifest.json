@@ -6,7 +6,6 @@
     "foto-slider/block.json",
     "foto-galerij/block.json",
     "video-slider/block.json",
-    "call-to-action/block.json",
     "cta-button/block.json",
     "cta-werknemer/block.json",
     "cta-whitepaper/block.json",
@@ -25,10 +24,8 @@
     "activiteiten/block.json",
     "vacatures/block.json",
     "werknemers/block.json",
-    "organisaties/block.json",
     "werkwijze/block.json",
     "contact/block.json",
-    "prijzen/block.json",
     "quote/block.json",
     "historie/block.json",
     "testimonial/block.json",
@@ -37,10 +34,14 @@
     "brochure/block.json",
     "embed/block.json",
     "sebastiaan/block.json",
-    "nieuws-activiteit/block.json",
-    "technologies/block.json",
     "producten/block.json",
     "services/block.json",
+
+    "proces/block.json",
+    "organisaties/block.json",
+    "prijzen/block.json",
+    "nieuws-activiteit/block.json",
+    "technologies/block.json",
     "landen/block.json"
   ]
 }
