@@ -104,10 +104,10 @@
             <div class="text-image flex flex-col lg:flex-row gap-8 xl:gap-20 @if ($verticalCentered) items-center @endif">
                 <div class="text {{ $textClass }} order-2 {{ $textOrder }}">
                     @if ($subTitle)
-                        <span class="block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                        <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
                     @endif
                     @if ($title)
-                        <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
+                        <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
                     @endif
                     @if ($text)
                         @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])

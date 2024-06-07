@@ -88,9 +88,9 @@
             <div class="header-info flex flex-col {{ $textWidthClass }}">
                 @if ($showTitle)
                     @if ($subTitle)
-                        <span class="block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                        <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
                     @endif
-                    <h1 class="text-{{ $titleColor }}">{!! $title !!}</h1>
+                    <h1 class="title text-{{ $titleColor }}">{!! $title !!}</h1>
                 @endif
                 @if ($text)
                     @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 text-lg mb-4 text-' . $textColor])
