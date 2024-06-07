@@ -3,12 +3,6 @@
     $tabletLayout = $block['data']['layout_tablet'] ?? 2;
     $desktopLayout = $block['data']['layout_desktop'] ?? 3;
 
-    $layoutClasses = [
-        'mobile' => 'grid-cols-' . $mobileLayout,
-        'tablet' => 'sm:grid-cols-' . $tabletLayout,
-        'desktop' => 'lg:grid-cols-' . $desktopLayout,
-    ];
-
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'photoSliderSwiper-' . $randomNumber;
@@ -39,9 +33,9 @@
             spaceBetween: {{ $spaceBetween }},
             centeredSlides: false,
             @if ($swiperAutoplay)
-            autoplay: {
-                disableOnInteraction: false,
-            },
+                autoplay: {
+                    disableOnInteraction: false,
+                },
             @endif
             pagination: {
                 el: '.swiper-pagination',

@@ -4,6 +4,7 @@
     "tekst/block.json",
     "afbeelding/block.json",
     "foto-slider/block.json",
+    "foto-galerij/block.json",
     "video-slider/block.json",
     "call-to-action/block.json",
     "cta-button/block.json",

@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.foto-galerij.index', ['block' => $block])->render(); ?>

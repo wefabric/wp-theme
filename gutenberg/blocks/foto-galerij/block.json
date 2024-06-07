@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/foto-galerij",
+  "title": "Foto galerij",
+  "description": "Een foto galerij blok",
+  "category": "wefabric-theme",
+  "icon": "format-gallery",
+  "apiVersion": 2,
+  "keywords": [
+    "Foto galerij"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
