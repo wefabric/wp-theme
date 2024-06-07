@@ -16,7 +16,7 @@
         @endif
         <a href="{{ $pageUrl }} " aria-label="Ga naar {{ $pageTitle }} pagina"
            class="text-{{ $cardTitleColor }} page-title relative z-20 h4 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
-            {{ $pageTitle }}
+            {!! $pageTitle !!}
         </a>
         @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && $pageExcerpt)
             <p class="text-{{ $cardTextColor }} page-excerpt relative z-20 group-hover:text-white transition-all duration-300 ease-in-out">{!! $pageExcerpt !!}</p>
