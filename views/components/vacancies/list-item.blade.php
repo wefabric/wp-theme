@@ -13,7 +13,7 @@
 <div class="vacature-item group h-full">
     <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
         @if ($vacancyThumbnailID)
-            <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
+            <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina"
                    class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
@@ -39,9 +39,9 @@
            ])
             </div>
         @endif
-        <div class="flex flex-col w-full grow mt-5">
+        <div class="vacature-content flex flex-col w-full grow mt-5">
 
-            <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina" class="font-bold text-{{ $vacancyTitleColor }} text-lg group-hover:text-primary">{!! $vacancyTitle !!}</a>
+            <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina" class="vacancy-title-text font-bold text-{{ $vacancyTitleColor }} text-lg group-hover:text-primary">{!! $vacancyTitle !!}</a>
 
             <div class="vacancy-data mt-4 text-{{ $vacancyTextColor }}">
 
