@@ -71,7 +71,7 @@
             @endif
 
             <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina"
-               class="text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{!! $postTitle !!}</a>
+               class="news-activity-title-text text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{!! $postTitle !!}</a>
 
             <div class="news-info">
 
