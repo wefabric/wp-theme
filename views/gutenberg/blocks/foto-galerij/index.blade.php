@@ -8,8 +8,6 @@
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
     // Images
-
-    // Images
     $imagesCount = $block['data']['images'] ?? 0;
     $images = [];
     for ($i = 0; $i < $imagesCount; $i++) {
@@ -77,30 +75,16 @@
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
 
-            <div class="text">
-                @if ($subTitle)
-                    <span class="block mb-2 text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $subTitle !!}</span>
-                @endif
-                @if ($title)
-                    <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
-                @endif
+            @if ($subTitle)
+                <span class="block mb-2 text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $subTitle !!}</span>
+            @endif
+            @if ($title)
+                <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
+            @endif
 
-                @if (($button1Text) && ($button1Link))
-                    <div class="flex gap-4 mt-4 md:mt-8">
-                        @include('components.buttons.default', [
-                            'text' => $button1Text,
-                            'href' => $button1Link,
-                            'alt' => $button1Text,
-                            'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                            'class' => 'rounded-lg text-left',
-                            'target' => $button1Target,
-                        ])
-                    </div>
-                @endif
-            </div>
-            <div class="photo-gallery-list">
+            @if ($images)
                 @include('components.photo-gallery.list')
-            </div>
+            @endif
         </div>
 
     </div>

@@ -11,19 +11,18 @@
         $tabletLayout = count($images);
         $desktopLayout = count($images);
     } else {
-        $mobileLayout = $block['data']['layout_mobile'] ?? 1;
-        $tabletLayout = $block['data']['layout_tablet'] ?? 2;
-        $desktopLayout = $block['data']['layout_desktop'] ?? 3;
+        $mobileLayout = $block['data']['layout_mobile'] ?? 3;
+        $tabletLayout = $block['data']['layout_tablet'] ?? 3;
+        $desktopLayout = $block['data']['layout_desktop'] ?? 4;
     }
 
     $spaceBetween = $block['data']['space_between'] ?? 20;
 @endphp
 
 <div class="block relative">
-    <!-- Top Slider -->
-
     <div class="flex flex-col">
 
+        <!-- Top Slider -->
         <div class="swiper {{ $swiperTopRandomId }}">
             <div class="swiper-wrapper gallery-top" style="margin-bottom: {{$spaceBetween}}px">
                 @foreach ($images as $imageID)

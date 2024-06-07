@@ -61,7 +61,7 @@
                     loop: {{count($services) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
-                640: {
+                768: {
                     loop: {{ count($services) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },

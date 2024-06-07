@@ -92,7 +92,7 @@
                     loop: true,
                     slidesPerView: 1,
                 },
-                640: {
+                768: {
                     loop: true,
                     slidesPerView: 2,
                 },
