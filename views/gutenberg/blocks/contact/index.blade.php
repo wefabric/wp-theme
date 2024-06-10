@@ -77,7 +77,7 @@
                                                    href="tel:{{ $phone['number'] }}"
                                                    title="Telefoonnummer">
                                                     <i class="fa-solid fa-phone"></i>
-                                                    <span class="align-middle">{{ $phone['number'] }}</span>
+                                                    <span class="align-middle group-hover:text-cta group-hover:underline">{{ $phone['number'] }}</span>
                                                 </a>
                                             @endif
                                             @if($email)
@@ -85,15 +85,21 @@
                                                    href="mailto:{{ $email }}"
                                                    title="Email">
                                                     <i class="fa-solid fa-envelope"></i>
-                                                    <span class="align-middle">{{ $email }}</span>
+                                                    <span class="align-middle group-hover:text-cta group-hover:underline">{{ $email }}</span>
                                                 </a>
                                             @endif
                                         </div>
                                     @endif
-                                    @if($street && $visibleElements && in_array('route_description', $visibleElements))
-                                        <a href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}"
-                                           target="_blank" class="hover:text-primary underline">Routebeschrijving ></a>
-                                    @endif
+                                    <div class="route-info">
+                                        @if($street && $visibleElements && in_array('route_description', $visibleElements))
+                                            <a class="route-link group flex items-center gap-2 w-fit"
+                                               href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}"
+                                               title="Email">
+                                                <i class="fa-solid fa-route"></i>
+                                                <span class="align-middle group-hover:text-cta group-hover:underline">Routebeschrijving</span>
+                                            </a>
+                                        @endif
+                                    </div>
                                 </div>
                             @endwhile
                         </div>
