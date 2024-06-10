@@ -188,13 +188,12 @@
 
             <div class="text-center md:text-left text-[14px]">
                 @if($termsPage)
-                    <a class="terms-text underline" href="{{ get_permalink($termsPage) }}">Algemene
-                        voorwaarden</a> @if($termsPage && $privacyPage)
+                    <a class="terms-text underline" href="{{ get_permalink($termsPage) }}">{{ get_the_title($termsPage) }}</a> @if($termsPage && $privacyPage)
                         |
                     @endif
                 @endif
                 @if($privacyPage)
-                    <a class="privacy-text underline" href="{{ get_permalink($privacyPage) }}">Privacybeleid</a>
+                    <a class="privacy-text underline" href="{{ get_permalink($privacyPage) }}">{{ get_the_title($privacyPage) }}</a>
                 @endif
             </div>
 
