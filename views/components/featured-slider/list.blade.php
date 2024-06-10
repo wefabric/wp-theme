@@ -7,7 +7,7 @@
 @endphp
 
 <div class="block relative">
-    <div class="swiper {{ $randomId }}">
+    <div class="swiper {{ $randomId }} pb-8 md:pb-0">
         <div class="swiper-wrapper">
             @foreach ($links as $link)
                 <div class="swiper-slide h-auto">
@@ -15,6 +15,7 @@
                 </div>
             @endforeach
         </div>
+         <div class="md:hidden swiper-pagination"></div>
     </div>
 </div>
 
@@ -23,13 +24,21 @@
         var featuredSliderSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: {{ $spaceBetween }},
             centeredSlides: false,
+            loop: true,
             slidesPerView: 1,
             @if ($swiperAutoplay)
-            autoplay: {
-                disableOnInteraction: false,
-                delay: 5000, // autoplay delay of 5 seconds
-            },
+                autoplay: {
+                    disableOnInteraction: false,
+                    delay: 5000, // autoplay delay of 5 seconds
+                },
             @endif
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: ".linkslider-button-next-{{ $randomNumber }}",
+                prevEl: ".linkslider-button-prev-{{ $randomNumber }}",
+            },
         });
 
         const linkItems = document.querySelectorAll('.link-item');

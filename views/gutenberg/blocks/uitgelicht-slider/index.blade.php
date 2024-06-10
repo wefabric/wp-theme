@@ -98,29 +98,29 @@
         <div class="{{ $blockClass }} mx-auto">
 
 
-            <div class="flex items-center gap-x-32">
+            <div class="flex flex-col md:flex-row md:items-center gap-y-8 md:gap-x-12 xl:gap-x-32">
 
                 @if ($links)
-                    <div class="w-1/2">
+                    <div class="w-full md:w-1/2 order-2 md:order-1">
                         @include('components.featured-slider.list')
                     </div>
                 @endif
 
-                <div class="block-content w-1/2">
+                <div class="block-content w-full md:w-1/2 order-1 md:order-1">
                     @if ($subTitle)
-                        <span class="block mb-2 text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $subTitle !!}</span>
+                        <span class="subtitle block mb-2 text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $subTitle !!}</span>
                     @endif
                     @if ($title)
-                        <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
+                        <h2 class="title text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
                     @endif
                     @if ($links)
                          <div class="links-container">
                              @foreach ($links as $index => $link)
-                                 <div class="link-item cursor-pointer my-8 relative text-[36px] font-normal opacity-50 w-fit" data-slide="{{ $index }}">
-                                     <div class="link-title">{{ $link['title'] }}</div>
+                                 <div class="link-item cursor-pointer my-4 lg:my-8 relative opacity-50 w-fit" data-slide="{{ $index }}">
+                                     <div class="text-{{ $titleColor }} link-title">{{ $link['title'] }}</div>
                                      @if ($swiperAutoplay)
-                                         <div class="progress-bar-container">
-                                             <div class="progress-bar"></div>
+                                         <div class="progress-bar-container mt-[10px] opacity-0 relative w-full h-[3px] bg-[#6C6D6D]">
+                                             <div class="progress-bar absolute top-0 left-0 w-0 h-full bg-white"></div>
                                          </div>
                                      @endif
                                  </div>
@@ -128,7 +128,7 @@
                          </div>
                     @endif
                     @if (($button1Text) && ($button1Link))
-                        <div class="flex gap-4 mt-4 md:mt-8">
+                        <div class="flex gap-4 mt-6 md:mt-8">
                             @include('components.buttons.default', [
                                 'text' => $button1Text,
                                 'href' => $button1Link,
@@ -201,23 +201,6 @@
 
 
 
-    .link-title:after {
-        content: "\f061";
-        font-family: "Font Awesome\ 6 Pro";
-        font-weight: 400;
-        position: absolute;
-        right: -42px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 24px;
-        transition: all ease-in-out 0.2s;
-    }
-
-    .link-item:hover .link-title:after {
-        right: -50px;
-    }
-
-
     .active-slider-item {
         opacity: 1;
 
@@ -226,21 +209,7 @@
         }
     }
 
-    .progress-bar-container {
-        opacity: 0;
-        position: relative;
-        width: 100%;
-        height: 4px;
-        background-color: #ccc;
-    }
-
     .progress-bar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 100%;
-        background-color: blue;
         transition: width 5s linear;
     }
     .active-slider-item .progress-bar {

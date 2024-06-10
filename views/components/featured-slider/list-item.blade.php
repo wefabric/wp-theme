@@ -1,9 +1,10 @@
 @php
-//    $imageCaption = $image['caption'] ?? '';
-//    $imageUrl = $image['url'] ?? '';
-
     $linkImage = $link['image'] ?? '';
-    $linkImageAlt = $image['alt'] ?? '';
+
+    $imageAlt = $linkImage ? get_post_meta($linkImage, '_wp_attachment_image_alt', true) : '';
+    if (empty($imageAlt)) {
+        $imageAlt = $link['title'] ?? '';
+    }
 @endphp
 
 @if ($linkImage)
@@ -11,7 +12,7 @@
         'image_id' => $linkImage,
         'size' => 'full',
         'object_fit' => 'cover',
-        'img_class' => 'w-full h-[400px] h-[600px] object-cover rounded-' . $borderRadius,
-        'alt' => $linkImageAlt
+        'img_class' => 'w-full h-[400px] md:h-[600px] object-cover rounded-' . $borderRadius,
+        'alt' => $imageAlt
     ])
 @endif
