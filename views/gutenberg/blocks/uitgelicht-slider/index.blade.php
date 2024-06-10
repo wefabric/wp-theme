@@ -23,17 +23,17 @@
 
 
     // Links
-    $linksCount = $block['data']['links'] ?? 0;
-    $links = [];
+    $itemsCount = $block['data']['items'] ?? 0;
+    $items = [];
 
-    for ($i = 0; $i < $linksCount; $i++) {
-        $link = [
-            'image' => $block['data']['links_' . $i . '_link_image'] ?? '',
-            'title' => $block['data']['links_' . $i . '_link_title'] ?? '',
-            'url' => $block['data']['links_' . $i . '_link_url'] ?? '',
+    for ($i = 0; $i < $itemsCount; $i++) {
+        $item = [
+            'image' => $block['data']['items_' . $i . '_image'] ?? '',
+            'title' => $block['data']['items_' . $i . '_title'] ?? '',
+            'url' => $block['data']['items_' . $i . '_url'] ?? '',
         ];
 
-        $links[] = $link;
+        $items[] = $item;
     }
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
@@ -100,7 +100,7 @@
 
             <div class="flex flex-col md:flex-row md:items-center gap-y-8 md:gap-x-12 xl:gap-x-32">
 
-                @if ($links)
+                @if ($items)
                     <div class="w-full md:w-1/2 order-2 md:order-1">
                         @include('components.featured-slider.list')
                     </div>
@@ -113,11 +113,11 @@
                     @if ($title)
                         <h2 class="title text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
                     @endif
-                    @if ($links)
+                    @if ($items)
                          <div class="links-container">
-                             @foreach ($links as $index => $link)
+                             @foreach ($items as $index => $item)
                                  <div class="link-item cursor-pointer my-4 lg:my-8 relative opacity-50 w-fit" data-slide="{{ $index }}">
-                                     <div class="text-{{ $titleColor }} link-title">{{ $link['title'] }}</div>
+                                     <div class="text-{{ $titleColor }} link-title">{{ $item['title'] }}</div>
                                      @if ($swiperAutoplay)
                                          <div class="progress-bar-container mt-[10px] opacity-0 relative w-full h-[3px] bg-[#6C6D6D]">
                                              <div class="progress-bar absolute top-0 left-0 w-0 h-full bg-white"></div>

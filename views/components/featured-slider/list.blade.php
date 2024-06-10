@@ -9,7 +9,7 @@
 <div class="block relative">
     <div class="swiper {{ $randomId }} pb-8 md:pb-0">
         <div class="swiper-wrapper">
-            @foreach ($links as $link)
+            @foreach ($items as $item)
                 <div class="swiper-slide h-auto">
                     @include('components.featured-slider.list-item')
                 </div>
@@ -36,8 +36,8 @@
                 el: '.swiper-pagination',
             },
             navigation: {
-                nextEl: ".linkslider-button-next-{{ $randomNumber }}",
-                prevEl: ".linkslider-button-prev-{{ $randomNumber }}",
+                nextEl: ".featuredslider-button-next-{{ $randomNumber }}",
+                prevEl: ".featuredslider-button-prev-{{ $randomNumber }}",
             },
         });
 
