@@ -15,6 +15,7 @@
 @if(isset($option['newsletter_footer'], $option['newsletter_footer']['show']) && $option['newsletter_footer']['show'] === true)
 	@php
 		$title = !empty($option['newsletter_footer']['title']) ? $option['newsletter_footer']['title'] : 'Blijf op de hoogte';
+        $text = $option['newsletter_footer']['newsletter_text'] ?? '';
 
 		$mailChimpUrl = $option['newsletter_footer']['embed_subscribe_url'] ?? '';
         $zohoUrl = $option['newsletter_footer']['zoho_subscribe_url'] ?? '';
@@ -24,23 +25,23 @@
 	</span>
     <div>
 		@if($option['newsletter_footer']['newsletter_type'] == 'mailchimp' && $mailChimpUrl)
-        <div id="mc_embed_signup" class="newsletter-signup">
-			@include('components.footer.mailchimp', [
-				'mailChimpSubscribeUrl' => $mailChimpUrl,
-			])
-        </div>
+			<div id="mc_embed_signup" class="newsletter-signup">
+				@include('components.footer.mailchimp', [
+					'mailChimpSubscribeUrl' => $mailChimpUrl,
+				])
+			</div>
 		@endif
 
 		@if($option['newsletter_footer']['newsletter_type'] == 'zoho' && $zohoUrl)
-		<div id="mc_embed_signup2" class="newsletter-signup">
-			@include('components.footer.zoho', [
-				'ZohoSubscribeUrl' => $zohoUrl,
-			])
-		</div>
-			@endif
+			<div id="mc_embed_signup2" class="newsletter-signup">
+				@include('components.footer.zoho', [
+					'ZohoSubscribeUrl' => $zohoUrl,
+				])
+			</div>
+		@endif
 
-			@if($option['newsletter_footer']['newsletter_type'] == 'zoho')
-				{{-- Todo: maak koppeling met Zoho --}}
-			@endif
+		@if($option['newsletter_footer']['newsletter_type'] == 'zoho')
+			{{-- Todo: maak koppeling met Zoho --}}
+		@endif
     </div>
 @endif
