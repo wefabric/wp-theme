@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/uitgelicht-slider",
+  "title": "Uitgelicht slider",
+  "description": "Een uitgelicht slider blok",
+  "category": "wefabric-theme",
+  "icon": "star-filled",
+  "apiVersion": 2,
+  "keywords": [
+    "Uitgelichtslider"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
