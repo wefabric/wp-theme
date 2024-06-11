@@ -25,7 +25,7 @@
                @include('components.navigation.secondary-nav')
             @endif
             <div class="main-navigation main-navigation-bar bg-{{ $options['menu_background_color'] }} text-{{ $options['menu_text_color'] ?? 'white' }}">
-                <div class="flex flex-row container mx-auto py-3 px-4">
+                <div class="nav-container flex flex-row container mx-auto py-3 px-4 md:px-8">
                     <div class="logo hidden xl:flex w-1/6 items-center">
                         @include('components.header.logo')
                     </div>
