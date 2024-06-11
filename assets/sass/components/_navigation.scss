@@ -4,6 +4,11 @@ header {
 	z-index: 9999;
 }
 
+.main-nav-items {
+	margin-bottom: -25px;
+}
+
+
 .main-navigation {
     .menu {
         @apply flex flex-row w-full;
