@@ -46,6 +46,9 @@
         $containerClassMap = ['full-container' => 'container mx-auto', 'left-container' => 'left-container', 'right-container' => 'right-container'];
         $containerClass = $containerClassMap[$customContainer] ?? '';
     }
+    else {
+        $containerClass = '';
+    }
 
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
