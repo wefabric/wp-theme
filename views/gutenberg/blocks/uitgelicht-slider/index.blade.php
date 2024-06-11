@@ -116,8 +116,16 @@
                     @if ($items)
                          <div class="links-container">
                              @foreach ($items as $index => $item)
-                                 <div class="link-item cursor-pointer my-4 lg:my-8 relative opacity-50 w-fit" data-slide="{{ $index }}">
+                                 <div class="link-item my-4 lg:my-8 relative opacity-50 w-fit" data-slide="{{ $index }}">
+
+                                     @if ($item['url'])
+                                         <a href="{{ $item['url']['url'] }}" aria-label="Ga naar {{ $item['title'] }} pagina" class="cursor-pointer">
+                                     @endif
                                      <div class="text-{{ $titleColor }} link-title">{{ $item['title'] }}</div>
+                                     @if ($item['url'])
+                                         </a>
+                                     @endif
+
                                      @if ($swiperAutoplay)
                                          <div class="progress-bar-container mt-[10px] opacity-0 relative w-full h-[3px] bg-[#6C6D6D]">
                                              <div class="progress-bar absolute top-0 left-0 w-0 h-full bg-white"></div>

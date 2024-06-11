@@ -15,7 +15,7 @@
                 </div>
             @endforeach
         </div>
-         <div class="md:hidden swiper-pagination"></div>
+        <div class="md:hidden swiper-pagination"></div>
     </div>
 </div>
 
@@ -27,10 +27,10 @@
             loop: true,
             slidesPerView: 1,
             @if ($swiperAutoplay)
-                autoplay: {
-                    disableOnInteraction: false,
-                    delay: 5000, // autoplay delay of 5 seconds
-                },
+            autoplay: {
+                disableOnInteraction: false,
+                delay: 5000, // autoplay delay of 5 seconds
+            },
             @endif
             pagination: {
                 el: '.swiper-pagination',
@@ -61,9 +61,9 @@
         });
 
         linkItems.forEach((item) => {
-            item.addEventListener('click', function () {
+            item.addEventListener('mouseover', function () {
                 const slideIndex = this.getAttribute('data-slide');
-                featuredSliderSwiper.slideToLoop(slideIndex); // Slide to the clicked slide
+                featuredSliderSwiper.slideToLoop(slideIndex); // Slide to the hovered slide
             });
         });
     });
