@@ -153,7 +153,8 @@
             "return_format": "object",
             "field_type": "multi_select",
             "allow_null": 0,
-            "multiple": 0
+            "multiple": 0,
+            "bidirectional_target": []
         },
         {
             "key": "field_64a28054000d9",
@@ -185,7 +186,8 @@
             "return_format": "id",
             "multiple": 1,
             "allow_null": 0,
-            "ui": 1
+            "ui": 1,
+            "bidirectional_target": []
         },
         {
             "key": "field_64a2e7d645184",
@@ -207,6 +209,7 @@
                 "overview_text": "Overzichtstekst",
                 "contact_info": "Contactgegevens",
                 "socials": "Social media",
+                "category_filter": "Categorie filter",
                 "button_bottom": "Knop onder werknemers"
             },
             "default_value": [],
@@ -807,5 +810,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1705051379
+    "modified": 1718268993
 }
