@@ -17,7 +17,7 @@
 
     // Determine $gridStartClass based on $brandsCount
     if ($brandsCount === 1) {
-        $gridStartClass = 'col-start-4';
+        $gridStartClass = 'col-start-1';
     } elseif ($brandsCount === 2) {
         $gridStartClass = 'col-start-3';
     } elseif ($brandsCount === 3) {
