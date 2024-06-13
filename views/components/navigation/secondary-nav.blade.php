@@ -13,7 +13,7 @@
             <div class="secondary-menu-text text-sm text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">{{ $options['secondary_menu_text'] }}</div>
         @endif
         @if (!empty($options['secondary_menu_show_elements']))
-            <div class="flex gap-4 text-sm h-full text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
+            <div class="flex gap-4 text-sm h-full items-center text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
                 @foreach($footer_establishments as $key => $establishment)
                     @php
                         if ($establishment instanceof \Wefabric\WPEstablishments\Establishment) {
@@ -56,6 +56,11 @@
                             $menuID = $menuLocations['top-navigation'];
                         }
                     @endphp
+
+                    @if (isset($options['secondary_menu_navigation_text']))
+                        <div class="pre-navigation-text">{!! $options['secondary_menu_navigation_text'] !!}</div>
+                    @endif
+
                     @if(isset($menuID) && !is_null($menuID))
                         {!! wp_nav_menu([
                             'theme_location' => 'top-navigation',

@@ -206,6 +206,34 @@
             "toggle": 0,
             "save_custom": 0,
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
+        },
+        {
+            "key": "field_666aaf67171b0",
+            "label": "Tekst voor de secondary top navigatie",
+            "name": "secondary_menu_navigation_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_655730670ebc4",
+                        "operator": "==",
+                        "value": "top_navigation"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -226,5 +254,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1709046637
+    "modified": 1718267850
 }
