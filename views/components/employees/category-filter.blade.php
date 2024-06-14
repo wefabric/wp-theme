@@ -14,6 +14,17 @@
 
 <div class="category-list block flex flex-wrap gap-2">
     @if($categories && !is_wp_error($categories))
+        @php
+            // URL without any category filters
+            $allCategoriesUrl = remove_query_arg('employee_category');
+        @endphp
+
+        {{-- Filter for all --}}
+        <a href="{{ $allCategoriesUrl }}"
+           class="category category-link px-4 py-2 rounded-full border-2 border-primary hover:bg-primary hover:text-white {{ empty($currentCatIds) ? 'bg-primary text-white' : '' }}">
+            Alles
+        </a>
+
         @foreach($categories as $category)
             @php
                 $categoryColor = get_field('category_color', 'employee_categories_' . $category->term_id);
