@@ -221,6 +221,34 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
+            "key": "field_666c12c214476",
+            "label": "Kunnen filteren op meerdere categorieën tegelijk?",
+            "name": "multiple_filters_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a2e7d645184",
+                        "operator": "==",
+                        "value": "category_filter"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_658060427280c",
             "label": "Contactgegevens volledig uitschrijven?",
             "name": "show_full_contact_info",
@@ -810,5 +838,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1718268993
+    "modified": 1718358778
 }

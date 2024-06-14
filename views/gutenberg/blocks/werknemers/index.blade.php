@@ -19,6 +19,7 @@
      // Show employees
      $displayType = $block['data']['display_type'];
      $currentTerms = isset($_GET['employee_category']) ? array_map('intval', explode(',', $_GET['employee_category'])) : [];
+     $multipleFilters = $block['data']['multiple_filters_enabled'] ?? false;
 
      // Show all
      if ($displayType == 'show_all') {

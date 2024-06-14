@@ -10,6 +10,8 @@
         'taxonomy' => 'employee_categories',
         'hide_empty' => true,
     ]);
+
+    $multipleFilters = $block['data']['multiple_filters_enabled'] ?? false;
 @endphp
 
 <div class="category-list block flex flex-wrap gap-2">
@@ -29,7 +31,13 @@
             @php
                 $categoryColor = get_field('category_color', 'employee_categories_' . $category->term_id);
                 $isActive = in_array($category->term_id, $currentCatIds);
-                $newCatIds = $isActive ? array_diff($currentCatIds, [$category->term_id]) : array_merge($currentCatIds, [$category->term_id]);
+
+                if ($multipleFilters) {
+                    $newCatIds = $isActive ? array_diff($currentCatIds, [$category->term_id]) : array_merge($currentCatIds, [$category->term_id]);
+                } else {
+                    $newCatIds = $isActive ? [] : [$category->term_id];
+                }
+
                 $url = empty($newCatIds) ? remove_query_arg('employee_category') : add_query_arg('employee_category', implode(',', $newCatIds), get_permalink());
                 $style = '';
                 $class = 'category hover:text-white border-2 category-link px-4 py-2 rounded-full';
@@ -54,8 +62,8 @@
                style="{{ $style }}"
                class="{{ $class }}"
                @if(!$isActive && $categoryColor)
-                   onmouseover="this.style.backgroundColor='{{ $categoryColor }}'; this.style.color='white';"
-                   onmouseout="this.style.backgroundColor=''; this.style.color='{{ $categoryColor }}';"
+                    onmouseover="this.style.backgroundColor='{{ $categoryColor }}'; this.style.color='white';"
+                    onmouseout="this.style.backgroundColor=''; this.style.color='{{ $categoryColor }}';"
                @endif>
                {!! $category->name !!}
             </a>
