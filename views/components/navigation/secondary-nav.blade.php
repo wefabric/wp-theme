@@ -10,7 +10,7 @@
 <div class="secondary-navigation hidden xl:block w-full bg-{{ $options['secondary_menu_background_color'] ?? 'primary-color' }}">
     <div class="secondary-navigation-items flex items-center justify-between flex-row container mx-auto h-12 px-4">
         @if(isset($options['secondary_menu_text']))
-            <div class="secondary-menu-text text-sm text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">{{ $options['secondary_menu_text'] }}</div>
+            <div class="secondary-menu-text text-sm text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">{!! $options['secondary_menu_text'] !!}</div>
         @endif
         @if (!empty($options['secondary_menu_show_elements']))
             <div class="flex gap-4 text-sm h-full items-center text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
