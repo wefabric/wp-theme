@@ -1,0 +1,12 @@
+
+// Hover for mail and phone icon in werknemers block
+
+.block-werknemers {
+  @media only screen and (min-width: 640px) {
+    .mail-icon:hover, .phone-icon:hover {
+      .popup {
+        display: block;
+      }
+    }
+  }
+}
