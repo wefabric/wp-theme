@@ -47,19 +47,27 @@
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements))
                 <div class="contact-items relative">
                     @if ($mail)
-                        <div class="mail-icon relative">
-                            <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" class="text-{{ $employeeTextColor }} hover:text-primary ">
-                                <i class="contact-text w-4 object-cover fas fa-envelope mr-3"></i>@if($showFullContactInfo) {{ $mail }} @endif
-                                <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 hidden bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black whitespace-nowrap">{{ $mail }}</div>
-                            </a>
+                        <div class="contact-icon-wrapper relative">
+                            <div class="mail-icon">
+                                <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" class="text-{{ $employeeTextColor }} hover:text-primary ">
+                                    <i class="contact-text w-4 object-cover fas fa-envelope mr-3"></i>@if($showFullContactInfo) {{ $mail }} @endif
+                                </a>
+                                <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
+                                    <div class=" bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $mail }}</div>
+                                </div>
+                            </div>
                         </div>
                     @endif
                     @if ($phoneNumber)
-                        <div class="phone-icon relative">
-                            <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" class="text-{{ $employeeTextColor }} hover:text-primary">
-                                <i class="contact-text w-4 object-cover fas fa-phone mr-3"></i>@if($showFullContactInfo) {{ $phoneNumber }} @endif
-                                <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 hidden bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $phoneNumber }}</div>
-                            </a>
+                        <div class="contact-icon-wrapper relative">
+                            <div class="phone-icon">
+                                <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" class="text-{{ $employeeTextColor }} hover:text-primary">
+                                    <i class="contact-text w-4 object-cover fas fa-phone mr-3"></i>@if($showFullContactInfo) {{ $phoneNumber }} @endif
+                                </a>
+                                <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
+                                    <div class=" bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $phoneNumber }}</div>
+                                </div>
+                            </div>
                         </div>
                     @endif
                 </div>
