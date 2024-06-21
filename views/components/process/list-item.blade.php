@@ -62,4 +62,4 @@
     </div>
 </div>
 
-<div class="process-number text-primary font-light absolute top-[-85px] right-[-32px] -z-10 text-[90px]">0{{ $index + 1 }}</div>
+<div class="process-number text-primary font-light absolute top-[-85px] translate-x-1/2 md:translate-x-0 right-1/2 md:right-[-32px] -z-10 text-[90px]">0{{ $index + 1 }}</div>
