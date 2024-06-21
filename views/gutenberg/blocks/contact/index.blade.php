@@ -71,7 +71,7 @@
                                         <p class="establishment-zipcode">{{ $zipcode }}, {{ $city }}</p>
                                     @endif
                                     @if($visibleElements && in_array('contact', $visibleElements))
-                                        <div class="contact-info">
+                                        <div class="contact-info mt-2 flex flex-col gap-y-2">
                                             @if($phone)
                                                 <a class="phone-link group flex items-center gap-2 w-fit"
                                                    href="tel:{{ $phone['number'] }}"
@@ -90,16 +90,16 @@
                                             @endif
                                         </div>
                                     @endif
-                                    <div class="route-info">
-                                        @if($street && $visibleElements && in_array('route_description', $visibleElements))
+                                    @if($street && $visibleElements && in_array('route_description', $visibleElements))
+                                        <div class="route-info mt-2">
                                             <a class="route-link group flex items-center gap-2 w-fit"
                                                href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}"
                                                title="Email">
                                                 <i class="fa-solid fa-route"></i>
                                                 <span class="align-middle group-hover:text-cta group-hover:underline">Routebeschrijving</span>
                                             </a>
-                                        @endif
-                                    </div>
+                                        </div>
+                                    @endif
                                 </div>
                             @endwhile
                         </div>
