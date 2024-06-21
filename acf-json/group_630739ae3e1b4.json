@@ -154,6 +154,36 @@
                     "placeholder": ""
                 },
                 {
+                    "key": "field_66756ade1ee45",
+                    "label": "Inschrijf url Brevo",
+                    "name": "brevo_subscribe_url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_63074223c7e7d",
+                                "operator": "==",
+                                "value": "1"
+                            },
+                            {
+                                "field": "field_6638acb852ca7",
+                                "operator": "==",
+                                "value": "brevo"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
                     "key": "field_6667054ca0364",
                     "label": "Nieuwsbrief inschrijven tekst",
                     "name": "newsletter_text",
@@ -194,5 +224,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1718028159
+    "modified": 1718971135
 }
