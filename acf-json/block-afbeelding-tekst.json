@@ -416,6 +416,35 @@
             "placeholder": ""
         },
         {
+            "key": "field_66797965189e9",
+            "label": "Afbeelding maximale hoogte",
+            "name": "image_max_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6490599eabdca",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_64a6a93387a59",
             "label": "Afbeelding uitlijnen met tekst",
             "name": "full_height",
@@ -1440,5 +1469,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1717401322
+    "modified": 1719237004
 }

@@ -26,6 +26,7 @@
     $imageID = $block['data']['image'] ?? '';
     $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
     $imageSize = $block['data']['image_size'] ?? '';
+    $imageMaxHeight = $block['data']['image_max_height'] ?? '';
     $imageClass = '';
     $textClass = '';
 
@@ -136,7 +137,7 @@
                     @endif
                 </div>
                 @if ($imageID)
-                    <div class="image {{ $imageClass }} order-1 {{ $imageOrder }}">
+                    <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }}">
                         @include('components.image', [
                             'image_id' => $imageID,
                             'size' => 'full',
@@ -192,5 +193,9 @@
             @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
+    }
+
+    .image-{{ $randomNumber }} img {
+        max-height: {{ $imageMaxHeight }}px;
     }
 </style>
