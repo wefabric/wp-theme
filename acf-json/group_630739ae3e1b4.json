@@ -155,10 +155,10 @@
                 },
                 {
                     "key": "field_66756ade1ee45",
-                    "label": "Inschrijf url Brevo",
-                    "name": "brevo_subscribe_url",
+                    "label": "Inschrijf Brevo Formulier ID",
+                    "name": "brevo_subscribe_id",
                     "aria-label": "",
-                    "type": "url",
+                    "type": "number",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -180,8 +180,13 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": ""
+                    "default_value": 1,
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": ""
                 },
                 {
                     "key": "field_6667054ca0364",
@@ -224,5 +229,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1718971135
+    "modified": 1719235096
 }

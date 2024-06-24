@@ -19,7 +19,7 @@
 
 		$mailChimpUrl = $option['newsletter_footer']['embed_subscribe_url'] ?? '';
         $zohoUrl = $option['newsletter_footer']['zoho_subscribe_url'] ?? '';
-        $brevoUrl = $option['newsletter_footer']['brevo_subscribe_url'] ?? '';
+        $brevoID = $option['newsletter_footer']['brevo_subscribe_id'] ?? '';
 	@endphp
 	<span class="newsletter-title h5 text-{{ $title_color }} py-4 pr-6 inline-block">
 		{{ $title }}
@@ -44,7 +44,7 @@
 		@if($option['newsletter_footer']['newsletter_type'] == 'brevo')
 			<div id="mc_embed_signup3" class="newsletter-signup">
 				@include('components.footer.brevo', [
-    				'BrevoSubscribeUrl' => $brevoUrl,
+    				'BrevoSubscribeID' => $brevoID,
                 ])
 			</div>
 		@endif
