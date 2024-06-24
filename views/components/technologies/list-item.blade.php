@@ -12,7 +12,7 @@
 @endphp
 
 <div class="technology-item group h-full">
-    <div class="technology-card h-full group-hover:-translate-y-4 duration-300 ease-in-out @if( $technologyLayout == 'horizontal') flex flex-row gap-x-12 items-center text-left @elseif( $uspLayout == 'vertical') flex flex-col gap-y-4 text-center @endif">
+    <div class="technology-card h-full group-hover:-translate-y-4 duration-300 ease-in-out @if( $technologyLayout == 'horizontal') flex flex-col md:flex-row gap-x-12 justify-start md:items-center text-left @elseif( $uspLayout == 'vertical') flex flex-col gap-y-4 text-center @endif">
 
         @if ($technologyThumbnailID)
             <div class="@if( $technologyLayout == 'horizontal') max-h-[300px] max-w-[300px] @elseif( $uspLayout == 'vertical') max-h-[360px] @endif overflow-hidden w-full relative rounded-{{ $borderRadius }}">
