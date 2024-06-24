@@ -1,0 +1,16 @@
+.footer {
+  .brevo-form {
+
+    input {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    input[type="submit"] {
+      padding: 0 20px;
+      font-weight: bold;
+      width: fit-content !important;
+      @apply text-white text-center bg-cta rounded-lg #{!important};
+    }
+  }
+}
