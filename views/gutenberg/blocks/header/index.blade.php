@@ -121,6 +121,9 @@
         </div>
     </div>
 </section>
-@if ($breadcrumbsEnabled && !is_front_page() && get_the_ID())
-    @include('components.breadcrumbs.index')
-@endif
+
+@if ($customBlockClasses) <div class="breadcrumbs-{{ $customBlockClasses }}"> @endif
+    @if ($breadcrumbsEnabled && !is_front_page() && get_the_ID())
+        @include('components.breadcrumbs.index')
+    @endif
+@if ($customBlockClasses) </div> @endif
