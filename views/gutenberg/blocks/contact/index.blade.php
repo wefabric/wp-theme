@@ -96,7 +96,7 @@
                                                href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}"
                                                title="Email">
                                                 <i class="fa-solid fa-route"></i>
-                                                <span class="align-middle group-hover:text-cta group-hover:underline">Routebeschrijving</span>
+                                                <span class="align-middle group-hover:text-cta group-hover:underline">Route</span>
                                             </a>
                                         </div>
                                     @endif

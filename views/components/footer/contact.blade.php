@@ -36,7 +36,8 @@
 				</p>
 				<p class="establishment-address leading-8">
 					{{ $establishment->getAddress()->street }} @if($establishment->getAddress()->full_housenumber > 0) {{ $establishment->getAddress()->full_housenumber }} @endif <br/>
-					{{ $establishment->getAddress()->postcode }} {{ $establishment->getAddress()->city }}
+					{{ $establishment->getAddress()->postcode }} {{ $establishment->getAddress()->city }} <br/>
+					{{ $establishment->getAddress()->country_id }}
 				</p>
 
 				@if($phone = $establishment->getContactPhone())
@@ -60,6 +61,18 @@
 					<span class="inline-block pt-1">{{ $email }}</span>
 					@include('components.link.closing')
 				@endif
+
+{{--			 Enable for route--}}
+{{--				@if($establishment->getAddress()->street)--}}
+{{--					@include('components.link.opening', [--}}
+{{--                    'href' => 'https://www.google.com/maps/search/?api=1&query=' . $establishment->getAddress()->street . '+' . $establishment->getAddress()->full_housenumber . $house_number_addition . '+' .  $establishment->getAddress()->postcode  . '+' . $establishment->getAddress()->city ,--}}
+{{--                    'alt' => 'Route',--}}
+{{--                    'class' => 'route-text flex'--}}
+{{--                	])--}}
+{{--					<i class="fa-solid fa-route text-{{ $title_color }} mr-4 text-md pt-1"></i>--}}
+{{--					<span class="inline-block pt-1">Route</span>--}}
+{{--					@include('components.link.closing')--}}
+{{--				@endif--}}
 
 				@include('components.establishments.directions')
 
