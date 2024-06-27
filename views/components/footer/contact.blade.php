@@ -27,6 +27,15 @@
             } elseif (is_array($establishment_config) && array_key_exists('establishment', $establishment_config)) {
                 $establishment = new \Wefabric\WPEstablishments\Establishment($establishment_config['establishment']);
             }
+
+            $countryName = '';
+			if($establishment) {
+				$country_id = $establishment->getAddress()->country_id;
+				$countryNames = [
+					'NL' => 'The Netherlands',
+				];
+				$countryName = isset($countryNames[$country_id]) ? $countryNames[$country_id] : $country_id;
+			}
 		@endphp
 
 		<div class="establishments mb-10 footer-address">
@@ -35,9 +44,9 @@
 					{{ $establishment->name }}
 				</p>
 				<p class="establishment-address leading-8">
-					{{ $establishment->getAddress()->street }} @if($establishment->getAddress()->full_housenumber > 0) {{ $establishment->getAddress()->full_housenumber }} @endif <br/>
-					{{ $establishment->getAddress()->postcode }} {{ $establishment->getAddress()->city }} <br/>
-					{{ $establishment->getAddress()->country_id }}
+					@if($establishment->getAddress()->street) {{ $establishment->getAddress()->street }}@endif @if($establishment->getAddress()->full_housenumber > 0) {{ $establishment->getAddress()->full_housenumber }} @endif <br/>
+					@if($establishment->getAddress()->postcode) {{ $establishment->getAddress()->postcode }} @endif	@if($establishment->getAddress()->city) {{ $establishment->getAddress()->city }} @endif <br/>
+					@if ($countryName) {{ $countryName }} @endif
 				</p>
 
 				@if($phone = $establishment->getContactPhone())
