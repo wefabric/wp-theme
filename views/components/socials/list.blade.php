@@ -6,7 +6,7 @@
 @endphp
 
 @if(!empty($option) && array_key_exists('channels', $option))
-    <div class="mb-4 flex gap-4 items-center">
+    <div class="socials mb-4 flex gap-4 items-center">
         {{--        @foreach($option['channels'] as $social)--}}
         {{--            @include('components.buttons.icon', [--}}
         {{--	            'href' => $social['url'],--}}
