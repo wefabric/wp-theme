@@ -88,6 +88,11 @@
                 @endif
 
                 <nav id="site-navigation" class="main-navigation">
+
+                    <li class="home-item menu-item menu-item-object-page {{ Request::is('/') ? 'current-menu-item current_page_item' : '' }}">
+                        <a href="<?php echo home_url(); ?>">Home</a>
+                    </li>
+
                     {!! wp_nav_menu([
                         'theme_location' => 'menu-1',
                         'menu_id' => 'primary-menu',
