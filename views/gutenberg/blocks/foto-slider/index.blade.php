@@ -13,9 +13,11 @@
     for ($i = 0; $i < $numImages; $i++) {
     $imageKey = "images_{$i}_image";
     $captionKey = "images_{$i}_caption";
+    $linkKey = "images_{$i}_link";
 
     $imageID = $block['data'][$imageKey] ?? '';
     $caption = $block['data'][$captionKey] ?? '';
+    $imageLink = $block['data'][$linkKey] ?? '';
 
         if ($imageID) {
             $imageInfo = wp_get_attachment_image_src($imageID, 'full');
@@ -23,11 +25,20 @@
                 $alt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
                 $alt = $alt ? $alt : "image_$i";
 
+                $linkTitle = $imageLink['title'] ?? '';
+                $linkUrl = $imageLink['url'] ?? '';
+                $linkTarget = $imageLink['target'] ?? '';
+
                 $imagesData[] = [
                     'id' => $imageID,
                     'url' => $imageInfo[0],
                     'caption' => $caption,
                     'alt' => $alt,
+                    'link' => [
+                        'title' => $linkTitle,
+                        'url' => $linkUrl,
+                        'target' => $linkTarget
+                    ]
                 ];
             }
         }
@@ -49,7 +60,6 @@
     else {
         $containerClass = '';
     }
-
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
     $imageId = ($block['data']['background_image']) ?? '';
