@@ -116,7 +116,7 @@
             "name": "text_color",
             "aria-label": "",
             "type": "Thema Kleur",
-            "instructions": "Voeg &lt;br&gt; toe om een nieuwe regel te beginnen.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": [
                 [
@@ -1553,5 +1553,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719559837
+    "modified": 1719560604
 }
