@@ -30,7 +30,7 @@
                     <p class="usp-title text-{{ $uspTitleColor }} font-bold h4">{!! $title !!}</p>
                 @endif
                 @if ($text)
-                    @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 text-' . $uspTextColor])
+                    @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'usp-text mt-4 text-' . $uspTextColor])
                 @endif
             </div>
         @endif
