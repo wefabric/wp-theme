@@ -19,12 +19,12 @@
         }
 @endphp
 
-<div class="logo-item group rounded-{{ $borderRadius }}">
-    <div class="h-full @if($logoUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
-        <div class="overflow-hidden w-full relative p-4 md:p-6 bg-{{ $logoBackgroundColor }} rounded-{{ $borderRadius }}">
+<div class="logo-item group h-full bg-{{ $logoBackgroundColor }} rounded-{{ $borderRadius }}">
+    <div class="custom-logo-styling h-full relative @if($logoUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
+        <div class="background overflow-hidden w-full relative p-4 md:p-6 rounded-{{ $borderRadius }}">
             @if ($logoUrl)
                 <a href="{{ $logoUrl }}" @if($logoLinkType === 'external_link') target="_blank" @endif
-                aria-label="Ga naar {{ $logoTitle }} pagina" class="absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
+                aria-label="Ga naar {{ $logoTitle }} pagina" class="overlay absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
             @endif
             @if ($logoImage)
                 @include('components.image', [
