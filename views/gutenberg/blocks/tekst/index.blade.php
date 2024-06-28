@@ -95,14 +95,14 @@
                        'target' => $button1Target,
                    ])
                     @if (($button2Text) && ($button2Link))
-                            @include('components.buttons.default', [
-                               'text' => $button2Text,
-                               'href' => $button2Link,
-                               'alt' => $button2Text,
-                               'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                               'class' => 'rounded-lg',
-                               'target' => $button2Target,
-                           ])
+                        @include('components.buttons.default', [
+                            'text' => $button2Text,
+                            'href' => $button2Link,
+                            'alt' => $button2Text,
+                            'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                            'class' => 'rounded-lg',
+                            'target' => $button2Target,
+                        ])
                     @endif
                 </div>
             @endif
