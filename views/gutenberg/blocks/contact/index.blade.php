@@ -61,14 +61,24 @@
                                     $city = get_post_meta($establishment_id, 'city', true);
                                     $phone = get_post_meta($establishment_id, 'common_phone', true);
                                     $email = get_post_meta($establishment_id, 'common_email', true);
+                                    $country_id = get_post_meta($establishment_id, 'country_id', true);
+                                    if($country_id) {
+                                        $countryNames = [
+                                        'NL' => 'The Netherlands',
+                                        ];
+                                        $countryName = isset($countryNames[$country_id]) ? $countryNames[$country_id] : $country_id;
+                                    }
                                 @endphp
                                 <div class="establishment mb-4 text-{{ $textColor }}">
                                     <p class="establishment-title font-bold">{{ $establishment_title }}</p>
-                                    @if($street && $house_number)
+                                    @if ($street && $house_number)
                                         <p class="establishment-street">{{ $street }} {{ $house_number }} {{ $house_number_addition }}</p>
                                     @endif
-                                    @if($zipcode && $city)
+                                    @if ($zipcode && $city)
                                         <p class="establishment-zipcode">{{ $zipcode }}, {{ $city }}</p>
+                                    @endif
+                                    @if ($countryName)
+                                        <p class="establishment-country">{{ $countryName }}</p>
                                     @endif
                                     @if($visibleElements && in_array('contact', $visibleElements))
                                         <div class="contact-info mt-2 flex flex-col gap-y-2">
