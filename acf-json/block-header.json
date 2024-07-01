@@ -405,6 +405,63 @@
             "placeholder": ""
         },
         {
+            "key": "field_6682677b0848f",
+            "label": "Afbeelding naast tekst",
+            "name": "content_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a43090bafd4",
+                        "operator": "==",
+                        "value": "left"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_64a43090bafd4",
+                        "operator": "==",
+                        "value": "right"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_66826f8d4d35b",
+            "label": "Breadcrumbs",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_65435c0e7b7e9",
             "label": "Breadcrumbs tonen?",
             "name": "show_breadcrumbs",
@@ -701,5 +758,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1717511743
+    "modified": 1719824296
 }
