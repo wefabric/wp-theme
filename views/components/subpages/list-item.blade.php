@@ -12,7 +12,7 @@
             $subpageSummary = substr($subpageSummary, 0, $maxSummaryLength - 3) . '...';
         }
 
-    $subpageCategories = get_the_terms($subpage, 'division_categories');
+    $subpageCategories = get_the_terms($subpage, 'category');
 @endphp
 
 <div class="subpage-item group h-full">
@@ -20,7 +20,7 @@
         @if ($subpageThumbnailId)
             <div class="subpage-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $subpageUrl }}" aria-label="Ga naar {{ $subpageTitle }} pagina"
-                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                   class="overlay left-0 top-0 absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     <div class="subpage-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                         @foreach ($subpageCategories as $category)
@@ -28,7 +28,7 @@
                                 $categoryColor = get_field('category_color', $category);
                             @endphp
                             <div style="background-color: {{ $categoryColor }}"
-                                 class="@if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
+                                 class="category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
                                 {!! $category->name !!}
                             </div>
                         @endforeach
@@ -40,7 +40,7 @@
                     'object_fit' => 'cover',
                     'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
                     'alt' => $subpageTitle,
-            ])
+                ])
             </div>
         @endif
         <div class="subpage-data flex flex-col w-full grow mt-5">
