@@ -64,7 +64,8 @@
                                     $country_id = get_post_meta($establishment_id, 'country_id', true);
                                     if($country_id) {
                                         $countryNames = [
-                                        'NL' => 'The Netherlands',
+                                            'NL' => 'The Netherlands',
+                                            'BR' => 'Brazil',
                                         ];
                                         $countryName = isset($countryNames[$country_id]) ? $countryNames[$country_id] : $country_id;
                                     }
