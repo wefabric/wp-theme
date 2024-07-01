@@ -445,6 +445,33 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_668277bb570b9",
+            "label": "Afbeelding volledige header grootte",
+            "name": "full_height_image",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6682677b0848f",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_66826f8d4d35b",
             "label": "Breadcrumbs",
             "name": "",
@@ -758,5 +785,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719824296
+    "modified": 1719826438
 }
