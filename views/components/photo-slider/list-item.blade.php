@@ -2,14 +2,14 @@
     $imageCaption = $image['caption'] ?? '';
     $imageUrl = $image['url'] ?? '';
     $imageAlt = $image['alt'] ?? '';
-    $imageID = $image['id'] ?? '';
+    $imageId = $image['id'] ?? '';
     $imageLinkUrl = $image['link']['url'] ?? '';
     $imageLinkTarget = $image['link']['target'] ?? '';
     $imageLinkTitle = $image['link']['title'] ?? '';
 @endphp
 
-<div class="group h-full w-full">
-    @if ($imageID)
+<div class="image-item group h-full w-full">
+    @if ($imageId)
 
         @if ($imageLinkUrl)
             <div class="absolute w-full h-full overflow-hidden rounded-{{ $borderRadius }}">
@@ -18,7 +18,7 @@
         @endif
 
         @include('components.image', [
-            'image_id' => $imageID,
+            'image_id' => $imageId,
             'size' => 'full',
             'object_fit' => 'cover',
             'img_class' => 'w-full h-[400px] h-[600px] object-cover rounded-' . $borderRadius,

@@ -17,7 +17,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_65253ae6d92c5",
@@ -365,6 +366,24 @@
             "placeholder": ""
         },
         {
+            "key": "field_6683d539c420f",
+            "label": "Afbeeldingen",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "key": "field_65253b0ae17a4",
             "label": "Afbeeldingen",
             "name": "images",
@@ -451,6 +470,28 @@
                     "parent_repeater": "field_65253b0ae17a4"
                 }
             ]
+        },
+        {
+            "key": "field_6683d4da39c8b",
+            "label": "Maximale hoogte afbeeldingen",
+            "name": "max_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 0,
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "px"
         },
         {
             "key": "field_65253be745a48",
@@ -564,7 +605,7 @@
             "aria-label": "",
             "type": "number",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -577,7 +618,7 @@
             "placeholder": "",
             "step": "",
             "prepend": "",
-            "append": ""
+            "append": "px"
         },
         {
             "key": "field_65253c5dbb662",
@@ -614,7 +655,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_65253ae6d92fb",
@@ -796,6 +838,26 @@
             "append": ""
         },
         {
+            "key": "field_6683d4b639c8a",
+            "label": "Blok verbergen",
+            "name": "hide_block",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_660573077b0b5",
             "label": "Paddings & margins",
             "name": "",
@@ -810,7 +872,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6605731c7b0b6",
@@ -871,7 +934,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_6605737e7b0ba",
@@ -976,7 +1040,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_6605747a7be49",
@@ -1081,7 +1146,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_660574eac45c1",
@@ -1232,7 +1298,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_660575fff265a",
@@ -1337,7 +1404,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_660575fff265f",
@@ -1442,7 +1510,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_660575fff2664",
@@ -1549,7 +1618,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         }
     ],
     "location": [
@@ -1570,5 +1640,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719561410
+    "modified": 1719916568
 }
