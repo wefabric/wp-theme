@@ -27,15 +27,15 @@
     $blockWidth = $block['data']['block_width'] ?? 100;
     $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
     $blockClass = $blockClassMap[$blockWidth] ?? '';
-    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
-    $imageId = $block['data']['background_image'] ?? '';
+    $backgroundImageId = $block['data']['background_image'] ?? '';
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+    $hideBlock = $block['data']['hide_block'] ?? false;
 
 
     // Paddings & margins
@@ -68,24 +68,27 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="tekst" class="block-tekst relative tekst-{{ $randomNumber }}-custom-padding tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }};">
+<section id="tekst" class="block-tekst relative tekst-{{ $randomNumber }}-custom-padding tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }};">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+    <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20">
         <div class="{{ $blockClass }} {{ $textClass }} mx-auto">
             @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                <span class="subtitle block mb-2 text-{{ $titleColor }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">{!! $subTitle !!}</span>
             @endif
             @if ($title)
-                <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
+                <h2 class="title mb-4 text-{{ $titleColor }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">{!! $title !!}</h2>
             @endif
             @if ($text)
-                @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])
+                @include('components.content', [
+                    'content' => apply_filters('the_content', $text),
+                    'class' => 'container mx-auto mb-8 text-' . $textColor . ($blockWidth == 'fullscreen' ? ' px-8' : '')
+                ])
             @endif
             @if (($button1Text) && ($button1Link))
-                <div class="{{ $textClass }} w-full flex sm:flex-row gap-4 mt-4 md:mt-8">
+                <div class="{{ $textClass }} w-full flex sm:flex-row gap-4 mt-4 md:mt-8 container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                     @include('components.buttons.default', [
                        'text' => $button1Text,
                        'href' => $button1Link,
