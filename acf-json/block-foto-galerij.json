@@ -17,7 +17,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6661accd1fd0b",
@@ -91,9 +92,53 @@
             "font_size": 14
         },
         {
+            "key": "field_6683d05ad3a6a",
+            "label": "Tekst",
+            "name": "text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_6683d07ad3a6b",
+            "label": "Tekst kleur",
+            "name": "text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6683d05ad3a6a",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "black",
+            "font_size": 14
+        },
+        {
             "key": "field_6662b81758417",
-            "label": "Titel positie",
-            "name": "title_position",
+            "label": "Tekst positie",
+            "name": "text_position",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -123,6 +168,24 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_6683e8ce4c917",
+            "label": "Afbeeldingen",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6661af269e1cc",
@@ -214,9 +277,7 @@
                     {
                         "field": "field_6661af269e1cc",
                         "operator": "!=empty"
-                    }
-                ],
-                [
+                    },
                     {
                         "field": "field_6662b186b4b41",
                         "operator": "!=",
@@ -391,7 +452,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6661accd1fd73",
@@ -573,6 +635,26 @@
             "append": ""
         },
         {
+            "key": "field_6683ce735c18e",
+            "label": "Blok verbergen",
+            "name": "hide_block",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6661accd1fda9",
             "label": "Paddings & margins",
             "name": "",
@@ -587,7 +669,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6661accd1fdb0",
@@ -648,7 +731,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_6661accd5721a",
@@ -753,7 +837,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_6661accd57240",
@@ -858,7 +943,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_6661accd57265",
@@ -1009,7 +1095,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_6661accd7b6cf",
@@ -1114,7 +1201,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_6661accd7b707",
@@ -1219,7 +1307,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_6661accd7b74a",
@@ -1326,7 +1415,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         }
     ],
     "location": [
@@ -1347,5 +1437,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1717745791
+    "modified": 1719921029
 }

@@ -3,9 +3,12 @@
     $title = $block['data']['title'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-    $titlePosition = $block['data']['title_position'] ?? '';
-    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-    $titleClass = $titleClassMap[$titlePosition] ?? '';
+    $text = $block['data']['text'] ?? '';
+    $textColor = $block['data']['text_color'] ?? '';
+
+    $textPosition = $block['data']['text_position'] ?? '';
+    $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
+    $textClass = $textClassMap[$textPosition] ?? '';
 
     // Images
     $imagesCount = $block['data']['images'] ?? 0;
@@ -24,12 +27,13 @@
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'none';
-    $imageId = $block['data']['background_image'] ?? '';
+    $backgroundImageId = $block['data']['background_image'] ?? '';
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+    $hideBlock = $block['data']['hide_block'] ?? false;
 
 
     // Theme settings
@@ -67,26 +71,29 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="foto-galerij" class="block-foto-galerij relative foto-galerij-{{ $randomNumber }}-custom-padding foto-galerij-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
+<section id="foto-galerij" class="block-foto-galerij relative foto-galerij-{{ $randomNumber }}-custom-padding foto-galerij-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto">
-
+        <div class="{{ $blockClass }} {{ $textClass }} mx-auto">
             @if ($subTitle)
-                <span class="block mb-2 text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $subTitle !!}</span>
+                <span class="subtitle block mb-2 text-{{ $titleColor }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">{!! $subTitle !!}</span>
             @endif
             @if ($title)
-                <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
+                <h2 class="title mb-4 text-{{ $titleColor }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">{!! $title !!}</h2>
             @endif
-
+            @if ($text)
+                @include('components.content', [
+                    'content' => apply_filters('the_content', $text),
+                    'class' => 'container mx-auto mb-8 text-' . $textColor . ($blockWidth == 'fullscreen' ? ' px-8' : '')
+                ])
+            @endif
             @if ($images)
                 @include('components.photo-gallery.list')
             @endif
         </div>
-
     </div>
 </section>
 
