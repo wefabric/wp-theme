@@ -11,7 +11,7 @@
 @endphp
 
 <div class="block relative">
-    <div class="swiper {{ $randomId }} py-8">
+    <div class="swiper {{ $randomId }} pt-8 pb-10">
         <div class="swiper-wrapper">
             @foreach ($imagesData as $image)
                 <div class="swiper-slide h-auto">

@@ -494,6 +494,32 @@
             "append": "px"
         },
         {
+            "key": "field_66840b16b6fca",
+            "label": "Afbeelding weergave",
+            "name": "image_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "cover": "Afbeelding volledige ruimte laten vullen",
+                "contain": "Afbeelding volledig zichtbaar maken binnen beschikbare ruimte"
+            },
+            "default_value": "cover",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_65253be745a48",
             "label": "Layout (aantal foto's op een rij)",
             "name": "layout",
@@ -1640,5 +1666,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719916568
+    "modified": 1719929679
 }

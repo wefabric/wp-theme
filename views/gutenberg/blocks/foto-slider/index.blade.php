@@ -27,6 +27,7 @@
     $imagesData = [];
     $numImages = intval($block['data']['images']);
     $maxHeight = $block['data']['max_height'] ?? '';
+    $imageStyle = $block['data']['image_style'] ?? 'cover';
 
     for ($i = 0; $i < $numImages; $i++) {
     $imageKey = "images_{$i}_image";
