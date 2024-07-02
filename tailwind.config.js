@@ -6,6 +6,12 @@ module.exports = {
     './assets/**/*.js',
     './assets/**/*.vue',
   ],
+  safelist: [
+    'sm:text-right',
+    'md:text-right',
+    'lg:text-right',
+    'xl:text-right',
+  ],
   theme: {
     boxShadow: {
       sm: '0 1px 2px 0 rgba(0, 0, 0, 0.09)',
