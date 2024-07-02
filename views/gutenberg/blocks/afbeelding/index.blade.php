@@ -1,8 +1,10 @@
 @php
     // Content
-    $imageID = $block['data']['image'];
-    $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
-    $fullScreen = $block['data']['full_screen_image'] ?? false;
+    $imageId = $block['data']['image'];
+    $imageAlt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
+    $maxHeight = $block['data']['max_height'] ?? '';
+    $maxWidth = $block['data']['max_width'] ?? '';
+    $imageStyle = $block['data']['image_style'] ?? 'cover';
 
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
@@ -16,12 +18,13 @@
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto px-8' : '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
-    $imageId = $block['data']['background_image'] ?? '';
+    $backgroundImageId = $block['data']['background_image'] ?? '';
     $backgroundOverlayEnabled = $block['data']['overlay_background_image'] ?? false;
     $backgroundOverlayColor = $block['data']['background_overlay_color'] ?? '';
     $backgroundOverlayOpacity = $block['data']['background_overlay_opacity'] ?? '';
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+    $hideBlock = $block['data']['hide_block'] ?? false;
 
 
     // Theme settings
@@ -59,19 +62,19 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="afbeelding" class="block-afbeelding afbeelding-{{ $randomNumber }}-custom-padding afbeelding-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
+<section id="afbeelding" class="block-afbeelding afbeelding-{{ $randomNumber }} afbeelding-{{ $randomNumber }}-custom-padding afbeelding-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($backgroundOverlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $backgroundOverlayColor }} opacity-{{ $backgroundOverlayOpacity }}"></div>
     @endif
     <div class="relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto relative">
-            @if ($imageID)
+            @if ($imageId)
                 @include('components.image', [
-                   'image_id' => $imageID,
+                   'image_id' => $imageId,
                    'size' => 'full',
-                   'object_fit' => 'cover',
-                   'img_class' => 'w-full max-h-[400px] md:max-h-[600px] object-cover rounded-' . $borderRadius,
+                   'object_fit' => $imageStyle,
+                   'img_class' => 'w-full ' . ' rounded-' . $borderRadius,
                    'alt' => $imageAlt
                ])
                 @if ($overlayEnabled)
@@ -83,6 +86,11 @@
 </section>
 
 <style>
+    .afbeelding-{{ $randomNumber }} img {
+        @if($maxHeight) max-height: {{ $maxHeight }}px; @endif
+        @if($maxWidth) max-width: {{ $maxWidth }}px; @endif
+    }
+
     .afbeelding-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
             @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
