@@ -3,10 +3,8 @@
     $title = $block['data']['title'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
-    $textPosition = $block['data']['text_position'] ?? '';
 
         // Buttons
         $button1Text = $block['data']['button_button_1']['title'] ?? '';
@@ -20,11 +18,12 @@
         $button2Color = $block['data']['button_button_2_color'] ?? '';
         $button2Style = $block['data']['button_button_2_style'] ?? '';
 
+    $textPosition = $block['data']['text_position'] ?? '';
     $textOrder = $textPosition === 'left' ? 'lg:order-1 left' : 'lg:order-2 right';
     $imageOrder = $textPosition === 'left' ? 'lg:order-2 right' : 'lg:order-1 left';
 
-    $imageID = $block['data']['image'] ?? '';
-    $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
+    $imageId = $block['data']['image'] ?? '';
+    $imageAlt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
     $imageSize = $block['data']['image_size'] ?? '';
     $imageMaxHeight = $block['data']['image_max_height'] ?? '';
     $imageClass = '';
@@ -41,7 +40,6 @@
         $textClass = 'lg:w-1/3';
     }
 
-    $imageHeightClass = isset($block['data']['full_height']) && $block['data']['full_height'] ? 'h-full' : '';
     $verticalCentered = $block['data']['vertical_centered'] ?? false;
 
 
@@ -52,12 +50,13 @@
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'none';
-    $imageId = $block['data']['background_image'] ?? '';
+    $backgroundImageId = $block['data']['background_image'] ?? '';
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+    $hideBlock = $block['data']['hide_block'] ?? false;
 
 
     // Theme settings
@@ -95,8 +94,8 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="afbeelding-tekst" class="block-afbeelding-tekst relative afbeelding-tekst-{{ $randomNumber }}-custom-padding afbeelding-tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
+<section id="afbeelding-tekst" class="block-afbeelding-tekst relative afbeelding-tekst-{{ $randomNumber }}-custom-padding afbeelding-tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -111,7 +110,10 @@
                         <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
                     @endif
                     @if ($text)
-                        @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])
+                        @include('components.content', [
+                            'content' => apply_filters('the_content', $text),
+                            'class' => 'mb-8 text-' . $textColor,
+                        ])
                     @endif
                     @if (($button1Text) && ($button1Link))
                         <div class="flex gap-4 mt-4 md:mt-8">
@@ -136,13 +138,13 @@
                         </div>
                     @endif
                 </div>
-                @if ($imageID)
+                @if ($imageId)
                     <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }}">
                         @include('components.image', [
-                            'image_id' => $imageID,
+                            'image_id' => $imageId,
                             'size' => 'full',
                             'object_fit' => 'cover',
-                            'img_class' => 'w-full object-cover rounded-' . $borderRadius . ' ' . $imageHeightClass,
+                            'img_class' => 'w-full object-cover rounded-' . $borderRadius,
                             'alt' => $imageAlt
                         ])
                     </div>
@@ -153,6 +155,10 @@
 </section>
 
 <style>
+    .image-{{ $randomNumber }} img {
+        @if($imageMaxHeight)max-height: {{ $imageMaxHeight }}px; @endif
+    }
+
     .afbeelding-tekst-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
             @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
@@ -193,9 +199,5 @@
             @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
-    }
-
-    .image-{{ $randomNumber }} img {
-        max-height: {{ $imageMaxHeight }}px;
     }
 </style>
