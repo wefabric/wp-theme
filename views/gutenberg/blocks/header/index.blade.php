@@ -19,9 +19,9 @@
     $title = !empty($block['data']['title']) ? $block['data']['title'] : get_the_title();
     $titleColor = $block['data']['title_color'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
+    $showTitle = $block['data']['show_title'] ?? true;
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
-    $showTitle = $block['data']['show_title'] ?? true;
     $contentImageId = $block['data']['content_image'] ?? '';
     $contentImageAlt = get_post_meta($contentImageId, '_wp_attachment_image_alt', true);
     $fullHeightContentImage = $block['data']['full_height_image'] ?? false;
@@ -77,6 +77,7 @@
 
     $headerBackgroundColor = $block['data']['background_color'] ?? '';
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+    $hideBlock = $block['data']['hide_block'] ?? false;
 
 
     // Theme settings
@@ -114,7 +115,7 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="header" class="block-header relative header-{{ $randomNumber }}-custom-padding header-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }}">
+<section id="header" class="block-header relative header-{{ $randomNumber }}-custom-padding header-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
          style="background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
