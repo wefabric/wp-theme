@@ -1,7 +1,6 @@
 @php
-    // Variant
+    // Header style
     $headerHeight = $block['data']['header_height'] ?? '';
-
     $heightClasses = [
         1 => 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]',
         2 => 'h-[200px] md:h-[400px] 2xl:h-[500px]',
@@ -43,7 +42,6 @@
     $textPositionClass = '';
     $textWidthClass = '';
 
-
     if (!$contentImageId) {
         if ($textPosition === 'left') {
             $textPositionClass = 'justify-start text-left';
@@ -57,36 +55,68 @@
         }
     }
 
+
     // Breadcrumbs
     $breadcrumbsEnabled = $block['data']['show_breadcrumbs'] ?? false;
     $breadcrumbsBackgroundColor = $block['data']['breadcrumbs_background_color'] ?? '';
     $breadcrumbsTextColor = $block['data']['breadcrumbs_text_color'] ?? '';
+    $breadcrumbsLocation = $block['data']['breadcrumbs_location'] ?? 'underneath';
 
-    // Background image
-    $imageId = $block['data']['background_image'] ?? '';
+
+    // Blokinstellingen
+    $backgroundImageId = $block['data']['background_image'] ?? '';
+    $showFeaturedImage = $block['data']['show_featured_image'] ?? false;
+    $featuredImage = $showFeaturedImage ? get_the_post_thumbnail_url(get_the_ID(), 'full') : '';
+    $featuredImageId = $featuredImage ? attachment_url_to_postid($featuredImage) : '';
+    $backgroundVideoID = $block['data']['background_video'] ?? '';
+    $backgroundVideoURL = $backgroundVideoID ? wp_get_attachment_url($backgroundVideoID) : '';
+
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
-    $showFeaturedImage = $block['data']['show_featured_image'] ?? false;
-    $featuredImage = $showFeaturedImage ? get_the_post_thumbnail_url(get_the_ID(), 'full') : '';
-    $featuredImageId = $featuredImage ? attachment_url_to_postid($featuredImage) : '';
     $headerBackgroundColor = $block['data']['background_color'] ?? '';
-
-    $backgroundVideoID = $block['data']['background_video'] ?? '';
-    $backgroundVideoURL = $backgroundVideoID ? wp_get_attachment_url($backgroundVideoID) : '';
-
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
 
 
     // Theme settings
     $options = get_fields('option');
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength'] ?? '' : 'rounded-none';
+
+
+    // Paddings & margins
+    $randomNumber = rand(0, 1000);
+
+    $mobilePaddingTop = $block['data']['padding_mobile_padding_top'] ?? '';
+    $mobilePaddingRight = $block['data']['padding_mobile_padding_right'] ?? '';
+    $mobilePaddingBottom = $block['data']['padding_mobile_padding_bottom'] ?? '';
+    $mobilePaddingLeft = $block['data']['padding_mobile_padding_left'] ?? '';
+    $tabletPaddingTop = $block['data']['padding_tablet_padding_top'] ?? '';
+    $tabletPaddingRight = $block['data']['padding_tablet_padding_right'] ?? '';
+    $tabletPaddingBottom = $block['data']['padding_tablet_padding_bottom'] ?? '';
+    $tabletPaddingLeft = $block['data']['padding_tablet_padding_left'] ?? '';
+    $desktopPaddingTop = $block['data']['padding_desktop_padding_top'] ?? '';
+    $desktopPaddingRight = $block['data']['padding_desktop_padding_right'] ?? '';
+    $desktopPaddingBottom = $block['data']['padding_desktop_padding_bottom'] ?? '';
+    $desktopPaddingLeft = $block['data']['padding_desktop_padding_left'] ?? '';
+
+    $mobileMarginTop = $block['data']['margin_mobile_margin_top'] ?? '';
+    $mobileMarginRight = $block['data']['margin_mobile_margin_right'] ?? '';
+    $mobileMarginBottom = $block['data']['margin_mobile_margin_bottom'] ?? '';
+    $mobileMarginLeft = $block['data']['margin_mobile_margin_left'] ?? '';
+    $tabletMarginTop = $block['data']['margin_tablet_margin_top'] ?? '';
+    $tabletMarginRight = $block['data']['margin_tablet_margin_right'] ?? '';
+    $tabletMarginBottom = $block['data']['margin_tablet_margin_bottom'] ?? '';
+    $tabletMarginLeft = $block['data']['margin_tablet_margin_left'] ?? '';
+    $desktopMarginTop = $block['data']['margin_desktop_margin_top'] ?? '';
+    $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
+    $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
+    $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="header" class="block-header relative bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }}">
+<section id="header" class="block-header relative header-{{ $randomNumber }}-custom-padding header-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }}">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
-         style="background-image: url('{{ $imageId ? wp_get_attachment_image_url($imageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId ?: $featuredImageId) }}">
+         style="background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
             <video autoplay muted loop playsinline class="video-background absolute inset-0 w-full h-full object-cover" poster="one-does-not-simply.jpg">
                 <source src="{{ esc_url($backgroundVideoURL) }}" type="video/mp4">
@@ -128,6 +158,9 @@
                         @endif
                     </div>
                 @endif
+                @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'inside' &&!is_front_page() && get_the_ID())
+                    @include('components.breadcrumbs.index')
+                @endif
             </div>
             @if ($contentImageId)
                 <div class="hidden md:block content-image w-1/2
@@ -150,7 +183,52 @@
 </section>
 
 @if ($customBlockClasses) <div class="breadcrumbs-{{ $customBlockClasses }}"> @endif
-    @if ($breadcrumbsEnabled && !is_front_page() && get_the_ID())
+    @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'underneath' && !is_front_page() && get_the_ID())
         @include('components.breadcrumbs.index')
     @endif
 @if ($customBlockClasses) </div> @endif
+
+
+<style>
+    .header-{{ $randomNumber }}-custom-padding {
+        @media only screen and (min-width: 0px) {
+            @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
+            @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
+            @if($mobilePaddingBottom) padding-bottom: {{ $mobilePaddingBottom }}px; @endif
+            @if($mobilePaddingLeft) padding-left: {{ $mobilePaddingLeft }}px; @endif
+        }
+        @media only screen and (min-width: 768px) {
+            @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
+            @if($tabletPaddingRight) padding-right: {{ $tabletPaddingRight }}px; @endif
+            @if($tabletPaddingBottom) padding-bottom: {{ $tabletPaddingBottom }}px; @endif
+            @if($tabletPaddingLeft) padding-left: {{ $tabletPaddingLeft }}px; @endif
+        }
+        @media only screen and (min-width: 1024px) {
+            @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
+            @if($desktopPaddingRight) padding-right: {{ $desktopPaddingRight }}px; @endif
+            @if($desktopPaddingBottom) padding-bottom: {{ $desktopPaddingBottom }}px; @endif
+            @if($desktopPaddingLeft) padding-left: {{ $desktopPaddingLeft }}px; @endif
+        }
+    }
+
+    .header-{{ $randomNumber }}-custom-margin {
+        @media only screen and (min-width: 0px) {
+            @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
+            @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif
+            @if($mobileMarginBottom) margin-bottom: {{ $mobileMarginBottom }}px; @endif
+            @if($mobileMarginLeft) margin-left: {{ $mobileMarginLeft }}px; @endif
+        }
+        @media only screen and (min-width: 768px) {
+            @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
+            @if($tabletMarginRight) margin-right: {{ $tabletMarginRight }}px; @endif
+            @if($tabletMarginBottom) margin-bottom: {{ $tabletMarginBottom }}px; @endif
+            @if($tabletMarginLeft) margin-left: {{ $tabletMarginLeft }}px; @endif
+        }
+        @media only screen and (min-width: 1024px) {
+            @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
+            @if($desktopMarginRight) margin-right: {{ $desktopMarginRight }}px; @endif
+            @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
+            @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
+        }
+    }
+</style>
