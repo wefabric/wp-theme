@@ -115,7 +115,7 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="header" class="block-header relative header-{{ $randomNumber }}-custom-padding header-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}">
+<section id="header" class="block-header relative header-{{ $randomNumber }}-custom-padding header-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
          style="background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
@@ -127,7 +127,7 @@
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
         <div class="custom-width relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }} @if ($contentImageId) gap-x-8 @endif @if ($fullHeightContentImage && $textPosition === 'right') justify-end @endif ">
-            <div class="header-info flex flex-col {{ $textWidthClass }} @if ($contentImageId) w-full md:w-1/2 @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 @endif @endif">
+            <div class="header-info flex flex-col {{ $textWidthClass }} @if ($contentImageId) w-full md:w-1/2 @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 pl-8 @endif @endif">
                 @if ($showTitle)
                     @if ($subTitle)
                         <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
@@ -167,8 +167,8 @@
                 <div class="hidden md:block content-image w-1/2
                 @if ($textPosition === 'left') order-2 @elseif ($textPosition === 'right') order-1 @endif
                 @if ($fullHeightContentImage) absolute h-full
-                    @if ($textPosition === 'left') left-[50%] w-[50vw] @endif
-                    @if ($textPosition === 'right') align-image-left custom-image-width @endif
+                    @if ($textPosition === 'left') left-[50%] custom-image-width { @endif
+                    @if ($textPosition === 'right') right-[50%] custom-image-width @endif
                 @endif">
                     @include('components.image', [
                         'image_id' => $contentImageId,
