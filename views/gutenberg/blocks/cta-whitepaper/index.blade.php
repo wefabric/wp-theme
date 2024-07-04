@@ -130,7 +130,7 @@
                                 </div>
                             @endif
                             @if (($button1Text) && ($button1Link))
-                                <div class="w-full flex flex-col sm:flex-row gap-x-4 w-fit justify-center lg:justify-start">
+                                <div class="buttonsw-full flex flex-col flex-wrap gap-x-4 w-fit justify-center lg:justify-start">
                                     @include('components.buttons.default', [
                                        'text' => $button1Text,
                                        'href' => $button1Link,

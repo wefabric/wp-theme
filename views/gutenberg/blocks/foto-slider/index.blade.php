@@ -142,7 +142,7 @@
             @endif
             @include('components.photo-slider.list')
             @if (($button1Text) && ($button1Link))
-                <div class="{{ $textClass }} w-full flex sm:flex-row gap-4 mt-4 md:mt-8 container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
+                <div class="{{ $textClass }} w-full flex flex-wrap gap-4 mt-4 md:mt-8 container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                     @include('components.buttons.default', [
                         'text' => $button1Text,
                         'href' => $button1Link,

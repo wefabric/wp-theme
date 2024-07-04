@@ -127,7 +127,7 @@
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
         <div class="custom-width relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }} @if ($contentImageId) gap-x-8 @endif @if ($fullHeightContentImage && $textPosition === 'right') justify-end @endif ">
-            <div class="header-info flex flex-col {{ $textWidthClass }} @if ($contentImageId) w-full md:w-1/2 @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 pl-8 @endif @endif">
+            <div class="header-info z-30 flex flex-col {{ $textWidthClass }} @if ($contentImageId) w-full md:w-1/2 @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 pl-8 @endif @endif">
                 @if ($showTitle)
                     @if ($subTitle)
                         <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
@@ -164,11 +164,11 @@
                 @endif
             </div>
             @if ($contentImageId)
-                <div class="hidden md:block content-image w-1/2
+                <div class="content-image w-full md:w-1/2
                 @if ($textPosition === 'left') order-2 @elseif ($textPosition === 'right') order-1 @endif
                 @if ($fullHeightContentImage) absolute h-full
-                    @if ($textPosition === 'left') left-[50%] custom-image-width { @endif
-                    @if ($textPosition === 'right') right-[50%] custom-image-width @endif
+                    @if ($textPosition === 'left') left-0 md:left-[50%] custom-image-width { @endif
+                    @if ($textPosition === 'right') right-0 md:right-[50%] custom-image-width @endif
                 @endif">
                     @include('components.image', [
                         'image_id' => $contentImageId,

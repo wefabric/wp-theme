@@ -26,8 +26,7 @@
 
 .block-header {
   .custom-image-width {
-    width: 50vw;
-    max-width: 1400px;
+    @apply w-[100vw] max-w-[2800px] md:w-[50vw] md:max-w-[1400px];
   }
 
   .align-image-left {

@@ -89,7 +89,7 @@
                 ])
             @endif
             @if (($button1Text) && ($button1Link))
-                <div class="{{ $textClass }} w-full flex sm:flex-row gap-4 mt-4 md:mt-8">
+                <div class="{{ $textClass }} buttons w-full flex flex-wrap gap-4 mt-4 md:mt-8">
                     @include('components.buttons.default', [
                        'text' => $button1Text,
                        'href' => $button1Link,
