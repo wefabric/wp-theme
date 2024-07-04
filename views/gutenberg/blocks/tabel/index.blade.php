@@ -44,6 +44,7 @@
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+    $hideBlock = $block['data']['hide_block'] ?? false;
 
 
     // Paddings & margins
@@ -76,7 +77,7 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="tabel" class="block-tabel relative tabel-{{ $randomNumber }}-custom-padding tabel-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
+<section id="tabel" class="block-tabel relative tabel-{{ $randomNumber }}-custom-padding tabel-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }};">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
@@ -90,7 +91,7 @@
                 <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
             @endif
 
-            <div class="overflow-x-auto ">
+            <div class="overflow-x-auto flex {{ $textClass }}">
                 <table class="table-auto">
                     @if($showTableHeaders)
                         <thead>
@@ -120,7 +121,6 @@
                     </tbody>
                 </table>
             </div>
-
             @if ($text)
                 @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])
             @endif
