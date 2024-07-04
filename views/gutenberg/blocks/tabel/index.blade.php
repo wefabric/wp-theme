@@ -8,11 +8,10 @@
     $tableDataCount = $block['data']['table_data'] ?? [];
     $showTableHeaders = $block['data']['table_options_show_table_header'] ?? false;
     $tableHeaderTextColor = $block['data']['table_options_table_header_text_color'] ?? '';
-    $tableTextColor = $block['data']['table_options_text_color'] ?? '';
+    $tableTextColor = $block['data']['table_options_table_text_color'] ?? '';
     $headerRowColor = $block['data']['table_options_header_row_color'] ?? '';
     $evenRowColor = $block['data']['table_options_even_row_color'] ?? '';
     $oddRowColor = $block['data']['table_options_odd_row_color'] ?? '';
-
 
         // Buttons
         $button1Text = $block['data']['button_button_1']['title'] ?? '';
