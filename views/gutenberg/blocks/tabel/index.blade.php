@@ -37,7 +37,7 @@
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
-    $imageId = $block['data']['background_image'] ?? '';
+    $backgroundImageId = $block['data']['background_image'] ?? '';
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
@@ -77,7 +77,7 @@
 @endphp
 
 <section id="tabel" class="block-tabel relative tabel-{{ $randomNumber }}-custom-padding tabel-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }};">
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }};">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -100,20 +100,20 @@
                                         $field_key = "table_headers_0_column_header_{$col}";
                                         $field_value = get_field($field_key);
                                     @endphp
-                                    <th class="p-4">{{ $field_value }}</th>
+                                    <th class="p-4">{!! $field_value !!}</th>
                                 @endfor
                             </tr>
                         </thead>
                     @endif
                     <tbody>
                         @for ($row = 0; $row < $tableDataCount; $row++)
-                            <tr class="text-{{ $tableTextColor }} even-bg-{{ $evenRowColor }} odd-bg-{{ $oddRowColor }} ">
+                            <tr class="text-{{ $tableTextColor }} even-bg-{{ $evenRowColor }} odd-bg-{{ $oddRowColor }}">
                                 @for ($col = 1; $col <= $columnCount; $col++)
                                     @php
                                         $field_key = "table_data_{$row}_column_{$col}";
                                         $field_value = get_field($field_key);
                                     @endphp
-                                    <td class="p-4">{{ $field_value }}</td>
+                                    <td class="p-4">{!! $field_value !!}</td>
                                 @endfor
                             </tr>
                         @endfor
