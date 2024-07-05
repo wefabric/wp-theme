@@ -22,9 +22,12 @@
     $showTitle = $block['data']['show_title'] ?? true;
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
+
     $contentImageId = $block['data']['content_image'] ?? '';
     $contentImageAlt = get_post_meta($contentImageId, '_wp_attachment_image_alt', true);
     $fullHeightContentImage = $block['data']['full_height_image'] ?? false;
+    $title2 = $block['data']['title_2'] ?? '';
+    $text2 = $block['data']['text_2'] ?? '';
 
     // Buttons
     $button1Text = $block['data']['button_button_1']['title'] ?? '';
@@ -177,6 +180,14 @@
                         'img_class' => 'w-full h-full object-cover rounded-' . $borderRadius,
                         'alt' => $contentImageAlt
                     ])
+                    <div class="z-30 text-white absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 hidden md:block">
+                        @if ($title2)
+                            <h2 class="">{!! $title2 !!}</h2>
+                        @endif
+                        @if ($text2)
+                            @include('components.content', ['content' => apply_filters('the_content', $text2), 'class' => 'mt-4 text-lg mb-4 text-' . $textColor])
+                        @endif
+                    </div>
                 </div>
             @endif
         </div>

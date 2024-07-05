@@ -473,6 +473,62 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_66879834a3e9a",
+            "label": "Titel 2",
+            "name": "title_2",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Voeg &lt;br&gt; toe om een nieuwe regel te beginnen.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_668277bb570b9",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66879851a3e9b",
+            "label": "Tekst 2",
+            "name": "text_2",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_668277bb570b9",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
             "key": "field_66826f8d4d35b",
             "label": "Breadcrumbs",
             "name": "",
@@ -1611,5 +1667,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719909014
+    "modified": 1720183911
 }
