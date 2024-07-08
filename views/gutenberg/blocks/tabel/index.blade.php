@@ -91,7 +91,7 @@
             @endif
 
             <div class="overflow-x-auto flex {{ $textClass }}">
-                <table class="table-auto">
+                <table class="table-auto w-full">
                     @if($showTableHeaders)
                         <thead>
                             <tr class="text-{{ $tableHeaderTextColor }} bg-{{ $headerRowColor }}">
