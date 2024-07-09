@@ -145,6 +145,97 @@ header {
     }
 }
 
+
+.secondary-navigation {
+	.menu {
+		@apply flex flex-row w-full;
+
+		li {
+			padding: 0 8px;
+		}
+
+		> ul {
+			display: flex;
+			justify-content: center;
+			flex-direction: row;
+
+			@media only screen and (max-width: 1023px) {
+				flex-direction: column;
+			}
+		}
+
+		.menu-item:not(.current_page_item) {
+			>a {
+				@apply font-normal no-underline;
+			}
+		}
+
+		.current_page_item {
+			>a {
+				@apply font-bold no-underline #{!important};
+			}
+
+			.sub-menu {
+				@apply font-normal;
+			}
+		}
+
+
+		.menu-item-has-children {
+			position: relative;
+
+
+			&:after {
+				@screen xl {
+					@apply text-xs pl-1;
+					font-family: $fa-font-family;
+					content: '\f078';
+				}
+			}
+
+			> .sub-menu {
+				min-width: 180px;
+
+				li {
+					display: list-item !important;
+					margin-left: 20px;
+				}
+
+				@screen xl {
+					@apply shadow-md shadow-gray-600;
+					display: none;
+
+					li {
+						list-style-type: none;
+						margin-left: 0;
+					}
+				}
+			}
+
+			&:hover > .sub-menu {
+				@screen xl {
+
+					@apply bg-white p-3 block z-10 border border-gray-100;
+					z-index: 66;
+					position: absolute;
+					left: -10%;
+					top: 38px;
+
+					.menu-item {
+						width: max-content;
+						@apply text-black hover:text-secondary;
+					}
+
+					.current-menu-item {
+						@apply text-secondary;
+					}
+				}
+			}
+		}
+	}
+}
+
+
 .footer {
 	// DIT MOET WEGGEHAALD WORDEN
 	li.current-menu-item a,

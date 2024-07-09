@@ -13,7 +13,7 @@
             <div class="secondary-menu-text text-sm text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">{!! $options['secondary_menu_text'] !!}</div>
         @endif
         @if (!empty($options['secondary_menu_show_elements']))
-            <div class="flex gap-4 text-sm h-full items-center text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
+            <div class="layout flex gap-4 text-sm h-full items-center text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
                 @foreach($footer_establishments as $key => $establishment)
                     @php
                         if ($establishment instanceof \Wefabric\WPEstablishments\Establishment) {
@@ -31,6 +31,9 @@
                            $email = '';
                         }
                     @endphp
+
+
+                <div class="contact-info flex gap-x-4">
                     @if (in_array('phone', $options['secondary_menu_show_elements']))
                         <a class="phone-link group flex items-center gap-2" href="tel:{{ $phone }}"
                            title="Telefoonnummer">
@@ -46,6 +49,8 @@
                             <span class="align-middle">{{ $email }}</span>
                         </a>
                     @endif
+                </div>
+
                 @endforeach
 
                 @if (in_array('top_navigation', $options['secondary_menu_show_elements']))

@@ -19,9 +19,9 @@
         }
 @endphp
 
-<div class="logo-item group h-full bg-{{ $logoBackgroundColor }} rounded-{{ $borderRadius }}">
-    <div class="custom-logo-styling h-full relative @if($logoUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
-        <div class="background overflow-hidden w-full relative p-4 md:p-6 rounded-{{ $borderRadius }}">
+<div class="logo-item group h-full">
+    <div class="custom-logo-styling overflow-hidden h-full relative bg-{{ $logoBackgroundColor }} rounded-{{ $borderRadius }} @if($logoUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
+        <div class="background w-full relative p-4 md:p-6">
             @if ($logoUrl)
                 <a href="{{ $logoUrl }}" @if($logoLinkType === 'external_link') target="_blank" @endif
                 aria-label="Ga naar {{ $logoTitle }} pagina" class="overlay absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
@@ -31,7 +31,7 @@
                     'image_id' => $logoImage,
                     'size' => 'full',
                     'object_fit' => 'contain',
-                    'img_class' => 'w-full h-[180px] transition ease-in-out duration-300' . ($logoUrl ? 'group-hover:scale-105 ' : '') . 'rounded-' . $borderRadius,
+                    'img_class' => 'w-full h-[180px] transition ease-in-out duration-300'  . ($logoUrl ? 'group-hover:scale-105 ' : '') . 'rounded-' . $borderRadius . ' ' . $logoFilter,
                     'alt' => $logoTitle
                 ])
             @endif
