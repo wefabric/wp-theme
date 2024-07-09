@@ -344,7 +344,7 @@
             "name": "logo_filter",
             "aria-label": "",
             "type": "select",
-            "instructions": "Met het filter kan je alle logo's zwart of wit maken.",
+            "instructions": "Met het filter kan je alle logo's zwart of wit maken.\r\nGebruik hiervoor altijd logo's met een onzichtbare achtergrond!",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -1669,5 +1669,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720516781
+    "modified": 1720518398
 }
