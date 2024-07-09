@@ -288,6 +288,7 @@
                 "overview_text": "Overzichtstekst",
                 "contact_info": "Contactgegevens",
                 "socials": "Social media",
+                "category": "Categorie",
                 "category_filter": "Categorie filter",
                 "button_bottom": "Knop onder werknemers"
             },
@@ -1736,5 +1737,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720528821
+    "modified": 1720532523
 }

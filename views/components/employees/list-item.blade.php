@@ -15,11 +15,25 @@
 
     $showFullContactInfo = $block['data']['show_full_contact_info'] ?? false;
     $contactInfoDisplay = $block['data']['contact_info_display'] ?? '';
+
+    $employeeCategories = get_the_terms($employee, 'employee_categories');
 @endphp
 
 <div class="werknemer-item group h-full">
-    <div class="werknemer-card h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out ">
+    <div class="werknemer-card h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
         <div class="custom-height max-h-[360px] overflow-hidden w-full rounded-{{ $borderRadius }}">
+            @if (!empty($visibleElements) && in_array('category', $visibleElements))
+                <div class="employee-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                    @foreach ($employeeCategories as $category)
+                        @php
+                            $categoryColor = get_field('category_color', $category);
+                        @endphp
+                        <div style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary @endif category text-white px-4 py-2 rounded-full">
+                            {{ $category->name }}
+                        </div>
+                    @endforeach
+                </div>
+            @endif
             @include('components.image', [
                  'image_id' => $imageID,
                  'size' => 'job-thumbnail',
