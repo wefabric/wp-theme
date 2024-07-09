@@ -75,10 +75,26 @@ footer {
 
 
 
+// Collumn styling
+
+
+.wp-block-columns {
+  @apply container mx-auto w-full;
+}
 
 
 
+// Filter classes
 
+.black-filter {
+  filter: grayscale(100%) brightness(0.3);
+  transition: filter 0.3s ease-in-out;
+}
+
+.white-filter {
+  filter: invert(100%) brightness(1.5);
+  transition: filter 0.3s ease-in-out;
+}
 
 
 
