@@ -93,8 +93,8 @@
         },
         {
             "key": "field_6566ff799478e",
-            "label": "Titel positie",
-            "name": "title_position",
+            "label": "Tekst positie",
+            "name": "text_position",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -1669,5 +1669,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720515362
+    "modified": 1720516781
 }

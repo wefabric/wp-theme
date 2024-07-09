@@ -3,10 +3,6 @@
     $title = $block['data']['title'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-    $titlePosition = $block['data']['title_position'] ?? '';
-    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-    $titleClass = $titleClassMap[$titlePosition] ?? '';
-    $logoBackgroundColor = $block['data']['logo_background_color'] ?? '';
 
         // Buttons
         $button1Text = $block['data']['button_button_1']['title'] ?? '';
@@ -15,9 +11,14 @@
         $button1Color = $block['data']['button_button_1_color'] ?? '';
         $button1Style = $block['data']['button_button_1_style'] ?? '';
 
+        $textPosition = $block['data']['text_position'] ?? '';
+        $titleClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
+        $textClass = $titleClassMap[$textPosition] ?? '';
+
 
     // Logos
     $displayType = $block['data']['display_type'] ?? '';
+    $logoBackgroundColor = $block['data']['logo_background_color'] ?? '';
     $logoFilter = $block['data']['logo_filter'] ?? '';
 
     if ($displayType == 'show_all') {
@@ -127,7 +128,7 @@
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto">
+        <div class="{{ $blockClass }} mx-auto {{ $textClass }}">
             @if ($subTitle)
                 <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
             @endif
