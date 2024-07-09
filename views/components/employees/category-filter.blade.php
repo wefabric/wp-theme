@@ -14,7 +14,7 @@
     $multipleFilters = $block['data']['multiple_filters_enabled'] ?? false;
 @endphp
 
-<div class="category-list block flex flex-wrap gap-2">
+<div class="category-list block flex flex-wrap gap-2 {{ $textClass }}">
     @if($categories && !is_wp_error($categories))
         @php
             // URL without any category filters
