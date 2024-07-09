@@ -14,6 +14,7 @@
     $socials = $fields['socials'] ?? [];
 
     $showFullContactInfo = $block['data']['show_full_contact_info'] ?? false;
+    $contactInfoDisplay = $block['data']['contact_info_display'] ?? '';
 @endphp
 
 <div class="werknemer-item group h-full">
@@ -25,7 +26,29 @@
                  'object_fit' => 'cover',
                  'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110 rounded-{{ $borderRadius }}',
                  'alt' => $fullName,
-         ])
+            ])
+            @if (!empty($visibleElements) && in_array('contact_info', $visibleElements) && ($contactInfoDisplay == 'in_image'))
+                <div class="contact-items relative">
+                    @if ($mail)
+                        <div class="contact-icon-wrapper relative">
+                            <div class="mail-icon">
+                                <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" class="text-{{ $employeeTextColor }} hover:text-primary ">
+                                    <i class="contact-text w-4 object-cover fas fa-envelope mr-3"></i>@if($showFullContactInfo) {{ $mail }} @endif
+                                </a>
+                            </div>
+                        </div>
+                    @endif
+                    @if ($phoneNumber)
+                        <div class="contact-icon-wrapper relative">
+                            <div class="phone-icon">
+                                <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" class="text-{{ $employeeTextColor }} hover:text-primary">
+                                    <i class="contact-text w-4 object-cover fas fa-phone mr-3"></i>@if($showFullContactInfo) {{ $phoneNumber }} @endif
+                                </a>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            @endif
         </div>
         <div class="contact-info w-full mt-5 flex flex-col">
             @if (!empty($visibleElements) && in_array('name', $visibleElements))
@@ -44,7 +67,7 @@
                     @endforeach
                 </div>
             @endif
-            @if (!empty($visibleElements) && in_array('contact_info', $visibleElements))
+            @if (!empty($visibleElements) && in_array('contact_info', $visibleElements) && ($contactInfoDisplay == 'under_image'))
                 <div class="contact-items relative">
                     @if ($mail)
                         <div class="contact-icon-wrapper relative">
