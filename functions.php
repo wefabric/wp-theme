@@ -448,7 +448,9 @@ define ('WP_ROCKET_WHITE_LABEL_FOOTPRINT', false);
 add_filter( 'register_post_type_args', function( $args, $post_type )
 {
     if( 'post' !== $post_type && is_array( $args ) ) {
-        $args['rewrite']['with_front'] = false;
+        $args['rewrite'] = [
+            'with_front' => false,
+        ];
     }
 
 
