@@ -38,7 +38,7 @@
 			}
 		@endphp
 
-		<div class="establishments mb-10 footer-address">
+		<div class="establishments footer-address">
 			@if($establishment)
 				<p class="establishment-title leading-8 {{ '' ?? $establishment_config['show_title'] }}">
 					{{ $establishment->name }}

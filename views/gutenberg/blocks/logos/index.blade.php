@@ -128,13 +128,15 @@
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto {{ $textClass }}">
-            @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
-            @endif
-            @if ($title)
-                <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
-            @endif
+        <div class="{{ $blockClass }} mx-auto {{ $textClass }} layout">
+            <div class="content-data mb-4">
+                @if ($subTitle)
+                    <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                @endif
+                @if ($title)
+                    <h2 class="title text-{{ $titleColor }}">{!! $title !!}</h2>
+                @endif
+            </div>
             @if ($logos)
                 @include('components.logos.list', ['logos' => $logos])
             @endif
