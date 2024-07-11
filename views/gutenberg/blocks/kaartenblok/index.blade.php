@@ -1,13 +1,8 @@
 @php
-    // Card block variant
-   $cardVariant = $block['data']['cardblock_version'] ?? '';
-
    // Content
    $title = $block['data']['title'] ?? '';
+   $subTitle = $block['data']['subtitle'] ?? '';
    $titleColor = $block['data']['title_color'] ?? '';
-   $titlePosition = $block['data']['title_position'] ?? '';
-   $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-   $titleClass = $titleClassMap[$titlePosition] ?? '';
 
        // Buttons
        $button1Text = $block['data']['button_bottom_button_1']['title'] ?? '';
@@ -19,11 +14,17 @@
        $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
        $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
 
+       $titlePosition = $block['data']['title_position'] ?? '';
+       $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+       $titleClass = $titleClassMap[$titlePosition] ?? '';
+
    $cardBackgroundColor = $block['data']['card_background_color'] ?? '';
    $cardTitleColor = $block['data']['card_title_color'] ?? '';
    $cardTextColor = $block['data']['card_text_color'] ?? '';
 
-   // Show pages
+
+   // Kaarten
+   $cardVariant = $block['data']['cardblock_version'] ?? '';
    $pagesData = [];
    $numPages = isset($block['data']['pages']) ? intval($block['data']['pages']) : 0;
 
@@ -69,12 +70,14 @@
    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
    $backgroundColor = $block['data']['background_color'] ?? 'default-color';
-   $imageId = $block['data']['background_image'] ?? '';
+   $backgroundImageId = $block['data']['background_image'] ?? '';
    $overlayEnabled = $block['data']['overlay_image'] ?? false;
    $overlayColor = $block['data']['overlay_color'] ?? '';
    $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
    $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+   $hideBlock = $block['data']['hide_block'] ?? false;
+
 
    // Theme settings
    $options = get_fields('option');
@@ -111,15 +114,18 @@
    $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="kaarten" class="block-kaarten kaarten-{{ $randomNumber }}-custom-padding kaarten-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} @if ($cardVariant == 'variant1') content-in-card @elseif ($cardVariant == 'variant2') content-under-card @endif"
-         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
+<section id="kaarten" class="block-kaarten kaarten-{{ $randomNumber }}-custom-padding kaarten-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} @if ($cardVariant == 'variant1') content-in-card @elseif ($cardVariant == 'variant2') content-under-card @endif"
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="block-content {{ $blockClass }} mx-auto">
+            @if ($subTitle)
+                <span class="subtitle block mb-2 text-{{ $titleColor }} @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $subTitle !!}</span>
+            @endif
             @if ($title)
-                <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-12 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
+                <h2 class="title mb-4 text-{{ $titleColor }} @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
             @endif
             @include('components.cardblock.list')
             @if (($button1Text) && ($button1Link))

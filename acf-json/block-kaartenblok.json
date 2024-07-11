@@ -3,32 +3,6 @@
     "title": "Block: Kaartenblok",
     "fields": [
         {
-            "key": "field_6527b2439ad98",
-            "label": "Kaartenblok variant",
-            "name": "cardblock_version",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "variant1": "Content in kaart",
-                "variant2": "Content onder kaart"
-            },
-            "default_value": "variant1",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
             "key": "field_651fc9be0ee9c",
             "label": "Content",
             "name": "",
@@ -43,7 +17,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_651fc9be0eea5",
@@ -54,6 +29,33 @@
             "instructions": "Voeg &lt;br&gt; toe om een nieuwe regel te beginnen.",
             "required": 0,
             "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_668fe49758771",
+            "label": "Subtitel",
+            "name": "subtitle",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Voeg &lt;br&gt; toe om een nieuwe regel te beginnen.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_651fc9be0eea5",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -116,6 +118,50 @@
                 "right": "Rechts"
             },
             "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_668fe509400f7",
+            "label": "Kaarten",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6527b2439ad98",
+            "label": "Kaartenblok variant",
+            "name": "cardblock_version",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "variant1": "Content in kaart",
+                "variant2": "Content onder kaart"
+            },
+            "default_value": "variant1",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -819,7 +865,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_651fc9be0eee2",
@@ -1009,6 +1056,26 @@
             "append": ""
         },
         {
+            "key": "field_668fe4b858772",
+            "label": "Blok verbergen?",
+            "name": "hide_block",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_660573077b0b5",
             "label": "Paddings & margins",
             "name": "",
@@ -1023,7 +1090,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6605731c7b0b6",
@@ -1084,7 +1152,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_6605737e7b0ba",
@@ -1189,7 +1258,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_6605747a7be49",
@@ -1294,7 +1364,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_660574eac45c1",
@@ -1445,7 +1516,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_660575fff265a",
@@ -1550,7 +1622,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_660575fff265f",
@@ -1655,7 +1728,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_660575fff2664",
@@ -1762,7 +1836,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         }
     ],
     "location": [
@@ -1783,5 +1858,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1712053992
+    "modified": 1720706337
 }

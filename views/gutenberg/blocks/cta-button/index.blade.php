@@ -1,14 +1,16 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
-    $textPosition = $block['data']['text_position'] ?? '';
-    $textClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-    $textClass = $textClassMap[$textPosition] ?? 'text-left';
-    $flexClassMap = ['left' => 'items-start', 'center' => 'items-center', 'right' => 'items-end',];
+        $textPosition = $block['data']['text_position'] ?? '';
+        $textClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+        $textClass = $textClassMap[$textPosition] ?? 'text-left';
+
+        $flexClassMap = ['left' => 'items-start', 'center' => 'items-center', 'right' => 'items-end',];
     $flexClass = $flexClassMap[$textPosition] ?? 'items-center';
     $ctaLayout = $block['data']['cta_layout'] ?? '';
     $flexDirection = ($ctaLayout === 'vertical') ? 'flex-col' : (($ctaLayout === 'horizontal') ? 'flex-row' : '');
@@ -42,12 +44,14 @@
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'default-color';
-    $imageId = $block['data']['background_image'] ?? '';
+    $backgroundImageId = $block['data']['background_image'] ?? '';
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+    $hideBlock = $block['data']['hide_block'] ?? false;
+
 
     // Theme settings
     $options = get_fields('option');
@@ -84,8 +88,8 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="cta-button" class="block-cta-button relative cta-button-{{ $randomNumber }}-custom-padding cta-button-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
+<section id="cta-button" class="block-cta-button relative cta-button-{{ $randomNumber }}-custom-padding cta-button-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -120,11 +124,18 @@
 
                     <div class="cta-data flex flex-col @if($sideImage) order-2 xl:order-1 w-full xl:w-1/2 flex-col @endif md:{{ $flexDirection }} {{ $flexClass }} justify-center gap-x-16 gap-y-4 @if($topImage) mt-16 md:mt-20 @endif">
                         <div class="w-fit @if($ctaLayout == 'vertical' && $textPosition !== 'center') {{ $textClass }} @else text-center @endif md:{{ $textClass }}">
+
+                            @if ($subTitle)
+                                <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                            @endif
                             @if ($title)
-                                <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
+                                <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
                             @endif
                             @if ($text)
-                                @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 md:mt-4 text-' . $textColor])
+                                 @include('components.content', [
+                                    'content' => apply_filters('the_content', $text),
+                                    'class' => 'mt-4' . $textColor,
+                                 ])
                             @endif
                         </div>
                         @if (($button1Text) && ($button1Link))
