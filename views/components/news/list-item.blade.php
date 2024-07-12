@@ -30,7 +30,7 @@
                                 $categoryColor = get_field('category_color', $category);
                             @endphp
                             <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full" aria-label="Ga naar {{ $category->name }}">
-                                {{ $category->name }}
+                                {!! $category->name !!}
                             </a>
                         @endforeach
                     </div>
@@ -57,7 +57,7 @@
                 @endif
 
                 @if (!empty($visibleElements) && in_array('author', $visibleElements) && !empty($postAuthorName))
-                    <p class="news-author mt-4 text-{{ $newsTextColor }}">Geschreven door {{ $postAuthorName }}</p>
+                    <p class="news-author mt-4 text-{{ $newsTextColor }}">Geschreven door {!! $postAuthorName !!}</p>
                 @endif
             </div>
             @if (!empty($visibleElements) && in_array('button', $visibleElements))

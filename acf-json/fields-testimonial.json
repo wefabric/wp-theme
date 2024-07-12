@@ -3,6 +3,26 @@
     "title": "Testimonial",
     "fields": [
         {
+            "key": "field_6690347391452",
+            "label": "Naam",
+            "name": "name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6512aaa35c7d1",
             "label": "Avatar",
             "name": "avatar",
@@ -48,9 +68,31 @@
             "append": ""
         },
         {
+            "key": "field_668fe8ff67645",
+            "label": "Sterren rating",
+            "name": "star_rating",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 0,
+            "max": 5,
+            "placeholder": "",
+            "step": "0.5",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6512aa795c7cf",
-            "label": "Review",
-            "name": "review",
+            "label": "Testimonial tekst",
+            "name": "testimonial_text",
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
@@ -111,5 +153,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702031627
+    "modified": 1720726692
 }

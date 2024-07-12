@@ -14,8 +14,8 @@
          $button1Style = $block['data']['button_button_1_style'] ?? '';
 
          $textPosition = $block['data']['text_position'] ?? '';
-         $titleClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
-         $textClass = $titleClassMap[$textPosition] ?? '';
+         $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
+         $textClass = $textClassMap[$textPosition] ?? '';
 
 
      // Employees

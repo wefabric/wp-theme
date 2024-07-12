@@ -1,4 +1,9 @@
-<div class="steps flex flex-wrap mx-auto">
+@php
+    $visibleElements = $block['data']['show_element'] ?? [];
+@endphp
+
+
+<div class="steps flex flex-col mx-auto">
     @for ($i = 0; $i < $steps; $i++)
         @php
             $stepTitleKey = "steps_{$i}_step_title";
@@ -25,13 +30,13 @@
         @endphp
 
         <div class="step flex relative py-6 sm:items-center w-full">
-            @if ($showStepNumber)
+            @if (!empty($visibleElements) && in_array('stepnumber_1', $visibleElements))
                 <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
                     <div class="h-full w-1 bg-gray-200"></div>
                 </div>
                 <div class="step-number flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-primary bg-{{ $stepIconColor }} text-white z-10 text-sm">{{ $i + 1 }}</div>
             @endif
-            <div class="flex flex-col sm:flex-row pl-6 md:pl-8 items-start sm:items-center">
+            <div class="step-layout flex flex-col sm:flex-row gap-x-6 gap-y-2 items-start sm:items-center @if (!empty($visibleElements) && in_array('stepnumber_1', $visibleElements)) pl-6 @endif">
                 @if ($stepIcon)
                     <div class="flex-shrink-0 w-24 h-24 bg-primary-light bg-{{ $stepIconColor }}-light text-primary text-{{ $stepIconColor }} rounded-full inline-flex items-center justify-center">
                         @if ($iconClass)
@@ -41,7 +46,7 @@
                     </div>
                 @endif
                 @if ($stepImage)
-                    <div class="flex-shrink-0">
+                    <div class="image-container flex-shrink-0">
                         @include('components.image', [
                             'image_id' => $stepImage,
                             'size' => 'full',
@@ -51,9 +56,12 @@
                         ])
                     </div>
                 @endif
-                <div class="flex-grow sm:pl-6">
+                <div class="step-data flex-grow">
+                    @if (!empty($visibleElements) && in_array('stepnumber_2', $visibleElements))
+                       <div class="step-number">Stap {{ $i + 1 }}</div>
+                    @endif
                     @if($stepTitle)
-                        <h3 class="mb-1 text-xl text-{{ $stepTitleColor }}">{{ $stepTitle }}</h3>
+                        <h3 class="step-title mb-1 text-xl text-{{ $stepTitleColor }}">{!! $stepTitle !!}</h3>
                     @endif
                     @if ($stepText)
                         @include('components.content', ['content' => apply_filters('the_content', $stepText), 'class' => 'text-' . $stepTextColor])
