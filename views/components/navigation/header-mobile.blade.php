@@ -34,7 +34,7 @@
 
         </div>
         <div class="block xl:hidden mobile-menu-wrap">
-            <nav class="mobile-menu">
+            <nav class="mobile-menu flex flex-col">
                 <div class="mobile-logo">
                     @include('components.header.logo', ['type' => 'white'])
                 </div>
