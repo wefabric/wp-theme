@@ -11,6 +11,14 @@ module.exports = {
     'md:text-right',
     'lg:text-right',
     'xl:text-right',
+    'sm:text-left',
+    'md:text-left',
+    'lg:text-left',
+    'xl:text-left',
+    'sm:text-center',
+    'md:text-center',
+    'lg:text-center',
+    'xl:text-center',
   ],
   theme: {
     boxShadow: {

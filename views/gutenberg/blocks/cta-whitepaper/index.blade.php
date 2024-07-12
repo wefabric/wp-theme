@@ -1,5 +1,5 @@
 @php
-    // Content
+   // Content
    $title = $block['data']['title'] ?? '';
    $titleColor = $block['data']['title_color'] ?? '';
    $text = $block['data']['text'] ?? '';
@@ -115,9 +115,9 @@
                 @endif
 
                 <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full @endif relative z-10">
-                    <div class="cta-data flex flex-col lg:{{ $flexDirection }} {{ $flexClass }} justify-center sm:px-8 lg:px-16 gap-y-4 gap-x-8 @if($topImage) mt-16 md:mt-20 @endif ">
+                    <div class="cta-wrapper flex flex-col lg:{{ $flexDirection }} {{ $flexClass }} justify-center sm:px-8 lg:px-16 gap-y-4 gap-x-8 @if($topImage) mt-16 md:mt-20 @endif ">
 
-                        <div class="flex flex-col gap-x-16 gap-y-4 @if ($ctaLayout == 'horizontal') order-2 lg:order-1 @else order-2 @endif @if($sideImage) w-full lg:w-4/5 text-center lg:{{$textClass}} @else w-full lg:w-full {{ $textClass }} @endif">
+                        <div class="cta-data flex flex-col gap-x-16 gap-y-4 @if ($ctaLayout == 'horizontal') order-2 lg:order-1 @else order-2 @endif @if($sideImage) w-full lg:w-4/5 text-center lg:{{$textClass}} @else w-full lg:w-full {{ $textClass }} @endif">
                             @if ($title)
                                 <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
                             @endif
@@ -153,7 +153,7 @@
                             @endif
                         </div>
                         @if ($sideImage)
-                            <div class="side-image @if($ctaLayout == 'horizontal') order-1 lg:order-2 @else order-1 @endif w-full lg:w-auto -mt-[150px]">
+                            <div class="side-image @if($ctaLayout == 'horizontal') order-1 lg:order-2 @else order-1 @endif w-full lg:w-auto">
                                 @include('components.image', [
                                    'image_id' => $sideImage,
                                    'size' => 'full',
