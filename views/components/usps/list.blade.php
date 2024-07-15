@@ -15,7 +15,7 @@
 @endphp
 
 @if($block['data']['show_slider'])
-    <div class="block relative">
+    <div class="usp-swiper block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($usps as $usp)
@@ -32,7 +32,7 @@
         </div>
     </div>
 @else
-    <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
+    <div class="usp-grid grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
         @foreach ($usps as $usp)
             @include('components.usps.list-item')
         @endforeach

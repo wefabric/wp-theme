@@ -1,6 +1,7 @@
 {
   "blocks": [
     "header/block.json",
+    "header-slider/block.json",
     "tekst/block.json",
     "afbeelding/block.json",
     "foto-slider/block.json",
