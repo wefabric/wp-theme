@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.formulier.index', ['block' => $block])->render(); ?>
