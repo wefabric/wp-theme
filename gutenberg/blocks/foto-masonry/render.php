@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.foto-masonry.index', ['block' => $block])->render(); ?>
