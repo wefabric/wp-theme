@@ -133,7 +133,7 @@
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
 
 
-     // Paddings & margins
+    // Paddings & margins
     $randomNumber = rand(0, 1000);
 
     $mobilePaddingTop = $block['data']['padding_mobile_padding_top'] ?? '';

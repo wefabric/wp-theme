@@ -99,16 +99,16 @@
                                                     <span class="align-middle group-hover:text-cta group-hover:underline">{{ $email }}</span>
                                                 </a>
                                             @endif
-                                        </div>
-                                    @endif
-                                    @if($street && $visibleElements && in_array('route_description', $visibleElements))
-                                        <div class="route-info mt-2">
-                                            <a class="route-link group flex items-center gap-2 w-fit"
-                                               href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}"
-                                               title="Email">
-                                                <i class="fa-solid fa-route"></i>
-                                                <span class="align-middle group-hover:text-cta group-hover:underline">Route</span>
-                                            </a>
+                                            @if($street && $visibleElements && in_array('route_description', $visibleElements))
+                                                <div class="route-info">
+                                                    <a class="route-link group flex items-center gap-2 w-fit"
+                                                       href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}"
+                                                       title="Email">
+                                                        <i class="fa-solid fa-route"></i>
+                                                        <span class="align-middle group-hover:text-cta group-hover:underline">Route</span>
+                                                    </a>
+                                                </div>
+                                            @endif
                                         </div>
                                     @endif
                                 </div>
