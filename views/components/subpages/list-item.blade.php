@@ -13,14 +13,18 @@
         }
 
     $subpageCategories = get_the_terms($subpage, 'category');
+
+    $pageLink = $block['data']['page_url'] ?? false;
 @endphp
 
 <div class="subpage-item group h-full">
     <div class="subpage-wrapper relative h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
         @if ($subpageThumbnailId)
             <div class="subpage-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
+                @if ($pageLink)
                 <a href="{{ $subpageUrl }}" aria-label="Ga naar {{ $subpageTitle }} pagina"
                    class="overlay left-0 top-0 absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                @endif
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     <div class="subpage-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                         @foreach ($subpageCategories as $category)
@@ -44,10 +48,12 @@
             </div>
         @endif
         <div class="subpage-data flex flex-col w-full grow mt-5">
-
+            @if ($pageLink)
             <a href="{{ $subpageUrl }}" aria-label="Ga naar {{ $subpageTitle }} pagina"
                class="subpage-title text-{{ $subpageTitleColor }} font-bold text-lg group-hover:text-primary">{!! $subpageTitle !!}</a>
-
+            @else
+                <div class="subpage-title text-{{ $subpageTitleColor }} font-bold text-lg">{!! $subpageTitle !!}</div>
+            @endif
             <div class="subpage-info">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($subpageSummary))
                     <p class="subpage-summary text-{{ $subpageTextColor }} mt-3 mb-2">{{ $subpageSummary }} </p>
