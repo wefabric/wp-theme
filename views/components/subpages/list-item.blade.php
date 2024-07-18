@@ -6,11 +6,15 @@
 
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
+
     $subpageSummary = get_the_excerpt($subpage);
-        $maxSummaryLength = 180;
+    $shortenSummary = $block['data']['shorten_excerpt'] ?? false;
+    if ($shortenSummary) {
+        $maxSummaryLength = $block['data']['max_summary_length'] ?? 180;
         if (strlen($subpageSummary) > $maxSummaryLength) {
             $subpageSummary = substr($subpageSummary, 0, $maxSummaryLength - 3) . '...';
         }
+    }
 
     $subpageCategories = get_the_terms($subpage, 'category');
 
