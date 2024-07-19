@@ -1,20 +1,4 @@
 @php
-    // Header style
-    $headerHeight = $block['data']['header_height'] ?? '';
-    $heightClasses = [
-        1 => 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]',
-        2 => 'h-[200px] md:h-[400px] 2xl:h-[500px]',
-        3 => 'h-[120px] md:h-[200px]',
-    ];
-    $headerClass = $heightClasses[$headerHeight] ?? '';
-
-    $headerNames = [
-        1 => 'big-header',
-        2 => 'medium-header',
-        3 => 'small-header',
-    ];
-    $headerName = $headerNames[$headerHeight] ?? '';
-
     // Content
     $title = !empty($block['data']['title']) ? $block['data']['title'] : get_the_title();
     $titleColor = $block['data']['title_color'] ?? '';
@@ -23,41 +7,38 @@
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
-//    $contentImageId = $block['data']['content_image'] ?? '';
-//    $contentImageAlt = get_post_meta($contentImageId, '_wp_attachment_image_alt', true);
-//    $fullHeightContentImage = $block['data']['full_height_image'] ?? false;
-//    $title2 = $block['data']['title_2'] ?? '';
-//    $text2 = $block['data']['text_2'] ?? '';
-
-    // Buttons
-    $button1Text = $block['data']['button_button_1']['title'] ?? '';
-    $button1Link = $block['data']['button_button_1']['url'] ?? '';
-    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
-    $button1Color = $block['data']['button_button_1_color'] ?? '';
-    $button1Style = $block['data']['button_button_1_style'] ?? '';
-    $button2Text = $block['data']['button_button_2']['title'] ?? '';
-    $button2Link = $block['data']['button_button_2']['url'] ?? '';
-    $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
-    $button2Color = $block['data']['button_button_2_color'] ?? '';
-    $button2Style = $block['data']['button_button_2_style'] ?? '';
+        // Buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button2Text = $block['data']['button_button_2']['title'] ?? '';
+        $button2Link = $block['data']['button_button_2']['url'] ?? '';
+        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
+        $button2Color = $block['data']['button_button_2_color'] ?? '';
+        $button2Style = $block['data']['button_button_2_style'] ?? '';
 
     $textPosition = $block['data']['text_position'] ?? '';
     $textPositionClass = '';
     $textWidthClass = '';
 
-//    if (!$contentImageId) {
-//        if ($textPosition === 'left') {
-//            $textPositionClass = 'justify-start text-left';
-//            $textWidthClass = ($headerHeight == 3) ? 'w-full' : 'w-full md:w-2/3 xl:w-2/3';
-//        } elseif ($textPosition === 'center') {
-//            $textPositionClass = 'justify-center text-center items-center';
-//               $textWidthClass = ($headerHeight == 3) ? 'w-full' : 'w-full xl:w-3/4';
-//        } elseif ($textPosition === 'right') {
-//            $textPositionClass = 'justify-end text-left';
-//               $textWidthClass = ($headerHeight == 3) ? 'w-full md:w-2/3' : 'w-full md:w-1/2 xl:w-1/3';
-//        }
-//    }
 
+     // Project data
+    $projectData = [];
+    for ($i = 0; $i < 4; $i++) {
+        $project_title_key = "project_data_{$i}_project_title";
+        $project_text_key = "project_data_{$i}_project_text";
+
+        if (isset($block['data'][$project_title_key]) && isset($block['data'][$project_text_key])) {
+            $projectData[] = [
+                'title' => $block['data'][$project_title_key],
+                'text' => $block['data'][$project_text_key],
+            ];
+        }
+    }
+
+//    @dd($block['data']);
 
     // Breadcrumbs
     $breadcrumbsEnabled = $block['data']['show_breadcrumbs'] ?? false;
@@ -118,8 +99,8 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="header-project" class="block-header-project relative header-project-{{ $randomNumber }}-custom-padding header-project-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
-    <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
+<section id="header-project" class="block-header-project relative max-w-[2800px] mx-auto header-project-{{ $randomNumber }}-custom-padding header-project-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} ">
+    <div class="custom-styling bg-cover bg-center lg:h-[800px] 2xl:h-[800px] py-8 lg:pb-16"
          style="background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
             <video autoplay muted loop playsinline class="video-background absolute inset-0 w-full h-full object-cover" poster="one-does-not-simply.jpg">
@@ -129,8 +110,8 @@
         @if ($overlayEnabled)
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
-        <div class="custom-width relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }} @if ($contentImageId) gap-x-8 @endif @if ($fullHeightContentImage && $textPosition === 'right') justify-end @endif ">
-            <div class="header-info z-30 flex flex-col {{ $textWidthClass }} @if ($contentImageId) w-full md:w-1/2 @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 pl-8 @endif @endif">
+        <div class="custom-width container mx-auto px-8 h-full flex justify-center lg:justify-start lg:items-end z-30 {{ $textPositionClass }} @if ($projectData) gap-x-8 gap-y-4 lg:justify-between flex-col lg:flex-row @endif">
+            <div class="header-info z-30 flex flex-col {{ $textWidthClass }} @if ($projectData) w-full lg:w-1/2 xl:w-2/5 @endif">
                 @if ($showTitle)
                     @if ($subTitle)
                         <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
@@ -166,8 +147,15 @@
                     @include('components.breadcrumbs.index')
                 @endif
             </div>
-            @if ($contentImageId)
-
+            @if ($projectData)
+                <div class="project-data-list w-full lg:w-1/2 xl:w-2/5 grid grid-cols-1 sm:grid-cols-2 gap-4 z-20 relative">
+                    @foreach ($projectData as $project)
+                        <div class="project-item px-6 lg:px-8 py-2 lg:py-4 w-full">
+                            <div class="project-title text-{{ $textColor }}">{!! $project['title'] !!}</div>
+                            <div class="project-text text-{{ $textColor }}">{!! $project['text'] !!}</div>
+                        </div>
+                    @endforeach
+                </div>
             @endif
         </div>
     </div>

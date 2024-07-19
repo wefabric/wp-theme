@@ -3,33 +3,6 @@
     "title": "Block: Header Project",
     "fields": [
         {
-            "key": "field_669a5388e15e9",
-            "label": "Header hoogte",
-            "name": "header_height",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "3": "Klein",
-                "2": "Gemiddeld",
-                "1": "Groot"
-            },
-            "default_value": 3,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
             "key": "field_669a5388e15f2",
             "label": "Content",
             "name": "",
@@ -379,11 +352,11 @@
             ]
         },
         {
-            "key": "field_669a5388e162a",
-            "label": "Tekstpositie",
-            "name": "text_position",
+            "key": "field_669a5ffe268bb",
+            "label": "Project data",
+            "name": "project_data",
             "aria-label": "",
-            "type": "select",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -392,18 +365,57 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "left": "Links",
-                "center": "Midden",
-                "right": "Rechts"
-            },
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Nieuwe regel",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_669a601a268bc",
+                    "label": "Project tekst",
+                    "name": "project_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_669a5ffe268bb"
+                },
+                {
+                    "key": "field_669a6042268bd",
+                    "label": "Project tekst",
+                    "name": "project_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_669a5ffe268bb"
+                }
+            ]
         },
         {
             "key": "field_669a5388e164c",
@@ -1544,5 +1556,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1721390169
+    "modified": 1721396728
 }
