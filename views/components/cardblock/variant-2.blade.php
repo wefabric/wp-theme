@@ -5,6 +5,20 @@
                 @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                        class="absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                    @if (!empty($visibleElements) && in_array('category', $visibleElements))
+                        @if ($terms && !is_bool($terms))
+                            <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                                @foreach ($terms as $term)
+                                    @php
+                                        $categoryColor = get_field('category_color', $term);
+                                    @endphp
+                                    <div style="background-color: {{ $categoryColor }}" class="card-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
+                                        {!! $term->name !!}
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                    @endif
                     @include('components.image', [
                      'image_id' => $featuredImageId,
                      'size' => 'job-thumbnail',
