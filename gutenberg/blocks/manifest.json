@@ -2,6 +2,7 @@
   "blocks": [
     "header/block.json",
     "header-slider/block.json",
+    "header-project/block.json",
     "tekst/block.json",
     "afbeelding/block.json",
     "foto-slider/block.json",

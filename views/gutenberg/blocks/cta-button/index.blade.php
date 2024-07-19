@@ -134,12 +134,12 @@
                             @if ($text)
                                  @include('components.content', [
                                     'content' => apply_filters('the_content', $text),
-                                    'class' => 'mt-4' . $textColor,
+                                    'class' => 'mt-4 text-' . $textColor,
                                  ])
                             @endif
                         </div>
                         @if (($button1Text) && ($button1Link))
-                            <div class="buttons flex flex-col flex-wrap gap-x-4 w-fit justify-center md:justify-start">
+                            <div class="buttons flex  flex-wrap gap-x-4 w-fit justify-center md:justify-start">
                                 @include('components.buttons.default', [
                                    'text' => $button1Text,
                                    'href' => $button1Link,

@@ -6,6 +6,17 @@
     $imageID = $page['image_id'] ?? 0;
     $featuredImageId = $page['featured_image_id'] ?? '';
 
+    $postType = get_post_type($pageId);
+    $pageId = $page['id'];
+    $terms = [];
+    if ($postType === 'page') {
+        // Fetch categories for pages
+        $terms = get_the_category($pageId);
+    } else {
+        // Fetch terms from the custom taxonomy 'branches_categories'
+        $terms = get_the_terms($pageId, $postType . '_categories');
+    }
+
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
 @endphp
