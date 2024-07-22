@@ -47,19 +47,23 @@
                                 $phone = $establishment ? $establishment->getContactPhone() : '';
                                 $email = $establishment ? $establishment->getContactEmailAddress() : '';
                             @endphp
-                            @if (in_array('phone', $options['secondary_menu_show_elements']))
-                                <a class="phone-link group flex items-center" href="tel:{{ $phone }}"
-                                   title="Telefoonnummer">
-                                    <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone"></i>
-                                    <span class="align-middle"></span>
-                                </a>
-                            @endif
-                            @if (in_array('email', $options['secondary_menu_show_elements']))
-                                <a class="mail-link group flex items-center" href="mailto:{{ $email }}"
-                                   title="E-mailadres">
-                                    <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-envelope"></i>
-                                    <span class="align-middle"></span>
-                                </a>
+                            @if (in_array('phone', $options['secondary_menu_show_elements']) || in_array('email', $options['secondary_menu_show_elements']))
+                                <div class="contact-info flex gap-x-2">
+                                    @if (in_array('phone', $options['secondary_menu_show_elements']))
+                                        <a class="phone-link group flex items-center" href="tel:{{ $phone }}"
+                                           title="Telefoonnummer">
+                                            <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone"></i>
+                                            <span class="align-middle"></span>
+                                        </a>
+                                    @endif
+                                    @if (in_array('email', $options['secondary_menu_show_elements']))
+                                        <a class="mail-link group flex items-center" href="mailto:{{ $email }}"
+                                           title="E-mailadres">
+                                            <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-envelope"></i>
+                                            <span class="align-middle"></span>
+                                        </a>
+                                    @endif
+                                </div>
                             @endif
                         @endforeach
 
@@ -76,7 +80,7 @@
                                 {!! wp_nav_menu([
                                     'theme_location' => 'top-navigation',
                                     'menu_id' => $menuID,
-                                    'container_class' => 'flex',
+                                    'container_class' => 'secondary-menu-items flex',
                                     'li_class'  => 'li-class',
                                     'li_active_class'  => '',
                                     'echo' => false
