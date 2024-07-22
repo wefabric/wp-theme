@@ -20,7 +20,15 @@ module.exports = {
     'lg:text-center',
     'xl:text-center',
     'rounded-[30px]',
+    'sm:rounded-[30px]',
+    'md:rounded-[30px]',
+    'lg:rounded-[30px]',
+    'xl:rounded-[30px]',
     'rounded-[50px]',
+    'sm:rounded-[50px]',
+    'md:rounded-[50px]',
+    'lg:rounded-[50px]',
+    'xl:rounded-[50px]',
   ],
   theme: {
     boxShadow: {
