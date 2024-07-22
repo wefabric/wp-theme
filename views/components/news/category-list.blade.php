@@ -20,6 +20,16 @@
     @if($categories)
         @foreach($categories as $category)
             @php
+                // Ensure the category has posts
+                $categoryPosts = get_posts(array(
+                    'category' => $category->term_id,
+                    'numberposts' => 1, // We only need to check if there's at least one post
+                ));
+
+                if (empty($categoryPosts)) {
+                    continue; // Skip this category if it has no posts
+                }
+
                 $categoryColor = get_field('category_color', 'category_' . $category->term_id);
                 $isActive = ($currentTerm && $currentTerm->term_id == $category->term_id);
                 $categoryLink = $isActive ? $newsArchiveLink : get_category_link($category);
