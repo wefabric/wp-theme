@@ -12,6 +12,12 @@
     $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
 
         // Buttons
+        $button2Text = $block['data']['button_2_button_2']['title'] ?? '';
+        $button2Link = $block['data']['button_2_button_2']['url'] ?? '';
+        $button2Target = $block['data']['button_2_button_2']['target'] ?? '_self';
+        $button2Color = $block['data']['button_2_button_2_color'] ?? '';
+        $button2Style = $block['data']['button_2_button_2_style'] ?? '';
+
         $button1Text = $block['data']['button_button_1']['title'] ?? '';
         $button1Link = $block['data']['button_button_1']['url'] ?? '';
         $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
@@ -94,6 +100,18 @@
                 @endif
                 @if ($title)
                     <h2 class="title mb-4 text-{{ $titleColor }} {{ $titleClass }}">{!! $title !!}</h2>
+                @endif
+                @if (($button2Text) && ($button2Link))
+                    <div class="w-full flex flex-wrap gap-4 mt-4 md:mt-8">
+                        @include('components.buttons.default', [
+                           'text' => $button2Text,
+                           'href' => $button2Link,
+                           'alt' => $button2Text,
+                           'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                           'class' => 'rounded-lg text-left',
+                           'target' => $button2Target,
+                       ])
+                    </div>
                 @endif
             </div>
 
