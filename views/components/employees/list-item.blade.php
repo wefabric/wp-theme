@@ -38,7 +38,7 @@
                  'image_id' => $imageID,
                  'size' => 'job-thumbnail',
                  'object_fit' => 'cover',
-                 'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110 rounded-{{ $borderRadius }}',
+                 'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110 rounded-' . $borderRadius ,
                  'alt' => $fullName,
             ])
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements) && ($contactInfoDisplay == 'in_image'))
