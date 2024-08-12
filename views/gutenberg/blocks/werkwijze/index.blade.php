@@ -29,7 +29,7 @@
     $workflowVariant = $block['data']['layout_steps'] ?? '';
 
     $steps = $block['data']['steps'];
-    $showStepNumber = $block['data']['show_step_number'];
+    $showStepNumber = $block['data']['show_step_number'] ?? false;
     $stepTitleColor = $block['data']['step_title_color'] ?? '';
     $stepTextColor = $block['data']['step_text_color'] ?? '';
 
