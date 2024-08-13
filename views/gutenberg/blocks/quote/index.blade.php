@@ -77,6 +77,9 @@
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} {{ $textClass }} mx-auto">
+
+            {{-- Todo: add subtitle --}}
+
             @if ($title)
                 <h2 class="mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
             @endif
@@ -98,16 +101,16 @@
                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style ,
                        'class' => 'rounded-lg',
                        'target' => $button1Target,
-                   ])
+                    ])
                     @if (($button2Text) && ($button2Link))
-                            @include('components.buttons.default', [
-                               'text' => $button2Text,
-                               'href' => $button2Link,
-                               'alt' => $button2Text,
-                               'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                               'class' => 'rounded-lg',
-                               'target' => $button2Target,
-                           ])
+                        @include('components.buttons.default', [
+                           'text' => $button2Text,
+                           'href' => $button2Link,
+                           'alt' => $button2Text,
+                           'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                           'class' => 'rounded-lg',
+                           'target' => $button2Target,
+                        ])
                     @endif
                 </div>
             @endif
