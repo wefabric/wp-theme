@@ -26,6 +26,7 @@
     "usp/block.json",
     "klantencase/block.json",
     "kaartenblok/block.json",
+    "modal/block.json",
     "nieuws/block.json",
     "activiteiten/block.json",
     "vacatures/block.json",
