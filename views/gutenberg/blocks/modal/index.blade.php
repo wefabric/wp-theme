@@ -133,16 +133,28 @@
         var modal = document.querySelector('.modal-{{ $randomNumber }}');
         var closeModalButtons = document.querySelectorAll('.close-modal');
         var backdrop = document.getElementById('backdrop-{{ $randomNumber }}');
-        var delay = {{ $modalDelay }} * 1000;
+        var showDelay = {{ $modalDelay }} * 1000;
+        var transitionDuration = 300;
+
+        // Initially hide both modal and backdrop
+        modal.style.display = 'none';
+        backdrop.style.display = 'none';
 
         // Function to show both modal and backdrop
         function showModal() {
-            modal.classList.remove('opacity-0');
-            modal.classList.add('opacity-100');
             if (backdrop) {
-                backdrop.classList.remove('bg-opacity-0');
-                backdrop.classList.add('bg-opacity-50');
+                backdrop.style.display = 'block';
+                setTimeout(function() {
+                    backdrop.classList.remove('bg-opacity-0');
+                    backdrop.classList.add('bg-opacity-50');
+                }, 0); // Apply opacity change immediately
             }
+
+            modal.style.display = 'block';
+            setTimeout(function() {
+                modal.classList.remove('opacity-0');
+                modal.classList.add('opacity-100');
+            }, 0); // Apply opacity change immediately
         }
 
         // Function to hide both modal and backdrop
@@ -152,15 +164,23 @@
             if (backdrop) {
                 backdrop.classList.add('bg-opacity-0');
                 backdrop.classList.remove('bg-opacity-50');
+                // Wait for the fade-out transition to complete before hiding both modal and backdrop
+                setTimeout(function() {
+                    backdrop.style.display = 'none';
+                    modal.style.display = 'none';
+                }, transitionDuration);
             }
         }
 
-        setTimeout(showModal, delay);
+        // Show modal and backdrop after showDelay - transitionDuration
+        setTimeout(showModal, showDelay - transitionDuration);
 
+        // Close modal on close button click
         closeModalButtons.forEach(function(button) {
             button.addEventListener('click', closeModal);
         });
 
+        // Close modal when backdrop is clicked
         if (backdrop) {
             backdrop.addEventListener('click', closeModal);
         }
