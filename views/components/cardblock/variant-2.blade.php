@@ -1,5 +1,5 @@
 <div id="{{ str_replace(' ', '-', strtolower($pageTitle)) }}" class="content-under-card-item card-item group h-full">
-    <div class="bg-{{ $cardBackgroundColor }} rounded-{{ $borderRadius }} h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out overflow-hidden">
+    <div class="custom-radius bg-{{ $cardBackgroundColor }} rounded-{{ $borderRadius }} h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out overflow-hidden">
         <div>
             <div class="image-container h-[360px] relative overflow-hidden rounded-t-{{ $borderRadius }}">
                 @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId)

@@ -3,12 +3,23 @@
     $title = $block['data']['title'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-
-        $titlePosition = $block['data']['title_position'] ?? '';
-        $titleClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
-        $titleClass = $titleClassMap[$titlePosition] ?? '';
-
     $textColor = $block['data']['text_color'] ?? '';
+
+        // Buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button2Text = $block['data']['button_button_2']['title'] ?? '';
+        $button2Link = $block['data']['button_button_2']['url'] ?? '';
+        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
+        $button2Color = $block['data']['button_button_2_color'] ?? '';
+        $button2Style = $block['data']['button_button_2_style'] ?? '';
+
+        $textPosition = $block['data']['text_position'] ?? '';
+        $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
+        $textClass = $textClassMap[$textPosition] ?? '';
 
 
     // Testimonial
@@ -163,10 +174,10 @@
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $titleClass }}">{!! $subTitle !!}</span>
+                <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
             @endif
             @if ($title)
-                <h2 class="title mb-4 text-{{ $titleColor }} {{ $titleClass }}">{!! $title !!}</h2>
+                <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
             @endif
             @if (!empty($visibleElements) && in_array('category_filter', $visibleElements))
                 @include('components.testimonials.category-filter')
@@ -174,8 +185,28 @@
             @if ($testimonials)
                 @include('components.testimonials.list', ['testimonials' => $testimonials])
             @endif
-
-            {{-- todo: add button underneath--}}
+            @if (($button1Text) && ($button1Link))
+                <div class="{{ $textClass }} buttons w-full flex flex-wrap gap-4 mt-4">
+                    @include('components.buttons.default', [
+                       'text' => $button1Text,
+                       'href' => $button1Link,
+                       'alt' => $button1Text,
+                       'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                       'class' => 'rounded-lg',
+                       'target' => $button1Target,
+                   ])
+                    @if (($button2Text) && ($button2Link))
+                        @include('components.buttons.default', [
+                            'text' => $button2Text,
+                            'href' => $button2Link,
+                            'alt' => $button2Text,
+                            'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                            'class' => 'rounded-lg',
+                            'target' => $button2Target,
+                        ])
+                    @endif
+                </div>
+            @endif
         </div>
     </div>
 </section>
