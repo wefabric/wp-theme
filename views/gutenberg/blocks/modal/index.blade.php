@@ -85,7 +85,7 @@
         <i class="fa-solid fa-xmark text-xl hover:text-primary cursor-pointer group-hover:scale-125 transition-all duration-300 ease-in-out group-hover:rotate-90"></i>
     </div>
 
-    <div class="custom-styling relative z-10 px-8 py-8">
+    <div class="custom-styling relative z-10 px-8 py-8 overflow-y-auto max-h-screen">
         <div class="mx-auto {{ $textClass }}">
             @if ($subTitle)
                 <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
@@ -186,4 +186,3 @@
         }
     });
 </script>
-
