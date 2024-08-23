@@ -1,6 +1,6 @@
 {
     "key": "group_66c833f8b01c1",
-    "title": "Block: Header countdown",
+    "title": "Block: Header Countdown",
     "fields": [
         {
             "key": "field_66c833f8bb43b",
@@ -1577,6 +1577,26 @@
             "placement": "top",
             "endpoint": 0,
             "selected": 0
+        },
+        {
+            "key": "field_66c87a0270567",
+            "label": "Confetti als timer afgaat",
+            "name": "confetti",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -1597,5 +1617,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724400449
+    "modified": 1724414977
 }

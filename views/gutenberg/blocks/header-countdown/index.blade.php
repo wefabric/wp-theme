@@ -26,7 +26,7 @@
     // Countdown
     $countdownTime = $block['data']['time'] ?? '';
     $countdownDisplay = $block['data']['timer_display'] ?? '';
-//    @dd($countdownDisplay);
+    $confetti = $block['data']['confetti'] ?? false;
 
     // Buttons
     $button1Text = $block['data']['button_button_1']['title'] ?? '';
@@ -253,6 +253,8 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Server-side confetti waarde doorgeven aan JavaScript
+        var confettiEnabled = @json($confetti);
         var countdownDate = new Date("{{ $countdownTime }}").getTime();
         var countdownDisplay = @json($countdownDisplay);
 
@@ -260,30 +262,39 @@
             var now = new Date().getTime();
             var distance = countdownDate - now;
 
-            // Calculate total time in seconds
+            // Bereken de totale tijd in seconden
             var totalSeconds = Math.floor(distance / 1000);
 
-            // Initialize time variables
+            // Initialiseer tijdsvariabelen
             var days = 0, hours = 0, minutes = 0, seconds = 0;
 
-            // Determine the largest unit to display
-            if (countdownDisplay.includes('days')) {
-                days = Math.floor(totalSeconds / (3600 * 24));
-                totalSeconds -= days * 3600 * 24; // Remove days part
-            }
-            if (countdownDisplay.includes('hours')) {
-                hours = Math.floor(totalSeconds / 3600);
-                totalSeconds -= hours * 3600; // Remove hours part
-            }
-            if (countdownDisplay.includes('minutes')) {
-                minutes = Math.floor(totalSeconds / 60);
-                totalSeconds -= minutes * 60; // Remove minutes part
-            }
-            if (countdownDisplay.includes('seconds')) {
-                seconds = totalSeconds; // Remaining seconds
+            // Controleer of de countdown is afgelopen
+            if (distance > 0) {
+                // Bepaal de grootste eenheid om weer te geven
+                if (countdownDisplay.includes('days')) {
+                    days = Math.floor(totalSeconds / (3600 * 24));
+                    totalSeconds -= days * 3600 * 24; // Verwijder het dagendeel
+                }
+                if (countdownDisplay.includes('hours')) {
+                    hours = Math.floor(totalSeconds / 3600);
+                    totalSeconds -= hours * 3600; // Verwijder het uurdeel
+                }
+                if (countdownDisplay.includes('minutes')) {
+                    minutes = Math.floor(totalSeconds / 60);
+                    totalSeconds -= minutes * 60; // Verwijder het minutendeel
+                }
+                if (countdownDisplay.includes('seconds')) {
+                    seconds = totalSeconds; // Overblijvende seconden
+                }
             }
 
-            // Display results
+            // Zorg ervoor dat de tijdwaarden niet negatief worden
+            days = Math.max(days, 0);
+            hours = Math.max(hours, 0);
+            minutes = Math.max(minutes, 0);
+            seconds = Math.max(seconds, 0);
+
+            // Toon de resultaten
             if (countdownDisplay.includes('days')) {
                 document.getElementById("days").innerText = days;
             }
@@ -297,11 +308,66 @@
                 document.getElementById("seconds").innerText = seconds;
             }
 
-            // If the countdown is finished
-            if (distance < 0) {
+            // Als de countdown is afgelopen
+            if (distance <= 0) {
                 clearInterval(x);
-                document.querySelector('.countdown-timer .time').innerHTML = "EXPIRED";
+                // Zorg ervoor dat alle tijdseenheden op nul blijven staan
+                if (countdownDisplay.includes('days')) {
+                    document.getElementById("days").innerText = 0;
+                }
+                if (countdownDisplay.includes('hours')) {
+                    document.getElementById("hours").innerText = 0;
+                }
+                if (countdownDisplay.includes('minutes')) {
+                    document.getElementById("minutes").innerText = 0;
+                }
+                if (countdownDisplay.includes('seconds')) {
+                    document.getElementById("seconds").innerText = 0;
+                }
+
+                // Start de vuurwerk-animatie alleen als confettiEnabled true is
+                if (confettiEnabled) {
+                    startFireworks();
+                }
             }
         }, 1000);
     });
+
+    function startFireworks() {
+        const duration = 10 * 1000;
+        const animationEnd = Date.now() + duration;
+        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        const interval = setInterval(function() {
+            const timeLeft = animationEnd - Date.now();
+
+            if (timeLeft <= 0) {
+                return clearInterval(interval);
+            }
+
+            const particleCount = 50 * (timeLeft / duration);
+
+            // Eerste confetti-lading
+            confetti(
+                Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                })
+            );
+
+            // Tweede confetti-lading
+            confetti(
+                Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                })
+            );
+        }, 250);
+    }
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
