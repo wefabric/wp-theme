@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.header-countdown.index', ['block' => $block])->render(); ?>

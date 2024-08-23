@@ -3,6 +3,7 @@
     "header/block.json",
     "header-slider/block.json",
     "header-project/block.json",
+    "header-countdown/block.json",
     "tekst/block.json",
     "afbeelding/block.json",
     "foto-slider/block.json",
