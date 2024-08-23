@@ -254,37 +254,33 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Server-side confetti waarde doorgeven aan JavaScript
-        var confettiEnabled = @json($confetti);
-        var countdownDate = new Date("{{ $countdownTime }}").getTime();
-        var countdownDisplay = @json($countdownDisplay);
+        let confettiEnabled = @json($confetti);
+        let countdownDate = new Date("{{ $countdownTime }}").getTime();
+        let countdownDisplay = @json($countdownDisplay);
 
-        var x = setInterval(function() {
-            var now = new Date().getTime();
-            var distance = countdownDate - now;
+        // Interval voor de countdown
+        x = setInterval(function() {
+            let now = new Date().getTime();
+            let distance = countdownDate - now;
+            let totalSeconds = Math.floor(distance / 1000);
+            let days = 0, hours = 0, minutes = 0, seconds = 0;
 
-            // Bereken de totale tijd in seconden
-            var totalSeconds = Math.floor(distance / 1000);
-
-            // Initialiseer tijdsvariabelen
-            var days = 0, hours = 0, minutes = 0, seconds = 0;
-
-            // Controleer of de countdown is afgelopen
             if (distance > 0) {
                 // Bepaal de grootste eenheid om weer te geven
                 if (countdownDisplay.includes('days')) {
                     days = Math.floor(totalSeconds / (3600 * 24));
-                    totalSeconds -= days * 3600 * 24; // Verwijder het dagendeel
+                    totalSeconds -= days * 3600 * 24;
                 }
                 if (countdownDisplay.includes('hours')) {
                     hours = Math.floor(totalSeconds / 3600);
-                    totalSeconds -= hours * 3600; // Verwijder het uurdeel
+                    totalSeconds -= hours * 3600;
                 }
                 if (countdownDisplay.includes('minutes')) {
                     minutes = Math.floor(totalSeconds / 60);
-                    totalSeconds -= minutes * 60; // Verwijder het minutendeel
+                    totalSeconds -= minutes * 60;
                 }
                 if (countdownDisplay.includes('seconds')) {
-                    seconds = totalSeconds; // Overblijvende seconden
+                    seconds = totalSeconds;
                 }
             }
 
@@ -325,9 +321,13 @@
                     document.getElementById("seconds").innerText = 0;
                 }
 
-                // Start de vuurwerk-animatie alleen als confettiEnabled true is
-                if (confettiEnabled) {
-                    startFireworks();
+                let oneDay = 24 * 60 * 60 * 1000; // 1 dag in milliseconden
+                let isWithinOneDay = now <= (countdownDate + oneDay);
+
+                if (isWithinOneDay) {
+                    if(confettiEnabled) {
+                        startFireworks();
+                    }
                 }
             }
         }, 1000);
