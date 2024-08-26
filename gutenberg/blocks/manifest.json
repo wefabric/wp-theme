@@ -44,6 +44,7 @@
     "producten/block.json",
     "services/block.json",
 
+    "programmas/block.json",
     "proces/block.json",
     "organisaties/block.json",
     "prijzen/block.json",
