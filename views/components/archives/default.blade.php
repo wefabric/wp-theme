@@ -1,4 +1,4 @@
-<div class="container px-8 pt-6 lg:pt-12 mx-auto lg:mt-[-115px] relative z-10 category-list-container">
+<div class="container px-8 pt-6 lg:pt-12 mx-auto relative z-10 category-list-container">
     <div class="w-full lg:w-4/5 mx-auto">
         @include('components.news.category-list')
     </div>
