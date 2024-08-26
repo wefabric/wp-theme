@@ -17,6 +17,8 @@
         } else {
             $logoUrl = '';
         }
+
+    $logoCategories = get_the_terms($logo, 'brand_categories');
 @endphp
 
 <div class="logo-item group h-full">
@@ -26,6 +28,20 @@
                 <a href="{{ $logoUrl }}" @if($logoLinkType === 'external_link') target="_blank" @endif
                 aria-label="Ga naar {{ $logoTitle }} pagina" class="overlay absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
             @endif
+
+            @if (!empty($visibleElements) && in_array('category', $visibleElements))
+                <div class="logo-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                    @foreach ($logoCategories as $category)
+                        @php
+                            $categoryColor = get_field('category_color', $category);
+                        @endphp
+                        <div style="background-color: {{ $categoryColor }}" class="@if(empty($categoryColor)) bg-primary @endif category text-white px-4 py-2 rounded-full">
+                            {{ $category->name }}
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+
             @if ($logoImage)
                 @include('components.image', [
                     'image_id' => $logoImage,
