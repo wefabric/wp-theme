@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/albums",
+  "title": "Albums overzicht",
+  "description": "Een album overzicht blok",
+  "category": "wefabric-theme",
+  "icon": "camera",
+  "apiVersion": 2,
+  "keywords": [
+    "albums"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
