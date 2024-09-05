@@ -143,14 +143,7 @@
             "type": "group",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_66d9be6c0c533",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -1516,5 +1509,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725547215
+    "modified": 1725548118
 }
