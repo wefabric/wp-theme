@@ -103,7 +103,7 @@
                                         'image_id' => $imageID,
                                         'size' => 'full',
                                         'object_fit' => 'cover',
-                                        'img_class' => 'object-cover h-full rounded-' . $borderRadius,
+                                        'img_class' => 'object-cover h-full w-full rounded-' . $borderRadius,
                                         'alt' => get_post_meta($imageID, '_wp_attachment_image_alt', true)
                                     ])
                                 </div>
