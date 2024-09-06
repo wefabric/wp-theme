@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/delen",
+  "title": "Delen",
+  "description": "Een delen blok",
+  "category": "wefabric-theme",
+  "icon": "share",
+  "apiVersion": 2,
+  "keywords": [
+    "delen"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

@@ -33,6 +33,7 @@
     "vacatures/block.json",
     "werknemers/block.json",
     "werkwijze/block.json",
+    "delen/block.json",
     "contact/block.json",
     "quote/block.json",
     "historie/block.json",
