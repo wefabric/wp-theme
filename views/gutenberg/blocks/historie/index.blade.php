@@ -35,15 +35,15 @@
         $imageID = $block['data'][$imageKey] ?? '';
         $display = $block['data'][$displayKey] ?? 'cover';
 
-        $year = $block['data'][$yearKey] ?? '';
-        $text = $block['data'][$textKey] ?? '';
+        $timelineYear = $block['data'][$yearKey] ?? '';
+        $timelineText = $block['data'][$textKey] ?? '';
 
         $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
 
         $timelineData[] = [
             'imageId' => $imageID,
-            'year' => $year,
-            'text' => $text,
+            'year' => $timelineYear,
+            'text' => $timelineText,
             'alt' => $imageAlt,
             'display' => $display,
         ];
@@ -101,7 +101,8 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="historie" class="block-historie relative historie-{{ $randomNumber }}-custom-padding historie-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="historie"
+         class="block-historie relative historie-{{ $randomNumber }}-custom-padding historie-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
@@ -112,7 +113,7 @@
                 <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
             @endif
             @if ($title)
-                    <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
+                <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
             @endif
             @if ($text)
                 @include('components.content', [
@@ -120,65 +121,65 @@
                     'class' => 'mb-8 text-' . $textColor . ($blockWidth == 'fullscreen' ? ' ' : '')
                 ])
             @endif
+        </div>
 
-            <div class="mt-8 lg:mt-16 relative h-full">
-                <div class="history-vertical-line w-[4px] bg-{{ $timelineLineColor }} h-full absolute lg:left-1/2 -translate-x-1/2">
-                    <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-                    <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"></div>
-                </div>
+        <div class="mt-8 lg:mt-16 relative h-full">
+            <div class="history-vertical-line w-[4px] bg-{{ $timelineLineColor }} h-full absolute lg:left-1/2 -translate-x-1/2">
+                <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"></div>
+            </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2">
-                    @foreach ($timelineData as $index => $item)
-                        @php
-                            $isOdd = $index % 2 !== 0;
-                            $cardClass = $isOdd ? 'right-card' : 'left-card';
-                            $marginLeftClass = $isOdd ? 'lg:pl-16 mt-8 lg:mt-20' : 'lg:pl-0 lg:pr-16 mt-8 lg:mt-0';
-                            $timelineLinePosition = $isOdd ? 'top-1/2' : 'lg:left-auto lg:right-0 top-1/2';
-                            $roundedFullPosition = $isOdd ? 'right-0 top-1/2 translate-x-1/2 -translate-y-1/2' : 'left-auto right-0 lg:right-auto lg:left-0 top-1/2 translate-x-1/2 lg:-translate-x-1/2 -translate-y-1/2';
-                        @endphp
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                @foreach ($timelineData as $index => $item)
+                    @php
+                        $isOdd = $index % 2 !== 0;
+                        $cardClass = $isOdd ? 'right-card' : 'left-card';
+                        $marginLeftClass = $isOdd ? 'lg:pl-16 mt-8 lg:mt-20' : 'lg:pl-0 lg:pr-16 mt-8 lg:mt-0';
+                        $timelineLinePosition = $isOdd ? 'top-1/2' : 'lg:left-auto lg:right-0 top-1/2';
+                        $roundedFullPosition = $isOdd ? 'right-0 top-1/2 translate-x-1/2 -translate-y-1/2' : 'left-auto right-0 lg:right-auto lg:left-0 top-1/2 translate-x-1/2 lg:-translate-x-1/2 -translate-y-1/2';
+                    @endphp
 
-                        <div class="{{ $cardClass }} timeline-card relative h-fit pl-10 {{ $marginLeftClass }}">
-                            <div class="history-horizontal-line w-[20px] lg:w-[30px] h-[4px] bg-{{ $timelineLineColor }} absolute left-0 {{ $timelineLinePosition }}">
-                                <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute {{ $roundedFullPosition }}"></div>
-                            </div>
-                            <div class="flex flex-col">
-                                @if($item['imageId'])
-                                    <div class="history-image relative h-[170px]">
-                                        @include('components.image', [
-                                            'image_id' => $item['imageId'],
-                                            'size' => 'full',
-                                            'object_fit' => $item['display'],
-                                            'img_class' => 'h-[170px] w-full',
-                                            'alt' => $item['alt']
-                                        ])
-                                    </div>
-                                @endif
-                                <div class="history-data relative p-4 lg:p-8 bg-{{ $timelineBlockBackgroundColor }}">
-                                    @if($item['year'])
-                                        <p class="h3 text-{{ $timelineYearTextColor }}">{{ $item['year'] }}</p>
-                                    @endif
-                                    @if($item['text'])
-                                        @include('components.content', ['content' => apply_filters('the_content', $item['text']), 'class' => 'text-' . $timelineTextColor])
-                                    @endif
+                    <div class="{{ $cardClass }} timeline-card relative h-fit pl-10 {{ $marginLeftClass }}">
+                        <div class="history-horizontal-line w-[20px] lg:w-[30px] h-[4px] bg-{{ $timelineLineColor }} absolute left-0 {{ $timelineLinePosition }}">
+                            <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute {{ $roundedFullPosition }}"></div>
+                        </div>
+                        <div class="flex flex-col">
+                            @if($item['imageId'])
+                                <div class="history-image relative h-[170px]">
+                                    @include('components.image', [
+                                        'image_id' => $item['imageId'],
+                                        'size' => 'full',
+                                        'object_fit' => $item['display'],
+                                        'img_class' => 'h-[170px] w-full',
+                                        'alt' => $item['alt']
+                                    ])
                                 </div>
+                            @endif
+                            <div class="history-data relative p-4 lg:p-8 bg-{{ $timelineBlockBackgroundColor }}">
+                                @if($item['year'])
+                                    <p class="h3 text-{{ $timelineYearTextColor }}">{{ $item['year'] }}</p>
+                                @endif
+                                @if($item['text'])
+                                    @include('components.content', ['content' => apply_filters('the_content', $item['text']), 'class' => 'text-' . $timelineTextColor])
+                                @endif
                             </div>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
             </div>
-            @if (($buttonText) && ($buttonLink))
-                <div class="{{ $textClass }} buttons w-full flex flex-wrap gap-4 mt-4 md:mt-8">
-                    @include('components.buttons.default', [
-                       'text' => $buttonText,
-                       'href' => $buttonLink,
-                       'alt' => $buttonText,
-                       'colors' => 'btn-' . $buttonColor . ' btn-' . $buttonStyle,
-                       'class' => 'rounded-lg',
-                       'target' => $buttonTarget,
-                   ])
-                </div>
-            @endif
         </div>
+        @if (($buttonText) && ($buttonLink))
+            <div class="{{ $textClass }} buttons w-full flex flex-wrap gap-4 mt-4 md:mt-8">
+                @include('components.buttons.default', [
+                   'text' => $buttonText,
+                   'href' => $buttonLink,
+                   'alt' => $buttonText,
+                   'colors' => 'btn-' . $buttonColor . ' btn-' . $buttonStyle,
+                   'class' => 'rounded-lg',
+                   'target' => $buttonTarget,
+               ])
+            </div>
+        @endif
     </div>
 </section>
 
