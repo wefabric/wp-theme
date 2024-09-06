@@ -6,6 +6,13 @@
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
+    // Buttons
+    $button1Text = $block['data']['button_button_1']['title'] ?? '';
+    $button1Link = $block['data']['button_button_1']['url'] ?? '';
+    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+    $button1Color = $block['data']['button_button_1_color'] ?? '';
+    $button1Style = $block['data']['button_button_1_style'] ?? '';
+
     $textPosition = $block['data']['text_position'] ?? '';
     $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
     $textClass = $textClassMap[$textPosition] ?? '';
@@ -110,6 +117,18 @@
                             @endforeach
                         </div>
                     @endforeach
+                </div>
+            @endif
+            @if (($button1Text) && ($button1Link))
+                <div class="bottom-button w-full text-center mt-4 md:mt-8">
+                    @include('components.buttons.default', [
+                       'text' => $button1Text,
+                       'href' => $button1Link,
+                       'alt' => $button1Text,
+                       'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                       'class' => 'rounded-lg text-left',
+                       'target' => $button1Target,
+                   ])
                 </div>
             @endif
         </div>
