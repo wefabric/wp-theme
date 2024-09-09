@@ -12,11 +12,25 @@
         $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
         $button1Color = $block['data']['button_button_1_color'] ?? '';
         $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+        $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'])) {
+                $button1Icon = 'fa fa-' . $iconData['id'];
+            }
+        }
         $button2Text = $block['data']['button_button_2']['title'] ?? '';
         $button2Link = $block['data']['button_button_2']['url'] ?? '';
         $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
         $button2Color = $block['data']['button_button_2_color'] ?? '';
         $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+        if (!empty($button2Icon)) {
+        $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'])) {
+                $button2Icon = 'fa fa-' . $iconData['id'];
+            }
+        }
 
         $textPosition = $block['data']['text_position'] ?? '';
         $titleClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
@@ -97,6 +111,7 @@
                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
                        'class' => 'rounded-lg',
                        'target' => $button1Target,
+                       'icon' => $button1Icon,
                    ])
                     @if (($button2Text) && ($button2Link))
                         @include('components.buttons.default', [
@@ -106,6 +121,7 @@
                             'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
                             'class' => 'rounded-lg',
                             'target' => $button2Target,
+                             'icon' => $button2Icon,
                         ])
                     @endif
                 </div>
