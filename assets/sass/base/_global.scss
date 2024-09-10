@@ -1,6 +1,10 @@
 // Makes sure there is no horizontal overflow
-#page {
-  overflow: hidden;
+//#page {
+//  overflow: hidden;
+//}
+
+.page {
+  contain: paint !important;
 }
 
 .flip-horizontal {
