@@ -26,6 +26,7 @@
     $imageAlt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
     $imageSize = $block['data']['image_size'] ?? '';
     $imageMaxHeight = $block['data']['image_max_height'] ?? '';
+    $imageParallax = $block['data']['image_parallax'] ?? false;
     $imageClass = '';
     $textClass = '';
 
@@ -54,6 +55,7 @@
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
     $hideBlock = $block['data']['hide_block'] ?? false;
@@ -92,10 +94,16 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $titleAnimation = $block['data']['title_animation'] ?? false;
+    $textAnimation = $block['data']['text_animation'] ?? false;
+    $textFadeDirection = $block['data']['text_fade_direction'] ?? '';
 @endphp
 
-<section id="afbeelding-tekst" class="block-afbeelding-tekst relative afbeelding-tekst-{{ $randomNumber }}-custom-padding afbeelding-tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+<section id="afbeelding-tekst" class="block-afbeelding-tekst block-{{ $randomNumber }} relative afbeelding-tekst-{{ $randomNumber }}-custom-padding afbeelding-tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -104,15 +112,15 @@
             <div class="text-image flex flex-col lg:flex-row gap-8 xl:gap-20 @if ($verticalCentered) lg:items-center @endif">
                 <div class="text {{ $textClass }} order-2 {{ $textOrder }}">
                     @if ($subTitle)
-                        <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                        <span class="subtitle block mb-2 text-{{ $titleColor }} @if ($titleAnimation) title-animation @endif">{!! $subTitle !!}</span>
                     @endif
                     @if ($title)
-                        <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
+                        <h2 class="title mb-4 text-{{ $titleColor }} @if ($titleAnimation) title-animation @endif">{!! $title !!}</h2>
                     @endif
                     @if ($text)
                         @include('components.content', [
                             'content' => apply_filters('the_content', $text),
-                            'class' => 'mb-8 text-' . $textColor,
+                               'class' => 'mb-8 text-' . $textColor . ($textAnimation ? ' text-animation' : ''),
                         ])
                     @endif
                     @if (($button1Text) && ($button1Link))
@@ -139,7 +147,7 @@
                     @endif
                 </div>
                 @if ($imageId)
-                    <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }}">
+                    <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }} @if ($imageParallax) parallax-image @endif">
                         @include('components.image', [
                             'image_id' => $imageId,
                             'size' => 'full',
@@ -156,7 +164,7 @@
 
 <style>
     .image-{{ $randomNumber }} img {
-        @if($imageMaxHeight)max-height: {{ $imageMaxHeight }}px; @endif
+        @if($imageMaxHeight) max-height: {{ $imageMaxHeight }}px; @endif
     }
 
     .afbeelding-tekst-{{ $randomNumber }}-custom-padding {
@@ -201,3 +209,130 @@
         }
     }
 </style>
+
+<!-- Parralax effect -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const block = document.querySelector('.block-{{ $randomNumber }}');
+        const parallaxImage = block.querySelector('.parallax-image');
+
+        function applyParallaxEffect() {
+            if (!parallaxImage) return;
+
+            const scrollPosition = window.scrollY;
+            const blockRect = block.getBoundingClientRect();
+            const blockTop = blockRect.top + window.scrollY;
+            const blockHeight = blockRect.height;
+            const viewportCenter = scrollPosition + window.innerHeight / 2;
+            const blockCenter = blockTop + blockHeight / 2;
+            const distanceFromCenter = viewportCenter - blockCenter;
+
+            // Adjust the parallax factor based on screen width
+            let parallaxFactor = -0.4; // Default for desktop
+            if (window.innerWidth <= 1024) {
+                parallaxFactor = -0.1; // Weaker effect for mobile
+            }
+
+            const translateY = distanceFromCenter * parallaxFactor;
+            parallaxImage.style.transform = `translateY(${translateY}px)`;
+        }
+
+        window.addEventListener('scroll', applyParallaxEffect);
+        applyParallaxEffect();
+    });
+</script>
+
+<!-- SplitType and GSAP -->
+<script src="https://unpkg.com/split-type"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+@if ($titleAnimation)
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            document.querySelectorAll('.title-animation').forEach(element => {
+                let typeSplit = new SplitType(element, {
+                    types: 'lines, words, chars',
+                    tagName: 'span'
+                });
+
+                // GSAP animation for the lines of the current element with ScrollTrigger
+                gsap.from(element.querySelectorAll('.word'), {
+                    y: '100%',
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: 'back',
+                    stagger: 0.1,
+                    scrollTrigger: {
+                        trigger: element, // The current element that triggers the animation
+                        start: 'top 70%', // When the trigger element is 70% from the top of the viewport
+                        end: 'top 50%', // Animation end point
+                        scrub: true, // If set to false, the animation will not synchronize with the scrollbar
+                        once: false, // Ensures the animation triggers only once
+                        markers: false // Disable markers for production
+                    }
+                });
+            });
+        });
+    </script>
+@endif
+
+@if ($textAnimation)
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            gsap.registerPlugin(ScrollTrigger);
+
+            const randomNumber = @json($randomNumber);
+            const block = document.querySelector(`.block-${randomNumber}`);
+
+            if (block) {
+                block.querySelectorAll('.text-animation').forEach(element => {
+                    let typeSplit = new SplitType(element, {
+                        types: 'lines',
+                        tagName: 'span'
+                    });
+
+                    // Fetch the fade direction value
+                    var fadeDirection = @json($textFadeDirection);
+                    let xValue, yValue;
+
+                    if (fadeDirection === "left") {
+                        xValue = '-20%';
+                    } else if (fadeDirection === "right") {
+                        xValue = '20%';
+                    } else {
+                        xValue = '0%';
+                    }
+
+                    if (fadeDirection === "top") {
+                        yValue = '-20%';
+                    } else if (fadeDirection === "bottom") {
+                        yValue = '20%';
+                    } else {
+                        yValue = '0%';
+                    }
+
+                    // GSAP animation for the lines of the current element with ScrollTrigger
+                    gsap.from(element.querySelectorAll('.line'), {
+                        x: xValue,
+                        y: yValue,
+                        opacity: 0,
+                        duration: 1.5,
+                        ease: 'power4.out',
+                        stagger: 3,
+                        scrollTrigger: {
+                            trigger: element, // The current element that triggers the animation
+                            start: 'top 65%', // When the trigger element is 60% from the top of the viewport
+                            end: 'top 50%', // Animation end point
+                            scrub: false, // If set to false, the animation will not synchronize with the scrollbar
+                            once: true, // Ensures the animation triggers only once
+                            markers: false // Disable markers for production
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+@endif

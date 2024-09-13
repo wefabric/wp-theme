@@ -5,6 +5,7 @@
     $maxHeight = $block['data']['max_height'] ?? '';
     $maxWidth = $block['data']['max_width'] ?? '';
     $imageStyle = $block['data']['image_style'] ?? 'cover';
+    $imageParallax = $block['data']['image_parallax'] ?? false;
 
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
@@ -22,6 +23,7 @@
     $backgroundOverlayEnabled = $block['data']['overlay_background_image'] ?? false;
     $backgroundOverlayColor = $block['data']['background_overlay_color'] ?? '';
     $backgroundOverlayOpacity = $block['data']['background_overlay_opacity'] ?? '';
+    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
     $hideBlock = $block['data']['hide_block'] ?? false;
@@ -62,13 +64,13 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="afbeelding" class="block-afbeelding afbeelding-{{ $randomNumber }} afbeelding-{{ $randomNumber }}-custom-padding afbeelding-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+<section id="afbeelding" class="block-afbeelding block-{{ $randomNumber }} afbeelding-{{ $randomNumber }} afbeelding-{{ $randomNumber }}-custom-padding afbeelding-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($backgroundOverlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $backgroundOverlayColor }} opacity-{{ $backgroundOverlayOpacity }}"></div>
     @endif
     <div class="relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto relative">
+        <div class="{{ $blockClass }} mx-auto relative @if ($imageParallax) parallax-image @endif">
             @if ($imageId)
                 @include('components.image', [
                    'image_id' => $imageId,
@@ -133,3 +135,35 @@
         }
     }
 </style>
+
+<!-- Parralax effect -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const parallaxBlock = document.querySelector('.block-{{ $randomNumber }}');
+        const parallaxImage = parallaxBlock.querySelector('.parallax-image');
+
+        function applyParallaxEffect() {
+            if (!parallaxImage) return;
+
+            const scrollPosition = window.scrollY;
+            const blockRect = parallaxBlock.getBoundingClientRect();
+            const blockTop = blockRect.top + window.scrollY;
+            const blockHeight = blockRect.height;
+            const viewportCenter = scrollPosition + window.innerHeight / 2;
+            const blockCenter = blockTop + blockHeight / 2;
+            const distanceFromCenter = viewportCenter - blockCenter;
+
+            // Adjust the parallax factor based on screen width
+            let parallaxFactor = -0.4; // Default for desktop
+            if (window.innerWidth <= 1024) {
+                parallaxFactor = -0.1; // Weaker effect for mobile
+            }
+
+            const translateY = distanceFromCenter * parallaxFactor;
+            parallaxImage.style.transform = `translateY(${translateY}px)`;
+        }
+
+        window.addEventListener('scroll', applyParallaxEffect);
+        applyParallaxEffect();
+    });
+</script>
