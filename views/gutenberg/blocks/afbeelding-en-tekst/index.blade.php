@@ -120,7 +120,7 @@
                     @if ($text)
                         @include('components.content', [
                             'content' => apply_filters('the_content', $text),
-                               'class' => 'mb-8 text-' . $textColor . ($textAnimation ? ' text-animation' : ''),
+                            'class' => 'mb-8 text-' . $textColor . ($textAnimation ? ' text-animation' : ''),
                         ])
                     @endif
                     @if (($button1Text) && ($button1Link))
@@ -210,6 +210,7 @@
     }
 </style>
 
+
 <!-- Parralax effect -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -294,7 +295,6 @@
                         tagName: 'span'
                     });
 
-                    // Fetch the fade direction value
                     var fadeDirection = @json($textFadeDirection);
                     let xValue, yValue;
 
@@ -314,7 +314,6 @@
                         yValue = '0%';
                     }
 
-                    // GSAP animation for the lines of the current element with ScrollTrigger
                     gsap.from(element.querySelectorAll('.line'), {
                         x: xValue,
                         y: yValue,
