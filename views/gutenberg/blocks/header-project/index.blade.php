@@ -38,8 +38,6 @@
         }
     }
 
-//    @dd($block['data']);
-
     // Breadcrumbs
     $breadcrumbsEnabled = $block['data']['show_breadcrumbs'] ?? false;
     $breadcrumbsBackgroundColor = $block['data']['breadcrumbs_background_color'] ?? '';
