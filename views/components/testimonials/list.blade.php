@@ -45,9 +45,10 @@
             spaceBetween: 20,
             centeredSlides: false,
             @if ($swiperAutoplay)
-            autoplay: {
-                disableOnInteraction: false,
-            },
+                autoplay: {
+                    disableOnInteraction: false,
+                    delay: 10000,
+                },
             @endif
             pagination: {
                 el: '.swiper-pagination',
