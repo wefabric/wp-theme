@@ -28,7 +28,7 @@
                 @endif
             @endif
 
-            <div class="w-full content-wrapper">
+            <div class="w-full content-wrapper flex flex-col items-center gap-y-4">
                 @if ($pageIcon)
                     <a class="page-icon" href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina">
                         <i class="text-{{ $cardTitleColor }} page-icon relative z-20 text-[60px] md:text-[100px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-white transition-all duration-300 ease-in-out"></i>
