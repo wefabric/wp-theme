@@ -137,8 +137,8 @@
         @media only screen and (min-width: 768px) {
             @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
             @if($tabletPaddingRight) padding-right: {{ $tabletPaddingRight }}px; @endif
-                @if($tabletPaddingBottom) padding-bottom: {{ $tabletPaddingBottom }}px; @endif
-                @if($tabletPaddingLeft) padding-left: {{ $tabletPaddingLeft }}px; @endif
+            @if($tabletPaddingBottom) padding-bottom: {{ $tabletPaddingBottom }}px; @endif
+            @if($tabletPaddingLeft) padding-left: {{ $tabletPaddingLeft }}px; @endif
         }
         @media only screen and (min-width: 1024px) {
             @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif

@@ -45,9 +45,9 @@
             spaceBetween: 20,
             centeredSlides: false,
             @if ($swiperAutoplay)
-            autoplay: {
-                disableOnInteraction: false,
-            },
+                autoplay: {
+                    disableOnInteraction: false,
+                },
             @endif
             pagination: {
                 el: '.swiper-pagination',
