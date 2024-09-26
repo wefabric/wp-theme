@@ -12,6 +12,7 @@
         $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
         $button1Color = $block['data']['button_button_1_color'] ?? '';
         $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
         $button1Icon = $block['data']['button_button_1_icon'] ?? '';
         if (!empty($button1Icon)) {
         $iconData = json_decode($button1Icon, true);
@@ -24,6 +25,7 @@
         $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
         $button2Color = $block['data']['button_button_2_color'] ?? '';
         $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Download = $block['data']['button_button_2_download'] ?? false;
         $button2Icon = $block['data']['button_button_2_icon'] ?? '';
         if (!empty($button2Icon)) {
         $iconData = json_decode($button2Icon, true);
@@ -119,6 +121,7 @@
                        'class' => 'rounded-lg',
                        'target' => $button1Target,
                        'icon' => $button1Icon,
+                       'download' => $button1Download,
                    ])
                     @if (($button2Text) && ($button2Link))
                         @include('components.buttons.default', [
@@ -128,7 +131,8 @@
                             'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
                             'class' => 'rounded-lg',
                             'target' => $button2Target,
-                             'icon' => $button2Icon,
+                            'icon' => $button2Icon,
+                            'download' => $button2Download,
                         ])
                     @endif
                 </div>

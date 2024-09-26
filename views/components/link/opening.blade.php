@@ -15,6 +15,10 @@
        target="{{ $target }}"
     @endif
 
+   @if(!empty($download))
+       download
+   @endif
+
 	@if(!empty($attributes))
 		@foreach($attributes as $key => $value)
 			{{ $key }}="{{ $value }}"

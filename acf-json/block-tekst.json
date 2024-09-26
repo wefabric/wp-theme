@@ -286,6 +286,33 @@
                     "choices": []
                 },
                 {
+                    "key": "field_66f549e6c8369",
+                    "label": "Button 1 download",
+                    "name": "button_1_download",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_649d543ef587c",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
                     "key": "field_654a00e50873b",
                     "label": "Button 2 tekst en link",
                     "name": "button_2",
@@ -425,6 +452,33 @@
                     "enqueue_fa": 0,
                     "fa_live_preview": "",
                     "choices": []
+                },
+                {
+                    "key": "field_66f549fdc836a",
+                    "label": "Button 2 download",
+                    "name": "button_2_download",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_654a00e50873b",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
                 }
             ]
         },
@@ -1572,5 +1626,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726240752
+    "modified": 1727351307
 }
