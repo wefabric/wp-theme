@@ -52,6 +52,7 @@
     "prijzen/block.json",
     "nieuws-activiteit/block.json",
     "technologies/block.json",
-    "landen/block.json"
+    "landen/block.json",
+    "verhalen/block.json"
   ]
 }

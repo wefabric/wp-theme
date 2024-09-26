@@ -8,6 +8,24 @@
     $visibleElements = $block['data']['show_element'] ?? [];
     $vacancySummary = $fields['excerpt'] ?? '';
     $vacancyCategories = get_the_terms($vacancy, 'vacature_categories');
+
+     if (!empty($visibleElements) && in_array('working_hours', $visibleElements) && !empty($fields['working_hours'])) {
+        switch ($fields['working_hours']) {
+            case 'parttime':
+                $workingHours = 'Parttime';
+                break;
+            case 'fulltime':
+                $workingHours = 'Fulltime';
+                break;
+            case 'both':
+                $workingHours = 'Parttime en fulltime';
+                break;
+            default:
+                $workingHours = '';
+                break;
+        }
+    }
+
 @endphp
 
 <div class="vacature-item group h-full">
@@ -53,9 +71,9 @@
                 @endif
 
                 @if (!empty($visibleElements) && in_array('working_hours', $visibleElements) && !empty($fields['working_hours']))
-                    <p class="flex items-baseline leading-[1.5] capitalize">
+                    <p class="flex items-baseline leading-[1.5]">
                         <i class="w-4 object-cover fas fa-clock mr-3"></i>
-                        {{ $fields['working_hours'] }}
+                        {{ $workingHours }}
                     </p>
                 @endif
 
