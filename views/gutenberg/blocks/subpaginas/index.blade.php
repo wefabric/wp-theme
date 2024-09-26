@@ -24,7 +24,7 @@
  $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
 
  $parentPage = $block['data']['parent_page'] ?? '';
- $allPages = get_pages(); // Get all pages
+ $allPages = get_pages();
  $subPages = array_filter($allPages, function($page) use ($parentPage) {
      return $page->post_parent == $parentPage;
  });
@@ -56,7 +56,7 @@
  $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
  $backgroundColor = $block['data']['background_color'] ?? 'none';
- $imageId = $block['data']['background_image'] ?? '';
+ $backgroundImageId = $block['data']['background_image'] ?? '';
  $overlayEnabled = $block['data']['overlay_image'] ?? false;
  $overlayColor = $block['data']['overlay_color'] ?? '';
  $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
@@ -99,7 +99,7 @@
 @endphp
 
 <section id="subpaginas" class="block-subpaginas relative subpaginas-{{ $randomNumber }}-custom-padding subpaginas-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -135,20 +135,20 @@
 
 <style>
     .subpaginas-{{ $randomNumber }}-custom-padding {
-    @media only screen and (min-width: 0px) {
-        @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
+        @media only screen and (min-width: 0px) {
+            @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
             @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
             @if($mobilePaddingBottom) padding-bottom: {{ $mobilePaddingBottom }}px; @endif
             @if($mobilePaddingLeft) padding-left: {{ $mobilePaddingLeft }}px; @endif
         }
-    @media only screen and (min-width: 768px) {
-        @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
+        @media only screen and (min-width: 768px) {
+            @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
             @if($tabletPaddingRight) padding-right: {{ $tabletPaddingRight }}px; @endif
             @if($tabletPaddingBottom) padding-bottom: {{ $tabletPaddingBottom }}px; @endif
             @if($tabletPaddingLeft) padding-left: {{ $tabletPaddingLeft }}px; @endif
         }
-    @media only screen and (min-width: 1024px) {
-        @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
+        @media only screen and (min-width: 1024px) {
+            @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
             @if($desktopPaddingRight) padding-right: {{ $desktopPaddingRight }}px; @endif
             @if($desktopPaddingBottom) padding-bottom: {{ $desktopPaddingBottom }}px; @endif
             @if($desktopPaddingLeft) padding-left: {{ $desktopPaddingLeft }}px; @endif
@@ -156,20 +156,20 @@
     }
 
     .subpaginas-{{ $randomNumber }}-custom-margin {
-    @media only screen and (min-width: 0px) {
-        @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
+        @media only screen and (min-width: 0px) {
+            @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
             @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif
             @if($mobileMarginBottom) margin-bottom: {{ $mobileMarginBottom }}px; @endif
             @if($mobileMarginLeft) margin-left: {{ $mobileMarginLeft }}px; @endif
         }
-    @media only screen and (min-width: 768px) {
-        @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
+        @media only screen and (min-width: 768px) {
+            @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
             @if($tabletMarginRight) margin-right: {{ $tabletMarginRight }}px; @endif
             @if($tabletMarginBottom) margin-bottom: {{ $tabletMarginBottom }}px; @endif
             @if($tabletMarginLeft) margin-left: {{ $tabletMarginLeft }}px; @endif
         }
-    @media only screen and (min-width: 1024px) {
-        @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
+        @media only screen and (min-width: 1024px) {
+            @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
             @if($desktopMarginRight) margin-right: {{ $desktopMarginRight }}px; @endif
             @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
