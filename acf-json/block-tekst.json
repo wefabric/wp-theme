@@ -263,22 +263,17 @@
                     },
                     "icon_sets": [
                         "solid",
-                        "sharp_solid",
                         "regular",
-                        "sharp_regular",
                         "light",
-                        "sharp_light",
                         "thin",
-                        "sharp_thin",
-                        "sharp-duotone_solid",
-                        "duotone_solid",
+                        "duotone",
                         "fak",
                         "brands"
                     ],
                     "custom_icon_set": "",
                     "default_label": "",
                     "default_value": "",
-                    "save_format": "class",
+                    "save_format": "element",
                     "allow_null": 1,
                     "show_preview": 1,
                     "enqueue_fa": 0,
@@ -431,15 +426,10 @@
                     },
                     "icon_sets": [
                         "solid",
-                        "sharp_solid",
                         "regular",
-                        "sharp_regular",
                         "light",
-                        "sharp_light",
                         "thin",
-                        "sharp_thin",
-                        "sharp-duotone_solid",
-                        "duotone_solid",
+                        "duotone",
                         "fak",
                         "brands"
                     ],
@@ -1626,5 +1616,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727351307
+    "modified": 1727353426
 }

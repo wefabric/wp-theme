@@ -14,10 +14,11 @@
         $button1Style = $block['data']['button_button_1_style'] ?? '';
         $button1Download = $block['data']['button_button_1_download'] ?? false;
         $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
         if (!empty($button1Icon)) {
-        $iconData = json_decode($button1Icon, true);
-            if (isset($iconData['id'])) {
-                $button1Icon = 'fa fa-' . $iconData['id'];
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
             }
         }
         $button2Text = $block['data']['button_button_2']['title'] ?? '';
@@ -27,10 +28,10 @@
         $button2Style = $block['data']['button_button_2_style'] ?? '';
         $button2Download = $block['data']['button_button_2_download'] ?? false;
         $button2Icon = $block['data']['button_button_2_icon'] ?? '';
-        if (!empty($button2Icon)) {
-        $iconData = json_decode($button2Icon, true);
-            if (isset($iconData['id'])) {
-                $button2Icon = 'fa fa-' . $iconData['id'];
+         if (!empty($button2Icon)) {
+            $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
             }
         }
 
