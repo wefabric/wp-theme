@@ -12,11 +12,28 @@
         $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
         $button1Color = $block['data']['button_button_1_color'] ?? '';
         $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
         $button2Text = $block['data']['button_button_2']['title'] ?? '';
         $button2Link = $block['data']['button_button_2']['url'] ?? '';
-        $button2Target = ($block['data']['button_button_2']['target']) ?? '_self';
+        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
         $button2Color = $block['data']['button_button_2_color'] ?? '';
         $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Download = $block['data']['button_button_2_download'] ?? false;
+        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+         if (!empty($button2Icon)) {
+            $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
 
     $textPosition = $block['data']['text_position'] ?? '';
     $textAlignment = $textPosition === 'left' ? 'left' : 'right';
@@ -35,6 +52,7 @@
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
     $hideBlock = $block['data']['hide_block'] ?? false;
@@ -71,7 +89,7 @@
 @endphp
 
 <section id="titel-tekst" class="block-titel-tekst relative titel-tekst-{{ $randomNumber }}-custom-padding titel-tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -85,7 +103,7 @@
                     ])
                 @endif
                 @if (($button1Text) && ($button1Link))
-                    <div class="flex gap-4 mt-4 md:mt-8">
+                    <div class="buttons w-full flex flex-wrap gap-4 mt-4 md:mt-8">
                         @include('components.buttons.default', [
                             'text' => $button1Text,
                             'href' => $button1Link,
@@ -93,6 +111,8 @@
                             'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
                             'class' => 'rounded-lg',
                             'target' => $button1Target,
+                            'icon' => $button1Icon,
+                            'download' => $button1Download,
                         ])
                         @if (($button2Text) && ($button2Link))
                             @include('components.buttons.default', [
@@ -102,12 +122,14 @@
                                 'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
                                 'class' => 'rounded-lg',
                                 'target' => $button2Target,
+                                'icon' => $button2Icon,
+                                'download' => $button2Download,
                             ])
                         @endif
                     </div>
                 @endif
             </div>
-            <div class="w-full  order-1 {{ $titleOrder }}">
+            <div class="w-full order-1 {{ $titleOrder }}">
                 @if ($subTitle)
                     <span class="subtitle block mb-2 text-{{ $titleColor }} @if($textAlignment == 'right') @endif lg:text-{{ $textAlignment }}">{!! $subTitle !!}</span>
                 @endif
