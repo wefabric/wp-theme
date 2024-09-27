@@ -36,8 +36,8 @@
         }
 
         $textPosition = $block['data']['text_position'] ?? '';
-        $titleClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
-        $textClass = $titleClassMap[$textPosition] ?? '';
+        $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
+        $textClass = $textClassMap[$textPosition] ?? '';
 
 
     // Blokinstellingen
@@ -123,7 +123,7 @@
                        'target' => $button1Target,
                        'icon' => $button1Icon,
                        'download' => $button1Download,
-                   ])
+                    ])
                     @if (($button2Text) && ($button2Link))
                         @include('components.buttons.default', [
                             'text' => $button2Text,

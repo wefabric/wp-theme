@@ -92,9 +92,390 @@
             "font_size": 14
         },
         {
+            "key": "field_66f6a89e34522",
+            "label": "Tekst",
+            "name": "text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_66f6a8b524a0a",
+            "label": "Tekst kleur",
+            "name": "text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66f6a89e34522",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_654a0df0b6d96",
+            "label": "Button (onder de kaarten)",
+            "name": "button",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_654a0e0db6d97",
+                    "label": "Button 1 tekst en link",
+                    "name": "button_1",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_654a0e3db6d98",
+                    "label": "Button 1 kleur",
+                    "name": "button_1_color",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_654a0e0db6d97",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "primary-color": "Primary",
+                        "secondary-color": "Secondary",
+                        "tertiary-color": "Tertiary",
+                        "quaternary-color": "Quaternary",
+                        "cta": "CTA",
+                        "white": "Wit",
+                        "black": "Zwart",
+                        "gray": "Grijs"
+                    },
+                    "default_value": "primary-color",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_654a0f16b6d99",
+                    "label": "Button 1 stijl",
+                    "name": "button_1_style",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_654a0e0db6d97",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "filled": "Gevuld",
+                        "outline": "Omlijnd",
+                        "underline": "Onderlijn"
+                    },
+                    "default_value": "filled",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_66f6ae3e2535e",
+                    "label": "Button 1 icoon",
+                    "name": "button_1_icon",
+                    "aria-label": "",
+                    "type": "font-awesome",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_654a0e0db6d97",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "icon_sets": [
+                        "solid",
+                        "regular",
+                        "light",
+                        "thin",
+                        "duotone",
+                        "fak",
+                        "brands"
+                    ],
+                    "custom_icon_set": "",
+                    "default_label": "",
+                    "default_value": "",
+                    "save_format": "element",
+                    "allow_null": 1,
+                    "show_preview": 1,
+                    "enqueue_fa": 0,
+                    "fa_live_preview": "",
+                    "choices": []
+                },
+                {
+                    "key": "field_66f6ae6a2535f",
+                    "label": "Button 1 download",
+                    "name": "button_1_download",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_654a0e0db6d97",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
+                    "key": "field_66f6ae7c25360",
+                    "label": "Button 2 tekst en link",
+                    "name": "button_2",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_654a0e0db6d97",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_66f6ae8925361",
+                    "label": "Button 2 kleur",
+                    "name": "button_2_color",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66f6ae7c25360",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "primary-color": "Primary",
+                        "secondary-color": "Secondary",
+                        "tertiary-color": "Tertiary",
+                        "quaternary-color": "Quaternary",
+                        "cta": "CTA",
+                        "white": "Wit",
+                        "black": "Zwart",
+                        "gray": "Grijs"
+                    },
+                    "default_value": "primary-color",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_66f6ae9a25362",
+                    "label": "Button 2 stijl",
+                    "name": "button_2_style",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66f6ae7c25360",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "filled": "Gevuld",
+                        "outline": "Omlijnd",
+                        "underline": "Onderlijn"
+                    },
+                    "default_value": "filled",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_66f6aef725363",
+                    "label": "Button 2 icoon",
+                    "name": "button_2_icon",
+                    "aria-label": "",
+                    "type": "font-awesome",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66f6ae7c25360",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "icon_sets": [
+                        "solid",
+                        "regular",
+                        "light",
+                        "thin",
+                        "duotone",
+                        "fak",
+                        "brands"
+                    ],
+                    "custom_icon_set": "",
+                    "default_label": "",
+                    "default_value": "",
+                    "save_format": "element",
+                    "allow_null": 1,
+                    "show_preview": 1,
+                    "enqueue_fa": 0,
+                    "fa_live_preview": "",
+                    "choices": []
+                },
+                {
+                    "key": "field_66f6af0c25364",
+                    "label": "Button 2 download",
+                    "name": "button_2_download",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66f6ae7c25360",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                }
+            ]
+        },
+        {
             "key": "field_651fc9be0eed1",
-            "label": "Titel positie",
-            "name": "title_position",
+            "label": "Tekst positie",
+            "name": "text_position",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -103,6 +484,12 @@
                 [
                     {
                         "field": "field_651fc9be0eea5",
+                        "operator": "!=empty"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_654a0e0db6d97",
                         "operator": "!=empty"
                     }
                 ]
@@ -336,8 +723,7 @@
             "choices": {
                 "overview_text": "Samenvattingstekst",
                 "category": "Categorie",
-                "button": "Knop in kaart blok",
-                "button_bottom": "Knop onder kaarten"
+                "button": "Knop in kaart blok"
             },
             "default_value": [],
             "return_format": "value",
@@ -544,69 +930,19 @@
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": ""
-                }
-            ]
-        },
-        {
-            "key": "field_654a0df0b6d96",
-            "label": "Button onder kaarten",
-            "name": "button_bottom",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6527da09ae373",
-                        "operator": "==",
-                        "value": "button_bottom"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_654a0e0db6d97",
-                    "label": "Button 1 tekst en link",
-                    "name": "button_1",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_6527da09ae373",
-                                "operator": "==",
-                                "value": "button_bottom"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array"
                 },
                 {
-                    "key": "field_654a0e3db6d98",
-                    "label": "Button 1 kleur",
-                    "name": "button_1_color",
+                    "key": "field_66f6b3601665c",
+                    "label": "Kaart button icoon",
+                    "name": "button_icon",
                     "aria-label": "",
-                    "type": "select",
+                    "type": "font-awesome",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_654a0e0db6d97",
+                                "field": "field_654a35109b824",
                                 "operator": "!=empty"
                             }
                         ]
@@ -616,57 +952,24 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "primary-color": "Primary",
-                        "secondary-color": "Secondary",
-                        "tertiary-color": "Tertiary",
-                        "quaternary-color": "Quaternary",
-                        "cta": "CTA",
-                        "white": "Wit",
-                        "black": "Zwart",
-                        "gray": "Grijs"
-                    },
-                    "default_value": "primary-color",
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_654a0f16b6d99",
-                    "label": "Button 1 stijl",
-                    "name": "button_1_style",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_654a0e0db6d97",
-                                "operator": "!=empty"
-                            }
-                        ]
+                    "icon_sets": [
+                        "solid",
+                        "regular",
+                        "light",
+                        "thin",
+                        "duotone",
+                        "fak",
+                        "brands"
                     ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "filled": "Gevuld",
-                        "outline": "Omlijnd",
-                        "underline": "Onderlijn"
-                    },
-                    "default_value": "filled",
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": ""
+                    "custom_icon_set": "",
+                    "default_label": "",
+                    "default_value": "",
+                    "save_format": "element",
+                    "allow_null": 1,
+                    "show_preview": 1,
+                    "enqueue_fa": 0,
+                    "fa_live_preview": "",
+                    "choices": []
                 }
             ]
         },
@@ -1035,6 +1338,33 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_66f6b07e49297",
+            "label": "Achtergrond afbeelding parallax effect",
+            "name": "background_image_parallax",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_651fc9be0eef0",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
             "key": "field_65686a488ae42",
@@ -1859,5 +2189,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1721383695
+    "modified": 1727443873
 }

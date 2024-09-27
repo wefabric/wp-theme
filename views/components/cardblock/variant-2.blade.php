@@ -55,12 +55,13 @@
                 @if ($buttonCardText)
                     <div class="button-container mt-auto z-10">
                         @include('components.buttons.default', [
-                           'text' => $buttonCardText,
-                           'href' => $pageUrl,
-                           'alt' => $buttonCardText,
-                           'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
-                           'class' => 'rounded-lg',
-                       ])
+                            'text' => $buttonCardText,
+                            'href' => $pageUrl,
+                            'alt' => $buttonCardText,
+                            'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
+                            'class' => 'rounded-lg',
+                            'icon' => $buttonCardIcon,
+                        ])
                     </div>
                 @endif
             @endif
