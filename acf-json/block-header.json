@@ -3,6 +3,32 @@
     "title": "Block: Header",
     "fields": [
         {
+            "key": "field_66f65ee62cf70",
+            "label": "Header stijl",
+            "name": "header_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "fixed_height": "Vaste header hoogte",
+                "scalable_height": "Header hoogte meeschalen met content"
+            },
+            "default_value": "fixed_height",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_64a409fbdbaf0",
             "label": "Header hoogte",
             "name": "header_height",
@@ -10,7 +36,15 @@
             "type": "select",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66f65ee62cf70",
+                        "operator": "==",
+                        "value": "fixed_height"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -1848,5 +1882,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727421566
+    "modified": 1727422680
 }

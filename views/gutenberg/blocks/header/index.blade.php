@@ -1,12 +1,16 @@
 @php
     // Header style
-    $headerHeight = $block['data']['header_height'] ?? '';
-    $heightClasses = [
-        1 => 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]',
-        2 => 'h-[200px] md:h-[400px] 2xl:h-[500px]',
-        3 => 'h-[120px] md:h-[200px]',
-    ];
-    $headerClass = $heightClasses[$headerHeight] ?? '';
+    $headerStyle = $block['data']['header_style'] ?? 'fixed_height';
+
+    if ($headerStyle == 'fixed_height') {
+        $headerHeight = $block['data']['header_height'] ?? '';
+        $heightClasses = [
+            1 => 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]',
+            2 => 'h-[200px] md:h-[400px] 2xl:h-[500px]',
+            3 => 'h-[120px] md:h-[200px]',
+        ];
+        $headerClass = $heightClasses[$headerHeight] ?? '';
+    }
 
     $headerNames = [
         1 => 'big-header',
@@ -14,6 +18,7 @@
         3 => 'small-header',
     ];
     $headerName = $headerNames[$headerHeight] ?? '';
+
 
     // Content
     $title = !empty($block['data']['title']) ? $block['data']['title'] : get_the_title();
@@ -154,7 +159,7 @@
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
         <div class="custom-width relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }} @if ($contentImageId) gap-x-8 @endif @if ($fullHeightContentImage && $textPosition === 'right') justify-end @endif">
-            <div class="header-info z-30 flex flex-col {{ $textWidthClass }} @if ($contentImageId) w-full md:w-1/2 @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 pl-8 @endif @endif">
+            <div class="header-info z-30 flex flex-col @if ($headerStyle == 'scalable_height') py-20 @endif {{ $textWidthClass }} @if ($contentImageId) w-full md:w-1/2 @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 pl-8 @endif @endif">
                 @if ($showTitle)
                     @if ($subTitle)
                         <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
