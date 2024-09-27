@@ -8,16 +8,26 @@
 
     $uspLayout = $block['data']['usp_layout'] ?? 'vertical';
 
-   // Buttons
+        // Buttons
         $button1Text = $block['data']['button_button_1']['title'] ?? '';
         $button1Link = $block['data']['button_button_1']['url'] ?? '';
         $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
         $button1Color = $block['data']['button_button_1_color'] ?? '';
         $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
 
         $textPosition = $block['data']['text_position'] ?? '';
         $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
         $textClass = $textClassMap[$textPosition] ?? '';
+
 
     // Show usps
     $uspsCount = $block['data']['usps'];
@@ -44,6 +54,7 @@
         ];
     }
 
+
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
     $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
@@ -55,6 +66,7 @@
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
     $hideBlock = $block['data']['hide_block'] ?? false;
@@ -91,7 +103,7 @@
 @endphp
 
 <section id="usps" class="block-usps relative usp-{{ $randomNumber }}-custom-padding usp-{{ $randomNumber }}-custom-margin layout-{{ $uspLayout }} bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -113,13 +125,15 @@
                 @if (($button1Text) && ($button1Link))
                     <div class="{{ $textClass }} bottom-button w-full flex flex-wrap gap-4 mt-4 md:mt-8 container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                         @include('components.buttons.default', [
-                           'text' => $button1Text,
-                           'href' => $button1Link,
-                           'alt' => $button1Text,
-                           'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                           'class' => 'rounded-lg text-left',
-                           'target' => $button1Target,
-                       ])
+                            'text' => $button1Text,
+                            'href' => $button1Link,
+                            'alt' => $button1Text,
+                            'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                            'class' => 'rounded-lg',
+                            'target' => $button1Target,
+                            'icon' => $button1Icon,
+                            'download' => $button1Download,
+                        ])
                     </div>
                 @endif
             </div>
