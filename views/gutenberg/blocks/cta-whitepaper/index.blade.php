@@ -1,57 +1,80 @@
 @php
-   // Content
-   $title = $block['data']['title'] ?? '';
-   $titleColor = $block['data']['title_color'] ?? '';
-   $text = $block['data']['text'] ?? '';
-   $textColor = $block['data']['text_color'] ?? '';
+    // Content
+    $title = $block['data']['title'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $titleColor = $block['data']['title_color'] ?? '';
+    $text = $block['data']['text'] ?? '';
+    $textColor = $block['data']['text_color'] ?? '';
 
-   $textPosition = $block['data']['text_position'] ?? '';
-   $textClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-   $textClass = $textClassMap[$textPosition] ?? 'text-center';
-   $flexClassMap = ['left' => 'items-start', 'center' => 'items-center', 'right' => 'items-end',];
-   $flexClass = $flexClassMap[$textPosition] ?? 'items-center';
-   $ctaLayout = $block['data']['cta_layout'] ?? '';
-   $flexDirection = ($ctaLayout === 'vertical') ? 'flex-col' : (($ctaLayout === 'horizontal') ? 'flex-row' : '');
+        $textPosition = $block['data']['text_position'] ?? '';
+        $textClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+        $textClass = $textClassMap[$textPosition] ?? 'text-center';
+
+    $flexClassMap = ['left' => 'items-start', 'center' => 'items-center', 'right' => 'items-end',];
+    $flexClass = $flexClassMap[$textPosition] ?? 'items-center';
+    $ctaLayout = $block['data']['cta_layout'] ?? '';
+    $flexDirection = ($ctaLayout === 'vertical') ? 'flex-col' : (($ctaLayout === 'horizontal') ? 'flex-row' : '');
+
+    $ctaForm = $block['data']['form'] ?? '';
+    $sideImage = $block['data']['side_image'] ?? '';
+    $topImage = $block['data']['top_image'] ?? '';
+
+    $blockBackgroundColor = $block['data']['block_background_color'] ?? '';
+    $blockBackgroundImage = $block['data']['block_background_image'] ?? '';
+    $blockOverlayEnabled = $block['data']['block_overlay_image'] ?? false;
+    $blockOverlayColor = $block['data']['block_overlay_color'] ?? '';
+    $blockOverlayOpacity = $block['data']['block_overlay_opacity'] ?? '';
+
+        // Buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+        $button2Text = $block['data']['button_button_2']['title'] ?? '';
+        $button2Link = $block['data']['button_button_2']['url'] ?? '';
+        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
+        $button2Color = $block['data']['button_button_2_color'] ?? '';
+        $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Download = $block['data']['button_button_2_download'] ?? false;
+        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+        if (!empty($button2Icon)) {
+            $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
 
 
-   $ctaForm = $block['data']['form'] ?? '';
-   $sideImage = $block['data']['side_image'] ?? '';
-   $topImage = $block['data']['top_image'] ?? '';
-   $blockBackgroundColor = $block['data']['block_background_color'] ?? '';
-   $blockBackgroundImage = $block['data']['block_background_image'] ?? '';
-   $blockOverlayEnabled = $block['data']['block_overlay_image'] ?? false;
-   $blockOverlayColor = $block['data']['block_overlay_color'] ?? '';
-   $blockOverlayOpacity = $block['data']['block_overlay_opacity'] ?? '';
+    // Blokinstellingen
+    $blockWidth = $block['data']['block_width'] ?? 100;
+    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
+    $blockClass = $blockClassMap[$blockWidth] ?? '';
+    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
-   // Buttons
-   $button1Text = $block['data']['button_button_1']['title'] ?? '';
-   $button1Link = $block['data']['button_button_1']['url'] ?? '';
-   $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
-   $button1Color = $block['data']['button_button_1_color'] ?? '';
-   $button1Style = $block['data']['button_button_1_style'] ?? '';
-   $button2Text = $block['data']['button_button_2']['title'] ?? '';
-   $button2Link = $block['data']['button_button_2']['url'] ?? '';
-   $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
-   $button2Color = $block['data']['button_button_2_color'] ?? '';
-   $button2Style = $block['data']['button_button_2_style'] ?? '';
+    $backgroundColor = $block['data']['background_color'] ?? 'default-color';
+    $backgroundImageId = $block['data']['background_image'] ?? '';
+    $overlayEnabled = $block['data']['overlay_image'] ?? false;
+    $overlayColor = $block['data']['overlay_color'] ?? '';
+    $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
-   // Blokinstellingen
-   $blockWidth = $block['data']['block_width'] ?? 100;
-   $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
-   $blockClass = $blockClassMap[$blockWidth] ?? '';
-   $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
+    $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+    $hideBlock = $block['data']['hide_block'] ?? false;
 
-   $backgroundColor = $block['data']['background_color'] ?? 'default-color';
-   $imageId = $block['data']['background_image'] ?? '';
-   $overlayEnabled = $block['data']['overlay_image'] ?? false;
-   $overlayColor = $block['data']['overlay_color'] ?? '';
-   $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
-   $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
-
-   // Theme settings
-   $options = get_fields('option');
-   $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
+    // Theme settings
+    $options = get_fields('option');
+    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
 
 
     // Paddings & margins
@@ -84,8 +107,8 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="cta-whitepaper" class="block-cta-whitepaper relative cta-whitepaper-{{ $randomNumber }}-custom-padding cta-whitepaper-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
+<section id="cta-whitepaper" class="block-cta-whitepaper relative cta-whitepaper-{{ $randomNumber }}-custom-padding cta-whitepaper-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -115,14 +138,20 @@
                 @endif
 
                 <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full @endif relative z-10">
-                    <div class="cta-wrapper flex flex-col lg:{{ $flexDirection }} {{ $flexClass }} justify-center sm:px-8 lg:px-16 gap-y-4 gap-x-8 @if($topImage) mt-16 md:mt-20 @endif ">
+                    <div class="cta-wrapper flex flex-col lg:{{ $flexDirection }} {{ $flexClass }} justify-center sm:px-8 lg:px-16 gap-y-4 gap-x-8 @if($topImage) mt-16 md:mt-20 @endif">
 
                         <div class="cta-data flex flex-col gap-x-16 gap-y-4 @if ($ctaLayout == 'horizontal') order-2 lg:order-1 @else order-2 @endif @if($sideImage) w-full lg:w-4/5 text-center lg:{{$textClass}} @else w-full lg:w-full {{ $textClass }} @endif">
+                            @if ($subTitle)
+                                <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                            @endif
                             @if ($title)
-                                <h2 class="text-{{ $titleColor }}">{!! $title !!}</h2>
+                                <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
                             @endif
                             @if ($text)
-                                @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 md:mt-4 text-' . $textColor])
+                                @include('components.content', [
+                                   'content' => apply_filters('the_content', $text),
+                                   'class' => 'mt-4 text-' . $textColor,
+                                ])
                             @endif
                             @if ($ctaForm)
                                 <div class="w-full @if($blockWidth == 'fullscreen') xl:w-1/2 @endif mx-auto mt-4 md:mt-10 text-center md:text-left text-white">
@@ -130,24 +159,28 @@
                                 </div>
                             @endif
                             @if (($button1Text) && ($button1Link))
-                                <div class="buttonsw-full flex flex-col flex-wrap gap-x-4 w-fit justify-center lg:justify-start">
+                                <div class="buttons w-full flex flex-col flex-wrap gap-x-4 gap-y-2 w-fit justify-center lg:justify-start">
                                     @include('components.buttons.default', [
-                                       'text' => $button1Text,
-                                       'href' => $button1Link,
-                                       'alt' => $button1Text,
-                                       'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                                       'class' => 'rounded-lg text-left',
-                                       'target' => $button1Target,
-                                   ])
+                                        'text' => $button1Text,
+                                        'href' => $button1Link,
+                                        'alt' => $button1Text,
+                                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                                        'class' => 'rounded-lg',
+                                        'target' => $button1Target,
+                                        'icon' => $button1Icon,
+                                        'download' => $button1Download,
+                                    ])
                                     @if (($button2Text) && ($button2Link))
                                         @include('components.buttons.default', [
-                                           'text' => $button2Text,
-                                           'href' => $button2Link,
-                                           'alt' => $button2Text,
-                                           'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                                           'class' => 'rounded-lg text-left',
-                                           'target' => $button2Target,
-                                       ])
+                                            'text' => $button2Text,
+                                            'href' => $button2Link,
+                                            'alt' => $button2Text,
+                                            'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                            'class' => 'rounded-lg',
+                                            'target' => $button2Target,
+                                            'icon' => $button2Icon,
+                                            'download' => $button2Download,
+                                        ])
                                     @endif
                                 </div>
                             @endif
@@ -160,7 +193,7 @@
                                    'object_fit' => 'contain',
                                    'img_class' => 'h-[300px] lg:h-auto w-auto lg:w-[380px]  object-contain  mx-auto',
                                    'alt' => get_post_meta($sideImage, '_wp_attachment_image_alt', true) ?: 'Whitepaper',
-                               ])
+                                ])
                             </div>
                         @endif
                     </div>

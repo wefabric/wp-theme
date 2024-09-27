@@ -16,8 +16,8 @@
     $flexDirection = ($ctaLayout === 'vertical') ? 'flex-col' : (($ctaLayout === 'horizontal') ? 'flex-row' : '');
 
     $ctaForm = $block['data']['form'] ?? '';
-    $topImage = $block['data']['top_image'] ?? '';
     $sideImage = $block['data']['side_image'] ?? '';
+    $topImage = $block['data']['top_image'] ?? '';
 
     $blockBackgroundColor = $block['data']['block_background_color'] ?? '';
     $blockBackgroundImage = $block['data']['block_background_image'] ?? '';
@@ -25,34 +25,34 @@
     $blockOverlayColor = $block['data']['block_overlay_color'] ?? '';
     $blockOverlayOpacity = $block['data']['block_overlay_opacity'] ?? '';
 
-    // Buttons
-    $button1Text = $block['data']['button_button_1']['title'] ?? '';
-    $button1Link = $block['data']['button_button_1']['url'] ?? '';
-    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
-    $button1Color = $block['data']['button_button_1_color'] ?? '';
-    $button1Style = $block['data']['button_button_1_style'] ?? '';
-    $button1Download = $block['data']['button_button_1_download'] ?? false;
-    $button1Icon = $block['data']['button_button_1_icon'] ?? '';
-    $button1Icon = $block['data']['button_button_1_icon'] ?? '';
-    if (!empty($button1Icon)) {
-        $iconData = json_decode($button1Icon, true);
-        if (isset($iconData['id'], $iconData['style'])) {
-            $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+        // Buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
         }
-    }
-    $button2Text = $block['data']['button_button_2']['title'] ?? '';
-    $button2Link = $block['data']['button_button_2']['url'] ?? '';
-    $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
-    $button2Color = $block['data']['button_button_2_color'] ?? '';
-    $button2Style = $block['data']['button_button_2_style'] ?? '';
-    $button2Download = $block['data']['button_button_2_download'] ?? false;
-    $button2Icon = $block['data']['button_button_2_icon'] ?? '';
-    if (!empty($button2Icon)) {
-        $iconData = json_decode($button2Icon, true);
-        if (isset($iconData['id'], $iconData['style'])) {
-            $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+        $button2Text = $block['data']['button_button_2']['title'] ?? '';
+        $button2Link = $block['data']['button_button_2']['url'] ?? '';
+        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
+        $button2Color = $block['data']['button_button_2_color'] ?? '';
+        $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Download = $block['data']['button_button_2_download'] ?? false;
+        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+        if (!empty($button2Icon)) {
+            $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
         }
-    }
 
 
     // Blokinstellingen
