@@ -47,7 +47,7 @@
     $button2Style = $block['data']['button_button_2_style'] ?? '';
     $button2Download = $block['data']['button_button_2_download'] ?? false;
     $button2Icon = $block['data']['button_button_2_icon'] ?? '';
-     if (!empty($button2Icon)) {
+    if (!empty($button2Icon)) {
         $iconData = json_decode($button2Icon, true);
         if (isset($iconData['id'], $iconData['style'])) {
             $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
@@ -157,7 +157,7 @@
                             @endif
                         </div>
                         @if (($button1Text) && ($button1Link))
-                            <div class="buttons flex flex-wrap gap-x-4 w-fit justify-center md:justify-start">
+                            <div class="buttons flex flex-wrap gap-y-2 gap-x-4 w-fit justify-center md:justify-start">
                                 @include('components.buttons.default', [
                                   'text' => $button1Text,
                                   'href' => $button1Link,

@@ -29,17 +29,34 @@
     $title2 = $block['data']['title_2'] ?? '';
     $text2 = $block['data']['text_2'] ?? '';
 
-    // Buttons
-    $button1Text = $block['data']['button_button_1']['title'] ?? '';
-    $button1Link = $block['data']['button_button_1']['url'] ?? '';
-    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
-    $button1Color = $block['data']['button_button_1_color'] ?? '';
-    $button1Style = $block['data']['button_button_1_style'] ?? '';
-    $button2Text = $block['data']['button_button_2']['title'] ?? '';
-    $button2Link = $block['data']['button_button_2']['url'] ?? '';
-    $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
-    $button2Color = $block['data']['button_button_2_color'] ?? '';
-    $button2Style = $block['data']['button_button_2_style'] ?? '';
+        // Buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+        $button2Text = $block['data']['button_button_2']['title'] ?? '';
+        $button2Link = $block['data']['button_button_2']['url'] ?? '';
+        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
+        $button2Color = $block['data']['button_button_2_color'] ?? '';
+        $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Download = $block['data']['button_button_2_download'] ?? false;
+        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+        if (!empty($button2Icon)) {
+            $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
 
     $textPosition = $block['data']['text_position'] ?? '';
     $textPositionClass = '';
@@ -77,6 +94,7 @@
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
     $headerBackgroundColor = $block['data']['background_color'] ?? '';
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
@@ -118,9 +136,15 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
+
+@if ($customBlockClasses) <div class="breadcrumbs-{{ $customBlockClasses }}"> @endif
+    @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID())
+        @include('components.breadcrumbs.index')
+    @endif
+@if ($customBlockClasses) </div> @endif
 <section id="header" class="block-header relative header-{{ $randomNumber }}-custom-padding header-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
-         style="background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
+         style="@if($backgroundImageParallax) background-attachment: fixed; @endif background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
             <video autoplay muted loop playsinline class="video-background absolute inset-0 w-full h-full object-cover">
                 <source src="{{ esc_url($backgroundVideoURL) }}" type="video/mp4">
@@ -129,7 +153,7 @@
         @if ($overlayEnabled)
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
-        <div class="custom-width relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }} @if ($contentImageId) gap-x-8 @endif @if ($fullHeightContentImage && $textPosition === 'right') justify-end @endif ">
+        <div class="custom-width relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }} @if ($contentImageId) gap-x-8 @endif @if ($fullHeightContentImage && $textPosition === 'right') justify-end @endif">
             <div class="header-info z-30 flex flex-col {{ $textWidthClass }} @if ($contentImageId) w-full md:w-1/2 @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 pl-8 @endif @endif">
                 @if ($showTitle)
                     @if ($subTitle)
@@ -141,24 +165,28 @@
                     @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 text-lg mb-4 text-' . $textColor])
                 @endif
                 @if (($button1Text) && ($button1Link))
-                    <div class="buttons w-full flex flex-wrap gap-y-2 gap-x-6 mt-4 @if ($textPosition === 'center') justify-center items-center @endif">
+                    <div class="buttons w-full flex flex-wrap gap-y-2 gap-x-4 mt-4 @if ($textPosition === 'center') justify-center items-center @endif">
                         @include('components.buttons.default', [
-                           'text' => $button1Text,
-                           'href' => $button1Link,
-                           'alt' => $button1Text,
-                           'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                           'class' => 'rounded-lg w-fit',
-                           'target' => $button1Target,
-                       ])
+                            'text' => $button1Text,
+                            'href' => $button1Link,
+                            'alt' => $button1Text,
+                            'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                            'class' => 'rounded-lg',
+                            'target' => $button1Target,
+                            'icon' => $button1Icon,
+                            'download' => $button1Download,
+                        ])
                         @if (($button2Text) && ($button2Link))
                             @include('components.buttons.default', [
-                               'text' => $button2Text,
-                               'href' => $button2Link,
-                               'alt' => $button2Text,
-                               'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                               'class' => 'rounded-lg w-fit',
-                               'target' => $button2Target,
-                           ])
+                                'text' => $button2Text,
+                                'href' => $button2Link,
+                                'alt' => $button2Text,
+                                'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                'class' => 'rounded-lg',
+                                'target' => $button2Target,
+                                'icon' => $button2Icon,
+                                'download' => $button2Download,
+                            ])
                         @endif
                     </div>
                 @endif
