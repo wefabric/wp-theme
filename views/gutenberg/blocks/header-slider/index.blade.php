@@ -90,7 +90,6 @@
     }
 
 
-
     // Breadcrumbs
     $breadcrumbsEnabled = $block['data']['show_breadcrumbs'] ?? false;
     $breadcrumbsBackgroundColor = $block['data']['breadcrumbs_background_color'] ?? '';
@@ -163,7 +162,6 @@
         @endif
         <div class="custom-width relative container mx-auto px-8 h-full flex flex-col lg:flex-row gap-y-8 gap-x-16 items-center z-30 {{ $textPositionClass }}">
 
-
             <div class="header-info w-full lg:w-1/2 z-30 flex flex-col order-2 lg:order-1 {{ $textWidthClass }}">
                 @if ($showTitle)
                     @if ($subTitle)
@@ -183,7 +181,7 @@
                            'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
                            'class' => 'rounded-lg w-fit',
                            'target' => $button1Target,
-                       ])
+                        ])
                         @if (($button2Text) && ($button2Link))
                             @include('components.buttons.default', [
                                'text' => $button2Text,
@@ -192,7 +190,7 @@
                                'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
                                'class' => 'rounded-lg w-fit',
                                'target' => $button2Target,
-                           ])
+                            ])
                         @endif
                     </div>
                 @endif

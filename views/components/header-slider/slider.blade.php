@@ -32,11 +32,8 @@
             spaceBetween: 30,
             centeredSlides: true,
             loop: true,
-            autoplay: {
-                disableOnInteraction: false,
-                delay: 0,
-                reverseDirection: {{ $reverse ? 'true' : 'false' }},
-            },
+            autoplay: false,
+
         });
     });
 </script>
