@@ -4,6 +4,7 @@
     $packageDescription = $package['description'] ?? '';
     $packageLabel = $package['label'] ?? '';
     $packagePricePer = $package['price_per'] ?? '';
+    $packageExcludingVat = $package['excluding_vat'] ?? false;
     $packageLink = $package['package_link']['url'] ?? '#';
 
     $packageBackgroundColor = $package['package_background_color'] ?? '';
@@ -21,16 +22,19 @@
             <span class="bg-primary font-medium text-white px-4 py-2 absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 rounded-full">{{ $packageLabel }}</span>
         @endif
         <h3 class="text-xl font-bold">{{ $packageTitle }}</h3>
-        <div class="text-3xl font-bold flex items-center mb-2">€ {{ $packagePrice }}
+        <div class="text-3xl font-bold flex items-center">€ {{ $packagePrice }}
             @if ($packagePricePer)
                 <span class="text-lg ml-1 font-normal">/ {{ $packagePricePer }}</span>
             @endif
         </div>
+        @if ($packageExcludingVat)
+            <div class="text-sm mb-2 font-bold">Excl. BTW</div>
+        @endif
         @if ($packageDescription)
             <p>{{ $packageDescription }}</p>
         @endif
     </div>
-    <div class="flex flex-col h-full justify-between p-6 mt-4 gap-y-8">
+    <div class="flex flex-col h-full justify-between p-6 mt-6 gap-y-8">
         <div class="bulletpoints">
             @if ($package['bulletpoints'] && is_array($package['bulletpoints']))
                 @foreach ($package['bulletpoints'] as $bulletpoint)
