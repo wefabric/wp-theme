@@ -12,9 +12,39 @@
         $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
         $button1Color = $block['data']['button_button_1_color'] ?? '';
         $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+        $button2Text = $block['data']['button_button_2']['title'] ?? '';
+        $button2Link = $block['data']['button_button_2']['url'] ?? '';
+        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
+        $button2Color = $block['data']['button_button_2_color'] ?? '';
+        $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Download = $block['data']['button_button_2_download'] ?? false;
+        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+        if (!empty($button2Icon)) {
+            $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+
         $buttonCardText = $block['data']['card_button_button_text'] ?? '';
         $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
         $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
+        $buttonCardIcon = $block['data']['card_button_button_icon'] ?? '';
+        if (!empty($buttonCardIcon)) {
+            $iconData = json_decode($buttonCardIcon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $buttonCardIcon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
 
         $textPosition = $block['data']['text_position'] ?? '';
         $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
@@ -29,87 +59,87 @@
     $currentTerms = isset($_GET['vacature_category']) ? array_map('intval', explode(',', $_GET['vacature_category'])) : [];
     $multipleFilters = $block['data']['multiple_filters_enabled'] ?? false;
 
-     // Show all
-     if ($displayType == 'show_all') {
-          $args = [
-             'posts_per_page' => -1,
-             'post_type' => 'vacatures',
-             'post_status' => 'publish',
-         ];
+    // Show all
+    if ($displayType == 'show_all') {
+        $args = [
+            'posts_per_page' => -1,
+            'post_type' => 'vacatures',
+            'post_status' => 'publish',
+        ];
 
-         if ($currentTerms) {
-             $args['tax_query'] = [
-                 [
-                     'taxonomy' => 'vacature_categories',
-                     'field' => 'id',
-                     'terms' => $currentTerms,
-                 ],
-             ];
-         }
+        if ($currentTerms) {
+            $args['tax_query'] = [
+                [
+                    'taxonomy' => 'vacature_categories',
+                    'field' => 'id',
+                    'terms' => $currentTerms,
+                ],
+            ];
+        }
 
-         $query = new WP_Query($args);
-         $vacancies = wp_list_pluck($query->posts, 'ID');
+        $query = new WP_Query($args);
+        $vacancies = wp_list_pluck($query->posts, 'ID');
      }
 
-     // Show category
-     elseif ($displayType == 'show_category') {
-         $selectedCategory = $block['data']['category'] ?? '';
+    // Show category
+    elseif ($displayType == 'show_category') {
+        $selectedCategory = $block['data']['category'] ?? '';
 
-         $args = [
-             'posts_per_page' => -1,
-             'post_type' => 'vacatures',
-             'post_status' => 'publish',
-             'tax_query' => [
-                 [
-                     'taxonomy' => 'vacature_categories',
-                     'field' => 'id',
-                     'terms' => $selectedCategory,
-                 ],
-             ],
-         ];
+        $args = [
+            'posts_per_page' => -1,
+            'post_type' => 'vacatures',
+            'post_status' => 'publish',
+            'tax_query' => [
+                [
+                    'taxonomy' => 'vacature_categories',
+                    'field' => 'id',
+                    'terms' => $selectedCategory,
+                ],
+            ],
+        ];
 
-         if ($currentTerms) {
-             $args['tax_query'][] = [
-                 'taxonomy' => 'vacature_categories',
-                 'field' => 'id',
-                 'terms' => $currentTerms,
-             ];
-             $args['tax_query']['relation'] = 'AND';
-         }
+        if ($currentTerms) {
+            $args['tax_query'][] = [
+                'taxonomy' => 'vacature_categories',
+                'field' => 'id',
+                'terms' => $currentTerms,
+            ];
+            $args['tax_query']['relation'] = 'AND';
+        }
 
-         $query = new WP_Query($args);
-         $vacancies = wp_list_pluck($query->posts, 'ID');
-     }
+        $query = new WP_Query($args);
+        $vacancies = wp_list_pluck($query->posts, 'ID');
+    }
 
     // Show specific
     elseif ($displayType == 'show_specific') {
-         $vacancies = $block['data']['show_specific_vacancy'];
-         if (!is_array($vacancies) || empty($vacancies)) {
-             $vacancies = [];
-         }
+        $vacancies = $block['data']['show_specific_vacancy'];
+        if (!is_array($vacancies) || empty($vacancies)) {
+            $vacancies = [];
+        }
 
-         $args = [
-             'posts_per_page' => -1,
-             'post_type' => 'vacatures',
-             'post_status' => 'publish',
-             'tax_query' => [],
-         ];
+        $args = [
+            'posts_per_page' => -1,
+            'post_type' => 'vacatures',
+            'post_status' => 'publish',
+            'tax_query' => [],
+        ];
 
-         if ($currentTerms) {
-             $args['tax_query'][] = [
-                 'taxonomy' => 'vacature_categories',
-                 'field' => 'id',
-                 'terms' => $currentTerms,
-             ];
-             $args['tax_query']['relation'] = 'AND';
-         }
+        if ($currentTerms) {
+            $args['tax_query'][] = [
+                'taxonomy' => 'vacature_categories',
+                'field' => 'id',
+                'terms' => $currentTerms,
+            ];
+            $args['tax_query']['relation'] = 'AND';
+        }
 
-         if (!empty($vacancies)) {
-             $args['post__in'] = $vacancies;
-         }
+        if (!empty($vacancies)) {
+            $args['post__in'] = $vacancies;
+        }
 
-         $query = new WP_Query($args);
-         $vacancies = wp_list_pluck($query->posts, 'ID');
+        $query = new WP_Query($args);
+        $vacancies = wp_list_pluck($query->posts, 'ID');
     }
 
     $visibleElements = $block['data']['show_element'] ?? [];
@@ -126,6 +156,7 @@
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
     $hideBlock = $block['data']['hide_block'] ?? false;
@@ -167,7 +198,7 @@
 @endphp
 
 <section id="vacatures" class="block-vacatures relative relative vacatures-{{ $randomNumber }}-custom-padding vacatures-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -195,15 +226,29 @@
                 @include('components.vacancies.list', ['vacancies' => $vacancies])
             @endif
             @if (($button1Text) && ($button1Link))
-                <div class="bottom-button w-full text-center mt-4 md:mt-8">
+                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                     @include('components.buttons.default', [
-                       'text' => $button1Text,
-                       'href' => $button1Link,
-                       'alt' => $button1Text,
-                       'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                       'class' => 'rounded-lg text-left',
-                       'target' => $button1Target,
-                   ])
+                        'text' => $button1Text,
+                        'href' => $button1Link,
+                        'alt' => $button1Text,
+                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                        'class' => 'rounded-lg',
+                        'target' => $button1Target,
+                        'icon' => $button1Icon,
+                        'download' => $button1Download,
+                    ])
+                    @if (($button2Text) && ($button2Link))
+                        @include('components.buttons.default', [
+                            'text' => $button2Text,
+                            'href' => $button2Link,
+                            'alt' => $button2Text,
+                            'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                            'class' => 'rounded-lg',
+                            'target' => $button2Target,
+                            'icon' => $button2Icon,
+                            'download' => $button2Download,
+                        ])
+                    @endif
                 </div>
             @endif
         </div>

@@ -25,7 +25,6 @@
                 break;
         }
     }
-
 @endphp
 
 <div class="vacature-item group h-full">
@@ -91,14 +90,15 @@
 
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
                 @if ($buttonCardText)
-                    <div class="mt-auto pt-8 z-10">
+                    <div class="vacancy-button mt-auto pt-8 z-10">
                         @include('components.buttons.default', [
                            'text' => $buttonCardText,
                            'href' => $vacancyUrl,
                            'alt' => $buttonCardText,
                            'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
                            'class' => 'rounded-lg',
-                       ])
+                           'icon' => $buttonCardIcon,
+                        ])
                     </div>
                 @endif
             @endif
