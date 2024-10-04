@@ -473,6 +473,23 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_66ffc379b23fb",
+            "label": "Resultaten",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_66950df413547",
             "label": "Resultaten",
             "name": "results",
@@ -1518,6 +1535,33 @@
             "placement": "top",
             "endpoint": 0,
             "selected": 0
+        },
+        {
+            "key": "field_66ffc30f67826",
+            "label": "Cijfers laten optellen?",
+            "name": "number_animation",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Als titel of tekst van resultaat een nummer is, laat deze dan oplopen.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66950df413547",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -1538,5 +1582,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1721045171
+    "modified": 1728037764
 }

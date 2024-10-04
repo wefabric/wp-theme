@@ -107,6 +107,10 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $numberAnimation = $block['data']['number_animation'] ?? false;
 @endphp
 
 <section id="resultaten"
@@ -153,16 +157,36 @@
                             @endif
                         </div>
                     @endif
-                    @if ($results)
-                        <div class="results-list grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 z-20 relative">
-                            @foreach ($results as $result)
-                                <div class="result-item px-12 py-4 w-full">
-                                    <div class="result-title">{!! $result['title'] !!}</div>
-                                    <div class="result-text">{!! $result['text'] !!}</div>
+                    <div class="results-list grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 z-20 relative">
+                        @foreach ($results as $result)
+                            @php
+                                preg_match('/(\d+)/', $result['title'], $titleMatches);
+                                $numericTitle = $titleMatches[0] ?? '';
+                                $isTitleNumber = !empty($numericTitle);
+
+                                preg_match('/(\d+)/', $result['text'], $textMatches);
+                                $numericText = $textMatches[0] ?? '';
+                                $isTextNumber = !empty($numericText);
+                            @endphp
+
+                            <div class="result-item px-12 py-4 w-full">
+                                <div class="result-title">
+                                    @if ($isTitleNumber && $numberAnimation)
+                                        <span class="counter" data-target="{{ $numericTitle }}">0</span>{{ str_replace($numericTitle, '', $result['title']) }}
+                                    @else
+                                        {!! $result['title'] !!}
+                                    @endif
                                 </div>
-                            @endforeach
-                        </div>
-                    @endif
+                                <div class="result-text">
+                                    @if ($isTextNumber && $numberAnimation)
+                                        <span class="counter" data-target="{{ $numericText }}">0</span>{{ str_replace($numericText, '', $result['text']) }}
+                                    @else
+                                        {!! $result['text'] !!}
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
                 @if ($imageId)
                     <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }}">
@@ -227,3 +251,51 @@
         }
     }
 </style>
+
+@if ($numberAnimation)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.counter');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = +counter.getAttribute('data-target');
+                        const duration = 1000;
+                        const frameRate = 60;
+                        const updateInterval = 1000 / frameRate;
+                        const totalSteps = duration / updateInterval;
+                        const increment = target / totalSteps;
+
+                        let count = 0;
+
+                        const updateCounter = () => {
+                            count += increment;
+                            if (count < target) {
+                                counter.innerText = Math.ceil(count);
+                                setTimeout(updateCounter, updateInterval);
+                            } else {
+                                counter.innerText = target;
+                            }
+                        };
+
+                        updateCounter();
+                        observer.unobserve(counter);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        });
+    </script>
+@endif
