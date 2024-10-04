@@ -556,6 +556,78 @@
             ]
         },
         {
+            "key": "field_66ffc8570261b",
+            "label": "Resultaat titel kleur",
+            "name": "result_title_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66950df413547",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "black",
+            "font_size": 14
+        },
+        {
+            "key": "field_66ffc8740261c",
+            "label": "Resultaat tekst kleur",
+            "name": "result_text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66950df413547",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "black",
+            "font_size": 14
+        },
+        {
+            "key": "field_66ffc8890261d",
+            "label": "Resultaat achtergrond kleur",
+            "name": "result_background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66950df413547",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "black",
+            "font_size": 14
+        },
+        {
             "key": "field_66950db369637",
             "label": "Blokinstellingen",
             "name": "",
@@ -1582,5 +1654,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728037764
+    "modified": 1728039075
 }

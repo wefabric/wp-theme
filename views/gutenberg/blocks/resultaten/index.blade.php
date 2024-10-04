@@ -6,6 +6,10 @@
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
+    $resultTitleColor = $block['data']['result_title_color'] ?? '';
+    $resultTextColor = $block['data']['result_text_color'] ?? '';
+    $resultBackgroundColor = $block['data']['result_background_color'] ?? '';
+
         // Buttons
         $button1Text = $block['data']['button_button_1']['title'] ?? '';
         $button1Link = $block['data']['button_button_1']['url'] ?? '';
@@ -169,15 +173,15 @@
                                 $isTextNumber = !empty($numericText);
                             @endphp
 
-                            <div class="result-item px-12 py-4 w-full">
-                                <div class="result-title">
+                            <div class="result-item px-12 py-4 w-full bg-{{ $resultBackgroundColor }}">
+                                <div class="result-title text-{{ $resultTitleColor }}">
                                     @if ($isTitleNumber && $numberAnimation)
                                         <span class="counter" data-target="{{ $numericTitle }}">0</span>{{ str_replace($numericTitle, '', $result['title']) }}
                                     @else
                                         {!! $result['title'] !!}
                                     @endif
                                 </div>
-                                <div class="result-text">
+                                <div class="result-text text-{{ $resultTextColor }}">
                                     @if ($isTextNumber && $numberAnimation)
                                         <span class="counter" data-target="{{ $numericText }}">0</span>{{ str_replace($numericText, '', $result['text']) }}
                                     @else
