@@ -1,5 +1,7 @@
 @php
 	$option = get_fields('option');
+    $establishmentElements = $option['footer_establishment_information']['establishment_elements'] ?? [];
+    $customEstablishmentText = $option['footer_establishment_information']['custom_establishment_text'] ?? '';
 
 	if(!empty($option)) {
 		if(array_key_exists('footer_establishments', $option)) {
@@ -40,63 +42,97 @@
 
 		<div class="establishments footer-address">
 			@if($establishment)
-				<p class="establishment-title leading-8 {{ '' ?? $establishment_config['show_title'] }}">
-					{{ $establishment->name }}
-				</p>
-				<p class="establishment-address leading-8">
-					@if($establishment->getAddress()->street) {{ $establishment->getAddress()->street }}@endif @if($establishment->getAddress()->full_housenumber > 0) {{ $establishment->getAddress()->full_housenumber }} @endif <br/>
-					@if($establishment->getAddress()->postcode) {{ $establishment->getAddress()->postcode }} @endif	@if($establishment->getAddress()->city) {{ $establishment->getAddress()->city }} @endif <br/>
-					@if ($countryName) {{ $countryName }} @endif
-				</p>
 
-				@if($phone = $establishment->getContactPhone())
+				{{-- Establishment Name --}}
+				@if(in_array('establishment_name', $establishmentElements))
+					<p class="establishment-title leading-8 {{ $establishment_config['show_title'] ?? '' }}">
+						{{ $establishment->name }}
+					</p>
+				@endif
+
+				{{-- Establishment Address --}}
+				@if(in_array('establishment_address', $establishmentElements) || in_array('establishment_country', $establishmentElements))
+					<p class="establishment-address leading-8">
+						@if($establishment->getAddress()->street)
+							{{ $establishment->getAddress()->street }}
+						@endif
+						@if($establishment->getAddress()->full_housenumber > 0)
+							{{ $establishment->getAddress()->full_housenumber }}
+						@endif
+						<br/>
+						@if($establishment->getAddress()->postcode)
+							{{ $establishment->getAddress()->postcode }}
+						@endif
+						@if($establishment->getAddress()->city)
+							{{ $establishment->getAddress()->city }}
+						@endif
+						<br/>
+						{{-- Establishment Country --}}
+						@if(in_array('establishment_country', $establishmentElements) && $countryName)
+							{{ $countryName }}
+						@endif
+					</p>
+				@endif
+
+				{{-- Establishment Phone --}}
+				@if(in_array('establishment_phone', $establishmentElements) && $phone = $establishment->getContactPhone())
 					@include('components.link.opening', [
-						'href' => $phone->uri(), //comes with a 'tel:' already
-						'alt' => 'Telefoonnummer',
-						'class' => 'phone-text flex'
-					])
+                        'href' => $phone->uri(),
+                        'alt' => 'Telefoonnummer',
+                        'class' => 'phone-text flex'
+                    ])
 					<i class="fa-solid fa-phone mr-4 text-{{ $title_color }} text-md pt-1"></i>
 					<span class="inline-block pt-1">{{ $phone->international() }}</span>
 					@include('components.link.closing')
 				@endif
 
-				@if($email = $establishment->getContactEmailAddress())
+				{{-- Establishment Email --}}
+				@if(in_array('establishment_mail', $establishmentElements) && $email = $establishment->getContactEmailAddress())
 					@include('components.link.opening', [
-						'href' => 'mailto:'. $email,
-						'alt' => 'E-mailadres',
-						'class' => 'email-text flex'
-					])
+                        'href' => 'mailto:' . $email,
+                        'alt' => 'E-mailadres',
+                        'class' => 'email-text flex'
+                    ])
 					<i class="fa-solid fa-envelope text-{{ $title_color }} mr-4 text-md pt-1"></i>
 					<span class="inline-block pt-1">{{ $email }}</span>
 					@include('components.link.closing')
 				@endif
 
-{{--			 Enable for route--}}
-{{--				@if($establishment->getAddress()->street)--}}
-{{--					@include('components.link.opening', [--}}
-{{--                    'href' => 'https://www.google.com/maps/search/?api=1&query=' . $establishment->getAddress()->street . '+' . $establishment->getAddress()->full_housenumber . $house_number_addition . '+' .  $establishment->getAddress()->postcode  . '+' . $establishment->getAddress()->city ,--}}
-{{--                    'alt' => 'Route',--}}
-{{--                    'class' => 'route-text flex'--}}
-{{--                	])--}}
-{{--					<i class="fa-solid fa-route text-{{ $title_color }} mr-4 text-md pt-1"></i>--}}
-{{--					<span class="inline-block pt-1">Route</span>--}}
-{{--					@include('components.link.closing')--}}
-{{--				@endif--}}
+				{{-- Establishment Route --}}
+				@if(in_array('establishment_route', $establishmentElements) && $establishment->getAddress()->street)
+					@include('components.link.opening', [
+                    'href' => 'https://www.google.com/maps/search/?api=1&query=' . $establishment->getAddress()->street . '+' . $establishment->getAddress()->full_housenumber . $house_number_addition . '+' .  $establishment->getAddress()->postcode  . '+' . $establishment->getAddress()->city ,
+                    'alt' => 'Route',
+                    'class' => 'route-text flex'
+                	])
+					<i class="fa-solid fa-route text-{{ $title_color }} mr-4 text-md pt-1"></i>
+					<span class="inline-block pt-1">Route</span>
+					@include('components.link.closing')
+				@endif
 
 				@include('components.establishments.directions')
 
-				@if($establishment->getAcfFields()->get('kvk_number'))
-					<div>
-						<span class="inline-block pt-1">KVK: {{ $establishment->getAcfFields()->get('kvk_number') }}</span>
-					</div>
-				@endif
+{{--				--}}{{-- Establishment KVK Number --}}
+{{--				@if($establishment->getAcfFields()->get('kvk_number'))--}}
+{{--					<div>--}}
+{{--						<span class="inline-block pt-1">KVK: {{ $establishment->getAcfFields()->get('kvk_number') }}</span>--}}
+{{--					</div>--}}
+{{--				@endif--}}
 
-				@if($establishment->getAcfFields()->get('vat_id'))
-					<div>
-						<span class="inline-block pt-1">BTW: {{ $establishment->getAcfFields()->get('vat_id') }}</span>
-					</div>
-				@endif
+{{--				--}}{{-- Establishment VAT Number --}}
+{{--				@if($establishment->getAcfFields()->get('vat_id'))--}}
+{{--					<div>--}}
+{{--						<span class="inline-block pt-1">BTW: {{ $establishment->getAcfFields()->get('vat_id') }}</span>--}}
+{{--					</div>--}}
+{{--				@endif--}}
 			@endif
+
+		@if ($customEstablishmentText)
+			<div class="custom-establishment-text mt-2">
+				{!! $customEstablishmentText !!}
+			</div>
+		@endif
+
 		</div>
 	@endforeach
 </div>
