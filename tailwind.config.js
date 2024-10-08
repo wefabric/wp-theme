@@ -54,6 +54,7 @@ module.exports = {
     'md:w-fit',
     'lg:w-fit',
     'xl:w-fit',
+    'md:text-[18px]',
   ],
   theme: {
     boxShadow: {
