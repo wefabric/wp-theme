@@ -24,8 +24,8 @@
         ])
     @endif
     @if ($imageCaption)
-        @if ($imageLinkUrl) <a href="{{ $imageLinkUrl }}" target="{{ $imageLinkTarget }}" aria-label="Ga naar {{ $imageLinkTitle }}"> @endif
-            <p class="text-lg font-bold mt-2">{{ $imageCaption }}</p>
+        @if ($imageLinkUrl) <a href="{{ $imageLinkUrl }}" target="{{ $imageLinkTarget }}" aria-label="Ga naar {{ $imageLinkTitle }}">@endif
+            <p class="text-lg text-left font-bold mt-2 text-{{ $captionColor }}">{!! $imageCaption !!}</p>
         @if ($imageLinkUrl) </a> @endif
     @endif
 </div>
