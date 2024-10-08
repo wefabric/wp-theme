@@ -50,6 +50,10 @@ module.exports = {
     'xl:grid-cols-4',
     'xl:grid-cols-5',
     'md:items-end',
+    'sm:w-fit',
+    'md:w-fit',
+    'lg:w-fit',
+    'xl:w-fit',
   ],
   theme: {
     boxShadow: {
