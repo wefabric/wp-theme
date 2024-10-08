@@ -1,3 +1,5 @@
+{{--Wordt momenteel niet gebruikt--}}
+
 @php
 	$address = $establishment->getAddress();
 @endphp

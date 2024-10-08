@@ -110,8 +110,11 @@
 					@include('components.link.closing')
 				@endif
 
-				@include('components.establishments.directions')
 
+{{--			Dit kan later weer aan--}}
+{{--				@include('components.establishments.directions')--}}
+
+{{--			todo: KVK en VAT nummers toevoegen aan vestigingen--}}
 {{--				--}}{{-- Establishment KVK Number --}}
 {{--				@if($establishment->getAcfFields()->get('kvk_number'))--}}
 {{--					<div>--}}
