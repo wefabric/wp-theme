@@ -41,7 +41,7 @@
                     'object_fit' => 'cover',
                     'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
                     'alt' => $postTitle,
-            ])
+                ])
             </div>
         @endif
         <div class="news-data flex flex-col w-full grow mt-5">
@@ -62,14 +62,15 @@
             </div>
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
                 @if ($buttonCardText)
-                    <div class="mt-auto pt-8 z-10">
+                    <div class="news-button mt-auto pt-8 z-10">
                         @include('components.buttons.default', [
                            'text' => $buttonCardText,
                            'href' => $postUrl,
                            'alt' => $buttonCardText,
                            'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
                            'class' => 'rounded-lg',
-                       ])
+                           'icon' => $buttonCardIcon,
+                        ])
                     </div>
                 @endif
             @endif
