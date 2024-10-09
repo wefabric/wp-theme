@@ -3,16 +3,21 @@
     $title = $block['data']['title'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-
-    $titlePosition = $block['data']['title_position'] ?? '';
-    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-    $titleClass = $titleClassMap[$titlePosition] ?? '';
-
-    $questionTextColor = $block['data']['question_text_color'] ?? '';
+    $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
+
+        // Buttons
+        //Todo: Add buttons
+
+        $textPosition = $block['data']['text_position'] ?? '';
+        $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
+        $textClass = $textClassMap[$textPosition] ?? '';
 
 
     // FAQ
+    $questionTextColor = $block['data']['question_text_color'] ?? '';
+    $answerTextColor = $block['data']['answer_text_color'] ?? '';
+
     $faqId = $block['data']['faq_group'] ?? '';
     $questionsAndAnswers = get_field('faq', $faqId);
     $faqBackgroundColor = $block['data']['faq_background_color'] ?? 'default-color';
@@ -29,6 +34,7 @@
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
     $hideBlock = $block['data']['hide_block'] ?? false;
@@ -65,18 +71,24 @@
 @endphp
 
 <section id="faq" class="block-faq relative faq-{{ $randomNumber }}-custom-padding faq-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="mx-auto {{ $blockClass }} {{ $titleClass }}">
+        <div class="mx-auto {{ $blockClass }}">
             <div class="faq-drawer container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                 @if ($subTitle)
-                    <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                    <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
                 @endif
                 @if ($title)
-                    <h2 class="mb-8 text-{{ $titleColor }}">{!! $title !!}</h2>
+                    <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
+                @endif
+                @if ($text)
+                    @include('components.content', [
+                        'content' => apply_filters('the_content', $text),
+                        'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
+                    ])
                 @endif
                 @if ($questionsAndAnswers)
                     @foreach ($questionsAndAnswers as $key => $faq)
@@ -84,7 +96,7 @@
                             <input class="faq-drawer__trigger mb-4" id="faq-drawer-{{$key}}" type="checkbox"/>
                             <label class="faq-drawer__title relative block cursor-pointer text-{{ $questionTextColor }} text-md font-bold p-10 bg-{{ $faqBackgroundColor }}"
                                    for="faq-drawer-{{$key}}">{{ $faq['question_and_answer']['question'] }}</label>
-                            <div class="faq-drawer__content-wrapper text-{{ $textColor }}">
+                            <div class="faq-drawer__content-wrapper text-{{ $answerTextColor }}">
                                 <div class="faq-drawer__content px-10 pb-8 bg-{{ $faqBackgroundColor }}">
                                     <div class="text-base ">{!! apply_filters('the_content', $faq['question_and_answer']['answer']) !!}</div>
                                 </div>

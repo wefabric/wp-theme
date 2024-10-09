@@ -92,9 +92,53 @@
             "font_size": 14
         },
         {
+            "key": "field_67066f82289ff",
+            "label": "Tekst",
+            "name": "text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_67066f9328a00",
+            "label": "Tekst kleur",
+            "name": "text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_67066f82289ff",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
             "key": "field_651c21a7c47f3",
-            "label": "Titel positie",
-            "name": "title_position",
+            "label": "Tekst positie",
+            "name": "text_position",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -197,8 +241,8 @@
         },
         {
             "key": "field_651c296775c14",
-            "label": "Tekst kleur",
-            "name": "text_color",
+            "label": "Antwoord tekst kleur",
+            "name": "answer_text_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
@@ -388,6 +432,33 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_67066fa728a01",
+            "label": "Achtergrond afbeelding parallax effect",
+            "name": "background_image_parallax",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_651c21a7c4836",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
             "key": "field_656866ac75700",
@@ -1212,5 +1283,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724314516
+    "modified": 1728477646
 }
