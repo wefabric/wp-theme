@@ -107,7 +107,7 @@
                 <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
             @endif
             @if ($quote)
-                @include('components.content', ['content' => apply_filters('the_content', $quote), 'class' => 'quote-text text-' . $quoteTextColor])
+                @include('components.content', ['content' => apply_filters('the_content', $quote), 'class' => 'quote-text text-[24px] md:text-[36px] text-' . $quoteTextColor])
             @endif
             @if ($name)
                 <p class="name-text mt-5 h6 text-{{ $personTextColor }}">{{ $name }}</p>
