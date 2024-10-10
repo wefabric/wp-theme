@@ -7,7 +7,33 @@
     $textColor = $block['data']['text_color'] ?? '';
 
         // Buttons
-        //Todo: Add buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+        $button2Text = $block['data']['button_button_2']['title'] ?? '';
+        $button2Link = $block['data']['button_button_2']['url'] ?? '';
+        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
+        $button2Color = $block['data']['button_button_2_color'] ?? '';
+        $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Download = $block['data']['button_button_2_download'] ?? false;
+        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+        if (!empty($button2Icon)) {
+            $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
 
         $textPosition = $block['data']['text_position'] ?? '';
         $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
@@ -103,6 +129,32 @@
                             </div>
                         </div>
                     @endforeach
+                @endif
+                @if (($button1Text) && ($button1Link))
+                    <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
+                        @include('components.buttons.default', [
+                            'text' => $button1Text,
+                            'href' => $button1Link,
+                            'alt' => $button1Text,
+                            'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                            'class' => 'rounded-lg',
+                            'target' => $button1Target,
+                            'icon' => $button1Icon,
+                            'download' => $button1Download,
+                        ])
+                        @if (($button2Text) && ($button2Link))
+                            @include('components.buttons.default', [
+                                'text' => $button2Text,
+                                'href' => $button2Link,
+                                'alt' => $button2Text,
+                                'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                'class' => 'rounded-lg',
+                                'target' => $button2Target,
+                                'icon' => $button2Icon,
+                                'download' => $button2Download,
+                            ])
+                        @endif
+                    </div>
                 @endif
             </div>
         </div>
