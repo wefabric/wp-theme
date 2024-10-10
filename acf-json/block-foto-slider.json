@@ -607,7 +607,7 @@
         },
         {
             "key": "field_6705392ba8c86",
-            "label": "Caption kleur",
+            "label": "Onderschrift kleur",
             "name": "caption_color",
             "aria-label": "",
             "type": "Thema Kleur",
@@ -1064,7 +1064,7 @@
         },
         {
             "key": "field_6683d4b639c8a",
-            "label": "Blok verbergen",
+            "label": "Blok verbergen?",
             "name": "hide_block",
             "aria-label": "",
             "type": "true_false",
@@ -1865,5 +1865,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728396427
+    "modified": 1728565156
 }
