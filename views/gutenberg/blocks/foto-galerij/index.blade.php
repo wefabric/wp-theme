@@ -109,7 +109,7 @@
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} {{ $textClass }} mx-auto">
+        <div class="{{ $blockClass }} mx-auto">
             @if ($subTitle)
                 <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
             @endif
@@ -119,7 +119,7 @@
             @if ($text)
                 @include('components.content', [
                     'content' => apply_filters('the_content', $text),
-                    'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
+                    'class' => 'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
                 ])
             @endif
             @if ($images)
