@@ -136,6 +136,343 @@
             "font_size": 14
         },
         {
+            "key": "field_6707ad70dc376",
+            "label": "Button (onder galerij)",
+            "name": "button",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_6707ad9bdc377",
+                    "label": "Button 1 tekst en link",
+                    "name": "button_1",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_6707adb5dc378",
+                    "label": "Button 1 kleur",
+                    "name": "button_1_color",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6707ad9bdc377",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "primary-color": "Primary",
+                        "secondary-color": "Secondary",
+                        "tertiary-color": "Tertiary",
+                        "quaternary-color": "Quaternary",
+                        "cta": "CTA",
+                        "white": "Wit",
+                        "black": "Zwart",
+                        "gray": "Grijs"
+                    },
+                    "default_value": "primary-color",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_6707add7dc379",
+                    "label": "Button 1 stijl",
+                    "name": "button_1_style",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6707ad9bdc377",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "filled": "Gevuld",
+                        "outline": "Omlijnd",
+                        "underline": "Onderlijn"
+                    },
+                    "default_value": "filled",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_6707adf1dc37a",
+                    "label": "Button 1 icoon",
+                    "name": "button_1_icon",
+                    "aria-label": "",
+                    "type": "font-awesome",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6707ad9bdc377",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "icon_sets": [
+                        "solid",
+                        "regular",
+                        "light",
+                        "thin",
+                        "duotone",
+                        "fak",
+                        "brands"
+                    ],
+                    "custom_icon_set": "",
+                    "default_label": "",
+                    "default_value": "",
+                    "save_format": "element",
+                    "allow_null": 1,
+                    "show_preview": 1,
+                    "enqueue_fa": 0,
+                    "fa_live_preview": "",
+                    "choices": []
+                },
+                {
+                    "key": "field_6707ae01dc37b",
+                    "label": "Button 1 download",
+                    "name": "button_1_download",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6707ad9bdc377",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
+                    "key": "field_6707ae13dc37c",
+                    "label": "Button 2 tekst en link",
+                    "name": "button_2",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6707ad9bdc377",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_6707ae23dc37d",
+                    "label": "Button 2 kleur",
+                    "name": "button_2_color",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6707ae13dc37c",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "primary-color": "Primary",
+                        "secondary-color": "Secondary",
+                        "tertiary-color": "Tertiary",
+                        "quaternary-color": "Quaternary",
+                        "cta": "CTA",
+                        "white": "Wit",
+                        "black": "Zwart",
+                        "gray": "Grijs"
+                    },
+                    "default_value": "primary-color",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_6707ae36dc37e",
+                    "label": "Button 2 stijl",
+                    "name": "button_2_style",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6707ae13dc37c",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "filled": "Gevuld",
+                        "outline": "Omlijnd",
+                        "underline": "Onderlijn"
+                    },
+                    "default_value": "filled",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_6707ae6adc380",
+                    "label": "Button 2 icoon",
+                    "name": "button_2_icon",
+                    "aria-label": "",
+                    "type": "font-awesome",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6707ae13dc37c",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "icon_sets": [
+                        "solid",
+                        "regular",
+                        "light",
+                        "thin",
+                        "duotone",
+                        "fak",
+                        "brands"
+                    ],
+                    "custom_icon_set": "",
+                    "default_label": "",
+                    "default_value": "",
+                    "save_format": "element",
+                    "allow_null": 1,
+                    "show_preview": 1,
+                    "enqueue_fa": 0,
+                    "fa_live_preview": "",
+                    "choices": []
+                },
+                {
+                    "key": "field_6707ae82dc381",
+                    "label": "Button 2 download",
+                    "name": "button_2_download",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6707ae13dc37c",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                }
+            ]
+        },
+        {
             "key": "field_6662b81758417",
             "label": "Tekst positie",
             "name": "text_position",
@@ -147,6 +484,18 @@
                 [
                     {
                         "field": "field_6661accd1fd0b",
+                        "operator": "!=empty"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6683d05ad3a6a",
+                        "operator": "!=empty"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6707ad9bdc377",
                         "operator": "!=empty"
                     }
                 ]
@@ -613,6 +962,33 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_6707a6d933d18",
+            "label": "Achtergrond afbeelding parallax effect",
+            "name": "background_image_parallax",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6661accd1fd82",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
             "key": "field_6661accd1fda1",
@@ -1437,5 +1813,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719921029
+    "modified": 1728556763
 }
