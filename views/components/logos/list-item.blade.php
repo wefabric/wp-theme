@@ -22,7 +22,7 @@
 @endphp
 
 <div class="logo-item group h-full">
-    <div class="custom-logo-styling overflow-hidden h-full relative rounded-{{ $borderRadius }} @if($logoUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
+    <div class="custom-logo-styling h-full relative rounded-{{ $borderRadius }} @if($logoUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
         <div class="background w-full h-full relative p-4 md:p-6 bg-{{ $logoBackgroundColor }}">
             @if ($logoUrl)
                 <a href="{{ $logoUrl }}" @if($logoLinkType === 'external_link') target="_blank" @endif
@@ -52,13 +52,15 @@
                 ])
             @endif
         </div>
+
+        @if (!empty($visibleElements) && in_array('name', $visibleElements) && ($logoTitle))
+            @if ($logoUrl)<a href="{{ $logoUrl }}" @if($logoLinkType === 'external_link') target="_blank" @endif aria-label="Ga naar {{ $logoTitle }} pagina">@endif
+                <p class="mt-2 text-lg text-left font-bold text-{{ $logoTextColor }} @if($logoUrl) group-hover:text-primary @endif">{!! $logoTitle !!}</p>
+                @if ($logoUrl)</a> @endif
+        @endif
+        @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && ($logoSummary))
+            <p class="text-{{ $logoTextColor }} text-left">{!! $logoSummary !!}</p>
+        @endif
+
     </div>
-    @if (!empty($visibleElements) && in_array('name', $visibleElements) && ($logoTitle))
-        @if ($logoUrl)<a href="{{ $logoUrl }}" @if($logoLinkType === 'external_link') target="_blank" @endif aria-label="Ga naar {{ $logoTitle }} pagina">@endif
-            <p class="mt-2 text-lg text-left font-bold @if($logoUrl) group-hover:text-primary @endif">{!! $logoTitle !!}</p>
-            @if ($logoUrl)</a> @endif
-    @endif
-    @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && ($logoSummary))
-        <p class="text-left">{!! $logoSummary !!}</p>
-    @endif
 </div>

@@ -40,7 +40,9 @@
         $textClass = $textClassMap[$textPosition] ?? '';
 
 
-    // Logos
+    // Logo's
+    $logoTextColor = $block['data']['logo_text_color'] ?? '';
+
     $displayType = $block['data']['display_type'] ?? '';
     $logoBackgroundColor = $block['data']['logo_background_color'] ?? '';
     $logoFilter = $block['data']['logo_filter'] ?? '';
@@ -156,15 +158,15 @@
         <div class="{{ $blockClass }} mx-auto {{ $textClass }} layout">
             <div class="content-data mb-4">
                 @if ($subTitle)
-                    <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                    <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
                 @endif
                 @if ($title)
-                    <h2 class="title text-{{ $titleColor }}">{!! $title !!}</h2>
+                    <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
                 @endif
                 @if ($text)
                     @include('components.content', [
                         'content' => apply_filters('the_content', $text),
-                        'class' => 'mb-8 text-' . $textColor . ' ' . ($blockWidth == 'fullscreen' ? ' ' : '')
+                        'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
                     ])
                 @endif
             </div>

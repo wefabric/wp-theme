@@ -704,6 +704,38 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
+            "key": "field_6707cc9080ffe",
+            "label": "Logo tekst kleur",
+            "name": "logo_text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6566ff79947b3",
+                        "operator": "==",
+                        "value": "name"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6566ff79947b3",
+                        "operator": "==",
+                        "value": "overview_text"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
             "key": "field_657ab7b74896e",
             "label": "Link van logo",
             "name": "logo_link",
@@ -1965,5 +1997,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728398200
+    "modified": 1728564424
 }
