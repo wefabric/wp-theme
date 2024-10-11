@@ -12,6 +12,7 @@
 
 
     // Links
+    $linkLayout = $block['data']['link_layout'] ?? 'horizontal';
     $linkDisplay = $block['data']['link_display'] ?? 'button';
     $linksCount = $block['data']['links'] ?? 0;
     $links = [];
@@ -140,7 +141,7 @@
                     <div class="links-list flex flex-wrap gap-x-12 gap-y-8 {{ $textClass }}">
                         @foreach($links as $link)
                             @if($link['linkText'] && $link['linkUrl'])
-                                <div class="link-item w-full">
+                                <div class="link-item @if ($linkLayout == 'vertical') w-full @else w-fit @endif">
                                     <a href="{{ $link['linkUrl'] }}" aria-label="Ga naar {{ $link['linkText'] }} pagina"
                                        target="{{ $link['linkTarget'] }}" class="flex items-center gap-x-4 group w-fit">
                                         @if($link['linkIcon'])
@@ -160,7 +161,7 @@
                     <div class="links-list flex flex-wrap gap-x-12 gap-y-8 {{ $textClass }}">
                         @foreach($links as $link)
                             @if($link['linkText'] && $link['linkUrl'])
-                                <div class="link-item w-full">
+                                <div class="link-item @if ($linkLayout == 'vertical') w-full @else w-fit @endif">
                                     <a href="{{ $link['linkUrl'] }}" aria-label="Ga naar {{ $link['linkText'] }} pagina"
                                        target="{{ $link['linkTarget'] }}" class="flex items-center gap-x-4 group w-fit">
                                         @if($link['linkImage'])

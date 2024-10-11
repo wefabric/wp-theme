@@ -221,6 +221,47 @@
             "placeholder": ""
         },
         {
+            "key": "field_6709011a40ab5",
+            "label": "Link layout",
+            "name": "link_layout",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_668f86cf10c9f",
+                        "operator": "==",
+                        "value": "icon"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_668f86cf10c9f",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "horizontal": "Links naast elkaar",
+                "vertical": "Links onder elkaar"
+            },
+            "default_value": "horizontal",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_6529507ee205e",
             "label": "Links",
             "name": "links",
@@ -1507,5 +1548,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728636514
+    "modified": 1728643610
 }
