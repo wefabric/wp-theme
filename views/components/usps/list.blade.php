@@ -32,7 +32,7 @@
         </div>
     </div>
 @else
-    <div class="usp-grid grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
+    <div class="usp-grid grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 lg:gap-y-16 gap-x-4 lg:gap-x-8 py-8">
         @foreach ($usps as $usp)
             @include('components.usps.list-item')
         @endforeach

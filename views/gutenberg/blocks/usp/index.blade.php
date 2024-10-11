@@ -6,8 +6,6 @@
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
-    $uspLayout = $block['data']['usp_layout'] ?? 'vertical';
-
         // Buttons
         $button1Text = $block['data']['button_button_1']['title'] ?? '';
         $button1Link = $block['data']['button_button_1']['url'] ?? '';
@@ -42,7 +40,9 @@
         $textClass = $textClassMap[$textPosition] ?? '';
 
 
-    // Show USP's
+    // USP's
+    $uspLayout = $block['data']['usp_layout'] ?? 'vertical';
+
     $uspsCount = $block['data']['usps'];
     $usps = [];
 
@@ -134,7 +134,9 @@
                         'class' => 'container mx-auto mb-4 text-' . $textColor . ($blockWidth == 'fullscreen' ? ' px-8' : '')
                     ])
                 @endif
-                @include('components.usps.list', ['usps' => $usps])
+                @if ($usps)
+                    @include('components.usps.list', ['usps' => $usps])
+                @endif
                 @if (($button1Text) && ($button1Link))
                     <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                         @include('components.buttons.default', [
