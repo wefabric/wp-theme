@@ -1,4 +1,6 @@
 @php
+    $visualType = $block['data']['visual_type'] ?? 'icons';
+
     $uspTitle = $usp['uspTitle'];
     $uspText = $usp['uspText'];
     $icon = $usp['uspIcon'];
@@ -15,13 +17,13 @@
     $isNumber = !empty($numericPart);
 @endphp
 
-<div class="USP-item h-full usp-{{ $uspLayout }} ">
+<div class="USP-item h-full usp-{{ $uspLayout }}">
     <div class="item-styling h-full @if( $uspLayout == 'horizontal') flex flex-row gap-x-6 items-center text-left justify-center @elseif( $uspLayout == 'vertical') flex flex-col gap-y-4 text-center @endif">
-        @if ($icon)
+        @if (($visualType == 'icons') && ($icon))
             <i class="fa-{{ $icon['style'] }} fa-{{ $icon['id'] }} text-{{ $iconColor }} text-[70px] inline-block"
                aria-hidden="true"></i>
         @endif
-        @if ($imageID)
+        @if (($visualType == 'images') && ($imageID))
             @include('components.image', [
                 'image_id' => $imageID,
                 'size' => 'full',

@@ -581,7 +581,7 @@
                 "images": "Afbeeldingen",
                 "empty": "Geen"
             },
-            "default_value": false,
+            "default_value": "icons",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -2005,5 +2005,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727445786
+    "modified": 1728641111
 }
