@@ -56,7 +56,7 @@
                         <div class="thumb">
                             @include('components.image', [
                                 'image_id' => $imageID,
-                                'size' => 'thumbnail', // You might need to adjust the size here
+                                'size' => 'full',
                                 'object_fit' => 'cover',
                                 'img_class' => 'w-full aspect-square object-cover rounded-' . $borderRadius,
                                 'alt' => get_post_meta($imageID, '_wp_attachment_image_alt', true)
@@ -117,7 +117,6 @@
                     slidesPerView: {{ $desktopLayout }},
                 },
             }
-
         });
 
         // Link the two sliders
