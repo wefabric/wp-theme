@@ -148,7 +148,7 @@
                                                 $iconData = json_decode($link['linkIcon'], true);
                                                 $iconClass = 'fa-' . ($iconData['style'] ?? 'solid') . ' fa-' . ($iconData['id'] ?? '');
                                             @endphp
-                                            <i class="fa {{ $iconClass }} text-{{ $link['linkIconColor'] }} text-[50px] group-hover:scale-105 transition-transform duration-300 ease-in-out" aria-hidden="true"></i>
+                                            <i class="fa {{ $iconClass }} text-{{ $link['linkIconColor'] }} text-[50px] width-[56px] height-[56px] flex justify-center items-center group-hover:scale-105 transition-transform duration-300 ease-in-out" aria-hidden="true"></i>
                                         @endif
                                         <span class="link-text @if($link['linkTextColor']) text-{{ $link['linkTextColor'] }} @else text-cta @endif font-semibold group-hover:underline">{!! $link['linkText'] !!}</span>
                                     </a>
