@@ -6,12 +6,12 @@
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
-         $textPosition = $block['data']['text_position'] ?? '';
-         $titleClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
-         $textClass = $titleClassMap[$textPosition] ?? '';
+        $textPosition = $block['data']['text_position'] ?? '';
+        $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
+        $textClass = $textClassMap[$textPosition] ?? '';
 
 
-    // Show links
+    // Links
     $linkDisplay = $block['data']['link_display'] ?? 'button';
     $linksCount = $block['data']['links'] ?? 0;
     $links = [];
@@ -23,18 +23,33 @@
         $linkTarget = $block['data'][$linkKey]['target'] ?? '_self';
 
         $buttonColor = $block['data']["links_{$i}_button_color"] ?? '';
+        $buttonStyle = $block['data']["links_{$i}_button_style"] ?? '';
         $linkImage = $block['data']["links_{$i}_link_image"] ?? '';
         $linkIcon = $block['data']["links_{$i}_link_icon"] ?? '';
+        $linkIconColor = $block['data']["links_{$i}_link_icon_color"] ?? '';
+        $linkTextColor = $block['data']["links_{$i}_link_text_color"] ?? '';
+        $buttonIcon = '';
+        if (!empty($linkIcon)) {
+            $iconData = json_decode($linkIcon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $buttonIcon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
 
         $links[] = [
             'linkText' => $linkText,
             'linkUrl' => $linkUrl,
             'linkTarget' => $linkTarget,
             'buttonColor' => $buttonColor,
+            'buttonStyle' => $buttonStyle,
+            'buttonIcon' => $buttonIcon,
             'linkImage' => $linkImage,
             'linkIcon' => $linkIcon,
+            'linkTextColor' => $linkTextColor,
+            'linkIconColor' => $linkIconColor,
         ];
     }
+
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -47,6 +62,7 @@
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
     $hideBlock = $block['data']['hide_block'] ?? false;
@@ -83,29 +99,44 @@
 @endphp
 
 <section id="links" class="block-links relative links-{{ $randomNumber }}-custom-padding links-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto {{ $textClass }} layout">
+        <div class="{{ $blockClass }} mx-auto layout">
             <div class="content-data mb-4">
                 @if ($subTitle)
-                    <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                    <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
                 @endif
                 @if ($title)
-                    <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
+                    <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
                 @endif
                 @if ($text)
                     @include('components.content', [
                         'content' => apply_filters('the_content', $text),
-                        'class' => 'mb-8 text-' . $textColor . ($blockWidth == 'fullscreen' ? ' ' : '')
+                        'class' => 'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
                     ])
                 @endif
             </div>
-
             @if ($links)
-                @if ($linkDisplay == 'icon')
+                @if ($linkDisplay == 'button')
+                    <div class="links-list w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }}">
+                        @foreach($links as $link)
+                            @if($link['linkText'] && $link['linkUrl'])
+                                @include('components.buttons.default', [
+                                    'text' => $link['linkText'],
+                                    'href' => $link['linkUrl'],
+                                    'alt' => $link['linkText'],
+                                    'colors' => 'btn-' . $link['buttonColor'] . ' btn-' . $link['buttonStyle'],
+                                    'class' => 'rounded-lg',
+                                    'target' => $link['linkTarget'],
+                                    'icon' => $link['buttonIcon'],
+                                ])
+                            @endif
+                        @endforeach
+                    </div>
+                @elseif ($linkDisplay == 'icon')
                     <div class="links-list flex flex-wrap gap-x-12 gap-y-8 {{ $textClass }}">
                         @foreach($links as $link)
                             @if($link['linkText'] && $link['linkUrl'])
@@ -117,9 +148,9 @@
                                                 $iconData = json_decode($link['linkIcon'], true);
                                                 $iconClass = 'fa-' . ($iconData['style'] ?? 'solid') . ' fa-' . ($iconData['id'] ?? '');
                                             @endphp
-                                            <i class="fa {{ $iconClass }} text-[50px] group-hover:scale-105 transition-transform duration-300 ease-in-out" aria-hidden="true"></i>
+                                            <i class="fa {{ $iconClass }} text-{{ $link['linkIconColor'] }} text-[50px] group-hover:scale-105 transition-transform duration-300 ease-in-out" aria-hidden="true"></i>
                                         @endif
-                                        <span class="link-text text-cta font-semibold group-hover:underline">{{ $link['linkText'] }}</span>
+                                        <span class="link-text @if($link['linkTextColor']) text-{{ $link['linkTextColor'] }} @else text-cta @endif font-semibold group-hover:underline">{!! $link['linkText'] !!}</span>
                                     </a>
                                 </div>
                             @endif
@@ -141,18 +172,9 @@
                                                 'alt' => $link['linkText']
                                             ])
                                         @endif
-                                        <span class="link-text text-cta font-semibold group-hover:underline">{{ $link['linkText'] }}</span>
+                                        <span class="link-text @if($link['linkTextColor']) text-{{ $link['linkTextColor'] }} @else text-cta @endif font-semibold group-hover:underline">{!! $link['linkText'] !!}</span>
                                     </a>
                                 </div>
-                            @endif
-                        @endforeach
-                    </div>
-                @elseif ($linkDisplay == 'button')
-                    <div class="links-list flex flex-wrap gap-2 {{ $textClass }}">
-                        @foreach($links as $link)
-                            @if($link['linkText'] && $link['linkUrl'])
-                                <a href="{{ $link['linkUrl'] }}" aria-label="Ga naar {{ $link['linkText'] }} pagina"
-                                   target="{{ $link['linkTarget'] }}" class="link-text btn btn-{{ $link['buttonColor'] }} btn-filled">{{ $link['linkText'] }}</a>
                             @endif
                         @endforeach
                     </div>
