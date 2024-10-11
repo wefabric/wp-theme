@@ -6,23 +6,46 @@
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
-    // Buttons
-        $buttonText = $block['data']['button_button']['title'] ?? '';
-        $buttonLink = $block['data']['button_button']['url'] ?? '';
-        $buttonTarget = $block['data']['button_button']['target'] ?? '_self';
-        $buttonColor = $block['data']['button_button_color'] ?? '';
-        $buttonStyle = $block['data']['button_button_style'] ?? '';
+        // Buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+        $button2Text = $block['data']['button_button_2']['title'] ?? '';
+        $button2Link = $block['data']['button_button_2']['url'] ?? '';
+        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
+        $button2Color = $block['data']['button_button_2_color'] ?? '';
+        $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Download = $block['data']['button_button_2_download'] ?? false;
+        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+        if (!empty($button2Icon)) {
+            $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
 
         $textPosition = $block['data']['text_position'] ?? '';
-        $titleClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
-        $textClass = $titleClassMap[$textPosition] ?? '';
+        $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
+        $textClass = $textClassMap[$textPosition] ?? '';
 
+
+    // Tijdlijn
     $timelineLineColor = $block['data']['timeline_line_color'] ?? '';
     $timelineYearTextColor = $block['data']['timeline_year_text_color'] ?? '';
     $timelineTextColor = $block['data']['timeline_text_color'] ?? '';
     $timelineBlockBackgroundColor = $block['data']['timeline_block_background_color'] ?? '';
 
-    // Show timeline items
     $timelineData = [];
     $numTimelineItems = intval($block['data']['timeline']);
 
@@ -61,8 +84,10 @@
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+    $hideBlock = $block['data']['hide_block'] ?? false;
 
 
     // Theme settings
@@ -101,104 +126,116 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="historie"
-         class="block-historie relative historie-{{ $randomNumber }}-custom-padding historie-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+<section id="historie" class="block-historie relative historie-{{ $randomNumber }}-custom-padding historie-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto {{ $textClass }}">
+        <div class="{{ $blockClass }} mx-auto">
             @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
             @endif
             @if ($title)
-                <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
+                <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
             @endif
             @if ($text)
                 @include('components.content', [
                     'content' => apply_filters('the_content', $text),
-                    'class' => 'mb-8 text-' . $textColor . ($blockWidth == 'fullscreen' ? ' ' : '')
+                    'class' => 'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
                 ])
             @endif
-        </div>
+            <div class="mt-8 lg:mt-16 relative h-full">
+                <div class="history-vertical-line w-[4px] bg-{{ $timelineLineColor }} h-full absolute lg:left-1/2 -translate-x-1/2">
+                    <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                    <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"></div>
+                </div>
 
-        <div class="mt-8 lg:mt-16 relative h-full">
-            <div class="history-vertical-line w-[4px] bg-{{ $timelineLineColor }} h-full absolute lg:left-1/2 -translate-x-1/2">
-                <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-                <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"></div>
-            </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    @foreach ($timelineData as $index => $item)
+                        @php
+                            $isOdd = $index % 2 !== 0;
+                            $cardClass = $isOdd ? 'right-card' : 'left-card';
+                            $marginLeftClass = $isOdd ? 'lg:pl-16 mt-8 lg:mt-20' : 'lg:pl-0 lg:pr-16 mt-8 lg:mt-0';
+                            $timelineLinePosition = $isOdd ? 'top-1/2' : 'lg:left-auto lg:right-0 top-1/2';
+                            $roundedFullPosition = $isOdd ? 'right-0 top-1/2 translate-x-1/2 -translate-y-1/2' : 'left-auto right-0 lg:right-auto lg:left-0 top-1/2 translate-x-1/2 lg:-translate-x-1/2 -translate-y-1/2';
+                        @endphp
 
-            <div class="grid grid-cols-1 lg:grid-cols-2">
-                @foreach ($timelineData as $index => $item)
-                    @php
-                        $isOdd = $index % 2 !== 0;
-                        $cardClass = $isOdd ? 'right-card' : 'left-card';
-                        $marginLeftClass = $isOdd ? 'lg:pl-16 mt-8 lg:mt-20' : 'lg:pl-0 lg:pr-16 mt-8 lg:mt-0';
-                        $timelineLinePosition = $isOdd ? 'top-1/2' : 'lg:left-auto lg:right-0 top-1/2';
-                        $roundedFullPosition = $isOdd ? 'right-0 top-1/2 translate-x-1/2 -translate-y-1/2' : 'left-auto right-0 lg:right-auto lg:left-0 top-1/2 translate-x-1/2 lg:-translate-x-1/2 -translate-y-1/2';
-                    @endphp
-
-                    <div class="{{ $cardClass }} timeline-card relative h-fit pl-10 {{ $marginLeftClass }}">
-                        <div class="history-horizontal-line w-[20px] lg:w-[30px] h-[4px] bg-{{ $timelineLineColor }} absolute left-0 {{ $timelineLinePosition }}">
-                            <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute {{ $roundedFullPosition }}"></div>
-                        </div>
-                        <div class="flex flex-col">
-                            @if($item['imageId'])
-                                <div class="history-image relative h-[170px]">
-                                    @include('components.image', [
-                                        'image_id' => $item['imageId'],
-                                        'size' => 'full',
-                                        'object_fit' => $item['display'],
-                                        'img_class' => 'h-[170px] w-full',
-                                        'alt' => $item['alt']
-                                    ])
+                        <div class="{{ $cardClass }} timeline-card relative h-fit pl-10 {{ $marginLeftClass }}">
+                            <div class="history-horizontal-line w-[20px] lg:w-[30px] h-[4px] bg-{{ $timelineLineColor }} absolute left-0 {{ $timelineLinePosition }}">
+                                <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute {{ $roundedFullPosition }}"></div>
+                            </div>
+                            <div class="flex flex-col">
+                                @if($item['imageId'])
+                                    <div class="history-image relative h-[170px]">
+                                        @include('components.image', [
+                                            'image_id' => $item['imageId'],
+                                            'size' => 'full',
+                                            'object_fit' => $item['display'],
+                                            'img_class' => 'h-[170px] w-full',
+                                            'alt' => $item['alt']
+                                        ])
+                                    </div>
+                                @endif
+                                <div class="history-data relative p-4 lg:p-8 bg-{{ $timelineBlockBackgroundColor }}">
+                                    @if($item['year'])
+                                        <p class="h3 text-{{ $timelineYearTextColor }}">{{ $item['year'] }}</p>
+                                    @endif
+                                    @if($item['text'])
+                                        @include('components.content', ['content' => apply_filters('the_content', $item['text']), 'class' => 'text-' . $timelineTextColor])
+                                    @endif
                                 </div>
-                            @endif
-                            <div class="history-data relative p-4 lg:p-8 bg-{{ $timelineBlockBackgroundColor }}">
-                                @if($item['year'])
-                                    <p class="h3 text-{{ $timelineYearTextColor }}">{{ $item['year'] }}</p>
-                                @endif
-                                @if($item['text'])
-                                    @include('components.content', ['content' => apply_filters('the_content', $item['text']), 'class' => 'text-' . $timelineTextColor])
-                                @endif
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
+            @if (($button1Text) && ($button1Link))
+                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
+                    @include('components.buttons.default', [
+                        'text' => $button1Text,
+                        'href' => $button1Link,
+                        'alt' => $button1Text,
+                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                        'class' => 'rounded-lg',
+                        'target' => $button1Target,
+                        'icon' => $button1Icon,
+                        'download' => $button1Download,
+                    ])
+                    @if (($button2Text) && ($button2Link))
+                        @include('components.buttons.default', [
+                            'text' => $button2Text,
+                            'href' => $button2Link,
+                            'alt' => $button2Text,
+                            'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                            'class' => 'rounded-lg',
+                            'target' => $button2Target,
+                            'icon' => $button2Icon,
+                            'download' => $button2Download,
+                        ])
+                    @endif
+                </div>
+            @endif
         </div>
-        @if (($buttonText) && ($buttonLink))
-            <div class="{{ $textClass }} buttons w-full flex flex-wrap gap-4 mt-4 md:mt-8">
-                @include('components.buttons.default', [
-                   'text' => $buttonText,
-                   'href' => $buttonLink,
-                   'alt' => $buttonText,
-                   'colors' => 'btn-' . $buttonColor . ' btn-' . $buttonStyle,
-                   'class' => 'rounded-lg',
-                   'target' => $buttonTarget,
-               ])
-            </div>
-        @endif
     </div>
 </section>
 
 <style>
     .historie-{{ $randomNumber }}-custom-padding {
-    @media only screen and (min-width: 0px) {
-        @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
+        @media only screen and (min-width: 0px) {
+            @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
             @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
             @if($mobilePaddingBottom) padding-bottom: {{ $mobilePaddingBottom }}px; @endif
             @if($mobilePaddingLeft) padding-left: {{ $mobilePaddingLeft }}px; @endif
         }
-    @media only screen and (min-width: 768px) {
-        @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
+        @media only screen and (min-width: 768px) {
+            @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
             @if($tabletPaddingRight) padding-right: {{ $tabletPaddingRight }}px; @endif
             @if($tabletPaddingBottom) padding-bottom: {{ $tabletPaddingBottom }}px; @endif
             @if($tabletPaddingLeft) padding-left: {{ $tabletPaddingLeft }}px; @endif
         }
-    @media only screen and (min-width: 1024px) {
-        @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
+        @media only screen and (min-width: 1024px) {
+            @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
             @if($desktopPaddingRight) padding-right: {{ $desktopPaddingRight }}px; @endif
             @if($desktopPaddingBottom) padding-bottom: {{ $desktopPaddingBottom }}px; @endif
             @if($desktopPaddingLeft) padding-left: {{ $desktopPaddingLeft }}px; @endif
@@ -206,20 +243,20 @@
     }
 
     .historie-{{ $randomNumber }}-custom-margin {
-    @media only screen and (min-width: 0px) {
-        @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
+        @media only screen and (min-width: 0px) {
+            @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
             @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif
             @if($mobileMarginBottom) margin-bottom: {{ $mobileMarginBottom }}px; @endif
             @if($mobileMarginLeft) margin-left: {{ $mobileMarginLeft }}px; @endif
         }
-    @media only screen and (min-width: 768px) {
-        @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
+        @media only screen and (min-width: 768px) {
+            @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
             @if($tabletMarginRight) margin-right: {{ $tabletMarginRight }}px; @endif
             @if($tabletMarginBottom) margin-bottom: {{ $tabletMarginBottom }}px; @endif
             @if($tabletMarginLeft) margin-left: {{ $tabletMarginLeft }}px; @endif
         }
-    @media only screen and (min-width: 1024px) {
-        @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
+        @media only screen and (min-width: 1024px) {
+            @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
             @if($desktopMarginRight) margin-right: {{ $desktopMarginRight }}px; @endif
             @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
