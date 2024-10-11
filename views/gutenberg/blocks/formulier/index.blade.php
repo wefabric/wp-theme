@@ -42,6 +42,8 @@
 
     // Formulier
     $form = $block['data']['form'] ?? '';
+    $formTextColor = $block['data']['form_text_color'] ?? '';
+    $formInputColor = $block['data']['form_input_color'] ?? '';
     $formBackgroundColor = $block['data']['form_background_color'] ?? '';
 
 
@@ -97,7 +99,7 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="formulier" class="block-formulier relative formulier-{{ $randomNumber }}-custom-padding formulier-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="formulier" class="block-formulier relative formulier-{{ $randomNumber }} formulier-{{ $randomNumber }}-custom-padding formulier-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }};">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
@@ -117,7 +119,7 @@
                 ])
             @endif
             @if ($form)
-                <div class="form @if ($formBackgroundColor) p-8 @endif bg-{{ $formBackgroundColor }} rounded-{{ $borderRadius }}">
+                <div class="form @if ($formBackgroundColor) p-8 md:p-16 @endif bg-{{ $formBackgroundColor }} rounded-{{ $borderRadius }}">
                     {!! gravity_form($form, false) ; !!}
                 </div>
             @endif
@@ -152,6 +154,25 @@
 </section>
 
 <style>
+    .formulier-{{ $randomNumber }} form label,
+    .formulier-{{ $randomNumber }} form legend,
+    .formulier-{{ $randomNumber }} form .gfield_description {
+        color:
+        @if ($formTextColor === 'white') white !important
+        @elseif ($formTextColor === 'black') black !important;
+        @else var(--{{ $formTextColor }}) !important;
+        @endif
+    }
+
+    .formulier-{{ $randomNumber }} form input,
+    .formulier-{{ $randomNumber }} form textarea {
+        background-color:
+        @if ($formInputColor === 'white') white !important
+        @elseif ($formInputColor === 'black') black !important;
+        @else var(--{{ $formInputColor }}) !important;
+        @endif
+    }
+
     .formulier-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
             @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif

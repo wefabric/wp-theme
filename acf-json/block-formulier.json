@@ -554,6 +554,40 @@
             "multiple": 0
         },
         {
+            "key": "field_6708d0370686d",
+            "label": "Formulier tekst kleur",
+            "name": "form_text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_6708d5548dc12",
+            "label": "Formulier input kleur",
+            "name": "form_input_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
             "key": "field_66953a6dfb729",
             "label": "Formulier achtergrondkleur",
             "name": "form_background_color",
@@ -1597,5 +1631,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728565993
+    "modified": 1728633560
 }
