@@ -47,6 +47,14 @@
                                 $phone = $establishment ? $establishment->getContactPhone() : '';
                                 $email = $establishment ? $establishment->getContactEmailAddress() : '';
                             @endphp
+                            @if (in_array('whatsapp', $options['secondary_menu_show_elements']))
+                                <a class="whatsapp-link group flex items-center" href="{{ $options['whatsapp'] }}"
+                                   title="WhatsApp">
+                                    <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-brands fa-whatsapp"></i>
+                                    <span class="align-middle"></span>
+                                </a>
+                            @endif
+
                             @if (in_array('phone', $options['secondary_menu_show_elements']) || in_array('email', $options['secondary_menu_show_elements']))
                                 <div class="contact-info flex gap-x-2">
                                     @if (in_array('phone', $options['secondary_menu_show_elements']))

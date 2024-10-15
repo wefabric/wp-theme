@@ -196,6 +196,7 @@
             "choices": {
                 "phone": "Telefoonnummer",
                 "email": "E-mail",
+                "whatsapp": "WhatsApp",
                 "top_navigation": "Top navigatie",
                 "search": "Zoekfunctie"
             },
@@ -234,6 +235,31 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_670e66e9b6ad8",
+            "label": "WhatsApp",
+            "name": "whatsapp",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_655730670ebc4",
+                        "operator": "==",
+                        "value": "whatsapp"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         }
     ],
     "location": [
@@ -254,5 +280,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1718267850
+    "modified": 1728997120
 }
