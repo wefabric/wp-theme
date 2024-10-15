@@ -40,98 +40,45 @@
         $textClass = $textClassMap[$textPosition] ?? '';
 
 
-    // Werknemers
-    $employeeTitleColor = $block['data']['employee_title_color'] ?? '';
-    $employeeTextColor = $block['data']['employee_text_color'] ?? '';
+    // Vestigingen
+    $establishmentTitleColor = $block['data']['establishment_title_color'] ?? '';
+    $establishmentTextColor = $block['data']['establishment_text_color'] ?? '';
 
     $displayType = $block['data']['display_type'];
-    $currentTerms = isset($_GET['employee_category']) ? array_map('intval', explode(',', $_GET['employee_category'])) : [];
-    $multipleFilters = $block['data']['multiple_filters_enabled'] ?? false;
 
     // Show all
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'werknemers',
+            'post_type' => 'establishments',
             'post_status' => 'publish',
         ];
 
-        if ($currentTerms) {
-            $args['tax_query'] = [
-                [
-                    'taxonomy' => 'employee_categories',
-                    'field' => 'id',
-                    'terms' => $currentTerms,
-                ],
-            ];
-        }
-
         $query = new WP_Query($args);
-        $employees = wp_list_pluck($query->posts, 'ID');
-    }
-
-    // Show category
-    elseif ($displayType == 'show_category') {
-        $selectedCategory = $block['data']['category'] ?? '';
-
-        $args = [
-            'posts_per_page' => -1,
-            'post_type' => 'werknemers',
-            'post_status' => 'publish',
-            'tax_query' => [
-                [
-                    'taxonomy' => 'employee_categories',
-                    'field' => 'id',
-                    'terms' => $selectedCategory,
-                ],
-            ],
-        ];
-
-        if ($currentTerms) {
-            $args['tax_query'][] = [
-                'taxonomy' => 'employee_categories',
-                'field' => 'id',
-                'terms' => $currentTerms,
-            ];
-            $args['tax_query']['relation'] = 'AND';
-        }
-
-        $query = new WP_Query($args);
-        $employees = wp_list_pluck($query->posts, 'ID');
+        $establishments = wp_list_pluck($query->posts, 'ID');
     }
 
     // Show specific
     elseif ($displayType == 'show_specific') {
-        $employees = $block['data']['show_specific_employees'];
-        if (!is_array($employees) || empty($employees)) {
-            $employees = [];
+        $establishments = $block['data']['show_specific_establishments'];
+        if (!is_array($establishments) || empty($establishments)) {
+            $establishments = [];
         }
 
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'werknemers',
+            'post_type' => 'establishments',
             'post_status' => 'publish',
             'tax_query' => [],
         ];
 
-        if ($currentTerms) {
-            $args['tax_query'][] = [
-                'taxonomy' => 'employee_categories',
-                'field' => 'id',
-                'terms' => $currentTerms,
-            ];
-            $args['tax_query']['relation'] = 'AND';
-        }
-
-        if (!empty($employees)) {
-            $args['post__in'] = $employees;
+        if (!empty($establishments)) {
+            $args['post__in'] = $establishments;
         }
 
         $query = new WP_Query($args);
-        $employees = wp_list_pluck($query->posts, 'ID');
+        $establishments = wp_list_pluck($query->posts, 'ID');
     }
-
-    $visibleElements = $block['data']['show_element'] ?? [];
 
 
     // Blokinstellingen
@@ -186,7 +133,7 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="werknemers" class="block-werknemers relative werknemers-{{ $randomNumber }}-custom-padding werknemers-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="vestigingen" class="block-vestigingen relative vestigingen-{{ $randomNumber }}-custom-padding vestigingen-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
@@ -205,11 +152,8 @@
                     'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
                 ])
             @endif
-            @if (!empty($visibleElements) && in_array('category_filter', $visibleElements))
-               @include('components.employees.category-filter')
-            @endif
-            @if ($employees)
-               @include('components.employees.list', ['employees' => $employees])
+            @if ($establishments)
+               @include('components.establishments.list', ['establishments' => $establishments])
             @endif
             @if (($button1Text) && ($button1Link))
                 <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
@@ -242,7 +186,7 @@
 </section>
 
 <style>
-    .werknemers-{{ $randomNumber }}-custom-padding {
+    .vestigingen-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
             @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
             @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
@@ -263,7 +207,7 @@
         }
     }
 
-    .werknemers-{{ $randomNumber }}-custom-margin {
+    .vestigingen-{{ $randomNumber }}-custom-margin {
         @media only screen and (min-width: 0px) {
             @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
             @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif

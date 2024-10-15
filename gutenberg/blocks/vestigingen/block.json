@@ -1,12 +1,12 @@
 {
-  "name": "wefabric/verhalen",
-  "title": "Verhalen overzicht",
-  "description": "Een verhalen blok",
+  "name": "wefabric/vestigingen",
+  "title": "Vestigingen overzicht",
+  "description": "Een vestigingen overzicht blok",
   "category": "wefabric-theme",
-  "icon": "format-status",
+  "icon": "building",
   "apiVersion": 2,
   "keywords": [
-    "verhalen overzicht"
+    "vestigingen"
   ],
   "acf": {
     "mode": "preview",

@@ -1,9 +1,9 @@
 {
-    "key": "group_64a280051902a",
-    "title": "Block: Werknemers",
+    "key": "group_670e1c034ddf8",
+    "title": "Block: Vestigingen",
     "fields": [
         {
-            "key": "field_6512dd222c300",
+            "key": "field_670e1c035bf5e",
             "label": "Content",
             "name": "",
             "aria-label": "",
@@ -21,7 +21,7 @@
             "selected": 0
         },
         {
-            "key": "field_64a28005b1953",
+            "key": "field_670e1c035bf7f",
             "label": "Titel",
             "name": "title",
             "aria-label": "",
@@ -41,7 +41,7 @@
             "append": ""
         },
         {
-            "key": "field_668d2079aca18",
+            "key": "field_670e1c035bf9b",
             "label": "Subtitel",
             "name": "subtitle",
             "aria-label": "",
@@ -51,7 +51,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a28005b1953",
+                        "field": "field_670e1c035bf7f",
                         "operator": "!=empty"
                     }
                 ]
@@ -68,7 +68,7 @@
             "append": ""
         },
         {
-            "key": "field_651c3044f4bb7",
+            "key": "field_670e1c035bfa3",
             "label": "Titel kleur",
             "name": "title_color",
             "aria-label": "",
@@ -78,7 +78,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a28005b1953",
+                        "field": "field_670e1c035bf7f",
                         "operator": "!=empty"
                     }
                 ]
@@ -92,7 +92,7 @@
             "font_size": 14
         },
         {
-            "key": "field_668d2087aca19",
+            "key": "field_670e1c035bfaa",
             "label": "Tekst",
             "name": "text",
             "aria-label": "",
@@ -112,7 +112,7 @@
             "delay": 0
         },
         {
-            "key": "field_66ffe7d69ace8",
+            "key": "field_670e1c035bfb1",
             "label": "Tekst kleur",
             "name": "text_color",
             "aria-label": "",
@@ -122,7 +122,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_668d2087aca19",
+                        "field": "field_670e1c035bfaa",
                         "operator": "!=empty"
                     }
                 ]
@@ -136,8 +136,8 @@
             "font_size": 14
         },
         {
-            "key": "field_654a134712e58",
-            "label": "Button (onder de werknemers)",
+            "key": "field_670e1c035bfb8",
+            "label": "Button (onder de vestigingen)",
             "name": "button",
             "aria-label": "",
             "type": "group",
@@ -152,7 +152,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_654a136812e59",
+                    "key": "field_670e1c0363378",
                     "label": "Button 1 tekst en link",
                     "name": "button_1",
                     "aria-label": "",
@@ -168,7 +168,7 @@
                     "return_format": "array"
                 },
                 {
-                    "key": "field_654a139012e5a",
+                    "key": "field_670e1c0363385",
                     "label": "Button 1 kleur",
                     "name": "button_1_color",
                     "aria-label": "",
@@ -178,7 +178,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_654a136812e59",
+                                "field": "field_670e1c0363378",
                                 "operator": "!=empty"
                             }
                         ]
@@ -207,7 +207,7 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_654a13ac12e5b",
+                    "key": "field_670e1c036338d",
                     "label": "Button 1 stijl",
                     "name": "button_1_style",
                     "aria-label": "",
@@ -217,7 +217,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_654a136812e59",
+                                "field": "field_670e1c0363378",
                                 "operator": "!=empty"
                             }
                         ]
@@ -241,7 +241,7 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_66ffe69ba7236",
+                    "key": "field_670e1c0363395",
                     "label": "Button 1 icoon",
                     "name": "button_1_icon",
                     "aria-label": "",
@@ -251,7 +251,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_654a136812e59",
+                                "field": "field_670e1c0363378",
                                 "operator": "!=empty"
                             }
                         ]
@@ -281,7 +281,7 @@
                     "choices": []
                 },
                 {
-                    "key": "field_66ffe744a723b",
+                    "key": "field_670e1c036339b",
                     "label": "Button 1 download",
                     "name": "button_1_download",
                     "aria-label": "",
@@ -291,7 +291,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_654a136812e59",
+                                "field": "field_670e1c0363378",
                                 "operator": "!=empty"
                             }
                         ]
@@ -308,7 +308,7 @@
                     "ui_off_text": ""
                 },
                 {
-                    "key": "field_66ffe6b8a7237",
+                    "key": "field_670e1c03633a4",
                     "label": "Button 2 tekst en link",
                     "name": "button_2",
                     "aria-label": "",
@@ -318,7 +318,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_654a136812e59",
+                                "field": "field_670e1c0363378",
                                 "operator": "!=empty"
                             }
                         ]
@@ -331,7 +331,7 @@
                     "return_format": "array"
                 },
                 {
-                    "key": "field_66ffe6f9a7238",
+                    "key": "field_670e1c03633b2",
                     "label": "Button 2 kleur",
                     "name": "button_2_color",
                     "aria-label": "",
@@ -341,7 +341,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_66ffe6b8a7237",
+                                "field": "field_670e1c03633a4",
                                 "operator": "!=empty"
                             }
                         ]
@@ -370,7 +370,7 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_66ffe72fa723a",
+                    "key": "field_670e1c03633b9",
                     "label": "Button 2 stijl",
                     "name": "button_2_style",
                     "aria-label": "",
@@ -380,7 +380,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_66ffe6b8a7237",
+                                "field": "field_670e1c03633a4",
                                 "operator": "!=empty"
                             }
                         ]
@@ -404,7 +404,7 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_66ffe75da723c",
+                    "key": "field_670e1c03633c2",
                     "label": "Button 2 icoon",
                     "name": "button_2_icon",
                     "aria-label": "",
@@ -414,7 +414,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_66ffe6b8a7237",
+                                "field": "field_670e1c03633a4",
                                 "operator": "!=empty"
                             }
                         ]
@@ -444,7 +444,7 @@
                     "choices": []
                 },
                 {
-                    "key": "field_66ffe76ea723d",
+                    "key": "field_670e1c03633c9",
                     "label": "Button 2 download",
                     "name": "button_2_download",
                     "aria-label": "",
@@ -454,7 +454,7 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_66ffe6b8a7237",
+                                "field": "field_670e1c03633a4",
                                 "operator": "!=empty"
                             }
                         ]
@@ -473,7 +473,7 @@
             ]
         },
         {
-            "key": "field_64a28034b1954",
+            "key": "field_670e1c035bfbf",
             "label": "Tekst positie",
             "name": "text_position",
             "aria-label": "",
@@ -483,19 +483,19 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a28005b1953",
+                        "field": "field_670e1c035bf7f",
                         "operator": "!=empty"
                     }
                 ],
                 [
                     {
-                        "field": "field_668d2087aca19",
+                        "field": "field_670e1c035bfaa",
                         "operator": "!=empty"
                     }
                 ],
                 [
                     {
-                        "field": "field_654a136812e59",
+                        "field": "field_670e1c0363378",
                         "operator": "!=empty"
                     }
                 ]
@@ -519,8 +519,8 @@
             "placeholder": ""
         },
         {
-            "key": "field_668d20e4aca1d",
-            "label": "Werknemers",
+            "key": "field_670e1c035bfc5",
+            "label": "Vestigingen",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -533,12 +533,11 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0,
-            "selected": 0
+            "endpoint": 0
         },
         {
-            "key": "field_64a28066000da",
-            "label": "Welke werknemers wil je tonen?",
+            "key": "field_670e1c035bfcc",
+            "label": "Welke vestigingen wil je tonen?",
             "name": "display_type",
             "aria-label": "",
             "type": "select",
@@ -551,9 +550,8 @@
                 "id": ""
             },
             "choices": {
-                "show_all": "Toon alle werknemers",
-                "show_category": "Toon werknemers van een categorie",
-                "show_specific": "Toon specifieke werknemers"
+                "show_all": "Toon alle vestigingen",
+                "show_specific": "Toon specifieke vestigingen"
             },
             "default_value": "show_all",
             "return_format": "value",
@@ -564,7 +562,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_65a103eadc655",
+            "key": "field_670e1c035bfd3",
             "label": "Categorie",
             "name": "category",
             "aria-label": "",
@@ -574,7 +572,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a28066000da",
+                        "field": "field_670e1c035bfcc",
                         "operator": "==",
                         "value": "show_category"
                     }
@@ -596,9 +594,9 @@
             "bidirectional_target": []
         },
         {
-            "key": "field_64a28054000d9",
-            "label": "Specifieke werknemers weergeven",
-            "name": "show_specific_employees",
+            "key": "field_670e1c035bfd9",
+            "label": "Specifieke vestigingen weergeven",
+            "name": "show_specific_establishments",
             "aria-label": "",
             "type": "post_object",
             "instructions": "",
@@ -606,7 +604,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a28066000da",
+                        "field": "field_670e1c035bfcc",
                         "operator": "==",
                         "value": "show_specific"
                     }
@@ -618,18 +616,21 @@
                 "id": ""
             },
             "post_type": [
-                "werknemers"
+                "establishments"
             ],
-            "post_status": "",
+            "post_status": [
+                "publish"
+            ],
             "taxonomy": "",
             "return_format": "id",
             "multiple": 1,
             "allow_null": 0,
+            "bidirectional": 0,
             "ui": 1,
             "bidirectional_target": []
         },
         {
-            "key": "field_64a2e7d645184",
+            "key": "field_670e1c035bfe0",
             "label": "Weergave",
             "name": "show_element",
             "aria-label": "",
@@ -647,9 +648,7 @@
                 "function": "Functie",
                 "overview_text": "Overzichtstekst",
                 "contact_info": "Contactgegevens",
-                "socials": "Social media",
-                "category": "Categorie",
-                "category_filter": "Categorie filter"
+                "socials": "Social media"
             },
             "default_value": [],
             "return_format": "value",
@@ -660,35 +659,7 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
-            "key": "field_666c12c214476",
-            "label": "Kunnen filteren op meerdere categorieën tegelijk?",
-            "name": "multiple_filters_enabled",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_64a2e7d645184",
-                        "operator": "==",
-                        "value": "category_filter"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_658060427280c",
+            "key": "field_670e1c035bfed",
             "label": "Contactgegevens volledig uitschrijven?",
             "name": "show_full_contact_info",
             "aria-label": "",
@@ -698,7 +669,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a2e7d645184",
+                        "field": "field_670e1c035bfe0",
                         "operator": "==",
                         "value": "contact_info"
                     }
@@ -716,7 +687,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_668d2bc6aa0e0",
+            "key": "field_670e1c035bff4",
             "label": "Contactgegevens locatie",
             "name": "contact_info_display",
             "aria-label": "",
@@ -726,7 +697,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a2e7d645184",
+                        "field": "field_670e1c035bfe0",
                         "operator": "==",
                         "value": "contact_info"
                     }
@@ -750,9 +721,9 @@
             "placeholder": ""
         },
         {
-            "key": "field_6569e438e1ec1",
-            "label": "Werknemer naam kleur",
-            "name": "employee_title_color",
+            "key": "field_670e1c035bffb",
+            "label": "Vestiging naam kleur",
+            "name": "establishment_title_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
@@ -760,7 +731,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a2e7d645184",
+                        "field": "field_670e1c035bfe0",
                         "operator": "==",
                         "value": "name"
                     }
@@ -775,9 +746,9 @@
             "font_size": 14
         },
         {
-            "key": "field_6569e475e1ec2",
-            "label": "Werknemer tekst kleur",
-            "name": "employee_text_color",
+            "key": "field_670e1c035c002",
+            "label": "Vestiging tekst kleur",
+            "name": "establishment_text_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
@@ -785,28 +756,28 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a2e7d645184",
+                        "field": "field_670e1c035bfe0",
                         "operator": "==",
                         "value": "function"
                     }
                 ],
                 [
                     {
-                        "field": "field_64a2e7d645184",
+                        "field": "field_670e1c035bfe0",
                         "operator": "==",
                         "value": "overview_text"
                     }
                 ],
                 [
                     {
-                        "field": "field_64a2e7d645184",
+                        "field": "field_670e1c035bfe0",
                         "operator": "==",
                         "value": "contact_info"
                     }
                 ],
                 [
                     {
-                        "field": "field_64a2e7d645184",
+                        "field": "field_670e1c035bfe0",
                         "operator": "==",
                         "value": "socials"
                     }
@@ -821,8 +792,8 @@
             "font_size": 14
         },
         {
-            "key": "field_64a68c71b132a",
-            "label": "Layout (aantal werknemers op een rij)",
+            "key": "field_670e1c035c008",
+            "label": "Layout (aantal vestigingen op een rij)",
             "name": "layout",
             "aria-label": "",
             "type": "group",
@@ -837,7 +808,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_64a68ca3b132b",
+                    "key": "field_670e1c0376513",
                     "label": "Mobiel",
                     "name": "mobile",
                     "aria-label": "",
@@ -866,7 +837,7 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_64a68cb2b132c",
+                    "key": "field_670e1c0376522",
                     "label": "Tablet",
                     "name": "tablet",
                     "aria-label": "",
@@ -895,7 +866,7 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_64a52424eb604",
+                    "key": "field_670e1c037652e",
                     "label": "Desktop",
                     "name": "desktop",
                     "aria-label": "",
@@ -926,8 +897,8 @@
             ]
         },
         {
-            "key": "field_64a2c795a9c0c",
-            "label": "Werknemers in slider weergeven?",
+            "key": "field_670e1c035c015",
+            "label": "Vestigingen in slider weergeven?",
             "name": "show_slider",
             "aria-label": "",
             "type": "true_false",
@@ -946,7 +917,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_64a6c4c2e8c0e",
+            "key": "field_670e1c035c030",
             "label": "Autoplay swiper",
             "name": "autoplay",
             "aria-label": "",
@@ -956,7 +927,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_64a2c795a9c0c",
+                        "field": "field_670e1c035c015",
                         "operator": "==",
                         "value": "1"
                     }
@@ -974,7 +945,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_6512dd2d2c301",
+            "key": "field_670e1c035c03d",
             "label": "Blokinstellingen",
             "name": "",
             "aria-label": "",
@@ -992,7 +963,7 @@
             "selected": 0
         },
         {
-            "key": "field_64a57156cb2d4",
+            "key": "field_670e1c035c044",
             "label": "Breedte blok",
             "name": "block_width",
             "aria-label": "",
@@ -1021,7 +992,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_64a2cf65c283e",
+            "key": "field_670e1c035c051",
             "label": "Achtergrond kleur",
             "name": "background_color",
             "aria-label": "",
@@ -1038,7 +1009,7 @@
             "font_size": 14
         },
         {
-            "key": "field_6523cc7c27b9b",
+            "key": "field_670e1c035c05d",
             "label": "Achtergrond afbeelding",
             "name": "background_image",
             "aria-label": "",
@@ -1063,7 +1034,7 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_6523cc9d27b9c",
+            "key": "field_670e1c035c064",
             "label": "Overlay op afbeelding?",
             "name": "overlay_image",
             "aria-label": "",
@@ -1073,7 +1044,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6523cc7c27b9b",
+                        "field": "field_670e1c035c05d",
                         "operator": "!=empty"
                     }
                 ]
@@ -1090,7 +1061,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_6523ccb527b9d",
+            "key": "field_670e1c035c06b",
             "label": "Overlay kleur",
             "name": "overlay_color",
             "aria-label": "",
@@ -1100,7 +1071,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6523cc9d27b9c",
+                        "field": "field_670e1c035c064",
                         "operator": "==",
                         "value": "1"
                     }
@@ -1115,7 +1086,7 @@
             "font_size": 14
         },
         {
-            "key": "field_6523cce027b9e",
+            "key": "field_670e1c035c072",
             "label": "Overlay sterkte",
             "name": "overlay_opacity",
             "aria-label": "",
@@ -1125,7 +1096,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6523cc9d27b9c",
+                        "field": "field_670e1c035c064",
                         "operator": "==",
                         "value": "1"
                     }
@@ -1151,7 +1122,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_66ffe7ef35993",
+            "key": "field_670e1c035c079",
             "label": "Achtergrond afbeelding parallax effect",
             "name": "background_image_parallax",
             "aria-label": "",
@@ -1161,7 +1132,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6523cc7c27b9b",
+                        "field": "field_670e1c035c05d",
                         "operator": "!=empty"
                     }
                 ]
@@ -1178,7 +1149,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_65686c6f38818",
+            "key": "field_670e1c035c07f",
             "label": "Custom CSS klasses",
             "name": "custom_css_classes",
             "aria-label": "",
@@ -1198,7 +1169,7 @@
             "append": ""
         },
         {
-            "key": "field_668d20f2aca1e",
+            "key": "field_670e1c035c086",
             "label": "Blok verbergen?",
             "name": "hide_block",
             "aria-label": "",
@@ -1218,7 +1189,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_660573077b0b5",
+            "key": "field_670e1c035c08d",
             "label": "Paddings & margins",
             "name": "",
             "aria-label": "",
@@ -1236,7 +1207,7 @@
             "selected": 0
         },
         {
-            "key": "field_6605731c7b0b6",
+            "key": "field_670e1c035c094",
             "label": "Custom padding",
             "name": "custom_padding",
             "aria-label": "",
@@ -1256,7 +1227,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_660573597b0b8",
+            "key": "field_670e1c035c09b",
             "label": "Padding",
             "name": "padding",
             "aria-label": "",
@@ -1266,7 +1237,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6605731c7b0b6",
+                        "field": "field_670e1c035c094",
                         "operator": "==",
                         "value": "1"
                     }
@@ -1280,7 +1251,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_6605754069713",
+                    "key": "field_670e1c0384a35",
                     "label": "Mobiel",
                     "name": "",
                     "aria-label": "",
@@ -1298,7 +1269,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_6605737e7b0ba",
+                    "key": "field_670e1c0384a5b",
                     "label": "Padding boven",
                     "name": "mobile_padding_top",
                     "aria-label": "",
@@ -1320,7 +1291,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660573c67b0bc",
+                    "key": "field_670e1c0384a8b",
                     "label": "Padding rechts",
                     "name": "mobile_padding_right",
                     "aria-label": "",
@@ -1342,7 +1313,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660573d27b0bd",
+                    "key": "field_670e1c0384aa0",
                     "label": "Padding onder",
                     "name": "mobile_padding_bottom",
                     "aria-label": "",
@@ -1364,7 +1335,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660574027b0be",
+                    "key": "field_670e1c0384ac2",
                     "label": "Padding links",
                     "name": "mobile_padding_left",
                     "aria-label": "",
@@ -1386,7 +1357,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_6605755369714",
+                    "key": "field_670e1c0384ad2",
                     "label": "Tablet",
                     "name": "",
                     "aria-label": "",
@@ -1404,7 +1375,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_6605747a7be49",
+                    "key": "field_670e1c0384af6",
                     "label": "Padding boven",
                     "name": "tablet_padding_top",
                     "aria-label": "",
@@ -1426,7 +1397,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_6605747a7be4a",
+                    "key": "field_670e1c0384b06",
                     "label": "Padding rechts",
                     "name": "tablet_padding_right",
                     "aria-label": "",
@@ -1448,7 +1419,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_6605747a7be4b",
+                    "key": "field_670e1c0384b0e",
                     "label": "Padding onder",
                     "name": "tablet_padding_bottom",
                     "aria-label": "",
@@ -1470,7 +1441,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_6605747a7be4c",
+                    "key": "field_670e1c0384b14",
                     "label": "Padding links",
                     "name": "tablet_padding_left",
                     "aria-label": "",
@@ -1492,7 +1463,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_6605756069715",
+                    "key": "field_670e1c0384b1b",
                     "label": "Desktop",
                     "name": "",
                     "aria-label": "",
@@ -1510,7 +1481,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_660574eac45c1",
+                    "key": "field_670e1c0384b25",
                     "label": "Padding boven",
                     "name": "desktop_padding_top",
                     "aria-label": "",
@@ -1532,7 +1503,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660574eac45c2",
+                    "key": "field_670e1c0384b2f",
                     "label": "Padding rechts",
                     "name": "desktop_padding_right",
                     "aria-label": "",
@@ -1554,7 +1525,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660574eac45c3",
+                    "key": "field_670e1c0384b36",
                     "label": "Padding onder",
                     "name": "desktop_padding_bottom",
                     "aria-label": "",
@@ -1576,7 +1547,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660574eac45c4",
+                    "key": "field_670e1c0384b3f",
                     "label": "Padding links",
                     "name": "desktop_padding_left",
                     "aria-label": "",
@@ -1600,7 +1571,7 @@
             ]
         },
         {
-            "key": "field_6605734f7b0b7",
+            "key": "field_670e1c035c0a2",
             "label": "Custom margin",
             "name": "custom_margin",
             "aria-label": "",
@@ -1620,7 +1591,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_660575fff2658",
+            "key": "field_670e1c035c0a8",
             "label": "Margin",
             "name": "margin",
             "aria-label": "",
@@ -1630,7 +1601,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6605734f7b0b7",
+                        "field": "field_670e1c035c0a2",
                         "operator": "==",
                         "value": "1"
                     }
@@ -1644,7 +1615,7 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_660575fff2659",
+                    "key": "field_670e1c0391d9b",
                     "label": "Mobiel",
                     "name": "",
                     "aria-label": "",
@@ -1662,7 +1633,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_660575fff265a",
+                    "key": "field_670e1c0391dad",
                     "label": "Margin boven",
                     "name": "mobile_margin_top",
                     "aria-label": "",
@@ -1684,7 +1655,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660575fff265b",
+                    "key": "field_670e1c0391dba",
                     "label": "Margin rechts",
                     "name": "mobile_margin_right",
                     "aria-label": "",
@@ -1706,7 +1677,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660575fff265c",
+                    "key": "field_670e1c0391dc3",
                     "label": "Margin onder",
                     "name": "mobile_margin_bottom",
                     "aria-label": "",
@@ -1728,7 +1699,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660575fff265d",
+                    "key": "field_670e1c0391dcb",
                     "label": "Margin links",
                     "name": "mobile_margin_left",
                     "aria-label": "",
@@ -1750,7 +1721,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660575fff265e",
+                    "key": "field_670e1c0391dd2",
                     "label": "Tablet",
                     "name": "",
                     "aria-label": "",
@@ -1768,7 +1739,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_660575fff265f",
+                    "key": "field_670e1c0391dd9",
                     "label": "Margin boven",
                     "name": "tablet_margin_top",
                     "aria-label": "",
@@ -1790,7 +1761,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660575fff2660",
+                    "key": "field_670e1c0391de0",
                     "label": "Margin rechts",
                     "name": "tablet_margin_right",
                     "aria-label": "",
@@ -1812,7 +1783,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660575fff2661",
+                    "key": "field_670e1c0391de6",
                     "label": "Margin onder",
                     "name": "tablet_margin_bottom",
                     "aria-label": "",
@@ -1834,7 +1805,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660575fff2662",
+                    "key": "field_670e1c0391ded",
                     "label": "Margin links",
                     "name": "tablet_margin_left",
                     "aria-label": "",
@@ -1856,7 +1827,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660575fff2663",
+                    "key": "field_670e1c0391df4",
                     "label": "Desktop",
                     "name": "",
                     "aria-label": "",
@@ -1874,7 +1845,7 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_660575fff2664",
+                    "key": "field_670e1c0391dfb",
                     "label": "Margin boven",
                     "name": "desktop_margin_top",
                     "aria-label": "",
@@ -1896,7 +1867,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660575fff2665",
+                    "key": "field_670e1c0391e02",
                     "label": "Margin rechts",
                     "name": "desktop_margin_right",
                     "aria-label": "",
@@ -1918,7 +1889,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660575fff2666",
+                    "key": "field_670e1c0391e08",
                     "label": "Margin onder",
                     "name": "desktop_margin_bottom",
                     "aria-label": "",
@@ -1940,7 +1911,7 @@
                     "append": "px"
                 },
                 {
-                    "key": "field_660575fff2667",
+                    "key": "field_670e1c0391e0f",
                     "label": "Margin links",
                     "name": "desktop_margin_left",
                     "aria-label": "",
@@ -1964,7 +1935,7 @@
             ]
         },
         {
-            "key": "field_660578063cfdb",
+            "key": "field_670e1c035c0af",
             "label": "Animaties",
             "name": "",
             "aria-label": "",
@@ -1987,7 +1958,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "wefabric\/werknemers"
+                "value": "wefabric\/vestigingen"
             }
         ]
     ],
@@ -2000,5 +1971,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728982211
+    "modified": 1728982237
 }
