@@ -79,7 +79,7 @@
 					@include('components.link.opening', [
                         'href' => $phone->uri(),
                         'alt' => 'Telefoonnummer',
-                        'class' => 'phone-text flex'
+                        'class' => 'phone-text flex w-fit'
                     ])
 					<i class="fa-solid fa-phone mr-4 text-{{ $title_color }} text-md pt-1"></i>
 					<span class="inline-block pt-1">{{ $phone->international() }}</span>
@@ -91,7 +91,7 @@
 					@include('components.link.opening', [
                         'href' => 'mailto:' . $email,
                         'alt' => 'E-mailadres',
-                        'class' => 'email-text flex'
+                        'class' => 'email-text flex w-fit'
                     ])
 					<i class="fa-solid fa-envelope text-{{ $title_color }} mr-4 text-md pt-1"></i>
 					<span class="inline-block pt-1">{{ $email }}</span>
@@ -103,7 +103,7 @@
 					@include('components.link.opening', [
                     'href' => 'https://www.google.com/maps/search/?api=1&query=' . $establishment->getAddress()->street . '+' . $establishment->getAddress()->full_housenumber . $house_number_addition . '+' .  $establishment->getAddress()->postcode  . '+' . $establishment->getAddress()->city ,
                     'alt' => 'Route',
-                    'class' => 'route-text flex'
+                    'class' => 'route-text flex w-fit'
                 	])
 					<i class="fa-solid fa-route text-{{ $title_color }} mr-4 text-md pt-1"></i>
 					<span class="inline-block pt-1">Route</span>
