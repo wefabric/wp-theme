@@ -562,38 +562,6 @@
             "placeholder": ""
         },
         {
-            "key": "field_670e1c035bfd3",
-            "label": "Categorie",
-            "name": "category",
-            "aria-label": "",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_670e1c035bfcc",
-                        "operator": "==",
-                        "value": "show_category"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "employee_categories",
-            "add_term": 1,
-            "save_terms": 0,
-            "load_terms": 0,
-            "return_format": "object",
-            "field_type": "multi_select",
-            "allow_null": 0,
-            "multiple": 0,
-            "bidirectional_target": []
-        },
-        {
             "key": "field_670e1c035bfd9",
             "label": "Specifieke vestigingen weergeven",
             "name": "show_specific_establishments",
@@ -645,10 +613,9 @@
             },
             "choices": {
                 "name": "Naam",
-                "function": "Functie",
+                "address": "Adres",
                 "overview_text": "Overzichtstekst",
-                "contact_info": "Contactgegevens",
-                "socials": "Social media"
+                "contact_info": "Contactgegevens"
             },
             "default_value": [],
             "return_format": "value",
@@ -657,68 +624,6 @@
             "toggle": 0,
             "save_custom": 0,
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
-        },
-        {
-            "key": "field_670e1c035bfed",
-            "label": "Contactgegevens volledig uitschrijven?",
-            "name": "show_full_contact_info",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_670e1c035bfe0",
-                        "operator": "==",
-                        "value": "contact_info"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 1,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_670e1c035bff4",
-            "label": "Contactgegevens locatie",
-            "name": "contact_info_display",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_670e1c035bfe0",
-                        "operator": "==",
-                        "value": "contact_info"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "under_image": "Contactgegevens onder afbeelding tonen",
-                "in_image": "Contactgegevens in afbeelding tonen"
-            },
-            "default_value": "under_image",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
         },
         {
             "key": "field_670e1c035bffb",
@@ -758,7 +663,7 @@
                     {
                         "field": "field_670e1c035bfe0",
                         "operator": "==",
-                        "value": "function"
+                        "value": "address"
                     }
                 ],
                 [
@@ -773,13 +678,6 @@
                         "field": "field_670e1c035bfe0",
                         "operator": "==",
                         "value": "contact_info"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_670e1c035bfe0",
-                        "operator": "==",
-                        "value": "socials"
                     }
                 ]
             ],
@@ -1971,5 +1869,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728982237
+    "modified": 1729065191
 }
