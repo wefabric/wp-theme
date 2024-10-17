@@ -213,7 +213,7 @@
             @if ($text)
                 @include('components.content', [
                     'content' => apply_filters('the_content', $text),
-                    'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
+                    'class' => 'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
                 ])
             @endif
             @if (!empty($visibleElements) && in_array('category_filter', $visibleElements))
