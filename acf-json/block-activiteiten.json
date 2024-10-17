@@ -1,7 +1,25 @@
 {
     "key": "group_651579bae4b8a",
-    "title": "Block: Activiteiten overzicht",
+    "title": "Block: Activiteiten",
     "fields": [
+        {
+            "key": "field_6710dacc06469",
+            "label": "Activiteiten blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
         {
             "key": "field_651579baf10fb",
             "label": "Content",
@@ -154,7 +172,8 @@
             "return_format": "object",
             "field_type": "multi_select",
             "allow_null": 0,
-            "multiple": 0
+            "multiple": 0,
+            "bidirectional_target": []
         },
         {
             "key": "field_651579baf111d",
@@ -186,7 +205,8 @@
             "return_format": "id",
             "multiple": 1,
             "allow_null": 0,
-            "ui": 1
+            "ui": 1,
+            "bidirectional_target": []
         },
         {
             "key": "field_656082f46250a",
@@ -930,5 +950,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1705051881
+    "modified": 1729157856
 }

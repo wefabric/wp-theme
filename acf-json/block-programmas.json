@@ -3,6 +3,24 @@
     "title": "Block: Programma's",
     "fields": [
         {
+            "key": "field_6710d5792783b",
+            "label": "Programma's blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_66cc4ae3f2a5a",
             "label": "Content",
             "name": "",
@@ -1574,5 +1592,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724677448
+    "modified": 1729156487
 }

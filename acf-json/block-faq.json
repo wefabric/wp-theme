@@ -3,6 +3,24 @@
     "title": "Block: FAQ",
     "fields": [
         {
+            "key": "field_6710d018e838c",
+            "label": "FAQ blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_651c21a7c477c",
             "label": "Content",
             "name": "",
@@ -1639,5 +1657,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728557595
+    "modified": 1729155109
 }

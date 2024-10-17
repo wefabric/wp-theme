@@ -3,6 +3,24 @@
     "title": "Block: Foto galerij",
     "fields": [
         {
+            "key": "field_6710d0be07674",
+            "label": "Foto galerij blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_6661accd1fd01",
             "label": "Content",
             "name": "",
@@ -1813,5 +1831,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728556763
+    "modified": 1729155274
 }

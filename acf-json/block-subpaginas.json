@@ -1,7 +1,25 @@
 {
     "key": "group_65dc5fb978f45",
-    "title": "Block: Subpagina's overzicht",
+    "title": "Block: Subpagina's",
     "fields": [
+        {
+            "key": "field_6710d6c0b0926",
+            "label": "Subpagina's blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
         {
             "key": "field_65dc5fb9808c2",
             "label": "Content",
@@ -1841,5 +1859,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1721309232
+    "modified": 1729156882
 }

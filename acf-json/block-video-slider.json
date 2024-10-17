@@ -3,6 +3,24 @@
     "title": "Block: Video slider",
     "fields": [
         {
+            "key": "field_6710d97f5534d",
+            "label": "Video slider blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_6572d1276d944",
             "label": "Content",
             "name": "",
@@ -1800,5 +1818,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728568999
+    "modified": 1729157515
 }

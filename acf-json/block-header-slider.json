@@ -3,6 +3,24 @@
     "title": "Block: Header Slider",
     "fields": [
         {
+            "key": "field_6710d2789b75a",
+            "label": "Header slider blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_6694c8dee20b1",
             "label": "Header hoogte",
             "name": "header_height",
@@ -1684,5 +1702,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1721040499
+    "modified": 1729155717
 }

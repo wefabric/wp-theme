@@ -3,6 +3,24 @@
     "title": "Block: Header Countdown",
     "fields": [
         {
+            "key": "field_6710d233666fb",
+            "label": "Header countdown blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_66c833f8bb43b",
             "label": "Header hoogte",
             "name": "header_height",
@@ -1617,5 +1635,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724414977
+    "modified": 1729155687
 }

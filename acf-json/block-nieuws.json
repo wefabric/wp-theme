@@ -1,7 +1,25 @@
 {
     "key": "group_649d8c89263c3",
-    "title": "Block: Nieuws overzicht",
+    "title": "Block: Nieuws",
     "fields": [
+        {
+            "key": "field_6710d4ddc9a90",
+            "label": "Nieuws blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
         {
             "key": "field_6512dec4bd9a4",
             "label": "Content",
@@ -2077,5 +2095,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728466212
+    "modified": 1729156335
 }

@@ -3,6 +3,24 @@
     "title": "Block: Foto masonry",
     "fields": [
         {
+            "key": "field_6710d0cb6f0eb",
+            "label": "Foto masonry blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_6695265bd578a",
             "label": "Content",
             "name": "",
@@ -1642,5 +1660,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728561936
+    "modified": 1729155299
 }

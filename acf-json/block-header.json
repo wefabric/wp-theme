@@ -3,6 +3,24 @@
     "title": "Block: Header",
     "fields": [
         {
+            "key": "field_6710d2269a366",
+            "label": "Header blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_66f65ee62cf70",
             "label": "Header stijl",
             "name": "header_style",
@@ -1882,5 +1900,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727422680
+    "modified": 1729155634
 }

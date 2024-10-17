@@ -3,6 +3,24 @@
     "title": "Block: Modal",
     "fields": [
         {
+            "key": "field_6710d47e60d43",
+            "label": "Modal blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_66bdc44885d74",
             "label": "Content",
             "name": "",
@@ -737,5 +755,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1723721467
+    "modified": 1729156233
 }

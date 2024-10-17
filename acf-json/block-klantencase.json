@@ -3,6 +3,24 @@
     "title": "Block: Klantencase",
     "fields": [
         {
+            "key": "field_6710d3a88d308",
+            "label": "Klantencase blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_6579c9aff0903",
             "label": "Content",
             "name": "",
@@ -180,7 +198,8 @@
             "return_format": "object",
             "field_type": "multi_select",
             "allow_null": 0,
-            "multiple": 0
+            "multiple": 0,
+            "bidirectional_target": []
         },
         {
             "key": "field_6579c9aff092e",
@@ -212,7 +231,8 @@
             "return_format": "id",
             "multiple": 1,
             "allow_null": 0,
-            "ui": 1
+            "ui": 1,
+            "bidirectional_target": []
         },
         {
             "key": "field_6579c9aff0935",
@@ -939,5 +959,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1702561878
+    "modified": 1729156045
 }

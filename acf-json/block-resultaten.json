@@ -3,6 +3,24 @@
     "title": "Block: Resultaten",
     "fields": [
         {
+            "key": "field_6710d60527abe",
+            "label": "Resultaten blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_66950db3695df",
             "label": "Content",
             "name": "",
@@ -1815,5 +1833,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728045324
+    "modified": 1729156654
 }

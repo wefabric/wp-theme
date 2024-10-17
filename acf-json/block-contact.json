@@ -3,6 +3,24 @@
     "title": "Block: Contact",
     "fields": [
         {
+            "key": "field_6710ce712ed3a",
+            "label": "Contact blok",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 1,
+            "endpoint": 0
+        },
+        {
             "key": "field_6530da006632b",
             "label": "Content",
             "name": "",
@@ -379,5 +397,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1708681106
+    "modified": 1729154690
 }
