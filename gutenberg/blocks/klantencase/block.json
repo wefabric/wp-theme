@@ -6,10 +6,10 @@
   "icon": "open-folder",
   "apiVersion": 2,
   "keywords": [
-    "klantencase"
+    "Klantencase"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

@@ -1,15 +1,15 @@
 {
   "name": "wefabric/producten",
-  "title": "Producten overzicht",
+  "title": "Producten",
   "description": "Een producten blok",
   "category": "wefabric-theme",
   "icon": "cart",
   "apiVersion": 2,
   "keywords": [
-    "producten overzicht"
+    "Producten"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

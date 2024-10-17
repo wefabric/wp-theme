@@ -6,10 +6,10 @@
   "icon": "align-center",
   "apiVersion": 2,
   "keywords": [
-    "header"
+    "Header"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

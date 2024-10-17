@@ -1,12 +1,12 @@
 {
   "name": "wefabric/programmas",
-  "title": "Programmas overzicht",
-  "description": "Een programma overzicht blok",
+  "title": "Programma's",
+  "description": "Een programma blok",
   "category": "wefabric-theme",
   "icon": "calendar",
   "apiVersion": 2,
   "keywords": [
-    "programmas"
+    "Programma's"
   ],
   "acf": {
     "mode": "preview",

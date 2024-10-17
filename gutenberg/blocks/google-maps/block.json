@@ -6,10 +6,10 @@
   "icon": "location-alt",
   "apiVersion": 2,
   "keywords": [
-    "google maps"
+    "Google maps"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

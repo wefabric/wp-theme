@@ -1,15 +1,15 @@
 {
   "name": "wefabric/services",
-  "title": "Services overzicht",
-  "description": "Een services overzicht blok",
+  "title": "Services",
+  "description": "Een services blok",
   "category": "wefabric-theme",
   "icon": "clipboard",
   "apiVersion": 2,
   "keywords": [
-    "services overzicht"
+    "Services"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

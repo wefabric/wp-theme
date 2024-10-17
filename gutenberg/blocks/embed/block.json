@@ -6,10 +6,10 @@
   "icon": "media-code",
   "apiVersion": 2,
   "keywords": [
-    "embed"
+    "Embed"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

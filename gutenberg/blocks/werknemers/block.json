@@ -1,15 +1,15 @@
 {
   "name": "wefabric/werknemers",
-  "title": "Werknemers overzicht",
-  "description": "Een werknemers overzicht blok",
+  "title": "Werknemers",
+  "description": "Een werknemers blok",
   "category": "wefabric-theme",
   "icon": "groups",
   "apiVersion": 2,
   "keywords": [
-    "werknemers"
+    "Werknemers"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

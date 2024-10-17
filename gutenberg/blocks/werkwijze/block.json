@@ -6,10 +6,10 @@
   "icon": "editor-ol",
   "apiVersion": 2,
   "keywords": [
-    "werknemers"
+    "Werkwijze"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

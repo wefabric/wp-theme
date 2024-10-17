@@ -1,15 +1,15 @@
 {
   "name": "wefabric/albums",
-  "title": "Albums overzicht",
-  "description": "Een album overzicht blok",
+  "title": "Albums",
+  "description": "Een album blok",
   "category": "wefabric-theme",
   "icon": "camera",
   "apiVersion": 2,
   "keywords": [
-    "albums"
+    "Albums"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

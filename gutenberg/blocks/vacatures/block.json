@@ -1,15 +1,15 @@
 {
   "name": "wefabric/vacatures",
-  "title": "Vacatures overzicht",
+  "title": "Vacatures",
   "description": "Een vacatures blok",
   "category": "wefabric-theme",
   "icon": "portfolio",
   "apiVersion": 2,
   "keywords": [
-    "vacatures overzicht"
+    "Vacatures"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

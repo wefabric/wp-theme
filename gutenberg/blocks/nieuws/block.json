@@ -1,12 +1,12 @@
 {
   "name": "wefabric/nieuws",
-  "title": "Nieuws overzicht",
-  "description": "Een nieuws overzicht blok",
+  "title": "Nieuws",
+  "description": "Een nieuws blok",
   "category": "wefabric-theme",
   "icon": "index-card",
   "apiVersion": 2,
   "keywords": [
-    "nieuws overzicht"
+    "Nieuws"
   ],
   "acf": {
     "mode": "preview",

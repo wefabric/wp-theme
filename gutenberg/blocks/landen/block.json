@@ -1,15 +1,15 @@
 {
   "name": "wefabric/landen",
-  "title": "Landen overzicht",
-  "description": "Een landen overzicht blok",
+  "title": "Landen",
+  "description": "Een landen blok",
   "category": "wefabric-theme",
   "icon": "flag",
   "apiVersion": 2,
   "keywords": [
-    "landen overzicht"
+    "Landen"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

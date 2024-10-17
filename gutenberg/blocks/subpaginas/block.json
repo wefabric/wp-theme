@@ -1,15 +1,15 @@
 {
   "name": "wefabric/subpaginas",
-  "title": "Subpagina's overzicht",
-  "description": "Een subpagina's overzicht blok",
+  "title": "Subpagina's",
+  "description": "Een subpagina's blok",
   "category": "wefabric-theme",
   "icon": "networking",
   "apiVersion": 2,
   "keywords": [
-    "subpagina overzicht"
+    "Subpagina's"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

@@ -6,10 +6,10 @@
   "icon": "text-page",
   "apiVersion": 2,
   "keywords": [
-    "formulier"
+    "Formulier"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

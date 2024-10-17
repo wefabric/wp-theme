@@ -6,10 +6,10 @@
   "icon": "format-chat",
   "apiVersion": 2,
   "keywords": [
-    "faq"
+    "FAQ"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

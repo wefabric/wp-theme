@@ -1,15 +1,15 @@
 {
   "name": "wefabric/verhalen",
-  "title": "Verhalen overzicht",
+  "title": "Verhalen",
   "description": "Een verhalen blok",
   "category": "wefabric-theme",
   "icon": "format-status",
   "apiVersion": 2,
   "keywords": [
-    "verhalen overzicht"
+    "Verhalen"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

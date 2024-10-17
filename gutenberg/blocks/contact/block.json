@@ -6,10 +6,10 @@
   "icon": "email",
   "apiVersion": 2,
   "keywords": [
-    "contact"
+    "Contact"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

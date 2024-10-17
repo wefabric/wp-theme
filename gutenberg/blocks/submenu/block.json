@@ -6,10 +6,10 @@
   "icon": "admin-links",
   "apiVersion": 2,
   "keywords": [
-    "links"
+    "Submenu"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

@@ -1,15 +1,15 @@
 {
   "name": "wefabric/technologies",
-  "title": "Technologieën overzicht",
-  "description": "Een technologie overzicht blok",
+  "title": "Technologieën",
+  "description": "Een technologie blok",
   "category": "wefabric-theme",
   "icon": "lightbulb",
   "apiVersion": 2,
   "keywords": [
-    "technologie"
+    "Technologie"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

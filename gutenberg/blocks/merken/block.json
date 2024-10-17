@@ -1,15 +1,15 @@
 {
   "name": "wefabric/merken",
-  "title": "Merken overzicht",
-  "description": "Een merken overzicht blok",
+  "title": "Merken",
+  "description": "Een merken blok",
   "category": "wefabric-theme",
   "icon": "format-gallery",
   "apiVersion": 2,
   "keywords": [
-    "merken overzicht"
+    "Merken"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

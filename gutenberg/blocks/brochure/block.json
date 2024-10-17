@@ -6,10 +6,10 @@
   "icon": "book",
   "apiVersion": 2,
   "keywords": [
-    "brochure"
+    "Brochure"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

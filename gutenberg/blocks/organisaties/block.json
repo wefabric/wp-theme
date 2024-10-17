@@ -1,15 +1,15 @@
 {
   "name": "wefabric/organisaties",
-  "title": "Organisaties overzicht",
-  "description": "Een organisaties overzicht blok",
+  "title": "Organisaties",
+  "description": "Een organisaties blok",
   "category": "wefabric-theme",
   "icon": "building",
   "apiVersion": 2,
   "keywords": [
-    "organisaties overzicht"
+    "Organisaties"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

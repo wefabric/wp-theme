@@ -6,10 +6,10 @@
   "icon": "format-image",
   "apiVersion": 2,
   "keywords": [
-    "afbeelding"
+    "Afbeelding"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

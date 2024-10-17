@@ -6,10 +6,10 @@
   "icon": "grid-view",
   "apiVersion": 2,
   "keywords": [
-    "kaartenblok"
+    "Kaartenblok"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

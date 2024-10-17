@@ -6,10 +6,10 @@
   "icon": "money-alt",
   "apiVersion": 2,
   "keywords": [
-    "prijzen"
+    "Prijzen"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

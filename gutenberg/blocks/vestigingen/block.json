@@ -1,15 +1,15 @@
 {
   "name": "wefabric/vestigingen",
-  "title": "Vestigingen overzicht",
-  "description": "Een vestigingen overzicht blok",
+  "title": "Vestigingen",
+  "description": "Een vestigingen blok",
   "category": "wefabric-theme",
   "icon": "building",
   "apiVersion": 2,
   "keywords": [
-    "vestigingen"
+    "Vestigingen"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

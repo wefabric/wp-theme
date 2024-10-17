@@ -1,15 +1,15 @@
 {
   "name": "wefabric/nieuws-activiteit",
-  "title": "Nieuws activiteit overzicht",
-  "description": "Een nieuws activiteit overzicht blok",
+  "title": "Nieuws & activiteit",
+  "description": "Een nieuws & activiteit blok",
   "category": "wefabric-theme",
   "icon": "index-card",
   "apiVersion": 2,
   "keywords": [
-    "Nieuws activiteit overzicht"
+    "Nieuws activiteit"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

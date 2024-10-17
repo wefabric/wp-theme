@@ -6,10 +6,10 @@
   "icon": "clock",
   "apiVersion": 2,
   "keywords": [
-    "header"
+    "Header countdown"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

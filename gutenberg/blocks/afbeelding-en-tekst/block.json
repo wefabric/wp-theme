@@ -6,10 +6,10 @@
   "icon": "align-pull-left",
   "apiVersion": 2,
   "keywords": [
-    "afbeelding en tekst"
+    "Afbeelding en tekst"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

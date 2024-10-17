@@ -1,15 +1,15 @@
 {
   "name": "wefabric/activiteiten",
-  "title": "Activiteiten overzicht",
-  "description": "Een activiteiten overzicht blok",
+  "title": "Activiteiten",
+  "description": "Een activiteiten blok",
   "category": "wefabric-theme",
   "icon": "calendar",
   "apiVersion": 2,
   "keywords": [
-    "activiteiten overzicht"
+    "Activiteiten"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

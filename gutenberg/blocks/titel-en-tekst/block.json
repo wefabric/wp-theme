@@ -6,10 +6,10 @@
   "icon": "editor-paragraph",
   "apiVersion": 2,
   "keywords": [
-    "titel en tekst"
+    "Titel en tekst"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

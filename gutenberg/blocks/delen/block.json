@@ -6,10 +6,10 @@
   "icon": "share",
   "apiVersion": 2,
   "keywords": [
-    "delen"
+    "Delen"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

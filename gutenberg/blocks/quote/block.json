@@ -6,10 +6,10 @@
   "icon": "format-quote",
   "apiVersion": 2,
   "keywords": [
-    "quote"
+    "Quote"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

@@ -6,10 +6,10 @@
   "icon": "hourglass",
   "apiVersion": 2,
   "keywords": [
-    "video slider"
+    "Historie"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

@@ -6,10 +6,10 @@
   "icon": "editor-paragraph",
   "apiVersion": 2,
   "keywords": [
-    "tekst"
+    "Tekst"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

@@ -6,10 +6,10 @@
   "icon": "format-video",
   "apiVersion": 2,
   "keywords": [
-    "video slider"
+    "Video slider"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

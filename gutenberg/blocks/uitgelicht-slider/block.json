@@ -6,10 +6,10 @@
   "icon": "star-filled",
   "apiVersion": 2,
   "keywords": [
-    "Uitgelichtslider"
+    "Uitgelicht slider"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

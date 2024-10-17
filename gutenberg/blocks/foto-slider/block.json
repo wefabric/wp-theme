@@ -6,10 +6,10 @@
   "icon": "format-gallery",
   "apiVersion": 2,
   "keywords": [
-    "foto slider"
+    "Foto slider"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {

@@ -6,10 +6,10 @@
   "icon": "button",
   "apiVersion": 2,
   "keywords": [
-    "call to action"
+    "CTA button"
   ],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "render.php"
   },
   "attributes": {
