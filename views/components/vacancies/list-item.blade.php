@@ -35,7 +35,7 @@
                    class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     @if ($vacancyCategories && !is_bool($vacancyCategories))
-                        <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                        <div class="vacature-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                             @foreach ($vacancyCategories as $category)
                                 @php
                                     $categoryColor = get_field('category_color', $category);
