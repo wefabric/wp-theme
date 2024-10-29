@@ -16,9 +16,10 @@
                     @foreach ($terms as $term)
                         @php
                             $categoryColor = get_field('category_color', $term);
+                            $categoryIcon = get_field('category_icon', $term);
                         @endphp
                         <div style="background-color: {{ $categoryColor }}" class="card-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
-                            {!! $term->name !!}
+                            {!! $categoryIcon !!} {!! $term->name !!}
                         </div>
                     @endforeach
                 </div>

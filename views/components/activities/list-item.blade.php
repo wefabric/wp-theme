@@ -47,10 +47,10 @@
                             @foreach ($activityCategories as $category)
                                 @php
                                     $categoryColor = get_field('category_color', $category);
+                                    $categoryIcon = get_field('category_icon', $category);
                                 @endphp
-                                <div style="background-color: {{ $categoryColor }}"
-                                     class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full">
-                                    {!! $category->name !!}
+                                <div style="background-color: {{ $categoryColor }}" class="activity-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
+                                    {!! $categoryIcon !!} {!! $category->name !!}
                                 </div>
                             @endforeach
                         </div>
@@ -67,7 +67,7 @@
                     'object_fit' => 'cover',
                     'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
                     'alt' => $activityTitle,
-            ])
+                ])
             </div>
         @endif
         <div class="flex flex-col w-full grow mt-5">

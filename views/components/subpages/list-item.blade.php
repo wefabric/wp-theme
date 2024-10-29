@@ -34,10 +34,10 @@
                         @foreach ($subpageCategories as $category)
                             @php
                                 $categoryColor = get_field('category_color', $category);
+                                $categoryIcon = get_field('category_icon', $category);
                             @endphp
-                            <div style="background-color: {{ $categoryColor }}"
-                                 class="category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
-                                {!! $category->name !!}
+                            <div style="background-color: {{ $categoryColor }}" class="subpage-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
+                                {!! $categoryIcon !!} {!! $category->name !!}
                             </div>
                         @endforeach
                     </div>
