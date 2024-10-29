@@ -118,16 +118,19 @@
                 @endif
                 @if ($questionsAndAnswers)
                     @foreach ($questionsAndAnswers as $key => $faq)
-                        <div class="mb-2 text-left ">
-                            <input class="faq-drawer__trigger mb-4" id="faq-drawer-{{$key}}" type="checkbox"/>
-                            <label class="faq-drawer__title relative block cursor-pointer text-{{ $questionTextColor }} text-md font-bold p-10 bg-{{ $faqBackgroundColor }}"
-                                   for="faq-drawer-{{$key}}">{{ $faq['question_and_answer']['question'] }}</label>
-                            <div class="faq-drawer__content-wrapper text-{{ $answerTextColor }}">
-                                <div class="faq-drawer__content px-10 pb-8 bg-{{ $faqBackgroundColor }}">
-                                    <div class="text-base ">{!! apply_filters('the_content', $faq['question_and_answer']['answer']) !!}</div>
+                            @php
+                                $uniqueFaqId = "faq-drawer-{$randomNumber}-{$key}";
+                            @endphp
+                            <div class="mb-2 text-left">
+                                <input class="faq-drawer__trigger mb-4" id="{{ $uniqueFaqId }}" type="checkbox"/>
+                                <label class="faq-drawer__title relative block cursor-pointer text-{{ $questionTextColor }} text-md font-bold p-10 bg-{{ $faqBackgroundColor }}"
+                                       for="{{ $uniqueFaqId }}">{{ $faq['question_and_answer']['question'] }}</label>
+                                <div class="faq-drawer__content-wrapper text-{{ $answerTextColor }}">
+                                    <div class="faq-drawer__content px-10 pb-8 bg-{{ $faqBackgroundColor }}">
+                                        <div class="text-base">{!! apply_filters('the_content', $faq['question_and_answer']['answer']) !!}</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     @endforeach
                 @endif
                 @if (($button1Text) && ($button1Link))
