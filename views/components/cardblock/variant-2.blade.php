@@ -49,7 +49,10 @@
                 @endif
             </div>
         </div>
-        @if (!empty($visibleElements) && in_array('title_text', $visibleElements) || in_array('overview_text', $visibleElements) || in_array('button', $visibleElements))
+        @if (!empty($visibleElements) && is_array($visibleElements) &&
+            (in_array('title_text', $visibleElements) ||
+             in_array('overview_text', $visibleElements) ||
+             in_array('button', $visibleElements)))
             <div class="content-box h-full flex flex-col gap-y-4 p-6 xl:p-8">
                 @if (in_array('title_text', $visibleElements) && $pageTitle)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
