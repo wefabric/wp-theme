@@ -34,9 +34,7 @@
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                        class="absolute left-0 top-0 w-full h-full"></a>
                     <div class="h-full flex justify-center items-center">
-                        <a class="page-icon" href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina">
-                            <i class="text-{{ $cardIconColor }} relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
-                        </a>
+                        <i class="text-{{ $cardIconColor }} relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
                     </div>
                 @elseif ($block['data']['block_visual'] == 'image' && $imageId)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
