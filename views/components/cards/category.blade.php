@@ -5,16 +5,16 @@
 		'class' => 'h-full block'
 	])
 
-		@include('components.image', [
-			'image_id' => get_term_meta($item->term_taxonomy_id, 'thumbnail_id', true),
-			'size' => 'brand_logo',
-			'class' => 'block h-[200px] disable-rounded align-center flex',
-			'img_class' => 'mx-auto h-full block self-center',
-		])
+	@include('components.image', [
+		'image_id' => get_term_meta($item->term_taxonomy_id, 'thumbnail_id', true),
+		'size' => 'brand_logo',
+		'class' => 'block h-[200px] disable-rounded align-center flex',
+		'img_class' => 'mx-auto h-full block self-center',
+	])
 
-		<h3 class="block mt-4 h5 text-center">
-			{{ $item->name }}
-		</h3>
+	<h3 class="block mt-4 h5 text-center">
+		{{ $item->name }}
+	</h3>
 
 	@include('components.link.closing')
 </div>

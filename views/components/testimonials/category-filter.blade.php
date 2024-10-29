@@ -55,7 +55,7 @@
                     $class .= " border-primary hover:bg-primary hover:text-white";
                 } else {
                     // Inactive category without color
-                    $class .= " border-primary hover:bg-primary hover:text-white";
+                    $class .= " border-primary hover:bg-primary text-primary hover:text-white";
                 }
             @endphp
             <a href="{{ $url }}"
