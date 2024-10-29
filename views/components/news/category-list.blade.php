@@ -35,11 +35,11 @@
             @endphp
             <a href="{{ $categoryLink }}"
                style="@if($categoryColor && !$isActive) border: 2px solid {{ $categoryColor }}; color: {{ $categoryColor }}; @elseif($categoryColor && $isActive)  border: 2px solid {{ $categoryColor }}; background-color: {{ $categoryColor }}; color: white;@endif"
-               class="@if(empty($categoryColor) && !$isActive) border-primary hover:bg-primary hover:text-white @elseif(empty($categoryColor) && $isActive) border-primary bg-primary text-white @endif category-link hover:text-white border-2 px-4 py-2 rounded-full"
+               class="@if(empty($categoryColor) && !$isActive) border-primary hover:bg-primary hover:text-white @elseif(empty($categoryColor) && $isActive) border-primary bg-primary text-white @endif category-link text-primary hover:text-white border-2 px-4 py-2 rounded-full"
                @if(!$isActive)
-                   onmouseover="this.style.backgroundColor='{{ $categoryColor }}'; this.style.color='white'"
+               onmouseover="this.style.backgroundColor='{{ $categoryColor }}'; this.style.color='white'"
                onmouseout="this.style.backgroundColor='transparent'; this.style.color='{{ $categoryColor }}'"
-                    @endif>
+               @endif>
                 {!! $categoryIcon !!} {!! $category->name !!}
             </a>
         @endforeach
