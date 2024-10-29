@@ -93,7 +93,7 @@
             @if ($title)
                 <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-4 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
             @endif
-            @if($countries)
+            @if ($countries)
                 @include('components.countries.list', ['countries' => $countries])
             @endif
             @if (($button1Text) && ($button1Link))
