@@ -700,7 +700,7 @@
         },
         {
             "key": "field_66bdc44885de1",
-            "label": "Blok verbergen",
+            "label": "Blok verbergen?",
             "name": "hide_block",
             "aria-label": "",
             "type": "true_false",
@@ -755,5 +755,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1729156233
+    "modified": 1730219361
 }
