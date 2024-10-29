@@ -45,17 +45,17 @@
                 @endif
             </div>
         </div>
-        <div class="content-box h-full flex flex-col gap-y-4 p-6 xl:p-8">
-            @if (!empty($visibleElements) && in_array('title_text', $visibleElements) && $pageTitle)
-                <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
-                   class="card-title text-{{ $cardTitleColor }} relative z-20 h3 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
-                    {!! $pageTitle !!}
-                </a>
-            @endif
-            @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && $pageExcerpt)
-                <p class="card-excerpt text-{{ $cardTextColor }}">{{ $pageExcerpt }}</p>
-            @endif
-            @if (!empty($visibleElements) && in_array('button', $visibleElements))
+        @if (!empty($visibleElements))
+            <div class="content-box h-full flex flex-col gap-y-4 p-6 xl:p-8">
+                @if ($pageTitle)
+                    <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
+                       class="card-title text-{{ $cardTitleColor }} relative z-20 h3 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
+                        {!! $pageTitle !!}
+                    </a>
+                @endif
+                @if ($pageExcerpt)
+                    <p class="card-excerpt text-{{ $cardTextColor }}">{{ $pageExcerpt }}</p>
+                @endif
                 @if ($buttonCardText)
                     <div class="button-container mt-auto z-10">
                         @include('components.buttons.default', [
@@ -68,7 +68,7 @@
                         ])
                     </div>
                 @endif
-            @endif
-        </div>
+            </div>
+        @endif
     </div>
 </div>
