@@ -25,16 +25,15 @@
             <a href="{{ get_permalink($postId) }}"
                class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
 
-
             <div class="news-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                 @if($postCategories)
                     @foreach ($postCategories as $category)
                         @php
                             $categoryColor = get_field('category_color', $category);
+                            $categoryIcon = get_field('category_icon', $category);
                         @endphp
-                        <div style="background-color: {{ $categoryColor }}"
-                             class="@if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full">
-                            {!! $category->name !!}
+                        <div style="background-color: {{ $categoryColor }}" class="news-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
+                            {!! $categoryIcon !!} {!! $category->name !!}
                         </div>
                     @endforeach
                 @endif
@@ -46,7 +45,7 @@
                 'object_fit' => 'cover',
                 'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
                 'alt' => get_the_title($postId),
-        ])
+            ])
         </div>
 
         <div class="flex flex-col w-full grow mt-5">
@@ -65,7 +64,8 @@
                    'alt' => 'Lees meer',
                    'colors' => 'btn-primary-color btn-filled',
                    'class' => 'rounded-lg',
-               ])
+                   'icon' => '',
+                ])
             </div>
         </div>
     </div>
