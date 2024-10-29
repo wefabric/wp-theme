@@ -2,8 +2,8 @@
     <div class="card-background p-6 xl:p-8 h-full mx-auto relative bg-{{ $cardBackgroundColor }} w-full aspect-square flex flex-col gap-y-4 items-center justify-center text-center overflow-hidden rounded-{{ $borderRadius }} group-hover:-translate-y-4 duration-300 ease-in-out"
         @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId)
              style="background-image: url('{{ wp_get_attachment_image_url($featuredImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($featuredImageId) }}">
-        @elseif ($block['data']['block_visual'] == 'image' && $imageID)
-             style="background-image: url('{{ wp_get_attachment_image_url($imageID, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageID) }}">
+        @elseif ($block['data']['block_visual'] == 'image' && $imageId)
+             style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
         @else >
         @endif
 
@@ -12,6 +12,7 @@
 
         @if (!empty($visibleElements) && in_array('category', $visibleElements))
             @if ($terms && !is_bool($terms))
+
                 <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                     @foreach ($terms as $term)
                         @php

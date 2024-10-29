@@ -28,13 +28,15 @@
                   ])
                 @elseif ($block['data']['block_visual'] == 'icon' && $pageIcon)
                     <div class="h-full flex justify-center items-center">
-                        <i class="text-{{ $cardTitleColor }} relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
+                        <a class="page-icon" href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina">
+                            <i class="text-{{ $cardTitleColor }} relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
+                        </a>
                     </div>
-                @elseif ($block['data']['block_visual'] == 'image' && $imageID)
+                @elseif ($block['data']['block_visual'] == 'image' && $imageId)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                        class="absolute left-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                     @include('components.image', [
-                       'image_id' => $imageID,
+                       'image_id' => $imageId,
                        'size' => 'job-thumbnail',
                        'object_fit' => 'cover',
                        'img_class' => 'w-full h-full object-cover transform ease-in-out duration-300 group-hover:scale-110 rounded-t-' . $borderRadius,
