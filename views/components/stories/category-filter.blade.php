@@ -21,7 +21,6 @@
             $allCategoriesUrl = remove_query_arg('verhaal_category');
         @endphp
 
-        {{-- Filter for all --}}
         <a href="{{ $allCategoriesUrl }}"
            class="category category-link px-4 py-2 rounded-full border-2 border-primary hover:bg-primary hover:text-white {{ empty($currentCatIds) ? 'bg-primary text-white' : '' }}">
             Alles
@@ -29,7 +28,8 @@
 
         @foreach($categories as $category)
             @php
-                $categoryColor = get_field('category_color', 'verhaal_categories' . $category->term_id);
+                $categoryColor = get_field('category_color', 'verhaal_categories_' . $category->term_id);
+                $categoryIcon = get_field('category_icon', 'verhaal_categories_' . $category->term_id);
                 $isActive = in_array($category->term_id, $currentCatIds);
 
                 if ($multipleFilters) {
@@ -65,7 +65,7 @@
                     onmouseover="this.style.backgroundColor='{{ $categoryColor }}'; this.style.color='white';"
                     onmouseout="this.style.backgroundColor=''; this.style.color='{{ $categoryColor }}';"
                @endif>
-               {!! $category->name !!}
+               {!! $categoryIcon !!} {!! $category->name !!}
             </a>
         @endforeach
     @endif
