@@ -739,13 +739,17 @@
                 "id": ""
             },
             "choices": {
+                "title_text": "Titel van kaart",
                 "overview_text": "Samenvattingstekst",
                 "category": "Categorie",
                 "button": "Knop in kaart blok"
             },
-            "default_value": [],
+            "default_value": [
+                "title_text"
+            ],
             "return_format": "value",
             "allow_custom": 0,
+            "allow_in_bindings": 1,
             "layout": "vertical",
             "toggle": 0,
             "save_custom": 0,
@@ -822,6 +826,32 @@
                 "id": ""
             },
             "theme_color": null,
+            "font_size": 14
+        },
+        {
+            "key": "field_6720c05ca926b",
+            "label": "Kaart icoon kleur",
+            "name": "card_icon_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6525652c4ff5b",
+                        "operator": "==",
+                        "value": "icon"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -2207,5 +2237,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1729155940
+    "modified": 1730199849
 }

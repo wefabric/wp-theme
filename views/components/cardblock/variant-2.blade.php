@@ -29,7 +29,7 @@
                 @elseif ($block['data']['block_visual'] == 'icon' && $pageIcon)
                     <div class="h-full flex justify-center items-center">
                         <a class="page-icon" href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina">
-                            <i class="text-{{ $cardTitleColor }} relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
+                            <i class="text-{{ $cardIconColor }} relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
                         </a>
                     </div>
                 @elseif ($block['data']['block_visual'] == 'image' && $imageId)
@@ -46,10 +46,12 @@
             </div>
         </div>
         <div class="content-box h-full flex flex-col gap-y-4 p-6 xl:p-8">
-            <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
-               class="card-title text-{{ $cardTitleColor }} relative z-20 h3 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
-                {!! $pageTitle !!}
-            </a>
+            @if (!empty($visibleElements) && in_array('title_text', $visibleElements) && $pageTitle)
+                <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
+                   class="card-title text-{{ $cardTitleColor }} relative z-20 h3 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
+                    {!! $pageTitle !!}
+                </a>
+            @endif
             @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && $pageExcerpt)
                 <p class="card-excerpt text-{{ $cardTextColor }}">{{ $pageExcerpt }}</p>
             @endif
