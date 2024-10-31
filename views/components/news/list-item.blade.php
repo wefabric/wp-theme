@@ -18,7 +18,7 @@
 @endphp
 
 <div class="nieuws-item group h-full">
-    <div class="news-wrapper relative h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
+    <div class="news-wrapper relative h-full flex flex-col {{ $hoverEffectClass }} duration-300 ease-in-out">
         @if ($postThumbnailId)
             <div class="news-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina"

@@ -150,6 +150,17 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+     // Animaties
+    $hoverEffect = $block['data']['hover_effect'] ?? '';
+    $hoverEffectClasses = [
+        'lift-up' => 'group-hover:-translate-y-2 group-hover:md:-translate-y-4',
+        'scale-up' => 'group-hover:scale-105',
+        'scale-down' => 'group-hover:scale-95',
+        'none' => ''
+    ];
+    $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
 @endphp
 
 <section id="nieuws" class="block-nieuws relative nieuws-{{ $randomNumber }}-custom-padding nieuws-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
