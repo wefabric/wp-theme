@@ -146,6 +146,17 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $hoverEffect = $block['data']['hover_effect'] ?? '';
+    $hoverEffectClasses = [
+        'lift-up' => 'group-hover:-translate-y-2 group-hover:md:-translate-y-4',
+        'scale-up' => 'group-hover:scale-105',
+        'scale-down' => 'group-hover:scale-95',
+        'none' => ''
+    ];
+    $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
 @endphp
 
 <section id="kaarten" class="block-kaarten kaarten-{{ $randomNumber }}-custom-padding kaarten-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} @if ($cardVariant == 'variant1') content-in-card @elseif ($cardVariant == 'variant2') content-under-card @endif {{ $hideBlock ? 'hidden' : '' }}"

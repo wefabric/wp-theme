@@ -55,6 +55,8 @@ module.exports = {
     'lg:w-fit',
     'xl:w-fit',
     'md:text-[18px]',
+    'group-hover:-translate-y-2',
+    'group-hover:md:-translate-y-4'
   ],
   theme: {
     boxShadow: {
