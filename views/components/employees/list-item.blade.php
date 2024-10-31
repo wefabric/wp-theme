@@ -20,7 +20,7 @@
 @endphp
 
 <div class="werknemer-item group h-full">
-    <div class="werknemer-card h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
+    <div class="werknemer-card h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         <div class="custom-height relative max-h-[360px] overflow-hidden w-full rounded-{{ $borderRadius }}">
             @if (!empty($visibleElements) && in_array('category', $visibleElements))
                 <div class="employee-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">

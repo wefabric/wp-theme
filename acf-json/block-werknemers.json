@@ -1998,6 +1998,35 @@
             "placement": "top",
             "endpoint": 0,
             "selected": 0
+        },
+        {
+            "key": "field_6723a0114ade6",
+            "label": "Werknemer hover effect",
+            "name": "hover_effect",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "none": "Geen",
+                "lift-up": "Kaart omhoog",
+                "scale-up": "Kaart groter maken",
+                "scale-down": "Kaart kleiner maken"
+            },
+            "default_value": "lift-up",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         }
     ],
     "location": [
@@ -2018,5 +2047,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1729157718
+    "modified": 1730388005
 }
