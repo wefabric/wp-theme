@@ -1147,9 +1147,9 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_6569c74b8fb2d",
-            "label": "Actieve slide in het midden?",
-            "name": "centered_slides",
+            "key": "field_6525517828af3",
+            "label": "Autoplay swiper",
+            "name": "autoplay",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -1175,9 +1175,9 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_6525517828af3",
-            "label": "Autoplay swiper",
-            "name": "autoplay",
+            "key": "field_6569c74b8fb2d",
+            "label": "Actieve slide in het midden?",
+            "name": "centered_slides",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -2266,5 +2266,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1730384816
+    "modified": 1730459287
 }

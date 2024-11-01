@@ -1013,6 +1013,35 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_6724b614b20ec",
+            "label": "Actieve slide in het midden?",
+            "name": "centered_slides",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a2c795a9c0c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6512dd2d2c301",
             "label": "Blokinstellingen",
             "name": "",
@@ -2068,5 +2097,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1730449727
+    "modified": 1730459290
 }

@@ -9,12 +9,14 @@
         'desktop' => 'lg:grid-cols-' . $desktopLayout,
     ];
 
+    $showSlider = $block['data']['show_slider'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
+    $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'employeeSwiper-' . $randomNumber;
 @endphp
 
-@if($block['data']['show_slider'])
+@if ($showSlider)
     <div class="block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
@@ -43,7 +45,9 @@
     window.addEventListener("DOMContentLoaded", (event) => {
         var employeeSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
-            centeredSlides: false,
+            @if ($swiperCenteredSlides)
+                centeredSlides: true,
+            @endif
             @if ($swiperAutoplay)
             autoplay: {
                 disableOnInteraction: false,
