@@ -1,101 +1,113 @@
 @php
- // Content
- $title = $block['data']['title'] ?? '';
- $subTitle = $block['data']['subtitle'] ?? '';
- $titleColor = $block['data']['title_color'] ?? '';
- $text = $block['data']['text'] ?? '';
- $textColor = $block['data']['text_color'] ?? '';
+    // todo: Voeg hide block & parralax & active slider & buttons toe
 
- $textPosition = $block['data']['text_position'] ?? '';
- $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
- $textClass = $titleClassMap[$textPosition] ?? '';
 
- $subpageTitleColor = $block['data']['subpage_title_color'] ?? '';
- $subpageTextColor = $block['data']['subpage_text_color'] ?? '';
+    // Content
+    $title = $block['data']['title'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $titleColor = $block['data']['title_color'] ?? '';
+    $text = $block['data']['text'] ?? '';
+    $textColor = $block['data']['text_color'] ?? '';
 
- // Buttons
- $button1Text = $block['data']['button_button_1']['title'] ?? '';
- $button1Link = $block['data']['button_button_1']['url'] ?? '';
- $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
- $button1Color = $block['data']['button_button_1_color'] ?? '';
- $button1Style = $block['data']['button_button_1_style'] ?? '';
- $buttonCardText = $block['data']['card_button_button_text'] ?? '';
- $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
- $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
+        // Buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $buttonCardText = $block['data']['card_button_button_text'] ?? '';
+        $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
+        $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
 
- $parentPage = $block['data']['parent_page'] ?? '';
- $allPages = get_pages();
- $subPages = array_filter($allPages, function($page) use ($parentPage) {
+        $textPosition = $block['data']['text_position'] ?? '';
+        $textClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
+        $textClass = $textClassMap[$textPosition] ?? '';
+
+
+    // Subpages
+    $subpageTitleColor = $block['data']['subpage_title_color'] ?? '';
+    $subpageTextColor = $block['data']['subpage_text_color'] ?? '';
+
+
+
+    $parentPage = $block['data']['parent_page'] ?? '';
+    $allPages = get_pages();
+    $subPages = array_filter($allPages, function($page) use ($parentPage) {
      return $page->post_parent == $parentPage;
- });
+    });
 
- // Show subpages
- $displayType = $block['data']['display_type'];
+    // Show subpages
+    $displayType = $block['data']['display_type'];
 
- if ($displayType == 'show_all') {
+    if ($displayType == 'show_all') {
      $subpageIds = wp_list_pluck($subPages, 'ID');
      $subpages = $subpageIds;
- }
- elseif ($displayType == 'show_specific') {
+    }
+    elseif ($displayType == 'show_specific') {
      $subpages = $block['data']['show_specific_subpages'];
      if (!is_array($subpages) || empty($subpages)) {
          $subpages = [];
      }
 
- }
- elseif ($displayType == 'show_latest') {
+    }
+    elseif ($displayType == 'show_latest') {
      $postAmount = $block['data']['post_amount'] ?? 3;
      $latestSubPages = array_slice($subPages, 0, $postAmount);
      $subpages = wp_list_pluck($latestSubPages, 'ID');
- }
-
- // Blokinstellingen
- $blockWidth = $block['data']['block_width'] ?? 100;
- $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
- $blockClass = $blockClassMap[$blockWidth] ?? '';
- $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
-
- $backgroundColor = $block['data']['background_color'] ?? 'none';
- $backgroundImageId = $block['data']['background_image'] ?? '';
- $overlayEnabled = $block['data']['overlay_image'] ?? false;
- $overlayColor = $block['data']['overlay_color'] ?? '';
- $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
-
- $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
-
- // Theme settings
- $options = get_fields('option');
- $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
+    }
 
 
- // Paddings & margins
- $randomNumber = rand(0, 1000);
+    // Blokinstellingen
+    $blockWidth = $block['data']['block_width'] ?? 100;
+    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
+    $blockClass = $blockClassMap[$blockWidth] ?? '';
+    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
- $mobilePaddingTop = $block['data']['padding_mobile_padding_top'] ?? '';
- $mobilePaddingRight = $block['data']['padding_mobile_padding_right'] ?? '';
- $mobilePaddingBottom = $block['data']['padding_mobile_padding_bottom'] ?? '';
- $mobilePaddingLeft = $block['data']['padding_mobile_padding_left'] ?? '';
- $tabletPaddingTop = $block['data']['padding_tablet_padding_top'] ?? '';
- $tabletPaddingRight = $block['data']['padding_tablet_padding_right'] ?? '';
- $tabletPaddingBottom = $block['data']['padding_tablet_padding_bottom'] ?? '';
- $tabletPaddingLeft = $block['data']['padding_tablet_padding_left'] ?? '';
- $desktopPaddingTop = $block['data']['padding_desktop_padding_top'] ?? '';
- $desktopPaddingRight = $block['data']['padding_desktop_padding_right'] ?? '';
- $desktopPaddingBottom = $block['data']['padding_desktop_padding_bottom'] ?? '';
- $desktopPaddingLeft = $block['data']['padding_desktop_padding_left'] ?? '';
+    $backgroundColor = $block['data']['background_color'] ?? 'none';
+    $backgroundImageId = $block['data']['background_image'] ?? '';
+    $overlayEnabled = $block['data']['overlay_image'] ?? false;
+    $overlayColor = $block['data']['overlay_color'] ?? '';
+    $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
- $mobileMarginTop = $block['data']['margin_mobile_margin_top'] ?? '';
- $mobileMarginRight = $block['data']['margin_mobile_margin_right'] ?? '';
- $mobileMarginBottom = $block['data']['margin_mobile_margin_bottom'] ?? '';
- $mobileMarginLeft = $block['data']['margin_mobile_margin_left'] ?? '';
- $tabletMarginTop = $block['data']['margin_tablet_margin_top'] ?? '';
- $tabletMarginRight = $block['data']['margin_tablet_margin_right'] ?? '';
- $tabletMarginBottom = $block['data']['margin_tablet_margin_bottom'] ?? '';
- $tabletMarginLeft = $block['data']['margin_tablet_margin_left'] ?? '';
- $desktopMarginTop = $block['data']['margin_desktop_margin_top'] ?? '';
- $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
- $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
- $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+    $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+
+
+    // Theme settings
+    $options = get_fields('option');
+    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
+
+
+    // Paddings & margins
+    $randomNumber = rand(0, 1000);
+
+    $mobilePaddingTop = $block['data']['padding_mobile_padding_top'] ?? '';
+    $mobilePaddingRight = $block['data']['padding_mobile_padding_right'] ?? '';
+    $mobilePaddingBottom = $block['data']['padding_mobile_padding_bottom'] ?? '';
+    $mobilePaddingLeft = $block['data']['padding_mobile_padding_left'] ?? '';
+    $tabletPaddingTop = $block['data']['padding_tablet_padding_top'] ?? '';
+    $tabletPaddingRight = $block['data']['padding_tablet_padding_right'] ?? '';
+    $tabletPaddingBottom = $block['data']['padding_tablet_padding_bottom'] ?? '';
+    $tabletPaddingLeft = $block['data']['padding_tablet_padding_left'] ?? '';
+    $desktopPaddingTop = $block['data']['padding_desktop_padding_top'] ?? '';
+    $desktopPaddingRight = $block['data']['padding_desktop_padding_right'] ?? '';
+    $desktopPaddingBottom = $block['data']['padding_desktop_padding_bottom'] ?? '';
+    $desktopPaddingLeft = $block['data']['padding_desktop_padding_left'] ?? '';
+
+    $mobileMarginTop = $block['data']['margin_mobile_margin_top'] ?? '';
+    $mobileMarginRight = $block['data']['margin_mobile_margin_right'] ?? '';
+    $mobileMarginBottom = $block['data']['margin_mobile_margin_bottom'] ?? '';
+    $mobileMarginLeft = $block['data']['margin_mobile_margin_left'] ?? '';
+    $tabletMarginTop = $block['data']['margin_tablet_margin_top'] ?? '';
+    $tabletMarginRight = $block['data']['margin_tablet_margin_right'] ?? '';
+    $tabletMarginBottom = $block['data']['margin_tablet_margin_bottom'] ?? '';
+    $tabletMarginLeft = $block['data']['margin_tablet_margin_left'] ?? '';
+    $desktopMarginTop = $block['data']['margin_desktop_margin_top'] ?? '';
+    $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
+    $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
+    $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
 @endphp
 
 <section id="subpaginas" class="block-subpaginas relative subpaginas-{{ $randomNumber }}-custom-padding subpaginas-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
@@ -126,7 +138,7 @@
                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
                        'class' => 'rounded-lg text-left',
                        'target' => $button1Target,
-                   ])
+                    ])
                 </div>
             @endif
         </div>
