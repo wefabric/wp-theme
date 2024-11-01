@@ -6,6 +6,7 @@
     $fullName = !empty($firstName) || !empty($lastName) ? $firstName . ' ' . $lastName : get_the_title($employee);
     $imageID = $fields['image'] ?? '';
 
+
     $visibleElements = $block['data']['show_element'] ?? [];
     $function = $fields['function'] ?? '';
     $overviewText = $fields['overview_text'] ?? '';
@@ -17,11 +18,18 @@
     $contactInfoDisplay = $block['data']['contact_info_display'] ?? '';
 
     $employeeCategories = get_the_terms($employee, 'employee_categories');
+
+    $employeeUrl = get_permalink($employee);
+    $pageLink = $block['data']['page_url'] ?? false;
 @endphp
 
 <div class="werknemer-item group h-full">
-    <div class="werknemer-card h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
+    <div class="werknemer-card relative h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         <div class="custom-height relative max-h-[360px] overflow-hidden w-full rounded-{{ $borderRadius }}">
+            @if ($pageLink)
+                <a href="{{ $employeeUrl }}" aria-label="Ga naar {{ $fullName }} pagina"
+                   class="overlay left-0 top-0 absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+            @endif
             @if (!empty($visibleElements) && in_array('category', $visibleElements))
                 <div class="employee-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                     @foreach ($employeeCategories as $category)
@@ -68,10 +76,15 @@
         </div>
         <div class="contact-info w-full mt-5 flex flex-col">
             @if (!empty($visibleElements) && in_array('name', $visibleElements))
-                <p class="name-text font-bold text-lg text-{{ $employeeTitleColor }}">{{ $firstName }} {{ $lastName }}</p>
+                @if ($pageLink)
+                    <a href="{{ $employeeUrl }}" aria-label="Ga naar {{ $fullName }} pagina"
+                       class="w-fit name-text font-bold text-lg text-{{ $employeeTitleColor }}">{{ $firstName }} {{ $lastName }}</a>
+                @else
+                    <div class="name-text font-bold text-lg text-{{ $employeeTitleColor }}">{{ $firstName }} {{ $lastName }}</div>
+                @endif
             @endif
             @if (!empty($visibleElements) && in_array('function', $visibleElements))
-                <p class="function-text text-{{ $employeeTextColor }} font-medium">{{ $function }}</p>
+                <div class="function-text text-{{ $employeeTextColor }} font-medium">{{ $function }}</div>
             @endif
             @if (!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($socials))
                 <div class="inline-flex gap-x-2">
