@@ -36,7 +36,7 @@
                         {!! wp_nav_menu([
                             'theme_location' => 'top-navigation',
                             'menu_id' => $menuID,
-                            'container_class' => 'flex',
+                            'container_class' => 'top-navigation flex',
                             'li_class'  => 'li-class',
                             'li_active_class'  => '',
                             'before'  => '<i class="before-class"></i>',
@@ -108,7 +108,7 @@
                                    placeholder="Zoeken..." name="s">
                         </div>
                         <button type="submit"
-                                class="p-4 rounded-full flex justify-center items-center font-bold bg-background-color hover:bg-primary hover:scale-110 text-black hover:text-white cursor-pointer transition-transform duration-300 ease-in-out">
+                                class="search-button p-4 rounded-full flex justify-center items-center font-bold bg-background-color hover:bg-primary hover:scale-110 text-black hover:text-white cursor-pointer transition-transform duration-300 ease-in-out">
                             <i class="fa fa-search"></i>
                         </button>
                     </form>
@@ -117,57 +117,60 @@
                         <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-search"></i>
                     </a>
 
-                        <script>
-                            const searchLink = document.querySelector('.search-link');
-                            const searchForm = document.querySelector('.search-form');
-                            const searchInputContainer = document.querySelector('.search-input-container');
-                            const backdrop = document.querySelector('.backdrop');
+                    <script>
+                        const searchLink = document.querySelector('.search-link');
+                        const searchForm = document.querySelector('.search-form');
+                        const searchInputContainer = document.querySelector('.search-input-container');
+                        const searchInput = document.querySelector('.search-input');
+                        const backdrop = document.querySelector('.backdrop');
 
-                            function toggleSearchForm() {
-                                if (!searchForm || !searchInputContainer || !backdrop) return;
+                        function toggleSearchForm() {
+                            if (!searchForm || !searchInputContainer || !backdrop) return;
 
-                                const isHidden = searchForm.classList.contains('search-form-hidden');
+                            const isHidden = searchForm.classList.contains('search-form-hidden');
 
-                                if (isHidden) {
-                                    searchForm.classList.remove('slide-up');
-                                    searchForm.classList.add('slide-down');
-                                    backdrop.style.display = 'block';
-                                    setTimeout(() => {
-                                        searchForm.classList.remove('search-form-hidden');
-                                    }, 0);
-                                } else {
-                                    searchForm.classList.remove('slide-down');
-                                    searchForm.classList.add('slide-up');
+                            if (isHidden) {
+                                searchForm.classList.remove('slide-up');
+                                searchForm.classList.add('slide-down');
+                                backdrop.style.display = 'block';
+                                setTimeout(() => {
+                                    searchForm.classList.remove('search-form-hidden');
+                                    searchInput.focus();
+                                }, 0);
+                            } else {
+                                searchForm.classList.remove('slide-down');
+                                searchForm.classList.add('slide-up');
 
-                                    searchForm.addEventListener('animationend', function handleAnimationEnd() {
-                                        searchForm.classList.add('search-form-hidden');
-                                        backdrop.style.display = 'none';
-                                        searchForm.removeEventListener('animationend', handleAnimationEnd);
-                                    });
-                                }
-
-                                if (isHidden) {
-                                    setTimeout(() => {
-                                        searchInputContainer.classList.add('animate-border');
-                                    }, 200);
-                                } else {
-                                    searchInputContainer.classList.remove('animate-border');
-                                }
-                            }
-
-                            if (searchLink) {
-                                searchLink.addEventListener('click', function (e) {
-                                    e.preventDefault();
-                                    toggleSearchForm();
+                                searchForm.addEventListener('animationend', function handleAnimationEnd() {
+                                    searchForm.classList.add('search-form-hidden');
+                                    backdrop.style.display = 'none';
+                                    searchForm.removeEventListener('animationend', handleAnimationEnd);
                                 });
                             }
 
-                            if (backdrop) {
-                                backdrop.addEventListener('click', toggleSearchForm);
+                            if (isHidden) {
+                                setTimeout(() => {
+                                    searchInputContainer.classList.add('animate-border');
+                                }, 200);
+                            } else {
+                                searchInputContainer.classList.remove('animate-border');
                             }
-                        </script>
+                        }
 
-                    @endif
+                        if (searchLink) {
+                            searchLink.addEventListener('click', function (e) {
+                                e.preventDefault();
+                                toggleSearchForm();
+                            });
+                        }
+
+                        if (backdrop) {
+                            backdrop.addEventListener('click', toggleSearchForm);
+                        }
+                    </script>
+
+
+                @endif
 
 
             </div>
