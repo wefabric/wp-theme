@@ -22,7 +22,7 @@
 @endphp
 
 <div class="logo-item group h-full">
-    <div class="custom-logo-styling h-full relative rounded-{{ $borderRadius }} @if($logoUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
+    <div class="custom-logo-styling h-full relative overflow-hidden rounded-{{ $borderRadius }} @if($logoUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
         <div class="background w-full h-full relative p-4 md:p-6 bg-{{ $logoBackgroundColor }}">
             @if ($logoUrl)
                 <a href="{{ $logoUrl }}" @if($logoLinkType === 'external_link') target="_blank" @endif
