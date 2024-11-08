@@ -3,6 +3,24 @@
     "title": "Hoofdmenu",
     "fields": [
         {
+            "key": "field_6728cc055c58e",
+            "label": "Hoofdnavigatie",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "key": "field_62ff283210db3",
             "label": "Tonen",
             "name": "show_menu",
@@ -24,58 +42,103 @@
         },
         {
             "key": "field_62ff223307a32",
-            "label": "Achtergrondkleur",
+            "label": "Achtergrond kleur",
             "name": "menu_background_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_62ff283210db3",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "50",
                 "class": "",
                 "id": ""
             },
             "theme_color": "primary-color-dark",
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
             "key": "field_62ff333ad3aad",
-            "label": "Tekstkleur",
+            "label": "Tekst kleur",
             "name": "menu_text_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_62ff283210db3",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "50",
                 "class": "",
                 "id": ""
             },
             "theme_color": "white",
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
             "key": "field_62ff34321c493",
-            "label": "Actief tekstkleur",
+            "label": "Actief tekst kleur",
             "name": "menu_active_text_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_62ff283210db3",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "50",
                 "class": "",
                 "id": ""
             },
             "theme_color": "primary-color",
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
+            "key": "field_6728cc1b5c58f",
+            "label": "Top navigatie",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "key": "field_65572959eb777",
-            "label": "Toon secondary menu",
+            "label": "Tonen",
             "name": "show_secondary_menu",
             "aria-label": "",
             "type": "true_false",
@@ -89,13 +152,14 @@
             },
             "message": "",
             "default_value": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
         },
         {
             "key": "field_65572acf067df",
-            "label": "Secondary menu achtergrondkleur",
+            "label": "Secondary menu achtergrond kleur",
             "name": "secondary_menu_background_color",
             "aria-label": "",
             "type": "Thema Kleur",
@@ -116,6 +180,32 @@
                 "id": ""
             },
             "theme_color": "primary-color",
+            "allow_in_bindings": 1,
+            "font_size": 14
+        },
+        {
+            "key": "field_65572da165511",
+            "label": "Secondary menu tekst kleur",
+            "name": "secondary_menu_text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65572959eb777",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
             "font_size": 14
         },
         {
@@ -145,31 +235,6 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
-        },
-        {
-            "key": "field_65572da165511",
-            "label": "Secondary menu tekst kleur",
-            "name": "secondary_menu_text_color",
-            "aria-label": "",
-            "type": "Thema Kleur",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_65572959eb777",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "theme_color": null,
-            "font_size": 14
         },
         {
             "key": "field_655730670ebc4",
@@ -280,5 +345,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728997120
+    "modified": 1730727794
 }

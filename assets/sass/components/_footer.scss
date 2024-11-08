@@ -1,3 +1,43 @@
+.footer {
+  li.current-menu-item a,
+  a:hover {
+    @apply no-underline text-secondary;
+  }
+
+  .menu {
+    li {
+      a {
+        @apply inline-block relative w-full;
+
+
+        &:after {
+          @apply pl-2 text-xs;
+          content: '\f054';
+          font-family: $fa-font-family;
+        }
+
+      }
+    }
+  }
+
+  .footer-address {
+    a {
+      span {
+        @apply underline;
+      }
+    }
+  }
+
+  .bottom-footer {
+    a {
+      @apply underline;
+    }
+  }
+}
+
+
+
+
 @media screen and (min-width: 769px) {
   .accordion-drawer__trigger {
     display: none;

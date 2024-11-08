@@ -14,6 +14,38 @@
         @endif
         @if (!empty($options['secondary_menu_show_elements']))
             <div class="layout flex gap-4 text-sm h-full items-center text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
+
+
+                @if (in_array('top_navigation', $options['secondary_menu_show_elements']))
+
+                    {{-- Pre navigation text --}}
+                    @if (isset($options['secondary_menu_navigation_text']))
+                        <div class="pre-navigation-text">{!! $options['secondary_menu_navigation_text'] !!}</div>
+                    @endif
+
+                    @php
+                        $menuLocations = get_nav_menu_locations();
+                        $menuID = null;
+                        if(isset($menuLocations['top-navigation'])) {
+                            $menuID = $menuLocations['top-navigation'];
+                        }
+                    @endphp
+
+                    {{-- Secondary navigation --}}
+                    @if(isset($menuID) && !is_null($menuID))
+                        {!! wp_nav_menu([
+                            'theme_location' => 'top-navigation',
+                            'menu_id' => $menuID,
+                            'container_class' => 'flex',
+                            'li_class'  => 'li-class',
+                            'li_active_class'  => '',
+                            'before'  => '<i class="before-class"></i>',
+                            'echo' => false
+                        ]) !!}
+                    @endif
+                @endif
+
+
                 @foreach($footer_establishments as $key => $establishment)
                     @php
                         if ($establishment instanceof \Wefabric\WPEstablishments\Establishment) {
@@ -32,89 +64,112 @@
                         }
                     @endphp
 
+                    <div class="contact-info flex gap-x-4">
 
-                <div class="contact-info flex gap-x-4">
+                        {{-- WhatsApp --}}
+                        @if (in_array('whatsapp', $options['secondary_menu_show_elements']))
+                            <a class="whatsapp-link group flex items-center" href="{{ $options['whatsapp'] }}"
+                               title="WhatsApp">
+                                <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-brands fa-whatsapp"></i>
+                                <span class="align-middle"></span>
+                            </a>
+                        @endif
 
-                    @if (in_array('whatsapp', $options['secondary_menu_show_elements']))
-                        <a class="whatsapp-link group flex items-center" href="{{ $options['whatsapp'] }}"
-                           title="WhatsApp">
-                            <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-brands fa-whatsapp"></i>
-                            <span class="align-middle"></span>
-                        </a>
-                    @endif
+                        {{-- Phone number --}}
+                        @if (in_array('phone', $options['secondary_menu_show_elements']))
+                            <a class="phone-link group flex items-center gap-2" href="{{ $phone->uri() }}"
+                               title="Telefoonnummer">
+                                <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone"></i>
+                                <span class="align-middle">{{ $phone->international() }}</span>
+                            </a>
+                        @endif
 
-                    @if (in_array('phone', $options['secondary_menu_show_elements']))
-                        <a class="phone-link group flex items-center gap-2" href="{{ $phone->uri() }}"
-                           title="Telefoonnummer">
-                            <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone"></i>
-                            <span class="align-middle">{{ $phone->international() }}</span>
-                        </a>
-                    @endif
-
-                    @if (in_array('email', $options['secondary_menu_show_elements']))
-                        <a class="mail-link group flex items-center gap-2" href="mailto:{{ $email }}"
-                           title="E-mailadres">
-                            <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-envelope"></i>
-                            <span class="align-middle">{{ $email }}</span>
-                        </a>
-                    @endif
-                </div>
+                        {{-- Email --}}
+                        @if (in_array('email', $options['secondary_menu_show_elements']))
+                            <a class="mail-link group flex items-center gap-2 email-hidden" href="mailto:{{ $email }}"
+                               title="E-mailadres">
+                                <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-envelope"></i>
+                                <span class="align-middle">{{ $email }}</span>
+                            </a>
+                        @endif
+                    </div>
 
                 @endforeach
 
-                @if (in_array('top_navigation', $options['secondary_menu_show_elements']))
-                    @php
-                        $menuLocations = get_nav_menu_locations();
-                        $menuID = null;
-                        if(isset($menuLocations['top-navigation'])) {
-                            $menuID = $menuLocations['top-navigation'];
-                        }
-                    @endphp
-
-                    @if (isset($options['secondary_menu_navigation_text']))
-                        <div class="pre-navigation-text">{!! $options['secondary_menu_navigation_text'] !!}</div>
-                    @endif
-
-                    @if(isset($menuID) && !is_null($menuID))
-                        {!! wp_nav_menu([
-                            'theme_location' => 'top-navigation',
-                            'menu_id' => $menuID,
-                            'container_class' => 'flex',
-                            'li_class'  => 'li-class',
-                            'li_active_class'  => '',
-                            'before'  => '<i class="before-class"></i>',
-                            'echo' => false
-                        ]) !!}
-                    @endif
-                @endif
-
+                {{-- Search --}}
                 @if (in_array('search', $options['secondary_menu_show_elements']))
-                    <form class="hidden search-form-hidden search-form py-[8px] justify-center items-center" action="/">
-                        <input type="search" class="rounded-l-lg w-[180px]" placeholder="Zoeken..." name="s">
-                        <input type="submit"
-                               class="rounded-r-lg w-[82px] flex justify-center px-8 text-white font-bold bg-primary-light h-full uppercase text-primary hover:bg-primary-dark cursor-pointer"
-                               value="Zoek">
+
+                    <div class="backdrop"></div>
+
+                    <form class="search-form-hidden search-form gap-x-4 items-center justify-center h-[400px] shadow-xl" action="/">
+                        <div class="search-input-container">
+                            <input type="search"
+                                   class="search-input"
+                                   placeholder="Zoeken..." name="s">
+                        </div>
+                        <button type="submit"
+                                class="p-4 rounded-full flex justify-center items-center font-bold bg-background-color hover:bg-primary hover:scale-110 text-black hover:text-white cursor-pointer transition-transform duration-300 ease-in-out">
+                            <i class="fa fa-search"></i>
+                        </button>
                     </form>
+
                     <a class="search-link group flex items-center gap-2" href="#">
                         <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-search"></i>
                     </a>
 
-                    <script>
-                        // Zoek het element met de class 'search-link'
-                        const searchLink = document.querySelector('.search-link');
-
-                        // Voeg een click event listener toe aan het gevonden element
-                        searchLink.addEventListener('click', function (e) {
-                            searchLink.classList.toggle('hidden');
-                            // Voorkom het standaardgedrag van de link
-                            e.preventDefault();
-                            // Toon/verberg het element met de class 'search-form'
+                        <script>
+                            const searchLink = document.querySelector('.search-link');
                             const searchForm = document.querySelector('.search-form');
-                            searchForm.classList.toggle('hidden');
-                            searchForm.classList.toggle('flex');
-                        });
-                    </script>
-                @endif
+                            const searchInputContainer = document.querySelector('.search-input-container');
+                            const backdrop = document.querySelector('.backdrop');
+
+                            function toggleSearchForm() {
+                                if (!searchForm || !searchInputContainer || !backdrop) return;
+
+                                const isHidden = searchForm.classList.contains('search-form-hidden');
+
+                                if (isHidden) {
+                                    searchForm.classList.remove('slide-up');
+                                    searchForm.classList.add('slide-down');
+                                    backdrop.style.display = 'block';
+                                    setTimeout(() => {
+                                        searchForm.classList.remove('search-form-hidden');
+                                    }, 0);
+                                } else {
+                                    searchForm.classList.remove('slide-down');
+                                    searchForm.classList.add('slide-up');
+
+                                    searchForm.addEventListener('animationend', function handleAnimationEnd() {
+                                        searchForm.classList.add('search-form-hidden');
+                                        backdrop.style.display = 'none';
+                                        searchForm.removeEventListener('animationend', handleAnimationEnd);
+                                    });
+                                }
+
+                                if (isHidden) {
+                                    setTimeout(() => {
+                                        searchInputContainer.classList.add('animate-border');
+                                    }, 200);
+                                } else {
+                                    searchInputContainer.classList.remove('animate-border');
+                                }
+                            }
+
+                            if (searchLink) {
+                                searchLink.addEventListener('click', function (e) {
+                                    e.preventDefault();
+                                    toggleSearchForm();
+                                });
+                            }
+
+                            if (backdrop) {
+                                backdrop.addEventListener('click', toggleSearchForm);
+                            }
+                        </script>
+
+                    @endif
+
+
             </div>
         @endif
     </div>

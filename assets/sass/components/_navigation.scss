@@ -147,6 +147,8 @@ header {
 }
 
 
+// Secondary navigation
+
 .secondary-navigation {
 	.menu {
 		@apply flex flex-row w-full;
@@ -237,45 +239,12 @@ header {
 }
 
 
-.footer {
-	// DIT MOET WEGGEHAALD WORDEN
-	li.current-menu-item a,
-	a:hover {
-		@apply no-underline text-secondary;
-	}
-
-	.menu {
-		li {
-			a {
-				@apply inline-block relative w-full;
 
 
-				&:after {
-					@apply pl-2 text-xs;
-					content: '\f054';
-					font-family: $fa-font-family;
-				}
 
-			}
-		}
-	}
+// Pagenumbers at the bottom of the news (posts) page
 
-	.footer-address {
-		a {
-			span {
-				@apply underline;
-			}
-		}
-	}
-
-	.bottom-footer {
-		a {
-			@apply underline;
-		}
-	}
-}
-
-.nav-links { //pagenumbers at the bottom of the news (posts) page
+.nav-links {
 
 	a, span {
 		@apply rounded-full inline-block w-12 h-12 pt-3 mr-3 text-base font-bold;
@@ -300,6 +269,7 @@ header {
 	
 }
 
+
 // Breadcrumbs
 
 .rank-math-breadcrumb a:first-child {
@@ -320,10 +290,65 @@ header {
 	@apply hover:text-secondary;
 }
 
+
 // Secondary navigation
 
 .secondary-navigation {
 	ul.menu {
 		@apply flex items-center gap-x-4;
 	}
+}
+
+
+// Search form
+
+.search-form-hidden {
+	@apply hidden #{!important};
+}
+
+.search-form {
+	@apply absolute flex top-0 left-0 w-full bg-white;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	z-index: 1001;
+}
+
+.slide-down {
+	animation: slideDown 0.3s ease forwards;
+}
+
+.slide-up {
+	animation: slideUp 0.3s ease forwards;
+}
+
+.backdrop {
+	@apply fixed top-0 left-0 w-full h-full hidden;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+}
+
+.search-input-container {
+	@apply relative inline-block;
+	padding-bottom: 4px;
+}
+
+.search-input-container::after {
+	content: '';
+	@apply absolute left-0 bottom-0 w-0 bg-black;
+	height: 4px;
+	transition: width 0.4s ease;
+}
+
+.search-input-container.animate-border::after {
+	@apply w-full;
+}
+
+.search-input {
+	font-size: 40px;
+	border: none;
+	outline: none;
+}
+
+.search-input:focus {
+	outline: none;
+	box-shadow: none;
 }

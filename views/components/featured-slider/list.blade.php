@@ -29,7 +29,7 @@
             @if ($swiperAutoplay)
             autoplay: {
                 disableOnInteraction: false,
-                delay: 5000, // autoplay delay of 5 seconds
+                delay: 5000,
             },
             @endif
             pagination: {
