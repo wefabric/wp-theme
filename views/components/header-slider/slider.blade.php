@@ -26,14 +26,17 @@
         var {{ $sliderId }}Swiper = new Swiper(".{{ $randomId }}", {
             slidesPerView: 2,
             direction: '{{ $direction }}',
-            speed: 8000,
+            speed: 14000,
             freeMode: true,
             allowTouchMove: false,
             spaceBetween: 30,
             centeredSlides: true,
             loop: true,
-            autoplay: false,
-
+            autoplay: {
+                disableOnInteraction: false,
+                delay: 0,
+                reverseDirection: {{ $reverse ? 'true' : 'false' }},
+            },
         });
     });
 </script>
