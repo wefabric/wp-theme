@@ -166,7 +166,7 @@
                                 <div class="w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute {{ $roundedFullPosition }}"></div>
                             </div>
                             <div class="flex flex-col">
-                                @if($item['imageId'])
+                                @if ($item['imageId'])
                                     <div class="history-image relative h-[170px]">
                                         @include('components.image', [
                                             'image_id' => $item['imageId'],
@@ -177,14 +177,16 @@
                                         ])
                                     </div>
                                 @endif
-                                <div class="history-data relative p-4 lg:p-8 bg-{{ $timelineBlockBackgroundColor }}">
-                                    @if($item['year'])
-                                        <p class="h3 text-{{ $timelineYearTextColor }}">{{ $item['year'] }}</p>
-                                    @endif
-                                    @if($item['text'])
-                                        @include('components.content', ['content' => apply_filters('the_content', $item['text']), 'class' => 'text-' . $timelineTextColor])
-                                    @endif
-                                </div>
+                                @if ($item['year'] || $item['text'])
+                                    <div class="history-data relative p-4 lg:p-8 bg-{{ $timelineBlockBackgroundColor }}">
+                                        @if ($item['year'])
+                                            <div class="h3 text-{{ $timelineYearTextColor }}">{{ $item['year'] }}</div>
+                                        @endif
+                                        @if ($item['text'])
+                                            @include('components.content', ['content' => apply_filters('the_content', $item['text']), 'class' => 'text-' . $timelineTextColor])
+                                        @endif
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     @endforeach
