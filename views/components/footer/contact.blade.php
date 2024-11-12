@@ -114,7 +114,7 @@
 {{--			Dit kan later weer aan--}}
 {{--				@include('components.establishments.directions')--}}
 
-{{--			todo: KVK en VAT nummers toevoegen aan vestigingen--}}
+					{{-- todo: KVK en VAT nummers toevoegen aan vestigingen--}}
 {{--				--}}{{-- Establishment KVK Number --}}
 {{--				@if($establishment->getAcfFields()->get('kvk_number'))--}}
 {{--					<div>--}}
@@ -130,12 +130,13 @@
 {{--				@endif--}}
 			@endif
 
-		@if ($customEstablishmentText)
-			<div class="custom-establishment-text mt-2">
-				{!! $customEstablishmentText !!}
-			</div>
-		@endif
-
 		</div>
 	@endforeach
+
+	{{-- Establishment Text --}}
+	@if ($customEstablishmentText)
+		<div class="custom-establishment-text mt-2">
+			{!! $customEstablishmentText !!}
+		</div>
+	@endif
 </div>

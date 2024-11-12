@@ -46,44 +46,44 @@
                 <div class="lg:pb-6">
                     @php
                         $menu = wp_nav_menu([
-                          'theme_location' => 'footer_menu_one',
-                          'menu_id' => 'footer_menu_one',
-                          'echo' => false
+                            'theme_location' => 'footer_menu_one',
+                            'menu_id' => 'footer_menu_one',
+                            'echo' => false
                         ]);
                     @endphp
                     @include('components.footer.accordion-menu', ['menu' => $menu,
-                            'title' => !empty($footerTitles['footer_title_1']) ? $footerTitles['footer_title_1'] : wp_get_nav_menu_name('footer_menu_one'),
-                            'accordionId' => 1,
-                            'setAccordion' => true])
+                        'title' => !empty($footerTitles['footer_title_1']) ? $footerTitles['footer_title_1'] : wp_get_nav_menu_name('footer_menu_one'),
+                        'accordionId' => 1,
+                        'setAccordion' => true])
                 </div>
 
                 <div class="lg:pb-6">
                     @php
                         $menu = wp_nav_menu([
-                          'theme_location' => 'footer_menu_two',
-                          'menu_id' => 'footer_menu_two',
-                          'echo' => false
+                            'theme_location' => 'footer_menu_two',
+                            'menu_id' => 'footer_menu_two',
+                            'echo' => false
                         ]);
                     @endphp
 
                     @include('components.footer.accordion-menu', ['menu' => $menu,
-                             'title' => !empty($footerTitles['footer_title_2']) ? $footerTitles['footer_title_2'] : wp_get_nav_menu_name('footer_menu_two'),
-                             'accordionId' => 2,
-                             'setAccordion' => true])
+                        'title' => !empty($footerTitles['footer_title_2']) ? $footerTitles['footer_title_2'] : wp_get_nav_menu_name('footer_menu_two'),
+                        'accordionId' => 2,
+                        'setAccordion' => true])
                 </div>
 
                 <div class="lg:pb-6">
                     @include('components.footer.accordion-menu', ['menu' => view('components.footer.contact'),
-                             'title' => !empty($footerTitles['footer_title_3']) ? $footerTitles['footer_title_3'] : __('Contactgegevens', 'wefabric'),
-                             'accordionId' => 3,
-                             'setAccordion' => true])
+                        'title' => !empty($footerTitles['footer_title_3']) ? $footerTitles['footer_title_3'] : __('Contactgegevens', 'wefabric'),
+                        'accordionId' => 3,
+                        'setAccordion' => true])
                 </div>
 
                 <div class="lg:pb-6">
                     @include('components.footer.accordion-menu', ['menu' => view('components.footer.follow-us'),
-                             'title' => !empty($footerTitles['footer_title_4']) ? $footerTitles['footer_title_4'] : __('Volg ons', 'wefabric'),
-                             'accordionId' => 4,
-                             'setAccordion' => true])
+                        'title' => !empty($footerTitles['footer_title_4']) ? $footerTitles['footer_title_4'] : __('Volg ons', 'wefabric'),
+                        'accordionId' => 4,
+                        'setAccordion' => true])
                 </div>
             </div>
         </div>
