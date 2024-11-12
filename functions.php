@@ -477,3 +477,14 @@ function add_excerpt_to_pages() {
     add_post_type_support('page', 'excerpt');
 }
 add_action('init', 'add_excerpt_to_pages');
+
+
+
+// Add custom class to the body_class
+function add_sitename_to_body_class( $classes ) {
+    $sitename = sanitize_title( get_bloginfo( 'name' ) );
+    $classes[] = $sitename;
+
+    return $classes;
+}
+add_filter( 'body_class', 'add_sitename_to_body_class' );
