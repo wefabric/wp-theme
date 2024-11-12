@@ -19,7 +19,7 @@
 		}
 @endphp
 
-<div class="text-base mb-6 leading-7">
+<div class="establishments text-base mb-6 leading-7">
 	@foreach($footer_establishments as $key => $establishment_config)
 		@php
 			/* @var WP_Post $establishment_config */
@@ -40,19 +40,19 @@
 			}
 		@endphp
 
-		<div class="establishments footer-address">
+		<div class="establishment-item footer-address">
 			@if($establishment)
 
 				{{-- Establishment Name --}}
 				@if(in_array('establishment_name', $establishmentElements))
-					<p class="establishment-title leading-8 {{ $establishment_config['show_title'] ?? '' }}">
+					<div class="establishment-title leading-8 {{ $establishment_config['show_title'] ?? '' }}">
 						{{ $establishment->name }}
-					</p>
+					</div>
 				@endif
 
 				{{-- Establishment Address --}}
 				@if(in_array('establishment_address', $establishmentElements) || in_array('establishment_country', $establishmentElements))
-					<p class="establishment-address leading-8">
+					<div class="establishment-address leading-8">
 						@if($establishment->getAddress()->street)
 							{{ $establishment->getAddress()->street }}
 						@endif
@@ -71,7 +71,7 @@
 						@if(in_array('establishment_country', $establishmentElements) && $countryName)
 							{{ $countryName }}
 						@endif
-					</p>
+					</div>
 				@endif
 
 				{{-- Establishment Phone --}}
