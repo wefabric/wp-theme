@@ -9,7 +9,7 @@
 
 <div class="secondary-navigation hidden xl:block w-full bg-{{ $options['secondary_menu_background_color'] ?? '' }}">
     <div class="secondary-navigation-items flex items-center justify-between flex-row container mx-auto h-12 px-4">
-        @if(!empty($options['secondary_menu_text']))
+        @if (!empty($options['secondary_menu_text']))
             <div class="secondary-menu-text text-sm text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">{!! $options['secondary_menu_text'] !!}</div>
         @endif
         @if (!empty($options['secondary_menu_show_elements']))
@@ -19,7 +19,7 @@
                 @if (in_array('top_navigation', $options['secondary_menu_show_elements']))
 
                     {{-- Pre navigation text --}}
-                    @if (isset($options['secondary_menu_navigation_text']))
+                    @if (!empty($options['secondary_menu_navigation_text']))
                         <div class="pre-navigation-text">{!! $options['secondary_menu_navigation_text'] !!}</div>
                     @endif
 
@@ -94,6 +94,7 @@
                         @endif
                     </div>
 
+                    @break
                 @endforeach
 
                 {{-- Search --}}
