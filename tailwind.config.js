@@ -63,7 +63,8 @@ module.exports = {
     'xl:w-6',
     '2xl:w-6',
     'xl:text-xl',
-    '2xl:text-xl'
+    '2xl:text-xl',
+    '2xl:flex-row'
   ],
   theme: {
     boxShadow: {
