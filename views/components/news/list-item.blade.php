@@ -46,21 +46,23 @@
             </div>
         @endif
         <div class="news-data flex flex-col w-full grow mt-5">
-            @if (!empty($visibleElements) && in_array('date', $visibleElements) && !empty($postDate))
-                <p class="news-post-date mb-2 text-{{ $newsTextColor }}">{{ $postDate }}</p>
-            @endif
 
             <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina" class="news-title text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{!! $postTitle !!}</a>
 
             <div class="news-info">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($postSummary))
-                    <p class="news-summary text-{{ $newsTextColor }} mt-3 mb-2">{!! $postSummary !!}</p>
+                    <div class="news-summary text-{{ $newsTextColor }} mt-3 mb-2">{!! $postSummary !!}</div>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('author', $visibleElements) && !empty($postAuthorName))
-                    <p class="news-author mt-4 text-{{ $newsTextColor }}">Geschreven door {!! $postAuthorName !!}</p>
+                    <div class="news-author mt-4 text-{{ $newsTextColor }}">Geschreven door {!! $postAuthorName !!}</div>
+                @endif
+
+                @if (!empty($visibleElements) && in_array('date', $visibleElements) && !empty($postDate))
+                    <div class="news-post-date mb-2 text-{{ $newsTextColor }}">{{ $postDate }}</div>
                 @endif
             </div>
+
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
                 @if ($buttonCardText)
                     <div class="news-button mt-auto pt-8 z-10">
