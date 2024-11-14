@@ -4,6 +4,8 @@
     $postTitle = get_the_title($post);
     $postUrl = get_permalink($post);
 
+    $postLocation = $fields['post_location'] ?? '';
+
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
     $postSummary = get_the_excerpt($post);
@@ -61,6 +63,13 @@
                 @if (!empty($visibleElements) && in_array('date', $visibleElements) && !empty($postDate))
                     <div class="news-post-date mb-2 text-{{ $newsTextColor }}">{{ $postDate }}</div>
                 @endif
+
+                @if (!empty($visibleElements) && in_array('location', $visibleElements))
+                    @if ($postLocation)
+                        <div class="news-location mb-2 text-{{ $newsTextColor }}">{{ $postLocation }}</div>
+                    @endif
+                @endif
+
             </div>
 
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
