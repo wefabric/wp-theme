@@ -71,7 +71,7 @@
                             <a class="whatsapp-link group flex items-center gap-2" href="{{ $options['whatsapp_link'] }}"
                                title="WhatsApp">
                                 <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-brands fa-whatsapp"></i>
-                                @if (!empty($options['whatsapp_extra_text']))
+                                @if (!empty($options['whatsapp_text']))
                                     <span class="align-middle">{!! $options['whatsapp_text'] !!}</span>
                                 @endif
                             </a>
