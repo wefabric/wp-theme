@@ -304,7 +304,7 @@
         {
             "key": "field_670e66e9b6ad8",
             "label": "WhatsApp link",
-            "name": "whatsapp_text",
+            "name": "whatsapp_link",
             "aria-label": "",
             "type": "url",
             "instructions": "",
@@ -330,7 +330,7 @@
         {
             "key": "field_673b034f4a96b",
             "label": "WhatsApp tekst",
-            "name": "whatsapp_extra_text",
+            "name": "whatsapp_text",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -375,5 +375,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1731920809
+    "modified": 1731921399
 }

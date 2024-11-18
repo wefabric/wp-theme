@@ -68,11 +68,11 @@
 
                         {{-- WhatsApp --}}
                         @if (in_array('whatsapp', $options['secondary_menu_show_elements']))
-                            <a class="whatsapp-link group flex items-center gap-2" href="{{ $options['whatsapp'] }}"
+                            <a class="whatsapp-link group flex items-center gap-2" href="{{ $options['whatsapp_link'] }}"
                                title="WhatsApp">
                                 <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-brands fa-whatsapp"></i>
                                 @if (!empty($options['whatsapp_extra_text']))
-                                    <span class="align-middle">{!! $options['whatsapp_extra_text'] !!}</span>
+                                    <span class="align-middle">{!! $options['whatsapp_text'] !!}</span>
                                 @endif
                             </a>
                         @endif
