@@ -303,8 +303,8 @@
         },
         {
             "key": "field_670e66e9b6ad8",
-            "label": "WhatsApp",
-            "name": "whatsapp",
+            "label": "WhatsApp link",
+            "name": "whatsapp_text",
             "aria-label": "",
             "type": "url",
             "instructions": "",
@@ -324,7 +324,37 @@
                 "id": ""
             },
             "default_value": "",
+            "allow_in_bindings": 1,
             "placeholder": ""
+        },
+        {
+            "key": "field_673b034f4a96b",
+            "label": "WhatsApp tekst",
+            "name": "whatsapp_extra_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_655730670ebc4",
+                        "operator": "==",
+                        "value": "whatsapp"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -345,5 +375,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1730727794
+    "modified": 1731920809
 }
