@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/product-pakketten",
+  "title": "Product pakketten",
+  "description": "Een product pakketten blok",
+  "category": "wefabric-theme",
+  "icon": "archive",
+  "apiVersion": 2,
+  "keywords": [
+    "Product pakketten"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

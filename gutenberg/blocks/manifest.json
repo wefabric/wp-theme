@@ -45,6 +45,7 @@
     "embed/block.json",
     "producten/block.json",
     "services/block.json",
+    "product-pakketten/block.json",
 
     "albums/block.json",
     "programmas/block.json",

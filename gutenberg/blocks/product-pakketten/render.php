@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.product-pakketten.index', ['block' => $block])->render(); ?>

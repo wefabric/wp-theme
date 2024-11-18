@@ -34,42 +34,30 @@
             }
         }
 
-        $buttonCardText = $block['data']['card_button_button_text'] ?? '';
-        $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
-        $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
-        $buttonCardIcon = $block['data']['card_button_button_icon'] ?? '';
-        if (!empty($buttonCardIcon)) {
-            $iconData = json_decode($buttonCardIcon, true);
-            if (isset($iconData['id'], $iconData['style'])) {
-                $buttonCardIcon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
-            }
-        }
-
         $textPosition = $block['data']['text_position'] ?? '';
         $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
         $textClass = $textClassMap[$textPosition] ?? '';
 
 
-    // Vacatures
-    $vacancyTitleColor = $block['data']['vacancy_title_color'] ?? '';
-    $vacancyTextColor = $block['data']['vacancy_text_color'] ?? '';
+    // Producten pakket
+    $productTitleColor = $block['data']['productpakket_title_color'] ?? '';
+    $productTextColor = $block['data']['productpakket_text_color'] ?? '';
 
     $displayType = $block['data']['display_type'];
-    $currentTerms = isset($_GET['vacature_category']) ? array_map('intval', explode(',', $_GET['vacature_category'])) : [];
-    $multipleFilters = $block['data']['multiple_filters_enabled'] ?? false;
+
 
     // Show all
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'vacatures',
+            'post_type' => 'product_packages',
             'post_status' => 'publish',
         ];
 
         if ($currentTerms) {
             $args['tax_query'] = [
                 [
-                    'taxonomy' => 'vacature_categories',
+                    'taxonomy' => 'productpackage_categories',
                     'field' => 'id',
                     'terms' => $currentTerms,
                 ],
@@ -77,8 +65,9 @@
         }
 
         $query = new WP_Query($args);
-        $vacancies = wp_list_pluck($query->posts, 'ID');
+        $productPackages = wp_list_pluck($query->posts, 'ID');
      }
+
 
     // Show category
     elseif ($displayType == 'show_category') {
@@ -86,11 +75,11 @@
 
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'vacatures',
+            'post_type' => 'product_packages',
             'post_status' => 'publish',
             'tax_query' => [
                 [
-                    'taxonomy' => 'vacature_categories',
+                    'taxonomy' => 'productpackage_categories',
                     'field' => 'id',
                     'terms' => $selectedCategory,
                 ],
@@ -99,7 +88,7 @@
 
         if ($currentTerms) {
             $args['tax_query'][] = [
-                'taxonomy' => 'vacature_categories',
+                'taxonomy' => 'productpackage_categories',
                 'field' => 'id',
                 'terms' => $currentTerms,
             ];
@@ -107,41 +96,39 @@
         }
 
         $query = new WP_Query($args);
-        $vacancies = wp_list_pluck($query->posts, 'ID');
+        $productPackages = wp_list_pluck($query->posts, 'ID');
     }
 
     // Show specific
     elseif ($displayType == 'show_specific') {
-        $vacancies = $block['data']['show_specific_vacancy'];
-        if (!is_array($vacancies) || empty($vacancies)) {
-            $vacancies = [];
+        $productPackages = $block['data']['show_specific_productpakketten'];
+        if (!is_array($productPackages) || empty($productPackages)) {
+            $productPackages = [];
         }
 
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'vacatures',
+            'post_type' => 'product_packages',
             'post_status' => 'publish',
             'tax_query' => [],
         ];
 
         if ($currentTerms) {
             $args['tax_query'][] = [
-                'taxonomy' => 'vacature_categories',
+                'taxonomy' => 'productpackage_categories',
                 'field' => 'id',
                 'terms' => $currentTerms,
             ];
             $args['tax_query']['relation'] = 'AND';
         }
 
-        if (!empty($vacancies)) {
-            $args['post__in'] = $vacancies;
+        if (!empty($productPackages)) {
+            $args['post__in'] = $productPackages;
         }
 
         $query = new WP_Query($args);
-        $vacancies = wp_list_pluck($query->posts, 'ID');
+        $productPackages = wp_list_pluck($query->posts, 'ID');
     }
-
-    $visibleElements = $block['data']['show_element'] ?? [];
 
 
     // Blokinstellingen
@@ -151,7 +138,7 @@
     $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
 
     $backgroundColor = $block['data']['background_color'] ?? 'none';
-    $backgroundImageId = $block['data']['background_image'] ?? '';
+    $imageId = $block['data']['background_image'] ?? '';
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
@@ -196,8 +183,8 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="vacatures" class="block-vacatures relative relative vacatures-{{ $randomNumber }}-custom-padding vacatures-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+<section id="productpakketten" class="block-productpakketten relative productpakketten-{{ $randomNumber }}-custom-padding productpakketten-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -212,18 +199,14 @@
             @if ($text)
                 @include('components.content', [
                     'content' => apply_filters('the_content', $text),
-                    'class' => 'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
+                    'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
                 ])
             @endif
-            @if (!empty($visibleElements) && in_array('category_filter', $visibleElements))
-                @include('components.vacancies.category-filter')
+
+            @if ($productPackages)
+                @include('components.product-packages.list', ['productPackages' => $productPackages])
             @endif
-            @if (!empty($visibleElements) && in_array('post_amount', $visibleElements))
-                <div class="amount-text mt-2 {{ $textClass }}">{{ count($vacancies) }} Vacatures</div>
-            @endif
-            @if ($vacancies)
-                @include('components.vacancies.list', ['vacancies' => $vacancies])
-            @endif
+
             @if (($button1Text) && ($button1Link))
                 <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                     @include('components.buttons.default', [
@@ -255,7 +238,7 @@
 </section>
 
 <style>
-    .vacatures-{{ $randomNumber }}-custom-padding {
+    .productpakketten-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
             @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
             @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
@@ -276,7 +259,7 @@
         }
     }
 
-    .vacatures-{{ $randomNumber }}-custom-margin {
+    .productpakketten-{{ $randomNumber }}-custom-margin {
         @media only screen and (min-width: 0px) {
             @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
             @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif
