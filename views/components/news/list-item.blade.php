@@ -64,12 +64,6 @@
                     <div class="news-post-date mb-2 text-{{ $newsTextColor }}">{{ $postDate }}</div>
                 @endif
 
-                @if (!empty($visibleElements) && in_array('location', $visibleElements))
-                    @if ($postLocation)
-                        <div class="news-location mb-2 text-{{ $newsTextColor }}">{{ $postLocation }}</div>
-                    @endif
-                @endif
-
             </div>
 
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
