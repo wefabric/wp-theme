@@ -14,7 +14,6 @@
         $button1Style = $block['data']['button_button_1_style'] ?? '';
         $button1Download = $block['data']['button_button_1_download'] ?? false;
         $button1Icon = $block['data']['button_button_1_icon'] ?? '';
-        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
         if (!empty($button1Icon)) {
             $iconData = json_decode($button1Icon, true);
             if (isset($iconData['id'], $iconData['style'])) {
