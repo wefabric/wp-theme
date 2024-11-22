@@ -1,4 +1,25 @@
 @php
+    // Header style
+    $headerStyle = $block['data']['header_style'] ?? 'fixed_height';
+
+    if ($headerStyle == 'fixed_height') {
+        $headerHeight = $block['data']['header_height'] ?? '';
+        $heightClasses = [
+            1 => 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]',
+            2 => 'h-[400px] md:h-[400px] 2xl:h-[500px]',
+            3 => 'h-[120px] md:h-[200px]',
+        ];
+        $headerClass = $heightClasses[$headerHeight] ?? '';
+    }
+
+    $headerNames = [
+        1 => 'big-header',
+        2 => 'medium-header',
+        3 => 'small-header',
+    ];
+    $headerName = $headerNames[$headerHeight] ?? '';
+
+
     // Content
     $title = !empty($block['data']['title']) ? $block['data']['title'] : get_the_title();
     $titleColor = $block['data']['title_color'] ?? '';
@@ -13,11 +34,27 @@
         $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
         $button1Color = $block['data']['button_button_1_color'] ?? '';
         $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
         $button2Text = $block['data']['button_button_2']['title'] ?? '';
         $button2Link = $block['data']['button_button_2']['url'] ?? '';
         $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
         $button2Color = $block['data']['button_button_2_color'] ?? '';
         $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Download = $block['data']['button_button_2_download'] ?? false;
+        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+        if (!empty($button2Icon)) {
+            $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
 
     $textPosition = $block['data']['text_position'] ?? '';
     $textPositionClass = '';
@@ -25,18 +62,22 @@
 
 
      // Project data
-    $projectData = [];
-    for ($i = 0; $i < 4; $i++) {
-        $project_title_key = "project_data_{$i}_project_title";
-        $project_text_key = "project_data_{$i}_project_text";
+     $projectTextColor = $block['data']['project_text_color'] ?? '';
+     $projectBackgroundColor = $block['data']['project_background_color'] ?? '';
 
-        if (isset($block['data'][$project_title_key]) && isset($block['data'][$project_text_key])) {
-            $projectData[] = [
+
+     $projectData = [];
+     for ($i = 0; $i < 4; $i++) {
+         $project_title_key = "project_data_{$i}_project_title";
+         $project_text_key = "project_data_{$i}_project_text";
+
+         if (isset($block['data'][$project_title_key]) && isset($block['data'][$project_text_key])) {
+             $projectData[] = [
                 'title' => $block['data'][$project_title_key],
                 'text' => $block['data'][$project_text_key],
-            ];
-        }
-    }
+             ];
+         }
+     }
 
     // Breadcrumbs
     $breadcrumbsEnabled = $block['data']['show_breadcrumbs'] ?? false;
@@ -56,6 +97,7 @@
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
     $headerBackgroundColor = $block['data']['background_color'] ?? '';
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
@@ -97,9 +139,15 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="header-project" class="block-header-project relative max-w-[2800px] mx-auto header-project-{{ $randomNumber }}-custom-padding header-project-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} ">
-    <div class="custom-styling bg-cover bg-center lg:h-[800px] 2xl:h-[800px] py-8 lg:pb-16"
-         style="background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
+
+@if ($customBlockClasses && $breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID()) <div class="breadcrumbs-{{ $customBlockClasses }}"> @endif
+    @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID())
+        @include('components.breadcrumbs.index')
+    @endif
+@if ($customBlockClasses && $breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID()) </div> @endif
+<section id="header-project" class="block-header-project relative max-w-[2800px] mx-auto header-project-{{ $randomNumber }}-custom-padding header-project-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} ">
+    <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
+         style="@if($backgroundImageParallax) background-attachment: fixed; @endif background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
             <video autoplay muted loop playsinline class="video-background absolute inset-0 w-full h-full object-cover">
                 <source src="{{ esc_url($backgroundVideoURL) }}" type="video/mp4">
@@ -108,7 +156,7 @@
         @if ($overlayEnabled)
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
-        <div class="custom-width container mx-auto px-8 h-full flex justify-center lg:justify-start lg:items-end z-30 {{ $textPositionClass }} @if ($projectData) gap-x-8 gap-y-4 lg:justify-between flex-col lg:flex-row @endif">
+        <div class="custom-width container mx-auto px-8 h-full flex justify-center lg:justify-start items-center z-30 @if ($headerStyle == 'scalable_height') py-20 @endif {{ $textPositionClass }} @if ($projectData) gap-x-8 gap-y-4 lg:justify-between flex-col lg:flex-row @endif">
             <div class="header-info z-30 flex flex-col {{ $textWidthClass }} @if ($projectData) w-full lg:w-1/2 xl:w-2/5 @endif">
                 @if ($showTitle)
                     @if ($subTitle)
@@ -120,24 +168,28 @@
                     @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'mt-4 text-lg mb-4 text-' . $textColor])
                 @endif
                 @if (($button1Text) && ($button1Link))
-                    <div class="buttons w-full flex flex-wrap gap-y-2 gap-x-6 mt-4 @if ($textPosition === 'center') justify-center items-center @endif">
+                    <div class="buttons w-full flex flex-wrap gap-y-2 gap-x-4 mt-4 @if ($textPosition === 'center') justify-center items-center @endif">
                         @include('components.buttons.default', [
-                           'text' => $button1Text,
-                           'href' => $button1Link,
-                           'alt' => $button1Text,
-                           'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                           'class' => 'rounded-lg w-fit',
-                           'target' => $button1Target,
-                       ])
+                            'text' => $button1Text,
+                            'href' => $button1Link,
+                            'alt' => $button1Text,
+                            'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                            'class' => 'rounded-lg',
+                            'target' => $button1Target,
+                            'icon' => $button1Icon,
+                            'download' => $button1Download,
+                        ])
                         @if (($button2Text) && ($button2Link))
                             @include('components.buttons.default', [
-                               'text' => $button2Text,
-                               'href' => $button2Link,
-                               'alt' => $button2Text,
-                               'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                               'class' => 'rounded-lg w-fit',
-                               'target' => $button2Target,
-                           ])
+                                'text' => $button2Text,
+                                'href' => $button2Link,
+                                'alt' => $button2Text,
+                                'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                'class' => 'rounded-lg',
+                                'target' => $button2Target,
+                                'icon' => $button2Icon,
+                                'download' => $button2Download,
+                            ])
                         @endif
                     </div>
                 @endif
@@ -148,9 +200,9 @@
             @if ($projectData)
                 <div class="project-data-list w-full lg:w-1/2 xl:w-2/5 grid grid-cols-1 sm:grid-cols-2 gap-4 z-20 relative">
                     @foreach ($projectData as $project)
-                        <div class="project-item px-6 lg:px-8 py-2 lg:py-4 w-full">
-                            <div class="project-title text-{{ $textColor }}">{!! $project['title'] !!}</div>
-                            <div class="project-text text-{{ $textColor }}">{!! $project['text'] !!}</div>
+                        <div class="project-item px-6 lg:px-8 py-2 lg:py-4 w-full bg-{{ $projectBackgroundColor }} rounded-{{ $borderRadius }}">
+                            <div class="project-title text-{{ $projectTextColor }}">{!! $project['title'] !!}</div>
+                            <div class="project-text text-{{ $projectTextColor }}">{!! $project['text'] !!}</div>
                         </div>
                     @endforeach
                 </div>
