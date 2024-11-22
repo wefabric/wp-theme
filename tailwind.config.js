@@ -57,6 +57,7 @@ module.exports = {
     'md:text-[18px]',
     'group-hover:-translate-y-2',
     'group-hover:md:-translate-y-4',
+    'mr-1',
 
     '2xl:w-3/4',
     '2xl:w-1/4',
