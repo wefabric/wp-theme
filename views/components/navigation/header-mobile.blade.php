@@ -41,19 +41,23 @@
 
                 @if (!empty($options['secondary_menu_show_elements']))
                     <div class="top-navigation flex gap-2 text-md px-4 pb-4 text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
-                        @foreach($footer_establishments as $key => $establishment_config)
+                        @foreach($footer_establishments as $key => $establishment)
                             @php
-                                $establishment = $establishment_config ? new \Wefabric\WPEstablishments\Establishment($establishment_config['establishment']) : null;
-                                $phone = $establishment ? $establishment->getContactPhone() : '';
-                                $email = $establishment ? $establishment->getContactEmailAddress() : '';
+                                if ($establishment instanceof \Wefabric\WPEstablishments\Establishment) {
+                                   // If $establishment is an object
+                                   $phone = $establishment->getContactPhone();
+                                   $email = $establishment->getContactEmailAddress();
+                                } elseif (is_array($establishment)) {
+                                   // If $establishment is an array
+                                   $establishment = new \Wefabric\WPEstablishments\Establishment($establishment['establishment']);
+                                   $phone = $establishment->getContactPhone();
+                                   $email = $establishment->getContactEmailAddress();
+                                } else {
+                                   // Handle other cases if needed
+                                   $phone = '';
+                                   $email = '';
+                                }
                             @endphp
-                            @if (in_array('whatsapp', $options['secondary_menu_show_elements']))
-                                <a class="whatsapp-link group flex items-center" href="{{ $options['whatsapp'] }}"
-                                   title="WhatsApp">
-                                    <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-brands fa-whatsapp"></i>
-                                    <span class="align-middle"></span>
-                                </a>
-                            @endif
 
                             @if (in_array('phone', $options['secondary_menu_show_elements']) || in_array('email', $options['secondary_menu_show_elements']))
                                 <div class="contact-info flex gap-x-2">
@@ -73,6 +77,8 @@
                                     @endif
                                 </div>
                             @endif
+
+                            @break
                         @endforeach
 
 
