@@ -21,24 +21,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_6710d268aa6e7",
-            "label": "Header project blok",
-            "name": "",
-            "aria-label": "",
-            "type": "accordion",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "open": 1,
-            "multi_expand": 1,
-            "endpoint": 0
-        },
-        {
             "key": "field_67407ff112f5a",
             "label": "Header stijl",
             "name": "header_style",
@@ -1099,6 +1081,26 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_669a5388e16ab",
+            "label": "Blok verbergen?",
+            "name": "hide_block",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_669a5388e16a5",
             "label": "Custom CSS klasses",
             "name": "custom_css_classes",
@@ -1117,26 +1119,6 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
-        },
-        {
-            "key": "field_669a5388e16ab",
-            "label": "Blok verbergen",
-            "name": "hide_block",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
         },
         {
             "key": "field_669a5388e16b2",
@@ -1921,5 +1903,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1732281177
+    "modified": 1733825209
 }

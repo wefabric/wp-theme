@@ -11,6 +11,7 @@
 
     $showSlider = $block['data']['show_slider'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
+    $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'kaartenBlockSwiper-' . $randomNumber;
@@ -50,6 +51,7 @@
             @endif
             @if ($swiperAutoplay)
             autoplay: {
+                delay: {{ $swiperAutoplaySpeed }},
                 disableOnInteraction: false,
             },
             @endif

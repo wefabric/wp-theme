@@ -9,13 +9,13 @@
         'desktop' => 'lg:grid-cols-' . $desktopLayout,
     ];
 
-    $showSlider = $block['data']['show_slider'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
+    $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
     $randomNumber = rand(0, 1000);
     $randomId = 'videoSliderSwiper-' . $randomNumber;
 @endphp
 
-@if ($showSlider)
+@if($block['data']['show_slider'])
     <div class="block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper items-center">
@@ -47,6 +47,7 @@
             centeredSlides: false,
             @if ($swiperAutoplay)
             autoplay: {
+                delay: {{ $swiperAutoplaySpeed }},
                 disableOnInteraction: false,
             },
             @endif

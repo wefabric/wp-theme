@@ -10,6 +10,7 @@
     ];
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
+    $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
     $randomNumber = rand(0, 1000);
     $randomId = 'testimonialSwiper-' . $randomNumber;
 @endphp
@@ -45,10 +46,10 @@
             spaceBetween: 20,
             centeredSlides: false,
             @if ($swiperAutoplay)
-                autoplay: {
-                    disableOnInteraction: false,
-                    delay: 10000,
-                },
+            autoplay: {
+                delay: {{ $swiperAutoplaySpeed }},
+                disableOnInteraction: false,
+            },
             @endif
             pagination: {
                 el: '.swiper-pagination',

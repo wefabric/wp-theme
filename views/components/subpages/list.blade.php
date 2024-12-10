@@ -10,6 +10,7 @@
     ];
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
+    $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
     $randomNumber = rand(0, 1000);
     $randomId = 'subpagesSwiper-' . $randomNumber;
 @endphp
@@ -46,6 +47,7 @@
             centeredSlides: false,
             @if ($swiperAutoplay)
             autoplay: {
+                delay: {{ $swiperAutoplaySpeed }},
                 disableOnInteraction: false,
             },
             @endif

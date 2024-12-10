@@ -35,7 +35,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6572d1276d94d",
@@ -550,7 +551,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6572d1276d963",
@@ -766,7 +768,7 @@
         },
         {
             "key": "field_6572d1276d974",
-            "label": "Autoplay swiper?",
+            "label": "Autoplay swiper",
             "name": "autoplay",
             "aria-label": "",
             "type": "true_false",
@@ -782,7 +784,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -791,6 +793,36 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "key": "field_67581823b4908",
+            "label": "Autoplay snelheid",
+            "name": "autoplay_speed",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6572d1276d974",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 5,
+            "min": 0,
+            "max": 60,
+            "placeholder": "",
+            "step": "0.1",
+            "prepend": "",
+            "append": "Seconden"
         },
         {
             "key": "field_6572d1276d97b",
@@ -807,7 +839,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6572d1276d983",
@@ -1818,5 +1851,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1729157515
+    "modified": 1733826641
 }

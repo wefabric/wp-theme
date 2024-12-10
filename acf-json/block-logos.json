@@ -978,7 +978,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -987,6 +987,36 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "key": "field_675804feac1eb",
+            "label": "Autoplay snelheid",
+            "name": "autoplay_speed",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6566ff79947d9",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 5,
+            "min": 0,
+            "max": 60,
+            "placeholder": "",
+            "step": "0.1",
+            "prepend": "",
+            "append": "Seconden"
         },
         {
             "key": "field_6566ff79947e0",
@@ -2015,5 +2045,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1729156391
+    "modified": 1733822564
 }

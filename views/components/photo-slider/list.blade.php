@@ -4,6 +4,7 @@
     $desktopLayout = $block['data']['layout_desktop'] ?? 3;
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
+    $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
     $randomNumber = rand(0, 1000);
     $randomId = 'photoSliderSwiper-' . $randomNumber;
 
@@ -33,9 +34,10 @@
             spaceBetween: {{ $spaceBetween }},
             centeredSlides: false,
             @if ($swiperAutoplay)
-                autoplay: {
-                    disableOnInteraction: false,
-                },
+            autoplay: {
+                delay: {{ $swiperAutoplaySpeed }},
+                disableOnInteraction: false,
+            },
             @endif
             pagination: {
                 el: '.swiper-pagination',

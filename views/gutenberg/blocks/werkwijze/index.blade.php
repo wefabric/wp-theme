@@ -1,4 +1,6 @@
 @php
+    //    todo: Needs block update
+
     // Content
     $title = $block['data']['title'];
     $subTitle  = $block['data']['subtitle'] ?? '';
@@ -8,8 +10,8 @@
         $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
         $titleClass = $titleClassMap[$titlePosition] ?? '';
 
-    $imageID = $block['data']['image'] ?? '';
-    $imageAlt = get_post_meta($imageID, '_wp_attachment_image_alt', true);
+    $imageId = $block['data']['image'] ?? '';
+    $imageAlt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
 
         // Buttons
         $button2Text = $block['data']['button_2_button_2']['title'] ?? '';
@@ -116,10 +118,10 @@
             </div>
 
             <div class="steps-content flex flex-col lg:flex-row gap-x-8">
-                @if ($imageID)
+                @if ($imageId)
                     <div class="workflow-image w-full lg:w-1/2">
                         @include('components.image', [
-                            'image_id' => $imageID,
+                            'image_id' => $imageId,
                             'size' => 'full',
                             'object_fit' => 'contain',
                             'img_class' => 'object-contain',
@@ -131,7 +133,7 @@
 
 {{--            Todo: List component en slider van kunnen maken --}}
 
-                <div class="custom-layout @if($imageID) w-full lg:w-1/2 @else w-full @endif">
+                <div class="custom-layout @if($imageId) w-full lg:w-1/2 @else w-full @endif">
                     @if ($workflowVariant == 'horizontal')
                         @include('components.workflow.workflow-horizontal')
                     @elseif ($workflowVariant == 'vertical')

@@ -1,4 +1,6 @@
 @php
+//    todo: Needs block update
+
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
@@ -9,6 +11,7 @@
     $serviceTitleColor = $block['data']['service_title_color'] ?? '';
     $serviceTextColor = $block['data']['service_text_color'] ?? '';
 
+
     // Buttons
     $button1Text = $block['data']['button_button_1']['title'] ?? '';
     $button1Link = $block['data']['button_button_1']['url'] ?? '';
@@ -18,6 +21,7 @@
     $buttonCardText = $block['data']['card_button_button_text'] ?? '';
     $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
     $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
+
 
     // Show services
     $displayType = $block['data']['display_type'];

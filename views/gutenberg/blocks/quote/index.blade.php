@@ -109,10 +109,10 @@
                 @include('components.content', ['content' => apply_filters('the_content', $quote), 'class' => 'quote-text text-[24px] md:text-[36px] text-' . $quoteTextColor])
             @endif
             @if ($name)
-                <p class="name-text mt-5 h6 text-{{ $personTextColor }}">{{ $name }}</p>
+                <div class="name-text mt-5 h6 text-{{ $personTextColor }}">{{ $name }}</div>
             @endif
             @if ($function)
-                <p class="function-text mt-1 text-{{ $personTextColor }}">{{ $function }}</p>
+                <div class="function-text mt-1 text-{{ $personTextColor }}">{{ $function }}</div>
             @endif
             @if (($button1Text) && ($button1Link))
                 <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">

@@ -1,5 +1,6 @@
 @php
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
+    $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
     $randomNumber = rand(0, 1000);
     $swiperTopRandomId = 'photoGallerySwiper-' . $randomNumber;
     $swiperThumbsRandomId = 'photoGallerySwiperThumbs-' . $randomNumber;
@@ -78,9 +79,10 @@
             slidesPerView: 1,
             loopedSlides: 1,
             @if ($swiperAutoplay)
-                autoplay: {
-                    disableOnInteraction: false,
-                },
+            autoplay: {
+                delay: {{ $swiperAutoplaySpeed }},
+                disableOnInteraction: false,
+            },
             @endif
 
             pagination: {

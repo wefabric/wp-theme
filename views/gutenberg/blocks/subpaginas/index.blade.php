@@ -1,6 +1,5 @@
 @php
-    // todo: Voeg hide block & parralax & active slider & buttons toe
-
+    // todo: Voeg hide block & parralax & active slider & buttons toe en herstructureer ACF
 
     // Content
     $title = $block['data']['title'] ?? '';
@@ -27,7 +26,6 @@
     // Subpages
     $subpageTitleColor = $block['data']['subpage_title_color'] ?? '';
     $subpageTextColor = $block['data']['subpage_text_color'] ?? '';
-
 
 
     $parentPage = $block['data']['parent_page'] ?? '';

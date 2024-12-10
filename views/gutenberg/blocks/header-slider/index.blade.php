@@ -1,4 +1,6 @@
 @php
+    //    todo: Needs block update, breadcrumbs and parralax
+
     // Header style
     $headerHeight = $block['data']['header_height'] ?? '';
     $heightClasses = [

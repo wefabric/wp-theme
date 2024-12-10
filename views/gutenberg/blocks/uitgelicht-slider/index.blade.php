@@ -1,4 +1,6 @@
 @php
+    //    todo: Needs block update
+
     // Content
     $title = $block['data']['title'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
@@ -7,7 +9,6 @@
     $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
-
 
       // Buttons
         $button1Text = $block['data']['button_button_1']['title'] ?? '';
@@ -96,7 +97,6 @@
     @endif
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
-
 
             <div class="flex flex-col md:flex-row md:items-center gap-y-8 md:gap-x-12 xl:gap-x-32">
 
@@ -207,8 +207,7 @@
         }
     }
 
-
-
+    /* todo: limiten aan dit blok only*/
     .active-slider-item {
         opacity: 1;
 

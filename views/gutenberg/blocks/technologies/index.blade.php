@@ -1,4 +1,6 @@
 @php
+    //    todo: Needs block update
+
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
@@ -6,24 +8,23 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
-    $technoloyTitleColor = $block['data']['technology_title_color'] ?? '';
-    $technologyTextColor = $block['data']['technology_text_color'] ?? '';
-
-    $technologyLayout = $block['data']['technology_layout'] ?? 'horizontal';
-
-
-    // Buttons
-    $button1Text = $block['data']['button_button_1']['title'] ?? '';
-    $button1Link = $block['data']['button_button_1']['url'] ?? '';
-    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
-    $button1Color = $block['data']['button_button_1_color'] ?? '';
-    $button1Style = $block['data']['button_button_1_style'] ?? '';
-    $buttonCardText = $block['data']['card_button_button_text'] ?? '';
-    $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
-    $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
+        // Buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $buttonCardText = $block['data']['card_button_button_text'] ?? '';
+        $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
+        $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
 
 
     // Show technologies
+    $technoloyTitleColor = $block['data']['technology_title_color'] ?? '';
+    $technologyTextColor = $block['data']['technology_text_color'] ?? '';
+    $technologyLayout = $block['data']['technology_layout'] ?? 'horizontal';
+
+
     $displayType = $block['data']['display_type'];
 
     if ($displayType == 'show_all') {
@@ -73,6 +74,7 @@
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+
 
     // Theme settings
     $options = get_fields('option');

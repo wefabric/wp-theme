@@ -1,4 +1,6 @@
 @php
+    //    todo: Needs block update
+
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
@@ -8,12 +10,14 @@
     $formBackgroundColor = $block['data']['form_background_color'] ?? '';
     $visibleElements = $block['data']['show_element'] ?? [];
 
+
     // Show establishments
     $establishment_args = [
         'post_type' => 'establishments',
         'posts_per_page' => -1,
     ];
     $establishment_query = new WP_Query($establishment_args);
+
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -28,6 +32,7 @@
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+
 
     // Theme Settings
     $options = get_fields('option');
