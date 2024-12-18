@@ -4,8 +4,9 @@
     $newsArchiveLink = esc_url(get_post_type_archive_link('post'));
 
     $current_language = get_locale();
+
     $filterForAll = 'Alles';
-        if( $current_language == 'en_EN' ){
+        if ($current_language == 'en_EN' || $current_language == 'en_GB') {
             $filterForAll = 'All';
         } else {
             $filterForAll = 'Alles';
