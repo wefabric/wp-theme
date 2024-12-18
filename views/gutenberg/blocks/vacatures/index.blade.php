@@ -219,7 +219,17 @@
                 @include('components.vacancies.category-filter')
             @endif
             @if (!empty($visibleElements) && in_array('post_amount', $visibleElements))
-                <div class="amount-text mt-2 {{ $textClass }}">{{ count($vacancies) }} Vacatures</div>
+                {{-- Translation for hardcoded text--}}
+                @php
+                    $vacancyTranslation = 'Vacatures';
+                    $current_language = get_locale();
+                        if ($current_language == 'en_EN' || $current_language == 'en_GB') {
+                            $vacancyTranslation = 'Vacancies';
+                        } else {
+                            $vacancyTranslation = 'Vacatures';
+                        }
+                @endphp
+                <div class="amount-text mt-2 {{ $textClass }}">{{ count($vacancies) }} {{ $vacancyTranslation }}</div>
             @endif
             @if ($vacancies)
                 @include('components.vacancies.list', ['vacancies' => $vacancies])
