@@ -202,7 +202,15 @@
         <div class="created-section w-full md:w-1/2 xl:w-1/4 flex">
             <div class="flex w-full pt-8 lg:pt-0 self-end md:text-right md:justify-end items-center justify-center">
                     <span class="created-text pr-1">
-                        Gerealiseerd door:
+                        @php
+                            $realizedText = 'Gerealiseerd door:';
+                               if ($current_language == 'en_EN' || $current_language == 'en_GB') {
+                                   $realizedText = 'Realized by:';
+                               } else {
+                                   $realizedText = 'Gerealiseerd door:';
+                               }
+                        @endphp
+                        {{ $realizedText }}
                     </span>
                 @include('components.link.opening', [
                     'href' => 'https://wefabric.nl/',
