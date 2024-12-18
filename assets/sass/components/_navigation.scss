@@ -360,7 +360,7 @@ header {
 // Search result page
 .search-result-item {
 	img {
-		@apply max-h-[300px] h-full w-full #{!important};
+		@apply h-[280px] w-full object-cover #{!important};
 	}
 }
 

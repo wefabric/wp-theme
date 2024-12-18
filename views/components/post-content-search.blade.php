@@ -1,5 +1,5 @@
 <article id="post-{{ Loop::id() }}" class="group search-result-item grid grid-cols-2 gap-x-16 mt-8" {!! post_class() !!}>
-    <div class="w-full h-auto h-[300px]">
+    <div class="w-full h-auto h-[280px]">
         <a href="{{ esc_url(get_permalink()) }}" rel="bookmark" class="h-full w-full">
             @if(has_post_thumbnail())
                 {!! the_post_thumbnail('full', [
