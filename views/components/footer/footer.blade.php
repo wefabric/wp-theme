@@ -204,6 +204,7 @@
                     <span class="created-text pr-1">
                         @php
                             $realizedText = 'Gerealiseerd door:';
+                            $current_language = get_locale();
                                if ($current_language == 'en_EN' || $current_language == 'en_GB') {
                                    $realizedText = 'Realized by:';
                                } else {
