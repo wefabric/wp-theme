@@ -354,6 +354,16 @@ header {
 }
 
 
+
+
+
+// Search result page
+.search-result-item {
+	img {
+		@apply max-h-[300px] h-full w-full #{!important};
+	}
+}
+
 // Search result page navigation
 
 .search-result-nav {
