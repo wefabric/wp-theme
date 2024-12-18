@@ -352,3 +352,27 @@ header {
 	outline: none;
 	box-shadow: none;
 }
+
+
+// Search result page navigation
+
+.search-result-nav {
+	nav {
+		@apply w-full;
+
+		.nav-links {
+			@apply flex justify-between;
+			a {
+				@apply w-full hover:text-primary;
+			}
+
+			.nav-previous {
+				@apply justify-self-end order-2 ml-auto;
+			}
+
+			.nav-next {
+				@apply justify-self-start order-1 mr-auto;
+			}
+		}
+	}
+}

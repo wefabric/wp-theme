@@ -14,7 +14,7 @@
                     @php(the_post())
                     @template('components.post-content', 'search')
                 @endwhile
-                <div class="flex flex-row">
+                <div class="search-result-nav flex flex-row">
                     {!! get_the_posts_navigation() !!}
                 </div>
             @else

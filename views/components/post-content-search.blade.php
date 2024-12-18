@@ -11,7 +11,7 @@
         </a>
     </div>
     <div>
-        <h2 class="entry-title">
+        <h2 class="entry-title text-[24px]">
             <a class="group-hover:text-primary" href="{{ esc_url(get_permalink()) }}" rel="bookmark">{!! Loop::title() !!}</a>
         </h2>
         @if('post' === get_post_type())
