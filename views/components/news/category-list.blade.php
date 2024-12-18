@@ -2,12 +2,20 @@
     $currentCatId = get_query_var('cat');
     $currentTerm = ($currentCatId) ? get_category($currentCatId) : null;
     $newsArchiveLink = esc_url(get_post_type_archive_link('post'));
+
+    $current_language = get_locale();
+    $filterForAll = 'Alles';
+        if( $current_language == 'en_EN' ){
+            $filterForAll = 'All';
+        } else {
+            $filterForAll = 'Alles';
+        }
 @endphp
 
 <div class="category-list block flex flex-wrap gap-2">
     <a href="{{ $newsArchiveLink }}"
        class="border-primary hover:bg-primary hover:text-white border-2 category-link px-4 py-2 rounded-full @if(!$currentCatId) bg-primary text-white @endif">
-        Alles
+        {{ $filterForAll }}
     </a>
 
     @php
