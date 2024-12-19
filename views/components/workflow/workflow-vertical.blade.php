@@ -58,7 +58,18 @@
                 @endif
                 <div class="step-data flex-grow">
                     @if (!empty($visibleElements) && in_array('stepnumber_2', $visibleElements))
-                       <div class="step-number">Stap {{ $i + 1 }}</div>
+                        {{-- Translation for hardcoded text--}}
+                        @php
+                            $translatedStepText = 'Stap';
+                            $current_language = get_locale();
+                                if ($current_language == 'en_EN' || $current_language == 'en_GB') {
+                                    $translatedStepText = 'Step';
+                                } else {
+                                    $translatedStepText = 'Stap';
+                                }
+                        @endphp
+
+                       <div class="step-number">{{ $translatedStepText }} {{ $i + 1 }}</div>
                     @endif
                     @if($stepTitle)
                         <h3 class="step-title mb-1 text-xl text-{{ $stepTitleColor }}">{!! $stepTitle !!}</h3>
