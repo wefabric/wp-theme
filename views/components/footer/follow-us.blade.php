@@ -48,5 +48,13 @@
                 ])
 			</div>
 		@endif
+
+		@if($option['newsletter_footer']['newsletter_type'] == 'zijlstra')
+			<div id="mc_embed_signup4" class="zijlstra-signup">
+				@include('components.footer.zijlstra-newsletter', [
+
+				])
+			</div>
+		@endif
     </div>
 @endif
