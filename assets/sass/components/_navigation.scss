@@ -321,9 +321,14 @@ header {
 }
 
 .backdrop {
-	@apply fixed top-0 left-0 w-full h-full hidden;
+	@apply fixed top-0 left-0 w-full h-full opacity-0 invisible;
 	background: rgba(0, 0, 0, 0.5);
 	z-index: 1000;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.backdrop-visible {
+	@apply opacity-100 visible;
 }
 
 .search-input-container {
@@ -389,6 +394,22 @@ header {
 			.nav-next {
 				@apply justify-self-start order-1 mr-auto;
 			}
+		}
+	}
+}
+
+// Search field on no result page
+
+section.no-results {
+	.search-form {
+		@apply relative shadow-none #{!important};
+
+		.search-field {
+			@apply ring-0 #{!important};
+		}
+
+		.search-submit {
+			@apply bg-primary hover:bg-primary-dark text-white px-4 font-bold transition-all duration-300 ease-in-out;
 		}
 	}
 }

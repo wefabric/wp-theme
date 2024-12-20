@@ -135,7 +135,7 @@
                             if (isHidden) {
                                 searchForm.classList.remove('slide-up');
                                 searchForm.classList.add('slide-down');
-                                backdrop.style.display = 'block';
+                                backdrop.classList.add('backdrop-visible');
                                 setTimeout(() => {
                                     searchForm.classList.remove('search-form-hidden');
                                     searchInput.focus();
@@ -143,10 +143,9 @@
                             } else {
                                 searchForm.classList.remove('slide-down');
                                 searchForm.classList.add('slide-up');
-
                                 searchForm.addEventListener('animationend', function handleAnimationEnd() {
                                     searchForm.classList.add('search-form-hidden');
-                                    backdrop.style.display = 'none';
+                                    backdrop.classList.remove('backdrop-visible');
                                     searchForm.removeEventListener('animationend', handleAnimationEnd);
                                 });
                             }
@@ -170,11 +169,15 @@
                         if (backdrop) {
                             backdrop.addEventListener('click', toggleSearchForm);
                         }
+
+                        document.addEventListener('keydown', function (event) {
+                            if (event.key === 'Escape' && !searchForm.classList.contains('search-form-hidden')) {
+                                toggleSearchForm();
+                            }
+                        });
                     </script>
 
-
-                @endif
-
+                    @endif
 
             </div>
         @endif
