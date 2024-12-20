@@ -177,7 +177,7 @@
                         });
                     </script>
 
-                    @endif
+                @endif
 
             </div>
         @endif

@@ -324,7 +324,7 @@ header {
 	@apply fixed top-0 left-0 w-full h-full opacity-0 invisible;
 	background: rgba(0, 0, 0, 0.5);
 	z-index: 1000;
-	transition: opacity 0.3s ease, visibility 0.3s ease;
+	transition: opacity 0.3s ease, visibility 0.1s ease;
 }
 
 .backdrop-visible {
