@@ -223,11 +223,16 @@
                 @php
                     $vacancyTranslation = 'Vacatures';
                     $current_language = get_locale();
-                        if ($current_language == 'en_EN' || $current_language == 'en_GB') {
-                            $vacancyTranslation = 'Vacancies';
-                        } else {
-                            $vacancyTranslation = 'Vacatures';
-                        }
+
+                    if (count($vacancies) === 1) {
+                        $vacancyTranslation = $current_language == 'en_EN' || $current_language == 'en_GB'
+                            ? 'Vacancy'
+                            : 'Vacancies';
+                    } else {
+                        $vacancyTranslation = $current_language == 'en_EN' || $current_language == 'en_GB'
+                            ? 'Vacature'
+                            : 'Vacatures';
+                    }
                 @endphp
                 <div class="amount-text mt-2 {{ $textClass }}">{{ count($vacancies) }} {{ $vacancyTranslation }}</div>
             @endif
