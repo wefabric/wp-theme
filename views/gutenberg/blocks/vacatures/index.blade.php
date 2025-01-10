@@ -227,10 +227,10 @@
                     if (count($vacancies) === 1) {
                         $vacancyTranslation = $current_language == 'en_EN' || $current_language == 'en_GB'
                             ? 'Vacancy'
-                            : 'Vacancies';
+                            : 'Vacature';
                     } else {
                         $vacancyTranslation = $current_language == 'en_EN' || $current_language == 'en_GB'
-                            ? 'Vacature'
+                            ? 'Vacancies'
                             : 'Vacatures';
                     }
                 @endphp
