@@ -14,9 +14,10 @@
 		$footer_establishments[] = \Wefabric\WPEstablishments\Establishment::primary();
 	}
 
-     if(array_key_exists('title_color', $option)) {
-			$title_color = $option['title_color'];
-		}
+    if (is_array($option) && isset($option['title_color'])) {
+    	$title_color = $option['title_color'];
+	}
+
 @endphp
 
 <div class="establishments text-base mb-6 leading-7">

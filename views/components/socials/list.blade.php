@@ -1,6 +1,6 @@
 @php
     $option = get_fields('option');
-    if(array_key_exists('title_color', $option)) {
+    if (is_array($option) && isset($option['title_color'])) {
         $title_color = $option['title_color'];
     }
 @endphp
