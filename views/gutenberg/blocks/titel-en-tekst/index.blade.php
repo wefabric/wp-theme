@@ -1,8 +1,9 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
-    $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -130,7 +131,7 @@
             </div>
             <div class="w-full order-1 {{ $titleOrder }}">
                 @if ($subTitle)
-                    <span class="subtitle block mb-2 text-{{ $titleColor }} @if($textAlignment == 'right') @endif lg:text-{{ $textAlignment }}">{!! $subTitle !!}</span>
+                    <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if($textAlignment == 'right') @endif lg:text-{{ $textAlignment }}">{!! $subTitle !!}</span>
                 @endif
                 @if ($title)
                     <h2 class="title mb-4 text-{{ $titleColor }} @if($textAlignment == 'right') @endif h1 lg:-mt-[6px] lg:text-{{ $textAlignment }}">{!! $title !!}</h2>

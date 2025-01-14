@@ -1,11 +1,13 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
-    $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
+    // todo: clean up file
         $textPosition = $block['data']['text_position'] ?? '';
         $textClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
         $textClass = $textClassMap[$textPosition] ?? 'text-center';
@@ -141,7 +143,7 @@
 
                         <div class="cta-data flex flex-col gap-x-16 gap-y-4 @if ($ctaLayout == 'horizontal') order-2 lg:order-1 @else order-2 @endif @if($sideImage) w-full lg:w-4/5 text-center lg:{{$textClass}} @else w-full lg:w-full {{ $textClass }} @endif">
                             @if ($subTitle)
-                                <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                                <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
                             @endif
                             @if ($title)
                                 <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
