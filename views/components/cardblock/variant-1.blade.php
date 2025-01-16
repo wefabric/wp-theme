@@ -11,7 +11,7 @@
            class="card-overlay left-0 top-0 absolute h-full w-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
 
         @if (!empty($visibleElements) && in_array('category', $visibleElements))
-            @if ($terms && !is_bool($terms))
+            @if (!empty($terms) && is_array($terms) && !is_bool($terms))
                 <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                     @foreach ($terms as $term)
                         @php
