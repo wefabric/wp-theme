@@ -26,35 +26,35 @@
             @endif
         @endif
 
-{{--        <div class="w-full content-wrapper flex flex-col items-center gap-y-4">--}}
-{{--            @if ($pageIcon)--}}
-{{--                <a class="page-icon" href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina">--}}
-{{--                    <i class="text-{{ $cardIconColor }} page-icon relative z-20 text-[32px] md:text-[40px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-white transition-all duration-300 ease-in-out"></i>--}}
-{{--                </a>--}}
-{{--            @endif--}}
-{{--            @if (!empty($visibleElements) && in_array('title_text', $visibleElements) && $pageTitle)--}}
-{{--                <a href="{{ $pageUrl }} " aria-label="Ga naar {{ $pageTitle }} pagina"--}}
-{{--                   class="text-{{ $cardTitleColor }} page-title relative z-20 h4 font-bold group-hover:text-white transition-all duration-300 ease-in-out">--}}
-{{--                    {!! $pageTitle !!}--}}
-{{--                </a>--}}
-{{--            @endif--}}
-{{--            @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && $pageExcerpt)--}}
-{{--                <p class="text-{{ $cardTextColor }} page-excerpt relative z-20 group-hover:text-white transition-all duration-300 ease-in-out">{!! $pageExcerpt !!}</p>--}}
-{{--            @endif--}}
-{{--            @if (!empty($visibleElements) && in_array('button', $visibleElements))--}}
-{{--                @if ($buttonCardText)--}}
-{{--                    <div class="page-button relative z-20 flex items-center">--}}
-{{--                        @include('components.buttons.default', [--}}
-{{--                            'text' => $buttonCardText,--}}
-{{--                            'href' => $pageUrl,--}}
-{{--                            'alt' => $buttonCardText,--}}
-{{--                            'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,--}}
-{{--                            'class' => 'rounded-lg',--}}
-{{--                            'icon' => $buttonCardIcon,--}}
-{{--                        ])--}}
-{{--                    </div>--}}
-{{--                @endif--}}
-{{--            @endif--}}
-{{--        </div>--}}
-{{--    </div>--}}
+        <div class="w-full content-wrapper flex flex-col items-center gap-y-4">
+            @if ($pageIcon)
+                <a class="page-icon" href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina">
+                    <i class="text-{{ $cardIconColor }} page-icon relative z-20 text-[32px] md:text-[40px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-white transition-all duration-300 ease-in-out"></i>
+                </a>
+            @endif
+            @if (is_array($visibleElements) && !empty($visibleElements) && in_array('title_text', $visibleElements) && $pageTitle)
+                <a href="{{ $pageUrl }} " aria-label="Ga naar {{ $pageTitle }} pagina"
+                   class="text-{{ $cardTitleColor }} page-title relative z-20 h4 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
+                    {!! $pageTitle !!}
+                </a>
+            @endif
+            @if (is_array($visibleElements) && !empty($visibleElements) && in_array('overview_text', $visibleElements) && $pageExcerpt)
+                <p class="text-{{ $cardTextColor }} page-excerpt relative z-20 group-hover:text-white transition-all duration-300 ease-in-out">{!! $pageExcerpt !!}</p>
+            @endif
+            @if (is_array($visibleElements) && !empty($visibleElements) && in_array('button', $visibleElements))
+                @if ($buttonCardText)
+                    <div class="page-button relative z-20 flex items-center">
+                        @include('components.buttons.default', [
+                            'text' => $buttonCardText,
+                            'href' => $pageUrl,
+                            'alt' => $buttonCardText,
+                            'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
+                            'class' => 'rounded-lg',
+                            'icon' => $buttonCardIcon,
+                        ])
+                    </div>
+                @endif
+            @endif
+        </div>
+    </div>
 </div>
