@@ -3,6 +3,8 @@
 
 .block-werknemers {
   @media only screen and (min-width: 640px) {
+    .mail-link:hover .popup,
+    .phone-link:hover .popup,
     .contact-icon-wrapper:hover .popup,
     .mail-icon:hover .popup,
     .phone-icon:hover .popup,
@@ -26,7 +28,7 @@
 
 .block-header {
   .custom-image-width {
-    @apply w-[100vw] max-w-[2800px] md:w-[50vw] md:max-w-[1400px];
+    @apply w-full max-w-[2800px] md:w-1/2 md:max-w-[1400px];
   }
 
   .align-image-left {

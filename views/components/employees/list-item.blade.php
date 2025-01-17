@@ -52,24 +52,24 @@
                  'alt' => $fullName,
             ])
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements) && ($contactInfoDisplay == 'in_image'))
-                <div class="contact-items relative">
+                <div class="contact-items absolute bottom-0 right-0 flex gap-x-2">
                     @if ($mail)
-                        <div class="contact-icon-wrapper relative">
-                            <div class="mail-icon">
-                                <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" class="text-{{ $employeeTextColor }} hover:text-primary ">
-                                    <i class="contact-text w-4 object-cover fas fa-envelope mr-3"></i>@if($showFullContactInfo) {{ $mail }} @endif
-                                </a>
+                        <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" class="text-{{ $employeeTextColor }} hover:text-white ">
+                            <div class="contact-icon-wrapper relative bg-primary w-10 h-10 flex justify-center items-center">
+                                <div class="mail-icon">
+                                    <i class="contact-text object-cover fas fa-envelope"></i>@if($showFullContactInfo) {{ $mail }} @endif
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     @endif
                     @if ($phoneNumber)
-                        <div class="contact-icon-wrapper relative">
-                            <div class="phone-icon">
-                                <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" class="text-{{ $employeeTextColor }} hover:text-primary">
-                                    <i class="contact-text w-4 object-cover fas fa-phone mr-3"></i>@if($showFullContactInfo) {{ $phoneNumber }} @endif
-                                </a>
+                        <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" class="text-{{ $employeeTextColor }} hover:text-white">
+                            <div class="contact-icon-wrapper relative bg-primary w-10 h-10 flex justify-center items-center">
+                                 <div class="phone-icon">
+                                    <i class="contact-text object-cover fas fa-phone"></i>@if($showFullContactInfo) {{ $phoneNumber }} @endif
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     @endif
                 </div>
             @endif
@@ -97,30 +97,30 @@
                 </div>
             @endif
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements) && ($contactInfoDisplay == 'under_image'))
-                <div class="contact-items relative">
+                <div class="contact-items relative w-fit">
                     @if ($mail)
-                        <div class="contact-icon-wrapper relative">
-                            <div class="mail-icon">
-                                <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" class="text-{{ $employeeTextColor }} hover:text-primary ">
+                        <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" class="mail-link text-{{ $employeeTextColor }} hover:text-primary">
+                            <div class="contact-icon-wrapper relative">
+                                <div class="mail-icon">
                                     <i class="contact-text w-4 object-cover fas fa-envelope mr-3"></i>@if($showFullContactInfo) {{ $mail }} @endif
-                                </a>
-                                <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
-                                    <div class=" bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $mail }}</div>
+                                    <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
+                                        <div class=" bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $mail }}</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     @endif
                     @if ($phoneNumber)
-                        <div class="contact-icon-wrapper relative">
-                            <div class="phone-icon">
-                                <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" class="text-{{ $employeeTextColor }} hover:text-primary">
+                        <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" class="phone-link text-{{ $employeeTextColor }} hover:text-primary">
+                            <div class="contact-icon-wrapper relative">
+                                <div class="phone-icon">
                                     <i class="contact-text w-4 object-cover fas fa-phone mr-3"></i>@if($showFullContactInfo) {{ $phoneNumber }} @endif
-                                </a>
-                                <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
-                                    <div class=" bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $phoneNumber }}</div>
+                                    <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
+                                        <div class="bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $phoneNumber }}</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     @endif
                 </div>
             @endif

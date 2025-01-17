@@ -158,7 +158,7 @@
         @if ($overlayEnabled)
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
-        <div class="custom-width relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }} @if ($contentImageId) gap-x-8 @endif @if ($fullHeightContentImage && $textPosition === 'right') justify-end @endif">
+        <div class="custom-width @if (!$fullHeightContentImage) relative @endif container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }} @if ($contentImageId) gap-x-8 @endif @if ($fullHeightContentImage && $textPosition === 'right') justify-end @endif">
             <div class="header-info z-30 flex flex-col @if ($headerStyle == 'scalable_height') py-20 @endif {{ $textWidthClass }} @if ($contentImageId) w-full md:w-1/2 @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 pl-8 @endif @endif">
                 @if ($showTitle)
                     @if ($subTitle)

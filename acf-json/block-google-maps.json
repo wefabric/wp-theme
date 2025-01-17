@@ -35,7 +35,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_651bdd529fbf9",
@@ -47,15 +48,34 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "75",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_651bdd529fc17",
+            "label": "Titel kleur",
+            "name": "title_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "allow_in_bindings": 1,
+            "font_size": 14
         },
         {
             "key": "field_671101d1d9b5e",
@@ -74,20 +94,21 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "75",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_651bdd529fc17",
-            "label": "Titel kleur",
-            "name": "title_color",
+            "key": "field_678a6289afa3b",
+            "label": "Subtitel kleur",
+            "name": "subtitle_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
@@ -101,11 +122,12 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -118,11 +140,12 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "75",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
+            "allow_in_bindings": 1,
             "tabs": "all",
             "toolbar": "full",
             "media_upload": 1,
@@ -136,20 +159,14 @@
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_671101ded9b5f",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -550,7 +567,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_66029d6c9436d",
@@ -634,7 +652,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_651bdd529fc30",
@@ -877,7 +896,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_665dd316284ae",
@@ -938,7 +958,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_665dd38a284b3",
@@ -1043,7 +1064,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_665dd3d7284b8",
@@ -1148,7 +1170,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_665dd412284bc",
@@ -1299,7 +1322,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_665dd470284c4",
@@ -1404,7 +1428,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_665dd470284c9",
@@ -1509,7 +1534,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_665dd470284ce",
@@ -1616,7 +1642,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         }
     ],
     "location": [
@@ -1637,5 +1664,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1729168973
+    "modified": 1737122738
 }
