@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/projecten",
+  "title": "Projecten",
+  "description": "Een projecten blok",
+  "category": "wefabric-theme",
+  "icon": "welcome-view-site",
+  "apiVersion": 2,
+  "keywords": [
+    "Projecten"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
