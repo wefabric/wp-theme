@@ -48,15 +48,34 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "75",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_6523d7ebbad90",
+            "label": "Titel kleur",
+            "name": "title_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "allow_in_bindings": 1,
+            "font_size": 14
         },
         {
             "key": "field_668fecba626b7",
@@ -75,20 +94,21 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "75",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_6523d7ebbad90",
-            "label": "Titel kleur",
-            "name": "title_color",
+            "key": "field_678e1205c444f",
+            "label": "Subtitel kleur",
+            "name": "subtitle_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
@@ -102,16 +122,17 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
             "key": "field_66bf1a90fc3d4",
-            "label": "Button",
+            "label": "Button (onder testimonial)",
             "name": "button",
             "aria-label": "",
             "type": "group",
@@ -515,6 +536,7 @@
                 "name": "Naam",
                 "function": "Functie",
                 "avatar_image": "Avatar afbeelding",
+                "logo_image": "Logo afbeelding",
                 "testimonial_text": "Testimonial tekst",
                 "star_rating": "Sterren rating",
                 "quote": "Quote icoon",
@@ -524,6 +546,7 @@
             "default_value": [],
             "return_format": "value",
             "allow_custom": 0,
+            "allow_in_bindings": 1,
             "layout": "vertical",
             "toggle": 0,
             "save_custom": 0,
@@ -1808,5 +1831,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1733825082
+    "modified": 1737364054
 }

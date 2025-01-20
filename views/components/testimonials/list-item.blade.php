@@ -8,6 +8,7 @@
     $testimonialText = $fields['testimonial_text'] ?? '';
     $testimonialFunction = $fields['function'] ?? '';
     $testimonialAvatarId = $fields['avatar'] ?? '';
+    $testimonialLogoId = $fields['logo_image'] ?? '';
     $testimonialImageId = $fields['image'] ?? '';
     $testimonialStars = $fields['star_rating'] ?? '';
 
@@ -70,7 +71,7 @@
 
             <div class="avatar-section flex flex-col md:flex-row items-center gap-x-4 md:gap-x-6 gap-y-4 mb-4 md:mb-0 order-1 md:order-4 text-center md:text-left">
                 @if (!empty($visibleElements) && in_array('avatar_image', $visibleElements) && $testimonialAvatarId)
-                    <div>
+                    <div class="avatar-image-section">
                         @include('components.image', [
                             'image_id' => $testimonialAvatarId,
                             'size' => 'full',
@@ -80,16 +81,27 @@
                         ])
                     </div>
                 @endif
-                <div>
-                    @if ($testimonialName || $testimonialFunction)
+                @if ($testimonialName || $testimonialFunction)
+                    <div>
                         @if (!empty($visibleElements) && in_array('name', $visibleElements) && $testimonialName)
                             <div class="name-text font-bold text-lg">{!! $testimonialName !!}</div>
                         @endif
                         @if (!empty($visibleElements) && in_array('function', $visibleElements) && $testimonialFunction)
                             <div class="function-text">{!! $testimonialFunction !!}</div>
                         @endif
-                    @endif
-                </div>
+                    </div>
+                @endif
+                @if (!empty($visibleElements) && in_array('logo_image', $visibleElements) && $testimonialLogoId)
+                    <div class="logo-image-section">
+                        @include('components.image', [
+                            'image_id' => $testimonialLogoId,
+                            'size' => 'full',
+                            'object_fit' => 'cover',
+                            'img_class' => 'logo-image object-contain object-center',
+                            'alt' => $testimonialTitle,
+                        ])
+                    </div>
+                @endif
             </div>
 
             {{-- todo: add inside card button--}}
