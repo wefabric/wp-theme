@@ -132,7 +132,7 @@
         },
         {
             "key": "field_66bf1a90fc3d4",
-            "label": "Button (onder testimonial)",
+            "label": "Button (onder testimonials)",
             "name": "button",
             "aria-label": "",
             "type": "group",
@@ -1831,5 +1831,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737364054
+    "modified": 1737459020
 }
