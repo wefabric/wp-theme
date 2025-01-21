@@ -21,7 +21,8 @@ import './cad-download-toggle';
 import './lazyload';
 import './../../../theme-child/assets/js/app'; // Child theme js
 
-Swiper.use([Navigation, Pagination, Autoplay , Zoom, Thumbs, EffectFade]);
+// Use Swiper and the necessary modules
+Swiper.use([Navigation, Pagination, Autoplay, Zoom, Thumbs, EffectFade]);
 
 window.Alpine = Alpine
 window.Swiper = Swiper;

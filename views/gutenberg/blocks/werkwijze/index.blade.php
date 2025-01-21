@@ -1,39 +1,90 @@
 @php
-    //    todo: Needs block update
-
     // Content
-    $title = $block['data']['title'];
-    $subTitle  = $block['data']['subtitle'] ?? '';
+    $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-
-        $titlePosition = $block['data']['title_position'] ?? '';
-        $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-        $titleClass = $titleClassMap[$titlePosition] ?? '';
-
-    $imageId = $block['data']['image'] ?? '';
-    $imageAlt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
+    $text = $block['data']['text'] ?? '';
+    $textColor = $block['data']['text_color'] ?? '';
 
         // Buttons
-        $button2Text = $block['data']['button_2_button_2']['title'] ?? '';
-        $button2Link = $block['data']['button_2_button_2']['url'] ?? '';
-        $button2Target = $block['data']['button_2_button_2']['target'] ?? '_self';
-        $button2Color = $block['data']['button_2_button_2_color'] ?? '';
-        $button2Style = $block['data']['button_2_button_2_style'] ?? '';
-
         $button1Text = $block['data']['button_button_1']['title'] ?? '';
         $button1Link = $block['data']['button_button_1']['url'] ?? '';
         $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
         $button1Color = $block['data']['button_button_1_color'] ?? '';
         $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+        $button2Text = $block['data']['button_button_2']['title'] ?? '';
+        $button2Link = $block['data']['button_button_2']['url'] ?? '';
+        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
+        $button2Color = $block['data']['button_button_2_color'] ?? '';
+        $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Download = $block['data']['button_button_2_download'] ?? false;
+        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+        if (!empty($button2Icon)) {
+            $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+
+    $textPosition = $block['data']['text_position'] ?? '';
+    $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
+    $textClass = $textClassMap[$textPosition] ?? '';
+
+
 
 
     // Show steps
     $workflowVariant = $block['data']['layout_steps'] ?? '';
-
-    $steps = $block['data']['steps'];
     $showStepNumber = $block['data']['show_step_number'] ?? false;
     $stepTitleColor = $block['data']['step_title_color'] ?? '';
     $stepTextColor = $block['data']['step_text_color'] ?? '';
+    $stepIconColor = $block['data']['step_icon_color'] ?? '';
+    $visibleElements = $block['data']['show_element'] ?? [];
+
+    $specialLayout = $block['data']['special_layout'] ?? false;
+    $imageId = $block['data']['image'] ?? '';
+    $imageAlt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
+    $stepsLocation = $block['data']['steps_location'] ?? 'left';
+
+
+    $stepCount = $block['data']['steps'];
+    $steps = [];
+
+    for ($i = 0; $i < $stepCount; $i++) {
+        $stepTitle = $block['data']["steps_{$i}_step_title"];
+        $stepText = $block['data']["steps_{$i}_step_text"];
+        $stepNumber = $i + 1;
+        $stepImage = $block['data']["steps_{$i}_step_image"] ?? '';
+        $stepIcon = $block['data']["steps_{$i}_step_icon"] ?? null;
+
+
+        $iconClass = '';
+        if ($stepIcon !== null) {
+            $iconData = json_decode($stepIcon, true);
+
+            if ($iconData && isset($iconData['style']) && isset($iconData['id'])) {
+                $iconClass = $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+
+        $steps[] = [
+            'stepTitle' => $stepTitle,
+            'stepText' => $stepText,
+            'stepImage' => $stepImage,
+            'stepNumber' => $stepNumber,
+            'stepIcon' => $iconData ?? null,
+            'iconClass' => $iconClass,
+        ];
+    }
 
 
     // Blokinstellingen
@@ -47,6 +98,7 @@
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
     $hideBlock = $block['data']['hide_block'] ?? false;
@@ -88,38 +140,33 @@
 @endphp
 
 <section id="werkwijze" class="block-werkwijze relative werkwijze-{{ $randomNumber }}-custom-padding werkwijze-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
 
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto layout">
 
-            <div class="content-data mb-4">
+        <div class="layout relative z-10 {{ $fullScreenClass }}">
+            <div class="content-data {{ $blockClass }} mx-auto">
+
                 @if ($subTitle)
-                    <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $titleClass }}">{!! $subTitle !!}</span>
+                    <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
                 @endif
                 @if ($title)
-                    <h2 class="title mb-4 text-{{ $titleColor }} {{ $titleClass }}">{!! $title !!}</h2>
+                    <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
                 @endif
-                @if (($button2Text) && ($button2Link))
-                    <div class="w-full flex flex-wrap gap-4 mt-4 md:mt-8">
-                        @include('components.buttons.default', [
-                           'text' => $button2Text,
-                           'href' => $button2Link,
-                           'alt' => $button2Text,
-                           'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                           'class' => 'rounded-lg text-left',
-                           'target' => $button2Target,
-                       ])
-                    </div>
+                @if ($text)
+                    @include('components.content', [
+                        'content' => apply_filters('the_content', $text),
+                        'class' => 'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
+                    ])
                 @endif
             </div>
 
-            <div class="steps-content flex flex-col lg:flex-row gap-x-8">
-                @if ($imageId)
-                    <div class="workflow-image w-full lg:w-1/2">
+            <div class="steps-content flex flex-col lg:flex-row gap-x-8 items-stretch">
+                @if ($imageId && !$specialLayout)
+                    <div class="workflow-image w-full lg:w-1/2 @if ($stepsLocation == 'right') order-1 lg:order-1 @else order-1 lg:order-2 @endif">
                         @include('components.image', [
                             'image_id' => $imageId,
                             'size' => 'full',
@@ -130,34 +177,51 @@
                     </div>
                 @endif
 
+                @if ($specialLayout)
+                    <div class="special-layout w-full lg:w-1/2 @if ($stepsLocation == 'right') order-1 lg:order-1 @else order-1 lg:order-2 @endif">
+                        @include('components.workflow.slider-list')
+                    </div>
+                @endif
 
-{{--            Todo: List component en slider van kunnen maken --}}
-
-                <div class="custom-layout @if($imageId) w-full lg:w-1/2 @else w-full @endif">
-                    @if ($workflowVariant == 'horizontal')
-                        @include('components.workflow.workflow-horizontal')
-                    @elseif ($workflowVariant == 'vertical')
-                        @include('components.workflow.workflow-vertical')
-                    @endif
-
-                    @if (($button1Text) && ($button1Link))
-                        <div class="w-full flex flex-wrap gap-4 mt-4 md:mt-8 pl-6 sm:pl-12 md:pl-14">
-                            @include('components.buttons.default', [
-                               'text' => $button1Text,
-                               'href' => $button1Link,
-                               'alt' => $button1Text,
-                               'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                               'class' => 'rounded-lg text-left',
-                               'target' => $button1Target,
-                           ])
-                        </div>
+                <div class="custom-layout @if($imageId || $specialLayout) w-full lg:w-1/2 @else w-full @endif @if ($stepsLocation == 'right') order-2 lg:order-2 @else order-2 lg:order-1 @endif">
+                    @if ($steps && $workflowVariant == 'horizontal')
+                        @include('components.workflow.horizontal-list', ['steps' => $steps])
+                    @elseif ($steps && $workflowVariant == 'vertical')
+                        @include('components.workflow.vertical-list', ['steps' => $steps])
                     @endif
                 </div>
             </div>
+
+            @if (($button1Text) && ($button1Link))
+                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
+                    @include('components.buttons.default', [
+                        'text' => $button1Text,
+                        'href' => $button1Link,
+                        'alt' => $button1Text,
+                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                        'class' => 'rounded-lg',
+                        'target' => $button1Target,
+                        'icon' => $button1Icon,
+                        'download' => $button1Download,
+                    ])
+                    @if (($button2Text) && ($button2Link))
+                        @include('components.buttons.default', [
+                            'text' => $button2Text,
+                            'href' => $button2Link,
+                            'alt' => $button2Text,
+                            'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                            'class' => 'rounded-lg',
+                            'target' => $button2Target,
+                            'icon' => $button2Icon,
+                            'download' => $button2Download,
+                        ])
+                    @endif
+                </div>
+            @endif
+
         </div>
     </div>
 </section>
-
 
 <style>
     .werkwijze-{{ $randomNumber }}-custom-padding {
@@ -202,4 +266,3 @@
         }
     }
 </style>
-
