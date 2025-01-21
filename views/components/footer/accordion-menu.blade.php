@@ -1,4 +1,4 @@
-<div class="mb-3">
+<div class="accordion-item mb-3">
     <div class="leading-relaxed">
         <div class="@if($setAccordion === true) accordion-drawer @endif">
             @if($setAccordion === true) <input class="accordion-drawer__trigger mb-4" id="accordion-drawer-{{ $accordionId }}" type="checkbox" /> @endif

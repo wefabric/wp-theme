@@ -23,7 +23,7 @@
     $termsPage = $option['pages']['terms_page'] ?? '';
 @endphp
 
-<div class="footer bg-{{ $bg_color ?? 'black' }} text-{{ $text_color ?? 'white' }} text-base pb-10">
+<div class="footer bg-{{ $bg_color ?? '' }} text-{{ $text_color ?? 'white' }} text-base pb-10">
     @if(!empty($usps))
         <div class="bg-white text-black py-10 lg:py-20 px-4 md:px-8 lg:px-36">
             @include('components.slider.grid', [
@@ -39,51 +39,55 @@
         </div>
     @endif
 
-    <div class="container mx-auto px-8 relative">
+    <div class="custom-styling relative">
+        <div class="container mx-auto px-8 relative">
 
-        <div class="w-full">
-            <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 pt-12 lg:pt-16 pb-6 lg:pb-0">
-                <div class="lg:pb-6">
-                    @php
-                        $menu = wp_nav_menu([
-                            'theme_location' => 'footer_menu_one',
-                            'menu_id' => 'footer_menu_one',
-                            'echo' => false
-                        ]);
-                    @endphp
-                    @include('components.footer.accordion-menu', ['menu' => $menu,
-                        'title' => !empty($footerTitles['footer_title_1']) ? $footerTitles['footer_title_1'] : wp_get_nav_menu_name('footer_menu_one'),
-                        'accordionId' => 1,
-                        'setAccordion' => true])
-                </div>
+            <div class="w-full">
+                <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 pt-12 lg:pt-16 pb-6 lg:pb-0">
 
-                <div class="lg:pb-6">
-                    @php
-                        $menu = wp_nav_menu([
-                            'theme_location' => 'footer_menu_two',
-                            'menu_id' => 'footer_menu_two',
-                            'echo' => false
-                        ]);
-                    @endphp
+                    <div class="lg:pb-6 menu-1-section">
+                        @php
+                            $menu = wp_nav_menu([
+                                'theme_location' => 'footer_menu_one',
+                                'menu_id' => 'footer_menu_one',
+                                'echo' => false
+                            ]);
+                        @endphp
+                        @include('components.footer.accordion-menu', ['menu' => $menu,
+                            'title' => !empty($footerTitles['footer_title_1']) ? $footerTitles['footer_title_1'] : wp_get_nav_menu_name('footer_menu_one'),
+                            'accordionId' => 1,
+                            'setAccordion' => true])
+                    </div>
 
-                    @include('components.footer.accordion-menu', ['menu' => $menu,
-                        'title' => !empty($footerTitles['footer_title_2']) ? $footerTitles['footer_title_2'] : wp_get_nav_menu_name('footer_menu_two'),
-                        'accordionId' => 2,
-                        'setAccordion' => true])
-                </div>
+                    <div class="lg:pb-6 menu-2-section">
+                        @php
+                            $menu = wp_nav_menu([
+                                'theme_location' => 'footer_menu_two',
+                                'menu_id' => 'footer_menu_two',
+                                'echo' => false
+                            ]);
+                        @endphp
 
-                <div class="lg:pb-6">
-                    @include('components.footer.accordion-menu', ['menu' => view('components.footer.contact'),
-                        'title' => !empty($footerTitles['footer_title_3']) ? $footerTitles['footer_title_3'] : __('Contactgegevens', 'wefabric'),
-                        'accordionId' => 3,
-                        'setAccordion' => true])
-                </div>
+                        @include('components.footer.accordion-menu', ['menu' => $menu,
+                            'title' => !empty($footerTitles['footer_title_2']) ? $footerTitles['footer_title_2'] : wp_get_nav_menu_name('footer_menu_two'),
+                            'accordionId' => 2,
+                            'setAccordion' => true])
+                    </div>
 
-                <div class="lg:pb-6">
-                    @include('components.footer.accordion-menu', ['menu' => view('components.footer.follow-us'),
-                        'title' => !empty($footerTitles['footer_title_4']) ? $footerTitles['footer_title_4'] : __('Volg ons', 'wefabric'),
-                        'accordionId' => 4,
-                        'setAccordion' => true])
+                    <div class="lg:pb-6 contact-section">
+                        @include('components.footer.accordion-menu', ['menu' => view('components.footer.contact'),
+                            'title' => !empty($footerTitles['footer_title_3']) ? $footerTitles['footer_title_3'] : __('Contactgegevens', 'wefabric'),
+                            'accordionId' => 3,
+                            'setAccordion' => true])
+                    </div>
+
+
+                    <div class="lg:pb-6 follow-section">
+                        @include('components.footer.accordion-menu', ['menu' => view('components.footer.follow-us'),
+                            'title' => !empty($footerTitles['footer_title_4']) ? $footerTitles['footer_title_4'] : __('Volg ons', 'wefabric'),
+                            'accordionId' => 4,
+                            'setAccordion' => true])
+                    </div>
                 </div>
             </div>
         </div>
@@ -98,133 +102,135 @@
         </div>
     @endif
 
-    <div class="container mx-auto px-8 relative bottom-info flex flex-col md:flex-row">
-        <div class="logo-section flex flex-col justify-end lg:w-1/4 lg:pr-8">
-            @if (!empty($visibleFooterElements) && in_array('logo', $visibleFooterElements))
-                <div class="hidden lg:block">
-                    @php
-                        $settings = get_field('common', 'option');
-                        if(!empty($settings)) {
-                            if(array_key_exists('logo_white', $settings)) {
-                                $logoId = $settings['logo_white'];
-                            } elseif(array_key_exists('logo', $settings)) {
-                                $logoId = $settings['logo'];
+    <div class="relative bottom-info">
+        <div class="custom-flex-styling container mx-auto px-8 flex flex-col md:flex-row">
+            <div class="logo-section flex flex-col justify-end lg:w-1/4 lg:pr-8">
+                @if (!empty($visibleFooterElements) && in_array('logo', $visibleFooterElements))
+                    <div class="hidden lg:block">
+                        @php
+                            $settings = get_field('common', 'option');
+                            if(!empty($settings)) {
+                                if(array_key_exists('logo_white', $settings)) {
+                                    $logoId = $settings['logo_white'];
+                                } elseif(array_key_exists('logo', $settings)) {
+                                    $logoId = $settings['logo'];
+                                }
                             }
-                        }
-                    @endphp
-                    @if(!empty($logoId))
-                        {!! wp_get_attachment_image($logoId, 'footer_logo', false, ['class' => 'mx-auto lg:mx-0 inline-block']) !!}
-                    @endif
-                </div>
-            @endif
-
-            @if (!empty($visibleFooterElements) && in_array('copyright', $visibleFooterElements))
-                <div class="copyright-text">© {{ date('Y') }} {{ get_bloginfo('name') }}</div>
-            @endif
-        </div>
-
-        <div class="partners-section w-full md:w-1/2 flex flex-col self-end">
-            <div class="flex flex-row mb-5 gap-x-4 justify-center md:justify-start">
-                @php
-                    $footer = [];
-                    if(!empty($option) && array_key_exists('footer_partners', $option)) {
-                        $footer = $option['footer_partners'];
-                    }
-                @endphp
-
-                @if($footer)
-                    @foreach($footer as $item)
-                        <div class="flex items-center">
-                            @if($item['url'])
-                                @include('components.link.opening', [
-                                    'href' => $item['url'],
-                                    'alt' => $item['alt_text']
-                                ])
-                            @endif
-                            @include('components.image', [
-                                'image_id' => $item['logo'],
-                                'size' => 'usp_icon',
-                                'class' => 'disable-rounded',
-                            ])
-                            @if($item['url'])
-                                @include('components.link.closing')
-                            @endif
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-
-            <div class="lg:flex lg:flex-row">
-                @php
-                    $class = 'inline-block hover:underline md:px-2';
-
-                    $menuLocations = get_nav_menu_locations();
-                    $menu = null;
-                    if(isset($menuLocations['footer_menu_three']) && $menuID = $menuLocations['footer_menu_three']) {
-                          $menu = wp_get_nav_menu_items($menuID);
-                    }
-
-                @endphp
-
-                @if($menu)
-                    <div id="footer_menu_three" class="bottom-footer">
-                        @foreach($menu as $post)
-                            @include('components.link.simple', [
-                                'href' => $post->url,
-                                'class' => $class,
-                                'text' => __($post->title, 'wefabric')
-                            ])
-
-                            @php
-                                $last = (in_array($post, $menu) && $post == end($menu));
-                            @endphp
-                            @if(!$last)
-                                <span class="divider"> / </span>
-                            @endif
-                        @endforeach
+                        @endphp
+                        @if(!empty($logoId))
+                            {!! wp_get_attachment_image($logoId, 'footer_logo', false, ['class' => 'mx-auto lg:mx-0 inline-block']) !!}
+                        @endif
                     </div>
                 @endif
+
+                @if (!empty($visibleFooterElements) && in_array('copyright', $visibleFooterElements))
+                    <div class="copyright-text">© {{ date('Y') }} {{ get_bloginfo('name') }}</div>
+                @endif
             </div>
 
-            <div class="text-center md:text-left text-[14px]">
-                @if($termsPage)
-                    <a class="terms-text underline" href="{{ get_permalink($termsPage) }}">{{ get_the_title($termsPage) }}</a> @if($termsPage && $privacyPage)
-                        |
+            <div class="partners-section w-full md:w-1/2 flex flex-col self-end">
+                <div class="flex flex-row mb-5 gap-x-4 justify-center md:justify-start">
+                    @php
+                        $footer = [];
+                        if(!empty($option) && array_key_exists('footer_partners', $option)) {
+                            $footer = $option['footer_partners'];
+                        }
+                    @endphp
+
+                    @if($footer)
+                        @foreach($footer as $item)
+                            <div class="flex items-center">
+                                @if($item['url'])
+                                    @include('components.link.opening', [
+                                        'href' => $item['url'],
+                                        'alt' => $item['alt_text']
+                                    ])
+                                @endif
+                                @include('components.image', [
+                                    'image_id' => $item['logo'],
+                                    'size' => 'usp_icon',
+                                    'class' => 'disable-rounded',
+                                ])
+                                @if($item['url'])
+                                    @include('components.link.closing')
+                                @endif
+                            </div>
+                        @endforeach
                     @endif
-                @endif
-                @if($privacyPage)
-                    <a class="privacy-text underline" href="{{ get_permalink($privacyPage) }}">{{ get_the_title($privacyPage) }}</a>
-                @endif
+                </div>
+
+                <div class="lg:flex lg:flex-row">
+                    @php
+                        $class = 'inline-block hover:underline md:px-2';
+
+                        $menuLocations = get_nav_menu_locations();
+                        $menu = null;
+                        if(isset($menuLocations['footer_menu_three']) && $menuID = $menuLocations['footer_menu_three']) {
+                              $menu = wp_get_nav_menu_items($menuID);
+                        }
+
+                    @endphp
+
+                    @if($menu)
+                        <div id="footer_menu_three" class="bottom-footer">
+                            @foreach($menu as $post)
+                                @include('components.link.simple', [
+                                    'href' => $post->url,
+                                    'class' => $class,
+                                    'text' => __($post->title, 'wefabric')
+                                ])
+
+                                @php
+                                    $last = (in_array($post, $menu) && $post == end($menu));
+                                @endphp
+                                @if(!$last)
+                                    <span class="divider"> / </span>
+                                @endif
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+
+                <div class="text-center md:text-left text-[14px]">
+                    @if($termsPage)
+                        <a class="terms-text underline" href="{{ get_permalink($termsPage) }}">{{ get_the_title($termsPage) }}</a> @if($termsPage && $privacyPage)
+                            |
+                        @endif
+                    @endif
+                    @if($privacyPage)
+                        <a class="privacy-text underline" href="{{ get_permalink($privacyPage) }}">{{ get_the_title($privacyPage) }}</a>
+                    @endif
+                </div>
+
             </div>
 
-        </div>
+            <div class="created-section w-full md:w-1/2 xl:w-1/4 flex">
+                <div class="flex w-full pt-8 lg:pt-0 self-end md:text-right md:justify-end items-center justify-center">
+                        <span class="created-text pr-1">
+                            @php
+                                $realizedText = 'Gerealiseerd door:';
+                                $current_language = get_locale();
+                                   if ($current_language == 'en_EN' || $current_language == 'en_GB') {
+                                       $realizedText = 'Realized by:';
+                                   } else {
+                                       $realizedText = 'Gerealiseerd door:';
+                                   }
+                            @endphp
+                            {{ $realizedText }}
+                        </span>
+                    @include('components.link.opening', [
+                        'href' => 'https://wefabric.nl/',
+                        'alt' => 'Wefabric.nl'
+                    ])
+                    @php
+                        $theme = app('wp.theme');
+                    @endphp
 
-        <div class="created-section w-full md:w-1/2 xl:w-1/4 flex">
-            <div class="flex w-full pt-8 lg:pt-0 self-end md:text-right md:justify-end items-center justify-center">
-                    <span class="created-text pr-1">
-                        @php
-                            $realizedText = 'Gerealiseerd door:';
-                            $current_language = get_locale();
-                               if ($current_language == 'en_EN' || $current_language == 'en_GB') {
-                                   $realizedText = 'Realized by:';
-                               } else {
-                                   $realizedText = 'Gerealiseerd door:';
-                               }
-                        @endphp
-                        {{ $realizedText }}
-                    </span>
-                @include('components.link.opening', [
-                    'href' => 'https://wefabric.nl/',
-                    'alt' => 'Wefabric.nl'
-                ])
-                @php
-                    $theme = app('wp.theme');
-                @endphp
-
-                <img src="@if ($options['wefabric_logo_color'] == 'white') {{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }} @elseif($options['wefabric_logo_color'] == 'black') {{ $theme->getUrl('assets/images/footer/logo-wefabric-black.png') }} @endif" width="92" height="20"
-                     class="wefabric-logo hover:scale-105 transition-all ease-in-out" alt="Wefabric logo - wefabric.nl" style="height:20px;"/>
-                <span class="screen-reader-only">Wefabric</span>
-                @include('components.link.closing')
+                    <img src="@if ($options['wefabric_logo_color'] == 'white') {{ $theme->getUrl('assets/images/footer/logo-wefabric-white.png') }} @elseif($options['wefabric_logo_color'] == 'black') {{ $theme->getUrl('assets/images/footer/logo-wefabric-black.png') }} @endif" width="92" height="20"
+                         class="wefabric-logo hover:scale-105 transition-all ease-in-out" alt="Wefabric logo - wefabric.nl" style="height:20px;"/>
+                    <span class="screen-reader-only">Wefabric</span>
+                    @include('components.link.closing')
+                </div>
             </div>
         </div>
     </div>
