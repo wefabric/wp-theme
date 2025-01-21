@@ -50,6 +50,7 @@
     "projecten/block.json",
     "evenementen/block.json",
     "diensten/block.json",
+    "prive-events/block.json",
 
     "albums/block.json",
     "programmas/block.json",

@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/prive-events",
+  "title": "Privé events",
+  "description": "Een privé events blok",
+  "category": "wefabric-theme",
+  "icon": "lock",
+  "apiVersion": 2,
+  "keywords": [
+    "Evenementen"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
