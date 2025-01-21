@@ -51,26 +51,26 @@
         $textClass = $textClassMap[$textPosition] ?? '';
 
 
-    // Projecten
-    $projectTitleColor = $block['data']['project_title_color'] ?? '';
-    $projectTextColor = $block['data']['project_text_color'] ?? '';
+    // Evenementen
+    $eventTitleColor = $block['data']['event_title_color'] ?? '';
+    $eventTextColor = $block['data']['event_text_color'] ?? '';
 
     $displayType = $block['data']['display_type'];
-    $currentTerms = isset($_GET['project_category']) ? array_map('intval', explode(',', $_GET['project_category'])) : [];
+    $currentTerms = isset($_GET['event_category']) ? array_map('intval', explode(',', $_GET['event_category'])) : [];
     $multipleFilters = $block['data']['multiple_filters_enabled'] ?? false;
 
     // Show all
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'project',
+            'post_type' => 'evenementen',
             'post_status' => 'publish',
         ];
 
         if ($currentTerms) {
             $args['tax_query'] = [
                 [
-                    'taxonomy' => 'project_categories',
+                    'taxonomy' => 'event_categories',
                     'field' => 'id',
                     'terms' => $currentTerms,
                 ],
@@ -78,7 +78,7 @@
         }
 
         $query = new WP_Query($args);
-        $projects = wp_list_pluck($query->posts, 'ID');
+        $events = wp_list_pluck($query->posts, 'ID');
      }
 
     // Show category
@@ -87,11 +87,11 @@
 
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'project',
+            'post_type' => 'evenementen',
             'post_status' => 'publish',
             'tax_query' => [
                 [
-                    'taxonomy' => 'project_categories',
+                    'taxonomy' => 'event_categories',
                     'field' => 'id',
                     'terms' => $selectedCategory,
                 ],
@@ -100,7 +100,7 @@
 
         if ($currentTerms) {
             $args['tax_query'][] = [
-                'taxonomy' => 'project_categories',
+                'taxonomy' => 'event_categories',
                 'field' => 'id',
                 'terms' => $currentTerms,
             ];
@@ -108,38 +108,38 @@
         }
 
         $query = new WP_Query($args);
-        $projects = wp_list_pluck($query->posts, 'ID');
+        $events = wp_list_pluck($query->posts, 'ID');
     }
 
     // Show specific
     elseif ($displayType == 'show_specific') {
-        $projects = $block['data']['show_specific_projects'];
-        if (!is_array($projects) || empty($projects)) {
-            $projects = [];
+        $events = $block['data']['show_specific_events'];
+        if (!is_array($events) || empty($events)) {
+            $events = [];
         }
 
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'project',
+            'post_type' => 'evenementen',
             'post_status' => 'publish',
             'tax_query' => [],
         ];
 
         if ($currentTerms) {
             $args['tax_query'][] = [
-                'taxonomy' => 'project_categories',
+                'taxonomy' => 'event_categories',
                 'field' => 'id',
                 'terms' => $currentTerms,
             ];
             $args['tax_query']['relation'] = 'AND';
         }
 
-        if (!empty($projects)) {
-            $args['post__in'] = $projects;
+        if (!empty($events)) {
+            $args['post__in'] = $events;
         }
 
         $query = new WP_Query($args);
-        $projects = wp_list_pluck($query->posts, 'ID');
+        $events = wp_list_pluck($query->posts, 'ID');
     }
 
     $visibleElements = $block['data']['show_element'] ?? [];
@@ -208,7 +208,7 @@
     $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
 @endphp
 
-<section id="projecten" class="block-projecten relative projecten-{{ $randomNumber }}-custom-padding projecten-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="evenementen" class="block-evenementen relative evenementen-{{ $randomNumber }}-custom-padding evenementen-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
@@ -228,10 +228,10 @@
                 ])
             @endif
             @if (!empty($visibleElements) && in_array('category_filter', $visibleElements))
-                @include('components.projects.category-filter')
+                @include('components.events.category-filter')
             @endif
-            @if ($projects)
-                @include('components.projects.list', ['projects' => $projects])
+            @if ($events)
+                @include('components.events.list', ['events' => $events])
             @endif
             @if (($button1Text) && ($button1Link))
                 <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
@@ -264,7 +264,7 @@
 </section>
 
 <style>
-    .projecten-{{ $randomNumber }}-custom-padding {
+    .evenementen-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
             @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
             @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
@@ -285,7 +285,7 @@
         }
     }
 
-    .projecten-{{ $randomNumber }}-custom-margin {
+    .evenementen-{{ $randomNumber }}-custom-margin {
         @media only screen and (min-width: 0px) {
             @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
             @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif

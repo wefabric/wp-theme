@@ -48,6 +48,9 @@
     "product-pakketten/block.json",
 
     "projecten/block.json",
+    "evenementen/block.json",
+    "diensten/block.json",
+
     "albums/block.json",
     "programmas/block.json",
     "proces/block.json",
