@@ -104,7 +104,7 @@
                                 <div class="mail-icon">
                                     <i class="contact-text w-4 object-cover fas fa-envelope mr-3"></i>@if($showFullContactInfo) {{ $mail }} @endif
                                     <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
-                                        <div class=" bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $mail }}</div>
+                                        <div class="popup-text bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $mail }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                                 <div class="phone-icon">
                                     <i class="contact-text w-4 object-cover fas fa-phone mr-3"></i>@if($showFullContactInfo) {{ $phoneNumber }} @endif
                                     <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
-                                        <div class="bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $phoneNumber }}</div>
+                                        <div class="popup-text bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $phoneNumber }}</div>
                                     </div>
                                 </div>
                             </div>
