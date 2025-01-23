@@ -164,7 +164,7 @@
                 @endif
             </div>
 
-            <div class="steps-content flex flex-col lg:flex-row gap-x-8 items-stretch">
+            <div class="steps-content flex flex-col lg:flex-row gap-x-8 gap-y-2 items-stretch">
                 @if ($imageId && !$specialLayout)
                     <div class="workflow-image w-full lg:w-1/2 @if ($stepsLocation == 'right') order-1 lg:order-1 @else order-1 lg:order-2 @endif">
                         @include('components.image', [

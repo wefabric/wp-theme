@@ -9,7 +9,7 @@
             @foreach ($steps as $index => $step)
                 @php
                     $stepImage = $step['stepImage'] ?? null;
-                    $itemImageAlt = $stepImage ? get_post_meta($stepImage, '_wp_attachment_image_alt', true) : $step['stepTitle'] ?? 'Step Image';
+                    $itemImageAlt = $stepImage ? get_post_meta($stepImage, '_wp_attachment_image_alt', true) : $step['stepTitle'] ?? 'Stap afeelding';
                 @endphp
 
                 @if ($stepImage)
@@ -44,10 +44,30 @@
         });
 
         const steps = document.querySelectorAll('.step');
+
+        function updateActiveStep(index) {
+            // Remove active-step class from all steps
+            steps.forEach(step => step.classList.remove('active-step'));
+
+            // Add active-step class to the corresponding step
+            if (steps[index]) {
+                steps[index].classList.add('active-step');
+            }
+        }
+
         steps.forEach((step, index) => {
             step.addEventListener('mouseover', () => {
                 specialStepSliderSwiper.slideToLoop(index);
+                updateActiveStep(index);
             });
         });
+
+        specialStepSliderSwiper.on('slideChange', () => {
+            const activeIndex = specialStepSliderSwiper.realIndex;
+            updateActiveStep(activeIndex);
+        });
+
+        // Set the first step as active on page load
+        updateActiveStep(0);
     });
 </script>
