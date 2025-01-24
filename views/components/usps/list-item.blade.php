@@ -17,7 +17,7 @@
     $isNumber = !empty($numericPart);
 @endphp
 
-<div class="USP-item h-full usp-{{ $uspLayout }}">
+<div class="USP-item h-full usp-{{ $uspLayout }} @if ($flyinEffect) usp-hidden @endif">
     <div class="item-styling h-full @if( $uspLayout == 'horizontal') flex flex-row gap-x-6 items-center text-left justify-center @elseif( $uspLayout == 'vertical') flex flex-col gap-y-4 text-center @endif">
         @if (($visualType == 'icons') && ($icon))
             <i class="fa-{{ $icon['style'] }} fa-{{ $icon['id'] }} text-{{ $iconColor }} text-[70px] inline-block"
@@ -56,9 +56,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             const counters = document.querySelectorAll('.counter');
             const observerOptions = {
-                root: null, // Use the viewport as the root
+                root: null,
                 rootMargin: '0px',
-                threshold: 0.1 // Trigger when at least 10% of the element is in the viewport
+                threshold: 0.1
             };
 
             const observerCallback = (entries, observer) => {
@@ -66,11 +66,11 @@
                     if (entry.isIntersecting) {
                         const counter = entry.target;
                         const target = +counter.getAttribute('data-target');
-                        const duration = 1000; // Total duration in milliseconds (5 seconds)
-                        const frameRate = 60; // 60 updates per second
-                        const updateInterval = 1000 / frameRate; // Interval between updates in milliseconds
-                        const totalSteps = duration / updateInterval; // Total number of steps
-                        const increment = target / totalSteps; // Increment per step
+                        const duration = 1000;
+                        const frameRate = 60;
+                        const updateInterval = 1000 / frameRate;
+                        const totalSteps = duration / updateInterval;
+                        const increment = target / totalSteps;
 
                         let count = 0;
 
@@ -85,7 +85,7 @@
                         };
 
                         updateCounter();
-                        observer.unobserve(counter); // Stop observing once the animation starts
+                        observer.unobserve(counter);
                     }
                 });
             };

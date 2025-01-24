@@ -113,6 +113,10 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="usps" class="block-usps relative usp-{{ $randomNumber }}-custom-padding usp-{{ $randomNumber }}-custom-margin layout-{{ $uspLayout }} bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -209,4 +213,53 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .usp-hidden {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    .swiper-slide-duplicate .usp-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .usp-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const uspItems = document.querySelectorAll('.USP-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const uspItem = entry.target;
+
+
+                        setTimeout(() => {
+                            if (uspItem.classList.contains('usp-hidden')) {
+                                uspItem.classList.add('usp-animated');
+                                uspItem.classList.remove('usp-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(uspItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            uspItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif
