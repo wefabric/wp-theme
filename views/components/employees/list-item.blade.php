@@ -4,7 +4,8 @@
     $firstName = $fields['first_name'] ?? '';
     $lastName = $fields['last_name'] ?? '';
     $fullName = !empty($firstName) || !empty($lastName) ? $firstName . ' ' . $lastName : get_the_title($employee);
-    $imageID = $fields['image'] ?? '';
+    $imageId = $fields['image'] ?? '';
+    $hoverImageId = $fields['hover_image'] ?? '';
 
 
     $visibleElements = $block['data']['show_element'] ?? [];
@@ -40,17 +41,27 @@
                         <div style="background-color: {{ $categoryColor }}" class="employee-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full">
                             {!! $categoryIcon !!} {!! $category->name !!}
                         </div>
-
                     @endforeach
                 </div>
             @endif
-            @include('components.image', [
-                 'image_id' => $imageID,
-                 'size' => 'job-thumbnail',
-                 'object_fit' => 'cover',
-                 'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110 rounded-' . $borderRadius ,
-                 'alt' => $fullName,
-            ])
+            <div class="relative w-full h-full">
+                @include('components.image', [
+                     'image_id' => $imageId,
+                     'size' => 'job-thumbnail',
+                     'object_fit' => 'cover',
+                     'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 @if($hoverImageId) group-hover:opacity-0 @else group-hover:scale-110 @endif rounded-' . $borderRadius,
+                     'alt' => $fullName,
+                ])
+                @if (!empty($hoverImageId))
+                    @include('components.image', [
+                         'image_id' => $hoverImageId,
+                         'size' => 'job-thumbnail',
+                         'object_fit' => 'cover',
+                         'img_class' => 'aspect-square w-full h-full object-cover object-center absolute top-0 left-0 transform ease-in-out duration-300 opacity-0 group-hover:opacity-100 rounded-' . $borderRadius,
+                         'alt' => $fullName . ' hover',
+                    ])
+                @endif
+            </div>
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements) && ($contactInfoDisplay == 'in_image'))
                 <div class="contact-items absolute bottom-0 right-0 flex gap-x-2">
                     @if ($mail)
