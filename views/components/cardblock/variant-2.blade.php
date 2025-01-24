@@ -1,4 +1,4 @@
-<div id="{{ str_replace(' ', '-', strtolower($pageTitle)) }}" class="content-under-card-item card-item group h-full">
+<div id="{{ str_replace(' ', '-', strtolower($pageTitle)) }}" class="content-under-card-item card-item group h-full @if ($flyinEffect) card-hidden @endif">
     <div class="custom-radius bg-{{ $cardBackgroundColor }} rounded-{{ $borderRadius }} h-full flex flex-col {{ $hoverEffectClass }} duration-300 ease-in-out overflow-hidden">
         <div>
             <div class="image-container h-[360px] relative overflow-hidden rounded-t-{{ $borderRadius }}">

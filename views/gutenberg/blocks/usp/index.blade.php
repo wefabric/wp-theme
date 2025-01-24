@@ -243,7 +243,6 @@
                     if (entry.isIntersecting) {
                         const uspItem = entry.target;
 
-
                         setTimeout(() => {
                             if (uspItem.classList.contains('usp-hidden')) {
                                 uspItem.classList.add('usp-animated');

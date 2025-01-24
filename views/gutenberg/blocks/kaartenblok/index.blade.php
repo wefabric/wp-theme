@@ -157,6 +157,8 @@
         'none' => ''
     ];
     $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
+
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="kaarten" class="block-kaarten kaarten-{{ $randomNumber }}-custom-padding kaarten-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} @if ($cardVariant == 'variant1') content-in-card @elseif ($cardVariant == 'variant2') content-under-card @endif {{ $hideBlock ? 'hidden' : '' }}"
@@ -253,4 +255,52 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .card-hidden {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    .swiper-slide-duplicate .card-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .card-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cardItems = document.querySelectorAll('.card-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const cardItem = entry.target;
+
+                        setTimeout(() => {
+                            if (cardItem.classList.contains('card-hidden')) {
+                                cardItem.classList.add('card-animated');
+                                cardItem.classList.remove('card-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(cardItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            cardItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif
