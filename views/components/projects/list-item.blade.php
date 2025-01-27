@@ -9,7 +9,7 @@
     $projectCategories = get_the_terms($project, 'project_categories');
 @endphp
 
-<div class="project-item group h-full">
+<div class="project-item group h-full @if ($flyinEffect) project-hidden @endif">
     <div class="h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         @if ($projectThumbnailId)
             <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">

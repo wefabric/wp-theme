@@ -9,7 +9,7 @@
     $dienstCategories = get_the_terms($dienst, 'dienst_categories');
 @endphp
 
-<div class="dienst-item group h-full">
+<div class="dienst-item group h-full @if ($flyinEffect) dienst-hidden @endif">
     <div class="h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         @if ($dienstThumbnailId)
             <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">

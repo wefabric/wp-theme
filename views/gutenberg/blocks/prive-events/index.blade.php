@@ -206,6 +206,8 @@
         'none' => ''
     ];
     $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
+
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="prive-events" class="block-prive-events relative prive-events-{{ $randomNumber }}-custom-padding prive-events-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -305,4 +307,51 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .private-event-hidden {
+        opacity: 0;
+    }
+
+    .swiper-slide-duplicate .private-event-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .private-event-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const privateEventItems = document.querySelectorAll('.private-event-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const privateEventItem = entry.target;
+
+                        setTimeout(() => {
+                            if (privateEventItem.classList.contains('private-event-hidden')) {
+                                privateEventItem.classList.add('private-event-animated');
+                                privateEventItem.classList.remove('private-event-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(privateEventItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+                privateEventItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif

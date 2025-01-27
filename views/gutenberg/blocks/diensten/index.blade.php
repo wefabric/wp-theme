@@ -205,6 +205,8 @@
         'none' => ''
     ];
     $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
+
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="diensten" class="block-diensten relative diensten-{{ $randomNumber }}-custom-padding diensten-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -304,4 +306,51 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .dienst-hidden {
+        opacity: 0;
+    }
+
+    .swiper-slide-duplicate .dienst-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .dienst-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dienstItems = document.querySelectorAll('.dienst-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const dienstItem = entry.target;
+
+                        setTimeout(() => {
+                            if (dienstItem.classList.contains('dienst-hidden')) {
+                                dienstItem.classList.add('dienst-animated');
+                                dienstItem.classList.remove('dienst-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(dienstItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            dienstItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif

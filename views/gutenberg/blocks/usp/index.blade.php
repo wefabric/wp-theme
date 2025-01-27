@@ -216,7 +216,6 @@
 
     .usp-hidden {
         opacity: 0;
-        transform: translateY(100%);
     }
 
     .swiper-slide-duplicate .usp-hidden {

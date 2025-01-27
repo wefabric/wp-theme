@@ -167,6 +167,10 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="testimonial" class="block-testimonial relative testimonial-{{ $randomNumber }}-custom-padding testimonial-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -256,4 +260,51 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .testimonial-hidden {
+        opacity: 0;
+    }
+
+    .swiper-slide-duplicate .testimonial-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .testimonial-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const testimonialItems = document.querySelectorAll('.testimonial-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const testimonialItem = entry.target;
+
+                        setTimeout(() => {
+                            if (testimonialItem.classList.contains('testimonial-hidden')) {
+                                testimonialItem.classList.add('testimonial-animated');
+                                testimonialItem.classList.remove('testimonial-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(testimonialItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            testimonialItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif

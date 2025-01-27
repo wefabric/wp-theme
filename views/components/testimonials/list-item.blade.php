@@ -19,7 +19,7 @@
     $testimonialCategories = get_the_terms($testimonial, 'testimonial_categories');
 @endphp
 
-<div class="custom-styling flex w-full h-full text-{{ $textColor }}">
+<div class="testimonial-item custom-styling flex w-full h-full text-{{ $textColor }} @if ($flyinEffect) testimonial-hidden @endif">
 
     <div class="testimonial-block relative w-full h-auto flex flex-col md:flex-row bg-{{ $testimonialBackground }} rounded-{{ $borderRadius }} ">
 

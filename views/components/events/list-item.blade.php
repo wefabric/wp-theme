@@ -9,7 +9,7 @@
     $eventCategories = get_the_terms($event, 'event_categories');
 @endphp
 
-<div class="event-item group h-full">
+<div class="event-item group h-full @if ($flyinEffect) event-hidden @endif">
     <div class="h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         @if ($eventThumbnailId)
             <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">

@@ -206,6 +206,8 @@
         'none' => ''
     ];
     $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
+
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="evenementen" class="block-evenementen relative evenementen-{{ $randomNumber }}-custom-padding evenementen-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -305,4 +307,51 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .event-hidden {
+        opacity: 0;
+    }
+
+    .swiper-slide-duplicate .event-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .event-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const eventItems = document.querySelectorAll('.event-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const eventItem = entry.target;
+
+                        setTimeout(() => {
+                            if (eventItem.classList.contains('event-hidden')) {
+                                eventItem.classList.add('event-animated');
+                                eventItem.classList.remove('event-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(eventItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            eventItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif

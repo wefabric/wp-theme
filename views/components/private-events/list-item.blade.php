@@ -9,7 +9,7 @@
     $privateEventCategories = get_the_terms($privateEvent, 'private_event_categories');
 @endphp
 
-<div class="private-event-item group h-full">
+<div class="private-event-item group h-full @if ($flyinEffect) private-event-hidden @endif">
     <div class="h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         @if ($privateEventThumbnailId)
             <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">

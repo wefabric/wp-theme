@@ -16,7 +16,7 @@
 @endphp
 
 @if($block['data']['show_slider'])
-    <div class="block relative">
+    <div class="event-swiper block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($events as $event)

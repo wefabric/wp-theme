@@ -206,6 +206,8 @@
         'none' => ''
     ];
     $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
+
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="projecten" class="block-projecten relative projecten-{{ $randomNumber }}-custom-padding projecten-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -305,4 +307,51 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .project-hidden {
+        opacity: 0;
+    }
+
+    .swiper-slide-duplicate .project-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .project-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectItems = document.querySelectorAll('.project-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const projectItem = entry.target;
+
+                        setTimeout(() => {
+                            if (projectItem.classList.contains('project-hidden')) {
+                                projectItem.classList.add('project-animated');
+                                projectItem.classList.remove('project-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(projectItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            projectItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif
