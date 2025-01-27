@@ -1,8 +1,9 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
-    $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -194,6 +195,10 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="vacatures" class="block-vacatures relative vacatures-{{ $randomNumber }}-custom-padding vacatures-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -204,7 +209,7 @@
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
+                <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
             @endif
             @if ($title)
                 <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
@@ -311,4 +316,52 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .vacancy-hidden {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    .swiper-slide-duplicate .vacancy-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .vacancy-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const vacancyItems = document.querySelectorAll('.vacature-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const vacancyItem = entry.target;
+
+                        setTimeout(() => {
+                            if (vacancyItem.classList.contains('vacancy-hidden')) {
+                                vacancyItem.classList.add('vacancy-animated');
+                                vacancyItem.classList.remove('vacancy-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(vacancyItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            vacancyItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif

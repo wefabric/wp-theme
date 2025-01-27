@@ -19,7 +19,7 @@
     $postCategories = get_the_category($post);
 @endphp
 
-<div class="nieuws-item group h-full">
+<div class="nieuws-item group h-full @if ($flyinEffect) news-hidden @endif">
     <div class="news-wrapper relative h-full flex flex-col {{ $hoverEffectClass }} duration-300 ease-in-out">
         @if ($postThumbnailId)
             <div class="news-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">

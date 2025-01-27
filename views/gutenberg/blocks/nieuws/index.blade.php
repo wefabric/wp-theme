@@ -1,8 +1,9 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
-    $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -160,6 +161,8 @@
         'none' => ''
     ];
     $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
+
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="nieuws" class="block-nieuws relative nieuws-{{ $randomNumber }}-custom-padding nieuws-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -170,7 +173,7 @@
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
+                <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
             @endif
             @if ($title)
                 <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
@@ -261,4 +264,52 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .news-hidden {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    .swiper-slide-duplicate .news-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .news-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const newsItems = document.querySelectorAll('.nieuws-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const newsItem = entry.target;
+
+                        setTimeout(() => {
+                            if (newsItem.classList.contains('news-hidden')) {
+                                newsItem.classList.add('news-animated');
+                                newsItem.classList.remove('news-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(newsItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            newsItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif
