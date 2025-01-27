@@ -94,12 +94,13 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "75",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -2193,5 +2194,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737968522
+    "modified": 1737969528
 }
