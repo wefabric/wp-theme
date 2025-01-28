@@ -11,9 +11,18 @@
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
-    $randomNumber = rand(0, 1000);
-    $randomId = 'logosSwiper-' . $randomNumber;
 
+    $swiperLinear = $block['data']['linear_rotation'] ?? false;
+    $swiperDirection = $block['data']['swiper_direction'] ?? 'left';
+    $swiperRotationSpeed = [
+        'super_slow' => 15000,
+        'slow' => 10000,
+        'normal' => 5000,
+        'fast' => 3000,
+        'super_fast' => 1000,
+    ][$block['data']['rotation_speed']] ?? 5000;
+
+    $randomId = 'logosSwiper-' . $randomNumber;
     $logoCount = count($logos);
 
     // Determine $gridStartClass based on $logoCount
@@ -40,10 +49,12 @@
             </div>
             <div class="lg:hidden swiper-pagination"></div>
         </div>
-        <div class="swiper-navigation">
-            <div class="swiper-button-next logos-button-next-{{ $randomNumber }}"></div>
-            <div class="swiper-button-prev logos-button-prev-{{ $randomNumber }}"></div>
-        </div>
+        @if (!$swiperLinear)
+            <div class="swiper-navigation">
+                <div class="swiper-button-next logos-button-next-{{ $randomNumber }}"></div>
+                <div class="swiper-button-prev logos-button-prev-{{ $randomNumber }}"></div>
+            </div>
+        @endif
     </div>
 
 @elseif($block['data']['alternative_row_layout'])
@@ -74,11 +85,19 @@
         var logosSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
             centeredSlides: false,
+
+            @if ($swiperLinear)
+                freeMode: true,
+                allowTouchMove: false,
+                speed: {{ $swiperRotationSpeed }},
+            @endif
+
             @if ($swiperAutoplay)
-            autoplay: {
-                delay: {{ $swiperAutoplaySpeed }},
-                disableOnInteraction: false,
-            },
+                autoplay: {
+                    delay: @if ($swiperLinear) 0 @else {{ $swiperAutoplaySpeed }} @endif,
+                    disableOnInteraction: @if ($swiperLinear) true @else false @endif,
+                    reverseDirection: {{ $swiperDirection === 'right' ? 'true' : 'false' }},
+                },
             @endif
             pagination: {
                 el: '.swiper-pagination',
@@ -104,3 +123,11 @@
         });
     });
 </script>
+
+@if ($swiperLinear)
+    <style>
+        .logos-{{ $randomNumber }} .swiper-wrapper {
+            transition-timing-function: linear !important;
+        }
+    </style>
+@endif

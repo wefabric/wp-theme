@@ -147,26 +147,30 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+    // Animaties
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
+
 @endphp
 
-<section id="logos" class="block-logos relative logos-{{ $randomNumber }}-custom-padding logos-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="logos" class="block-logos relative logos-{{ $randomNumber }} logos-{{ $randomNumber }}-custom-padding logos-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+    <div class="relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }} @if ($blockWidth !== 'fullscreen') container mx-auto px-8 @endif">
         <div class="{{ $blockClass }} mx-auto {{ $textClass }} layout">
             <div class="content-data mb-4">
                 @if ($subTitle)
-                    <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
+                    <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }} @if ($blockWidth == 'fullscreen') container mx-auto px-8 @endif">{!! $subTitle !!}</span>
                 @endif
                 @if ($title)
-                    <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
+                    <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }} @if ($blockWidth == 'fullscreen') container mx-auto px-8 @endif">{!! $title !!}</h2>
                 @endif
                 @if ($text)
                     @include('components.content', [
                         'content' => apply_filters('the_content', $text),
-                        'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
+                        'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth !== 'fullscreen' ? '' : ' px-8 container mx-auto')
                     ])
                 @endif
             </div>
@@ -174,7 +178,7 @@
                 @include('components.logos.list', ['logos' => $logos])
             @endif
             @if (($button1Text) && ($button1Link))
-                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
+                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} @if($blockWidth == 'fullscreen') container mx-auto px-8 @endif">
                     @include('components.buttons.default', [
                         'text' => $button1Text,
                         'href' => $button1Link,
@@ -245,4 +249,51 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .logo-hidden {
+        opacity: 0;
+    }
+
+    .swiper-slide-duplicate .logo-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .logo-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoItems = document.querySelectorAll('.logo-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const logoItem = entry.target;
+
+                        setTimeout(() => {
+                            if (logoItem.classList.contains('logo-hidden')) {
+                                logoItem.classList.add('logo-animated');
+                                logoItem.classList.remove('logo-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(logoItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            logoItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif

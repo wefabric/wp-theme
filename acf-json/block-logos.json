@@ -858,12 +858,16 @@
                         "2": "2 per rij",
                         "3": "3 per rij",
                         "4": "4 per rij",
-                        "5": "5 per rij"
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
                     },
                     "default_value": 1,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": ""
@@ -887,12 +891,16 @@
                         "2": "2 per rij",
                         "3": "3 per rij",
                         "4": "4 per rij",
-                        "5": "5 per rij"
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
                     },
                     "default_value": 3,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": ""
@@ -916,12 +924,16 @@
                         "2": "2 per rij",
                         "3": "3 per rij",
                         "4": "4 per rij",
-                        "5": "5 per rij"
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
                     },
                     "default_value": 4,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": ""
@@ -994,12 +1006,13 @@
                 ]
             ],
             "wrapper": {
-                "width": "50",
+                "width": "60",
                 "class": "",
                 "id": ""
             },
             "message": "",
             "default_value": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
@@ -1018,21 +1031,129 @@
                         "field": "field_6566ff79947d9",
                         "operator": "==",
                         "value": "1"
+                    },
+                    {
+                        "field": "field_6798c107882a1",
+                        "operator": "!=",
+                        "value": "1"
                     }
                 ]
             ],
             "wrapper": {
-                "width": "50",
+                "width": "40",
                 "class": "",
                 "id": ""
             },
             "default_value": 5,
             "min": 0,
             "max": 60,
+            "allow_in_bindings": 1,
             "placeholder": "",
             "step": "0.1",
             "prepend": "",
             "append": "Seconden"
+        },
+        {
+            "key": "field_6798c107882a1",
+            "label": "Swiper vloeiend laten verlopen",
+            "name": "linear_rotation",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6566ff79947d9",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "60",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6798c1a5882a3",
+            "label": "Rotatie snelheid",
+            "name": "rotation_speed",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6798c107882a1",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "super_slow": "Super langzaam",
+                "slow": "Langzaam",
+                "normal": "Normaal",
+                "fast": "Snel",
+                "super_fast": "Super snel"
+            },
+            "default_value": "normal",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6798c138882a2",
+            "label": "Swiper richting",
+            "name": "swiper_direction",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6798c107882a1",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "Links",
+                "right": "Rechts"
+            },
+            "default_value": "left",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_6566ff79947e0",
@@ -2041,6 +2162,27 @@
             "placement": "top",
             "endpoint": 0,
             "selected": 0
+        },
+        {
+            "key": "field_6798dbe97bb09",
+            "label": "Logo's in laten vliegen",
+            "name": "flyin_effect",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -2061,5 +2203,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737365685
+    "modified": 1738071034
 }
