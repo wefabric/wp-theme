@@ -35,7 +35,9 @@
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^6.1.1",
     "alpinejs": "^3.10.3",
+    "gsap": "3.12.5",
     "jquery": "^3.6.0",
+    "split-type": "0.3.4",
     "swiper": "^8.3.2"
   }
 }

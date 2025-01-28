@@ -264,14 +264,9 @@
     });
 </script>
 
-<!-- SplitType and GSAP -->
-<script src="https://unpkg.com/split-type"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
 @if ($titleAnimation)
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+        window.addEventListener("DOMContentLoaded", () => {
             gsap.registerPlugin(ScrollTrigger);
 
             document.querySelectorAll('.title-animation').forEach(element => {
@@ -280,7 +275,6 @@
                     tagName: 'span'
                 });
 
-                // GSAP animation for the lines of the current element with ScrollTrigger
                 gsap.from(element.querySelectorAll('.word'), {
                     y: '100%',
                     opacity: 0,
@@ -303,7 +297,7 @@
 
 @if ($textAnimation)
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        window.addEventListener('DOMContentLoaded', function () {
             gsap.registerPlugin(ScrollTrigger);
 
             const randomNumber = @json($randomNumber);

@@ -2,8 +2,8 @@ import Alpine from 'alpinejs'
 // core version + navigation, pagination modules:
 import Swiper, { Navigation, Pagination, Autoplay, Zoom, Thumbs, EffectFade } from 'swiper';
 // import Swiper and modules styles
-
-
+import SplitType from "split-type";
+import gsap from "gsap";
 
 // Import dependencies
 window.$ = window.jQuery = require('jquery');
@@ -28,4 +28,8 @@ window.Alpine = Alpine
 window.Swiper = Swiper;
 window.SwiperPagination = Pagination;
 window.SwiperNavigation = Navigation;
+window.SplitType = SplitType;
+window.gsap = gsap;
+window.ScrollTrigger = require("gsap/ScrollTrigger");
+
 Alpine.start()
