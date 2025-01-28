@@ -47,7 +47,9 @@
                     </div>
                 @endforeach
             </div>
-            <div class="lg:hidden swiper-pagination"></div>
+            @if (!$swiperLinear)
+                <div class="lg:hidden swiper-pagination"></div>
+            @endif
         </div>
         @if (!$swiperLinear)
             <div class="swiper-navigation">
