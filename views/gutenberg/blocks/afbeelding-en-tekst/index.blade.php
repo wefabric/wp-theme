@@ -141,7 +141,7 @@
                         ])
                     @endif
                     @if (($button1Text) && ($button1Link))
-                        <div class="buttons w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8">
+                        <div class="buttons w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 @if ($flyInAnimation) flyin-animation @endif">
                             @include('components.buttons.default', [
                                'text' => $button1Text,
                                'href' => $button1Link,
