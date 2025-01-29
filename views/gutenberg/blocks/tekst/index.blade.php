@@ -89,8 +89,8 @@
 
     // Animaties
     $titleAnimation = $block['data']['title_animation'] ?? false;
-    $textAnimation = $block['data']['text_animation'] ?? false;
-    $textFadeDirection = $block['data']['text_fade_direction'] ?? '';
+    $flyInAnimation = $block['data']['flyin_animation'] ?? false;
+    $textFadeDirection = $block['data']['flyin_direction'] ?? 'bottom';
 @endphp
 
 <section id="tekst" class="block-tekst block-{{ $randomNumber }} relative tekst-{{ $randomNumber }}-custom-padding tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -101,15 +101,15 @@
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto {{ $textClass }}">
             @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if ($titleAnimation) title-animation @endif">{!! $subTitle !!}</span>
+                <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if ($titleAnimation) title-animation @endif @if ($flyInAnimation) flyin-animation @endif">{!! $subTitle !!}</span>
             @endif
             @if ($title)
-                <h2 class="title mb-4 text-{{ $titleColor }} @if ($titleAnimation) title-animation @endif">{!! $title !!}</h2>
+                <h2 class="title mb-4 text-{{ $titleColor }} @if ($titleAnimation) title-animation @endif @if ($flyInAnimation) flyin-animation @endif">{!! $title !!}</h2>
             @endif
             @if ($text)
                 @include('components.content', [
                     'content' => apply_filters('the_content', $text),
-                    'class' => 'mb-8 text-' . $textColor . ($textAnimation ? ' text-animation' : ''),
+                    'class' => 'mb-8 text-' . $textColor . ($flyInAnimation ? ' flyin-animation' : ''),
                 ])
             @endif
             @if (($button1Text) && ($button1Link))
@@ -217,7 +217,7 @@
     </script>
 @endif
 
-@if ($textAnimation)
+@if ($flyInAnimation)
     <script>
         window.addEventListener('DOMContentLoaded', function () {
             gsap.registerPlugin(ScrollTrigger);
@@ -226,7 +226,7 @@
             const block = document.querySelector(`.block-${randomNumber}`);
 
             if (block) {
-                block.querySelectorAll('.text-animation').forEach(element => {
+                block.querySelectorAll('.flyin-animation').forEach(element => {
                     let typeSplit = new SplitType(element, {
                         types: 'lines',
                         tagName: 'span'
@@ -257,7 +257,7 @@
                         opacity: 0,
                         duration: 1.5,
                         ease: 'power4.out',
-                        stagger: 3,
+                        stagger: 0,
                         scrollTrigger: {
                             trigger: element, // The current element that triggers the animation
                             start: 'top 65%', // When the trigger element is 60% from the top of the viewport

@@ -1554,24 +1554,30 @@
                     {
                         "field": "field_649d53b08e829",
                         "operator": "!=empty"
+                    },
+                    {
+                        "field": "field_66e4563950dc6",
+                        "operator": "!=",
+                        "value": "1"
                     }
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "60",
                 "class": "",
                 "id": ""
             },
             "message": "",
             "default_value": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
         },
         {
             "key": "field_66e4563950dc6",
-            "label": "Fade in tekst",
-            "name": "text_animation",
+            "label": "Tekst in laten vliegen",
+            "name": "flyin_animation",
             "aria-label": "",
             "type": "true_false",
             "instructions": "",
@@ -1579,26 +1585,54 @@
             "conditional_logic": [
                 [
                     {
+                        "field": "field_649d53b08e829",
+                        "operator": "!=empty"
+                    },
+                    {
+                        "field": "field_66e4562350dc5",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_665d8197ef17e",
+                        "operator": "!=empty"
+                    },
+                    {
+                        "field": "field_66e4562350dc5",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ],
+                [
+                    {
                         "field": "field_649d53cbf5878",
                         "operator": "!=empty"
+                    },
+                    {
+                        "field": "field_66e4562350dc5",
+                        "operator": "!=",
+                        "value": "1"
                     }
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "60",
                 "class": "",
                 "id": ""
             },
             "message": "",
             "default_value": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
         },
         {
             "key": "field_66e4565850dc7",
-            "label": "Fade richting",
-            "name": "text_fade_direction",
+            "label": "Richting van invliegen",
+            "name": "flyin_direction",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -1613,7 +1647,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "40",
                 "class": "",
                 "id": ""
             },
@@ -1627,6 +1661,7 @@
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
@@ -1650,5 +1685,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736867202
+    "modified": 1738160678
 }
