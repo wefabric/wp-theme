@@ -8,7 +8,7 @@
     $visualType = $block['data']['visual_type'] ?? '';
 @endphp
 
-<div class="step relative flex flex-col sm:items-center gap-y-8">
+<div class="step-item step relative flex flex-col sm:items-center gap-y-8 @if ($flyinEffect) step-hidden @endif">
     @if (!empty($visibleElements) && in_array('stepnumber_2', $visibleElements))
         <div class="w-full flex items-center justify-center relative">
             <div class="step-number flex-shrink-0 w-36 h-36 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-primary text-white z-10 text-3xl">{{ $stepNumber }}</div>

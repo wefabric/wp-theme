@@ -150,7 +150,6 @@
 
     // Animaties
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
-
 @endphp
 
 <section id="logos" class="block-logos relative logos-{{ $randomNumber }} logos-{{ $randomNumber }}-custom-padding logos-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"

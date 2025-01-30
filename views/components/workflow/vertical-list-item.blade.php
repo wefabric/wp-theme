@@ -8,7 +8,7 @@
     $visualType = $block['data']['visual_type'] ?? '';
 @endphp
 
-<div class="step flex relative py-6 sm:items-center w-full" data-step-image-url="{{ wp_get_attachment_url($stepImage) }}">
+<div class="step-item step flex relative py-6 sm:items-center w-full @if ($flyinEffect) step-hidden @endif" data-step-image-url="{{ wp_get_attachment_url($stepImage) }}">
     @if (!empty($visibleElements) && in_array('stepnumber_1', $visibleElements))
         <div class="step-number-line h-full w-6 absolute inset-0 flex items-center justify-center">
             <div class="vertical-line h-full w-1 bg-gray-200"></div>
