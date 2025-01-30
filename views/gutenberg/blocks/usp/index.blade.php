@@ -43,6 +43,7 @@
     // USP's
     $uspTitleColor = $block['data']['usp_title_color'] ?? '';
     $uspTextColor = $block['data']['usp_text_color'] ?? '';
+    $uspBackgroundColor = $block['data']['usp_background_color'] ?? '';
     $uspIconColor = $block['data']['usp_icon_color'] ?? '';
 
     $uspLayout = $block['data']['usp_layout'] ?? 'vertical';

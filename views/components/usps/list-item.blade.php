@@ -15,8 +15,8 @@
     $isNumber = !empty($numericPart);
 @endphp
 
-<div class="USP-item h-full usp-{{ $uspLayout }} @if ($flyinEffect) usp-hidden @endif">
-    <div class="item-styling h-full @if( $uspLayout == 'horizontal') flex flex-row gap-x-6 items-center text-left justify-center @elseif( $uspLayout == 'vertical') flex flex-col gap-y-4 text-center @endif">
+<div class="USP-item h-full usp-{{ $uspLayout }} @if ($flyinEffect) usp-hidden @endif @if($uspBackgroundColor) bg-{{ $uspBackgroundColor }} p-4 lg:p-8 @endif">
+    <div class="item-styling h-full @if( $uspLayout == 'horizontal') flex flex-row gap-x-6 items-center text-left justify-start @elseif( $uspLayout == 'vertical') flex flex-col gap-y-4 text-center @endif">
         @if (($visualType == 'icons') && ($icon))
             <i class="fa-{{ $icon['style'] }} fa-{{ $icon['id'] }} text-{{ $uspIconColor }} text-[70px] inline-block"
                aria-hidden="true"></i>

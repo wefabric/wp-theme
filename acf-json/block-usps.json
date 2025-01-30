@@ -782,7 +782,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "33",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
@@ -807,11 +807,29 @@
                 ]
             ],
             "wrapper": {
-                "width": "33",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
             "theme_color": "black",
+            "allow_in_bindings": 1,
+            "font_size": 14
+        },
+        {
+            "key": "field_679b9039eb9eb",
+            "label": "USP achtergrond kleur",
+            "name": "usp_background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
             "allow_in_bindings": 1,
             "font_size": 14
         },
@@ -833,11 +851,11 @@
                 ]
             ],
             "wrapper": {
-                "width": "33",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
-            "theme_color": "black",
+            "theme_color": null,
             "allow_in_bindings": 1,
             "font_size": 14
         },
@@ -2092,5 +2110,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1738246994
+    "modified": 1738248294
 }
