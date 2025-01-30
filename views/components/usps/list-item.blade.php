@@ -4,11 +4,9 @@
     $uspTitle = $usp['uspTitle'];
     $uspText = $usp['uspText'];
     $icon = $usp['uspIcon'];
-    $iconColor = $usp['uspIconColor'];
-    $imageID = $usp['uspImage'];
-    $uspTitleColor = $block['data']['usp_title_color'] ?? '';
-    $uspTextColor = $block['data']['usp_text_color'] ?? '';
-    $altText = get_post_meta($imageID, '_wp_attachment_image_alt', true) ?: 'usp-image';
+
+    $imageId = $usp['uspImage'];
+    $altText = get_post_meta($imageId, '_wp_attachment_image_alt', true) ?: 'usp-image';
     $numberAnimation = $block['data']['number_animation'] ?? false;
 
     // Extract numeric part from $uspTitle
@@ -20,12 +18,12 @@
 <div class="USP-item h-full usp-{{ $uspLayout }} @if ($flyinEffect) usp-hidden @endif">
     <div class="item-styling h-full @if( $uspLayout == 'horizontal') flex flex-row gap-x-6 items-center text-left justify-center @elseif( $uspLayout == 'vertical') flex flex-col gap-y-4 text-center @endif">
         @if (($visualType == 'icons') && ($icon))
-            <i class="fa-{{ $icon['style'] }} fa-{{ $icon['id'] }} text-{{ $iconColor }} text-[70px] inline-block"
+            <i class="fa-{{ $icon['style'] }} fa-{{ $icon['id'] }} text-{{ $uspIconColor }} text-[70px] inline-block"
                aria-hidden="true"></i>
         @endif
-        @if (($visualType == 'images') && ($imageID))
+        @if (($visualType == 'images') && ($imageId))
             @include('components.image', [
-                'image_id' => $imageID,
+                'image_id' => $imageId,
                 'size' => 'full',
                 'object_fit' => 'cover',
                 'img_class' => 'mx-auto w-auto h-auto max-w-full max-h-20',

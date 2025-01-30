@@ -41,6 +41,10 @@
 
 
     // USP's
+    $uspTitleColor = $block['data']['usp_title_color'] ?? '';
+    $uspTextColor = $block['data']['usp_text_color'] ?? '';
+    $uspIconColor = $block['data']['usp_icon_color'] ?? '';
+
     $uspLayout = $block['data']['usp_layout'] ?? 'vertical';
 
     $uspsCount = $block['data']['usps'];
@@ -51,7 +55,6 @@
         $uspText = $block['data']["usps_{$i}_usp_text"];
         $uspImage = $block['data']["usps_{$i}_image"] ?? '';
         $uspIcon = $block['data']["usps_{$i}_icon"] ?? null;
-        $uspIconColor = $block['data']["usps_{$i}_icon_color"] ?? '';
 
         $iconClass = '';
         if ($uspIcon !== null) {
@@ -63,7 +66,6 @@
             'uspText' => $uspText,
             'uspImage' => $uspImage,
             'uspIcon' => $iconData,
-            'uspIconColor' => $uspIconColor,
         ];
     }
 

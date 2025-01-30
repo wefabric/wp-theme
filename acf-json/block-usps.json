@@ -688,32 +688,6 @@
                     "parent_repeater": "field_6494439a50244"
                 },
                 {
-                    "key": "field_64995984575a1",
-                    "label": "Icon kleur",
-                    "name": "icon_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_64a51c4198fb5",
-                                "operator": "==",
-                                "value": "icons"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": null,
-                    "font_size": 14,
-                    "parent_repeater": "field_6494439a50244"
-                },
-                {
                     "key": "field_64a526e774c9c",
                     "label": "Afbeelding",
                     "name": "image",
@@ -808,11 +782,12 @@
                 ]
             ],
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
             "theme_color": "black",
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -832,11 +807,38 @@
                 ]
             ],
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
             "theme_color": "black",
+            "allow_in_bindings": 1,
+            "font_size": 14
+        },
+        {
+            "key": "field_679b8a950ce6c",
+            "label": "USP icoon kleur",
+            "name": "usp_icon_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a51c4198fb5",
+                        "operator": "==",
+                        "value": "icons"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "black",
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -2090,5 +2092,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737735894
+    "modified": 1738246994
 }
