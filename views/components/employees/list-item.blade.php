@@ -47,7 +47,7 @@
             <div class="relative w-full h-full">
                 @include('components.image', [
                      'image_id' => $imageId,
-                     'size' => 'job-thumbnail',
+                     'size' => 'full',
                      'object_fit' => 'cover',
                      'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 @if($hoverImageId) group-hover:opacity-0 @else group-hover:scale-110 @endif rounded-' . $borderRadius,
                      'alt' => $fullName,
@@ -55,7 +55,7 @@
                 @if (!empty($hoverImageId))
                     @include('components.image', [
                          'image_id' => $hoverImageId,
-                         'size' => 'job-thumbnail',
+                         'size' => 'full',
                          'object_fit' => 'cover',
                          'img_class' => 'aspect-square w-full h-full object-cover object-center absolute top-0 left-0 transform ease-in-out duration-300 opacity-0 group-hover:opacity-100 rounded-' . $borderRadius,
                          'alt' => $fullName . ' hover',
