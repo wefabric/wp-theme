@@ -128,9 +128,9 @@
                                     @if ($zipcode && $city)
                                         <div class="establishment-zipcode">{{ $zipcode }}, {{ $city }}</div>
                                     @endif
-                                    @if ($countryName)
-                                        <div class="establishment-country">{{ $countryName }}</div>
-                                    @endif
+{{--                                    @if ($countryName)--}}
+{{--                                        <div class="establishment-country">{{ $countryName }}</div>--}}
+{{--                                    @endif--}}
                                     @if($visibleElements && in_array('contact', $visibleElements))
                                         <div class="contact-info mt-8 flex flex-col gap-y-2">
                                             <div class="contact-text font-bold">Contact</div>
