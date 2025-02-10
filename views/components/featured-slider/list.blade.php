@@ -35,6 +35,7 @@
             @endif
             pagination: {
                 el: '.swiper-pagination',
+                clickable: true,
             },
             navigation: {
                 nextEl: ".featuredslider-button-next-{{ $randomNumber }}",

@@ -85,6 +85,7 @@
             loop: false,
             pagination: {
                 el: '.swiper-pagination',
+                clickable: true,
             },
 
             breakpoints: {

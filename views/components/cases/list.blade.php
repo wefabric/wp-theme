@@ -63,6 +63,7 @@
             @endif
             pagination: {
                 el: '.swiper-pagination',
+                clickable: true,
             },
             navigation: {
                 nextEl: ".klantcase-button-next-{{ $randomNumber }}",

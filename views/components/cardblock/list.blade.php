@@ -57,6 +57,7 @@
             @endif
             pagination: {
                 el: '.swiper-pagination',
+                clickable: true,
             },
             navigation: {
                 nextEl: ".cardblock-button-next-{{ $randomNumber }}",

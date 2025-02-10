@@ -39,6 +39,7 @@
             @endif
             pagination: {
                 el: '.swiper-pagination',
+                clickable: true,
             },
             navigation: {
                 nextEl: ".process-button-next-{{ $randomNumber }}",

@@ -103,6 +103,7 @@
             @endif
             pagination: {
                 el: '.swiper-pagination',
+                clickable: true,
             },
             navigation: {
                 nextEl: ".logos-button-next-{{ $randomNumber }}",

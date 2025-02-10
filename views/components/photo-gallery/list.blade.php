@@ -87,6 +87,7 @@
 
             pagination: {
                 el: '.swiper-pagination',
+                clickable: true,
             },
             navigation: {
                 nextEl: ".photogallery-button-next-{{ $randomNumber }}",

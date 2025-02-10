@@ -53,6 +53,7 @@
             @endif
             pagination: {
                 el: '.swiper-pagination',
+                clickable: true,
             },
             navigation: {
                 nextEl: ".subpages-button-next-{{ $randomNumber }}",

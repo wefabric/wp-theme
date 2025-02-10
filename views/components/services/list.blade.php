@@ -51,6 +51,7 @@
             @endif
             pagination: {
                 el: '.swiper-pagination',
+                clickable: true,
             },
             navigation: {
                 nextEl: ".services-button-next-{{ $randomNumber }}",
