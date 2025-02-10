@@ -141,6 +141,39 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_67925bcc3a095",
+            "label": "Hover afbeelding",
+            "name": "hover_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a27d6f6cb53",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        },
+        {
             "key": "field_64a27df26cb54",
             "label": "E-mailadres",
             "name": "email",
@@ -250,6 +283,27 @@
                     "parent_repeater": "field_64a27e3f6cb56"
                 }
             ]
+        },
+        {
+            "key": "field_67a9bd0e55373",
+            "label": "Bio omschrijving",
+            "name": "bio_text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
@@ -270,5 +324,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737645043
+    "modified": 1739178764
 }

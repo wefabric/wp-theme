@@ -46,6 +46,7 @@
     "producten/block.json",
     "services/block.json",
     "product-pakketten/block.json",
+    "bio/block.json",
 
     "projecten/block.json",
     "evenementen/block.json",

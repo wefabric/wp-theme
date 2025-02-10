@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.bio.index', ['block' => $block])->render(); ?>
