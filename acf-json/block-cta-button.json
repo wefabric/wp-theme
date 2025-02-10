@@ -67,14 +67,7 @@
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_65649072a2aaf",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "25",
                 "class": "",
@@ -1796,5 +1789,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736870682
+    "modified": 1739187033
 }
