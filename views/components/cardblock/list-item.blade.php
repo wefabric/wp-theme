@@ -21,6 +21,7 @@
 
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
+    $imageView = $block['data']['image_view'] ?? 'background_image';
 @endphp
 
 {{--Variant 1 is content in kaart--}}

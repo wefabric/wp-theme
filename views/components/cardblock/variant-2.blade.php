@@ -58,7 +58,7 @@
             <div class="content-box h-full flex flex-col gap-y-4 p-6 xl:p-8">
                 @if (in_array('title_text', $visibleElements) && $pageTitle)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
-                       class="card-title text-{{ $cardTitleColor }} relative z-20 h3 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
+                       class="card-title h3 text-{{ $cardTitleColor }} relative z-20 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
                         {!! !empty($customPageTitle) ? $customPageTitle : $pageTitle !!}
                     </a>
                 @endif

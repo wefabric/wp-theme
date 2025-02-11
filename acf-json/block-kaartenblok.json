@@ -618,6 +618,48 @@
             "save_other_choice": 0
         },
         {
+            "key": "field_67ab2b73f4a39",
+            "label": "Afbeelding weergave",
+            "name": "image_view",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6525652c4ff5b",
+                        "operator": "==",
+                        "value": "featured_image"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6525652c4ff5b",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "background_image": "Afbeelding als achtergrond van kaart",
+                "normal_image": "Afbeelding los in de kaart"
+            },
+            "default_value": "background_image",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_65254f6289fbf",
             "label": "Pagina's",
             "name": "pages",
@@ -2359,5 +2401,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1739264714
+    "modified": 1739271574
 }

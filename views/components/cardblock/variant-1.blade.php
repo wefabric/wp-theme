@@ -1,8 +1,8 @@
 <div id="{{ str_replace(' ', '-', strtolower($pageTitle)) }}" class="content-in-card-item card-item group h-full w-full @if ($flyinEffect) card-hidden @endif">
     <div class="card-background p-6 xl:p-8 h-full mx-auto relative bg-{{ $cardBackgroundColor }} w-full aspect-square flex flex-col gap-y-4 items-center justify-center text-center overflow-hidden rounded-{{ $borderRadius }} {{ $hoverEffectClass }} duration-300 ease-in-out"
-        @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId)
+        @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId && ($imageView == 'background_image'))
              style="background-image: url('{{ wp_get_attachment_image_url($featuredImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($featuredImageId) }}">
-        @elseif ($block['data']['block_visual'] == 'image' && $imageId)
+        @elseif ($block['data']['block_visual'] == 'image' && $imageId && ($imageView == 'background_image'))
              style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
         @else >
         @endif
@@ -26,15 +26,27 @@
             @endif
         @endif
 
-        <div class="w-full content-wrapper flex flex-col items-center gap-y-4">
+        <div class="content-wrapper w-full flex flex-col items-center gap-y-4">
             @if ($pageIcon)
                 <a class="page-icon" href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina">
                     <i class="text-{{ $cardIconColor }} page-icon relative z-20 text-[32px] md:text-[40px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-white transition-all duration-300 ease-in-out"></i>
                 </a>
             @endif
+
+            @if (($block['data']['block_visual'] == 'image' && $imageId) && ($imageView == 'normal_image') || ($block['data']['block_visual'] == 'featured_image' && $featuredImageId) && ($imageView == 'normal_image'))
+                @include('components.image', [
+                    'image_id' => $block['data']['block_visual'] == 'featured_image' ? $featuredImageId : $imageId,
+                    'size' => 'full',
+                    'object_fit' => 'cover',
+                    'img_class' => 'w-full object-cover rounded-' . $borderRadius,
+                    'alt' => $pageTitle,
+                ])
+            @endif
+
+
             @if (is_array($visibleElements) && !empty($visibleElements) && in_array('title_text', $visibleElements) && $pageTitle)
                 <a href="{{ $pageUrl }} " aria-label="Ga naar {{ $pageTitle }} pagina"
-                   class="text-{{ $cardTitleColor }} page-title relative z-20 h4 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
+                   class="page-title h4 text-{{ $cardTitleColor }} relative z-20 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
                     {!! !empty($customPageTitle) ? $customPageTitle : $pageTitle !!}
                 </a>
             @endif
