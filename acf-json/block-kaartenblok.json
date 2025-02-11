@@ -592,7 +592,7 @@
         },
         {
             "key": "field_6525652c4ff5b",
-            "label": "Blok visual",
+            "label": "Kaart visual",
             "name": "block_visual",
             "aria-label": "",
             "type": "radio",
@@ -613,12 +613,13 @@
             "return_format": "value",
             "allow_null": 0,
             "other_choice": 0,
+            "allow_in_bindings": 1,
             "layout": "vertical",
             "save_other_choice": 0
         },
         {
             "key": "field_65254f6289fbf",
-            "label": "Paginas",
+            "label": "Pagina's",
             "name": "pages",
             "aria-label": "",
             "type": "repeater",
@@ -660,6 +661,28 @@
                     "allow_archives": 1,
                     "multiple": 0,
                     "allow_null": 0,
+                    "parent_repeater": "field_65254f6289fbf"
+                },
+                {
+                    "key": "field_67ab0920e3c78",
+                    "label": "Aangepaste titel",
+                    "name": "custom_page_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Als dit veld leeg is, wordt de paginatitel automatisch gebruikt.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "parent_repeater": "field_65254f6289fbf"
                 },
                 {
@@ -788,11 +811,12 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
             "theme_color": "background-color",
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -812,11 +836,12 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -837,11 +862,12 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -862,7 +888,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
@@ -2333,5 +2359,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737743705
+    "modified": 1739264714
 }

@@ -35,7 +35,7 @@
             @if (is_array($visibleElements) && !empty($visibleElements) && in_array('title_text', $visibleElements) && $pageTitle)
                 <a href="{{ $pageUrl }} " aria-label="Ga naar {{ $pageTitle }} pagina"
                    class="text-{{ $cardTitleColor }} page-title relative z-20 h4 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
-                    {!! $pageTitle !!}
+                    {!! !empty($customPageTitle) ? $customPageTitle : $pageTitle !!}
                 </a>
             @endif
             @if (is_array($visibleElements) && !empty($visibleElements) && in_array('overview_text', $visibleElements) && $pageExcerpt)

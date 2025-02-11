@@ -1,5 +1,6 @@
 @php
     $pageTitle = $page['title'] ?? '';
+    $customPageTitle = $page['custom_title'] ?? '';
     $pageExcerpt = get_the_excerpt($page['id']);
     $pageUrl = $page['url'] ?? '';
     $pageIcon = json_decode($page['icon'], true);
@@ -15,7 +16,7 @@
             $terms = get_the_category($pageId) ?? [];
         } else {
         // Fetch terms from the custom taxonomy 'CPT_categories'
-         $terms = get_the_terms($pageId, $postType . '_categories') ?? [];
+        $terms = get_the_terms($pageId, $postType . '_categories') ?? [];
     }
 
     // Weergave

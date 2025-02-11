@@ -62,34 +62,22 @@
     $numPages = isset($block['data']['pages']) ? intval($block['data']['pages']) : 0;
 
     for ($i = 0; $i < $numPages; $i++) {
-        $pageKey = "pages_{$i}_page";
-        $pageId = $block['data'][$pageKey] ?? 0;
-        $iconKey = "pages_{$i}_icon";
-        $imageKey = "pages_{$i}_image";
-        $imageId = $block['data'][$imageKey] ?? 0;
+        $pageId = $block['data']["pages_{$i}_page"] ?? 0;
+        $imageId = $block['data']["pages_{$i}_image"] ?? 0;
 
         if ($pageId) {
             $page = get_post($pageId);
 
             if ($page) {
-                $icon = $block['data'][$iconKey] ?? '';
-
-                $featured_image_id = 0;
-                if ($imageId) {
-                    $featured_image_id = $imageId;
-                } elseif (has_post_thumbnail($page->ID)) {
-                    $thumbnail_id = get_post_thumbnail_id($page->ID);
-                    $featured_image_id = $thumbnail_id;
-                }
-
                 $pagesData[] = [
                     'id' => $page->ID,
                     'title' => $page->post_title,
+                    'custom_title' => $block['data']["pages_{$i}_custom_page_title"] ?? '',
                     'url' => get_permalink($page->ID),
                     'content' => $page->post_content,
-                    'icon' => $icon,
+                    'icon' => $block['data']["pages_{$i}_icon"] ?? '',
                     'image_id' => $imageId,
-                    'featured_image_id' => $featured_image_id,
+                    'featured_image_id' => $imageId ?: (has_post_thumbnail($page->ID) ? get_post_thumbnail_id($page->ID) : 0),
                 ];
             }
         }
