@@ -56,89 +56,111 @@
     $currentTerms = isset($_GET['testimonial_category']) ? array_map('intval', explode(',', $_GET['testimonial_category'])) : [];
     $multipleFilters = $block['data']['multiple_filters_enabled'] ?? false;
 
-     // Show all
-     if ($displayType == 'show_all') {
-          $args = [
-             'posts_per_page' => -1,
-             'post_type' => 'testimonials',
-             'post_status' => 'publish',
-         ];
+    // Show all
+    if ($displayType == 'show_all') {
+        $args = [
+            'posts_per_page' => -1,
+            'post_type' => 'testimonials',
+            'post_status' => 'publish',
+        ];
 
-         if ($currentTerms) {
-             $args['tax_query'] = [
-                 [
-                     'taxonomy' => 'testimonial_categories',
-                     'field' => 'id',
-                     'terms' => $currentTerms,
-                 ],
-             ];
-         }
+        if ($currentTerms) {
+            $args['tax_query'] = [
+                [
+                    'taxonomy' => 'testimonial_categories',
+                    'field' => 'id',
+                    'terms' => $currentTerms,
+                ],
+            ];
+        }
 
-         $query = new WP_Query($args);
-         $testimonials = wp_list_pluck($query->posts, 'ID');
-     }
+        $query = new WP_Query($args);
+        $testimonials = wp_list_pluck($query->posts, 'ID');
+    }
 
-     // Show category
-     elseif ($displayType == 'show_category') {
-         $selectedCategory = $block['data']['category'] ?? '';
+    // Show category
+    elseif ($displayType == 'show_category') {
+        $selectedCategory = $block['data']['category'] ?? '';
+        $args = [
+            'posts_per_page' => -1,
+            'post_type' => 'testimonials',
+            'post_status' => 'publish',
+            'tax_query' => [
+                [
+                    'taxonomy' => 'testimonial_categories',
+                    'field' => 'id',
+                    'terms' => $selectedCategory,
+                ],
+            ],
+        ];
 
-         $args = [
-             'posts_per_page' => -1,
-             'post_type' => 'testimonials',
-             'post_status' => 'publish',
-             'tax_query' => [
-                 [
-                     'taxonomy' => 'testimonial_categories',
-                     'field' => 'id',
-                     'terms' => $selectedCategory,
-                 ],
-             ],
-         ];
-
-         if ($currentTerms) {
-             $args['tax_query'][] = [
-                 'taxonomy' => 'testimonial_categories',
-                 'field' => 'id',
-                 'terms' => $currentTerms,
-             ];
-             $args['tax_query']['relation'] = 'AND';
-         }
-
-         $query = new WP_Query($args);
-         $testimonials = wp_list_pluck($query->posts, 'ID');
-     }
+        if ($currentTerms) {
+            $args['tax_query'][] = [
+                'taxonomy' => 'testimonial_categories',
+                'field' => 'id',
+                'terms' => $currentTerms,
+            ];
+            $args['tax_query']['relation'] = 'AND';
+        }
+        $query = new WP_Query($args);
+        $testimonials = wp_list_pluck($query->posts, 'ID');
+    }
 
     // Show specific
     elseif ($displayType == 'show_specific') {
-         $testimonials = $block['data']['show_specific_testimonials'];
-         if (!is_array($testimonials) || empty($testimonials)) {
-             $testimonials = [];
-         }
+        $testimonials = $block['data']['show_specific_testimonials'];
+        if (!is_array($testimonials) || empty($testimonials)) {
+            $testimonials = [];
+        }
 
-         $args = [
-             'posts_per_page' => -1,
-             'post_type' => 'testimonials',
-             'post_status' => 'publish',
-             'tax_query' => [],
-         ];
+        $args = [
+            'posts_per_page' => -1,
+            'post_type' => 'testimonials',
+            'post_status' => 'publish',
+            'tax_query' => [],
+        ];
 
-         if ($currentTerms) {
-             $args['tax_query'][] = [
-                 'taxonomy' => 'testimonial_categories',
-                 'field' => 'id',
-                 'terms' => $currentTerms,
-             ];
-             $args['tax_query']['relation'] = 'AND';
-         }
+        if ($currentTerms) {
+            $args['tax_query'][] = [
+                'taxonomy' => 'testimonial_categories',
+                'field' => 'id',
+                'terms' => $currentTerms,
+            ];
+            $args['tax_query']['relation'] = 'AND';
+        }
 
-         if (!empty($testimonials)) {
-             $args['post__in'] = $testimonials;
-         }
+        if (!empty($testimonials)) {
+            $args['post__in'] = $testimonials;
+        }
+        $query = new WP_Query($args);
+        $testimonials = wp_list_pluck($query->posts, 'ID');
+    }
 
-         $query = new WP_Query($args);
-         $testimonials = wp_list_pluck($query->posts, 'ID');
+    // Show random
+    elseif ($displayType == 'show_random') {
+        $postAmount = $block['data']['post_amount'] ?? 3;
+        $args = [
+            'posts_per_page' => $postAmount,
+            'post_type'      => 'testimonials',
+            'post_status'    => 'publish',
+            'orderby'        => 'rand',
+        ];
+        $query = new WP_Query($args);
+        $testimonials = wp_list_pluck($query->posts, 'ID');
+    }
 
-//         todo: add filter for show latest and random
+    // Show latest
+    elseif ($displayType == 'show_latest') {
+        $postAmount = $block['data']['post_amount'] ?? 3;
+        $args = [
+            'posts_per_page' => $postAmount,
+            'post_type' => 'testimonials',
+            'post_status'    => 'publish',
+            'orderby' => 'date',
+            'order' => 'DESC',
+        ];
+        $query = new WP_Query($args);
+        $testimonials = wp_list_pluck($query->posts, 'ID');
     }
 
     $visibleElements = $block['data']['show_element'] ?? [];

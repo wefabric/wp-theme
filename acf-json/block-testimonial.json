@@ -584,12 +584,14 @@
                 "show_all": "Toon alle testimonials",
                 "show_category": "Toon testimonials van een categorie",
                 "show_specific": "Toon specifieke testimonials",
+                "show_random": "Toon willekeurige testimonials",
                 "show_latest": "Toon laatste testimonials"
             },
             "default_value": "show_all",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
@@ -678,6 +680,13 @@
                         "operator": "==",
                         "value": "show_latest"
                     }
+                ],
+                [
+                    {
+                        "field": "field_6690250cf7cef",
+                        "operator": "==",
+                        "value": "show_random"
+                    }
                 ]
             ],
             "wrapper": {
@@ -688,6 +697,7 @@
             "default_value": 3,
             "min": "",
             "max": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "step": "",
             "prepend": "",
@@ -2200,5 +2210,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1739354385
+    "modified": 1739356791
 }

@@ -576,12 +576,14 @@
                 "show_all": "Toon alle nieuwsberichten",
                 "show_category": "Toon nieuwsberichten van een categorie",
                 "show_specific": "Toon specifieke nieuwsberichten",
+                "show_random": "Toon willekeurige nieuwsberichten",
                 "show_latest": "Toon laatste nieuwsberichten"
             },
             "default_value": "show_all",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
@@ -667,6 +669,13 @@
                         "operator": "==",
                         "value": "show_latest"
                     }
+                ],
+                [
+                    {
+                        "field": "field_649d8cf162662",
+                        "operator": "==",
+                        "value": "show_random"
+                    }
                 ]
             ],
             "wrapper": {
@@ -677,6 +686,7 @@
             "default_value": 3,
             "min": "",
             "max": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "step": "",
             "prepend": "",
@@ -721,11 +731,12 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -760,11 +771,12 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -2194,5 +2206,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737969528
+    "modified": 1739357310
 }

@@ -57,6 +57,7 @@
 
     $displayType = $block['data']['display_type'];
 
+    // Show all
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
@@ -65,11 +66,14 @@
         $query = new WP_Query($args);
         $posts = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show category
     elseif ($displayType == 'show_category') {
         $selectedCategory = $block['data']['category'] ?? '';
         $args = [
             'posts_per_page' => -1,
             'post_type' => 'post',
+            'post_status' => 'publish',
             'tax_query' => [
                 [
                     'taxonomy' => 'category',
@@ -81,12 +85,30 @@
         $query = new WP_Query($args);
         $posts = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show specific
     elseif ($displayType == 'show_specific') {
         $posts = $block['data']['show_specific_news'];
         if (!is_array($posts) || empty($posts)) {
             $posts = [];
         }
     }
+
+    // Show random
+    elseif ($displayType == 'show_random') {
+        $postAmount = $block['data']['post_amount'] ?? 3;
+        $args = [
+            'posts_per_page' => $postAmount,
+            'post_type'      => 'post',
+            'post_status'    => 'publish',
+            'orderby'        => 'rand',
+        ];
+
+        $query = new WP_Query($args);
+        $posts = wp_list_pluck($query->posts, 'ID');
+    }
+
+    // Show latest
     elseif ($displayType == 'show_latest') {
         $postAmount = $block['data']['post_amount'] ?? 3;
         $args = [
