@@ -41,6 +41,11 @@
 
 
     // Formulier
+    $formTitle = $block['data']['form_title'] ?? '';
+    $formTitleColor = $block['data']['form_title_color'] ?? '';
+    $formSubTitle = $block['data']['form_subtitle'] ?? '';
+    $formSubTitleColor = $block['data']['form_subtitle_color'] ?? '';
+
     $form = $block['data']['form'] ?? '';
     $formTextColor = $block['data']['form_text_color'] ?? '';
     $formInputColor = $block['data']['form_input_color'] ?? '';
@@ -120,6 +125,12 @@
             @endif
             @if ($form)
                 <div class="form @if ($formBackgroundColor) p-8 md:p-16 @endif bg-{{ $formBackgroundColor }} rounded-{{ $borderRadius }}">
+                    @if ($formSubTitle)
+                        <span class="subtitle block mb-2 text-{{ $formSubTitleColor }}">{!! $formSubTitle !!}</span>
+                    @endif
+                    @if ($formTitle)
+                        <h2 class="title mb-4 text-{{ $formTitleColor }}">{!! $formTitle !!}</h2>
+                    @endif
                     {!! gravity_form($form, false) ; !!}
                 </div>
             @endif

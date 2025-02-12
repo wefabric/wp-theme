@@ -1,8 +1,9 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
-    $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -93,6 +94,10 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="faq" class="block-faq relative faq-{{ $randomNumber }}-custom-padding faq-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -104,7 +109,7 @@
         <div class="mx-auto {{ $blockClass }}">
             <div class="faq-drawer container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                 @if ($subTitle)
-                    <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
+                    <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
                 @endif
                 @if ($title)
                     <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
@@ -120,7 +125,7 @@
                             @php
                                 $uniqueFaqId = "faq-drawer-{$randomNumber}-{$key}";
                             @endphp
-                            <div class="mb-2 text-left">
+                            <div class="faq-item mb-2 text-left relative @if ($flyinEffect) faq-hidden @endif">
                                 <input class="faq-drawer__trigger mb-4" id="{{ $uniqueFaqId }}" type="checkbox"/>
                                 <label class="faq-drawer__title relative block cursor-pointer text-{{ $questionTextColor }} text-md font-bold p-10 bg-{{ $faqBackgroundColor }}"
                                        for="{{ $uniqueFaqId }}">{{ $faq['question_and_answer']['question'] }}</label>
@@ -205,4 +210,51 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .faq-hidden {
+        opacity: 0;
+    }
+
+    .swiper-slide-duplicate .faq-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .faq-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqItems = document.querySelectorAll('.faq-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const faqItem = entry.target;
+
+                        setTimeout(() => {
+                            if (faqItem.classList.contains('faq-hidden')) {
+                                faqItem.classList.add('faq-animated');
+                                faqItem.classList.remove('faq-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(faqItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            faqItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif
