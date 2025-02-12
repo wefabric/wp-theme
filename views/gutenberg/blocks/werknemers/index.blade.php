@@ -65,7 +65,6 @@
                 ],
             ];
         }
-
         $query = new WP_Query($args);
         $employees = wp_list_pluck($query->posts, 'ID');
     }
@@ -95,7 +94,6 @@
             ];
             $args['tax_query']['relation'] = 'AND';
         }
-
         $query = new WP_Query($args);
         $employees = wp_list_pluck($query->posts, 'ID');
     }
@@ -126,7 +124,6 @@
         if (!empty($employees)) {
             $args['post__in'] = $employees;
         }
-
         $query = new WP_Query($args);
         $employees = wp_list_pluck($query->posts, 'ID');
     }
@@ -195,6 +192,8 @@
         'none' => ''
     ];
     $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
+
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="werknemers" class="block-werknemers relative werknemers-{{ $randomNumber }}-custom-padding werknemers-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -294,4 +293,51 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .employee-hidden {
+        opacity: 0;
+    }
+
+    .swiper-slide-duplicate .employee-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .employee-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const employeeItems = document.querySelectorAll('.werknemer-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const employeeItem = entry.target;
+
+                        setTimeout(() => {
+                            if (employeeItem.classList.contains('employee-hidden')) {
+                                employeeItem.classList.add('employee-animated');
+                                employeeItem.classList.remove('employee-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(employeeItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            employeeItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif

@@ -89,7 +89,7 @@
     @endif
     <div class="custom-styling relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="custom-layout {{ $blockClass }} mx-auto flex flex-col lg:flex-row gap-2 lg:gap-8">
-            <div class="content-block w-full lg:w-2/5 order-1 @if ($formPosition == 'right') lg:order-0 @else lg:order-1 @endif py-8 px-8 lg:py-12 bg-{{ $contentBackgroundColor }}">
+            <div class="content-block w-full lg:w-1/2 order-1 @if ($formPosition == 'right') lg:order-0 @else lg:order-1 @endif py-8 px-8 lg:py-12 bg-{{ $contentBackgroundColor }}">
                 @if ($subTitle)
                     <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
                 @endif
@@ -175,7 +175,7 @@
                 </div>
             </div>
             @if ($form)
-                <div class="form-block w-full lg:w-3/5 order-0 @if ($formPosition == 'right') lg:order-1 @else lg:order-0 @endif">
+                <div class="form-block w-full lg:w-1/2 order-0 @if ($formPosition == 'right') lg:order-1 @else lg:order-0 @endif">
                     <div class="contact-block bg-{{ $formBackgroundColor }} p-8 lg:p-12 rounded-{{ $borderRadius }}">
                         <div class="form h-full w-full">
                             @if ($formTitle)

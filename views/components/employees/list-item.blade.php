@@ -24,7 +24,7 @@
     $pageLink = $block['data']['page_url'] ?? false;
 @endphp
 
-<div class="werknemer-item group h-full">
+<div class="werknemer-item group h-full @if ($flyinEffect) employee-hidden @endif">
     <div class="werknemer-card relative h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         <div class="custom-height relative max-h-[360px] overflow-hidden w-full rounded-{{ $borderRadius }}">
             @if ($pageLink)
@@ -44,7 +44,7 @@
                     @endforeach
                 </div>
             @endif
-            <div class="relative w-full h-full">
+            <div class="employee-image relative w-full h-full">
                 @include('components.image', [
                      'image_id' => $imageId,
                      'size' => 'full',
