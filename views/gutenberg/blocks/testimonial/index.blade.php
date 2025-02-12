@@ -1,11 +1,10 @@
 @php
-    //    todo: Needs block update
-
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
     $subTitleColor = $block['data']['subtitle_color'] ?? '';
+    $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
         // Buttons
@@ -14,11 +13,38 @@
         $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
         $button1Color = $block['data']['button_button_1_color'] ?? '';
         $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
         $button2Text = $block['data']['button_button_2']['title'] ?? '';
         $button2Link = $block['data']['button_button_2']['url'] ?? '';
         $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
         $button2Color = $block['data']['button_button_2_color'] ?? '';
         $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Download = $block['data']['button_button_2_download'] ?? false;
+        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+        if (!empty($button2Icon)) {
+            $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+
+        $buttonCardText = $block['data']['card_button_button_text'] ?? '';
+        $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
+        $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
+        $buttonCardIcon = $block['data']['card_button_button_icon'] ?? '';
+        if (!empty($buttonCardIcon)) {
+            $iconData = json_decode($buttonCardIcon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $buttonCardIcon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
 
         $textPosition = $block['data']['text_position'] ?? '';
         $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
@@ -112,7 +138,7 @@
          $query = new WP_Query($args);
          $testimonials = wp_list_pluck($query->posts, 'ID');
 
-//         todo: add filter for show latest
+//         todo: add filter for show latest and random
     }
 
     $visibleElements = $block['data']['show_element'] ?? [];
@@ -178,13 +204,19 @@
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+    <div class="custom-width relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($subTitle)
                 <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
             @endif
             @if ($title)
                 <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
+            @endif
+            @if ($text)
+                @include('components.content', [
+                    'content' => apply_filters('the_content', $text),
+                    'class' => 'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
+                ])
             @endif
             @if (!empty($visibleElements) && in_array('category_filter', $visibleElements))
                 @include('components.testimonials.category-filter')
@@ -193,15 +225,17 @@
                 @include('components.testimonials.list', ['testimonials' => $testimonials])
             @endif
             @if (($button1Text) && ($button1Link))
-                <div class="{{ $textClass }} buttons w-full flex flex-wrap gap-4 mt-4">
+                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                     @include('components.buttons.default', [
-                       'text' => $button1Text,
-                       'href' => $button1Link,
-                       'alt' => $button1Text,
-                       'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                       'class' => 'rounded-lg',
-                       'target' => $button1Target,
-                   ])
+                        'text' => $button1Text,
+                        'href' => $button1Link,
+                        'alt' => $button1Text,
+                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                        'class' => 'rounded-lg',
+                        'target' => $button1Target,
+                        'icon' => $button1Icon,
+                        'download' => $button1Download,
+                    ])
                     @if (($button2Text) && ($button2Link))
                         @include('components.buttons.default', [
                             'text' => $button2Text,
@@ -210,6 +244,8 @@
                             'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
                             'class' => 'rounded-lg',
                             'target' => $button2Target,
+                            'icon' => $button2Icon,
+                            'download' => $button2Download,
                         ])
                     @endif
                 </div>

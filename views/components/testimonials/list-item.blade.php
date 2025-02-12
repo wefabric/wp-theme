@@ -2,8 +2,10 @@
     $fields = get_fields($testimonial);
 
     $testimonialBackground = $block['data']['testimonial_background_color'] ?? 'none';
+    $testimonialTextColor = $block['data']['testimonial_text_color'] ?? '';
 
     $testimonialTitle = get_the_title($testimonial) ?? '';
+    $testimonialUrl = get_permalink($testimonial);
     $testimonialName = $fields['name'] ?? '';
     $testimonialText = $fields['testimonial_text'] ?? '';
     $testimonialFunction = $fields['function'] ?? '';
@@ -15,11 +17,10 @@
     $imagePosition = $block['data']['image_position'] ?? 'right';
 
     $visibleElements = $block['data']['show_element'] ?? [];
-
     $testimonialCategories = get_the_terms($testimonial, 'testimonial_categories');
 @endphp
 
-<div class="testimonial-item custom-styling flex w-full h-full text-{{ $textColor }} @if ($flyinEffect) testimonial-hidden @endif">
+<div class="testimonial-item custom-styling flex w-full h-full text-{{ $testimonialTextColor }} @if ($flyinEffect) testimonial-hidden @endif">
 
     <div class="testimonial-block relative w-full h-auto flex flex-col md:flex-row bg-{{ $testimonialBackground }} rounded-{{ $borderRadius }} ">
 
@@ -104,7 +105,20 @@
                 @endif
             </div>
 
-            {{-- todo: add inside card button--}}
+            @if (!empty($visibleElements) && in_array('button', $visibleElements))
+                @if ($buttonCardText)
+                    <div class="testimonial-button mt-auto pt-8 z-10 order-5">
+                        @include('components.buttons.default', [
+                           'text' => $buttonCardText,
+                           'href' => $testimonialUrl,
+                           'alt' => $buttonCardText,
+                           'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
+                           'class' => 'rounded-lg',
+                           'icon' => $buttonCardIcon,
+                        ])
+                    </div>
+                @endif
+            @endif
 
         </div>
 
