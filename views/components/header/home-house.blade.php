@@ -4,7 +4,7 @@
 
 @include('components.link.opening', [
     'href' => get_home_url(),
-    'class' => $a_class ?? '',
+    'class' => $a_class ?? ' home-icon',
     'alt' => $alt,
 ])
 
