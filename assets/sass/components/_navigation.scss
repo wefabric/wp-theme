@@ -329,6 +329,7 @@ header {
 
 .backdrop-visible {
 	@apply opacity-100 visible;
+	height: calc(100vh + 100px);
 }
 
 .search-input-container {
