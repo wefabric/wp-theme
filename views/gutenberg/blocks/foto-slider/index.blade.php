@@ -139,6 +139,10 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="foto-slider" class="block-foto-slider relative foto-slider-{{ $randomNumber }} foto-slider-{{ $randomNumber }}-custom-padding foto-slider-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -239,4 +243,51 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .image-hidden {
+        opacity: 0;
+    }
+
+    .swiper-slide-duplicate .image-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .image-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const imageItems = document.querySelectorAll('.image-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const imageItem = entry.target;
+
+                        setTimeout(() => {
+                            if (imageItem.classList.contains('image-hidden')) {
+                                imageItem.classList.add('image-animated');
+                                imageItem.classList.remove('image-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(imageItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            imageItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif

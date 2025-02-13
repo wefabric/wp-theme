@@ -8,10 +8,10 @@
     $imageLinkTitle = $image['link']['title'] ?? '';
 @endphp
 
-<div class="image-item group h-full w-full">
+<div class="image-item group h-full w-full @if ($flyinEffect) image-hidden @endif">
     @if ($imageId)
         @if ($imageLinkUrl)
-            <div class="absolute w-full h-full overflow-hidden rounded-{{ $borderRadius }}">
+            <div class="card-overlay absolute w-full h-full overflow-hidden rounded-{{ $borderRadius }}">
                 <a href="{{ $imageLinkUrl }}" target="{{ $imageLinkTarget }}" aria-label="Ga naar {{ $imageLinkTitle }} pagina" class="absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
             </div>
         @endif
