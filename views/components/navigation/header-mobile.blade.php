@@ -5,16 +5,33 @@
     if (empty($footer_establishments) || empty($footer_establishments[0])) {
         $footer_establishments = [\Wefabric\WPEstablishments\Establishment::primary()];
     }
+
+    $logoToDisplay = '';
+    if (isset($options['navigation_logo']) && $options['navigation_logo'] === 'logo_2') {
+        $logoToDisplay = 'logo_white';
+    } else {
+        $logoToDisplay = 'logo';
+    }
+
+    $mobileLogoToDisplay = '';
+    if (isset($options['mobile_navigation_logo']) && $options['mobile_navigation_logo'] === 'logo_2') {
+        $mobileLogoToDisplay = 'logo_white';
+    } else {
+        $mobileLogoToDisplay = 'logo';
+    }
+
+    $mobileMenuBackgroundColor = $options['mobile_menu_background_color'] ?? 'primary';
 @endphp
 
 <input type="checkbox" class="hidden" id="nav-mobile-active" autocomplete="off">
 
 <div class="logo-mobile float-left xl:hidden z-10 relative">
     <div class="site-title">
-        <a href="{{ esc_url( home_url('/')) }}" class="block" aria-label="home" rel="home">
-            @if(isset(get_field('common', 'option')['logo']) && $logoId = get_field('common', 'option')['logo'])
-                {!! wp_get_attachment_image( $logoId , 'full', false, ['class' => 'max-h-12 w-auto']) !!}
+        <a href="{{ esc_url(home_url('/')) }}" class="block" aria-label="home" rel="home">
+            @if(isset(get_field('common', 'option')[$logoToDisplay]) && $logoId = get_field('common', 'option')[$logoToDisplay])
+                {!! wp_get_attachment_image($logoId, 'full', false, ['class' => 'max-h-12 w-auto']) !!}
             @endif
+            <span class="screen-reader-only">{{ get_bloginfo('name') }}</span>
         </a>
     </div>
 </div>
@@ -34,9 +51,14 @@
 
         </div>
         <div class="block xl:hidden mobile-menu-wrap">
-            <nav class="mobile-menu flex flex-col">
-                <div class="mobile-logo">
-                    @include('components.header.logo', ['type' => 'white'])
+            <nav class="mobile-menu flex flex-col bg-{{ $mobileMenuBackgroundColor }}">
+                    <div class="mobile-logo">
+                    <a href="{{ esc_url(home_url('/')) }}" class="block" aria-label="home" rel="home">
+                        @if(isset(get_field('common', 'option')[$mobileLogoToDisplay]) && $logoId = get_field('common', 'option')[$mobileLogoToDisplay])
+                            {!! wp_get_attachment_image($logoId, 'header_logo', false, ['class' => 'w-full']) !!}
+                        @endif
+                        <span class="screen-reader-only">{{ get_bloginfo('name') }}</span>
+                    </a>
                 </div>
 
                 @if (!empty($options['secondary_menu_show_elements']))

@@ -61,7 +61,8 @@
                         "id": ""
                     },
                     "placement": "top",
-                    "endpoint": 0
+                    "endpoint": 0,
+                    "selected": 0
                 },
                 {
                     "key": "field_65b26d5499c8c",
@@ -480,7 +481,7 @@
             }
         ]
     ],
-    "menu_order": 1,
+    "menu_order": 3,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -489,5 +490,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1706543973
+    "modified": 1739529598
 }

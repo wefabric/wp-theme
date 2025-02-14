@@ -1,6 +1,6 @@
 {
     "key": "group_62ff222c83db4",
-    "title": "Hoofdmenu",
+    "title": "Navigatie",
     "fields": [
         {
             "key": "field_6728cc055c58e",
@@ -41,6 +41,41 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_67af11dd79f0c",
+            "label": "Logo",
+            "name": "navigation_logo",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_62ff283210db3",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "logo_1": "Logo",
+                "logo_2": "Logo (wit)"
+            },
+            "default_value": "logo_1",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_62ff223307a32",
             "label": "Achtergrond kleur",
             "name": "menu_background_color",
@@ -58,11 +93,11 @@
                 ]
             ],
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
-            "theme_color": "primary-color-dark",
+            "theme_color": null,
             "allow_in_bindings": 1,
             "font_size": 14
         },
@@ -84,7 +119,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -110,7 +145,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -175,7 +210,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -201,11 +236,12 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -355,6 +391,69 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_67af11cd79f0b",
+            "label": "Mobiele menu",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_67af3265d134a",
+            "label": "Logo",
+            "name": "mobile_navigation_logo",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "logo_1": "Logo",
+                "logo_2": "Logo (wit)"
+            },
+            "default_value": "logo_1",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_67af3290d134b",
+            "label": "Achtergrond kleur",
+            "name": "mobile_menu_background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "primary-color",
+            "allow_in_bindings": 1,
+            "font_size": 14
         }
     ],
     "location": [
@@ -375,5 +474,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1731921399
+    "modified": 1739536148
 }

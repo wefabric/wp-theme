@@ -93,7 +93,6 @@
         </div>
     </div>
 
-
     @if(isset($option['footer_secondary_establishments']) && $option['footer_secondary_establishments'])
         <div class="establishments-list relative py-8 my-8">
             <div class="container mx-auto px-8">
@@ -105,20 +104,22 @@
     <div class="relative bottom-info">
         <div class="custom-flex-styling container mx-auto px-8 flex flex-col md:flex-row">
             <div class="logo-section flex flex-col justify-end lg:w-1/4 lg:pr-8">
+
+                @php
+                    $options = get_fields('option');
+                    $footerLogoToDisplay = '';
+
+                    if (isset($options['footer_logo']) && $options['footer_logo'] === 'logo_2') {
+                        $footerLogoToDisplay = 'logo_white';
+                    } else {
+                        $footerLogoToDisplay = 'logo';
+                    }
+                @endphp
+
                 @if (!empty($visibleFooterElements) && in_array('logo', $visibleFooterElements))
                     <div class="hidden lg:block">
-                        @php
-                            $settings = get_field('common', 'option');
-                            if(!empty($settings)) {
-                                if(array_key_exists('logo_white', $settings)) {
-                                    $logoId = $settings['logo_white'];
-                                } elseif(array_key_exists('logo', $settings)) {
-                                    $logoId = $settings['logo'];
-                                }
-                            }
-                        @endphp
-                        @if(!empty($logoId))
-                            {!! wp_get_attachment_image($logoId, 'footer_logo', false, ['class' => 'mx-auto lg:mx-0 inline-block']) !!}
+                        @if(isset(get_field('common', 'option')[$footerLogoToDisplay]) && $logoId = get_field('common', 'option')[$footerLogoToDisplay])
+                            {!! wp_get_attachment_image($logoId, 'footer_logo', false, ['class' => 'footer-logo-image']) !!}
                         @endif
                     </div>
                 @endif

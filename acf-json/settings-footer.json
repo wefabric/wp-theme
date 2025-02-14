@@ -3,97 +3,6 @@
     "title": "Footer",
     "fields": [
         {
-            "key": "field_62d7c92799708",
-            "label": "Partners",
-            "name": "footer_partners",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "Wil je logo's van partners tonen? Voeg ze hier toe!",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "Nieuwe regel",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_62d7c93999709",
-                    "label": "Logo",
-                    "name": "logo",
-                    "aria-label": "",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "id",
-                    "preview_size": "thumbnail",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "parent_repeater": "field_62d7c92799708"
-                },
-                {
-                    "key": "field_62d7c9c89970b",
-                    "label": "Omschrijving",
-                    "name": "alt_text",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Vul hier de omschrijving van het logo in.",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
-                    "parent_repeater": "field_62d7c92799708"
-                },
-                {
-                    "key": "field_62d7c9969970a",
-                    "label": "Link",
-                    "name": "url",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Wil je een link op de afbeelding hebben? Vul de link dan hier in.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
-                    "parent_repeater": "field_62d7c92799708"
-                }
-            ]
-        },
-        {
             "key": "field_62e8fb22a8e12",
             "label": "Achtergrondkleur",
             "name": "bg_color",
@@ -103,28 +12,12 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
-            "font_size": 14
-        },
-        {
-            "key": "field_651c0f1e4a0cb",
-            "label": "Titel kleur",
-            "name": "title_color",
-            "aria-label": "",
-            "type": "Thema Kleur",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -137,11 +30,12 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -154,7 +48,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "75",
                 "class": "",
                 "id": ""
             },
@@ -241,6 +135,24 @@
                     "maxlength": ""
                 }
             ]
+        },
+        {
+            "key": "field_651c0f1e4a0cb",
+            "label": "Titel kleur",
+            "name": "title_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "allow_in_bindings": 1,
+            "font_size": 14
         },
         {
             "key": "field_6329d0bc5b549",
@@ -385,7 +297,8 @@
                         "establishment_country": "Land van vestiging",
                         "establishment_phone": "Telefoonnummer van vestiging",
                         "establishment_mail": "E-mailadres van vestiging",
-                        "establishment_route": "Routebeschrijving van vestiging"
+                        "establishment_route": "Routebeschrijving van vestiging",
+                        "establishment_opening_hours": "Openingstijden van vestiging"
                     },
                     "default_value": [
                         "establishment_name",
@@ -393,10 +306,12 @@
                         "establishment_country",
                         "establishment_phone",
                         "establishment_mail",
-                        "establishment_route"
+                        "establishment_route",
+                        "establishment_opening_hours"
                     ],
                     "return_format": "value",
                     "allow_custom": 0,
+                    "allow_in_bindings": 1,
                     "layout": "vertical",
                     "toggle": 0,
                     "save_custom": 0,
@@ -439,16 +354,52 @@
                 "id": ""
             },
             "choices": {
-                "logo": "Toon logo (witte variant)",
-                "copyright": "Copyright"
+                "logo": "Toon logo",
+                "copyright": "Toon copyright"
             },
             "default_value": [],
             "return_format": "value",
             "allow_custom": 0,
+            "allow_in_bindings": 1,
             "layout": "vertical",
             "toggle": 0,
             "save_custom": 0,
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
+        },
+        {
+            "key": "field_67af26570634d",
+            "label": "Logo",
+            "name": "footer_logo",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65d8b9cd83638",
+                        "operator": "==",
+                        "value": "logo"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "logo_1": "Logo",
+                "logo_2": "Logo (wit)"
+            },
+            "default_value": "logo_1",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_660e654b4c909",
@@ -475,6 +426,97 @@
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_62d7c92799708",
+            "label": "Partners",
+            "name": "footer_partners",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Wil je logo's van partners tonen? Voeg ze hier toe!",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Nieuwe regel",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_62d7c93999709",
+                    "label": "Logo",
+                    "name": "logo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_62d7c92799708"
+                },
+                {
+                    "key": "field_62d7c9c89970b",
+                    "label": "Omschrijving",
+                    "name": "alt_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Vul hier de omschrijving van het logo in.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_62d7c92799708"
+                },
+                {
+                    "key": "field_62d7c9969970a",
+                    "label": "Link",
+                    "name": "url",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Wil je een link op de afbeelding hebben? Vul de link dan hier in.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_62d7c92799708"
+                }
+            ]
         }
     ],
     "location": [
@@ -495,5 +537,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728049224
+    "modified": 1739531959
 }
