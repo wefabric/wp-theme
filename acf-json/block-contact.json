@@ -170,7 +170,7 @@
             "font_size": 14
         },
         {
-            "key": "field_6530e20deb3ea",
+            "key": "field_67ae0c89411a2",
             "label": "Weergave",
             "name": "show_element",
             "aria-label": "",
@@ -184,15 +184,20 @@
                 "id": ""
             },
             "choices": {
-                "establishments": "Toon vestigingen",
-                "contact": "Mail en telefoonnummer",
-                "kvk_number": "Toon KVK",
-                "btw_number": "Toon BTW nummer",
-                "route_description": "Route beschrijving"
+                "establishment_name": "Naam van vestiging",
+                "establishment_address": "Adres van vestiging",
+                "establishment_country": "Land van vestiging",
+                "establishment_vat_number": "KVK nummer van vestiging",
+                "establishment_btw_number": "BTW nummer van vestiging",
+                "establishment_phone": "Telefoonnummer van vestiging",
+                "establishment_mail": "E-mailadres van vestiging",
+                "establishment_route": "Routebeschrijving van vestiging",
+                "establishment_opening_hours": "Openingstijden van vestiging"
             },
             "default_value": [],
             "return_format": "value",
             "allow_custom": 0,
+            "allow_in_bindings": 1,
             "layout": "vertical",
             "toggle": 0,
             "save_custom": 0,
@@ -1347,5 +1352,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737404558
+    "modified": 1739521611
 }

@@ -1,6 +1,4 @@
 @php
-    //    todo: Needs block update
-
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
@@ -97,8 +95,8 @@
                     <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
                 @endif
                 <div class="flex flex-col">
-                    @if (!empty($visibleElements) && in_array('establishments', $visibleElements) && $establishment_query->have_posts())
-                        <div class="establishment-list">
+                    @if ($establishment_query->have_posts())
+                        <div class="establishment-list flex flex-col gap-y-8">
                             @while ($establishment_query->have_posts())
                                 @php
                                     $establishment_query->the_post();
@@ -120,21 +118,41 @@
                                         $countryName = isset($countryNames[$country_id]) ? $countryNames[$country_id] : $country_id;
                                     }
                                 @endphp
-                                <div class="establishment mb-4 text-{{ $textColor }}">
-                                    <div class="establishment-title font-bold">{{ $establishment_title }}</div>
-                                    @if ($street && $house_number)
-                                        <div class="establishment-street">{{ $street }} {{ $house_number }} {{ $house_number_addition }}</div>
+
+                                <div class="establishment flex flex-col gap-y-6 text-{{ $textColor }}">
+
+                                    {{-- Vestiging gegevens --}}
+                                    @if (!empty($visibleElements) && array_intersect(['establishment_name', 'establishment_address', 'establishment_country']))
+                                        <div class="location-section">
+                                            @if (!empty($visibleElements) && in_array('establishment_name', $visibleElements))
+                                                <div class="establishment-title font-bold">{{ $establishment_title }}</div>
+                                            @endif
+
+                                            @if (!empty($visibleElements) && in_array('establishment_address', $visibleElements))
+                                                <div class="establishment-address">{{ $street }} {{ $house_number }} {{ $house_number_addition }}</div>
+                                                <div class="establishment-zipcode">{{ $zipcode }}, {{ $city }}</div>
+                                            @endif
+
+                                            @if (!empty($visibleElements) && in_array('establishment_country', $visibleElements) && $countryName)
+                                                <div class="establishment-country">{{ $countryName }}</div>
+                                            @endif
+
+                                            {{-- @if (!empty($visibleElements) && in_array('establishment_vat_number', $visibleElements) && $vatNumber)--}}
+                                            {{--    <div class="establishment-vat">{{ $vatNumber }}</div>--}}
+                                            {{-- @endif--}}
+
+                                            {{-- @if (!empty($visibleElements) && in_array('establishment_btw_number', $visibleElements) && $btwNumber)--}}
+                                            {{--    <div class="establishment-btw">{{ $vatNumber }}</div>--}}
+                                            {{-- @endif--}}
+                                        </div>
                                     @endif
-                                    @if ($zipcode && $city)
-                                        <div class="establishment-zipcode">{{ $zipcode }}, {{ $city }}</div>
-                                    @endif
-{{--                                    @if ($countryName)--}}
-{{--                                        <div class="establishment-country">{{ $countryName }}</div>--}}
-{{--                                    @endif--}}
-                                    @if($visibleElements && in_array('contact', $visibleElements))
-                                        <div class="contact-info mt-8 flex flex-col gap-y-2">
-                                            <div class="contact-text font-bold">Contact</div>
-                                            @if($phone)
+
+                                    {{-- Contactgegevens --}}
+                                    @if (!empty($visibleElements) && array_intersect(['establishment_phone', 'establishment_mail', 'establishment_route'], $visibleElements) && ($phone || $mail || $route))
+                                        <div class="contact-info flex flex-col gap-y-2">
+                                            <div class="contact-text font-bold mb-2">Contact</div>
+
+                                            @if (!empty($visibleElements) && in_array('establishment_phone', $visibleElements) && $phone)
                                                 <a class="phone-link group flex items-center gap-2 w-fit"
                                                    href="tel:{{ $phone['number'] }}"
                                                    title="Telefoonnummer">
@@ -142,7 +160,8 @@
                                                     <span class="align-middle group-hover:text-primary group-hover:underline">{{ $phone['number'] }}</span>
                                                 </a>
                                             @endif
-                                            @if($email)
+
+                                            @if (!empty($visibleElements) && in_array('establishment_mail', $visibleElements) && $email)
                                                 <a class="email-link group flex items-center gap-2 w-fit"
                                                    href="mailto:{{ $email }}"
                                                    title="Email">
@@ -150,7 +169,8 @@
                                                     <span class="align-middle group-hover:text-primary group-hover:underline">{{ $email }}</span>
                                                 </a>
                                             @endif
-                                            @if($street && $visibleElements && in_array('route_description', $visibleElements))
+
+                                            @if (!empty($visibleElements) && in_array('establishment_route', $visibleElements))
                                                 <div class="route-info">
                                                     <a class="route-link group flex items-center gap-2 w-fit"
                                                        href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}"
@@ -162,6 +182,30 @@
                                             @endif
                                         </div>
                                     @endif
+
+                                    {{-- Openingstijden --}}
+                                    @if (!empty($visibleElements) && in_array('establishment_opening_hours', $visibleElements))
+                                        <div class="opening-hours-section">
+                                            <div class="opening-hours-text font-bold mb-2">Openingstijden</div>
+                                            <div class="flex flex-col">
+                                                @foreach (get_fields($establishment_id)['opening_hours'] as $day)
+                                                    <div class="flex items-center sm:gap-x-12 justify-between sm:justify-start">
+                                                        <span class="w-fit sm:w-[120px]">{{ $day['day'] }}</span>
+                                                        @if ($day['closed'])
+                                                            <span>Gesloten</span>
+                                                        @else
+                                                            <span> {{ $day['opening_hour'] }} - {{ $day['closing_hour'] }}
+                                                                @if (!empty($day['opening_hour_2']) && !empty($day['closing_hour_2']))
+                                                                    & {{ $day['opening_hour_2'] }} - {{ $day['closing_hour_2'] }}
+                                                                @endif
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @endif
+
                                 </div>
                             @endwhile
                         </div>
@@ -174,6 +218,7 @@
                     @endif
                 </div>
             </div>
+
             @if ($form)
                 <div class="form-block w-full lg:w-1/2 order-0 @if ($formPosition == 'right') lg:order-1 @else lg:order-0 @endif">
                     <div class="contact-block bg-{{ $formBackgroundColor }} p-8 lg:p-12 rounded-{{ $borderRadius }}">
