@@ -160,6 +160,7 @@
                 "show_all": "Toon alle klantencases",
                 "show_category": "Toon klantencases van een categorie",
                 "show_specific": "Toon specifieke klantencases",
+                "show_random": "Toon willekeurige klantencases",
                 "show_latest": "Toon laatste klantencases"
             },
             "default_value": "show_all",
@@ -204,7 +205,7 @@
         },
         {
             "key": "field_6579c9aff092e",
-            "label": "Specifieke activiteiten weergeven",
+            "label": "Specifieke klantencases weergeven",
             "name": "show_specific_case",
             "aria-label": "",
             "type": "post_object",
@@ -232,6 +233,7 @@
             "return_format": "id",
             "multiple": 1,
             "allow_null": 0,
+            "bidirectional": 0,
             "ui": 1,
             "bidirectional_target": []
         },
@@ -249,6 +251,13 @@
                         "field": "field_6579c9aff0920",
                         "operator": "==",
                         "value": "show_latest"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6579c9aff0920",
+                        "operator": "==",
+                        "value": "show_random"
                     }
                 ]
             ],
@@ -991,5 +1000,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1733821539
+    "modified": 1739809294
 }

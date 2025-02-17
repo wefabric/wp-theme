@@ -24,23 +24,29 @@
     $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
     $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
 
+
     // Show klantencases
     $displayType = $block['data']['display_type'];
 
+   // Show all
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
+             'post_status'    => 'publish',
             'post_type' => 'klantcases',
         ];
 
         $query = new WP_Query($args);
         $cases = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show category
     elseif ($displayType == 'show_category') {
         $selectedCategory = $block['data']['category'] ?? '';
         $args = [
             'posts_per_page' => -1,
             'post_type' => 'klantcases',
+            'post_status'    => 'publish',
             'tax_query' => [
                 [
                     'taxonomy' => 'category',
@@ -52,23 +58,42 @@
         $query = new WP_Query($args);
         $cases = wp_list_pluck($query->posts, 'ID');
     }
+
+   // Show specific
     elseif ($displayType == 'show_specific') {
         $cases = $block['data']['show_specific_case'];
             if (!is_array($cases) || empty($cases)) {
                 $cases = [];
             }
     }
+
+    // Show random
+    elseif ($displayType == 'show_random') {
+        $postAmount = $block['data']['post_amount'] ?? 3;
+        $args = [
+            'posts_per_page' => $postAmount,
+            'post_type'      => 'klantcases',
+            'post_status'    => 'publish',
+            'orderby'        => 'rand',
+        ];
+        $query = new WP_Query($args);
+        $cases = wp_list_pluck($query->posts, 'ID');
+    }
+
+    // Show latest
     elseif ($displayType == 'show_latest') {
         $postAmount = $block['data']['post_amount'] ?? 3;
         $args = [
             'posts_per_page' => $postAmount,
             'post_type' => 'klantcases',
+            'post_status'    => 'publish',
             'orderby' => 'date',
             'order' => 'DESC',
         ];
         $query = new WP_Query($args);
         $cases = wp_list_pluck($query->posts, 'ID');
     }
+
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
