@@ -23,6 +23,7 @@
     $establishment_args = [
         'post_type' => 'establishments',
         'posts_per_page' => -1,
+        'post_status'    => 'publish',
     ];
     $establishment_query = new WP_Query($establishment_args);
 
