@@ -227,11 +227,11 @@
     </div>
 </section>
 
-@if ($customBlockClasses) <div class="breadcrumbs-{{ $customBlockClasses }}"> @endif
-    @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'underneath' && !is_front_page() && get_the_ID())
-        @include('components.breadcrumbs.index')
-    @endif
-@if ($customBlockClasses) </div> @endif
+{{--@if ($customBlockClasses) <div class="breadcrumbs-{{ $customBlockClasses }}"> @endif--}}
+{{--    @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'underneath' && !is_front_page() && get_the_ID())--}}
+{{--        @include('components.breadcrumbs.index')--}}
+{{--    @endif--}}
+{{--@if ($customBlockClasses) </div> @endif--}}
 
 
 <style>
