@@ -104,11 +104,16 @@ header {
 			
             > .sub-menu {
 				min-width: 180px;
-				// Do something to add the triangle pointing up
 				
 				li {
+					@apply w-full;
 					display: list-item !important;
 					margin-left: 20px;
+				}
+
+				.sub-menu {
+					left: calc(100%) !important;
+					top: 0 !important;
 				}
 				
 				@screen xl {
@@ -127,7 +132,6 @@ header {
 
 					@apply bg-white p-3 block z-10 border border-gray-100;
 					z-index: 66;
-					//width: calc(100% + 100px); // https://stackoverflow.com/questions/899107/ - This is to allow enough space for items to become bold when hovered, without it expanding the submenu width. (remove it and see what happens)
 					position: absolute;
 					left: -10%;
 					top: 65px;
