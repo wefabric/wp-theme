@@ -17,7 +17,7 @@
     $visibleElements = $block['data']['show_element'] ?? [];
 @endphp
 
-<div class="klantcase-item featured w-full h-full text-{{ $caseTextColor }}">
+<div class="klantcase-item featured w-full h-full text-{{ $caseTextColor }} @if ($flyinEffect) klantencase-hidden @endif">
     <div class="relative flex flex-col md:flex-row h-full rounded-{{ $borderRadius }} overflow-hidden">
         <div class="absolute left-[30px] h-full top-0">
             <div class="h-full py-12 flex flex-col items-center gap-4">
@@ -36,7 +36,7 @@
                                 'size' => 'full',
                                 'object_fit' => 'contain',
                                 'img_class' => 'w-auto max-h-[120px] object-contain',
-                                'alt' => 'test'
+                                'alt' => 'Case logo'
                             ])
                         @endif
                     </div>
@@ -65,6 +65,7 @@
                                         'alt' => $buttonCardText,
                                         'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
                                         'class' => 'rounded-lg',
+                                        'icon' => $buttonCardIcon,
                                     ])
                                 </div>
                             @endif
