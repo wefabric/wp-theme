@@ -243,33 +243,6 @@
             "placeholder": ""
         },
         {
-            "key": "field_66e43a2569050",
-            "label": "Afbeelding parallax effect",
-            "name": "image_parallax",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_649d2cda8a125",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
             "key": "field_6512e249c37f0",
             "label": "Blokinstellingen",
             "name": "",
@@ -1277,6 +1250,68 @@
             "placement": "top",
             "endpoint": 0,
             "selected": 0
+        },
+        {
+            "key": "field_66e43a2569050",
+            "label": "Afbeelding parallax effect",
+            "name": "image_parallax",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_649d2cda8a125",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_67bdad0cf512d",
+            "label": "Sterkte parallax effect",
+            "name": "parallax_strength",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66e43a2569050",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "weak": "Zwak",
+                "normal": "Normaal",
+                "strong": "Sterk"
+            },
+            "default_value": "normal",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         }
     ],
     "location": [
@@ -1297,5 +1332,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1730219361
+    "modified": 1740485036
 }

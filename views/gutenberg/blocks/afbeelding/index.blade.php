@@ -5,7 +5,6 @@
     $maxHeight = $block['data']['max_height'] ?? '';
     $maxWidth = $block['data']['max_width'] ?? '';
     $imageStyle = $block['data']['image_style'] ?? 'cover';
-    $imageParallax = $block['data']['image_parallax'] ?? false;
 
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
@@ -62,6 +61,11 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $imageParallax = $block['data']['image_parallax'] ?? false;
+    $parallaxStrength = $block['data']['parallax_strength'] ?? 'normal';
 @endphp
 
 <section id="afbeelding" class="block-afbeelding block-{{ $randomNumber }} afbeelding-{{ $randomNumber }} afbeelding-{{ $randomNumber }}-custom-padding afbeelding-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -136,15 +140,29 @@
     }
 </style>
 
-<!-- Parralax effect -->
+<!-- Parallax effect -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const parallaxBlock = document.querySelector('.block-{{ $randomNumber }}');
         const parallaxImage = parallaxBlock.querySelector('.parallax-image');
 
-        function applyParallaxEffect() {
-            if (!parallaxImage) return;
+        if (!parallaxBlock || !parallaxImage) return;
 
+        // Get the parallax strength as a string from PHP
+        const parallaxStrength = "{{ $parallaxStrength }}";
+
+        // Set the parallax factor directly based on the strength
+        let parallaxFactor = -0.4; // Default (normal)
+
+        if (parallaxStrength === 'weak') {
+            parallaxFactor = -0.2;
+        } else if (parallaxStrength === 'strong') {
+            parallaxFactor = -0.6;
+        }
+
+        console.log(parallaxStrength);
+
+        function applyParallaxEffect() {
             const scrollPosition = window.scrollY;
             const blockRect = parallaxBlock.getBoundingClientRect();
             const blockTop = blockRect.top + window.scrollY;
@@ -152,12 +170,6 @@
             const viewportCenter = scrollPosition + window.innerHeight / 2;
             const blockCenter = blockTop + blockHeight / 2;
             const distanceFromCenter = viewportCenter - blockCenter;
-
-            // Adjust the parallax factor based on screen width
-            let parallaxFactor = -0.4; // Default for desktop
-            if (window.innerWidth <= 1024) {
-                parallaxFactor = -0.1; // Weaker effect for mobile
-            }
 
             const translateY = distanceFromCenter * parallaxFactor;
             parallaxImage.style.transform = `translateY(${translateY}px)`;
