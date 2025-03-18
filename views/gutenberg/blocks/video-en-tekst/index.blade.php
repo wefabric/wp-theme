@@ -37,26 +37,26 @@
 
     $textPosition = $block['data']['text_position'] ?? '';
     $textOrder = $textPosition === 'left' ? 'lg:order-1 left' : 'lg:order-2 right';
-    $imageOrder = $textPosition === 'left' ? 'lg:order-2 right' : 'lg:order-1 left';
+    $videoOrder = $textPosition === 'left' ? 'lg:order-2 right' : 'lg:order-1 left';
 
 
-    // Afbeelding
-    $imageId = $block['data']['image'] ?? '';
-    $imageAlt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
-    $imageSize = $block['data']['image_size'] ?? '';
-    $imageMaxHeight = $block['data']['image_max_height'] ?? '';
-    $imageParallax = $block['data']['image_parallax'] ?? false;
-    $imageClass = '';
+    // Video
+    $videoFile = $block['data']['video_file'] ?? '';
+    $videoUrl = $block['data']['video_url'] ?? '';
+    $videoFileUrl = is_numeric($videoFile) ? wp_get_attachment_url($videoFile) : $videoFile;
+
+    $videoSize = $block['data']['video_size'] ?? '';
+    $videoClass = '';
     $textClass = '';
 
-    if ($imageSize === '33') {
-        $imageClass = 'lg:w-1/3';
+    if ($videoSize === '33') {
+        $videoClass = 'lg:w-1/3';
         $textClass = 'lg:w-2/3';
-    } elseif ($imageSize === '50') {
-        $imageClass = 'lg:w-1/2';
+    } elseif ($videoSize === '50') {
+        $videoClass = 'lg:w-1/2';
         $textClass = 'lg:w-1/2';
-    } elseif ($imageSize === '66') {
-        $imageClass = 'lg:w-2/3';
+    } elseif ($videoSize === '66') {
+        $videoClass = 'lg:w-2/3';
         $textClass = 'lg:w-1/3';
     }
 
@@ -121,14 +121,14 @@
     $textFadeDirection = $block['data']['flyin_direction'] ?? 'bottom';
 @endphp
 
-<section id="afbeelding-tekst" class="block-afbeelding-tekst block-{{ $randomNumber }} relative afbeelding-tekst-{{ $randomNumber }}-custom-padding afbeelding-tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="video-tekst" class="block-video-tekst block-{{ $randomNumber }} relative video-tekst-{{ $randomNumber }}-custom-padding video-tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
-            <div class="text-image flex flex-col lg:flex-row gap-8 xl:gap-20 @if ($verticalCentered) lg:items-center @endif">
+            <div class="text-video flex flex-col lg:flex-row gap-8 xl:gap-20 @if ($verticalCentered) lg:items-center @endif">
                 <div class="text {{ $textClass }} order-2 {{ $textOrder }}">
                     @if ($subTitle)
                         <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if ($titleAnimation) title-animation @endif @if ($flyInAnimation) flyin-animation @endif">{!! $subTitle !!}</span>
@@ -169,28 +169,29 @@
                         </div>
                     @endif
                 </div>
-                @if ($imageId)
-                    <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }} @if ($imageParallax) parallax-image @endif">
-                        @include('components.image', [
-                            'image_id' => $imageId,
-                            'size' => 'full',
-                            'object_fit' => 'cover',
-                            'img_class' => 'w-full object-cover rounded-' . $borderRadius,
-                            'alt' => $imageAlt
-                        ])
+
+                @if ($videoUrl || $videoFileUrl)
+                    <div class="video video-{{ $randomNumber }} {{ $videoClass }} order-1 {{ $videoOrder }}">
+                        @if ($videoUrl)
+                            <div class="video-embed-wrapper">
+                                {!! apply_filters('the_content', '[embed]' . $videoUrl . '[/embed]') !!}
+                            </div>
+                        @elseif ($videoFileUrl)
+                            <video class="w-full" controls>
+                                <source src="{{ $videoFileUrl }}">
+                                Your browser does not support the video tag.
+                            </video>
+                        @endif
                     </div>
                 @endif
+
             </div>
         </div>
     </div>
 </section>
 
 <style>
-    .image-{{ $randomNumber }} img {
-        @if($imageMaxHeight) max-height: {{ $imageMaxHeight }}px; @endif
-    }
-
-    .afbeelding-tekst-{{ $randomNumber }}-custom-padding {
+   .video-tekst-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
             @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
             @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
@@ -211,7 +212,7 @@
         }
     }
 
-    .afbeelding-tekst-{{ $randomNumber }}-custom-margin {
+    .video-tekst-{{ $randomNumber }}-custom-margin {
         @media only screen and (min-width: 0px) {
             @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
             @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif
@@ -233,38 +234,6 @@
     }
 </style>
 
-
-<!-- Parralax effect -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const block = document.querySelector('.block-{{ $randomNumber }}');
-        const parallaxImage = block.querySelector('.parallax-image');
-
-        function applyParallaxEffect() {
-            if (!parallaxImage) return;
-
-            const scrollPosition = window.scrollY;
-            const blockRect = block.getBoundingClientRect();
-            const blockTop = blockRect.top + window.scrollY;
-            const blockHeight = blockRect.height;
-            const viewportCenter = scrollPosition + window.innerHeight / 2;
-            const blockCenter = blockTop + blockHeight / 2;
-            const distanceFromCenter = viewportCenter - blockCenter;
-
-            // Adjust the parallax factor based on screen width
-            let parallaxFactor = -0.4; // Default for desktop
-            if (window.innerWidth <= 1024) {
-                parallaxFactor = -0.1; // Weaker effect for mobile
-            }
-
-            const translateY = distanceFromCenter * parallaxFactor;
-            parallaxImage.style.transform = `translateY(${translateY}px)`;
-        }
-
-        window.addEventListener('scroll', applyParallaxEffect);
-        applyParallaxEffect();
-    });
-</script>
 
 @if ($titleAnimation)
     <script>

@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/video-en-tekst",
+  "title": "Video en tekst",
+  "description": "Een video en tekst blok",
+  "category": "wefabric-theme",
+  "icon": "playlist-video",
+  "apiVersion": 2,
+  "keywords": [
+    "Video en tekst"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
