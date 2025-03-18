@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/video",
+  "title": "Video",
+  "description": "Een video blok",
+  "category": "wefabric-theme",
+  "icon": "video-alt2",
+  "apiVersion": 2,
+  "keywords": [
+    "Video"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
