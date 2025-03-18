@@ -1,15 +1,11 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
-    $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-
-    // Quote
-    $quote = $block['data']['quote'] ?? '';
-    $quoteTextColor = $block['data']['quote_text_color'] ?? '';
-    $name = $block['data']['name'] ?? '';
-    $function = $block['data']['function'] ?? '';
-    $personTextColor = $block['data']['person_text_color'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
+    $text = $block['data']['text'] ?? '';
+    $textColor = $block['data']['text_color'] ?? '';
 
         // Buttons
         $button1Text = $block['data']['button_button_1']['title'] ?? '';
@@ -39,9 +35,18 @@
             }
         }
 
-        $textPosition = $block['data']['text_position'] ?? '';
-        $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
-        $textClass = $textClassMap[$textPosition] ?? '';
+    $textPosition = $block['data']['text_position'] ?? '';
+    $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
+    $textClass = $textClassMap[$textPosition] ?? '';
+
+
+    // Quote
+    $quote = $block['data']['quote'] ?? '';
+    $quoteTextColor = $block['data']['quote_text_color'] ?? '';
+    $name = $block['data']['name'] ?? '';
+    $function = $block['data']['function'] ?? '';
+    $personTextColor = $block['data']['person_text_color'] ?? '';
+    $quoteBackgroundColor = $block['data']['quote_background_color'] ?? '';
 
 
     // Blokinstellingen
@@ -100,20 +105,34 @@
         <div class="{{ $blockClass }} {{ $textClass }} mx-auto">
 
             @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
             @endif
             @if ($title)
                 <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
             @endif
-            @if ($quote)
-                @include('components.content', ['content' => apply_filters('the_content', $quote), 'class' => 'quote-text text-[24px] md:text-[36px] text-' . $quoteTextColor])
+            @if ($text)
+                @include('components.content', [
+                    'content' => apply_filters('the_content', $text),
+                    'class' => 'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
+                ])
             @endif
-            @if ($name)
-                <div class="name-text mt-5 h6 text-{{ $personTextColor }}">{{ $name }}</div>
+
+            @if ($quoteBackgroundColor)
+                <div class="quote-background block bg-{{ $quoteBackgroundColor }} p-8">
             @endif
-            @if ($function)
-                <div class="function-text mt-1 text-{{ $personTextColor }}">{{ $function }}</div>
+                @if ($quote)
+                    @include('components.content', ['content' => apply_filters('the_content', $quote), 'class' => 'quote-text text-[24px] md:text-[36px] text-' . $quoteTextColor])
+                @endif
+                @if ($name)
+                    <div class="name-text mt-5 h6 text-{{ $personTextColor }}">{{ $name }}</div>
+                @endif
+                @if ($function)
+                    <div class="function-text mt-1 text-{{ $personTextColor }}">{{ $function }}</div>
+                @endif
+            @if ($quoteBackgroundColor)
+                </div>
             @endif
+
             @if (($button1Text) && ($button1Link))
                 <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                     @include('components.buttons.default', [
