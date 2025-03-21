@@ -2,11 +2,13 @@
     $mobileLayout = $block['data']['layout_mobile'] ?? 1;
     $tabletLayout = $block['data']['layout_tablet'] ?? 2;
     $desktopLayout = $block['data']['layout_desktop'] ?? 3;
+    $desktopXlLayout = $block['data']['layout_desktop_xl'] ?? 4;
 
     $layoutClasses = [
         'mobile' => 'grid-cols-' . $mobileLayout,
         'tablet' => 'sm:grid-cols-' . $tabletLayout,
         'desktop' => 'lg:grid-cols-' . $desktopLayout,
+        'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
     ];
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
@@ -17,7 +19,7 @@
 @endphp
 
 @if($block['data']['show_slider'])
-    <div class="block relative">
+    <div class="slider block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($employees as $employee)
@@ -34,7 +36,7 @@
         </div>
     </div>
 @else
-    <div class="employee-list grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-16 gap-x-4 lg:gap-x-8 py-8">
+    <div class="employee-list grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} {{ $layoutClasses['desktop-xl'] }} gap-y-16 gap-x-4 lg:gap-x-8 py-8">
         @foreach ($employees as $employee)
             @include('components.employees.list-item')
         @endforeach
@@ -73,6 +75,10 @@
                 1280: {
                     loop: {{ count($employees) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
+                },
+                1536: {
+                    loop: {{ count($employees) > $desktopXlLayout ? 'true' : 'false' }},
+                    slidesPerView: {{ $desktopXlLayout }},
                 },
             }
         });

@@ -2,11 +2,13 @@
     $mobileLayout = $block['data']['layout_mobile'] ?? 1;
     $tabletLayout = $block['data']['layout_tablet'] ?? 2;
     $desktopLayout = $block['data']['layout_desktop'] ?? 3;
+    $desktopXlLayout = $block['data']['layout_desktop_xl'] ?? 4;
 
     $layoutClasses = [
         'mobile' => 'grid-cols-' . $mobileLayout,
         'tablet' => 'sm:grid-cols-' . $tabletLayout,
         'desktop' => 'lg:grid-cols-' . $desktopLayout,
+        'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
     ];
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
@@ -16,7 +18,7 @@
 @endphp
 
 @if($block['data']['show_slider'])
-    <div class="block relative">
+    <div class="slider block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($posts as $post)
@@ -71,6 +73,10 @@
                 1280: {
                     loop: {{ count($posts) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
+                },
+                1536: {
+                    loop: {{ count($posts) > $desktopXlLayout ? 'true' : 'false' }},
+                    slidesPerView: {{ $desktopXlLayout }},
                 },
             }
         });

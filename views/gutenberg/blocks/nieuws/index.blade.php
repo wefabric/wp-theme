@@ -206,7 +206,7 @@
                     'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
                 ])
             @endif
-            @if (!empty($block['data']['show_element']) && in_array('category', $block['data']['show_element']))
+            @if (!empty($block['data']['show_element']) && in_array('category_filter', $block['data']['show_element']))
                 <div class="categories mt-6">
                     @include('components.news.category-list')
                 </div>

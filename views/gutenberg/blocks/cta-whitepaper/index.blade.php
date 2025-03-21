@@ -155,7 +155,7 @@
                                 ])
                             @endif
                             @if ($ctaForm)
-                                <div class="w-full @if($blockWidth == 'fullscreen') xl:w-1/2 @endif mx-auto mt-4 md:mt-10 text-center md:text-left text-white">
+                                <div class="cta-form w-full @if($blockWidth == 'fullscreen') xl:w-1/2 @endif mx-auto mt-4 md:mt-10 text-center md:text-left text-white">
                                     {!! gravity_form($ctaForm, false) ; !!}
                                 </div>
                             @endif
