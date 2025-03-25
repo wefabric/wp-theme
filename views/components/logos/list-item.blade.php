@@ -22,8 +22,8 @@
 @endphp
 
 <div class="logo-item group h-full @if ($flyinEffect) logo-hidden @endif">
-    <div class="custom-logo-styling h-full relative overflow-hidden rounded-{{ $borderRadius }} @if($logoUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
-        <div class="background w-full h-full relative p-4 md:p-6 bg-{{ $logoBackgroundColor }}">
+    <div class="custom-logo-styling h-full relative rounded-{{ $borderRadius }} @if($logoUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
+        <div class="background flex items-center justify-center w-full relative p-4 md:p-6 bg-{{ $logoBackgroundColor }}">
             @if ($logoUrl)
                 <a href="{{ $logoUrl }}" @if($logoLinkType === 'external_link') target="_blank" @endif
                 aria-label="Ga naar {{ $logoTitle }} pagina" class="overlay absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
@@ -56,11 +56,11 @@
 
         @if (!empty($visibleElements) && in_array('name', $visibleElements) && ($logoTitle))
             @if ($logoUrl)<a href="{{ $logoUrl }}" @if($logoLinkType === 'external_link') target="_blank" @endif aria-label="Ga naar {{ $logoTitle }} pagina">@endif
-                <p class="mt-2 text-lg text-left font-bold text-{{ $logoTextColor }} @if($logoUrl) group-hover:text-primary @endif">{!! $logoTitle !!}</p>
+                <p class="logo-title mt-2 text-lg text-left font-bold text-{{ $logoTextColor }} @if($logoUrl) group-hover:text-primary @endif">{!! $logoTitle !!}</p>
                 @if ($logoUrl)</a> @endif
         @endif
         @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && ($logoSummary))
-            <p class="text-{{ $logoTextColor }} text-left">{!! $logoSummary !!}</p>
+            <p class="logo-text text-{{ $logoTextColor }} text-left">{!! $logoSummary !!}</p>
         @endif
 
     </div>

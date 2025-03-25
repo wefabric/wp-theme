@@ -2,11 +2,13 @@
     $mobileLayout = $block['data']['layout_mobile'] ?? 1;
     $tabletLayout = $block['data']['layout_tablet'] ?? 2;
     $desktopLayout = $block['data']['layout_desktop'] ?? 3;
+    $desktopXlLayout = $block['data']['layout_desktop_xl'] ?? 4;
 
     $layoutClasses = [
         'mobile' => 'grid-cols-' . $mobileLayout,
         'tablet' => 'sm:grid-cols-' . $tabletLayout,
         'desktop' => 'lg:grid-cols-' . $desktopLayout,
+        'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
     ];
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
@@ -68,14 +70,14 @@
         @endforeach
     </div>
 
-    <div class="logo-list grid md:hidden {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-4 gap-x-4 py-8">
+    <div class="logo-list grid md:hidden {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} {{ $layoutClasses['desktop-xl'] }} gap-y-4 gap-x-4 py-8">
         @foreach ($logos as $logo)
             @include('components.logos.list-item')
         @endforeach
     </div>
 
 @else
-    <div class="logo-list grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-4 gap-x-4 py-8">
+    <div class="logo-list grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} {{ $layoutClasses['desktop-xl'] }} gap-y-4 gap-x-4 py-8">
         @foreach ($logos as $logo)
             @include('components.logos.list-item')
         @endforeach
@@ -121,6 +123,10 @@
                 1280: {
                     loop: {{ count($logos) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
+                },
+                1536: {
+                    loop: {{ count($logos) > $desktopXlLayout ? 'true' : 'false' }},
+                    slidesPerView: {{ $desktopXlLayout }},
                 },
             }
         });
