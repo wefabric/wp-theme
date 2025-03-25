@@ -603,13 +603,16 @@
             },
             "choices": {
                 "33": "33%",
+                "40": "40%",
                 "50": "50%",
+                "60": "60%",
                 "66": "66%"
             },
             "default_value": 50,
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
             "placeholder": ""
@@ -1786,5 +1789,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742300013
+    "modified": 1742898152
 }

@@ -43,24 +43,20 @@
     // Afbeelding
     $imageId = $block['data']['image'] ?? '';
     $imageAlt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
-    $imageSize = $block['data']['image_size'] ?? '';
     $imageMaxHeight = $block['data']['image_max_height'] ?? '';
     $imageParallax = $block['data']['image_parallax'] ?? false;
-    $imageClass = '';
-    $textClass = '';
-
-    if ($imageSize === '33') {
-        $imageClass = 'lg:w-1/3';
-        $textClass = 'lg:w-2/3';
-    } elseif ($imageSize === '50') {
-        $imageClass = 'lg:w-1/2';
-        $textClass = 'lg:w-1/2';
-    } elseif ($imageSize === '66') {
-        $imageClass = 'lg:w-2/3';
-        $textClass = 'lg:w-1/3';
-    }
-
     $verticalCentered = $block['data']['vertical_centered'] ?? false;
+    $imageSize = $block['data']['image_size'] ?? '50';
+
+    $sizes = [
+        '33' => ['lg:w-1/3', 'lg:w-2/3'],
+        '40' => ['lg:w-2/5', 'lg:w-3/5'],
+        '50' => ['lg:w-1/2', 'lg:w-1/2'],
+        '60' => ['lg:w-3/5', 'lg:w-2/5'],
+        '66' => ['lg:w-2/3', 'lg:w-1/3'],
+    ];
+
+    [$imageClass, $textClass] = $sizes[$imageSize] ?? ['lg:w-1/2', 'lg:w-1/2'];
 
 
     // Blokinstellingen

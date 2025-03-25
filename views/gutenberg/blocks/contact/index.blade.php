@@ -10,15 +10,6 @@
     $contentBackgroundColor = $block['data']['content_background_color'] ?? '';
     $visibleElements = $block['data']['show_element'] ?? [];
 
-
-    // Formulier
-    $form = $block['data']['form'] ?? '';
-    $formBackgroundColor = $block['data']['form_background_color'] ?? '';
-    $formTitle = $block['data']['form_title'] ?? '';
-    $formTitleColor = $block['data']['form_title_color'] ?? '';
-    $formPosition = $block['data']['form_position'] ?? 'right';
-
-
     // Show establishments
     $establishment_args = [
         'post_type' => 'establishments',
@@ -26,6 +17,25 @@
         'post_status'    => 'publish',
     ];
     $establishment_query = new WP_Query($establishment_args);
+
+
+    // Formulier
+    $form = $block['data']['form'] ?? '';
+    $formBackgroundColor = $block['data']['form_background_color'] ?? '';
+    $formTitle = $block['data']['form_title'] ?? '';
+    $formTitleColor = $block['data']['form_title_color'] ?? '';
+    $formPosition = $block['data']['form_position'] ?? 'right';
+    $formSize = $block['data']['form_size'] ?? '50';
+
+    $sizes = [
+        '33' => ['lg:w-1/3', 'lg:w-2/3'],
+        '40' => ['lg:w-2/5', 'lg:w-3/5'],
+        '50' => ['lg:w-1/2', 'lg:w-1/2'],
+        '60' => ['lg:w-3/5', 'lg:w-2/5'],
+        '66' => ['lg:w-2/3', 'lg:w-1/3'],
+    ];
+
+    [$formClass, $contentClass] = $sizes[$formSize] ?? ['lg:w-1/2', 'lg:w-1/2'];
 
 
     // Blokinstellingen
@@ -88,7 +98,7 @@
     @endif
     <div class="custom-styling relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="custom-layout {{ $blockClass }} mx-auto flex flex-col lg:flex-row gap-2 lg:gap-8">
-            <div class="content-block w-full lg:w-1/2 order-1 @if ($formPosition == 'right') lg:order-0 @else lg:order-1 @endif py-8 px-8 lg:py-12 bg-{{ $contentBackgroundColor }}">
+            <div class="content-block w-full {{ $contentClass }} order-1 @if ($formPosition == 'right') lg:order-0 @else lg:order-1 @endif py-8 px-8 lg:py-12 bg-{{ $contentBackgroundColor }}">
                 @if ($subTitle)
                     <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
                 @endif
@@ -221,7 +231,7 @@
             </div>
 
             @if ($form)
-                <div class="form-block w-full lg:w-1/2 order-0 @if ($formPosition == 'right') lg:order-1 @else lg:order-0 @endif">
+                <div class="form-block w-full {{ $formClass }} order-0 @if ($formPosition == 'right') lg:order-1 @else lg:order-0 @endif">
                     <div class="contact-block bg-{{ $formBackgroundColor }} p-8 lg:p-12 rounded-{{ $borderRadius }}">
                         <div class="form h-full w-full">
                             @if ($formTitle)

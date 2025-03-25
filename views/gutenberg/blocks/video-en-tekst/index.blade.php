@@ -44,23 +44,18 @@
     $videoFile = $block['data']['video_file'] ?? '';
     $videoUrl = $block['data']['video_url'] ?? '';
     $videoFileUrl = is_numeric($videoFile) ? wp_get_attachment_url($videoFile) : $videoFile;
-
-    $videoSize = $block['data']['video_size'] ?? '';
-    $videoClass = '';
-    $textClass = '';
-
-    if ($videoSize === '33') {
-        $videoClass = 'lg:w-1/3';
-        $textClass = 'lg:w-2/3';
-    } elseif ($videoSize === '50') {
-        $videoClass = 'lg:w-1/2';
-        $textClass = 'lg:w-1/2';
-    } elseif ($videoSize === '66') {
-        $videoClass = 'lg:w-2/3';
-        $textClass = 'lg:w-1/3';
-    }
-
     $verticalCentered = $block['data']['vertical_centered'] ?? false;
+    $videoSize = $block['data']['video_size'] ?? '50';
+
+    $sizes = [
+        '33' => ['lg:w-1/3', 'lg:w-2/3'],
+        '40' => ['lg:w-2/5', 'lg:w-3/5'],
+        '50' => ['lg:w-1/2', 'lg:w-1/2'],
+        '60' => ['lg:w-3/5', 'lg:w-2/5'],
+        '66' => ['lg:w-2/3', 'lg:w-1/3'],
+    ];
+
+    [$videoClass, $textClass] = $sizes[$videoSize] ?? ['lg:w-1/2', 'lg:w-1/2'];
 
 
     // Blokinstellingen
@@ -232,6 +227,12 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+   .video-embed-wrapper iframe {
+       width: 100%;
+       height: 100%;
+       aspect-ratio: 16 / 9;
+   }
 </style>
 
 

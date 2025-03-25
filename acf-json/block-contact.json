@@ -324,7 +324,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -333,6 +333,36 @@
                 "left": "Links"
             },
             "default_value": "right",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_67e27e9af54c1",
+            "label": "Formulier grootte",
+            "name": "form_size",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "33": "33%",
+                "40": "40%",
+                "50": "50%",
+                "60": "60%",
+                "66": "66%"
+            },
+            "default_value": 50,
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -1352,5 +1382,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1739521611
+    "modified": 1742896969
 }
