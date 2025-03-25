@@ -198,6 +198,15 @@
 
 
     // Animaties
+    $hoverEffect = $block['data']['hover_effect'] ?? '';
+    $hoverEffectClasses = [
+        'lift-up' => 'group-hover:-translate-y-2 group-hover:md:-translate-y-4',
+        'scale-up' => 'group-hover:scale-105',
+        'scale-down' => 'group-hover:scale-95',
+        'none' => ''
+    ];
+    $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
+
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 

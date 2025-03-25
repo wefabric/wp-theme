@@ -763,11 +763,12 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -809,11 +810,12 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -1018,12 +1020,16 @@
                         "2": "2 per rij",
                         "3": "3 per rij",
                         "4": "4 per rij",
-                        "5": "5 per rij"
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
                     },
                     "default_value": 1,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": ""
@@ -1047,12 +1053,16 @@
                         "2": "2 per rij",
                         "3": "3 per rij",
                         "4": "4 per rij",
-                        "5": "5 per rij"
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
                     },
                     "default_value": 2,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": ""
@@ -1076,12 +1086,49 @@
                         "2": "2 per rij",
                         "3": "3 per rij",
                         "4": "4 per rij",
-                        "5": "5 per rij"
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
                     },
                     "default_value": 3,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_67e2ba0ffb5dc",
+                    "label": "Desktop XL",
+                    "name": "desktop_xl",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "1": "1 per rij",
+                        "2": "2 per rij",
+                        "3": "3 per rij",
+                        "4": "4 per rij",
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
+                    },
+                    "default_value": 4,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": ""
@@ -2175,11 +2222,11 @@
             "selected": 0
         },
         {
-            "key": "field_67974bbdcdb1e",
-            "label": "Vacature items in laten vliegen",
-            "name": "flyin_effect",
+            "key": "field_67e2b8d010cba",
+            "label": "Vacature hover effect",
+            "name": "hover_effect",
             "aria-label": "",
-            "type": "text",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -2188,12 +2235,41 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
+            "choices": {
+                "none": "Geen",
+                "lift-up": "Kaart omhoog",
+                "scale-up": "Kaart groter maken",
+                "scale-down": "Kaart kleiner maken"
+            },
+            "default_value": "lift-up",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
             "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_67974bbdcdb1e",
+            "label": "Vacature items in laten vliegen",
+            "name": "flyin_effect",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -2214,5 +2290,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737968593
+    "modified": 1742912026
 }

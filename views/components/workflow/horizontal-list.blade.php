@@ -2,11 +2,13 @@
     $mobileLayout = $block['data']['layout_mobile'] ?? 1;
     $tabletLayout = $block['data']['layout_tablet'] ?? 2;
     $desktopLayout = $block['data']['layout_desktop'] ?? 3;
+    $desktopXlLayout = $block['data']['layout_desktop_xl'] ?? 4;
 
     $layoutClasses = [
         'mobile' => 'grid-cols-' . $mobileLayout,
         'tablet' => 'sm:grid-cols-' . $tabletLayout,
         'desktop' => 'lg:grid-cols-' . $desktopLayout,
+        'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
     ];
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
@@ -16,7 +18,7 @@
 @endphp
 
 @if($block['data']['show_slider'])
-    <div class="step-swiper block relative">
+    <div class="slider step-swiper block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($steps as $step)
@@ -33,7 +35,7 @@
         </div>
     </div>
 @else
-    <div class="steps-grid grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-8 lg:gap-y-16 gap-x-4 lg:gap-x-8 py-8">
+    <div class="steps-grid grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} {{ $layoutClasses['desktop-xl'] }} gap-y-8 lg:gap-y-16 gap-x-4 lg:gap-x-8 py-8">
         @foreach ($steps as $step)
             @include('components.workflow.horizontal-list-item')
         @endforeach
@@ -71,6 +73,10 @@
                 1280: {
                     loop: {{ count($steps) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
+                },
+                1536: {
+                    loop: {{ count($steps) > $desktopXlLayout ? 'true' : 'false' }},
+                    slidesPerView: {{ $desktopXlLayout }},
                 },
             }
         });
