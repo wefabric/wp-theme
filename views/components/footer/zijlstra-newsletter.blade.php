@@ -42,7 +42,7 @@
                             <input type="text" class="text-black required email bg-white rounded-l-lg" placeholder="E-mailadres" changeitem="SIGNUP_FORM_FIELD" name="CONTACT_EMAIL" id="EMBED_FORM_EMAIL_LABEL">
                         </div>
                         <div class="SIGNUP_FLD">
-                            <input style="height: 42px;" class="zoho-submit h-full w-10 bg-cta-color btn-white text-white hover:text-white text-center text-sm rounded-r-lg w-full px-4 border-0 font-bold" type="button" name="SIGNUP_SUBMIT_BUTTON" id="zcWebOptin" value="Verstuur">
+                            <input style="height: 48px;" class="zoho-submit h-full w-10 bg-cta-color btn-white text-white hover:text-white text-center text-sm rounded-r-lg w-full px-4 border-0 font-bold" type="button" name="SIGNUP_SUBMIT_BUTTON" id="zcWebOptin" value="Verstuur">
                         </div>
 
                     </div>

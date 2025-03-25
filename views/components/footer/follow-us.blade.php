@@ -25,36 +25,41 @@
 		{{ $title }}
 	</span>
     <div>
-		@if($option['newsletter_footer']['newsletter_type'] == 'mailchimp' && $mailChimpUrl)
-			<div id="mc_embed_signup" class="newsletter-signup">
-				@include('components.footer.mailchimp', [
-					'mailChimpSubscribeUrl' => $mailChimpUrl,
-				])
-			</div>
-		@endif
+		@if(!empty($option['newsletter_footer']['newsletter_type']))
 
-		@if($option['newsletter_footer']['newsletter_type'] == 'zoho' && $zohoUrl)
-			<div id="mc_embed_signup2" class="newsletter-signup">
-				@include('components.footer.zoho', [
-					'ZohoSubscribeUrl' => $zohoUrl,
-				])
-			</div>
-		@endif
 
-		@if($option['newsletter_footer']['newsletter_type'] == 'brevo')
-			<div id="mc_embed_signup3" class="newsletter-signup">
-				@include('components.footer.brevo', [
-    				'BrevoSubscribeID' => $brevoID,
-                ])
-			</div>
-		@endif
+			@if($option['newsletter_footer']['newsletter_type'] == 'mailchimp' && $mailChimpUrl)
+				<div id="mc_embed_signup" class="newsletter-signup">
+					@include('components.footer.mailchimp', [
+						'mailChimpSubscribeUrl' => $mailChimpUrl,
+					])
+				</div>
+			@endif
 
-		@if($option['newsletter_footer']['newsletter_type'] == 'zijlstra')
-			<div id="mc_embed_signup4" class="zijlstra-signup">
-				@include('components.footer.zijlstra-newsletter', [
+			@if($option['newsletter_footer']['newsletter_type'] == 'zoho' && $zohoUrl)
+				<div id="mc_embed_signup2" class="newsletter-signup">
+					@include('components.footer.zoho', [
+						'ZohoSubscribeUrl' => $zohoUrl,
+					])
+				</div>
+			@endif
 
-				])
-			</div>
+			@if($option['newsletter_footer']['newsletter_type'] == 'brevo')
+				<div id="mc_embed_signup3" class="newsletter-signup">
+					@include('components.footer.brevo', [
+						'BrevoSubscribeID' => $brevoID,
+					])
+				</div>
+			@endif
+
+			@if($option['newsletter_footer']['newsletter_type'] == 'zijlstra')
+				<div id="mc_embed_signup4" class="zijlstra-signup">
+					@include('components.footer.zijlstra-newsletter', [
+
+					])
+				</div>
+			@endif
+
 		@endif
     </div>
 @endif
