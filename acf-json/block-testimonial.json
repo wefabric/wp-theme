@@ -597,6 +597,56 @@
             "placeholder": ""
         },
         {
+            "key": "field_67e51ad45fef6",
+            "label": "Testimonial van huidige pagina verbergen",
+            "name": "hide_current",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6690250cf7cef",
+                        "operator": "==",
+                        "value": "show_all"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6690250cf7cef",
+                        "operator": "==",
+                        "value": "show_category"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6690250cf7cef",
+                        "operator": "==",
+                        "value": "show_random"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6690250cf7cef",
+                        "operator": "==",
+                        "value": "show_latest"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_66902587f7cf0",
             "label": "Categorie",
             "name": "category",
@@ -2210,5 +2260,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1739356791
+    "modified": 1743068585
 }
