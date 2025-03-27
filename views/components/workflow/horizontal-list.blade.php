@@ -11,6 +11,7 @@
         'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
     ];
 
+    $swiperLoop = $block['data']['slider_loop'] ?? true;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
     $randomNumber = rand(0, 1000);
@@ -48,10 +49,10 @@
             spaceBetween: 20,
             centeredSlides: false,
             @if ($swiperAutoplay)
-            autoplay: {
-                delay: {{ $swiperAutoplaySpeed }},
-                disableOnInteraction: false,
-            },
+                autoplay: {
+                    delay: {{ $swiperAutoplaySpeed }},
+                    disableOnInteraction: false,
+                },
             @endif
             pagination: {
                 el: '.swiper-pagination',
@@ -63,19 +64,19 @@
             },
             breakpoints: {
                 0: {
-                    loop: {{count($steps) > $mobileLayout ? 'true' : 'false' }},
+                    loop: {{ ($swiperLoop && count($steps) > $mobileLayout) ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 768: {
-                    loop: {{ count($steps) > $tabletLayout ? 'true' : 'false' }},
+                    loop: {{ ($swiperLoop && count($steps) > $tabletLayout) ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ count($steps) > $desktopLayout ? 'true' : 'false' }},
+                    loop: {{ ($swiperLoop && count($steps) > $desktopLayout) ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
                 },
                 1536: {
-                    loop: {{ count($steps) > $desktopXlLayout ? 'true' : 'false' }},
+                    loop: {{ ($swiperLoop && count($steps) > $desktopXlLayout) ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopXlLayout }},
                 },
             }
