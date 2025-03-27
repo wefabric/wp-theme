@@ -150,7 +150,7 @@
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
 
         <div class="layout relative z-10 {{ $fullScreenClass }} {{ $blockClass }}">
-            <div class="content-data  mx-auto">
+            <div class="content-data mx-auto">
                 @if ($subTitle)
                     <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
                 @endif
