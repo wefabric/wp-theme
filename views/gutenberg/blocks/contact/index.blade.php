@@ -141,7 +141,7 @@
 
                                             @if (!empty($visibleElements) && in_array('establishment_address', $visibleElements))
                                                 <div class="establishment-address">{{ $street }} {{ $house_number }} {{ $house_number_addition }}</div>
-                                                <div class="establishment-zipcode">{{ $zipcode }}, {{ $city }}</div>
+                                                <div class="establishment-zipcode">{{ $zipcode }} &nbsp; {{ $city }}</div>
                                             @endif
 
                                             @if (!empty($visibleElements) && in_array('establishment_country', $visibleElements) && $countryName)
