@@ -205,9 +205,9 @@
                                                         @if ($day['closed'])
                                                             <span>Gesloten</span>
                                                         @else
-                                                            <span> {{ $day['opening_hour'] }} - {{ $day['closing_hour'] }}
+                                                            <span> {{ $day['opening_hour'] }} uur - {{ $day['closing_hour'] }} uur
                                                                 @if (!empty($day['opening_hour_2']) && !empty($day['closing_hour_2']))
-                                                                    & {{ $day['opening_hour_2'] }} - {{ $day['closing_hour_2'] }}
+                                                                    & {{ $day['opening_hour_2'] }} uur - {{ $day['closing_hour_2'] }} uur
                                                                 @endif
                                                             </span>
                                                         @endif
