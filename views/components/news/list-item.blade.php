@@ -27,12 +27,17 @@
                    class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     <div class="news-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
-                        @foreach ($postCategories as $category)
+                        @php
+                            $categoriesToShow = $onlyPrimaryCategory ? [reset($postCategories)] : $postCategories;
+                        @endphp
+
+                        @foreach ($categoriesToShow as $category)
                             @php
+                                if (!$category) continue;
                                 $categoryColor = get_field('category_color', $category);
                                 $categoryIcon = get_field('category_icon', $category);
                             @endphp
-                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="news-category @if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full" aria-label="Ga naar {{ $category->name }}">
+                            <a href="{{ get_category_link($category) }}" style="background-color: {{ $categoryColor }}" class="news-category @if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full" aria-label="Ga naar {{ $category->name }}">
                                 {!! $categoryIcon !!} {!! $category->name !!}
                             </a>
                         @endforeach

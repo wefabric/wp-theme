@@ -724,6 +724,34 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
+            "key": "field_67f3ca1e1b8a5",
+            "label": "Alleen primaire categorie tonen?",
+            "name": "show_primary_category",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a2e39036667",
+                        "operator": "==",
+                        "value": "category"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6569e8697e266",
             "label": "Nieuws titel kleur",
             "name": "news_title_color",
@@ -2253,5 +2281,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742485501
+    "modified": 1744030277
 }

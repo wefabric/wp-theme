@@ -52,6 +52,7 @@
 
 
     // Nieuws
+    $onlyPrimaryCategory = $block['data']['show_primary_category'] ?? false;
     $newsTitleColor = $block['data']['news_title_color'] ?? '';
     $newsTextColor = $block['data']['news_text_color'] ?? '';
 
