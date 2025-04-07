@@ -53,6 +53,8 @@
 
     // Testimonial
     $displayType = $block['data']['display_type'];
+    $hideCurrent = $block['data']['hide_current'] ?? false;
+    $currentPostID = get_queried_object_id();
     $currentTerms = isset($_GET['testimonial_category']) ? array_map('intval', explode(',', $_GET['testimonial_category'])) : [];
     $multipleFilters = $block['data']['multiple_filters_enabled'] ?? false;
 
@@ -60,16 +62,20 @@
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'testimonials',
-            'post_status' => 'publish',
+            'post_type'      => 'testimonials',
+            'post_status'    => 'publish',
         ];
+
+        if ($hideCurrent && $currentPostID) {
+            $args['post__not_in'] = [$currentPostID];
+        }
 
         if ($currentTerms) {
             $args['tax_query'] = [
                 [
                     'taxonomy' => 'testimonial_categories',
-                    'field' => 'id',
-                    'terms' => $currentTerms,
+                    'field'    => 'id',
+                    'terms'    => $currentTerms,
                 ],
             ];
         }
@@ -93,6 +99,10 @@
                 ],
             ],
         ];
+
+        if ($hideCurrent && $currentPostID) {
+            $args['post__not_in'] = [$currentPostID];
+        }
 
         if ($currentTerms) {
             $args['tax_query'][] = [
@@ -145,6 +155,11 @@
             'post_status'    => 'publish',
             'orderby'        => 'rand',
         ];
+
+        if ($hideCurrent && $currentPostID) {
+            $args['post__not_in'] = [$currentPostID];
+        }
+
         $query = new WP_Query($args);
         $testimonials = wp_list_pluck($query->posts, 'ID');
     }
@@ -159,6 +174,11 @@
             'orderby' => 'date',
             'order' => 'DESC',
         ];
+
+        if ($hideCurrent && $currentPostID) {
+            $args['post__not_in'] = [$currentPostID];
+        }
+
         $query = new WP_Query($args);
         $testimonials = wp_list_pluck($query->posts, 'ID');
     }
