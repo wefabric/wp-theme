@@ -25,7 +25,7 @@
 
                     @include('components.image', [
                      'image_id' => $featuredImageId,
-                     'size' => 'job-thumbnail',
+                     'size' => 'full',
                      'object_fit' => 'cover',
                      'img_class' => 'w-full h-full object-cover transform ease-in-out duration-300 group-hover:scale-110 rounded-t-' . $borderRadius,
                      'alt' => $pageTitle
@@ -43,7 +43,7 @@
                        class="card-overlay absolute left-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                     @include('components.image', [
                        'image_id' => $imageId,
-                       'size' => 'job-thumbnail',
+                       'size' => 'full',
                        'object_fit' => 'cover',
                        'img_class' => 'w-full h-full object-cover transform ease-in-out duration-300 group-hover:scale-110 rounded-t-' . $borderRadius,
                        'alt' => $pageTitle
