@@ -56,6 +56,7 @@
         $uspText = $block['data']["usps_{$i}_usp_text"];
         $uspImage = $block['data']["usps_{$i}_image"] ?? '';
         $uspIcon = $block['data']["usps_{$i}_icon"] ?? null;
+        $uspUrl = $block['data']["usps_{$i}_usp_url"] ?? null;
 
         $iconClass = '';
         if ($uspIcon !== null) {
@@ -67,6 +68,7 @@
             'uspText' => $uspText,
             'uspImage' => $uspImage,
             'uspIcon' => $iconData,
+            'uspUrl' => $uspUrl,
         ];
     }
 

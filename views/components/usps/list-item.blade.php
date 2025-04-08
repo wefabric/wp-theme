@@ -4,6 +4,7 @@
     $uspTitle = $usp['uspTitle'];
     $uspText = $usp['uspText'];
     $icon = $usp['uspIcon'];
+    $url = $usp['uspUrl'];
 
     $imageId = $usp['uspImage'];
     $altText = get_post_meta($imageId, '_wp_attachment_image_alt', true) ?: 'usp-image';
@@ -34,11 +35,16 @@
             <div class="usp-data">
                 @if ($uspTitle)
                     <p class="usp-title text-{{ $uspTitleColor }} font-bold h4">
+                        @if($url) <a href="{{ $url['url'] }}" class="underline text-{{ $uspTitleColor }} hover:text-{{ $uspTitleColor }}"> @endif
+
                         @if ($isNumber && $numberAnimation)
                             <span class="counter" data-target="{{ $numericPart }}">0</span>{{ str_replace($numericPart, '', $uspTitle) }}
                         @else
                             {!! $uspTitle !!}
                         @endif
+
+
+                        @if($url) </a> @endif
                     </p>
                 @endif
                 @if ($uspText)

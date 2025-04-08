@@ -762,6 +762,24 @@
                     "prepend": "",
                     "append": "",
                     "parent_repeater": "field_6494439a50244"
+                },
+                {
+                    "key": "field_67f50aaca0d6f",
+                    "label": "USP url",
+                    "name": "usp_url",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "allow_in_bindings": 1,
+                    "parent_repeater": "field_6494439a50244"
                 }
             ]
         },
@@ -2110,5 +2128,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1738248294
+    "modified": 1744112391
 }
