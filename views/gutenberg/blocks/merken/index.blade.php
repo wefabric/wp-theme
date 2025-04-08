@@ -81,13 +81,14 @@
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+    $customBlockId = $block['data']['custom_block_id'] ?? '';
 
     // Theme settings
     $options = get_fields('option');
     $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
 @endphp
 
-<section id="merken" class="block-merken relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else merken @endif" class="block-merken relative bg-{{ $backgroundColor }} {{ $customBlockClasses }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>

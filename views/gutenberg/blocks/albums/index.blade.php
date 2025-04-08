@@ -76,6 +76,7 @@
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+    $customBlockId = $block['data']['custom_block_id'] ?? '';
     $hideBlock = $block['data']['hide_block'] ?? false;
 
 
@@ -114,7 +115,7 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="albums" class="block-albums relative albums-{{ $randomNumber }}-custom-padding albums-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else albums @endif" class="block-albums relative albums-{{ $randomNumber }}-custom-padding albums-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>

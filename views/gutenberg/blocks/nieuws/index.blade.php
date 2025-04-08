@@ -137,6 +137,7 @@
     $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+    $customBlockId = $block['data']['custom_block_id'] ?? '';
     $hideBlock = $block['data']['hide_block'] ?? false;
 
 
@@ -188,7 +189,7 @@
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
-<section id="nieuws" class="block-nieuws relative nieuws-{{ $randomNumber }}-custom-padding nieuws-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else nieuws @endif" class="block-nieuws relative nieuws-{{ $randomNumber }}-custom-padding nieuws-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>

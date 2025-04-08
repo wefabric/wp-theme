@@ -68,6 +68,7 @@
      $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
      $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+     $customBlockId = $block['data']['custom_block_id'] ?? '';
      $hideBlock = $block['data']['hide_block'] ?? false;
 
      $randomNumber = rand(0, 1000);
@@ -77,7 +78,7 @@
     <div id="backdrop-{{ $randomNumber }}" class="close-modal backdrop fixed inset-0 bg-black @if($modalDelay !== 0) bg-opacity-0 @else opacity-50 @endif transition-all duration-300 ease-in-out" style="z-index: 9999"></div>
 @endif
 
-<section id="modal" class="fixed @if($modalDelay !== 0) opacity-0 @else opacity-100 @endif shadow-2xl transition-all duration-300 ease-in-out {{ $layoutClass }} modal-{{ $randomNumber }} bg-{{ $backgroundColor }} rounded-[32px] {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else modal @endif" class="fixed @if($modalDelay !== 0) opacity-0 @else opacity-100 @endif shadow-2xl transition-all duration-300 ease-in-out {{ $layoutClass }} modal-{{ $randomNumber }} bg-{{ $backgroundColor }} rounded-[32px] {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="z-index: 10000; background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }};">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 rounded-[32px] bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
