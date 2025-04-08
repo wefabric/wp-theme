@@ -33,13 +33,13 @@
         @if ($uspTitle || $uspText)
             <div class="usp-data">
                 @if ($uspTitle)
-                    <p class="usp-title text-{{ $uspTitleColor }} font-bold h4">
+                    <div class="usp-title text-{{ $uspTitleColor }} font-bold h4">
                         @if ($isNumber && $numberAnimation)
                             <span class="counter" data-target="{{ $numericPart }}">0</span>{{ str_replace($numericPart, '', $uspTitle) }}
                         @else
                             @include('components.content', ['content' => $uspTitle])
                         @endif
-                    </p>
+                    </div>
                 @endif
                 @if ($uspText)
                     @include('components.content', ['content' => $uspText, 'class' => 'usp-text mt-2 text-' . $uspTextColor])
