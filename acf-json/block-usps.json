@@ -726,7 +726,7 @@
                     "label": "USP titel",
                     "name": "usp_title",
                     "aria-label": "",
-                    "type": "text",
+                    "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -736,10 +736,11 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
+                    "allow_in_bindings": 1,
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
                     "parent_repeater": "field_6494439a50244"
                 },
                 {
@@ -747,7 +748,7 @@
                     "label": "USP tekst",
                     "name": "usp_text",
                     "aria-label": "",
-                    "type": "text",
+                    "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -757,28 +758,11 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_6494439a50244"
-                },
-                {
-                    "key": "field_67f50aaca0d6f",
-                    "label": "USP url",
-                    "name": "usp_url",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "url",
                     "allow_in_bindings": 1,
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0,
                     "parent_repeater": "field_6494439a50244"
                 }
             ]
@@ -2128,5 +2112,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1744112391
+    "modified": 1744113633
 }
