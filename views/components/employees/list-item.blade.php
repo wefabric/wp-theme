@@ -136,7 +136,7 @@
                 </div>
             @endif
             @if (!empty($visibleElements) && in_array('overview_text', $visibleElements))
-                <p class="overview-text text-{{ $employeeTextColor }} mt-3 mb-2">{{ $overviewText }}</p>
+                <div class="overview-text text-{{ $employeeTextColor }} mt-3 mb-2">{!! $overviewText !!}</div>
             @endif
         </div>
     </div>

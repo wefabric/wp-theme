@@ -67,7 +67,7 @@
             "label": "Overzichtstekst",
             "name": "overview_text",
             "aria-label": "",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -77,10 +77,11 @@
                 "id": ""
             },
             "default_value": "",
-            "maxlength": "",
-            "rows": "",
-            "placeholder": "",
-            "new_lines": ""
+            "allow_in_bindings": 1,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_64a27d6f6cb53",
@@ -105,39 +106,6 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_67925bcc3a095",
-            "label": "Hover afbeelding",
-            "name": "hover_image",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_64a27d6f6cb53",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "id",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "allow_in_bindings": 0,
             "preview_size": "medium"
         },
         {
@@ -324,5 +292,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1739178764
+    "modified": 1744379022
 }
