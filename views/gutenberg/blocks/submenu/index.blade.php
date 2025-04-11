@@ -85,28 +85,31 @@
 </section>
 
 @if ($stickyMenu)
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        $(document).ready(function() {
-            var mastheadHeight = $('#masthead').outerHeight();
-            var submenuHeight = $('.sticky-submenu').outerHeight();
-            var combinedHeight = mastheadHeight + submenuHeight;
-            var submenu = $('.sticky-submenu');
+        document.addEventListener('DOMContentLoaded', function () {
+            const masthead = document.getElementById('masthead');
+            const submenu = document.querySelector('.sticky-submenu');
 
-            // Apply scroll-margin to all elements using a style tag
-            $('head').append('<style>* { scroll-margin: ' + combinedHeight + 'px !important; }</style>');
+            if (!masthead || !submenu) return;
 
-            // Initial positioning
-            submenu.css('top', mastheadHeight + 'px');
+            const mastheadHeight = masthead.offsetHeight;
+            const submenuHeight = submenu.offsetHeight;
+            const combinedHeight = mastheadHeight + submenuHeight;
 
-            $(window).scroll(function() {
-                // Check if the user has scrolled past the masthead
-                if ($(window).scrollTop() > mastheadHeight) {
-                    // Add shadow-xl class when scrolled
-                    submenu.addClass('shadow-xl');
+            // Set scroll-margin via a <style> tag
+            const style = document.createElement('style');
+            style.textContent = `* { scroll-margin: ${combinedHeight}px !important; }`;
+            document.head.appendChild(style);
+
+            // Set initial top position
+            submenu.style.top = mastheadHeight + 'px';
+
+            // Scroll event for shadow toggle
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > mastheadHeight) {
+                    submenu.classList.add('shadow-xl');
                 } else {
-                    // Remove shadow-xl class when not scrolled
-                    submenu.removeClass('shadow-xl');
+                    submenu.classList.remove('shadow-xl');
                 }
             });
         });
