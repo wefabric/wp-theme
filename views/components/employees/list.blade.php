@@ -51,13 +51,14 @@
                 centeredSlides: true,
             @endif
             @if ($swiperAutoplay)
-            autoplay: {
-                delay: {{ $swiperAutoplaySpeed }},
-                disableOnInteraction: false,
-            },
+                autoplay: {
+                    delay: {{ $swiperAutoplaySpeed }},
+                    disableOnInteraction: false,
+                },
             @endif
             pagination: {
                 el: '.swiper-pagination',
+                clickable: true,
             },
             navigation: {
                 nextEl: ".employee-button-next-{{ $randomNumber }}",
