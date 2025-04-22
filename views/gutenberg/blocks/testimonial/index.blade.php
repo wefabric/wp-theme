@@ -199,6 +199,7 @@
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+    $customBlockId = $block['data']['custom_block_id'] ?? '';
     $hideBlock = $block['data']['hide_block'] ?? false;
 
 
@@ -241,7 +242,7 @@
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
-<section id="testimonial" class="block-testimonial relative testimonial-{{ $randomNumber }}-custom-padding testimonial-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else testimonial @endif" class="block-testimonial relative testimonial-{{ $randomNumber }}-custom-padding testimonial-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
