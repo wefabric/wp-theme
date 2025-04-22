@@ -90,7 +90,7 @@
 							'class' => 'phone-text flex w-fit'
 						])
 						<i class="fa-solid fa-phone mr-4 text-{{ $title_color }} text-md pt-1"></i>
-						<span class="inline-block pt-1">{{ $phone->international() }}</span>
+						<span class="inline-block pt-1">{{ get_bloginfo("language") === 'nl-NL' ? $phone->national() : $phone->international() }}</span>
 						@include('components.link.closing')
 					@endif
 
@@ -127,7 +127,7 @@
 							<div class="opening-hours-text font-bold mb-2">Openingstijden</div>
 							<div class="flex flex-col">
 								@foreach ($opening_hours as $day)
-									<div class="flex items-center sm:gap-x-12 justify-between sm:justify-start">
+									<div class="flex items-center sm:gap-x-4 justify-between sm:justify-start">
 										<span class="w-fit sm:w-[120px]">{{ $day['day'] ?? 'Onbekend' }}</span>
 										@if (!empty($day['closed']) && $day['closed'])
 											<span>Gesloten</span>
