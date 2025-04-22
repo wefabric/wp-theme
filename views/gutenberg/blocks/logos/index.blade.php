@@ -157,7 +157,7 @@
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }} @if ($blockWidth !== 'fullscreen') container mx-auto px-8 @endif">
+    <div class="custom-styling relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }} @if ($blockWidth !== 'fullscreen') container mx-auto px-8 @endif">
         <div class="{{ $blockClass }} mx-auto {{ $textClass }} layout">
             <div class="content-data mb-4">
                 @if ($subTitle)
