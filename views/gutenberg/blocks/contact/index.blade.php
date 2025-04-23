@@ -112,16 +112,17 @@
                             @while ($establishment_query->have_posts())
                                 @php
                                     $establishment_query->the_post();
-                                    $establishment_title = get_the_title();
-                                    $establishment_id = get_the_ID();
-                                    $street = get_post_meta($establishment_id, 'street', true);
-                                    $zipcode = get_post_meta($establishment_id, 'postcode', true);
-                                    $house_number = get_post_meta($establishment_id, 'house_number', true);
-                                    $house_number_addition = get_post_meta($establishment_id, 'house_number_addition', true);
-                                    $city = get_post_meta($establishment_id, 'city', true);
-                                    $phone = get_post_meta($establishment_id, 'common_phone', true);
-                                    $email = get_post_meta($establishment_id, 'common_email', true);
-                                    $country_id = get_post_meta($establishment_id, 'country_id', true);
+                                    $establishment = new \Wefabric\WPEstablishments\Establishment( get_the_ID());
+                                    $establishment_title = $establishment->post->post_title;
+                                    $establishment_id = $establishment->post->ID;
+                                    $street = $establishment->getAddress()->street;
+                                    $postcode = $establishment->getAddress()->postcode;
+                                    $house_number = $establishment->getAddress()->house_number;
+                                    $house_number_addition = $establishment->getAddress()->house_number_addition;
+                                    $city = $establishment->getAddress()->city;
+                                    $phone = $establishment->getContactPhone();
+                                    $email = $establishment->getEmailAddress();
+                                    $country_id = $establishment->getAddress()->country_id;
                                     if($country_id) {
                                         $countryNames = [
                                             'NL' => 'The Netherlands',
@@ -142,7 +143,7 @@
 
                                             @if (!empty($visibleElements) && in_array('establishment_address', $visibleElements))
                                                 <div class="establishment-address">{{ $street }} {{ $house_number }} {{ $house_number_addition }}</div>
-                                                <div class="establishment-zipcode">{{ $zipcode }} &nbsp; {{ $city }}</div>
+                                                <div class="establishment-zipcode">{{ $postcode }} &nbsp; {{ $city }}</div>
                                             @endif
 
                                             @if (!empty($visibleElements) && in_array('establishment_country', $visibleElements) && $countryName)
@@ -166,10 +167,10 @@
 
                                             @if (!empty($visibleElements) && in_array('establishment_phone', $visibleElements) && $phone)
                                                 <a class="phone-link group flex items-center gap-2 w-fit"
-                                                   href="tel:{{ $phone['number'] }}"
+                                                   href="{{ $phone->uri() }}"
                                                    title="Telefoonnummer">
                                                     <i class="fa-solid fa-phone text-primary group-hover:scale-110 duration-200 ease-in-out"></i>
-                                                    <span class="align-middle group-hover:text-primary group-hover:underline">{{ $phone['number'] }}</span>
+                                                    <span class="align-middle group-hover:text-primary group-hover:underline">{{ $phone->national() }}</span>
                                                 </a>
                                             @endif
 
@@ -185,7 +186,7 @@
                                             @if (!empty($visibleElements) && in_array('establishment_route', $visibleElements))
                                                 <div class="route-info">
                                                     <a class="route-link group flex items-center gap-2 w-fit"
-                                                       href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $zipcode }}+{{ $city }}"
+                                                       href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $postcode }}+{{ $city }}"
                                                        title="Email">
                                                         <i class="fa-solid fa-route text-primary group-hover:scale-110 duration-200 ease-in-out"></i>
                                                         <span class="align-middle group-hover:text-primary group-hover:underline">Route</span>
@@ -200,15 +201,16 @@
                                         <div class="opening-hours-section">
                                             <div class="opening-hours-text font-bold mb-2">Openingstijden</div>
                                             <div class="flex flex-col">
-                                                @foreach (get_fields($establishment_id)['opening_hours'] as $day)
+                                                @foreach ($establishment->openingHours() as $openingHour)
+
                                                     <div class="flex items-center sm:gap-x-12 justify-between sm:justify-start">
-                                                        <span class="w-fit sm:w-[120px]">{{ $day['day'] }}</span>
-                                                        @if ($day['closed'])
+                                                        <span class="w-fit sm:w-[120px]">{{ $openingHour->day }}</span>
+                                                        @if ($openingHour->isClosed())
                                                             <span>Gesloten</span>
                                                         @else
-                                                            <span> {{ $day['opening_hour'] }} uur - {{ $day['closing_hour'] }} uur
-                                                                @if (!empty($day['opening_hour_2']) && !empty($day['closing_hour_2']))
-                                                                    & {{ $day['opening_hour_2'] }} uur - {{ $day['closing_hour_2'] }} uur
+                                                            <span> {{ $openingHour->openingHour }} uur - {{  $openingHour->closingHour }} uur
+                                                                @if (!empty($openingHour->openingHour2) && !empty($openingHour->closingHour2))
+                                                                    & {{ $openingHour->openingHour2 }} uur - {{ $openingHour->closingHour2 }} uur
                                                                 @endif
                                                             </span>
                                                         @endif
