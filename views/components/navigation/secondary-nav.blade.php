@@ -82,7 +82,7 @@
                             <a class="phone-link group flex items-center gap-2" href="{{ $phone->uri() }}"
                                title="Telefoonnummer">
                                 <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone"></i>
-                                <span class="align-middle">{{ $phone->international() }}</span>
+                                <span class="align-middle">{{ get_bloginfo("language") === 'nl-NL' ? $phone->national() : $phone->international() }}</span>
                             </a>
                         @endif
 
