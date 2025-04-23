@@ -170,7 +170,7 @@
                                                    href="{{ $phone->uri() }}"
                                                    title="Telefoonnummer">
                                                     <i class="fa-solid fa-phone text-primary group-hover:scale-110 duration-200 ease-in-out"></i>
-                                                    <span class="align-middle group-hover:text-primary group-hover:underline">{{ $phone->national() }}</span>
+                                                    <span class="align-middle group-hover:text-primary group-hover:underline">{{ get_bloginfo("language") === 'nl-NL' ? $phone->national() : $phone->international() }}</span>
                                                 </a>
                                             @endif
 
