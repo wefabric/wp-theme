@@ -665,6 +665,36 @@
             "font_size": 14
         },
         {
+            "key": "field_680a06c45d023",
+            "label": "Minimale hoogte afbeeldingen",
+            "name": "min_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65253b0ae17a4",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 0,
+            "max": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "px"
+        },
+        {
             "key": "field_6683d4da39c8b",
             "label": "Maximale hoogte afbeeldingen",
             "name": "max_height",
@@ -711,7 +741,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -1953,5 +1983,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1739438869
+    "modified": 1745487824
 }

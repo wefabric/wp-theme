@@ -44,6 +44,8 @@
     $captionColor = $block['data']['caption_color'] ?? '';
     $imagesData = [];
     $numImages = intval($block['data']['images']);
+
+    $minHeight = $block['data']['min_height'] ?? '';
     $maxHeight = $block['data']['max_height'] ?? '';
     $imageStyle = $block['data']['image_style'] ?? 'cover';
 
@@ -201,6 +203,10 @@
 <style>
     .foto-slider-{{ $randomNumber }} .image-item img {
         @if($maxHeight) max-height: {{$maxHeight }}px; @endif
+    }
+
+    .foto-slider-{{ $randomNumber }} .image-item img {
+        @if($minHeight) min-height: {{$minHeight }}px; @endif
     }
 
     .foto-slider-{{ $randomNumber }}-custom-padding {
