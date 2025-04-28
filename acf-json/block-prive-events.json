@@ -667,7 +667,7 @@
                 "id": ""
             },
             "post_type": [
-                "evenementen"
+                "prive-event"
             ],
             "post_status": [
                 "publish"
@@ -2235,5 +2235,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737972838
+    "modified": 1745862206
 }
