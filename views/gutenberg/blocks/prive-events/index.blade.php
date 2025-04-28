@@ -123,7 +123,7 @@
 
     // Show specific
     elseif ($displayType == 'show_specific') {
-        $privateEvents = $block['data']['show_specific_events'];
+        $privateEvents = $block['data']['show_specific_private_events'];
         if (!is_array($privateEvents) || empty($privateEvents)) {
             $privateEvents = [];
         }
