@@ -144,7 +144,7 @@
 
 
 @if ($customBlockClasses && $breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID()) <div class="breadcrumbs-{{ $customBlockClasses }}"> @endif
-    @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID())
+    @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page())
         @include('components.breadcrumbs.index')
     @endif
 @if ($customBlockClasses && $breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID()) </div> @endif
@@ -196,7 +196,7 @@
                         @endif
                     </div>
                 @endif
-                @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'inside' &&!is_front_page() && get_the_ID())
+                @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'inside' &&!is_front_page())
                     @include('components.breadcrumbs.index')
                 @endif
             </div>
@@ -229,7 +229,7 @@
 </section>
 
 @if ($customBlockClasses) <div class="breadcrumbs-{{ $customBlockClasses }}"> @endif
-    @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'underneath' && !is_front_page() && get_the_ID())
+    @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'underneath' && !is_front_page())
         @include('components.breadcrumbs.index')
     @endif
 @if ($customBlockClasses) </div> @endif
