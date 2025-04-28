@@ -32,6 +32,11 @@
             'post_status' => 'publish',
         ];
 
+        // Exclude current post
+        if(get_post()->post_type == 'activiteiten') {
+            $args['post__not_in'] = [get_post()->ID];
+        }
+
         $query = new WP_Query($args);
         $activities = $query->posts;
     }
@@ -49,6 +54,12 @@
                 ],
             ],
         ];
+
+        // Exclude current post
+        if(get_post()->post_type == 'activiteiten') {
+            $args['post__not_in'] = [get_post()->ID];
+        }
+
         $query = new WP_Query($args);
         $activities = $query->posts;
     }
@@ -67,6 +78,12 @@
             'orderby' => 'date',
             'order' => 'DESC',
         ];
+
+        // Exclude current post
+        if(get_post()->post_type == 'activiteiten') {
+            $args['post__not_in'] = [get_post()->ID];
+        }
+
         $query = new WP_Query($args);
         $activities = $query->posts;
     }

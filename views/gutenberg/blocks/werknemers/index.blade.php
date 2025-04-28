@@ -65,6 +65,12 @@
                 ],
             ];
         }
+
+        // Exclude current post
+        if(get_post()->post_type == 'werknemers') {
+            $args['post__not_in'] = [get_post()->ID];
+        }
+
         $query = new WP_Query($args);
         $employees = wp_list_pluck($query->posts, 'ID');
     }
@@ -94,6 +100,12 @@
             ];
             $args['tax_query']['relation'] = 'AND';
         }
+
+        // Exclude current post
+        if(get_post()->post_type == 'werknemers') {
+            $args['post__not_in'] = [get_post()->ID];
+        }
+
         $query = new WP_Query($args);
         $employees = wp_list_pluck($query->posts, 'ID');
     }

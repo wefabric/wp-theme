@@ -64,6 +64,11 @@
             ];
         }
 
+        // Exclude current post
+        if(get_post()->post_type == 'product_packages') {
+            $args['post__not_in'] = [get_post()->ID];
+        }
+
         $query = new WP_Query($args);
         $productPackages = wp_list_pluck($query->posts, 'ID');
      }
@@ -93,6 +98,11 @@
                 'terms' => $currentTerms,
             ];
             $args['tax_query']['relation'] = 'AND';
+        }
+
+          // Exclude current post
+        if(get_post()->post_type == 'product_packages') {
+            $args['post__not_in'] = [get_post()->ID];
         }
 
         $query = new WP_Query($args);

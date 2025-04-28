@@ -31,6 +31,12 @@
             'posts_per_page' => -1,
             'post_type' => 'services',
         ];
+
+        // Exclude current post
+        if(get_post()->post_type == 'services') {
+            $args['post__not_in'] = [get_post()->ID];
+        }
+
         $query = new WP_Query($args);
         $services = wp_list_pluck($query->posts, 'ID');
     }
@@ -47,6 +53,12 @@
                 ],
             ],
         ];
+
+          // Exclude current post
+        if(get_post()->post_type == 'services') {
+            $args['post__not_in'] = [get_post()->ID];
+        }
+
         $query = new WP_Query($args);
         $services = wp_list_pluck($query->posts, 'ID');
     }
@@ -64,6 +76,12 @@
             'orderby' => 'date',
             'order' => 'DESC',
         ];
+
+        // Exclude current post
+        if(get_post()->post_type == 'services') {
+            $args['post__not_in'] = [get_post()->ID];
+        }
+
         $query = new WP_Query($args);
         $services = wp_list_pluck($query->posts, 'ID');
     }

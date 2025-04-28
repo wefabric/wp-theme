@@ -67,6 +67,11 @@
             'post_status' => 'publish',
         ];
 
+        // Exclude current post
+        if(get_post()->post_type == 'prive-event') {
+            $args['post__not_in'] = [get_post()->ID];
+        }
+
         if ($currentTerms) {
             $args['tax_query'] = [
                 [
@@ -105,6 +110,11 @@
                 'terms' => $currentTerms,
             ];
             $args['tax_query']['relation'] = 'AND';
+        }
+
+        // Exclude current post
+        if(get_post()->post_type == 'prive-event') {
+            $args['post__not_in'] = [get_post()->ID];
         }
 
         $query = new WP_Query($args);

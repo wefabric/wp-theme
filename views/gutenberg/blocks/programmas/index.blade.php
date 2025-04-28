@@ -54,6 +54,12 @@
          'post_status' => 'publish',
      ];
 
+    // Exclude current post
+    if(get_post()->post_type == 'program') {
+        $args['post__not_in'] = [get_post()->ID];
+    }
+
+
      $query = new WP_Query($args);
      $programs = wp_list_pluck($query->posts, 'ID');
     }

@@ -53,6 +53,11 @@
             'post_status' => 'publish',
         ];
 
+        // Exclude current post
+        if(get_post()->post_type == 'establishments') {
+            $args['post__not_in'] = [get_post()->ID];
+        }
+
         $query = new WP_Query($args);
         $establishments = wp_list_pluck($query->posts, 'ID');
     }
@@ -73,6 +78,11 @@
 
         if (!empty($establishments)) {
             $args['post__in'] = $establishments;
+        }
+
+        // Exclude current post
+        if(get_post()->post_type == 'establishments') {
+            $args['post__not_in'] = [get_post()->ID];
         }
 
         $query = new WP_Query($args);

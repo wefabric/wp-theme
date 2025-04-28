@@ -34,6 +34,11 @@
              'post_status' => 'publish',
          ];
 
+          // Exclude current post
+        if(get_post()->post_type == 'albums') {
+            $args['post__not_in'] = [get_post()->ID];
+        }
+
          $query = new WP_Query($args);
          $albums = wp_list_pluck($query->posts, 'ID');
      }

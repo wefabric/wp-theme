@@ -24,6 +24,12 @@
             'post_type' => 'prijzen',
             'post_status' => 'publish',
         ];
+
+        // Exclude current post
+        if(get_post()->post_type == 'prijzen') {
+            $args['post__not_in'] = [get_post()->ID];
+        }
+
         $query = new WP_Query($args);
         foreach ($query->posts as $post) {
             $packages[] = get_field('packages', $post->ID);
