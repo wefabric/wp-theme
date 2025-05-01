@@ -14,7 +14,7 @@
 
     @foreach ($programItems as $programItem)
         <div class="program-item flex flex-col md:flex-row gap-y-2 gap-x-4 md:gap-x-8 w-full border-b pb-4">
-            <div class="time">
+            <div class="time md:w-32 shrink-0">
                 <div class="program-item-time font-bold text-{{ $programTitleColor }}">{!! $programItem['time'] !!}</div>
             </div>
             <div class="info">
