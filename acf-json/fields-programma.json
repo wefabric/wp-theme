@@ -25,6 +25,33 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
+                    "key": "field_68134a71faa70",
+                    "label": "Afbeelding",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium",
+                    "parent_repeater": "field_66c89e1403e1f"
+                },
+                {
                     "key": "field_66c89e2203e20",
                     "label": "Tijd",
                     "name": "time",
@@ -108,5 +135,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724675123
+    "modified": 1746094782
 }
