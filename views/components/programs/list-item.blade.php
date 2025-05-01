@@ -19,7 +19,7 @@
     @foreach ($programItems as $programItem)
         <div class="program-item flex flex-col md:flex-row gap-y-2 gap-x-4 md:gap-x-8 w-full border-b pb-4">
             @if ($hasImage)
-                <div class="image md:w-32 shrink-0">
+                <div class="image md:w-52 shrink-0">
                     @if (!empty($programItem['image']))
                         @include('components.image', [
                            'image_id' => $programItem['image'],
