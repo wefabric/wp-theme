@@ -54,6 +54,7 @@
     $cardTitleColor = $block['data']['card_title_color'] ?? '';
     $cardTextColor = $block['data']['card_text_color'] ?? '';
     $cardIconColor = $block['data']['card_icon_color'] ?? '';
+    $cardOverlayColor = $block['data']['card_overlay_color'] ?? '';
 
 
     // Kaarten

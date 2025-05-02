@@ -939,6 +939,39 @@
             "font_size": 14
         },
         {
+            "key": "field_6814c8636cf82",
+            "label": "Kaart overlay kleur",
+            "name": "card_overlay_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6525652c4ff5b",
+                        "operator": "==",
+                        "value": "featured_image"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6525652c4ff5b",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "allow_in_bindings": 0,
+            "font_size": 14
+        },
+        {
             "key": "field_654a35109b823",
             "label": "Button in kaart",
             "name": "card_button",
@@ -2446,5 +2479,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742476135
+    "modified": 1746192607
 }

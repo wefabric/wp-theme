@@ -8,7 +8,7 @@
         @endif
 
         <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
-           class="card-overlay left-0 top-0 absolute h-full w-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
+           class="card-overlay left-0 top-0 absolute h-full w-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
 
         @if (!empty($visibleElements) && in_array('category', $visibleElements))
             @if (!empty($terms) && is_array($terms) && !is_bool($terms))
