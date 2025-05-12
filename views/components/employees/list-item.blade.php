@@ -98,7 +98,7 @@
                 <div class="function-text text-{{ $employeeTextColor }} font-medium">{{ $function }}</div>
             @endif
             @if (!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($socials))
-                <div class="inline-flex gap-x-2">
+                <div class="social-items inline-flex gap-x-2">
                     @foreach ($socials as $social)
                         <a class="text-{{ $employeeTextColor }} text-2xl transform ease-in-out duration-300 hover:scale-110 hover:text-primary"
                            href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer" aria-label="Ga naar social media pagina">

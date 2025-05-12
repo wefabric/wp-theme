@@ -130,15 +130,14 @@
             </div>
 
             <div class="partners-section w-full md:w-1/2 flex flex-col self-end">
-                <div class="flex flex-row mb-5 gap-x-4 justify-center md:justify-start">
-                    @php
-                        $footer = [];
-                        if(!empty($option) && array_key_exists('footer_partners', $option)) {
-                            $footer = $option['footer_partners'];
-                        }
-                    @endphp
-
-                    @if($footer)
+                @php
+                    $footer = [];
+                    if(!empty($option) && array_key_exists('footer_partners', $option)) {
+                        $footer = $option['footer_partners'];
+                    }
+                @endphp
+                @if($footer)
+                    <div class="flex flex-row mb-5 gap-x-4 justify-center md:justify-start">
                         @foreach($footer as $item)
                             <div class="flex items-center">
                                 @if($item['url'])
@@ -157,8 +156,9 @@
                                 @endif
                             </div>
                         @endforeach
-                    @endif
-                </div>
+
+                    </div>
+                @endif
 
                 <div class="lg:flex lg:flex-row">
                     @php
@@ -192,14 +192,16 @@
                     @endif
                 </div>
 
-                <div class="text-center md:text-left text-[14px]">
+                <div class="footer-pages text-center md:text-left text-[14px]">
                     @if($termsPage)
-                        <a class="terms-text underline" href="{{ get_permalink($termsPage) }}">{{ get_the_title($termsPage) }}</a> @if($termsPage && $privacyPage)
+                        <a class="terms-text underline"
+                           href="{{ get_permalink($termsPage) }}">{{ get_the_title($termsPage) }}</a> @if($termsPage && $privacyPage)
                             |
                         @endif
                     @endif
                     @if($privacyPage)
-                        <a class="privacy-text underline" href="{{ get_permalink($privacyPage) }}">{{ get_the_title($privacyPage) }}</a>
+                        <a class="privacy-text underline"
+                           href="{{ get_permalink($privacyPage) }}">{{ get_the_title($privacyPage) }}</a>
                     @endif
                 </div>
 
@@ -226,9 +228,11 @@
                     @php
                         $theme = app('wp.theme');
                     @endphp
-                    
-                    <img src="{{ !empty($options['wefabric_logo_color']) && $options['wefabric_logo_color'] == 'white' ? $theme->getUrl('assets/images/footer/logo-wefabric-white.png') : $theme->getUrl('assets/images/footer/logo-wefabric-black.png') }}" width="92" height="20"
-                         class="wefabric-logo hover:scale-105 transition-all ease-in-out" alt="Wefabric logo - wefabric.nl" style="height:20px;"/>
+
+                    <img src="{{ !empty($options['wefabric_logo_color']) && $options['wefabric_logo_color'] == 'white' ? $theme->getUrl('assets/images/footer/logo-wefabric-white.png') : $theme->getUrl('assets/images/footer/logo-wefabric-black.png') }}"
+                         width="92" height="20"
+                         class="wefabric-logo hover:scale-105 transition-all ease-in-out"
+                         alt="Wefabric logo - wefabric.nl" style="height:20px;"/>
                     <span class="screen-reader-only">Wefabric</span>
                     @include('components.link.closing')
                 </div>

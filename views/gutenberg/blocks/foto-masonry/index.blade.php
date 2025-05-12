@@ -1,8 +1,9 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
-    $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -15,10 +16,10 @@
         $button1Download = $block['data']['button_button_1_download'] ?? false;
         $button1Icon = $block['data']['button_button_1_icon'] ?? '';
         if (!empty($button1Icon)) {
-            $iconData = json_decode($button1Icon, true);
-            if (isset($iconData['id'], $iconData['style'])) {
-                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
-            }
+          $iconData = json_decode($button1Icon, true);
+          if (isset($iconData['id'], $iconData['style'])) {
+              $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+          }
         }
         $button2Text = $block['data']['button_button_2']['title'] ?? '';
         $button2Link = $block['data']['button_button_2']['url'] ?? '';
@@ -28,10 +29,10 @@
         $button2Download = $block['data']['button_button_2_download'] ?? false;
         $button2Icon = $block['data']['button_button_2_icon'] ?? '';
         if (!empty($button2Icon)) {
-            $iconData = json_decode($button2Icon, true);
-            if (isset($iconData['id'], $iconData['style'])) {
-                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
-            }
+          $iconData = json_decode($button2Icon, true);
+          if (isset($iconData['id'], $iconData['style'])) {
+              $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+          }
         }
 
         $textPosition = $block['data']['text_position'] ?? '';
@@ -43,10 +44,10 @@
     $imagesCount = $block['data']['images'] ?? 0;
     $images = [];
     for ($i = 0; $i < $imagesCount; $i++) {
-        $imageKey = 'images_' . $i . '_image';
-        if (isset($block['data'][$imageKey])) {
-            $images[] = $block['data'][$imageKey];
-        }
+      $imageKey = 'images_' . $i . '_image';
+      if (isset($block['data'][$imageKey])) {
+          $images[] = $block['data'][$imageKey];
+      }
     }
 
     $numColumns = $block['data']['columns'] ?? 3;
@@ -67,7 +68,6 @@
     $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
-    $customBlockId = $block['data']['custom_block_id'] ?? '';
     $hideBlock = $block['data']['hide_block'] ?? false;
 
 
@@ -106,7 +106,7 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else foto-masonry @endif" class="block-foto-masonry relative foto-masonry-{{ $randomNumber }}-custom-padding foto-masonry-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="foto-masonry" class="block-foto-masonry relative foto-masonry-{{ $randomNumber }}-custom-padding foto-masonry-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
@@ -176,20 +176,20 @@
 
 <style>
     .foto-masonry-{{ $randomNumber }}-custom-padding {
-        @media only screen and (min-width: 0px) {
-            @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
+    @media only screen and (min-width: 0px) {
+        @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
             @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
             @if($mobilePaddingBottom) padding-bottom: {{ $mobilePaddingBottom }}px; @endif
             @if($mobilePaddingLeft) padding-left: {{ $mobilePaddingLeft }}px; @endif
         }
-        @media only screen and (min-width: 768px) {
-            @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
+    @media only screen and (min-width: 768px) {
+        @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
             @if($tabletPaddingRight) padding-right: {{ $tabletPaddingRight }}px; @endif
             @if($tabletPaddingBottom) padding-bottom: {{ $tabletPaddingBottom }}px; @endif
             @if($tabletPaddingLeft) padding-left: {{ $tabletPaddingLeft }}px; @endif
         }
-        @media only screen and (min-width: 1024px) {
-            @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
+    @media only screen and (min-width: 1024px) {
+        @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
             @if($desktopPaddingRight) padding-right: {{ $desktopPaddingRight }}px; @endif
             @if($desktopPaddingBottom) padding-bottom: {{ $desktopPaddingBottom }}px; @endif
             @if($desktopPaddingLeft) padding-left: {{ $desktopPaddingLeft }}px; @endif
@@ -197,20 +197,20 @@
     }
 
     .foto-masonry-{{ $randomNumber }}-custom-margin {
-        @media only screen and (min-width: 0px) {
-            @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
+    @media only screen and (min-width: 0px) {
+        @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
             @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif
             @if($mobileMarginBottom) margin-bottom: {{ $mobileMarginBottom }}px; @endif
             @if($mobileMarginLeft) margin-left: {{ $mobileMarginLeft }}px; @endif
         }
-        @media only screen and (min-width: 768px) {
-            @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
+    @media only screen and (min-width: 768px) {
+        @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
             @if($tabletMarginRight) margin-right: {{ $tabletMarginRight }}px; @endif
             @if($tabletMarginBottom) margin-bottom: {{ $tabletMarginBottom }}px; @endif
             @if($tabletMarginLeft) margin-left: {{ $tabletMarginLeft }}px; @endif
         }
-        @media only screen and (min-width: 1024px) {
-            @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
+    @media only screen and (min-width: 1024px) {
+        @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
             @if($desktopMarginRight) margin-right: {{ $desktopMarginRight }}px; @endif
             @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
