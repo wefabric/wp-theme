@@ -21,6 +21,35 @@
             "endpoint": 0
         },
         {
+            "key": "field_6821afd0b762e",
+            "label": "Header stijl",
+            "name": "header_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "fixed_height": "Vaste header hoogte",
+                "scalable_height": "Header hoogte meeschalen met content"
+            },
+            "default_value": "fixed_height",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_66c833f8bb43b",
             "label": "Header hoogte",
             "name": "header_height",
@@ -28,7 +57,15 @@
             "type": "select",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6821afd0b762e",
+                        "operator": "==",
+                        "value": "fixed_height"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -43,6 +80,7 @@
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
@@ -711,12 +749,14 @@
             },
             "choices": {
                 "underneath": "Breadcrumbs onder de header tonen",
-                "inside": "Breadcrumbs in de header tonen"
+                "inside": "Breadcrumbs in de header tonen",
+                "above": "Breadcrumbs boven de header tonen"
             },
             "default_value": "underneath",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
@@ -741,11 +781,12 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -768,14 +809,27 @@
                         "operator": "==",
                         "value": "underneath"
                     }
+                ],
+                [
+                    {
+                        "field": "field_66c833f8bb4a8",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_66c833f8bb4af",
+                        "operator": "==",
+                        "value": "above"
+                    }
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "theme_color": "white",
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -1812,5 +1866,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1746794185
+    "modified": 1747039553
 }

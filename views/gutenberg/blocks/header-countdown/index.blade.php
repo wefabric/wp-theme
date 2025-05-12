@@ -1,15 +1,16 @@
 @php
-    //    todo: Needs block update, breadcrumbs and parralax
-
-
     // Header style
-    $headerHeight = $block['data']['header_height'] ?? '';
-    $heightClasses = [
-        1 => 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]',
-        2 => 'h-[200px] md:h-[400px] 2xl:h-[500px]',
-        3 => 'h-[120px] md:h-[200px]',
-    ];
-    $headerClass = $heightClasses[$headerHeight] ?? '';
+    $headerStyle = $block['data']['header_style'] ?? 'fixed_height';
+
+    if ($headerStyle == 'fixed_height') {
+        $headerHeight = $block['data']['header_height'] ?? '';
+        $heightClasses = [
+            1 => 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]',
+            2 => 'h-[200px] md:h-[400px] 2xl:h-[500px]',
+            3 => 'h-[120px] md:h-[200px]',
+        ];
+        $headerClass = $heightClasses[$headerHeight] ?? '';
+    }
 
     $headerNames = [
         1 => 'big-header',
@@ -136,7 +137,13 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else header-countdown @endif" class="block-header-countdown relative header-countdown-{{ $randomNumber }}-custom-padding header-countdown-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
+
+@if ($customBlockClasses && $breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID()) <div class="breadcrumbs-{{ $customBlockClasses }}"> @endif
+    @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page())
+        @include('components.breadcrumbs.index')
+    @endif
+    @if ($customBlockClasses && $breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID()) </div> @endif
+<section id="@if($customBlockId){{ $customBlockId }}@else header-countdown @endif" class="block-header-countdown relative header-countdown-{{ $randomNumber }}-custom-padding header-countdown-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} @if($headerStyle == 'fixed_height') fixed-header @elseif($headerStyle == 'scalable_height') scaled-header @endif {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
          style="background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
@@ -150,7 +157,7 @@
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
         <div class="custom-width relative container mx-auto px-8 h-full flex items-center z-30 {{ $textPositionClass }} @if ($fullHeightContentImage && $textPosition === 'right') justify-end @endif ">
-            <div class="header-info z-30 flex flex-col {{ $textWidthClass }} @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 pl-8 @endif">
+            <div class="header-info z-30 flex flex-col @if ($headerStyle == 'scalable_height') py-20 @endif {{ $textWidthClass }} @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 pl-8 @endif">
                 @if ($showTitle)
                     @if ($subTitle)
                         <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
