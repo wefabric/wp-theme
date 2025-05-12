@@ -104,6 +104,10 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="foto-masonry" class="block-foto-masonry relative foto-masonry-{{ $randomNumber }}-custom-padding foto-masonry-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -130,12 +134,12 @@
                     @foreach($columns as $column)
                         <div class="grid gap-4">
                             @foreach($column as $imageID)
-                                <div>
+                                <div class="image-item @if ($flyinEffect) image-hidden @endif">
                                     @include('components.image', [
                                         'image_id' => $imageID,
                                         'size' => 'full',
                                         'object_fit' => 'cover',
-                                        'img_class' => 'object-cover h-full w-full rounded-' . $borderRadius,
+                                        'img_class' => 'object-cover h-full w-full min-h-[150px] rounded-' . $borderRadius,
                                         'alt' => get_post_meta($imageID, '_wp_attachment_image_alt', true)
                                     ])
                                 </div>
@@ -176,20 +180,20 @@
 
 <style>
     .foto-masonry-{{ $randomNumber }}-custom-padding {
-    @media only screen and (min-width: 0px) {
-        @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
+        @media only screen and (min-width: 0px) {
+            @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
             @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
             @if($mobilePaddingBottom) padding-bottom: {{ $mobilePaddingBottom }}px; @endif
             @if($mobilePaddingLeft) padding-left: {{ $mobilePaddingLeft }}px; @endif
         }
-    @media only screen and (min-width: 768px) {
-        @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
+        @media only screen and (min-width: 768px) {
+            @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
             @if($tabletPaddingRight) padding-right: {{ $tabletPaddingRight }}px; @endif
             @if($tabletPaddingBottom) padding-bottom: {{ $tabletPaddingBottom }}px; @endif
             @if($tabletPaddingLeft) padding-left: {{ $tabletPaddingLeft }}px; @endif
         }
-    @media only screen and (min-width: 1024px) {
-        @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
+        @media only screen and (min-width: 1024px) {
+            @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
             @if($desktopPaddingRight) padding-right: {{ $desktopPaddingRight }}px; @endif
             @if($desktopPaddingBottom) padding-bottom: {{ $desktopPaddingBottom }}px; @endif
             @if($desktopPaddingLeft) padding-left: {{ $desktopPaddingLeft }}px; @endif
@@ -197,23 +201,66 @@
     }
 
     .foto-masonry-{{ $randomNumber }}-custom-margin {
-    @media only screen and (min-width: 0px) {
-        @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
+        @media only screen and (min-width: 0px) {
+            @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
             @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif
             @if($mobileMarginBottom) margin-bottom: {{ $mobileMarginBottom }}px; @endif
             @if($mobileMarginLeft) margin-left: {{ $mobileMarginLeft }}px; @endif
         }
-    @media only screen and (min-width: 768px) {
-        @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
+        @media only screen and (min-width: 768px) {
+            @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
             @if($tabletMarginRight) margin-right: {{ $tabletMarginRight }}px; @endif
             @if($tabletMarginBottom) margin-bottom: {{ $tabletMarginBottom }}px; @endif
             @if($tabletMarginLeft) margin-left: {{ $tabletMarginLeft }}px; @endif
         }
-    @media only screen and (min-width: 1024px) {
-        @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
+        @media only screen and (min-width: 1024px) {
+            @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
             @if($desktopMarginRight) margin-right: {{ $desktopMarginRight }}px; @endif
             @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .image-hidden {
+        opacity: 0;
+    }
+
+    .image-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const imageItems = document.querySelectorAll('.image-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const imageItem = entry.target;
+
+                        setTimeout(() => {
+                            if (imageItem.classList.contains('image-hidden')) {
+                                imageItem.classList.add('image-animated');
+                                imageItem.classList.remove('image-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(imageItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            imageItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif
