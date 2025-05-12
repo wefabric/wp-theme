@@ -54,6 +54,7 @@
     for ($i = 0; $i < $uspsCount; $i++) {
         $uspTitle = $block['data']["usps_{$i}_usp_title"];
         $uspText = $block['data']["usps_{$i}_usp_text"];
+        $uspLink = $block['data']["usps_{$i}_usp_link"];
         $uspImage = $block['data']["usps_{$i}_image"] ?? '';
         $uspIcon = $block['data']["usps_{$i}_icon"] ?? null;
 
@@ -65,6 +66,7 @@
         $usps[] = [
             'uspTitle' => $uspTitle,
             'uspText' => $uspText,
+            'uspLink' => $uspLink,
             'uspImage' => $uspImage,
             'uspIcon' => $iconData,
         ];

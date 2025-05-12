@@ -29,7 +29,7 @@
                     <div class="logo hidden xl:flex w-1/6 items-center">
                         @include('components.header.logo')
                     </div>
-                    <div class="xl:w-5/6 flex items-center justify-end h-16 xl:h-auto">
+                    <div class="navigation-custom-styling xl:w-5/6 flex items-center justify-end h-16 xl:h-auto">
                         @include('components.navigation.main-nav')
                         @include('components.navigation.header-mobile')
                     </div>

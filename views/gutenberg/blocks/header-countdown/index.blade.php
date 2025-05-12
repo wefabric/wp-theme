@@ -22,6 +22,7 @@
     $title = !empty($block['data']['title']) ? $block['data']['title'] : get_the_title();
     $titleColor = $block['data']['title_color'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
     $showTitle = $block['data']['show_title'] ?? true;
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
@@ -31,17 +32,33 @@
     $countdownDisplay = $block['data']['timer_display'] ?? '';
     $confetti = $block['data']['confetti'] ?? false;
 
-    // Buttons
-    $button1Text = $block['data']['button_button_1']['title'] ?? '';
-    $button1Link = $block['data']['button_button_1']['url'] ?? '';
-    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
-    $button1Color = $block['data']['button_button_1_color'] ?? '';
-    $button1Style = $block['data']['button_button_1_style'] ?? '';
-    $button2Text = $block['data']['button_button_2']['title'] ?? '';
-    $button2Link = $block['data']['button_button_2']['url'] ?? '';
-    $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
-    $button2Color = $block['data']['button_button_2_color'] ?? '';
-    $button2Style = $block['data']['button_button_2_style'] ?? '';
+        // Buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+        $button2Text = $block['data']['button_button_2']['title'] ?? '';
+        $button2Link = $block['data']['button_button_2']['url'] ?? '';
+        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
+        $button2Color = $block['data']['button_button_2_color'] ?? '';
+        $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Download = $block['data']['button_button_2_download'] ?? false;
+        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+        if (!empty($button2Icon)) {
+            $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
 
     $textPosition = $block['data']['text_position'] ?? '';
     $textPositionClass = '';
@@ -136,7 +153,7 @@
             <div class="header-info z-30 flex flex-col {{ $textWidthClass }} @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 pl-8 @endif">
                 @if ($showTitle)
                     @if ($subTitle)
-                        <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                        <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
                     @endif
                     <h1 class="title text-{{ $titleColor }}">{!! $title !!}</h1>
                 @endif
@@ -173,25 +190,28 @@
                         </div>
                     </div>
                 @endif
-
                 @if (($button1Text) && ($button1Link))
-                    <div class="buttons w-full flex flex-wrap gap-y-2 gap-x-6 mt-4 @if ($textPosition === 'center') justify-center items-center @endif">
+                    <div class="buttons w-full flex flex-wrap gap-y-2 gap-x-4 mt-4 @if ($textPosition === 'center') justify-center items-center @endif">
                         @include('components.buttons.default', [
-                           'text' => $button1Text,
-                           'href' => $button1Link,
-                           'alt' => $button1Text,
-                           'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                           'class' => 'rounded-lg w-fit',
-                           'target' => $button1Target,
-                       ])
+                            'text' => $button1Text,
+                            'href' => $button1Link,
+                            'alt' => $button1Text,
+                            'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                            'class' => 'rounded-lg',
+                            'target' => $button1Target,
+                            'icon' => $button1Icon,
+                            'download' => $button1Download,
+                        ])
                         @if (($button2Text) && ($button2Link))
                             @include('components.buttons.default', [
-                               'text' => $button2Text,
-                               'href' => $button2Link,
-                               'alt' => $button2Text,
-                               'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                               'class' => 'rounded-lg w-fit',
-                               'target' => $button2Target,
+                                'text' => $button2Text,
+                                'href' => $button2Link,
+                                'alt' => $button2Text,
+                                'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                'class' => 'rounded-lg',
+                                'target' => $button2Target,
+                                'icon' => $button2Icon,
+                                'download' => $button2Download,
                             ])
                         @endif
                     </div>

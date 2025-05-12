@@ -3,6 +3,8 @@
 
     $uspTitle = $usp['uspTitle'];
     $uspText = $usp['uspText'];
+    $uspLink = $usp['uspLink'];
+    $uspUrl = $uspLink['url'] ?? '';
     $icon = $usp['uspIcon'];
 
     $imageId = $usp['uspImage'];
@@ -15,7 +17,14 @@
     $isNumber = !empty($numericPart);
 @endphp
 
+
 <div class="USP-item h-full usp-{{ $uspLayout }} @if ($flyinEffect) usp-hidden @endif @if($uspBackgroundColor) bg-{{ $uspBackgroundColor }} p-4 lg:p-8 @endif">
+
+    @if (!empty($uspUrl) && $uspUrl)
+        <a href="{{ $uspUrl }}" class="usp-url" aria-label="Ga naar {{ $uspTitle }} pagina">
+    @endif
+
+
     <div class="item-styling h-full @if( $uspLayout == 'horizontal') flex flex-row gap-x-6 items-center text-left justify-start @elseif( $uspLayout == 'vertical') flex flex-col gap-y-4 text-center @endif">
         @if (($visualType == 'icons') && ($icon))
             <i class="fa-{{ $icon['style'] }} fa-{{ $icon['id'] }} text-{{ $uspIconColor }} text-[70px] inline-block"
@@ -47,6 +56,12 @@
             </div>
         @endif
     </div>
+
+    @if (!empty($uspUrl) && $uspUrl)
+        </a>
+    @endif
+
+
 </div>
 
 @if ($isNumber && $numberAnimation)

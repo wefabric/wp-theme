@@ -5,7 +5,7 @@
 
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     @if (!empty($terms) && is_array($terms) && !is_bool($terms))
-                        <div class="absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
+                        <div class="card-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                             @foreach ($terms as $term)
                                 @php
                                     $categoryColor = get_field('category_color', $term);
