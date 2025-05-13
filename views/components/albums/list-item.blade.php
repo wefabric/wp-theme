@@ -13,7 +13,7 @@
     <div class="album-card h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
         <div class="custom-height max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
             <a href="{{ $albumUrl }}" aria-label="Ga naar {{ $albumTitle }} pagina"
-               class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+               class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
             @include('components.image', [
                  'image_id' => $albumCover,
                  'size' => 'job-thumbnail',
@@ -24,7 +24,7 @@
         </div>
         <div class="album-info w-full mt-5 flex flex-col">
             @if (!empty($visibleElements) && in_array('title', $visibleElements))
-                <p class="name-text font-bold text-lg text-{{ $albumTitleColor }}">{!! $albumTitle !!}</p>
+                <a href="{{ $albumUrl }}" aria-label="Ga naar {{ $albumTitle }} pagina" class="album-title w-fit font-bold text-lg text-{{ $albumTitleColor }}">{!! $albumTitle !!}</a>
             @endif
         </div>
     </div>
