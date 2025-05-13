@@ -24,6 +24,8 @@
     // Show countries
     $displayType = $block['data']['display_type'];
 
+
+    // Show all
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
@@ -31,13 +33,17 @@
         ];
 
          // Exclude current post
-        if(get_post()->post_type == 'countries') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'countries') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
         $countries = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show category
     elseif ($displayType == 'show_category') {
         $selectedCategory = $block['data']['category'] ?? '';
         $args = [
@@ -54,19 +60,25 @@
 
 
         // Exclude current post
-        if(get_post()->post_type == 'countries') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'countries') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
         $countries = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show specific
     elseif ($displayType == 'show_specific') {
         $countries = $block['data']['show_specific_countries'];
         if (!is_array($countries) || empty($countries)) {
             $countries = [];
         }
     }
+
+    // Show latest
     elseif ($displayType == 'show_latest') {
         $postAmount = $block['data']['post_amount'] ?? 3;
         $args = [
@@ -77,8 +89,10 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'countries') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'countries') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);

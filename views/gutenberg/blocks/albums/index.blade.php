@@ -2,45 +2,49 @@
     //    todo: Needs block update
 
 
-     // Content
-     $title = $block['data']['title'] ?? '';
-     $subTitle = $block['data']['subtitle'] ?? '';
-     $titleColor = $block['data']['title_color'] ?? '';
-     $text = $block['data']['text'] ?? '';
-     $textColor = $block['data']['text_color'] ?? '';
+    // Content
+    $title = $block['data']['title'] ?? '';
+    $titleColor = $block['data']['title_color'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
+    $text = $block['data']['text'] ?? '';
+    $textColor = $block['data']['text_color'] ?? '';
 
-         // Buttons
-         $button1Text = $block['data']['button_button_1']['title'] ?? '';
-         $button1Link = $block['data']['button_button_1']['url'] ?? '';
-         $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
-         $button1Color = $block['data']['button_button_1_color'] ?? '';
-         $button1Style = $block['data']['button_button_1_style'] ?? '';
+        // Buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
 
-         $textPosition = $block['data']['text_position'] ?? '';
-         $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
-         $textClass = $textClassMap[$textPosition] ?? '';
+        $textPosition = $block['data']['text_position'] ?? '';
+        $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
+        $textClass = $textClassMap[$textPosition] ?? '';
 
 
-     // Albums
-     $albumTitleColor = $block['data']['album_title_color'] ?? '';
+    // Albums
+    $albumTitleColor = $block['data']['album_title_color'] ?? '';
+    $displayType = $block['data']['display_type'];
 
-     $displayType = $block['data']['display_type'];
 
-     // Show all
-     if ($displayType == 'show_all') {
-          $args = [
-             'posts_per_page' => -1,
-             'post_type' => 'albums',
-             'post_status' => 'publish',
-         ];
 
-          // Exclude current post
-        if(get_post()->post_type == 'albums') {
-            $args['post__not_in'] = [get_post()->ID];
+    // Show all
+    if ($displayType == 'show_all') {
+        $args = [
+            'posts_per_page' => -1,
+            'post_type' => 'albums',
+            'post_status' => 'publish',
+        ];
+
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'albums') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
-         $query = new WP_Query($args);
-         $albums = wp_list_pluck($query->posts, 'ID');
+        $query = new WP_Query($args);
+        $albums = wp_list_pluck($query->posts, 'ID');
      }
 
     // Show specific
@@ -76,6 +80,7 @@
 
     $backgroundColor = $block['data']['background_color'] ?? 'none';
     $backgroundImageId = $block['data']['background_image'] ?? '';
+    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
@@ -118,17 +123,22 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else albums @endif" class="block-albums relative albums-{{ $randomNumber }}-custom-padding albums-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+<section id="@if($customBlockId){{ $customBlockId }}@else albums @endif"
+         class="block-albums relative albums-{{ $randomNumber }}-custom-padding albums-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
+                <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
             @endif
             @if ($title)
                 <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
@@ -140,20 +150,20 @@
                 ])
             @endif
             @if ($albums)
-               @include('components.albums.list', ['albums' => $albums])
+                @include('components.albums.list', ['albums' => $albums])
             @endif
             @if (($button1Text) && ($button1Link))
                 <div class="bottom-button w-full text-center mt-4 md:mt-8">
-                   @include('components.buttons.default', [
-                      'text' => $button1Text,
-                      'href' => $button1Link,
-                      'alt' => $button1Text,
-                      'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                      'class' => 'rounded-lg text-left',
-                      'target' => $button1Target,
-                   ])
-               </div>
-           @endif
+                    @include('components.buttons.default', [
+                       'text' => $button1Text,
+                       'href' => $button1Link,
+                       'alt' => $button1Text,
+                       'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                       'class' => 'rounded-lg text-left',
+                       'target' => $button1Target,
+                    ])
+                </div>
+            @endif
         </div>
     </div>
 </section>
@@ -166,18 +176,21 @@
             @if($mobilePaddingBottom) padding-bottom: {{ $mobilePaddingBottom }}px; @endif
             @if($mobilePaddingLeft) padding-left: {{ $mobilePaddingLeft }}px; @endif
         }
+
         @media only screen and (min-width: 768px) {
             @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
             @if($tabletPaddingRight) padding-right: {{ $tabletPaddingRight }}px; @endif
             @if($tabletPaddingBottom) padding-bottom: {{ $tabletPaddingBottom }}px; @endif
             @if($tabletPaddingLeft) padding-left: {{ $tabletPaddingLeft }}px; @endif
         }
+
         @media only screen and (min-width: 1024px) {
             @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
             @if($desktopPaddingRight) padding-right: {{ $desktopPaddingRight }}px; @endif
             @if($desktopPaddingBottom) padding-bottom: {{ $desktopPaddingBottom }}px; @endif
             @if($desktopPaddingLeft) padding-left: {{ $desktopPaddingLeft }}px; @endif
         }
+
     }
 
     .albums-{{ $randomNumber }}-custom-margin {
@@ -187,12 +200,14 @@
             @if($mobileMarginBottom) margin-bottom: {{ $mobileMarginBottom }}px; @endif
             @if($mobileMarginLeft) margin-left: {{ $mobileMarginLeft }}px; @endif
         }
+
         @media only screen and (min-width: 768px) {
             @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
             @if($tabletMarginRight) margin-right: {{ $tabletMarginRight }}px; @endif
             @if($tabletMarginBottom) margin-bottom: {{ $tabletMarginBottom }}px; @endif
             @if($tabletMarginLeft) margin-left: {{ $tabletMarginLeft }}px; @endif
         }
+
         @media only screen and (min-width: 1024px) {
             @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
             @if($desktopMarginRight) margin-right: {{ $desktopMarginRight }}px; @endif
@@ -200,4 +215,52 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .album-hidden {
+        opacity: 0;
+    }
+
+    .swiper-slide-duplicate .album-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .album-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const albumItems = document.querySelectorAll('.album-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const albumItem = entry.target;
+
+                        setTimeout(() => {
+                            if (albumItem.classList.contains('album-hidden')) {
+                                albumItem.classList.add('album-animated');
+                                albumItem.classList.remove('album-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(albumItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            albumItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif

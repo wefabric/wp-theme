@@ -8,22 +8,25 @@
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
 
+        // Buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $buttonCardText = $block['data']['card_button_button_text'] ?? '';
+        $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
+        $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
+
+
+    // Products
+    $displayType = $block['data']['display_type'];
+
     $productTitleColor = $block['data']['product_title_color'] ?? '';
     $productTextColor = $block['data']['product_text_color'] ?? '';
 
-    // Buttons
-    $button1Text = $block['data']['button_button_1']['title'] ?? '';
-    $button1Link = $block['data']['button_button_1']['url'] ?? '';
-    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
-    $button1Color = $block['data']['button_button_1_color'] ?? '';
-    $button1Style = $block['data']['button_button_1_style'] ?? '';
-    $buttonCardText = $block['data']['card_button_button_text'] ?? '';
-    $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
-    $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
 
-    // Show products
-    $displayType = $block['data']['display_type'];
-
+    // Show all
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
@@ -32,13 +35,17 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'products') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'products') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
         $products = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show category
     elseif ($displayType == 'show_category') {
         $selectedCategory = $block['data']['category'] ?? '';
         $args = [
@@ -55,13 +62,17 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'products') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'products') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
         $products = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show brand ( todo: check this )
     elseif ($displayType == 'show_brand') {
         $selectedBrand = $block['data']['brand'] ?? '';
 
@@ -79,20 +90,25 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'products') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'products') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
-
 
         $query = new WP_Query($args);
         $products = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show specific
     elseif ($displayType == 'show_specific') {
         $products = $block['data']['show_specific_products'];
             if (!is_array($products) || empty($products)) {
                 $products = [];
             }
     }
+
+    // Show latest
     elseif ($displayType == 'show_latest') {
         $postAmount = $block['data']['post_amount'] ?? 3;
         $args = [
@@ -104,14 +120,16 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'products') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'products') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
-
 
         $query = new WP_Query($args);
         $products = wp_list_pluck($query->posts, 'ID');
     }
+
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -127,6 +145,7 @@
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
     $customBlockId = $block['data']['custom_block_id'] ?? '';
+
 
     // Theme settings
     $options = get_fields('option');

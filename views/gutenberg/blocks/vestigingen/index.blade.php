@@ -54,8 +54,10 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'establishments') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'establishments') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
@@ -81,8 +83,10 @@
         }
 
         // Exclude current post
-        if(get_post()->post_type == 'establishments') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'establishments') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);

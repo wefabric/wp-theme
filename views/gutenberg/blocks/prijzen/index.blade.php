@@ -13,12 +13,13 @@
 
     $showTables = $block['data']['show_price_tables'] ?? false;
 
-    // Show prices
+    // Prices
     $displayType = $block['data']['display_type'];
     $packages = [];
     $tables = [];
 
-   if ($displayType == 'show_all') {
+    // Show all
+    if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
             'post_type' => 'prijzen',
@@ -26,8 +27,10 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'prijzen') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'prijzen') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
@@ -35,9 +38,12 @@
             $packages[] = get_field('packages', $post->ID);
             $tables[] = get_field('tables', $post->ID);
         }
+
         $packages = array_merge(...array_filter($packages));
         $tables = array_merge(...array_filter($tables));
 
+
+    // Show specific
     } elseif ($displayType == 'show_specific') {
         $postIds = $block['data']['show_specific_price'] ?? [];
 
@@ -49,9 +55,11 @@
             $packages[] = get_field('packages', $postId);
             $tables[] = get_field('tables', $postId);
         }
+
         $packages = array_merge(...array_filter($packages));
         $tables = array_merge(...array_filter($tables));
     }
+
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -67,6 +75,7 @@
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
     $customBlockId = $block['data']['custom_block_id'] ?? '';
+
 
     // Theme settings
     $options = get_fields('option');

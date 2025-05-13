@@ -51,7 +51,7 @@
         $textClass = $textClassMap[$textPosition] ?? '';
 
 
-    // Show klantencases
+    // Klantencases
     $layoutVersion = $block['data']['version'] ?? 'featured_layout';
     $caseQuoteColor = $block['data']['case_quote_color'] ?? '';
     $caseTextColor = $block['data']['case_text_color'] ?? '';
@@ -67,10 +67,11 @@
             'post_type' => 'klantcases',
         ];
 
-
         // Exclude current post
-        if(get_post()->post_type == 'klantcases') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'klantcases') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
@@ -93,9 +94,11 @@
             ],
         ];
 
-         // Exclude current post
-        if(get_post()->post_type == 'klantcases') {
-            $args['post__not_in'] = [get_post()->ID];
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'klantcases') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
@@ -119,6 +122,14 @@
             'post_status'    => 'publish',
             'orderby'        => 'rand',
         ];
+
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'klantcases') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
+        }
+
         $query = new WP_Query($args);
         $cases = wp_list_pluck($query->posts, 'ID');
     }
@@ -133,6 +144,14 @@
             'orderby' => 'date',
             'order' => 'DESC',
         ];
+
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'klantcases') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
+        }
+
         $query = new WP_Query($args);
         $cases = wp_list_pluck($query->posts, 'ID');
     }

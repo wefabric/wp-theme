@@ -47,6 +47,8 @@
     $logoBackgroundColor = $block['data']['logo_background_color'] ?? '';
     $logoFilter = $block['data']['logo_filter'] ?? '';
 
+
+    // Show all
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
@@ -55,13 +57,17 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'logo') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'logo') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
         $logos = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show category
     elseif ($displayType == 'show_category') {
         $selectedCategory = $block['data']['category'] ?? '';
         $args = [
@@ -78,13 +84,17 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'logo') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'logo') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
         $logos = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show specific
     elseif ($displayType == 'show_specific') {
     $logos = $block['data']['show_specific_logos'];
         if (!is_array($logos) || empty($logos)) {
@@ -95,6 +105,8 @@
             });
         }
     }
+
+    // Show latest
     elseif ($displayType == 'show_latest') {
         $postAmount = $block['data']['post_amount'] ?? 3;
         $args = [
@@ -106,10 +118,11 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'logo') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'logo') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
-
 
         $query = new WP_Query($args);
         $logos = wp_list_pluck($query->posts, 'ID');

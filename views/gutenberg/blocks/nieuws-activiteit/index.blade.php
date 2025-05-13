@@ -11,31 +11,39 @@
     $newsTitleColor = $block['data']['news_title_color'] ?? '';
     $newsTextColor = $block['data']['news_text_color'] ?? '';
 
-    // Buttons
-    $button1Text = $block['data']['button_button_1']['title'] ?? '';
-    $button1Link = $block['data']['button_button_1']['url'] ?? '';
-    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
-    $button1Color = $block['data']['button_button_1_color'] ?? '';
-    $button1Style = $block['data']['button_button_1_style'] ?? '';
-    $buttonCardText = $block['data']['card_button_button_text'] ?? '';
-    $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
-    $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
+        // Buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $buttonCardText = $block['data']['card_button_button_text'] ?? '';
+        $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
+        $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
 
-    // Show news
+
+    // Nieuws en activiteit
     $displayType = $block['data']['display_type'];
 
+    // Show all
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
             'post_type' => 'post',
         ];
-         // Exclude current post
-        if(get_post()->post_type == 'post') {
-            $args['post__not_in'] = [get_post()->ID];
+
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'post') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
+
         $query = new WP_Query($args);
         $posts = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show category
     elseif ($displayType == 'show_category') {
         $selectedCategory = $block['data']['category'] ?? '';
         $args = [
@@ -49,20 +57,27 @@
                 ],
             ],
         ];
-         // Exclude current post
-        if(get_post()->post_type == 'post') {
-            $args['post__not_in'] = [get_post()->ID];
+
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'post') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
         $posts = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show specific
     elseif ($displayType == 'show_specific') {
         $posts = $block['data']['show_specific_news'];
         if (!is_array($posts) || empty($posts)) {
             $posts = [];
         }
     }
+
+    // Show latest
     elseif ($displayType == 'show_latest') {
         $postAmount = $block['data']['post_amount'] ?? 3;
         $args = [
@@ -72,14 +87,17 @@
             'order' => 'DESC',
         ];
 
-         // Exclude current post
-        if(get_post()->post_type == 'post') {
-            $args['post__not_in'] = [get_post()->ID];
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'post') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
         $posts = wp_list_pluck($query->posts, 'ID');
     }
+
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;

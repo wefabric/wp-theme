@@ -1,4 +1,7 @@
 @php
+
+    // todo: Needs block update
+
     // Content
     $title = $block['data']['title'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
@@ -65,14 +68,15 @@
         }
 
         // Exclude current post
-        if(get_post()->post_type == 'product_packages') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'product_packages') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
         $productPackages = wp_list_pluck($query->posts, 'ID');
      }
-
 
     // Show category
     elseif ($displayType == 'show_category') {
@@ -100,9 +104,11 @@
             $args['tax_query']['relation'] = 'AND';
         }
 
-          // Exclude current post
-        if(get_post()->post_type == 'product_packages') {
-            $args['post__not_in'] = [get_post()->ID];
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'product_packages') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);

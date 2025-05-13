@@ -9,7 +9,7 @@
     $visibleElements = $block['data']['show_element'] ?? [];
 @endphp
 
-<div class="album-item group h-full">
+<div class="album-item group h-full @if ($flyinEffect) album-hidden @endif">
     <div class="album-card h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
         <div class="custom-height max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
             <a href="{{ $albumUrl }}" aria-label="Ga naar {{ $albumTitle }} pagina"

@@ -78,8 +78,10 @@
         }
 
         // Exclude current post
-        if(get_post()->post_type == 'diensten') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'diensten') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
@@ -104,10 +106,11 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'diensten') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'diensten') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
-
 
         if ($currentTerms) {
             $args['tax_query'][] = [
@@ -152,6 +155,7 @@
         $query = new WP_Query($args);
         $diensten = wp_list_pluck($query->posts, 'ID');
     }
+
     $visibleElements = $block['data']['show_element'] ?? [];
 
 

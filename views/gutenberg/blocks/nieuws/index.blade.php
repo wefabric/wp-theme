@@ -66,8 +66,10 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'post') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'post') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
 
@@ -91,9 +93,11 @@
             ],
         ];
 
-          // Exclude current post
-        if(get_post()->post_type == 'post') {
-            $args['post__not_in'] = [get_post()->ID];
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'post') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
@@ -118,9 +122,11 @@
             'orderby'        => 'rand',
         ];
 
-          // Exclude current post
-        if(get_post()->post_type == 'post') {
-            $args['post__not_in'] = [get_post()->ID];
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'post') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
@@ -138,8 +144,10 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'post') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'post') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);

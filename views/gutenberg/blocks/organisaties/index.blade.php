@@ -7,21 +7,24 @@
     $titlePosition = $block['data']['title_position'] ?? '';
     $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
     $titleClass = $titleClassMap[$titlePosition] ?? '';
-    $organisationBackgroundColor = $block['data']['organisation_background_color'] ?? '';
 
+        // Buttons
+        $button1Text = $block['data']['button_button_1']['title'] ?? '';
+        $button1Link = $block['data']['button_button_1']['url'] ?? '';
+        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+        $button1Color = $block['data']['button_button_1_color'] ?? '';
+        $button1Style = $block['data']['button_button_1_style'] ?? '';
+
+
+    // Organisations
+    $displayType = $block['data']['display_type'];
+
+    $organisationBackgroundColor = $block['data']['organisation_background_color'] ?? '';
     $organisationTitleColor = $block['data']['organisation_title_color'] ?? '';
     $organisationTextColor = $block['data']['organisation_text_color'] ?? '';
 
-    // Buttons
-    $button1Text = $block['data']['button_button_1']['title'] ?? '';
-    $button1Link = $block['data']['button_button_1']['url'] ?? '';
-    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
-    $button1Color = $block['data']['button_button_1_color'] ?? '';
-    $button1Style = $block['data']['button_button_1_style'] ?? '';
 
-    // Show organisations
-    $displayType = $block['data']['display_type'];
-
+    // Show all
     if ($displayType == 'show_all') {
         $args = [
             'posts_per_page' => -1,
@@ -30,13 +33,17 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'organisation') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'organisation') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
         $organisations = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show category
     elseif ($displayType == 'show_category') {
         $selectedCategory = $block['data']['category'] ?? '';
         $args = [
@@ -53,13 +60,17 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'organisation') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'organisation') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
         $organisations = wp_list_pluck($query->posts, 'ID');
     }
+
+    // Show specific
     elseif ($displayType == 'show_specific') {
         $organisations = $block['data']['show_specific_organisations'];
          if (!is_array($organisations) || empty($organisations)) {
@@ -70,6 +81,8 @@
             });
         }
     }
+
+    // Show latest
     elseif ($displayType == 'show_latest') {
         $postAmount = $block['data']['post_amount'] ?? 3;
         $args = [
@@ -81,13 +94,16 @@
         ];
 
         // Exclude current post
-        if(get_post()->post_type == 'organisation') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'organisation') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
         $organisations = wp_list_pluck($query->posts, 'ID');
     }
+
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -103,6 +119,7 @@
 
     $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
     $customBlockId = $block['data']['custom_block_id'] ?? '';
+
 
     // Theme settings
     $options = get_fields('option');
