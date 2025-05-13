@@ -18,7 +18,7 @@
             $logoUrl = '';
         }
 
-    $logoCategories = get_the_terms($logo, 'brand_categories');
+    $logoCategories = get_the_terms($logo, 'logo_categories');
 @endphp
 
 <div class="logo-item group h-full @if ($flyinEffect) logo-hidden @endif">
