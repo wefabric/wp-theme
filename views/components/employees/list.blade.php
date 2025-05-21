@@ -11,6 +11,7 @@
         'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
     ];
 
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
@@ -28,7 +29,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="lg:hidden swiper-pagination"></div>
+            <div class="swiper-pagination"></div>
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next employee-button-next-{{ $randomNumber }}"></div>
@@ -41,6 +42,14 @@
             @include('components.employees.list-item')
         @endforeach
     </div>
+@endif
+
+@if ($swiperOutContainer)
+    <style>
+        .employeeSwiper-{{ $randomNumber }} {
+            overflow: unset !important;
+        }
+    </style>
 @endif
 
 <script>

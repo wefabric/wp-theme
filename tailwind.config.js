@@ -111,6 +111,12 @@ module.exports = {
       none: 'none',
     },
     extend: {
+
+
+      screens: {
+        '3xl': '1920px',
+      },
+
       colors: {
         DEFAULT: '#000000',
         primary: {

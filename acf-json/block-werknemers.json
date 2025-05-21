@@ -1024,6 +1024,39 @@
                     "ui": 0,
                     "ajax": 0,
                     "placeholder": ""
+                },
+                {
+                    "key": "field_67dc1e856bf67",
+                    "label": "Desktop XL",
+                    "name": "desktop_xl",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "1": "1 per rij",
+                        "2": "2 per rij",
+                        "3": "3 per rij",
+                        "4": "4 per rij",
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
+                    },
+                    "default_value": 4,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 1,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
                 }
             ]
         },
@@ -1130,6 +1163,35 @@
             "message": "",
             "default_value": 0,
             "allow_in_bindings": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6825be4c7bfb5",
+            "label": "Slider buiten container laten vallen",
+            "name": "slider_outside_container",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a2c795a9c0c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
@@ -2232,5 +2294,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742478994
+    "modified": 1747313570
 }

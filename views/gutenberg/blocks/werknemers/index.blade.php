@@ -43,6 +43,7 @@
     // Werknemers
     $employeeTitleColor = $block['data']['employee_title_color'] ?? '';
     $employeeTextColor = $block['data']['employee_text_color'] ?? '';
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
     $displayType = $block['data']['display_type'];
     $currentTerms = isset($_GET['employee_category']) ? array_map('intval', explode(',', $_GET['employee_category'])) : [];
@@ -213,59 +214,65 @@
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else werknemers @endif" class="block-werknemers relative werknemers-{{ $randomNumber }}-custom-padding werknemers-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else werknemers @endif" class="block-werknemers relative block-{{ $randomNumber }} werknemers-{{ $randomNumber }}-custom-padding werknemers-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
-    @if ($overlayEnabled)
-        <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+    @if($swiperOutContainer)
+        <div class="overflow-hidden">
     @endif
-    <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto">
-            @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
-            @endif
-            @if ($title)
-                <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
-            @endif
-            @if ($text)
-                @include('components.content', [
-                    'content' => apply_filters('the_content', $text),
-                    'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
-                ])
-            @endif
-            @if (!empty($visibleElements) && in_array('category_filter', $visibleElements))
-               @include('components.employees.category-filter')
-            @endif
-            @if ($employees)
-               @include('components.employees.list', ['employees' => $employees])
-            @endif
-            @if (($button1Text) && ($button1Link))
-                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
-                    @include('components.buttons.default', [
-                        'text' => $button1Text,
-                        'href' => $button1Link,
-                        'alt' => $button1Text,
-                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                        'class' => 'rounded-lg',
-                        'target' => $button1Target,
-                        'icon' => $button1Icon,
-                        'download' => $button1Download,
+        @if ($overlayEnabled)
+            <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+        @endif
+        <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+            <div class="{{ $blockClass }} mx-auto">
+                @if ($subTitle)
+                    <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
+                @endif
+                @if ($title)
+                    <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
+                @endif
+                @if ($text)
+                    @include('components.content', [
+                        'content' => apply_filters('the_content', $text),
+                        'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
                     ])
-                    @if (($button2Text) && ($button2Link))
+                @endif
+                @if (!empty($visibleElements) && in_array('category_filter', $visibleElements))
+                   @include('components.employees.category-filter')
+                @endif
+                @if ($employees)
+                   @include('components.employees.list', ['employees' => $employees])
+                @endif
+                @if (($button1Text) && ($button1Link))
+                    <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                         @include('components.buttons.default', [
-                            'text' => $button2Text,
-                            'href' => $button2Link,
-                            'alt' => $button2Text,
-                            'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                            'text' => $button1Text,
+                            'href' => $button1Link,
+                            'alt' => $button1Text,
+                            'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
                             'class' => 'rounded-lg',
-                            'target' => $button2Target,
-                            'icon' => $button2Icon,
-                            'download' => $button2Download,
+                            'target' => $button1Target,
+                            'icon' => $button1Icon,
+                            'download' => $button1Download,
                         ])
-                    @endif
-                </div>
-            @endif
+                        @if (($button2Text) && ($button2Link))
+                            @include('components.buttons.default', [
+                                'text' => $button2Text,
+                                'href' => $button2Link,
+                                'alt' => $button2Text,
+                                'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                'class' => 'rounded-lg',
+                                'target' => $button2Target,
+                                'icon' => $button2Icon,
+                                'download' => $button2Download,
+                            ])
+                        @endif
+                    </div>
+                @endif
+            </div>
         </div>
-    </div>
+    @if($swiperOutContainer)
+        </div>
+    @endif
 </section>
 
 <style>

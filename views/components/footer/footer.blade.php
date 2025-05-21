@@ -101,7 +101,7 @@
         </div>
     @endif
 
-    <div class="relative bottom-info">
+    <div class="bottom-info relative ">
         <div class="custom-flex-styling container mx-auto px-8 flex flex-col md:flex-row">
             <div class="logo-section flex flex-col justify-end lg:w-1/4 lg:pr-8">
 
@@ -156,7 +156,6 @@
                                 @endif
                             </div>
                         @endforeach
-
                     </div>
                 @endif
 

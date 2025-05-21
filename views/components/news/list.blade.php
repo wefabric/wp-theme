@@ -11,8 +11,10 @@
         'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
     ];
 
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
+    $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'nieuwsSwiper-' . $randomNumber;
 @endphp
@@ -42,16 +44,26 @@
     </div>
 @endif
 
+@if ($swiperOutContainer)
+    <style>
+        .nieuwsSwiper-{{ $randomNumber }} {
+            overflow: unset !important;
+        }
+    </style>
+@endif
+
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var nieuwsSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
-            centeredSlides: false,
+            @if ($swiperCenteredSlides)
+                centeredSlides: true,
+            @endif
             @if ($swiperAutoplay)
-            autoplay: {
-                delay: {{ $swiperAutoplaySpeed }},
-                disableOnInteraction: false,
-            },
+                autoplay: {
+                    delay: {{ $swiperAutoplaySpeed }},
+                    disableOnInteraction: false,
+                },
             @endif
             pagination: {
                 el: '.swiper-pagination',
