@@ -148,7 +148,7 @@
                                 @endif
                                 @include('components.image', [
                                     'image_id' => $item['logo'],
-                                    'size' => 'usp_icon',
+                                    'size' => 'full',
                                     'class' => 'disable-rounded',
                                 ])
                                 @if($item['url'])

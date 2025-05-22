@@ -35,6 +35,36 @@
             }
         }
 
+    $linksCount = $block['data']['links'] ?? 0;
+    $links = [];
+
+        for ($i = 0; $i < $linksCount; $i++) {
+        $linkKey = "links_{$i}_link";
+        $linkText = $block['data'][$linkKey]['title'] ?? '';
+        $linkUrl = $block['data'][$linkKey]['url'] ?? '';
+        $linkTarget = $block['data'][$linkKey]['target'] ?? '_self';
+
+
+        $linkIcon = $block['data']["links_{$i}_link_icon"] ?? '';
+        $buttonIcon = '';
+        if (!empty($linkIcon)) {
+            $iconData = json_decode($linkIcon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $buttonIcon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+
+        $links[] = [
+            'linkText' => $linkText,
+            'linkUrl' => $linkUrl,
+            'linkTarget' => $linkTarget,
+            'buttonIcon' => $buttonIcon,
+            'linkIcon' => $linkIcon,
+        ];
+    }
+
+
+
     $textPosition = $block['data']['text_position'] ?? '';
     $textOrder = $textPosition === 'left' ? 'lg:order-1 left' : 'lg:order-2 right';
     $imageOrder = $textPosition === 'left' ? 'lg:order-2 right' : 'lg:order-1 left';
@@ -138,6 +168,27 @@
                             'content' => apply_filters('the_content', $text),
                             'class' => 'mb-8 text-' . $textColor . ($flyInAnimation ? ' flyin-animation' : ''),
                         ])
+                    @endif
+                    @if ($links)
+                        <div class="links-list flex flex-col gap-y-4">
+                            @foreach($links as $link)
+                                @if($link['linkText'] && $link['linkUrl'])
+                                    <div class="link-item">
+                                        <a href="{{ $link['linkUrl'] }}" aria-label="Ga naar {{ $link['linkText'] }} pagina"
+                                           target="{{ $link['linkTarget'] }}" class="flex items-center gap-x-4 group">
+                                            @if($link['linkIcon'])
+                                                @php
+                                                    $iconData = json_decode($link['linkIcon'], true);
+                                                    $iconClass = 'fa-' . ($iconData['style'] ?? 'solid') . ' fa-' . ($iconData['id'] ?? '');
+                                                @endphp
+                                                <i class="fa {{ $iconClass }} text-{{ $link['linkIconColor'] }} text-[20px] w-[24px] h-[24px] flex justify-center items-center transition-transform duration-300 ease-in-out" aria-hidden="true"></i>
+                                            @endif
+                                            <span class="link-text @if($link['linkTextColor']) text-{{ $link['linkTextColor'] }} @else text-cta @endif font-semibold group-hover:underline">{!! $link['linkText'] !!}</span>
+                                        </a>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
                     @endif
                     @if (($button1Text) && ($button1Link))
                         <div class="buttons w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 @if ($flyInAnimation) flyin-animation @endif">
