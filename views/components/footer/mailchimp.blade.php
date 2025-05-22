@@ -1,6 +1,6 @@
 <form action="{{ $mailChimpSubscribeUrl }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="mailchimp-form validate" target="_blank" novalidate>
 	<div id="mc_embed_signup_scroll"></div>
-	<div class="flex">
+	<div class="form-layout flex">
 		<input type="email" value="" placeholder="E-mailadres" name="EMAIL" class="required email bg-white rounded-l-lg" id="mce-EMAIL">
 		<div id="mce-responses" class="clear">
 			<div class="response" id="mce-error-response" style="display:none"></div>

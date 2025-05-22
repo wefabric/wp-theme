@@ -1,6 +1,6 @@
 <form action="{{ $ZohoSubscribeUrl }}" method="post" id="zoho-embedded-subscribe-form" name="zoho-embedded-subscribe-form" class="zoho-form validate" target="_blank" enctype="multipart/form-data" accept-charset="UTF-8" novalidate>
     <div id="zoho_embed_signup_scroll"></div>
-    <div class="flex">
+    <div class="form-layout flex">
         <input type="email" maxlength="255" name="Email" value="" fieldtype="9" placeholder="E-mailadres" class="required email bg-white rounded-l-lg" id="mce-EMAIL">
         <div id="mce-responses" class="clear">
             <div class="response" id="mce-error-response" style="display:none"></div>

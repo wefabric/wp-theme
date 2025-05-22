@@ -137,7 +137,7 @@
                     }
                 @endphp
                 @if($footer)
-                    <div class="flex flex-row mb-5 gap-x-4 justify-center md:justify-start">
+                    <div class="partner-list flex flex-row mb-5 gap-x-4 justify-center md:justify-start">
                         @foreach($footer as $item)
                             <div class="flex items-center">
                                 @if($item['url'])
