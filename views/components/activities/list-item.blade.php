@@ -31,7 +31,7 @@
     }
 @endphp
 
-<div class="activiteit-item group h-full">
+<div class="activiteit-item group h-full @if ($flyinEffect) activity-hidden @endif">
     <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
         @if ($activityThumbnailID)
             <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
@@ -107,17 +107,19 @@
 
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
                 @if ($buttonCardText)
-                    <div class="mt-auto pt-8 z-10">
+                    <div class="activity-button mt-auto pt-8 z-10">
                         @include('components.buttons.default', [
                            'text' => $buttonCardText,
                            'href' => $activityUrl,
                            'alt' => $buttonCardText,
                            'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
                            'class' => 'rounded-lg',
-                       ])
+                           'icon' => $buttonCardIcon,
+                        ])
                     </div>
                 @endif
             @endif
+
         </div>
     </div>
 </div>
