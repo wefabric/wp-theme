@@ -34,9 +34,9 @@
 <div class="activiteit-item group h-full @if ($flyinEffect) activity-hidden @endif">
     <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
         @if ($activityThumbnailID)
-            <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
+            <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $activityUrl }}" aria-label="Ga naar {{ $activityTitle }}"
-                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                   class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @if ($fields['activity_full'])
                     <a href="{{ $activityUrl }}" aria-label="Ga naar {{ $activityTitle }}"
                        class="absolute w-full h-full bg-white z-10 opacity-70 transition-opacity"></a>
@@ -70,12 +70,12 @@
                 ])
             </div>
         @endif
-        <div class="flex flex-col w-full grow mt-5">
+        <div class="activity-content flex flex-col w-full grow mt-5">
 
             <a href="{{ $activityUrl }}" aria-label="Ga naar {{ $activityTitle }}"
-               class="font-bold text-{{ $activityTitleColor }} text-lg group-hover:text-primary">{{ $activityTitle }}</a>
+               class="activity-title-text font-bold text-{{ $activityTitleColor }} text-lg group-hover:text-primary">{{ $activityTitle }}</a>
 
-            <div class="activity-data mt-4 text-{{ $activityTextColor }}">
+            <div class="activity-data text-{{ $activityTextColor }}">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($activitySummary))
                     <p class="mt-3 mb-3">{{ $activitySummary }}</p>
                 @endif
