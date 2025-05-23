@@ -138,6 +138,21 @@
             @if (!empty($visibleElements) && in_array('overview_text', $visibleElements))
                 <div class="overview-text text-{{ $employeeTextColor }} mt-3 mb-2">{!! $overviewText !!}</div>
             @endif
+                @if (!empty($visibleElements) && in_array('button', $visibleElements))
+                    @if ($buttonCardText)
+                        <div class="employee-button mt-auto pt-8 z-10">
+                            @include('components.buttons.default', [
+                               'text' => $buttonCardText,
+                               'href' => $employeeUrl,
+                               'alt' => $buttonCardText,
+                               'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
+                               'class' => 'rounded-lg',
+                               'icon' => $buttonCardIcon,
+                            ])
+                        </div>
+                    @endif
+                @endif
         </div>
+
     </div>
 </div>

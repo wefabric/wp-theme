@@ -35,6 +35,17 @@
             }
         }
 
+        $buttonCardText = $block['data']['card_button_button_text'] ?? '';
+        $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
+        $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
+        $buttonCardIcon = $block['data']['card_button_button_icon'] ?? '';
+        if (!empty($buttonCardIcon)) {
+            $iconData = json_decode($buttonCardIcon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $buttonCardIcon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+
         $textPosition = $block['data']['text_position'] ?? '';
         $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
         $textClass = $textClassMap[$textPosition] ?? '';

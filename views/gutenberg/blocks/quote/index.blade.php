@@ -99,67 +99,71 @@
 
 <section id="@if($customBlockId){{ $customBlockId }}@else quote @endif" class="block-quote relative quote-{{ $randomNumber }}-custom-padding quote-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
-    @if ($overlayEnabled)
-        <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
-    @endif
-    <div class="whitespace-class relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} {{ $textClass }} mx-auto">
 
-            @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
-            @endif
-            @if ($title)
-                <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
-            @endif
-            @if ($text)
-                @include('components.content', [
-                    'content' => apply_filters('the_content', $text),
-                    'class' => 'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
-                ])
-            @endif
+    <div class="overflow-class">
 
-            @if ($quoteBackgroundColor)
-                <div class="quote-background block bg-{{ $quoteBackgroundColor }} p-8">
-            @endif
-                @if ($quote)
-                    @include('components.content', ['content' => apply_filters('the_content', $quote), 'class' => 'quote-text text-[24px] md:text-[36px] text-' . $quoteTextColor])
-                @endif
-                @if ($name)
-                    <div class="name-text mt-5 h6 text-{{ $personTextColor }}">{{ $name }}</div>
-                @endif
-                @if ($function)
-                    <div class="function-text mt-1 text-{{ $personTextColor }}">{{ $function }}</div>
-                @endif
-            @if ($quoteBackgroundColor)
-                </div>
-            @endif
+        @if ($overlayEnabled)
+            <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+        @endif
+        <div class="whitespace-class relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+            <div class="{{ $blockClass }} {{ $textClass }} mx-auto">
 
-            @if (($button1Text) && ($button1Link))
-                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
-                    @include('components.buttons.default', [
-                        'text' => $button1Text,
-                        'href' => $button1Link,
-                        'alt' => $button1Text,
-                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                        'class' => 'rounded-lg',
-                        'target' => $button1Target,
-                        'icon' => $button1Icon,
-                        'download' => $button1Download,
+                @if ($subTitle)
+                    <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
+                @endif
+                @if ($title)
+                    <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
+                @endif
+                @if ($text)
+                    @include('components.content', [
+                        'content' => apply_filters('the_content', $text),
+                        'class' => 'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
                     ])
-                    @if (($button2Text) && ($button2Link))
-                        @include('components.buttons.default', [
-                            'text' => $button2Text,
-                            'href' => $button2Link,
-                            'alt' => $button2Text,
-                            'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                            'class' => 'rounded-lg',
-                            'target' => $button2Target,
-                            'icon' => $button2Icon,
-                            'download' => $button2Download,
-                        ])
+                @endif
+
+                @if ($quoteBackgroundColor)
+                    <div class="quote-background block bg-{{ $quoteBackgroundColor }} p-8">
+                @endif
+                    @if ($quote)
+                        @include('components.content', ['content' => apply_filters('the_content', $quote), 'class' => 'quote-text text-[24px] md:text-[36px] text-' . $quoteTextColor])
                     @endif
-                </div>
-            @endif
+                    @if ($name)
+                        <div class="name-text mt-5 h6 text-{{ $personTextColor }}">{{ $name }}</div>
+                    @endif
+                    @if ($function)
+                        <div class="function-text mt-1 text-{{ $personTextColor }}">{{ $function }}</div>
+                    @endif
+                @if ($quoteBackgroundColor)
+                    </div>
+                @endif
+
+                @if (($button1Text) && ($button1Link))
+                    <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
+                        @include('components.buttons.default', [
+                            'text' => $button1Text,
+                            'href' => $button1Link,
+                            'alt' => $button1Text,
+                            'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                            'class' => 'rounded-lg',
+                            'target' => $button1Target,
+                            'icon' => $button1Icon,
+                            'download' => $button1Download,
+                        ])
+                        @if (($button2Text) && ($button2Link))
+                            @include('components.buttons.default', [
+                                'text' => $button2Text,
+                                'href' => $button2Link,
+                                'alt' => $button2Text,
+                                'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                'class' => 'rounded-lg',
+                                'target' => $button2Target,
+                                'icon' => $button2Icon,
+                                'download' => $button2Download,
+                            ])
+                        @endif
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
 </section>

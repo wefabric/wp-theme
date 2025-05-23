@@ -50,7 +50,10 @@
       }
     }
 
-    $numColumns = $block['data']['columns'] ?? 3;
+    // Ensure $numColumns is at least 1
+    $numColumns = (int) ($block['data']['columns'] ?? 3);
+    $numColumns = max($numColumns, 1);
+
     $columns = array_chunk($images, ceil(count($images) / $numColumns));
 
 
