@@ -11,15 +11,16 @@
         'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
     ];
 
-    $showSlider = $block['data']['show_slider'] ?? false;
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
-    $swiperAutoplaySpeed = isset($block['data']['autoplay_speed']) ? $block['data']['autoplay_speed'] * 1000 : 5000;
+    $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
+    $swiperLoop = $block['data']['loop_slides'] ?? true;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'kaartenBlockSwiper-' . $randomNumber;
 @endphp
 
-@if ($showSlider)
+@if($block['data']['show_slider'])
     <div class="slider block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
@@ -29,7 +30,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="lg:hidden swiper-pagination"></div>
+            <div class="swiper-pagination"></div>
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next cardblock-button-next-{{$randomNumber}}"></div>
@@ -42,6 +43,14 @@
             @include('components.cardblock.list-item')
         @endforeach
     </div>
+@endif
+
+@if ($swiperOutContainer)
+    <style>
+        .kaartenBlockSwiper-{{ $randomNumber }} {
+            overflow: unset !important;
+        }
+    </style>
 @endif
 
 <script>
@@ -67,19 +76,19 @@
             },
             breakpoints: {
                 0: {
-                    loop: {{count($pagesData) > $mobileLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($pagesData) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 768: {
-                    loop: {{ count($pagesData) > $tabletLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($pagesData) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ count($pagesData) > $desktopLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($pagesData) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
                 },
                 1536: {
-                    loop: {{ count($pagesData) > $desktopXlLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($pagesData) > $desktopXlLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopXlLayout }},
                 },
             }
