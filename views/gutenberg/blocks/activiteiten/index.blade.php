@@ -207,7 +207,6 @@
 
 
     // Animaties
-    // Todo: add hover effect
     $hoverEffect = $block['data']['hover_effect'] ?? '';
     $hoverEffectClasses = [
         'lift-up' => 'group-hover:-translate-y-2 group-hover:md:-translate-y-4',

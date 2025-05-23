@@ -26,13 +26,12 @@
             return $dateA <=> $dateB;
         });
     } else {
-        // Set $fields['dates'] to an empty array if it's not an array
         $fields['dates'] = [];
     }
 @endphp
 
 <div class="activiteit-item group h-full @if ($flyinEffect) activity-hidden @endif">
-    <div class="h-full flex flex-col items-center group-hover:-translate-y-4 duration-300 ease-in-out">
+    <div class="h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         @if ($activityThumbnailID)
             <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $activityUrl }}" aria-label="Ga naar {{ $activityTitle }}"
