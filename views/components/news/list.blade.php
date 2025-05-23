@@ -14,6 +14,7 @@
     $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
+    $swiperLoop = $block['data']['loop_slides'] ?? true;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'nieuwsSwiper-' . $randomNumber;
@@ -29,7 +30,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="lg:hidden swiper-pagination"></div>
+            <div class="swiper-pagination"></div>
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next news-button-next-{{ $randomNumber }}"></div>
@@ -75,19 +76,19 @@
             },
             breakpoints: {
                 0: {
-                    loop: {{count($posts) > $mobileLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($posts) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 768: {
-                    loop: {{ count($posts) > $tabletLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($posts) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ count($posts) > $desktopLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($posts) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
                 },
                 1536: {
-                    loop: {{ count($posts) > $desktopXlLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($posts) > $desktopXlLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopXlLayout }},
                 },
             }

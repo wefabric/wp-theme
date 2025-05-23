@@ -14,6 +14,7 @@
     $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
+    $swiperLoop = $block['data']['loop_slides'] ?? true;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'employeeSwiper-' . $randomNumber;
@@ -75,19 +76,19 @@
             },
             breakpoints: {
                 0: {
-                    loop: {{count($employees) > $mobileLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($employees) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 768: {
-                    loop: {{ count($employees) > $tabletLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($employees) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ count($employees) > $desktopLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($employees) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
                 },
                 1536: {
-                    loop: {{ count($employees) > $desktopXlLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($employees) > $desktopXlLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopXlLayout }},
                 },
             }

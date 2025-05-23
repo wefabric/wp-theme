@@ -1102,6 +1102,24 @@
             ]
         },
         {
+            "key": "field_6830d87bf7ab8",
+            "label": "Layout",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "key": "field_651579baf112e",
             "label": "Layout (aantal activiteiten op een rij)",
             "name": "layout",
@@ -1338,6 +1356,64 @@
             "append": "Seconden"
         },
         {
+            "key": "field_6830d939fa16e",
+            "label": "Actieve slide in het midden",
+            "name": "centered_slides",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_651579baf1136",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6830d9a9fa16f",
+            "label": "Oneindige herhaling van slides",
+            "name": "loop_slides",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_651579baf1136",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6830683b479ca",
             "label": "Slider buiten container laten vallen",
             "name": "slider_outside_container",
@@ -1360,7 +1436,7 @@
                 "id": ""
             },
             "message": "",
-            "default_value": 0,
+            "default_value": 1,
             "allow_in_bindings": 0,
             "ui": 0,
             "ui_on_text": "",
@@ -2451,5 +2527,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1748003925
+    "modified": 1748031957
 }

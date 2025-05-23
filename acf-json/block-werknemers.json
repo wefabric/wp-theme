@@ -238,7 +238,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_654a13ac12e5b",
@@ -272,7 +274,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_66ffe69ba7236",
@@ -401,7 +405,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_66ffe72fa723a",
@@ -435,7 +441,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_66ffe75da723c",
@@ -550,7 +558,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_668d20e4aca1d",
@@ -595,7 +605,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_65a103eadc655",
@@ -804,7 +816,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_6569e438e1ec1",
@@ -971,7 +985,9 @@
                     "allow_in_bindings": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_683027d657b6c",
@@ -1007,7 +1023,9 @@
                     "allow_in_bindings": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_6830281d57b6d",
@@ -1052,6 +1070,24 @@
                     "choices": []
                 }
             ]
+        },
+        {
+            "key": "field_6830d8f234cdd",
+            "label": "Layout",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_64a68c71b132a",
@@ -1100,7 +1136,9 @@
                     "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_64a68cb2b132c",
@@ -1133,7 +1171,9 @@
                     "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_64a52424eb604",
@@ -1166,7 +1206,9 @@
                     "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_67dc1e856bf67",
@@ -1199,7 +1241,9 @@
                     "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_67dc1e856bf67",
@@ -1232,7 +1276,9 @@
                     "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 }
             ]
         },
@@ -1252,6 +1298,7 @@
             },
             "message": "",
             "default_value": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
@@ -1316,7 +1363,7 @@
         },
         {
             "key": "field_6724b614b20ec",
-            "label": "Actieve slide in het midden?",
+            "label": "Actieve slide in het midden",
             "name": "centered_slides",
             "aria-label": "",
             "type": "true_false",
@@ -1332,12 +1379,41 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
             "message": "",
             "default_value": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6830db5f2bca8",
+            "label": "Oneindige herhaling van slides",
+            "name": "loop_slides",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a2c795a9c0c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
             "allow_in_bindings": 1,
             "ui": 0,
             "ui_on_text": "",
@@ -1361,7 +1437,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -1417,7 +1493,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_64a2cf65c283e",
@@ -1547,7 +1625,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_66ffe7ef35993",
@@ -2428,7 +2508,9 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_67ac9b7230828",
@@ -2470,5 +2552,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1747986527
+    "modified": 1748032679
 }

@@ -14,6 +14,8 @@
     $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
+    $swiperLoop = $block['data']['loop_slides'] ?? true;
+    $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'activiteitenSwiper-' . $randomNumber;
 @endphp
@@ -28,7 +30,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="lg:hidden swiper-pagination"></div>
+            <div class="swiper-pagination"></div>
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next activity-button-next-{{ $randomNumber }}"></div>
@@ -56,7 +58,9 @@
     window.addEventListener("DOMContentLoaded", (event) => {
         var activiteitenSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
-            centeredSlides: false,
+            @if ($swiperCenteredSlides)
+                centeredSlides: true,
+            @endif
             @if ($swiperAutoplay)
                 autoplay: {
                     delay: {{ $swiperAutoplaySpeed }},
@@ -73,19 +77,19 @@
             },
             breakpoints: {
                 0: {
-                    loop: {{count($activities) > $mobileLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($activities) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 768: {
-                    loop: {{ count($activities) > $tabletLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($activities) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ count($activities) > $desktopLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($activities) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
                 },
                 1536: {
-                    loop: {{ count($activities) > $desktopXlLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($activities) > $desktopXlLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopXlLayout }},
                 },
             }

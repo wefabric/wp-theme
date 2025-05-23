@@ -238,7 +238,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_654a103bb9dae",
@@ -272,7 +274,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_67064809e33a4",
@@ -401,7 +405,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_6706485ee33a8",
@@ -435,7 +441,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_67064874e33a9",
@@ -538,7 +546,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_6706431e08239",
@@ -586,7 +596,9 @@
             "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_655f38e5de81c",
@@ -898,7 +910,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_654a3d687bf01",
@@ -932,7 +946,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_67064cee7b0e6",
@@ -975,6 +991,24 @@
                     "choices": []
                 }
             ]
+        },
+        {
+            "key": "field_6830db0c95546",
+            "label": "Layout",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_64a66f5aa3e0b",
@@ -1023,7 +1057,9 @@
                     "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_64a6750fcf091",
@@ -1056,7 +1092,9 @@
                     "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_64a5539ca9ccf",
@@ -1089,7 +1127,9 @@
                     "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_67dc37c444a3d",
@@ -1122,7 +1162,9 @@
                     "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_67dc37c444a3d",
@@ -1155,7 +1197,9 @@
                     "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 }
             ]
         },
@@ -1239,7 +1283,7 @@
         },
         {
             "key": "field_682daa385057f",
-            "label": "Actieve slide in het midden?",
+            "label": "Actieve slide in het midden",
             "name": "centered_slides",
             "aria-label": "",
             "type": "true_false",
@@ -1261,6 +1305,35 @@
             },
             "message": "",
             "default_value": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6830db8195547",
+            "label": "Oneindige herhaling van slides",
+            "name": "loop_slides",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a3ead6eaed5",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
             "allow_in_bindings": 1,
             "ui": 0,
             "ui_on_text": "",
@@ -1340,7 +1413,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_64a2d86a20297",
@@ -1470,7 +1545,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_6706445b0823e",
@@ -2330,7 +2407,9 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_67974a8015e4a",
@@ -2372,5 +2451,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1747823214
+    "modified": 1748032420
 }
