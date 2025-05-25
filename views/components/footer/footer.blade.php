@@ -117,7 +117,7 @@
                 @endphp
 
                 @if (!empty($visibleFooterElements) && in_array('logo', $visibleFooterElements))
-                    <div class="hidden lg:block">
+                    <div class="footer-logo hidden lg:block">
                         @if(isset(get_field('common', 'option')[$footerLogoToDisplay]) && $logoId = get_field('common', 'option')[$footerLogoToDisplay])
                             {!! wp_get_attachment_image($logoId, 'footer_logo', false, ['class' => 'footer-logo-image']) !!}
                         @endif
@@ -159,37 +159,37 @@
                     </div>
                 @endif
 
-                <div class="lg:flex lg:flex-row">
-                    @php
-                        $class = 'inline-block hover:underline md:px-2';
+{{--                <div class="lg:flex lg:flex-row">--}}
+{{--                    @php--}}
+{{--                        $class = 'inline-block hover:underline md:px-2';--}}
 
-                        $menuLocations = get_nav_menu_locations();
-                        $menu = null;
-                        if(isset($menuLocations['footer_menu_three']) && $menuID = $menuLocations['footer_menu_three']) {
-                              $menu = wp_get_nav_menu_items($menuID);
-                        }
+{{--                        $menuLocations = get_nav_menu_locations();--}}
+{{--                        $menu = null;--}}
+{{--                        if(isset($menuLocations['footer_menu_three']) && $menuID = $menuLocations['footer_menu_three']) {--}}
+{{--                              $menu = wp_get_nav_menu_items($menuID);--}}
+{{--                        }--}}
 
-                    @endphp
+{{--                    @endphp--}}
 
-                    @if($menu)
-                        <div id="footer_menu_three" class="bottom-footer">
-                            @foreach($menu as $post)
-                                @include('components.link.simple', [
-                                    'href' => $post->url,
-                                    'class' => $class,
-                                    'text' => __($post->title, 'wefabric')
-                                ])
+{{--                    @if($menu)--}}
+{{--                        <div id="footer_menu_three" class="bottom-footer">--}}
+{{--                            @foreach($menu as $post)--}}
+{{--                                @include('components.link.simple', [--}}
+{{--                                    'href' => $post->url,--}}
+{{--                                    'class' => $class,--}}
+{{--                                    'text' => __($post->title, 'wefabric')--}}
+{{--                                ])--}}
 
-                                @php
-                                    $last = (in_array($post, $menu) && $post == end($menu));
-                                @endphp
-                                @if(!$last)
-                                    <span class="divider"> / </span>
-                                @endif
-                            @endforeach
-                        </div>
-                    @endif
-                </div>
+{{--                                @php--}}
+{{--                                    $last = (in_array($post, $menu) && $post == end($menu));--}}
+{{--                                @endphp--}}
+{{--                                @if(!$last)--}}
+{{--                                    <span class="divider"> / </span>--}}
+{{--                                @endif--}}
+{{--                            @endforeach--}}
+{{--                        </div>--}}
+{{--                    @endif--}}
+{{--                </div>--}}
 
                 <div class="footer-pages text-center md:text-left text-[14px]">
                     @if($termsPage)
