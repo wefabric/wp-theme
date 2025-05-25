@@ -723,12 +723,12 @@
                 "location": "Locatie",
                 "date": "Datum",
                 "time": "Start en eindtijd",
-                "button": "Knop in activiteit blok",
-                "button_bottom": "Knop onder activiteiten"
+                "button": "Knop in activiteit blok"
             },
             "default_value": [],
             "return_format": "array",
             "allow_custom": 0,
+            "allow_in_bindings": 1,
             "layout": "vertical",
             "toggle": 0,
             "save_custom": 0,
@@ -2527,5 +2527,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1748031957
+    "modified": 1748204516
 }
