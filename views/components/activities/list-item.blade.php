@@ -56,7 +56,7 @@
                     @endif
                 @endif
                 @if ($fields['activity_full'])
-                    <div class="absolute z-20 top-[15px] right-[15px] bg-red-500 px-4 py-2 rounded-full text-white">
+                    <div class="activity-full-indicator absolute z-20 top-[15px] right-[15px] bg-red-500 px-4 py-2 rounded-full text-white">
                         Vol
                     </div>
                 @endif
