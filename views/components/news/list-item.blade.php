@@ -37,12 +37,23 @@
                                 $categoryColor = get_field('category_color', $category);
                                 $categoryIcon = get_field('category_icon', $category);
                             @endphp
-                            <a href="{{ get_category_link($category) }}" style="background-color: {{ $categoryColor }}" class="news-category @if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full" aria-label="Ga naar {{ $category->name }}">
+                            <a href="{{ get_category_link($category) }}" style="background-color: {{ $categoryColor }}" class="news-category @if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full flex items-center gap-x-2" aria-label="Ga naar {{ $category->name }}">
                                 {!! $categoryIcon !!} {!! $category->name !!}
                             </a>
                         @endforeach
                     </div>
                 @endif
+                @if (!empty($visibleElements) && in_array('reading_time', $visibleElements))
+                    @php
+                        $readingTime = getReadingTime(get_post($post))
+                    @endphp
+                    <div class="news-reading-time absolute z-20 top-[15px] right-[15px]">
+                        <div class="reading-time bg-primary text-white px-4 py-2 rounded-full flex items-center gap-x-2">
+                            <i class="fa-classic fa-solid fa-clock" aria-hidden="true"></i>{{ $readingTime }} {{ _n('min', 'min', $readingTime, 'text-domain') }}
+                        </div>
+                    </div>
+                @endif
+
                 @include('components.image', [
                     'image_id' => $postThumbnailId,
                     'size' => 'full',

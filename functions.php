@@ -534,3 +534,44 @@ function disable_wp_emojis() {
     remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 }
 add_action('init', 'disable_wp_emojis');
+
+
+
+/**
+ * Calculate the estimated reading time of a post by counting words in Gutenberg blocks.
+ *
+ * @param WP_Post|int $post The post object or post ID.
+ * @param int $words_per_minute The average reading speed. Default is 238 words per minute.
+ *
+ * @return int Estimated reading time in minutes.
+ */
+
+function getReadingTime($post, $words_per_minute = 238) {
+    if (is_numeric($post)) {
+        $post = get_post($post);
+    }
+
+    if (! $post instanceof WP_Post) {
+        return 0;
+    }
+
+    $content = apply_filters('the_content', $post->post_content);
+
+    if (empty($content)) {
+        return 0;
+    }
+
+    // Strip alle HTML tags weg
+    $text_content = wp_strip_all_tags($content);
+
+    // Haal extra whitespace weg
+    $text_content = trim(preg_replace('/\s+/', ' ', $text_content));
+
+    // Tel de woorden
+    $word_count = str_word_count($text_content);
+
+    // Bereken de leestijd
+    $reading_time = ceil($word_count / $words_per_minute);
+
+    return max(1, $reading_time);
+}

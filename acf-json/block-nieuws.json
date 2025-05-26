@@ -722,6 +722,7 @@
                 "overview_text": "Overzichtstekst",
                 "category": "Categorie",
                 "category_filter": "Categorie filter",
+                "reading_time": "Leestijd",
                 "date": "Datum",
                 "author": "Auteur",
                 "button": "Knop in nieuws blok"
@@ -2451,5 +2452,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1748032420
+    "modified": 1748250067
 }
