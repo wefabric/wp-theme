@@ -49,7 +49,7 @@
                                 $categoryColor = get_field('category_color', $category);
                                 $categoryIcon = get_field('category_icon', $category);
                             @endphp
-                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="news-activity-category @if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full" aria-label="Ga naar {{ $category->name }}">
+                            <a href="{{ $category->slug }}" style="background-color: {{ $categoryColor }}" class="news-activity-category @if(empty($categoryColor)) bg-primary hover:bg-primary-dark @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1" aria-label="Ga naar {{ $category->name }}">
                                 {!! $categoryIcon !!} {!! $category->name !!}
                             </a>
                         @endforeach
