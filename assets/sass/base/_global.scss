@@ -53,6 +53,14 @@ a.no-underline,
 }
 
 
+// Container max width for custom tailwind classes (3xl, 4xl)
+
+@media only screen and (min-width: 1920px) {
+  .container {
+    max-width: 1536px !important;
+  }
+}
+
 
 
 
