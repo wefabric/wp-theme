@@ -54,8 +54,10 @@
     $numColumns = (int) ($block['data']['columns'] ?? 3);
     $numColumns = max($numColumns, 1);
 
-    $columns = array_chunk($images, ceil(count($images) / $numColumns));
-
+    $columns = 1;
+    if($numColumns > 0 && count($images) > 0) {
+        $columns = array_chunk($images, ceil(count($images) / $numColumns));
+    }
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
