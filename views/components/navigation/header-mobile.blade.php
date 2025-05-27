@@ -21,6 +21,21 @@
     }
 
     $mobileMenuBackgroundColor = $options['mobile_menu_background_color'] ?? 'primary';
+
+
+    $phone = '';
+    $email = '';
+    foreach($footer_establishments as $key => $establishment) {
+        if ($establishment instanceof \Wefabric\WPEstablishments\Establishment) {
+            $phone = $establishment->getContactPhone();
+            $email = $establishment->getContactEmailAddress();
+        } elseif (is_array($establishment)) {
+            $establishment = new \Wefabric\WPEstablishments\Establishment($establishment['establishment']);
+            $phone = $establishment->getContactPhone();
+            $email = $establishment->getContactEmailAddress();
+        }
+        break;
+    }
 @endphp
 
 <input type="checkbox" class="hidden" id="nav-mobile-active" autocomplete="off">
@@ -38,11 +53,27 @@
 
 <label for="nav-mobile-active" class="nav-mobile-toggle-visibility nav-mobile-toggler nav-mobile-overlay z-0"></label>
 <header class="banner absolute left-0 w-full">
-        <div class="flex xl:hidden pt-[28px]">
+    <div class="hamburger-menu z-50">
+        <div class="flex gap-x-2 xl:hidden mt-5">
 
-            <div class="hamburger-menu z-50">
+            @if($phone)
+                <a href="tel:{{ $phone }}" title="Telefoonnummer"
+                   class="phone-link bg-primary text-white rounded-full block text-center flex justify-center items-center">
+                    <i class="fa fa-phone"></i>
+                </a>
+            @endif
+
+            @if($email)
+                <a href="mailto:{{ $email }}" title="E-mailadres"
+                   class="mail-link bg-primary text-white rounded-full block text-center flex justify-center items-center">
+                    <i class="fa fa-envelope"></i>
+                </a>
+            @endif
+
+
+
                 <label for="nav-mobile-active"
-                       class="mb-0 toggle-mobile-menu hamburger-button inline-block align-bottom ">
+                       class="mb-0 toggle-mobile-menu hamburger-button inline-block align-bottom">
                     <span class="hamburger-button-bar"></span>
                     <span class="hamburger-button-bar"></span>
                     <span class="hamburger-button-bar"></span>
@@ -63,24 +94,6 @@
 
                 @if (!empty($options['secondary_menu_show_elements']))
                     <div class="top-navigation flex gap-2 text-md px-4 pb-4 text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
-                        @foreach($footer_establishments as $key => $establishment)
-                            @php
-                                if ($establishment instanceof \Wefabric\WPEstablishments\Establishment) {
-                                   // If $establishment is an object
-                                   $phone = $establishment->getContactPhone();
-                                   $email = $establishment->getContactEmailAddress();
-                                } elseif (is_array($establishment)) {
-                                   // If $establishment is an array
-                                   $establishment = new \Wefabric\WPEstablishments\Establishment($establishment['establishment']);
-                                   $phone = $establishment->getContactPhone();
-                                   $email = $establishment->getContactEmailAddress();
-                                } else {
-                                   // Handle other cases if needed
-                                   $phone = '';
-                                   $email = '';
-                                }
-                            @endphp
-
                             @if (in_array('phone', $options['secondary_menu_show_elements']) || in_array('email', $options['secondary_menu_show_elements']))
                                 <div class="contact-info flex gap-x-2">
                                     @if (in_array('phone', $options['secondary_menu_show_elements']))
@@ -99,10 +112,6 @@
                                     @endif
                                 </div>
                             @endif
-
-                            @break
-                        @endforeach
-
 
                         @if (in_array('top_navigation', $options['secondary_menu_show_elements']))
                             @php
