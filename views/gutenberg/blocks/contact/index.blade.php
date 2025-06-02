@@ -56,7 +56,7 @@
     $hideBlock = $block['data']['hide_block'] ?? false;
 
 
-     // Paddings & margins
+    // Paddings & margins
     $randomNumber = rand(0, 1000);
 
     $mobilePaddingTop = $block['data']['padding_mobile_padding_top'] ?? '';
@@ -117,7 +117,7 @@
                                     $establishment_id = $establishment->post->ID;
                                     $street = $establishment->getAddress()->street;
                                     $postcode = $establishment->getAddress()->postcode;
-                                    $house_number = $establishment->getAddress()->house_number;
+                                    $house_number = $establishment->getAddress()->housenumber;
                                     $house_number_addition = $establishment->getAddress()->house_number_addition;
                                     $city = $establishment->getAddress()->city;
                                     $phone = $establishment->getContactPhone();
