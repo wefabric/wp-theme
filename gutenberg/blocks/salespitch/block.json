@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/salespitch",
+  "title": "Salespitch",
+  "description": "Een salespitch blok",
+  "category": "wefabric-theme",
+  "icon": "megaphone",
+  "apiVersion": 2,
+  "keywords": [
+    "Salespitch"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

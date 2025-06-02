@@ -49,6 +49,8 @@
     "product-pakketten/block.json",
     "bio/block.json",
 
+    "salespitch/block.json",
+
     "merken/block.json",
     "projecten/block.json",
     "evenementen/block.json",

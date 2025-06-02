@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.salespitch.index', ['block' => $block])->render(); ?>
