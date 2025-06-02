@@ -9,7 +9,7 @@
     <div class="socials mb-4 flex gap-3 items-center flex-wrap">
         @foreach($option['channels'] as $social)
             <a class="group footer-social social-{{ strtolower($social['name']) }} hover:text-{{ $title_color }}"
-               href="{{ $social['url'] }}" alt="{{ $social['name'] }}" target="_blank"
+               href="{{ $social['url'] }}" title="{{ $social['name'] }} pagina" alt="{{ $social['name'] }}" target="_blank"
                aria-label="Ga naar {{ $social['name'] }}">
                 <i class="{{ $social['icon'] }} text-xl hover:text-{{ $title_color }} transition-all group-hover:scale-110"></i>
             </a>
