@@ -225,7 +225,7 @@
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else werknemers @endif" class="block-werknemers relative block-{{ $randomNumber }} werknemers-{{ $randomNumber }}-custom-padding werknemers-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="{{ $customBlockId ? trim($customBlockId) : 'werknemers' }}" class="block-werknemers relative block-{{ $randomNumber }} werknemers-{{ $randomNumber }}-custom-padding werknemers-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if($swiperOutContainer)
         <div class="overflow-hidden">

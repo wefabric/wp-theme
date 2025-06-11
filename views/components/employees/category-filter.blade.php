@@ -37,7 +37,10 @@
                     $newCatIds = $isActive ? [] : [$category->term_id];
                 }
 
-                $url = empty($newCatIds) ? remove_query_arg('employee_category') : add_query_arg('employee_category', implode(',', $newCatIds), get_permalink());
+                $baseUrl = get_post_type_archive_link('employees') . '#werknemers';
+                $url = empty($newCatIds)
+                    ? remove_query_arg('employee_category', $baseUrl)
+                    : add_query_arg('employee_category', implode(',', $newCatIds), $baseUrl);
                 $style = '';
                 $class = 'category hover:text-white border-2 category-link px-4 py-2 rounded-full';
 
