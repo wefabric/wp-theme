@@ -54,102 +54,100 @@
 <label for="nav-mobile-active" class="nav-mobile-toggle-visibility nav-mobile-toggler nav-mobile-overlay z-0"></label>
 <header class="banner absolute left-0 w-full">
     <div class="hamburger-menu z-50">
-        <div class="flex gap-x-2 xl:hidden mt-5">
+        <div class="hamburger-navigation flex items-center gap-x-2 xl:hidden mt-5">
 
             @if($phone)
                 <a href="tel:{{ $phone }}" title="Telefoonnummer"
-                   class="phone-link bg-primary text-white rounded-full block text-center flex justify-center items-center">
+                   class="phone-link h-[30px] w-[30px] bg-primary text-white rounded-full block text-center flex justify-center items-center">
                     <i class="fa fa-phone"></i>
                 </a>
             @endif
 
             @if($email)
                 <a href="mailto:{{ $email }}" title="E-mailadres"
-                   class="mail-link bg-primary text-white rounded-full block text-center flex justify-center items-center">
+                   class="mail-link h-[30px] w-[30px] bg-primary text-white rounded-full block text-center flex justify-center items-center">
                     <i class="fa fa-envelope"></i>
                 </a>
             @endif
 
+            <label for="nav-mobile-active"
+                   class="mb-0 toggle-mobile-menu hamburger-button inline-block align-bottom">
+                <span class="hamburger-button-bar"></span>
+                <span class="hamburger-button-bar"></span>
+                <span class="hamburger-button-bar"></span>
+            </label>
+        </div>
 
-
-                <label for="nav-mobile-active"
-                       class="mb-0 toggle-mobile-menu hamburger-button inline-block align-bottom">
-                    <span class="hamburger-button-bar"></span>
-                    <span class="hamburger-button-bar"></span>
-                    <span class="hamburger-button-bar"></span>
-                </label>
+    </div>
+    <div class="block xl:hidden mobile-menu-wrap">
+        <nav class="mobile-menu flex flex-col bg-{{ $mobileMenuBackgroundColor }}">
+            <div class="mobile-logo">
+                <a href="{{ esc_url(home_url('/')) }}" class="block" aria-label="home" rel="home">
+                    @if(isset(get_field('common', 'option')[$mobileLogoToDisplay]) && $logoId = get_field('common', 'option')[$mobileLogoToDisplay])
+                        {!! wp_get_attachment_image($logoId, 'header_logo', false, ['class' => 'w-full']) !!}
+                    @endif
+                    <span class="screen-reader-only">{{ get_bloginfo('name') }}</span>
+                </a>
             </div>
 
-        </div>
-        <div class="block xl:hidden mobile-menu-wrap">
-            <nav class="mobile-menu flex flex-col bg-{{ $mobileMenuBackgroundColor }}">
-                    <div class="mobile-logo">
-                    <a href="{{ esc_url(home_url('/')) }}" class="block" aria-label="home" rel="home">
-                        @if(isset(get_field('common', 'option')[$mobileLogoToDisplay]) && $logoId = get_field('common', 'option')[$mobileLogoToDisplay])
-                            {!! wp_get_attachment_image($logoId, 'header_logo', false, ['class' => 'w-full']) !!}
+            @if (!empty($options['secondary_menu_show_elements']))
+                <div class="top-navigation flex gap-2 text-md px-4 pb-4 text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
+                    @if (in_array('phone', $options['secondary_menu_show_elements']) || in_array('email', $options['secondary_menu_show_elements']))
+                        <div class="contact-info flex gap-x-2">
+                            @if (in_array('phone', $options['secondary_menu_show_elements']))
+                                <a class="phone-link group flex items-center" href="tel:{{ $phone }}"
+                                   title="Telefoonnummer">
+                                    <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone"></i>
+                                    <span class="align-middle"></span>
+                                </a>
+                            @endif
+                            @if (in_array('email', $options['secondary_menu_show_elements']))
+                                <a class="mail-link group flex items-center" href="mailto:{{ $email }}"
+                                   title="E-mailadres">
+                                    <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-envelope"></i>
+                                    <span class="align-middle"></span>
+                                </a>
+                            @endif
+                        </div>
+                    @endif
+
+                    @if (in_array('top_navigation', $options['secondary_menu_show_elements']))
+                        @php
+                            $menuLocations = get_nav_menu_locations();
+                            $menuID = null;
+                            if(isset($menuLocations['top-navigation'])) {
+                                $menuID = $menuLocations['top-navigation'];
+                            }
+                        @endphp
+                        @if(isset($menuID) && !is_null($menuID))
+                            {!! wp_nav_menu([
+                                'theme_location' => 'top-navigation',
+                                'menu_id' => $menuID,
+                                'container_class' => 'secondary-menu-items flex',
+                                'li_class'  => 'li-class',
+                                'li_active_class'  => '',
+                                'echo' => false
+                            ]) !!}
                         @endif
-                        <span class="screen-reader-only">{{ get_bloginfo('name') }}</span>
-                    </a>
+
+                    @endif
                 </div>
+            @endif
 
-                @if (!empty($options['secondary_menu_show_elements']))
-                    <div class="top-navigation flex gap-2 text-md px-4 pb-4 text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
-                            @if (in_array('phone', $options['secondary_menu_show_elements']) || in_array('email', $options['secondary_menu_show_elements']))
-                                <div class="contact-info flex gap-x-2">
-                                    @if (in_array('phone', $options['secondary_menu_show_elements']))
-                                        <a class="phone-link group flex items-center" href="tel:{{ $phone }}"
-                                           title="Telefoonnummer">
-                                            <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone"></i>
-                                            <span class="align-middle"></span>
-                                        </a>
-                                    @endif
-                                    @if (in_array('email', $options['secondary_menu_show_elements']))
-                                        <a class="mail-link group flex items-center" href="mailto:{{ $email }}"
-                                           title="E-mailadres">
-                                            <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-envelope"></i>
-                                            <span class="align-middle"></span>
-                                        </a>
-                                    @endif
-                                </div>
-                            @endif
+            <nav id="site-navigation" class="main-navigation">
 
-                        @if (in_array('top_navigation', $options['secondary_menu_show_elements']))
-                            @php
-                                $menuLocations = get_nav_menu_locations();
-                                $menuID = null;
-                                if(isset($menuLocations['top-navigation'])) {
-                                    $menuID = $menuLocations['top-navigation'];
-                                }
-                            @endphp
-                            @if(isset($menuID) && !is_null($menuID))
-                                {!! wp_nav_menu([
-                                    'theme_location' => 'top-navigation',
-                                    'menu_id' => $menuID,
-                                    'container_class' => 'secondary-menu-items flex',
-                                    'li_class'  => 'li-class',
-                                    'li_active_class'  => '',
-                                    'echo' => false
-                                ]) !!}
-                            @endif
+                <li class="home-item menu-item menu-item-object-page {{ Request::is('/') ? 'current-menu-item current_page_item' : '' }}">
+                    <a href="<?php echo home_url(); ?>">Home</a>
+                </li>
 
-                        @endif
-                    </div>
-                @endif
-
-                <nav id="site-navigation" class="main-navigation">
-
-                    <li class="home-item menu-item menu-item-object-page {{ Request::is('/') ? 'current-menu-item current_page_item' : '' }}">
-                        <a href="<?php echo home_url(); ?>">Home</a>
-                    </li>
-
-                    {!! wp_nav_menu([
-                        'theme_location' => 'menu-1',
-                        'menu_id' => 'primary-menu',
-                        'echo' => false
-                    ]) !!}
-                </nav>
+                {!! wp_nav_menu([
+                    'theme_location' => 'menu-1',
+                    'menu_id' => 'primary-menu',
+                    'echo' => false
+                ]) !!}
             </nav>
-        </div>
+        </nav>
+    </div>
 
 </header>
 
