@@ -108,15 +108,15 @@
 
             breakpoints: {
                 0: {
-                    loop: {{count($images) > $mobileLayout ? 'true' : 'false' }},
+                    loop: false,
                     slidesPerView: {{ $mobileLayout }},
                 },
                 640: {
-                    loop: {{ count($images) > $tabletLayout ? 'true' : 'false' }},
+                    loop: false,
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ count($images) > $desktopLayout ? 'true' : 'false' }},
+                    loop: false,
                     slidesPerView: {{ $desktopLayout }},
                 },
             }
