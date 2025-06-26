@@ -987,6 +987,27 @@
             "append": ""
         },
         {
+            "key": "field_6807e1932caa7",
+            "label": "Custom block ID",
+            "name": "custom_block_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_668fc6ff7f5af",
             "label": "Blok verbergen?",
             "name": "hide_block",
@@ -1789,5 +1810,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1739187033
+    "modified": 1750941375
 }
