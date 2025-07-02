@@ -1,6 +1,6 @@
 @php
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
-    $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
+    $swiperAutoplaySpeed = max((int)($block['data']['autoplay_speed'] ?? 0) * 1000, 5000);
     $randomNumber = rand(0, 1000);
     $swiperTopRandomId = 'photoGallerySwiper-' . $randomNumber;
     $swiperThumbsRandomId = 'photoGallerySwiperThumbs-' . $randomNumber;
@@ -81,7 +81,7 @@
             @if ($swiperAutoplay)
             autoplay: {
                 delay: {{ $swiperAutoplaySpeed }},
-                disableOnInteraction: false,
+                disableOnInteraction: true,
             },
             @endif
 

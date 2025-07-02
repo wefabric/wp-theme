@@ -33,7 +33,7 @@
             centeredSlides: true,
             loop: true,
             autoplay: {
-                disableOnInteraction: false,
+                disableOnInteraction: true,
                 delay: 0,
                 reverseDirection: {{ $reverse ? 'true' : 'false' }},
             },

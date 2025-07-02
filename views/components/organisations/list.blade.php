@@ -47,7 +47,7 @@
             centeredSlides: false,
             @if ($swiperAutoplay)
             autoplay: {
-                disableOnInteraction: false,
+                disableOnInteraction: true,
             },
             @endif
             pagination: {

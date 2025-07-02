@@ -13,7 +13,7 @@
 
     $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
-    $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
+    $swiperAutoplaySpeed = max((int)($block['data']['autoplay_speed'] ?? 0) * 1000, 5000);
     $swiperLoop = $block['data']['loop_slides'] ?? true;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
@@ -63,7 +63,7 @@
             @if ($swiperAutoplay)
                 autoplay: {
                     delay: {{ $swiperAutoplaySpeed }},
-                    disableOnInteraction: false,
+                    disableOnInteraction: true,
                 },
             @endif
             pagination: {

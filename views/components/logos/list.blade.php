@@ -12,7 +12,7 @@
     ];
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
-    $swiperAutoplaySpeed = $block['data']['autoplay_speed'] * 1000 ?? 5000;
+    $swiperAutoplaySpeed = max((int)($block['data']['autoplay_speed'] ?? 0) * 1000, 5000);
 
     $swiperLinear = $block['data']['linear_rotation'] ?? false;
     $swiperDirection = $block['data']['swiper_direction'] ?? 'left';
