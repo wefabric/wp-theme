@@ -43,7 +43,7 @@
 
             <a href="{{ $projectUrl }}" aria-label="Ga naar {{ $projectTitle }} pagina" class="project-title-text font-bold text-{{ $projectTitleColor }} text-lg group-hover:text-primary">{!! $projectTitle !!}</a>
 
-            <div class="project-data mt-4 text-{{ $projectTextColor }}">
+            <div class="project-data text-{{ $projectTextColor }}">
 
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($projectSummary))
                     <p class="mt-3 mb-3">{{ $projectSummary }}</p>

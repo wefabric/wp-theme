@@ -137,7 +137,7 @@
             <div class="background relative px-8 py-16 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif"
                  style="background-image: url('{{ wp_get_attachment_image_url($blockBackgroundImage, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($blockBackgroundImage) }}">
                 @if ($blockOverlayEnabled)
-                    <div class="absolute inset-0 bg-{{ $blockOverlayColor }} opacity-{{ $blockOverlayOpacity }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif"></div>
+                    <div class="cta-overlay absolute inset-0 bg-{{ $blockOverlayColor }} opacity-{{ $blockOverlayOpacity }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif"></div>
                 @endif
 
                 <div class="cta-wrapper container mx-auto @if($blockWidth == 'fullscreen') px-8 @else w-full md:px-16 @endif relative z-10 @if($sideImage) flex flex-col xl:flex-row justify-between items-center gap-8 !px-0 xl:!px-16 @endif">

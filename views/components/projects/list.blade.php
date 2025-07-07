@@ -25,7 +25,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="lg:hidden swiper-pagination"></div>
+            <div class="swiper-pagination"></div>
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next project-button-next-{{ $randomNumber }}"></div>
