@@ -23,7 +23,7 @@
     $termsPage = $option['pages']['terms_page'] ?? '';
 @endphp
 
-<div class="footer bg-{{ $bg_color ?? '' }} text-{{ $text_color ?? 'white' }} text-base pb-10">
+<div class="footer bg-{{ $bg_color ?? '' }} text-{{ $text_color ?? 'white' }} text-base pb-6">
     @if(!empty($usps))
         <div class="bg-white text-black py-10 lg:py-20 px-4 md:px-8 lg:px-36">
             @include('components.slider.grid', [
