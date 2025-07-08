@@ -144,15 +144,19 @@
 
     // Animaties
     $showReadingProgress = $block['data']['show_reading_progress'] ?? false;
+    $showScrollIndicator = $block['data']['show_scroll_indicator'] ?? false;
 @endphp
 
 
-@if ($customBlockClasses && $breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID()) <div class="breadcrumbs-{{ $customBlockClasses }}"> @endif
-    @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page())
-        @include('components.breadcrumbs.index')
-    @endif
-@if ($customBlockClasses && $breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID()) </div> @endif
-<section id="@if($customBlockId){{ $customBlockId }}@else header @endif" class="block-header relative header-{{ $randomNumber }}-custom-padding header-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} @if($headerStyle == 'fixed_height') fixed-header @elseif($headerStyle == 'scalable_height') scaled-header @endif {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
+@if ($customBlockClasses && $breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID())
+    <div class="breadcrumbs-{{ $customBlockClasses }}"> @endif
+        @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page())
+            @include('components.breadcrumbs.index')
+        @endif
+        @if ($customBlockClasses && $breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID()) </div>
+@endif
+<section id="@if($customBlockId){{ $customBlockId }}@else header @endif"
+         class="block-header relative header-{{ $randomNumber }}-custom-padding header-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} @if($headerStyle == 'fixed_height') fixed-header @elseif($headerStyle == 'scalable_height') scaled-header @endif {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
          style="@if($backgroundImageParallax) background-attachment: fixed; @endif background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
@@ -200,6 +204,21 @@
                         @endif
                     </div>
                 @endif
+
+                @if ($showScrollIndicator)
+                    <div class="scroll-indicator-icon absolute left-1/2 bottom-[30px] transform -translate-x-1/2">
+                        <a href="#" class="block scroll-to-next">
+                            <div class="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                @endif
+
                 @if ($breadcrumbsEnabled && $breadcrumbsLocation === 'inside' &&!is_front_page())
                     @include('components.breadcrumbs.index')
                 @endif
@@ -281,6 +300,22 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(10px);
+        }
+        60% {
+            transform: translateY(5px);
+        }
+    }
+
+    .scroll-indicator-icon {
+        animation: bounce 2s infinite;
+    }
 </style>
 
 @if ($showReadingProgress)
@@ -305,6 +340,30 @@
                     progressFill.style.width = width + '%';
                 });
             }
+        });
+    </script>
+@endif
+
+@if ($showScrollIndicator)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollBtn = document.querySelector('.scroll-to-next');
+
+            scrollBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Get all <section> elements
+                const sections = document.querySelectorAll('section');
+
+                // Convert NodeList to Array, skip the one with ID "header" (trim in case of whitespace)
+                const nextSection = Array.from(sections).find(
+                    section => section.id.trim() !== 'header'
+                );
+
+                if (nextSection) {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         });
     </script>
 @endif
