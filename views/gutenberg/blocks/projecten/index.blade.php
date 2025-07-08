@@ -58,6 +58,7 @@
     $displayType = $block['data']['display_type'];
     $currentTerms = isset($_GET['project_category']) ? array_map('intval', explode(',', $_GET['project_category'])) : [];
     $multipleFilters = $block['data']['multiple_filters_enabled'] ?? false;
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
     // Show all
     if ($displayType == 'show_all') {
@@ -78,8 +79,10 @@
         }
 
         // Exclude current post
-        if(get_post()->post_type == 'project') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'project') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
@@ -113,8 +116,10 @@
         }
 
         // Exclude current post
-        if(get_post()->post_type == 'project') {
-            $args['post__not_in'] = [get_post()->ID];
+        if(!is_archive()){
+            if(get_post()->post_type == 'project') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
@@ -223,6 +228,9 @@
 
 <section id="@if($customBlockId){{ $customBlockId }}@else projecten @endif" class="block-projecten relative projecten-{{ $randomNumber }}-custom-padding projecten-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+    @if($swiperOutContainer)
+        <div class="overflow-hidden">
+    @endif
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -274,6 +282,9 @@
             @endif
         </div>
     </div>
+    @if($swiperOutContainer)
+        </div>
+    @endif
 </section>
 
 <style>
