@@ -1,8 +1,8 @@
 <div id="{{ str_replace(' ', '-', strtolower($pageTitle)) }}" class="content-in-card-item card-item group h-full w-full @if ($flyinEffect) card-hidden @endif">
     <div class="card-background p-6 xl:p-8 h-full mx-auto relative bg-{{ $cardBackgroundColor }} w-full aspect-square flex flex-col gap-y-4 items-center justify-center text-center overflow-hidden rounded-{{ $borderRadius }} {{ $hoverEffectClass }} duration-300 ease-in-out"
-        @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId && ($imageView == 'background_image'))
+        @if ($cardVisual == 'featured_image' && $featuredImageId && ($imageView == 'background_image'))
              style="background-image: url('{{ wp_get_attachment_image_url($featuredImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($featuredImageId) }}">
-        @elseif ($block['data']['block_visual'] == 'image' && $imageId && ($imageView == 'background_image'))
+        @elseif ($cardVisual == 'image' && $imageId && ($imageView == 'background_image'))
              style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
         @else >
         @endif
@@ -33,9 +33,9 @@
                 </a>
             @endif
 
-            @if (($block['data']['block_visual'] == 'image' && $imageId) && ($imageView == 'normal_image') || ($block['data']['block_visual'] == 'featured_image' && $featuredImageId) && ($imageView == 'normal_image'))
+            @if (($cardVisual == 'image' && $imageId) && ($imageView == 'normal_image') || ($cardVisual == 'featured_image' && $featuredImageId) && ($imageView == 'normal_image'))
                 @include('components.image', [
-                    'image_id' => $block['data']['block_visual'] == 'featured_image' ? $featuredImageId : $imageId,
+                    'image_id' => $cardVisual == 'featured_image' ? $featuredImageId : $imageId,
                     'size' => 'full',
                     'object_fit' => 'cover',
                     'img_class' => 'w-full object-cover rounded-' . $borderRadius,

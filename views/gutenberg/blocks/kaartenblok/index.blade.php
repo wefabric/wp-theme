@@ -63,24 +63,55 @@
     $cardOverlayColor = $block['data']['card_overlay_color'] ?? '';
     $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
-    for ($i = 0; $i < $numPages; $i++) {
-        $pageId = $block['data']["pages_{$i}_page"] ?? 0;
-        $imageId = $block['data']["pages_{$i}_image"] ?? 0;
+    $selectedPostType = $block['data']['cardblock_post_type'] ?? '';
+    $cardVisual = $block['data']['block_visual'] ?? 'featured_image';
 
-        if ($pageId) {
-            $page = get_post($pageId);
+    // Als er een post type is geselecteerd, haal dan alle berichten van deze post type op
+    if (!empty($selectedPostType)) {
+        $cardVisual = 'featured_image';
+        $args = [
+            'post_type' => $selectedPostType,
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
+        ];
+        $query = new WP_Query($args);
 
-            if ($page) {
+        if ($query->have_posts()) {
+            foreach ($query->posts as $post) {
                 $pagesData[] = [
-                    'id' => $page->ID,
-                    'title' => $page->post_title,
-                    'custom_title' => $block['data']["pages_{$i}_custom_page_title"] ?? '',
-                    'url' => get_permalink($page->ID),
-                    'content' => $page->post_content,
-                    'icon' => $block['data']["pages_{$i}_icon"] ?? '',
-                    'image_id' => $imageId,
-                    'featured_image_id' => $imageId ?: (has_post_thumbnail($page->ID) ? get_post_thumbnail_id($page->ID) : 0),
+                    'id' => $post->ID,
+                    'title' => $post->post_title,
+                    'custom_title' => '',
+                    'url' => get_permalink($post->ID),
+                    'content' => $post->post_content,
+                    'icon' => '', // You can add icon logic based on post meta if needed
+                    'image_id' => has_post_thumbnail($post->ID) ? get_post_thumbnail_id($post->ID) : 0,
+                    'featured_image_id' => has_post_thumbnail($post->ID) ? get_post_thumbnail_id($post->ID) : 0,
                 ];
+            }
+        }
+        wp_reset_postdata();
+    } else {
+        // Use manually selected pages
+        for ($i = 0; $i < $numPages; $i++) {
+            $pageId = $block['data']["pages_{$i}_page"] ?? 0;
+            $imageId = $block['data']["pages_{$i}_image"] ?? 0;
+
+            if ($pageId) {
+                $page = get_post($pageId);
+
+                if ($page) {
+                    $pagesData[] = [
+                        'id' => $page->ID,
+                        'title' => $page->post_title,
+                        'custom_title' => $block['data']["pages_{$i}_custom_page_title"] ?? '',
+                        'url' => get_permalink($page->ID),
+                        'content' => $page->post_content,
+                        'icon' => $block['data']["pages_{$i}_icon"] ?? '',
+                        'image_id' => $imageId,
+                        'featured_image_id' => $imageId ?: (has_post_thumbnail($page->ID) ? get_post_thumbnail_id($page->ID) : 0),
+                    ];
+                }
             }
         }
     }

@@ -575,6 +575,43 @@
             "selected": 0
         },
         {
+            "key": "field_686d030374dd0",
+            "label": "Alles tonen van bepaalde post type",
+            "name": "cardblock_post_type",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "solutions": "Afdekoplossing",
+                "klantcases": "Klantcase",
+                "products": "Product",
+                "project": "Project",
+                "testimonials": "Testimonial",
+                "vacatures": "Vacature",
+                "werknemers": "Werknemer",
+                "wf_layouts": "Layout",
+                "post": "Bericht",
+                "page": "Pagina"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_6527b2439ad98",
             "label": "Kaartenblok variant",
             "name": "cardblock_version",
@@ -610,7 +647,14 @@
             "type": "radio",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_686d030374dd0",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -643,6 +687,10 @@
                         "field": "field_6525652c4ff5b",
                         "operator": "==",
                         "value": "featured_image"
+                    },
+                    {
+                        "field": "field_686d030374dd0",
+                        "operator": "==empty"
                     }
                 ],
                 [
@@ -650,6 +698,10 @@
                         "field": "field_6525652c4ff5b",
                         "operator": "==",
                         "value": "image"
+                    },
+                    {
+                        "field": "field_686d030374dd0",
+                        "operator": "==empty"
                     }
                 ]
             ],
@@ -681,7 +733,14 @@
             "type": "repeater",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_686d030374dd0",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -1285,41 +1344,6 @@
                         "8": "8 per rij"
                     },
                     "default_value": 3,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "allow_in_bindings": 1,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "create_options": 0,
-                    "save_options": 0
-                },
-                {
-                    "key": "field_67dc12ad00e51",
-                    "label": "Desktop XL",
-                    "name": "desktop_xl",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "1": "1 per rij",
-                        "2": "2 per rij",
-                        "3": "3 per rij",
-                        "4": "4 per rij",
-                        "5": "5 per rij",
-                        "6": "6 per rij",
-                        "7": "7 per rij",
-                        "8": "8 per rij"
-                    },
-                    "default_value": 4,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
@@ -2646,5 +2670,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1750941375
+    "modified": 1751975932
 }

@@ -575,3 +575,28 @@ function getReadingTime($post, $words_per_minute = 238) {
 
     return max(1, $reading_time);
 }
+
+
+add_filter('acf/load_field/name=cardblock_post_type', 'acf_load_cardblock_post_types');
+function acf_load_cardblock_post_types($field) {
+    // Haal alle publieke custom post types op (geen ingebouwde zoals post/page)
+    $args = [
+        'public'   => true,
+        '_builtin' => false
+    ];
+    $post_types = get_post_types($args, 'objects');
+
+    // Voeg optioneel 'post' en 'page' toe als je die ook wil tonen:
+    $post_types['post'] = get_post_type_object('post');
+    $post_types['page'] = get_post_type_object('page');
+
+    // Reset keuzes
+    $field['choices'] = [];
+
+    // Voeg CPT’s toe aan het selectveld
+    foreach ($post_types as $post_type) {
+        $field['choices'][$post_type->name] = $post_type->labels->singular_name;
+    }
+
+    return $field;
+}

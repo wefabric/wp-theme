@@ -19,7 +19,7 @@
                     @endif
                 @endif
 
-                @if ($block['data']['block_visual'] == 'featured_image' && $featuredImageId)
+                @if ($cardVisual == 'featured_image' && $featuredImageId)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                        class="card-overlay absolute left-0 top-0 w-full h-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out"></a>
 
@@ -30,7 +30,7 @@
                      'img_class' => 'w-full h-full object-cover transform ease-in-out duration-300 group-hover:scale-110 rounded-t-' . $borderRadius,
                      'alt' => $pageTitle
                   ])
-                @elseif ($block['data']['block_visual'] == 'icon' && $pageIcon)
+                @elseif ($cardVisual == 'icon' && $pageIcon)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                        class="absolute left-0 top-0 w-full h-full"></a>
                     <div class="h-full flex justify-center items-center">
@@ -38,7 +38,7 @@
                             <i class="text-{{ $cardIconColor }} relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
                         </a>
                     </div>
-                @elseif ($block['data']['block_visual'] == 'image' && $imageId)
+                @elseif ($cardVisual == 'image' && $imageId)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                        class="card-overlay absolute left-0 w-full h-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out"></a>
                     @include('components.image', [
