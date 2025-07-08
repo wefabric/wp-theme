@@ -32,7 +32,7 @@
                 @endif
                 @include('components.image', [
                    'image_id' => $projectThumbnailId,
-                   'size' => 'job-thumbnail',
+                   'size' => 'full',
                    'object_fit' => 'cover',
                    'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
                    'alt' => $projectTitle,
