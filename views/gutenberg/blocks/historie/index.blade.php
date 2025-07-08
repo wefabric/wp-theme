@@ -1,8 +1,9 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
-    $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -134,7 +135,7 @@
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
+                <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
             @endif
             @if ($title)
                 <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
@@ -151,7 +152,7 @@
                     <div class="end-dot w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"></div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-12">
                     @foreach ($timelineData as $index => $item)
                         @php
                             $isOdd = $index % 2 !== 0;
@@ -165,7 +166,7 @@
                             <div class="history-horizontal-line w-[20px] lg:w-[30px] h-[4px] bg-{{ $timelineLineColor }} absolute left-0 {{ $timelineLinePosition }}">
                                 <div class="end-dot w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute {{ $roundedFullPosition }}"></div>
                             </div>
-                            <div class="flex flex-col">
+                            <div class="history-item flex flex-col">
                                 @if ($item['imageId'])
                                     <div class="history-image relative h-[170px]">
                                         @include('components.image', [
@@ -180,7 +181,7 @@
                                 @if ($item['year'] || $item['text'])
                                     <div class="history-data relative p-4 lg:p-8 bg-{{ $timelineBlockBackgroundColor }}">
                                         @if ($item['year'])
-                                            <div class="h3 text-{{ $timelineYearTextColor }}">{{ $item['year'] }}</div>
+                                            <div class="history-year-text text-{{ $timelineYearTextColor }}">{{ $item['year'] }}</div>
                                         @endif
                                         @if ($item['text'])
                                             @include('components.content', ['content' => apply_filters('the_content', $item['text']), 'class' => 'text-' . $timelineTextColor])
