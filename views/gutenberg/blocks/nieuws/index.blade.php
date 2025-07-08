@@ -64,6 +64,7 @@
         $args = [
             'posts_per_page' => -1,
             'post_type' => 'post',
+            'post_status'    => 'publish',
         ];
 
         // Exclude current post

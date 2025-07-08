@@ -53,10 +53,10 @@
 
     // Testimonial
     $displayType = $block['data']['display_type'];
-    $hideCurrent = $block['data']['hide_current'] ?? false;
     $currentPostID = get_queried_object_id();
     $currentTerms = isset($_GET['testimonial_category']) ? array_map('intval', explode(',', $_GET['testimonial_category'])) : [];
     $multipleFilters = $block['data']['multiple_filters_enabled'] ?? false;
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
     // Show all
     if ($displayType == 'show_all') {
@@ -66,10 +66,6 @@
             'post_status'    => 'publish',
         ];
 
-        if ($hideCurrent && $currentPostID) {
-            $args['post__not_in'] = [$currentPostID];
-        }
-
         if ($currentTerms) {
             $args['tax_query'] = [
                 [
@@ -78,6 +74,13 @@
                     'terms'    => $currentTerms,
                 ],
             ];
+        }
+
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'testimonials') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
@@ -100,10 +103,6 @@
             ],
         ];
 
-        if ($hideCurrent && $currentPostID) {
-            $args['post__not_in'] = [$currentPostID];
-        }
-
         if ($currentTerms) {
             $args['tax_query'][] = [
                 'taxonomy' => 'testimonial_categories',
@@ -112,6 +111,14 @@
             ];
             $args['tax_query']['relation'] = 'AND';
         }
+
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'testimonials') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
+        }
+
         $query = new WP_Query($args);
         $testimonials = wp_list_pluck($query->posts, 'ID');
     }
@@ -142,6 +149,7 @@
         if (!empty($testimonials)) {
             $args['post__in'] = $testimonials;
         }
+
         $query = new WP_Query($args);
         $testimonials = wp_list_pluck($query->posts, 'ID');
     }
@@ -156,8 +164,11 @@
             'orderby'        => 'rand',
         ];
 
-        if ($hideCurrent && $currentPostID) {
-            $args['post__not_in'] = [$currentPostID];
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'testimonials') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
@@ -175,8 +186,11 @@
             'order' => 'DESC',
         ];
 
-        if ($hideCurrent && $currentPostID) {
-            $args['post__not_in'] = [$currentPostID];
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'testimonials') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
@@ -244,6 +258,9 @@
 
 <section id="@if($customBlockId){{ $customBlockId }}@else testimonial @endif" class="block-testimonial relative testimonial-{{ $randomNumber }}-custom-padding testimonial-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+    @if($swiperOutContainer)
+        <div class="overflow-hidden">
+    @endif
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -295,6 +312,9 @@
             @endif
         </div>
     </div>
+    @if($swiperOutContainer)
+        </div>
+    @endif
 </section>
 
 <style>

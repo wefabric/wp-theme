@@ -238,7 +238,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_66bf1afffc3d7",
@@ -272,7 +274,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_67ac7085ff71f",
@@ -402,7 +406,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_66bf1b3afc3da",
@@ -436,7 +442,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_67ac70e0ff722",
@@ -546,7 +554,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_668fecc9626b8",
@@ -594,57 +604,9 @@
             "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_67e51ad45fef6",
-            "label": "Testimonial van huidige pagina verbergen",
-            "name": "hide_current",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6690250cf7cef",
-                        "operator": "==",
-                        "value": "show_all"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_6690250cf7cef",
-                        "operator": "==",
-                        "value": "show_category"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_6690250cf7cef",
-                        "operator": "==",
-                        "value": "show_random"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_6690250cf7cef",
-                        "operator": "==",
-                        "value": "show_latest"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_66902587f7cf0",
@@ -840,7 +802,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_67ac6d14a6656",
@@ -969,7 +933,9 @@
                     "allow_in_bindings": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_67ac6fa6a9974",
@@ -1004,7 +970,9 @@
                     "allow_in_bindings": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_67ac6fdca9975",
@@ -1049,6 +1017,24 @@
             ]
         },
         {
+            "key": "field_686cd8fe32d92",
+            "label": "Layout",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "key": "field_6690285ad6518",
             "label": "Layout (aantal testimonials op een rij)",
             "name": "layout",
@@ -1083,15 +1069,21 @@
                         "2": "2 per rij",
                         "3": "3 per rij",
                         "4": "4 per rij",
-                        "5": "5 per rij"
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
                     },
                     "default_value": 1,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_669028b2d651a",
@@ -1112,15 +1104,21 @@
                         "2": "2 per rij",
                         "3": "3 per rij",
                         "4": "4 per rij",
-                        "5": "5 per rij"
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
                     },
-                    "default_value": 2,
+                    "default_value": 1,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_669028ccd651b",
@@ -1141,15 +1139,56 @@
                         "2": "2 per rij",
                         "3": "3 per rij",
                         "4": "4 per rij",
-                        "5": "5 per rij"
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
                     },
-                    "default_value": 3,
+                    "default_value": 2,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
+                },
+                {
+                    "key": "field_686cd90a32d93",
+                    "label": "Desktop XL",
+                    "name": "desktop_xl",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "1": "1 per rij",
+                        "2": "2 per rij",
+                        "3": "3 per rij",
+                        "4": "4 per rij",
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
+                    },
+                    "default_value": 2,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 1,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 }
             ]
         },
@@ -1232,6 +1271,93 @@
             "append": "Seconden"
         },
         {
+            "key": "field_686cd93532d94",
+            "label": "Actieve slide in het midden",
+            "name": "centered_slides",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66902905d651c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_686cd95732d95",
+            "label": "Oneindige herhaling van slides",
+            "name": "loop_slides",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66902905d651c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_686cd96732d96",
+            "label": "Slider buiten container laten vallen",
+            "name": "slider_outside_container",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66902905d651c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6523d7ebbad9e",
             "label": "Blokinstellingen",
             "name": "",
@@ -1276,7 +1402,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_6523d7ebbadac",
@@ -1414,7 +1542,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_656865d7207ce",
@@ -2260,5 +2390,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743068585
+    "modified": 1751964944
 }
