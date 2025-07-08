@@ -11,9 +11,11 @@
         'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
     ];
 
-    $swiperLoop = $block['data']['slider_loop'] ?? true;
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $swiperAutoplaySpeed = max((int)($block['data']['autoplay_speed'] ?? 0) * 1000, 5000);
+    $swiperLoop = $block['data']['loop_slides'] ?? true;
+    $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'stepSwiper-' . $randomNumber;
 @endphp
@@ -28,7 +30,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="lg:hidden swiper-pagination"></div>
+            <div class="swiper-pagination"></div>
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next steps-button-next-{{ $randomNumber }}"></div>
@@ -43,11 +45,21 @@
     </div>
 @endif
 
+@if ($swiperOutContainer)
+    <style>
+        .stepSwiper-{{ $randomNumber }} {
+            overflow: unset !important;
+        }
+    </style>
+@endif
+
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var stepsSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
-            centeredSlides: false,
+            @if ($swiperCenteredSlides)
+                centeredSlides: true,
+            @endif
             @if ($swiperAutoplay)
                 autoplay: {
                     delay: {{ $swiperAutoplaySpeed }},
@@ -64,19 +76,19 @@
             },
             breakpoints: {
                 0: {
-                    loop: {{ ($swiperLoop && count($steps) > $mobileLayout) ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($steps) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 768: {
-                    loop: {{ ($swiperLoop && count($steps) > $tabletLayout) ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($steps) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ ($swiperLoop && count($steps) > $desktopLayout) ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($steps) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
                 },
                 1536: {
-                    loop: {{ ($swiperLoop && count($steps) > $desktopXlLayout) ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($steps) > $desktopXlLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopXlLayout }},
                 },
             }

@@ -46,6 +46,7 @@
     $stepTitleColor = $block['data']['step_title_color'] ?? '';
     $stepTextColor = $block['data']['step_text_color'] ?? '';
     $stepIconColor = $block['data']['step_icon_color'] ?? '';
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $visibleElements = $block['data']['show_element'] ?? [];
 
     $specialLayout = $block['data']['special_layout'] ?? false;
@@ -144,6 +145,9 @@
 
 <section id="@if($customBlockId){{ $customBlockId }}@else werkwijze @endif" class="block-werkwijze relative werkwijze-{{ $randomNumber }}-custom-padding werkwijze-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+    @if($swiperOutContainer)
+        <div class="overflow-hidden">
+    @endif
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -223,6 +227,9 @@
 
         </div>
     </div>
+    @if($swiperOutContainer)
+        </div>
+    @endif
 </section>
 
 <style>
