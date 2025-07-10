@@ -1,4 +1,12 @@
 .footer {
+
+  .menu li {
+    @apply w-fit #{!important};
+    a {
+      @apply w-fit #{!important};
+    }
+  }
+
   .brevo-form {
 
     input {
