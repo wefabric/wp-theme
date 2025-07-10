@@ -2,16 +2,20 @@
     $mobileLayout = $block['data']['layout_mobile'] ?? 1;
     $tabletLayout = $block['data']['layout_tablet'] ?? 2;
     $desktopLayout = $block['data']['layout_desktop'] ?? 3;
+    $desktopXlLayout = $block['data']['layout_desktop_xl'] ?? 4;
 
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $swiperAutoplaySpeed = max((int)($block['data']['autoplay_speed'] ?? 0) * 1000, 5000);
+    $swiperLoop = $block['data']['loop_slides'] ?? true;
+    $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'photoSliderSwiper-' . $randomNumber;
 
     $spaceBetween = $block['data']['space_between'] ?? 20;
 @endphp
 
-<div class="block relative">
+<div class="slider block relative">
     <div class="swiper {{ $randomId }} pt-8 pb-10">
         <div class="swiper-wrapper">
             @foreach ($imagesData as $image)
@@ -20,7 +24,7 @@
                 </div>
             @endforeach
         </div>
-        <div class="lg:hidden swiper-pagination"></div>
+        <div class="swiper-pagination"></div>
     </div>
     <div class="swiper-navigation">
         <div class="swiper-button-next photoslider-button-next-{{ $randomNumber }}"></div>
@@ -28,16 +32,26 @@
     </div>
 </div>
 
+@if ($swiperOutContainer)
+    <style>
+        .photoSliderSwiper-{{ $randomNumber }} {
+            overflow: unset !important;
+        }
+    </style>
+@endif
+
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var photoSliderSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: {{ $spaceBetween }},
-            centeredSlides: false,
+            @if ($swiperCenteredSlides)
+                centeredSlides: true,
+            @endif
             @if ($swiperAutoplay)
-            autoplay: {
-                delay: {{ $swiperAutoplaySpeed }},
-                disableOnInteraction: true,
-            },
+                autoplay: {
+                    delay: {{ $swiperAutoplaySpeed }},
+                    disableOnInteraction: true,
+                },
             @endif
             pagination: {
                 el: '.swiper-pagination',
@@ -49,16 +63,20 @@
             },
             breakpoints: {
                 0: {
-                    loop: {{count($imagesData) > $mobileLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($imagesData) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 768: {
-                    loop: {{ count($imagesData) > $tabletLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($imagesData) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ count($imagesData) > $desktopLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($imagesData) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
+                },
+                1536: {
+                    loop: {{ $swiperLoop && count($imagesData) > $desktopXlLayout ? 'true' : 'false' }},
+                    slidesPerView: {{ $desktopXlLayout }},
                 },
             }
         });

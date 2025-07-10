@@ -44,6 +44,7 @@
     $captionColor = $block['data']['caption_color'] ?? '';
     $imagesData = [];
     $numImages = intval($block['data']['images']);
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
     $minHeight = $block['data']['min_height'] ?? '';
     $maxHeight = $block['data']['max_height'] ?? '';
@@ -150,6 +151,9 @@
 
 <section id="@if($customBlockId){{ $customBlockId }}@else foto-slider @endif" class="block-foto-slider relative foto-slider-{{ $randomNumber }} foto-slider-{{ $randomNumber }}-custom-padding foto-slider-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+    @if($swiperOutContainer)
+        <div class="overflow-hidden">
+    @endif
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -198,6 +202,9 @@
             @endif
         </div>
     </div>
+    @if($swiperOutContainer)
+        </div>
+    @endif
 </section>
 
 <style>
