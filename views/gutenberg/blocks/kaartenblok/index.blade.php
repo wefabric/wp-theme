@@ -74,6 +74,14 @@
             'posts_per_page' => -1,
             'post_status' => 'publish',
         ];
+
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == $selectedPostType) {
+                $args['post__not_in'] = [get_post()->ID];
+            }
+        }
+
         $query = new WP_Query($args);
 
         if ($query->have_posts()) {

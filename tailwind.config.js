@@ -49,6 +49,8 @@ module.exports = {
     'md:items-end',
     '2xl:flex-row',
 
+    'lg:gap-x-16',
+
     // Width
     'sm:w-6',
     'md:w-6',
