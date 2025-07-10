@@ -207,7 +207,7 @@
             </div>
 
             <div class="created-section w-full md:w-1/2 xl:w-1/4 flex">
-                <div class="flex w-full pt-8 lg:pt-0 self-end md:text-right md:justify-end items-center justify-center">
+                <div class="created-layout flex w-full pt-8 lg:pt-0 self-end md:text-right items-center justify-center md:justify-end">
                         <span class="created-text pr-1">
                             @php
                                 $realizedText = 'Gerealiseerd door:';
