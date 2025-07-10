@@ -191,7 +191,7 @@
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else kaarten @endif" class="block-kaarten kaarten-{{ $randomNumber }}-custom-padding kaarten-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} @if ($cardVariant == 'variant1') content-in-card @elseif ($cardVariant == 'variant2') content-under-card @endif {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'kaarten' }}@endif" class="block-kaarten kaarten-{{ $randomNumber }}-custom-padding kaarten-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} @if ($cardVariant == 'variant1') content-in-card @elseif ($cardVariant == 'variant2') content-under-card @endif {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat;  @if($backgroundImageParallax) background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if($swiperOutContainer)
         <div class="overflow-hidden">

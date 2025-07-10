@@ -126,7 +126,7 @@
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else usps @endif" class="block-usps relative usp-{{ $randomNumber }}-custom-padding usp-{{ $randomNumber }}-custom-margin layout-{{ $uspLayout }} bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'usps' }}@endif" class="block-usps relative usp-{{ $randomNumber }}-custom-padding usp-{{ $randomNumber }}-custom-margin layout-{{ $uspLayout }} bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if($swiperOutContainer)
         <div class="overflow-hidden">

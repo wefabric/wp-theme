@@ -69,7 +69,7 @@
     $parallaxStrength = $block['data']['parallax_strength'] ?? 'normal';
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else afbeelding @endif" class="block-afbeelding block-{{ $randomNumber }} afbeelding-{{ $randomNumber }} afbeelding-{{ $randomNumber }}-custom-padding afbeelding-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'afbeelding' }}@endif" class="block-afbeelding block-{{ $randomNumber }} afbeelding-{{ $randomNumber }} afbeelding-{{ $randomNumber }}-custom-padding afbeelding-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($backgroundOverlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $backgroundOverlayColor }} opacity-{{ $backgroundOverlayOpacity }}"></div>
