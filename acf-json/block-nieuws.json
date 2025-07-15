@@ -2413,7 +2413,7 @@
             "save_options": 0
         },
         {
-            "key": "field_67974a8015e4a",
+            "key": "field_67974a8015e3b",
             "label": "Nieuws items in laten vliegen",
             "name": "flyin_effect",
             "aria-label": "",
@@ -2452,5 +2452,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1748250067
+    "modified": 1752589322
 }
