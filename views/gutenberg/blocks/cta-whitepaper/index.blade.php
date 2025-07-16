@@ -161,7 +161,11 @@
                                 </div>
                             @endif
                             @if (($button1Text) && ($button1Link))
-                                <div class="buttons w-full flex flex-col flex-wrap gap-x-4 gap-y-2 w-fit justify-center lg:justify-start">
+                                <div class="buttons w-full flex flex-col flex-wrap gap-x-4 gap-y-2 w-fit
+                                    {{ $textPosition === 'left' ? 'sm:justify-start' : '' }}
+                                    {{ $textPosition === 'center' ? 'sm:justify-center' : '' }}
+                                    {{ $textPosition === 'right' ? 'sm:justify-end' : '' }}
+                                ">
                                     @include('components.buttons.default', [
                                         'text' => $button1Text,
                                         'href' => $button1Link,
