@@ -26,10 +26,10 @@
 
 <div class="werknemer-item group h-full @if ($flyinEffect) employee-hidden @endif">
     <div class="werknemer-card relative h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
-        <div class="custom-height relative max-h-[360px] overflow-hidden w-full rounded-{{ $borderRadius }}">
+        <div class="custom-height relative max-h-[360px] w-full rounded-{{ $borderRadius }}">
             @if ($pageLink)
                 <a href="{{ $employeeUrl }}" aria-label="Ga naar {{ $fullName }} pagina"
-                   class="overlay left-0 top-0 absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                   class="card-overlay overlay left-0 top-0 absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
             @endif
             @if (!empty($visibleElements) && in_array('category', $visibleElements))
                 <div class="employee-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
@@ -38,7 +38,8 @@
                             $categoryColor = get_field('category_color', $category);
                             $categoryIcon = get_field('category_icon', $category);
                         @endphp
-                        <div style="background-color: {{ $categoryColor }}" class="employee-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1">
+                        <div style="background-color: {{ $categoryColor }}"
+                             class="employee-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1">
                             {!! $categoryIcon !!} {!! $category->name !!}
                         </div>
                     @endforeach
@@ -65,19 +66,37 @@
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements) && ($contactInfoDisplay == 'in_image'))
                 <div class="contact-items absolute bottom-0 right-0 flex gap-x-2">
                     @if ($mail)
-                        <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" class="text-{{ $employeeTextColor }} hover:text-white ">
+                        <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}"
+                           class="text-{{ $employeeTextColor }} hover:text-white ">
                             <div class="contact-icon-wrapper relative bg-primary w-10 h-10 flex justify-center items-center">
                                 <div class="mail-icon">
-                                    <i class="contact-text object-cover fas fa-envelope"></i>@if($showFullContactInfo) {{ $mail }} @endif
+                                    <i class="contact-text object-cover fas fa-envelope"></i>
+                                    @if($showFullContactInfo)
+                                        {{ $mail }}
+                                    @endif
+                                    @if(!$showFullContactInfo)
+                                        <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
+                                            <div class="popup-text bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $mail }}</div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </a>
                     @endif
                     @if ($phoneNumber)
-                        <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" class="text-{{ $employeeTextColor }} hover:text-white">
+                        <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}"
+                           class="text-{{ $employeeTextColor }} hover:text-white">
                             <div class="contact-icon-wrapper relative bg-primary w-10 h-10 flex justify-center items-center">
-                                 <div class="phone-icon">
-                                    <i class="contact-text object-cover fas fa-phone"></i>@if($showFullContactInfo) {{ $phoneNumber }} @endif
+                                <div class="phone-icon">
+                                    <i class="contact-text object-cover fas fa-phone"></i>
+                                    @if($showFullContactInfo)
+                                        {{ $phoneNumber }}
+                                    @endif
+                                    @if(!$showFullContactInfo)
+                                        <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
+                                            <div class="popup-text bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $phoneNumber }}</div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </a>
@@ -101,34 +120,47 @@
                 <div class="social-items inline-flex gap-x-2">
                     @foreach ($socials as $social)
                         <a class="text-{{ $employeeTextColor }} text-2xl transform ease-in-out duration-300 hover:scale-110 hover:text-primary"
-                           href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer" aria-label="Ga naar social media pagina">
+                           href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
+                           aria-label="Ga naar social media pagina">
                             {!! $social['icon'] !!}
                         </a>
                     @endforeach
                 </div>
             @endif
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements) && ($contactInfoDisplay == 'under_image'))
-                <div class="contact-items relative w-fit">
+                <div class="contact-items relative w-fit @if(!$showFullContactInfo) flex gap-x-2 @endif">
                     @if ($mail)
-                        <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" class="mail-link text-{{ $employeeTextColor }} hover:text-primary">
+                        <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}"
+                           class="mail-link text-{{ $employeeTextColor }} hover:text-primary">
                             <div class="contact-icon-wrapper relative">
                                 <div class="mail-icon">
-                                    <i class="contact-text w-4 object-cover fas fa-envelope mr-3"></i>@if($showFullContactInfo) {{ $mail }} @endif
-                                    <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
-                                        <div class="popup-text bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $mail }}</div>
-                                    </div>
+                                    <i class="contact-text w-4 object-cover fas fa-envelope mr-3"></i>
+                                    @if($showFullContactInfo)
+                                        {{ $mail }}
+                                    @endif
+                                    @if(!$showFullContactInfo)
+                                        <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
+                                            <div class="popup-text bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $mail }}</div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </a>
                     @endif
                     @if ($phoneNumber)
-                        <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" class="phone-link text-{{ $employeeTextColor }} hover:text-primary">
+                        <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}"
+                           class="phone-link text-{{ $employeeTextColor }} hover:text-primary">
                             <div class="contact-icon-wrapper relative">
                                 <div class="phone-icon">
-                                    <i class="contact-text w-4 object-cover fas fa-phone mr-3"></i>@if($showFullContactInfo) {{ $phoneNumber }} @endif
-                                    <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
-                                        <div class="popup-text bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $phoneNumber }}</div>
-                                    </div>
+                                    <i class="contact-text w-4 object-cover fas fa-phone mr-3"></i>
+                                    @if($showFullContactInfo)
+                                        {{ $phoneNumber }}
+                                    @endif
+                                    @if(!$showFullContactInfo)
+                                        <div class="popup absolute left-1/2 transform -translate-x-1/2 bottom-full pb-1 hidden">
+                                            <div class="popup-text bg-white border border-gray-300 p-2 rounded shadow-lg text-sm text-black w-fit whitespace-nowrap">{{ $phoneNumber }}</div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </a>
@@ -138,20 +170,20 @@
             @if (!empty($visibleElements) && in_array('overview_text', $visibleElements))
                 <div class="overview-text text-{{ $employeeTextColor }} mt-3 mb-2">{!! $overviewText !!}</div>
             @endif
-                @if (!empty($visibleElements) && in_array('button', $visibleElements))
-                    @if ($buttonCardText)
-                        <div class="employee-button mt-auto pt-8 z-10">
-                            @include('components.buttons.default', [
-                               'text' => $buttonCardText,
-                               'href' => $employeeUrl,
-                               'alt' => $buttonCardText,
-                               'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
-                               'class' => 'rounded-lg',
-                               'icon' => $buttonCardIcon,
-                            ])
-                        </div>
-                    @endif
+            @if (!empty($visibleElements) && in_array('button', $visibleElements))
+                @if ($buttonCardText)
+                    <div class="employee-button mt-auto pt-8 z-10">
+                        @include('components.buttons.default', [
+                           'text' => $buttonCardText,
+                           'href' => $employeeUrl,
+                           'alt' => $buttonCardText,
+                           'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
+                           'class' => 'rounded-lg',
+                           'icon' => $buttonCardIcon,
+                        ])
+                    </div>
                 @endif
+            @endif
         </div>
 
     </div>
