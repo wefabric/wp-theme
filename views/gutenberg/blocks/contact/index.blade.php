@@ -106,7 +106,7 @@
                 @if ($title)
                     <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
                 @endif
-                <div class="flex flex-col">
+                <div class="flex flex-col content-layout">
                     @if ($establishment_query->have_posts())
                         <div class="establishment-list flex flex-col gap-y-8">
                             @while ($establishment_query->have_posts())
