@@ -368,7 +368,7 @@
                 &times;
             </button>
             @if ($image)
-                <div class="cooperatie-image-container mb-2">
+                <div class="cooperatie-image-container">
                     {!! wp_get_attachment_image($image, 'medium', false, ['class' => 'cooperatie-image w-full object-cover']) !!}
                 </div>
             @endif
