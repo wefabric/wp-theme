@@ -173,7 +173,7 @@
                         </div>
                     </div>
 
-                    <div class="absolute top-1/2 -translate-y-1/2 md:top-0 md:translate-y-0 md:relative w-full md:w-1/2">
+                    <div class="absolute top-1/2 -translate-y-1/2 z-10 md:top-0 md:translate-y-0 md:relative w-full md:w-1/2">
                         <div id="cooperatie-info-panel" class="cooperatie-info">
                         </div>
                     </div>
