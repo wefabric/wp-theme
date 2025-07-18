@@ -51,6 +51,7 @@
 
     "salespitch/block.json",
 
+    "cooperaties/block.json",
     "merken/block.json",
     "projecten/block.json",
     "evenementen/block.json",

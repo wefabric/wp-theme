@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/cooperaties",
+  "title": "Cooperaties",
+  "description": "Een cooperaties",
+  "category": "wefabric-theme",
+  "icon": "align-pull-left",
+  "apiVersion": 2,
+  "keywords": [
+    "Cooperaties"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
