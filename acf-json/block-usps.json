@@ -171,7 +171,7 @@
         },
         {
             "key": "field_654a1c80b174b",
-            "label": "Button (onder de USP's)",
+            "label": "Button",
             "name": "button",
             "aria-label": "",
             "type": "group",
@@ -515,9 +515,9 @@
             ]
         },
         {
-            "key": "field_64a51c07c5838",
-            "label": "Tekst positie",
-            "name": "text_position",
+            "key": "field_687a3fa8ea153",
+            "label": "Button positie",
+            "name": "button_position",
             "aria-label": "",
             "type": "select",
             "instructions": "",
@@ -525,23 +525,40 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_649950952e415",
-                        "operator": "!=empty"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_6683f59092ee3",
-                        "operator": "!=empty"
-                    }
-                ],
-                [
-                    {
                         "field": "field_654a1c91b174c",
                         "operator": "!=empty"
                     }
                 ]
             ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "top": "Button boven USP's",
+                "bottom": "Button onder USP's"
+            },
+            "default_value": "bottom",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_64a51c07c5838",
+            "label": "Tekst positie",
+            "name": "text_position",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "50",
                 "class": "",
@@ -556,6 +573,7 @@
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
@@ -1343,12 +1361,13 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
             "message": "",
             "default_value": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
@@ -1371,11 +1390,12 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -1396,7 +1416,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -1410,6 +1430,7 @@
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
@@ -2328,5 +2349,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752140342
+    "modified": 1752842501
 }

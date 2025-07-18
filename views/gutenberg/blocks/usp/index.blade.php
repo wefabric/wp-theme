@@ -35,6 +35,8 @@
             }
         }
 
+        $button_position = $block['data']['button_position'] ?? 'bottom';
+
         $textPosition = $block['data']['text_position'] ?? '';
         $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
         $textClass = $textClassMap[$textPosition] ?? '';
@@ -136,22 +138,50 @@
     @endif
         <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
             <div class="custom-width {{ $blockClass }} {{ $textClass }} mx-auto">
-                @if ($subTitle)
-                    <span class="subtitle block mb-2 text-{{ $subTitleColor }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">{!! $subTitle !!}</span>
-                @endif
-                @if ($title)
-                    <h2 class="title mb-4 text-{{ $titleColor }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">{!! $title !!}</h2>
-                @endif
-                @if ($text)
-                    @include('components.content', [
-                        'content' => apply_filters('the_content', $text),
-                        'class' => 'container mx-auto mb-4 text-' . $textColor . ($blockWidth == 'fullscreen' ? ' px-8' : '')
-                    ])
-                @endif
+                <div class="content-section">
+                    @if ($subTitle)
+                        <span class="subtitle block mb-2 text-{{ $subTitleColor }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">{!! $subTitle !!}</span>
+                    @endif
+                    @if ($title)
+                        <h2 class="title mb-4 text-{{ $titleColor }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">{!! $title !!}</h2>
+                    @endif
+                    @if ($text)
+                        @include('components.content', [
+                            'content' => apply_filters('the_content', $text),
+                            'class' => 'container mx-auto mb-4 text-' . $textColor . ($blockWidth == 'fullscreen' ? ' px-8' : '')
+                        ])
+                    @endif
+                    @if (($button1Text) && ($button1Link) && ($button_position == 'top'))
+                        <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
+                            @include('components.buttons.default', [
+                                'text' => $button1Text,
+                                'href' => $button1Link,
+                                'alt' => $button1Text,
+                                'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                                'class' => 'rounded-lg',
+                                'target' => $button1Target,
+                                'icon' => $button1Icon,
+                                'download' => $button1Download,
+                            ])
+                            @if (($button2Text) && ($button2Link))
+                                @include('components.buttons.default', [
+                                    'text' => $button2Text,
+                                    'href' => $button2Link,
+                                    'alt' => $button2Text,
+                                    'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                    'class' => 'rounded-lg',
+                                    'target' => $button2Target,
+                                    'icon' => $button2Icon,
+                                    'download' => $button2Download,
+                                ])
+                            @endif
+                        </div>
+                    @endif
+                </div>
                 @if ($usps)
                     @include('components.usps.list', ['usps' => $usps])
                 @endif
-                @if (($button1Text) && ($button1Link))
+                @if (($button1Text) && ($button1Link) && ($button_position == 'bottom'))
                     <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                         @include('components.buttons.default', [
                             'text' => $button1Text,
