@@ -231,8 +231,8 @@
             const faqItems = document.querySelectorAll('.faq-item');
             const observerOptions = {
                 root: null,
-                rootMargin: '0px',
-                threshold: 0.1
+                rootMargin: '0px 0px -30px 0px',
+                threshold: 0.035
             };
 
             const observerCallback = (entries, observer) => {

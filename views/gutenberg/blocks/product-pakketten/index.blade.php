@@ -1,5 +1,4 @@
 @php
-
     // todo: Needs block update
 
     // Content

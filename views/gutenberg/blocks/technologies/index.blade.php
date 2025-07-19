@@ -1,5 +1,6 @@
 @php
     //    todo: Needs block update
+    // todo: Kijken of deze vervangen kan worden door kaartenblok
 
     // Content
     $title = $block['data']['title'] ?? '';
