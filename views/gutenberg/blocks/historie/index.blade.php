@@ -125,6 +125,10 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'historie' }}@endif" class="block-historie relative historie-{{ $randomNumber }}-custom-padding historie-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -162,11 +166,12 @@
                             $roundedFullPosition = $isOdd ? 'right-0 top-1/2 translate-x-1/2 -translate-y-1/2' : 'left-auto right-0 lg:right-auto lg:left-0 top-1/2 translate-x-1/2 lg:-translate-x-1/2 -translate-y-1/2';
                         @endphp
 
-                        <div class="{{ $cardClass }} timeline-card relative h-fit pl-10 {{ $marginLeftClass }}">
+                        <div class="timeline-card {{ $cardClass }} relative h-fit pl-10 {{ $marginLeftClass }}">
                             <div class="history-horizontal-line w-[20px] lg:w-[30px] h-[4px] bg-{{ $timelineLineColor }} absolute left-0 {{ $timelineLinePosition }}">
                                 <div class="end-dot w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute {{ $roundedFullPosition }}"></div>
                             </div>
-                            <div class="history-item flex flex-col">
+
+                            <div class="history-item flex flex-col @if ($flyinEffect) history-hidden @endif">
                                 @if ($item['imageId'])
                                     <div class="history-image relative h-[170px]">
                                         @include('components.image', [
@@ -265,4 +270,51 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .history-hidden {
+        opacity: 0;
+    }
+
+    .swiper-slide-duplicate .history-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .history-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const historyItems = document.querySelectorAll('.history-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -30px 0px',
+                threshold: 0.035
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const historyItem = entry.target;
+
+                        setTimeout(() => {
+                            if (historyItem.classList.contains('history-hidden')) {
+                                historyItem.classList.add('history-animated');
+                                historyItem.classList.remove('history-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(historyItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            historyItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif
