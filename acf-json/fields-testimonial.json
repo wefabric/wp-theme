@@ -136,6 +136,24 @@
             "delay": 0
         },
         {
+            "key": "field_6880b59ca47e5",
+            "label": "Link",
+            "name": "link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_6523f98aa831a",
             "label": "Afbeelding",
             "name": "image",
@@ -179,5 +197,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737363854
+    "modified": 1753265602
 }

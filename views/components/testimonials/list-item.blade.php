@@ -6,6 +6,7 @@
 
     $testimonialTitle = get_the_title($testimonial) ?? '';
     $testimonialUrl = get_permalink($testimonial);
+    $testimonialCustomUrl = $fields['link'] ?? '';
     $testimonialName = $fields['name'] ?? '';
     $testimonialText = $fields['testimonial_text'] ?? '';
     $testimonialFunction = $fields['function'] ?? '';
@@ -14,6 +15,7 @@
     $testimonialImageId = $fields['image'] ?? '';
     $testimonialStars = $fields['star_rating'] ?? '';
 
+    $testimonialLink = $block['data']['testimonial_link'] ?? 'testimonial_link';
     $imagePosition = $block['data']['image_position'] ?? 'right';
 
     $visibleElements = $block['data']['show_element'] ?? [];
@@ -31,7 +33,8 @@
                         $categoryColor = get_field('category_color', $category);
                         $categoryIcon = get_field('category_icon', $category);
                     @endphp
-                    <div style="background-color: {{ $categoryColor }}" class="testimonial-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1">
+                    <div style="background-color: {{ $categoryColor }}"
+                         class="testimonial-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1">
                         {!! $categoryIcon !!} {!! $category->name !!}
                     </div>
                 @endforeach
@@ -106,11 +109,20 @@
             </div>
 
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
-                @if ($buttonCardText)
+                @php
+                    $buttonUrl = '';
+                    if ($testimonialLink === 'testimonial_link') {
+                        $buttonUrl = $testimonialUrl;
+                    } elseif ($testimonialLink === 'custom_link' && !empty($testimonialCustomUrl)) {
+                        $buttonUrl = $testimonialCustomUrl;
+                    }
+                @endphp
+
+                @if ($buttonCardText && $buttonUrl)
                     <div class="testimonial-button mt-auto pt-8 z-10 order-5">
                         @include('components.buttons.default', [
                            'text' => $buttonCardText,
-                           'href' => $testimonialUrl,
+                           'href' => $buttonUrl,
                            'alt' => $buttonCardText,
                            'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
                            'class' => 'rounded-lg',
@@ -119,6 +131,7 @@
                     </div>
                 @endif
             @endif
+
 
         </div>
 

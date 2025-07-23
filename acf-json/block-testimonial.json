@@ -843,6 +843,43 @@
             "font_size": 14
         },
         {
+            "key": "field_6880b60972dab",
+            "label": "Testimonial link",
+            "name": "testimonial_link",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6690377b0386b",
+                        "operator": "==",
+                        "value": "button"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "testimonial_link": "Doorlinken naar testimonial pagina",
+                "custom_link": "Doorlinken naar custom URL"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_67ac6ee7a9971",
             "label": "Button in testimonial blok",
             "name": "card_button",
@@ -2390,5 +2427,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1751964944
+    "modified": 1753265808
 }
