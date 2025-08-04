@@ -28,6 +28,12 @@
     @if($categories)
         @foreach($categories as $category)
             @php
+                $filterable = get_field('filterable', 'category_' . $category->term_id) ?? true;
+
+                if (!$filterable) {
+                    continue;
+                }
+
                 $categoryPosts = get_posts(array(
                     'category' => $category->term_id,
                     'numberposts' => 1,
@@ -36,7 +42,7 @@
                 if (empty($categoryPosts)) {
                     continue; // Skip this category if it has no posts
                 }
-
+                
                 $categoryColor = get_field('category_color', 'category_' . $category->term_id);
                 $categoryIcon = get_field('category_icon', 'category_' . $category->term_id);
                 $isActive = ($currentTerm && $currentTerm->term_id == $category->term_id);
