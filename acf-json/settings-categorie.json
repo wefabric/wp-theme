@@ -53,6 +53,27 @@
             "allow_in_bindings": 0,
             "fa_live_preview": "",
             "choices": []
+        },
+        {
+            "key": "field_68907f5afebb6",
+            "label": "Filterbaar",
+            "name": "filterable",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Hiermee wordt de categorie op de archief pagina's getoond als filter",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -73,5 +94,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1730206839
+    "modified": 1754300305
 }
