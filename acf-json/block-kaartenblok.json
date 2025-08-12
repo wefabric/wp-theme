@@ -612,6 +612,34 @@
             "save_options": 0
         },
         {
+            "key": "field_689b3cb463c26",
+            "label": "Toon alleen hoofdpagina's",
+            "name": "parent_pages_only",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_686d030374dd0",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6527b2439ad98",
             "label": "Kaartenblok variant",
             "name": "cardblock_version",
@@ -2670,5 +2698,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1751975932
+    "modified": 1755004143
 }

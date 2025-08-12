@@ -64,6 +64,7 @@
     $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
     $selectedPostType = $block['data']['cardblock_post_type'] ?? '';
+    $parentPagesOnly = ($block['data']['parent_pages_only']) ?? false;
     $cardVisual = $block['data']['block_visual'] ?? 'featured_image';
 
     // Als er een post type is geselecteerd, haal dan alle berichten van deze post type op
@@ -74,6 +75,11 @@
             'posts_per_page' => -1,
             'post_status' => 'publish',
         ];
+
+        // Alleen parent pages meenemen
+        if ($parentPagesOnly) {
+            $args['post_parent'] = 0;
+        }
 
         // Exclude current post
         if(!is_archive()){
@@ -92,7 +98,7 @@
                     'custom_title' => '',
                     'url' => get_permalink($post->ID),
                     'content' => $post->post_content,
-                    'icon' => '', // You can add icon logic based on post meta if needed
+                    'icon' => '',
                     'image_id' => has_post_thumbnail($post->ID) ? get_post_thumbnail_id($post->ID) : 0,
                     'featured_image_id' => has_post_thumbnail($post->ID) ? get_post_thumbnail_id($post->ID) : 0,
                 ];
