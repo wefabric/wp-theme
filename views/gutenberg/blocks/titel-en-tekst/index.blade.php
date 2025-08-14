@@ -96,7 +96,7 @@
     @endif
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto flex flex-col lg:flex-row justify-center gap-x-16">
-            <div class="w-full order-2 {{ $textOrder }}">
+            <div class="text-section w-full order-2 {{ $textOrder }}">
                 @if ($text)
                     @include('components.content', [
                         'content' => apply_filters('the_content', $text),
@@ -130,12 +130,12 @@
                     </div>
                 @endif
             </div>
-            <div class="w-full order-1 {{ $titleOrder }}">
+            <div class="title-section w-full order-1 {{ $titleOrder }}">
                 @if ($subTitle)
                     <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if($textAlignment == 'right') @endif lg:text-{{ $textAlignment }}">{!! $subTitle !!}</span>
                 @endif
                 @if ($title)
-                    <h2 class="title mb-4 text-{{ $titleColor }} @if($textAlignment == 'right') @endif h1 lg:-mt-[6px] lg:text-{{ $textAlignment }}">{!! $title !!}</h2>
+                    <h2 class="title mb-4 text-{{ $titleColor }} @if($textAlignment == 'right') @endif lg:-mt-[6px] lg:text-{{ $textAlignment }}">{!! $title !!}</h2>
                 @endif
             </div>
         </div>
