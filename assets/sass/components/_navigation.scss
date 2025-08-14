@@ -60,7 +60,7 @@ header {
 		
 		.current_page_item {
 			>a {
-				@apply font-bold no-underline #{!important};
+				@apply no-underline #{!important};
 			}
 			
 			.sub-menu {
