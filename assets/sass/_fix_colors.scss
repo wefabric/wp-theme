@@ -44,6 +44,15 @@
 .odd-bg-primary-color-dark {
   @apply odd:bg-primary-dark;
 }
+.border-r-primary-color {
+  @apply border-r-primary;
+}
+.border-r-primary-color-light {
+  @apply border-r-primary-light;
+}
+.border-r-primary-color-dark {
+  @apply border-r-primary-dark;
+}
 
 
 // Secondary colors
@@ -91,6 +100,15 @@
 }
 .odd-bg-secondary-color-dark {
   @apply odd:bg-secondary-dark;
+}
+.border-r-secondary-color {
+  @apply border-r-secondary;
+}
+.border-r-secondary-color-light {
+  @apply border-r-secondary-light;
+}
+.border-r-secondary-color-dark {
+  @apply border-r-secondary-dark;
 }
 
 
@@ -140,6 +158,15 @@
 .odd-bg-tertiary-color-dark {
   @apply odd:bg-tertiary-dark;
 }
+.border-r-tertiary-color {
+  @apply border-r-tertiary;
+}
+.border-r-tertiary-color-light {
+  @apply border-r-tertiary-light;
+}
+.border-r-tertiary-color-dark {
+  @apply border-r-tertiary-dark;
+}
 
 
 // Quaternary colors
@@ -187,6 +214,15 @@
 }
 .odd-bg-quaternary-color-dark {
   @apply odd:bg-quaternary-dark;
+}
+.border-r-quaternary-color {
+  @apply border-r-quaternary;
+}
+.border-r-quaternary-color-light {
+  @apply border-r-quaternary-light;
+}
+.border-r-quaternary-color-dark {
+  @apply border-r-quaternary-dark;
 }
 
 
@@ -236,6 +272,15 @@
 .odd-bg-background-color-dark {
   @apply odd:bg-background-dark;
 }
+.border-r-background-color {
+  @apply border-r-background;
+}
+.border-r-background-color-light {
+  @apply border-r-background-light;
+}
+.border-r-background-color-dark {
+  @apply border-r-background-dark;
+}
 
 
 //Black color
@@ -275,6 +320,9 @@
 }
 .odd-bg-cta-color {
   @apply odd:bg-cta;
+}
+.border-r-cta-color {
+  @apply border-r-cta;
 }
 
 

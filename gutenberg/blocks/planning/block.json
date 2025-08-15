@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/planning",
+  "title": "Planning",
+  "description": "Een planning blok",
+  "category": "wefabric-theme",
+  "icon": "clock",
+  "apiVersion": 2,
+  "keywords": [
+    "Nieuws"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

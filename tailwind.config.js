@@ -87,6 +87,9 @@ module.exports = {
     'lg:text-center',
     'xl:text-center',
 
+    'border-r-white',
+    'border-r-black',
+
     // Border radius
     'rounded-[30px]',
     'sm:rounded-[30px]',
