@@ -131,6 +131,72 @@
             "font_size": 14
         },
         {
+            "key": "field_689f3e434435e",
+            "label": "Icoon voor subtitel",
+            "name": "subtitle_icon",
+            "aria-label": "",
+            "type": "font-awesome",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66c6f1d27b8ed",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+            },
+            "icon_sets": [
+                "solid",
+                "regular",
+                "light",
+                "thin",
+                "duotone_solid",
+                "fak",
+                "brands"
+            ],
+            "custom_icon_set": "",
+            "default_label": "",
+            "default_value": "",
+            "save_format": "element",
+            "allow_null": 1,
+            "show_preview": 1,
+            "enqueue_fa": 0,
+            "allow_in_bindings": 0,
+            "fa_live_preview": "",
+            "choices": []
+        },
+        {
+            "key": "field_689f3e624435f",
+            "label": "Icoon kleur",
+            "name": "subtitle_icon_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66c6f1d27b8ed",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "black",
+            "allow_in_bindings": 1,
+            "font_size": 14
+        },
+        {
             "key": "field_67066f82289ff",
             "label": "Tekst",
             "name": "text",
@@ -238,7 +304,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_6707b19351f23",
@@ -272,7 +340,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_6707b1a851f24",
@@ -401,7 +471,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_6707b1e651f28",
@@ -435,7 +507,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_6707b1f851f29",
@@ -550,7 +624,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_66c6f1bc7b8ec",
@@ -694,7 +770,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_651c21a7c4823",
@@ -824,7 +902,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_67066fa728a01",
@@ -1718,5 +1798,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1750941375
+    "modified": 1755266680
 }
