@@ -5,6 +5,9 @@ module.exports = {
     './views/**/*.blade.php',
     './assets/**/*.js',
     './assets/**/*.vue',
+    './../theme-child/views/**/*.blade.php',
+    './../theme-child/assets/**/*.js',
+    './../theme-child/assets/**/*.vue',
   ],
   safelist: [
     // Grid
