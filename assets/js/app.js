@@ -19,7 +19,7 @@ import './dynamic-content';
 import './custom-cart';
 import './cad-download-toggle';
 import './lazyload';
-import './../../../theme-child/assets/js/app'; // Child theme js
+import ThemeChildApp from './../../../theme-child/assets/js/app';
 
 // Use Swiper and the necessary modules
 Swiper.use([Navigation, Pagination, Autoplay, Zoom, Thumbs, EffectFade]);
@@ -32,4 +32,9 @@ window.SplitType = SplitType;
 window.gsap = gsap;
 window.ScrollTrigger = require("gsap/ScrollTrigger");
 
-Alpine.start()
+// Initialize child theme integrations before Alpine starts so x-data components are available
+if (ThemeChildApp !== undefined) {
+    ThemeChildApp.init();
+}
+
+Alpine.start();
