@@ -1,8 +1,5 @@
-@php
-    $options = get_fields('option');
-@endphp
-
-        <!doctype html>
+@php $options = get_fields('option'); @endphp
+<!doctype html>
 <html {!! get_language_attributes() !!}>
 <head>
     <meta charset="{{ get_bloginfo('charset') }}">
@@ -12,6 +9,7 @@
     @if(isset($options['header_codes']) && $options['header_codes'])
         {!! $options['header_codes'] !!}
     @endif
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body @php(body_class())>
 @if(isset($options['body_codes']) && $options['body_codes'])

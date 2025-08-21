@@ -1,6 +1,8 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-
-module.exports = {
+import defaultTheme from 'tailwindcss/defaultTheme';
+import forms from '@tailwindcss/forms';
+import typography from '@tailwindcss/typography';
+import tailwindcssTextshadow from 'tailwindcss-textshadow';
+export default {
   content: [
     './views/**/*.blade.php',
     './assets/**/*.js',
@@ -216,9 +218,9 @@ module.exports = {
   },
 
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('tailwindcss-textshadow')
+    forms,
+    typography,
+    tailwindcssTextshadow
   ],
 
 }
