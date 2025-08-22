@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^6.7.2",
+    "@wefabric/telqr": "^1.0.2",
     "alpinejs": "^3.12.0",
     "gsap": "3.12.5",
     "jquery": "^3.6.0",

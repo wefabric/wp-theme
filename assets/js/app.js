@@ -4,6 +4,7 @@ import Swiper, { Navigation, Pagination, Autoplay, Zoom, Thumbs, EffectFade } fr
 // import Swiper and modules styles
 import SplitType from "split-type";
 import gsap from "gsap";
+import TelQr from '@wefabric/telqr';
 
 // Import dependencies
 window.$ = window.jQuery = require('jquery');
@@ -38,3 +39,32 @@ if (ThemeChildApp !== undefined) {
 }
 
 Alpine.start();
+
+// Initialize with default settings
+document.addEventListener('DOMContentLoaded', () => {
+    new TelQr({
+        showToCallText: 'Klik om te bellen',
+        scanToCallText: 'Scan om te bellen',
+        buttonText: 'Bel op dit apparaat',
+        qrCode: {
+            width: 200,
+            height: 200,
+            correctLevel: 'L',
+            colorDark: '#000000',
+            colorLight: '#ffffff'
+        },
+        styling: {
+            modal: {
+                background: '#ffffff',
+                borderRadius: '16px',
+                padding: '32px',
+                maxWidth: '350px'
+            },
+            button: {
+                background: '#007cba',
+                color: 'white',
+                fontSize: '16px'
+            }
+        }
+    });
+});
