@@ -675,7 +675,9 @@
             "choices": {
                 "show_all": "Toon alle diensten",
                 "show_category": "Toon diensten van een categorie",
-                "show_specific": "Toon specifieke diensten"
+                "show_specific": "Toon specifieke diensten",
+                "show_random": "Toon willekeurige diensten",
+                "show_latest": "Toon laatste diensten"
             },
             "default_value": "show_all",
             "return_format": "value",
@@ -758,6 +760,44 @@
             "bidirectional": 0,
             "ui": 1,
             "bidirectional_target": []
+        },
+        {
+            "key": "field_68ac30b897cf8",
+            "label": "Hoeveel diensten wil je tonen?",
+            "name": "post_amount",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_678e7115c99ae",
+                        "operator": "==",
+                        "value": "show_latest"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_678e7115c99ae",
+                        "operator": "==",
+                        "value": "show_random"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_678e7115c99c3",
@@ -2502,5 +2542,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1756114693
+    "modified": 1756115203
 }

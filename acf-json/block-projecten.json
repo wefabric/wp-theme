@@ -675,7 +675,9 @@
             "choices": {
                 "show_all": "Toon alle projecten",
                 "show_category": "Toon projecten van een categorie",
-                "show_specific": "Toon specifieke projecten"
+                "show_specific": "Toon specifieke projecten",
+                "show_random": "Toon willekeurige projecten",
+                "show_latest": "Toon laatste projecten"
             },
             "default_value": "show_all",
             "return_format": "value",
@@ -756,6 +758,44 @@
             "bidirectional": 0,
             "ui": 1,
             "bidirectional_target": []
+        },
+        {
+            "key": "field_68ac38595bd4a",
+            "label": "Hoeveel projecten wil je tonen?",
+            "name": "post_amount",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_678e24680bf36",
+                        "operator": "==",
+                        "value": "show_random"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_678e24680bf36",
+                        "operator": "==",
+                        "value": "show_latest"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_678e24680bf56",
@@ -2479,5 +2519,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1756114477
+    "modified": 1756117134
 }

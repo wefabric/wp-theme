@@ -74,7 +74,7 @@
         if ($currentTerms) {
             $args['tax_query'] = [
                 [
-                    'taxonomy' => 'dienst_categories',
+                    'taxonomy' => 'diensten_categories',
                     'field' => 'id',
                     'terms' => $currentTerms,
                 ],
@@ -118,7 +118,7 @@
 
         if ($currentTerms) {
             $args['tax_query'][] = [
-                'taxonomy' => 'dienst_categories',
+                'taxonomy' => 'diensten_categories',
                 'field' => 'id',
                 'terms' => $currentTerms,
             ];
@@ -145,7 +145,7 @@
 
         if ($currentTerms) {
             $args['tax_query'][] = [
-                'taxonomy' => 'dienst_categories',
+                'taxonomy' => 'diensten_categories',
                 'field' => 'id',
                 'terms' => $currentTerms,
             ];
@@ -154,6 +154,49 @@
 
         if (!empty($diensten)) {
             $args['post__in'] = $diensten;
+        }
+
+        $query = new WP_Query($args);
+        $diensten = wp_list_pluck($query->posts, 'ID');
+    }
+
+    // Show random
+    elseif ($displayType == 'show_random') {
+        $postAmount = $block['data']['post_amount'] ?? 3;
+        $args = [
+            'posts_per_page' => $postAmount,
+            'post_type'      => 'diensten',
+            'post_status'    => 'publish',
+            'orderby'        => 'rand',
+        ];
+
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'diensten') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
+        }
+
+        $query = new WP_Query($args);
+        $diensten = wp_list_pluck($query->posts, 'ID');
+    }
+
+    // Show latest
+    elseif ($displayType == 'show_latest') {
+        $postAmount = $block['data']['post_amount'] ?? 3;
+
+        $args = [
+            'posts_per_page' => $postAmount,
+            'post_type' => 'diensten',
+            'orderby' => 'date',
+            'order' => 'DESC',
+        ];
+
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'diensten') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
         }
 
         $query = new WP_Query($args);
@@ -183,7 +226,7 @@
 
     // Theme settings
     $options = get_fields('option');
-    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
+    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength'] ?? '' : 'rounded-none';
 
 
     // Paddings & margins

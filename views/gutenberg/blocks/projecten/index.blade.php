@@ -157,6 +157,49 @@
         $projects = wp_list_pluck($query->posts, 'ID');
     }
 
+    // Show random
+    elseif ($displayType == 'show_random') {
+        $postAmount = $block['data']['post_amount'] ?? 3;
+        $args = [
+            'posts_per_page' => $postAmount,
+            'post_type'      => 'project',
+            'post_status'    => 'publish',
+            'orderby'        => 'rand',
+        ];
+
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'project') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
+        }
+
+        $query = new WP_Query($args);
+        $projects = wp_list_pluck($query->posts, 'ID');
+    }
+
+    // Show latest
+    elseif ($displayType == 'show_latest') {
+        $postAmount = $block['data']['post_amount'] ?? 3;
+
+        $args = [
+            'posts_per_page' => $postAmount,
+            'post_type' => 'project',
+            'orderby' => 'date',
+            'order' => 'DESC',
+        ];
+
+        // Exclude current post
+        if(!is_archive()){
+            if(get_post()->post_type == 'project') {
+                $args['post__not_in'] = [get_post()->ID];
+            }
+        }
+
+        $query = new WP_Query($args);
+        $projects = wp_list_pluck($query->posts, 'ID');
+    }
+
     $visibleElements = $block['data']['show_element'] ?? [];
 
 
@@ -180,7 +223,7 @@
 
     // Theme settings
     $options = get_fields('option');
-    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength']??'': 'rounded-none';
+    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength'] ?? '' : 'rounded-none';
 
 
     // Paddings & margins
