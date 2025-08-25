@@ -26,7 +26,7 @@
 
 <div class="werknemer-item group h-full @if ($flyinEffect) employee-hidden @endif">
     <div class="werknemer-card relative h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
-        <div class="custom-height relative max-h-[360px] w-full rounded-{{ $borderRadius }}">
+        <div class="custom-height @if ($contactInfoDisplay == 'under_image') overflow-hidden @endif relative max-h-[360px] w-full rounded-{{ $borderRadius }}">
             @if ($pageLink)
                 <a href="{{ $employeeUrl }}" aria-label="Ga naar {{ $fullName }} pagina"
                    class="card-overlay overlay left-0 top-0 absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
