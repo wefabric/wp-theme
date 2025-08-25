@@ -131,6 +131,72 @@
             "font_size": 14
         },
         {
+            "key": "field_68ac1f6001d2c",
+            "label": "Icoon voor subtitel",
+            "name": "subtitle_icon",
+            "aria-label": "",
+            "type": "font-awesome",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_678e7115c997c",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+            },
+            "icon_sets": [
+                "solid",
+                "regular",
+                "light",
+                "thin",
+                "duotone_solid",
+                "fak",
+                "brands"
+            ],
+            "custom_icon_set": "",
+            "default_label": "",
+            "default_value": "",
+            "save_format": "element",
+            "allow_null": 1,
+            "show_preview": 1,
+            "enqueue_fa": 0,
+            "allow_in_bindings": 0,
+            "fa_live_preview": "",
+            "choices": []
+        },
+        {
+            "key": "field_68ac1fb101d2d",
+            "label": "Icoon kleur",
+            "name": "subtitle_icon_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_678e7115c997c",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "black",
+            "allow_in_bindings": 1,
+            "font_size": 14
+        },
+        {
             "key": "field_678e7115c998a",
             "label": "Tekst",
             "name": "text",
@@ -238,7 +304,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_678e7115d4abd",
@@ -272,7 +340,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_678e7115d4ac5",
@@ -407,7 +477,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_678e7115d4b17",
@@ -441,7 +513,9 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_678e7115d4b33",
@@ -562,7 +636,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_678e7115c99a7",
@@ -608,7 +684,9 @@
             "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_678e7115c99b5",
@@ -699,7 +777,7 @@
                 "category": "Categorie",
                 "category_filter": "Categorie filter",
                 "overview_text": "Korte samenvatting",
-                "button": "Knop in evenement blok"
+                "button": "Knop in dienst blok"
             },
             "default_value": [],
             "return_format": "array",
@@ -748,7 +826,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -795,7 +873,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -894,7 +972,9 @@
                     "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_678e7116040a9",
@@ -929,7 +1009,9 @@
                     "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_678e7116040b2",
@@ -975,6 +1057,24 @@
             ]
         },
         {
+            "key": "field_68ac201f01d2e",
+            "label": "Layout",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
             "key": "field_678e7115c99e7",
             "label": "Layout (aantal diensten op een rij)",
             "name": "layout",
@@ -1009,15 +1109,21 @@
                         "2": "2 per rij",
                         "3": "3 per rij",
                         "4": "4 per rij",
-                        "5": "5 per rij"
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
                     },
                     "default_value": 1,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_678e71160dffa",
@@ -1038,15 +1144,21 @@
                         "2": "2 per rij",
                         "3": "3 per rij",
                         "4": "4 per rij",
-                        "5": "5 per rij"
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
                     },
                     "default_value": 2,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_678e71160e005",
@@ -1067,15 +1179,56 @@
                         "2": "2 per rij",
                         "3": "3 per rij",
                         "4": "4 per rij",
-                        "5": "5 per rij"
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
                     },
                     "default_value": 3,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
+                    "allow_in_bindings": 1,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
+                },
+                {
+                    "key": "field_68ac221d45776",
+                    "label": "Desktop XL",
+                    "name": "desktop_xl",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "1": "1 per rij",
+                        "2": "2 per rij",
+                        "3": "3 per rij",
+                        "4": "4 per rij",
+                        "5": "5 per rij",
+                        "6": "6 per rij",
+                        "7": "7 per rij",
+                        "8": "8 per rij"
+                    },
+                    "default_value": 3,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 1,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 }
             ]
         },
@@ -1159,6 +1312,93 @@
             "append": "Seconden"
         },
         {
+            "key": "field_68ac216601d2f",
+            "label": "Actieve slide in het midden",
+            "name": "centered_slides",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_678e7115c99ee",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_68ac219201d30",
+            "label": "Oneindige herhaling van slides",
+            "name": "loop_slides",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_678e7115c99ee",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_68ac21a901d31",
+            "label": "Slider buiten container laten vallen",
+            "name": "slider_outside_container",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_678e7115c99ee",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_678e7115c9a03",
             "label": "Blokinstellingen",
             "name": "",
@@ -1203,7 +1443,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_678e7115c9a11",
@@ -1360,7 +1602,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_678e7115c9a3c",
@@ -1378,6 +1622,27 @@
             },
             "default_value": "",
             "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_68ac2ec8be53f",
+            "label": "Custom block ID",
+            "name": "custom_block_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Meerdere classes scheiden met spaties.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -2193,7 +2458,9 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_67975a067cbe6",
@@ -2235,5 +2502,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737972336
+    "modified": 1756114693
 }

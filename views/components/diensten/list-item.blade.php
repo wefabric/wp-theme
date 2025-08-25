@@ -43,12 +43,11 @@
 
             <a href="{{ $dienstUrl }}" aria-label="Ga naar {{ $dienstTitle }} pagina" class="dienst-title-text font-bold text-{{ $dienstTitleColor }} text-lg group-hover:text-primary">{!! $dienstTitle !!}</a>
 
-            <div class="dienst-data mt-4 text-{{ $dienstTextColor }}">
-
-                @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($dienstSummary))
-                    <p class="mt-3 mb-3">{{ $dienstSummary }}</p>
-                @endif
-            </div>
+            @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($dienstSummary))
+                <div class="dienst-data mt-4 text-{{ $dienstTextColor }}">
+                    <div class="mt-3 mb-3">{{ $dienstSummary }}</div>
+                </div>
+            @endif
 
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
                 @if ($buttonCardText)

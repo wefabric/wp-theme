@@ -1629,6 +1629,27 @@
             "append": ""
         },
         {
+            "key": "field_68ac2e593d1bc",
+            "label": "Custom block ID",
+            "name": "custom_block_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Meerdere classes scheiden met spaties.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6706443f0823d",
             "label": "Blok verbergen?",
             "name": "hide_block",
@@ -2483,5 +2504,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1755178750
+    "modified": 1756114543
 }
