@@ -4,6 +4,9 @@
     $titleColor = $block['data']['title_color'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
     $subTitleColor = $block['data']['subtitle_color'] ?? '';
+    $subtitleIcon = $block['data']['subtitle_icon'] ?? '';
+    $subtitleIcon = $subtitleIcon ? json_decode($subtitleIcon, true) : null;
+    $subtitleIconColor = $block['data']['subtitle_icon_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -194,7 +197,12 @@
         <div class="{{ $blockClass }} mx-auto {{ $textClass }} layout">
             <div class="content-data mb-4">
                 @if ($subTitle)
-                    <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }} @if ($blockWidth == 'fullscreen') container mx-auto px-8 @endif">{!! $subTitle !!}</span>
+                    <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }} @if ($blockWidth == 'fullscreen') container mx-auto px-8 @endif">
+                        @if ($subtitleIcon)
+                            <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
+                        @endif
+                        {!! $subTitle !!}
+                        </span>
                 @endif
                 @if ($title)
                     <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }} @if ($blockWidth == 'fullscreen') container mx-auto px-8 @endif">{!! $title !!}</h2>
