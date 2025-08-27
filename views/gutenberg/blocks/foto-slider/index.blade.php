@@ -4,6 +4,9 @@
     $titleColor = $block['data']['title_color'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
     $subTitleColor = $block['data']['subtitle_color'] ?? '';
+    $subtitleIcon = $block['data']['subtitle_icon'] ?? '';
+    $subtitleIcon = $subtitleIcon ? json_decode($subtitleIcon, true) : null;
+    $subtitleIconColor = $block['data']['subtitle_icon_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -46,28 +49,48 @@
     $numImages = intval($block['data']['images']);
     $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
+    $imageFormat = $block['data']['image_format'] ?? 'custom';
     $minHeight = $block['data']['min_height'] ?? '';
     $maxHeight = $block['data']['max_height'] ?? '';
     $imageStyle = $block['data']['image_style'] ?? 'cover';
 
-    for ($i = 0; $i < $numImages; $i++) {
-    $imageKey = "images_{$i}_image";
-    $captionKey = "images_{$i}_caption";
-    $linkKey = "images_{$i}_link";
 
-    $imageId = $block['data'][$imageKey] ?? '';
-    $caption = $block['data'][$captionKey] ?? '';
-    $imageLink = $block['data'][$linkKey] ?? '';
+    $formatClass = '';
+    $customStyle = '';
+
+    switch ($imageFormat) {
+        case 'square':
+            $formatClass = 'aspect-square';
+            break;
+        case 'landscape':
+            $formatClass = 'aspect-video';
+            break;
+        case 'portrait':
+            $formatClass = 'aspect-[3/4]';
+            break;
+        case 'custom':
+            if ($minHeight) $customStyle .= "min-height: {$minHeight}px;";
+            if ($maxHeight) $customStyle .= "max-height: {$maxHeight}px;";
+            break;
+    }
+
+    $imgClass = trim("w-full h-full {$formatClass} rounded-{$borderRadius}");
+    $imgStyle = $customStyle;
+
+    // Loop door de afbeeldingen
+    for ($i = 0; $i < $numImages; $i++) {
+        $imageKey = "images_{$i}_image";
+        $captionKey = "images_{$i}_caption";
+        $linkKey = "images_{$i}_link";
+
+        $imageId = $block['data'][$imageKey] ?? '';
+        $caption = $block['data'][$captionKey] ?? '';
+        $imageLink = $block['data'][$linkKey] ?? [];
 
         if ($imageId) {
             $imageInfo = wp_get_attachment_image_src($imageId, 'full');
             if ($imageInfo) {
-                $alt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
-                $alt = $alt ? $alt : "image_$i";
-
-                $linkTitle = $imageLink['title'] ?? '';
-                $linkUrl = $imageLink['url'] ?? '';
-                $linkTarget = $imageLink['target'] ?? '';
+                $alt = get_post_meta($imageId, '_wp_attachment_image_alt', true) ?: "image_$i";
 
                 $imagesData[] = [
                     'id' => $imageId,
@@ -75,10 +98,13 @@
                     'caption' => $caption,
                     'alt' => $alt,
                     'link' => [
-                        'title' => $linkTitle,
-                        'url' => $linkUrl,
-                        'target' => $linkTarget
-                    ]
+                        'title' => $imageLink['title'] ?? '',
+                        'url' => $imageLink['url'] ?? '',
+                        'target' => $imageLink['target'] ?? ''
+                    ],
+                    'img_class' => $imgClass,
+                    'img_style' => $imgStyle,
+                    'object_fit' => $imageStyle
                 ];
             }
         }
@@ -149,59 +175,65 @@
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'foto-slider' }}@endif" class="block-foto-slider relative foto-slider-{{ $randomNumber }} foto-slider-{{ $randomNumber }}-custom-padding foto-slider-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'foto-slider' }}@endif"
+         class="block-foto-slider relative foto-slider-{{ $randomNumber }} foto-slider-{{ $randomNumber }}-custom-padding foto-slider-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if($swiperOutContainer)
         <div class="overflow-hidden">
-    @endif
-    @if ($overlayEnabled)
-        <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
-    @endif
-    <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $containerClass }}">
-        <div class="{{ $blockClass }} {{ $textClass }} mx-auto">
-            @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $subTitleColor }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">{!! $subTitle !!}</span>
             @endif
-            @if ($title)
-                <h2 class="title mb-4 text-{{ $titleColor }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">{!! $title !!}</h2>
+            @if ($overlayEnabled)
+                <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
             @endif
-            @if ($text)
-                @include('components.content', [
-                    'content' => apply_filters('the_content', $text),
-                    'class' => 'container mx-auto mb-8 text-' . $textColor . ($blockWidth == 'fullscreen' ? ' px-8' : '')
-                ])
-            @endif
-            @if ($imagesData)
-                @include('components.photo-slider.list')
-            @endif
-            @if (($button1Text) && ($button1Link))
-                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
-                    @include('components.buttons.default', [
-                        'text' => $button1Text,
-                        'href' => $button1Link,
-                        'alt' => $button1Text,
-                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                        'class' => 'rounded-lg',
-                        'target' => $button1Target,
-                        'icon' => $button1Icon,
-                        'download' => $button1Download,
-                    ])
-                    @if (($button2Text) && ($button2Link))
-                        @include('components.buttons.default', [
-                            'text' => $button2Text,
-                            'href' => $button2Link,
-                            'alt' => $button2Text,
-                            'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                            'class' => 'rounded-lg',
-                            'target' => $button2Target,
-                            'icon' => $button2Icon,
-                            'download' => $button2Download,
+            <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $containerClass }}">
+                <div class="{{ $blockClass }} {{ $textClass }} mx-auto">
+                    @if ($subTitle)
+                        <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }} @if ($blockWidth == 'fullscreen') container mx-auto px-8 @endif">
+                            @if ($subtitleIcon)
+                                <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
+                            @endif
+                            {!! $subTitle !!}
+                        </span>
+                    @endif
+                    @if ($title)
+                        <h2 class="title mb-4 text-{{ $titleColor }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">{!! $title !!}</h2>
+                    @endif
+                    @if ($text)
+                        @include('components.content', [
+                            'content' => apply_filters('the_content', $text),
+                            'class' => 'container mx-auto mb-8 text-' . $textColor . ($blockWidth == 'fullscreen' ? ' px-8' : '')
                         ])
                     @endif
+                    @if ($imagesData)
+                        @include('components.photo-slider.list')
+                    @endif
+                    @if (($button1Text) && ($button1Link))
+                        <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
+                            @include('components.buttons.default', [
+                                'text' => $button1Text,
+                                'href' => $button1Link,
+                                'alt' => $button1Text,
+                                'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                                'class' => 'rounded-lg',
+                                'target' => $button1Target,
+                                'icon' => $button1Icon,
+                                'download' => $button1Download,
+                            ])
+                            @if (($button2Text) && ($button2Link))
+                                @include('components.buttons.default', [
+                                    'text' => $button2Text,
+                                    'href' => $button2Link,
+                                    'alt' => $button2Text,
+                                    'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                    'class' => 'rounded-lg',
+                                    'target' => $button2Target,
+                                    'icon' => $button2Icon,
+                                    'download' => $button2Download,
+                                ])
+                            @endif
+                        </div>
+                    @endif
                 </div>
-            @endif
-        </div>
-    </div>
+            </div>
     @if($swiperOutContainer)
         </div>
     @endif
@@ -209,52 +241,80 @@
 
 <style>
     .foto-slider-{{ $randomNumber }} .image-item img {
-        @if($maxHeight) max-height: {{$maxHeight }}px; @endif
+        @if($maxHeight)  max-height: {{$maxHeight }}px;
+    @endif
+
     }
 
     .foto-slider-{{ $randomNumber }} .image-item img {
-        @if($minHeight) min-height: {{$minHeight }}px; @endif
+        @if($minHeight)  min-height: {{$minHeight }}px;
+    @endif
+
     }
 
     .foto-slider-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
-            @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
-            @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
-            @if($mobilePaddingBottom) padding-bottom: {{ $mobilePaddingBottom }}px; @endif
-            @if($mobilePaddingLeft) padding-left: {{ $mobilePaddingLeft }}px; @endif
+            @if($mobilePaddingTop)  padding-top: {{ $mobilePaddingTop }}px;
+            @endif
+                       @if($mobilePaddingRight)  padding-right: {{ $mobilePaddingRight }}px;
+            @endif
+                       @if($mobilePaddingBottom)  padding-bottom: {{ $mobilePaddingBottom }}px;
+            @endif
+                       @if($mobilePaddingLeft)  padding-left: {{ $mobilePaddingLeft }}px; @endif
+
         }
         @media only screen and (min-width: 768px) {
-            @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
-            @if($tabletPaddingRight) padding-right: {{ $tabletPaddingRight }}px; @endif
-            @if($tabletPaddingBottom) padding-bottom: {{ $tabletPaddingBottom }}px; @endif
-            @if($tabletPaddingLeft) padding-left: {{ $tabletPaddingLeft }}px; @endif
+            @if($tabletPaddingTop)  padding-top: {{ $tabletPaddingTop }}px;
+            @endif
+                       @if($tabletPaddingRight)  padding-right: {{ $tabletPaddingRight }}px;
+            @endif
+                       @if($tabletPaddingBottom)  padding-bottom: {{ $tabletPaddingBottom }}px;
+            @endif
+                       @if($tabletPaddingLeft)  padding-left: {{ $tabletPaddingLeft }}px; @endif
+
         }
         @media only screen and (min-width: 1024px) {
-            @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
-            @if($desktopPaddingRight) padding-right: {{ $desktopPaddingRight }}px; @endif
-            @if($desktopPaddingBottom) padding-bottom: {{ $desktopPaddingBottom }}px; @endif
-            @if($desktopPaddingLeft) padding-left: {{ $desktopPaddingLeft }}px; @endif
+            @if($desktopPaddingTop)  padding-top: {{ $desktopPaddingTop }}px;
+            @endif
+                       @if($desktopPaddingRight)  padding-right: {{ $desktopPaddingRight }}px;
+            @endif
+                       @if($desktopPaddingBottom)  padding-bottom: {{ $desktopPaddingBottom }}px;
+            @endif
+                       @if($desktopPaddingLeft)  padding-left: {{ $desktopPaddingLeft }}px; @endif
+
         }
     }
 
     .foto-slider-{{ $randomNumber }}-custom-margin {
         @media only screen and (min-width: 0px) {
-            @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
-            @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif
-            @if($mobileMarginBottom) margin-bottom: {{ $mobileMarginBottom }}px; @endif
-            @if($mobileMarginLeft) margin-left: {{ $mobileMarginLeft }}px; @endif
+            @if($mobileMarginTop)  margin-top: {{ $mobileMarginTop }}px;
+            @endif
+                       @if($mobileMarginRight)  margin-right: {{ $mobileMarginRight }}px;
+            @endif
+                       @if($mobileMarginBottom)  margin-bottom: {{ $mobileMarginBottom }}px;
+            @endif
+                       @if($mobileMarginLeft)  margin-left: {{ $mobileMarginLeft }}px; @endif
+
         }
         @media only screen and (min-width: 768px) {
-            @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
-            @if($tabletMarginRight) margin-right: {{ $tabletMarginRight }}px; @endif
-            @if($tabletMarginBottom) margin-bottom: {{ $tabletMarginBottom }}px; @endif
-            @if($tabletMarginLeft) margin-left: {{ $tabletMarginLeft }}px; @endif
+            @if($tabletMarginTop)  margin-top: {{ $tabletMarginTop }}px;
+            @endif
+                       @if($tabletMarginRight)  margin-right: {{ $tabletMarginRight }}px;
+            @endif
+                       @if($tabletMarginBottom)  margin-bottom: {{ $tabletMarginBottom }}px;
+            @endif
+                       @if($tabletMarginLeft)  margin-left: {{ $tabletMarginLeft }}px; @endif
+
         }
         @media only screen and (min-width: 1024px) {
-            @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
-            @if($desktopMarginRight) margin-right: {{ $desktopMarginRight }}px; @endif
-            @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
-            @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
+            @if($desktopMarginTop)  margin-top: {{ $desktopMarginTop }}px;
+            @endif
+                       @if($desktopMarginRight)  margin-right: {{ $desktopMarginRight }}px;
+            @endif
+                       @if($desktopMarginBottom)  margin-bottom: {{ $desktopMarginBottom }}px;
+            @endif
+                       @if($desktopMarginLeft)  margin-left: {{ $desktopMarginLeft }}px; @endif
+
         }
     }
 

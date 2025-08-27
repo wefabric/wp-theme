@@ -17,11 +17,11 @@
                 </div>
             @endif
             @include('components.image', [
-                'image_id' => $imageId,
-                'size' => 'full',
-                'object_fit' => $imageStyle,
-                'img_class' => 'w-full h-full rounded-' . $borderRadius,
-                'alt' => $imageAlt
+                 'image_id' => $image['id'],
+                 'size' => 'full',
+                 'object_fit' => $image['object_fit'],
+                 'img_class' => $image['img_class'] . ' ' . $image['img_style'],
+                 'alt' => $image['alt']
             ])
         @endif
     </div>
