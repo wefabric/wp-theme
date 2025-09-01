@@ -655,7 +655,10 @@
                 "id": ""
             },
             "choices": {
+                "diensten": "Dienst",
+                "project": "Project",
                 "testimonials": "Testimonial",
+                "vacatures": "Vacature",
                 "werknemers": "Werknemer",
                 "wf_layouts": "Layout",
                 "post": "Bericht",
@@ -1003,14 +1006,7 @@
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_65254f6289fbf",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "25",
                 "class": "",
@@ -1028,15 +1024,7 @@
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6527da09ae373",
-                        "operator": "==",
-                        "value": "overview_text"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "25",
                 "class": "",
@@ -1080,22 +1068,7 @@
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6525652c4ff5b",
-                        "operator": "==",
-                        "value": "featured_image"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_6525652c4ff5b",
-                        "operator": "==",
-                        "value": "image"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -2731,5 +2704,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1755246643
+    "modified": 1756734803
 }
