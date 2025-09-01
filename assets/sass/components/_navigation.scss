@@ -104,16 +104,18 @@ header {
 			
             > .sub-menu {
 				min-width: 180px;
+                width: max-content;
 				
 				li {
-					@apply w-full;
+					width: calc(100% + .75rem) #{!important};
 					display: list-item !important;
 					margin-left: 20px;
 				}
 
 				.sub-menu {
-					left: calc(100%) !important;
-					top: 0 !important;
+                    left: calc(100%) !important;
+					top: -.75rem !important;
+                    width: max-content;
 				}
 				
 				@screen xl {
@@ -202,6 +204,7 @@ header {
 
 			> .sub-menu {
 				min-width: 180px;
+                 width: max-content;
 
 				li {
 					display: list-item !important;
