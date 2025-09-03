@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.accordeon.index', ['block' => $block])->render(); ?>
