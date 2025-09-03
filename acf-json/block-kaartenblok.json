@@ -655,13 +655,13 @@
                 "id": ""
             },
             "choices": {
-                "diensten": "Dienst",
+                "organisation": "Organisatie",
                 "project": "Project",
                 "testimonials": "Testimonial",
-                "vacatures": "Vacature",
+                "verhaal": "Verhaal",
                 "werknemers": "Werknemer",
                 "wf_layouts": "Layout",
-                "post": "Bericht",
+                "post": "Nieuws & activiteit",
                 "page": "Pagina"
             },
             "default_value": false,
@@ -839,7 +839,27 @@
                     "taxonomy": "",
                     "allow_archives": 1,
                     "multiple": 0,
-                    "allow_null": 0,
+                    "allow_null": 1,
+                    "allow_in_bindings": 1,
+                    "parent_repeater": "field_65254f6289fbf"
+                },
+                {
+                    "key": "field_68b8555b50985",
+                    "label": "Externe URL",
+                    "name": "external_url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
                     "parent_repeater": "field_65254f6289fbf"
                 },
                 {
@@ -2697,5 +2717,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1756735677
+    "modified": 1756911174
 }

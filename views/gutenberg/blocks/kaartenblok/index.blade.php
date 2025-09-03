@@ -109,26 +109,40 @@
         }
         wp_reset_postdata();
     } else {
-        // Use manually selected pages
-        for ($i = 0; $i < $numPages; $i++) {
-            $pageId = $block['data']["pages_{$i}_page"] ?? 0;
-            $imageId = $block['data']["pages_{$i}_image"] ?? 0;
+    // Use manually selected pages
+    for ($i = 0; $i < $numPages; $i++) {
+        $pageId      = $block['data']["pages_{$i}_page"] ?? 0;
+        $imageId     = $block['data']["pages_{$i}_image"] ?? 0;
+        $externalUrl = $block['data']["pages_{$i}_external_url"] ?? '';
 
-            if ($pageId) {
-                $page = get_post($pageId);
+        if ($pageId) {
+            // Interne pagina
+            $page = get_post($pageId);
 
-                if ($page) {
-                    $pagesData[] = [
-                        'id' => $page->ID,
-                        'title' => $page->post_title,
-                        'custom_title' => $block['data']["pages_{$i}_custom_page_title"] ?? '',
-                        'url' => get_permalink($page->ID),
-                        'content' => $page->post_content,
-                        'icon' => $block['data']["pages_{$i}_icon"] ?? '',
-                        'image_id' => $imageId,
-                        'featured_image_id' => $imageId ?: (has_post_thumbnail($page->ID) ? get_post_thumbnail_id($page->ID) : 0),
-                    ];
-                }
+            if ($page) {
+                $pagesData[] = [
+                    'id'                => $page->ID,
+                    'title'             => $page->post_title,
+                    'custom_title'      => $block['data']["pages_{$i}_custom_page_title"] ?? '',
+                    'url'               => get_permalink($page->ID),
+                    'content'           => $page->post_content,
+                    'icon'              => $block['data']["pages_{$i}_icon"] ?? '',
+                    'image_id'          => $imageId,
+                    'featured_image_id' => $imageId ?: (has_post_thumbnail($page->ID) ? get_post_thumbnail_id($page->ID) : 0),
+                ];
+            }
+            } elseif (!empty($externalUrl)) {
+                // Externe link
+                $pagesData[] = [
+                    'id'                => 0,
+                    'title'             => $block['data']["pages_{$i}_custom_page_title"] ?? $externalUrl,
+                    'custom_title'      => $block['data']["pages_{$i}_custom_page_title"] ?? '',
+                    'url'               => $externalUrl,
+                    'content'           => '',
+                    'icon'              => $block['data']["pages_{$i}_icon"] ?? '',
+                    'image_id'          => $imageId,
+                    'featured_image_id' => $imageId,
+                ];
             }
         }
     }
@@ -200,65 +214,66 @@
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'kaarten' }}@endif" class="block-kaarten kaarten-{{ $randomNumber }}-custom-padding kaarten-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} @if ($cardVariant == 'variant1') content-in-card @elseif ($cardVariant == 'variant2') content-under-card @endif {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'kaarten' }}@endif"
+         class="block-kaarten kaarten-{{ $randomNumber }}-custom-padding kaarten-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} @if ($cardVariant == 'variant1') content-in-card @elseif ($cardVariant == 'variant2') content-under-card @endif {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat;  @if($backgroundImageParallax) background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if($swiperOutContainer)
         <div class="overflow-hidden">
-    @endif
-        @if ($overlayEnabled)
-            <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
-        @endif
-        <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-            <div class="block-content {{ $blockClass }} mx-auto">
-                @if ($subTitle)
-                    <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if($blockWidth == 'fullscreen') px-8 @endif {{ $textClass }}">
+            @endif
+            @if ($overlayEnabled)
+                <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+            @endif
+            <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+                <div class="block-content {{ $blockClass }} mx-auto">
+                    @if ($subTitle)
+                        <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if($blockWidth == 'fullscreen') px-8 @endif {{ $textClass }}">
                         @if ($subtitleIcon)
-                            <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
-                        @endif
-                        {!! $subTitle !!}
+                                <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
+                            @endif
+                            {!! $subTitle !!}
                     </span>
-                @endif
-                @if ($title)
-                    <h2 class="title mb-4 text-{{ $titleColor }} @if($blockWidth == 'fullscreen') px-8 @endif {{ $textClass }}">{!! $title !!}</h2>
-                @endif
-                @if ($text)
-                    @include('components.content', [
-                       'content' => apply_filters('the_content', $text),
-                       'class' => 'mt-4 text-' . $textColor . ' ' . $textClass,
-                    ])
-                @endif
-                @if ($pagesData)
-                    @include('components.cardblock.list')
-                @endif
-                @if (($button1Text) && ($button1Link))
-                    <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }}">
-                        @include('components.buttons.default', [
-                           'text' => $button1Text,
-                           'href' => $button1Link,
-                           'alt' => $button1Text,
-                           'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                           'class' => 'rounded-lg',
-                           'target' => $button1Target,
-                           'icon' => $button1Icon,
-                           'download' => $button1Download,
+                    @endif
+                    @if ($title)
+                        <h2 class="title mb-4 text-{{ $titleColor }} @if($blockWidth == 'fullscreen') px-8 @endif {{ $textClass }}">{!! $title !!}</h2>
+                    @endif
+                    @if ($text)
+                        @include('components.content', [
+                           'content' => apply_filters('the_content', $text),
+                           'class' => 'mt-4 text-' . $textColor . ' ' . $textClass,
                         ])
-                        @if (($button2Text) && ($button2Link))
+                    @endif
+                    @if ($pagesData)
+                        @include('components.cardblock.list')
+                    @endif
+                    @if (($button1Text) && ($button1Link))
+                        <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }}">
                             @include('components.buttons.default', [
-                                'text' => $button2Text,
-                                'href' => $button2Link,
-                                'alt' => $button2Text,
-                                'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                                'class' => 'rounded-lg',
-                                'target' => $button2Target,
-                                'icon' => $button2Icon,
-                                'download' => $button2Download,
+                               'text' => $button1Text,
+                               'href' => $button1Link,
+                               'alt' => $button1Text,
+                               'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                               'class' => 'rounded-lg',
+                               'target' => $button1Target,
+                               'icon' => $button1Icon,
+                               'download' => $button1Download,
                             ])
-                        @endif
-                    </div>
-                @endif
+                            @if (($button2Text) && ($button2Link))
+                                @include('components.buttons.default', [
+                                    'text' => $button2Text,
+                                    'href' => $button2Link,
+                                    'alt' => $button2Text,
+                                    'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                    'class' => 'rounded-lg',
+                                    'target' => $button2Target,
+                                    'icon' => $button2Icon,
+                                    'download' => $button2Download,
+                                ])
+                            @endif
+                        </div>
+                    @endif
+                </div>
             </div>
-        </div>
-    @if($swiperOutContainer)
+            @if($swiperOutContainer)
         </div>
     @endif
 </section>
@@ -266,43 +281,73 @@
 <style>
     .kaarten-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
-            @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
-            @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
-            @if($mobilePaddingBottom) padding-bottom: {{ $mobilePaddingBottom }}px; @endif
-            @if($mobilePaddingLeft) padding-left: {{ $mobilePaddingLeft }}px; @endif
+            @if($mobilePaddingTop)   padding-top: {{ $mobilePaddingTop }}px;
+            @endif
+                       @if($mobilePaddingRight)   padding-right: {{ $mobilePaddingRight }}px;
+            @endif
+                       @if($mobilePaddingBottom)   padding-bottom: {{ $mobilePaddingBottom }}px;
+            @endif
+                       @if($mobilePaddingLeft)   padding-left: {{ $mobilePaddingLeft }}px; @endif
+
+
         }
         @media only screen and (min-width: 768px) {
-            @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
-            @if($tabletPaddingRight) padding-right: {{ $tabletPaddingRight }}px; @endif
-            @if($tabletPaddingBottom) padding-bottom: {{ $tabletPaddingBottom }}px; @endif
-            @if($tabletPaddingLeft) padding-left: {{ $tabletPaddingLeft }}px; @endif
+            @if($tabletPaddingTop)   padding-top: {{ $tabletPaddingTop }}px;
+            @endif
+                       @if($tabletPaddingRight)   padding-right: {{ $tabletPaddingRight }}px;
+            @endif
+                       @if($tabletPaddingBottom)   padding-bottom: {{ $tabletPaddingBottom }}px;
+            @endif
+                       @if($tabletPaddingLeft)   padding-left: {{ $tabletPaddingLeft }}px; @endif
+
+
         }
         @media only screen and (min-width: 1024px) {
-            @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
-            @if($desktopPaddingRight) padding-right: {{ $desktopPaddingRight }}px; @endif
-            @if($desktopPaddingBottom) padding-bottom: {{ $desktopPaddingBottom }}px; @endif
-            @if($desktopPaddingLeft) padding-left: {{ $desktopPaddingLeft }}px; @endif
+            @if($desktopPaddingTop)   padding-top: {{ $desktopPaddingTop }}px;
+            @endif
+                       @if($desktopPaddingRight)   padding-right: {{ $desktopPaddingRight }}px;
+            @endif
+                       @if($desktopPaddingBottom)   padding-bottom: {{ $desktopPaddingBottom }}px;
+            @endif
+                       @if($desktopPaddingLeft)   padding-left: {{ $desktopPaddingLeft }}px; @endif
+
+
         }
     }
 
     .kaarten-{{ $randomNumber }}-custom-margin {
         @media only screen and (min-width: 0px) {
-            @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
-            @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif
-            @if($mobileMarginBottom) margin-bottom: {{ $mobileMarginBottom }}px; @endif
-            @if($mobileMarginLeft) margin-left: {{ $mobileMarginLeft }}px; @endif
+            @if($mobileMarginTop)   margin-top: {{ $mobileMarginTop }}px;
+            @endif
+                       @if($mobileMarginRight)   margin-right: {{ $mobileMarginRight }}px;
+            @endif
+                       @if($mobileMarginBottom)   margin-bottom: {{ $mobileMarginBottom }}px;
+            @endif
+                       @if($mobileMarginLeft)   margin-left: {{ $mobileMarginLeft }}px; @endif
+
+
         }
         @media only screen and (min-width: 768px) {
-            @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
-            @if($tabletMarginRight) margin-right: {{ $tabletMarginRight }}px; @endif
-            @if($tabletMarginBottom) margin-bottom: {{ $tabletMarginBottom }}px; @endif
-            @if($tabletMarginLeft) margin-left: {{ $tabletMarginLeft }}px; @endif
+            @if($tabletMarginTop)   margin-top: {{ $tabletMarginTop }}px;
+            @endif
+                       @if($tabletMarginRight)   margin-right: {{ $tabletMarginRight }}px;
+            @endif
+                       @if($tabletMarginBottom)   margin-bottom: {{ $tabletMarginBottom }}px;
+            @endif
+                       @if($tabletMarginLeft)   margin-left: {{ $tabletMarginLeft }}px; @endif
+
+
         }
         @media only screen and (min-width: 1024px) {
-            @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
-            @if($desktopMarginRight) margin-right: {{ $desktopMarginRight }}px; @endif
-            @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
-            @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
+            @if($desktopMarginTop)   margin-top: {{ $desktopMarginTop }}px;
+            @endif
+                       @if($desktopMarginRight)   margin-right: {{ $desktopMarginRight }}px;
+            @endif
+                       @if($desktopMarginBottom)   margin-bottom: {{ $desktopMarginBottom }}px;
+            @endif
+                       @if($desktopMarginLeft)   margin-left: {{ $desktopMarginLeft }}px; @endif
+
+
         }
     }
 
