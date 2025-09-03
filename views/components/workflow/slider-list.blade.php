@@ -3,7 +3,7 @@
     $randomId = 'specialStepSliderSwiper-' . $randomNumber;
 @endphp
 
-<div class="block relative">
+<div class="block relative sticky top-0">
     <div class="swiper {{ $randomId }} pb-8 md:pb-0">
         <div class="swiper-wrapper">
             @foreach ($steps as $index => $step)
