@@ -20,6 +20,7 @@ import './dynamic-content';
 import './custom-cart';
 import './cad-download-toggle';
 import './lazyload';
+import './indicator';
 import ThemeChildApp from './../../../theme-child/assets/js/app';
 
 // Use Swiper and the necessary modules

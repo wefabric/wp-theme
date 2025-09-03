@@ -1,0 +1,98 @@
+.indicator {
+  position: relative;
+  &:before{
+    content: var(--indicator-content, "");
+    position: absolute;
+    top: -0.55rem;
+    right: -0.50rem;
+    color: white;
+    // andere animation
+    //animation: pingBounce 3.5s cubic-bezier(0.28, 0.84, .2, 1) infinite;
+
+    -webkit-animation: ping 3s cubic-bezier(0,0,.2,1) infinite;
+    animation: ping 3s cubic-bezier(0,0,.2,1) infinite;
+
+    --tw-bg-opacity: 1;
+    --tw-text-opacity: 1;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: red;
+    border-color: unset;
+  }
+  @keyframes ping {
+    25% {
+      transform:rotate(0deg)
+    }
+    30% {transform:rotate(6deg)
+    }
+    35% {
+      transform:rotate(0deg)
+    }
+    40% {
+      transform:rotate(-3deg)
+    }
+    45% {transform:rotate(3deg)
+    }
+    50% {transform:scale(1.2) rotate(0deg)}
+    to{
+      transform:scale(1)
+    }
+  }
+  blockquote {
+   background-color:#ffb346;border-radius:1rem;padding:20px
+   }
+
+  @-webkit-keyframes ping{
+   25% {
+   transform:rotate(0deg)
+    }
+   30% {
+   transform:rotate(6deg)
+    }
+   35% {
+   transform:rotate(0deg)
+    }
+   40% {
+   transform:rotate(-3deg)
+    }
+   45% {
+   transform:rotate(3deg)
+    }
+   50% {
+   transform:scale(1.2) rotate(0deg)
+    }
+   to {
+   transform:scale(1)
+    }
+   }
+
+  //@keyframes pingBounce {
+  //  0% {
+  //    transform: scale(1) translateY(0);
+  //  }
+  //  20% {
+  //    transform: scale(1.2) translateY(-6px);
+  //  }
+  //  40% {
+  //    transform: scale(1.2) translateY(0);
+  //  }
+  //  60% {
+  //    transform: scale(1.2) translateY(-3px);
+  //  }
+  //  90%, 100% {
+  //    transform: scale(1) translateY(0);
+  //  }
+  //}
+
+}
+
+
