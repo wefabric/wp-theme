@@ -4,10 +4,10 @@
   //}
 
   a {
-    @apply underline font-bold text-primary;
+    @apply no-underline font-bold text-primary;
 
     &:hover {
-      @apply no-underline;
+      @apply underline;
     }
   }
 
