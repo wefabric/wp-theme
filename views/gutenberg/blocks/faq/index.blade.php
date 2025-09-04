@@ -140,7 +140,7 @@
                                        for="{{ $uniqueFaqId }}">{{ $faq['question_and_answer']['question'] }}</label>
                                 <div class="faq-drawer__content-wrapper text-{{ $answerTextColor }}">
                                     <div class="faq-drawer__content px-10 pb-8 bg-{{ $faqBackgroundColor }}">
-                                        <div class="text-base">{!! apply_filters('the_content', $faq['question_and_answer']['answer']) !!}</div>
+                                        <div class="text-base content">{!! apply_filters('the_content', $faq['question_and_answer']['answer']) !!}</div>
                                     </div>
                                 </div>
                             </div>
