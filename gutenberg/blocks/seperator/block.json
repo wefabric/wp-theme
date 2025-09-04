@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/seperator",
+  "title": "seperator",
+  "description": "Een seperator blok",
+  "category": "wefabric-theme",
+  "icon": "editor-paragraph",
+  "apiVersion": 2,
+  "keywords": [
+    "seperator"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
