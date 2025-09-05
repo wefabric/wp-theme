@@ -124,7 +124,7 @@
             <div class="top-image overlay absolute z-30 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 @include('components.image', [
                     'image_id' => $topImage,
-                    'size' => 'full',
+                    'size' => 'job-thumbnail',
                     'object_fit' => 'cover',
                     'img_class' => 'w-[200px] aspect-square object-cover rounded-full',
                     'alt' => get_post_meta($topImage, '_wp_attachment_image_alt', true) ?: 'Top image',
