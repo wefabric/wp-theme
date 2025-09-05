@@ -14,7 +14,9 @@
         @if ($projectThumbnailId)
             <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $projectUrl }}" aria-label="Ga naar {{ $projectTitle }} pagina"
-                   class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                   class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
+                    <span class="sr-only">Ga naar {{ $projectTitle }} pagina</span>
+                </a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     @if ($projectCategories && !is_bool($projectCategories))
                         <div class="project-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">

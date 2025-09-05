@@ -23,7 +23,9 @@
     <div class="h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
         <div class="max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
             <a href="{{ get_permalink($postId) }}"
-               class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+               class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
+                <span class="sr-only">Ga naar {{ get_the_title($postId) }}</span>
+            </a>
 
             <div class="news-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                 @if($postCategories)
