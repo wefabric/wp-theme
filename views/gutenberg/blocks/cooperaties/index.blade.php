@@ -45,6 +45,11 @@
     $imageAlt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
     $imageMaxHeight = $block['data']['image_max_height'] ?? '';
 
+    // Cooperaties
+    $activeCooperation = $block['data']['active_cooperation'] ?? '';
+
+
+
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
     $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
@@ -270,33 +275,32 @@
             $text = $fields['text'] ?? '';
             $link = $fields['link'] ?? null;
             $title = get_the_title($cooperatie->ID);
-
             ob_start();
         @endphp
 
         <div class="dot-content cooperatie-item relative">
-            <button class="close-dot-panel absolute bg-white hover:bg-primary hover:text-white rounded-full h-[40px] w-[40px] top-[-18px] right-[-18px] shadow-lg text-primary-dark font-bold text-[24px]">
-                &times;
-            </button>
-            @if ($image)
-                <div class="cooperatie-image-container">
-                    {!! wp_get_attachment_image($image, 'medium', false, ['class' => 'cooperatie-image w-full object-cover']) !!}
-                </div>
-            @endif
-            <div class="cooperatie-content">
-                <div class="cooperatie-title mb-1">{{ $title }}</div>
-                <div class="cooperatie-text mb-2">{!! $text !!}</div>
-                @if ($link)
-                    @include('components.buttons.default', [
-                        'text' => 'Lees meer',
-                        'href' => $link,
-                        'alt' => 'Lees meer over ' . $title . ' cooperatie',
-                        'colors' => 'btn-primary btn-outline',
-                        'class' => 'rounded-lg',
-                        'target' => '_blank',
-                    ])
-                @endif
-            </div>
+        <button class="close-dot-panel absolute bg-white hover:bg-primary hover:text-white rounded-full h-[40px] w-[40px] top-[-18px] right-[-18px] shadow-lg text-primary-dark font-bold text-[24px]">
+            &times;
+        </button>
+        @if ($image)
+        <div class="cooperatie-image-container">
+        {!! wp_get_attachment_image($image, 'full', false, ['class' => 'cooperatie-image w-full object-cover']) !!}
+        </div>
+        @endif
+        <div class="cooperatie-content">
+        <div class="cooperatie-title mb-1">{{ $title }}</div>
+        <div class="cooperatie-text mb-2">{!! $text !!}</div>
+        @if ($link)
+        @include('components.buttons.default', [
+            'text' => 'Lees meer',
+            'href' => $link,
+            'alt' => 'Lees meer over ' . $title . ' cooperatie',
+            'colors' => 'btn-primary btn-outline',
+            'class' => 'rounded-lg',
+            'target' => '_blank',
+        ])
+        @endif
+        </div>
         </div>
 
         @php
@@ -306,33 +310,42 @@
             tooltipData["dot-{{ $cooperatie->ID }}"] = @json($html);
         @endforeach
 
+        const activeCooperationId = "{{ $activeCooperation }}"; // hier de actieve ID
+
         function clearActiveDots() {
             dots.forEach(dot => dot.classList.remove("active"));
         }
 
-        dots.forEach(dot => {
+        function showDotContent(dot) {
             const dotId = dot.getAttribute("data-dot-id");
+            const html = tooltipData[dotId];
+            if (html && infoPanel) {
+                infoPanel.innerHTML = html;
 
-            const showContent = () => {
-                const html = tooltipData[dotId];
-                if (html && infoPanel) {
-                    infoPanel.innerHTML = html;
-
-                    const closeButton = infoPanel.querySelector(".close-dot-panel");
-                    if (closeButton) {
-                        closeButton.addEventListener("click", () => {
-                            infoPanel.innerHTML = "";
-                            clearActiveDots();
-                        });
-                    }
+                const closeButton = infoPanel.querySelector(".close-dot-panel");
+                if (closeButton) {
+                    closeButton.addEventListener("click", () => {
+                        infoPanel.innerHTML = "";
+                        clearActiveDots();
+                    });
                 }
+            }
 
-                clearActiveDots();
-                dot.classList.add("active");
-            };
+            clearActiveDots();
+            dot.classList.add("active");
+        }
 
-            dot.addEventListener("mouseenter", showContent);
-            dot.addEventListener("click", showContent);
+        dots.forEach(dot => {
+            dot.addEventListener("mouseenter", () => showDotContent(dot));
+            dot.addEventListener("click", () => showDotContent(dot));
         });
+
+        // Als er een actieve cooperatie is, toon deze direct
+        if (activeCooperationId) {
+            const activeDot = document.querySelector(`.cooperatie-dot[data-dot-id="dot-${activeCooperationId}"]`);
+            if (activeDot) {
+                showDotContent(activeDot);
+            }
+        }
     });
 </script>
