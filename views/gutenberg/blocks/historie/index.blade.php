@@ -173,12 +173,12 @@
 
                             <div class="history-item flex flex-col @if ($flyinEffect) history-hidden @endif">
                                 @if ($item['imageId'])
-                                    <div class="history-image relative h-[170px]">
+                                    <div class="history-image relative">
                                         @include('components.image', [
                                             'image_id' => $item['imageId'],
                                             'size' => 'full',
                                             'object_fit' => $item['display'],
-                                            'img_class' => 'h-[170px] w-full',
+                                            'img_class' => 'w-full',
                                             'alt' => $item['alt']
                                         ])
                                     </div>
