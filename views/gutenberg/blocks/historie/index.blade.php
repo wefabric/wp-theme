@@ -176,7 +176,7 @@
                                     <div class="history-image relative">
                                         @include('components.image', [
                                             'image_id' => $item['imageId'],
-                                            'size' => 'full',
+                                            'size' => 'job-thumbnail',
                                             'object_fit' => $item['display'],
                                             'img_class' => 'w-full',
                                             'alt' => $item['alt']
