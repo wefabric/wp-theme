@@ -698,20 +698,14 @@
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6573122856768",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
             "theme_color": "black",
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -722,20 +716,14 @@
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6573122856768",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -746,44 +734,32 @@
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6573122856768",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
             "key": "field_6573328ea2135",
-            "label": "Tijdlijn block achtergrond kleur",
+            "label": "Tijdlijn blok achtergrond kleur",
             "name": "timeline_block_background_color",
             "aria-label": "",
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6573122856768",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
             "theme_color": null,
+            "allow_in_bindings": 1,
             "font_size": 14
         },
         {
@@ -1841,5 +1817,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1752911576
+    "modified": 1757412995
 }
