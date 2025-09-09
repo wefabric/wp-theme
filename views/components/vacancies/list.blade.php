@@ -11,14 +11,17 @@
         'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
     ];
 
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $swiperAutoplaySpeed = max((int)($block['data']['autoplay_speed'] ?? 0) * 1000, 5000);
+    $swiperLoop = $block['data']['loop_slides'] ?? true;
+    $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'vacancySwiper-' . $randomNumber;
 @endphp
 
 @if($block['data']['show_slider'])
-    <div class="block relative">
+    <div class="slider block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($vacancies as $vacancy)
@@ -27,7 +30,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="lg:hidden swiper-pagination"></div>
+            <div class="swiper-pagination"></div>
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next vacancy-button-next-{{ $randomNumber }}"></div>
@@ -42,16 +45,26 @@
     </div>
 @endif
 
+@if ($swiperOutContainer)
+    <style>
+        .vacancySwiper-{{ $randomNumber }} {
+            overflow: unset !important;
+        }
+    </style>
+@endif
+
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var vacancySwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
-            centeredSlides: false,
+            @if ($swiperCenteredSlides)
+                centeredSlides: true,
+            @endif
             @if ($swiperAutoplay)
-            autoplay: {
-                delay: {{ $swiperAutoplaySpeed }},
-                disableOnInteraction: true,
-            },
+                autoplay: {
+                    delay: {{ $swiperAutoplaySpeed }},
+                    disableOnInteraction: true,
+                },
             @endif
             pagination: {
                 el: '.swiper-pagination',
@@ -63,19 +76,19 @@
             },
             breakpoints: {
                 0: {
-                    loop: {{count($vacancies) > $mobileLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($vacancies) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 768: {
-                    loop: {{ count($vacancies) > $tabletLayout ? 'true' : 'false' }},
+                    loop: {{$swiperLoop && count($vacancies) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ count($vacancies) > $desktopLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($vacancies) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
                 },
                 1536: {
-                    loop: {{ count($vacancies) > $desktopXlLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($vacancies) > $desktopXlLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopXlLayout }},
                 },
             }
