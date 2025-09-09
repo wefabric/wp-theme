@@ -66,28 +66,28 @@
             <div class="vacancy-data mt-4 text-{{ $vacancyTextColor }}">
 
                 @if (!empty($visibleElements) && in_array('location', $visibleElements) && !empty($fields['location']))
-                    <p class="flex items-baseline leading-[1.5]">
+                    <div class="vacature-location flex items-center">
                         <i class="w-4 object-cover fas fa-map-marker-alt mr-3"></i>
                         {{ $fields['location'] }}
-                    </p>
+                    </div>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('working_hours', $visibleElements) && !empty($fields['working_hours']))
-                    <p class="flex items-baseline leading-[1.5]">
+                    <div class="vacature-working-hours flex items-center">
                         <i class="w-4 object-cover fas fa-clock mr-3"></i>
                         {{ $workingHours }}
-                    </p>
+                    </div>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('salary', $visibleElements) && !empty($fields['salary']))
-                    <p class="flex items-baseline leading-[1.5]">
+                    <div class="vacature-salary flex items-center">
                         <i class="w-4 fas fa-money-bill-simple-wave mr-3"></i>
                         {{ $fields['salary'] }}
-                    </p>
+                    </div>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($vacancySummary))
-                    <p class="mt-3 mb-3">{{ $vacancySummary }}</p>
+                    <div class="mt-3 mb-3">{{ $vacancySummary }}</div>
                 @endif
             </div>
 
