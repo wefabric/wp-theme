@@ -13,7 +13,7 @@
                 @endphp
 
                 @if ($stepImage)
-                    <div class="swiper-slide h-auto">
+                    <div class="swiper-slide step-slide h-auto">
                         @include('components.image', [
                             'image_id' => $stepImage,
                             'size' => 'full',
@@ -71,3 +71,15 @@
         updateActiveStep(0);
     });
 </script>
+
+<style>
+    .step-slide .image {
+        transform: scale(0.95);
+        transition: transform 0.5s ease;
+    }
+
+    .step-slide.swiper-slide-active .image {
+        display: block;
+        transform: scale(1);
+    }
+</style>
