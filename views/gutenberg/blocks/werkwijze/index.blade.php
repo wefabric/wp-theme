@@ -64,6 +64,7 @@
         $stepNumber = $i + 1;
         $stepImage = $block['data']["steps_{$i}_step_image"] ?? '';
         $stepIcon = $block['data']["steps_{$i}_step_icon"] ?? null;
+        $stepLink = $block['data']["steps_{$i}_step_link"] ?? '';
 
 
         $iconClass = '';
@@ -78,6 +79,7 @@
         $steps[] = [
             'stepTitle' => $stepTitle,
             'stepText' => $stepText,
+            'stepLink' => $stepLink,
             'stepImage' => $stepImage,
             'stepNumber' => $stepNumber,
             'stepIcon' => $iconData ?? null,

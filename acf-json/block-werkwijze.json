@@ -794,6 +794,24 @@
                     "media_upload": 1,
                     "delay": 0,
                     "parent_repeater": "field_649e7ecd70678"
+                },
+                {
+                    "key": "field_68c17b0eda563",
+                    "label": "Link",
+                    "name": "step_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_649e7ecd70678"
                 }
             ]
         },
@@ -2431,5 +2449,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1751983141
+    "modified": 1757510454
 }
