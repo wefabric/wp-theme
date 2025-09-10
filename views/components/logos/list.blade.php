@@ -11,8 +11,11 @@
         'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
     ];
 
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $swiperAutoplaySpeed = max((int)($block['data']['autoplay_speed'] ?? 0) * 1000, 5000);
+    $swiperLoop = $block['data']['loop_slides'] ?? true;
+    $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
 
     $swiperLinear = $block['data']['linear_rotation'] ?? false;
     $swiperDirection = $block['data']['swiper_direction'] ?? 'left';
@@ -40,7 +43,7 @@
 @endphp
 
 @if($block['data']['show_slider'])
-    <div class="swiper-container block relative">
+    <div class="slider swiper-container block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($logos as $logo)
@@ -88,7 +91,9 @@
     window.addEventListener("DOMContentLoaded", (event) => {
         var logosSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
-            centeredSlides: false,
+            @if ($swiperCenteredSlides)
+                centeredSlides: true,
+            @endif
 
             @if ($swiperLinear)
                 freeMode: true,
@@ -113,25 +118,33 @@
             },
             breakpoints: {
                 0: {
-                    loop: {{count($logos) > $mobileLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($logos) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 768: {
-                    loop: {{ count($logos) > $tabletLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($logos) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ count($logos) > $desktopLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($logos) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
                 },
                 1536: {
-                    loop: {{ count($logos) > $desktopXlLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($logos) > $desktopXlLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopXlLayout }},
                 },
             }
         });
     });
 </script>
+
+@if ($swiperOutContainer)
+    <style>
+        .logosSwiper-{{ $randomNumber }} {
+            overflow: unset !important;
+        }
+    </style>
+@endif
 
 @if ($swiperLinear)
     <style>
