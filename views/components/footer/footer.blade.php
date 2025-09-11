@@ -10,20 +10,18 @@
         if(array_key_exists('title_color', $option)) {
 			$title_color = $option['title_color'];
 		}
-		if(array_key_exists('footer_usps', $option)) {
-			$usps = $option['footer_usps'];
-		}
 	}
 
     $footerTitles = $option['footer_titles'] ?? [];
 
     $visibleFooterElements = $option['footer_elements'] ?? [];
-
     $privacyPage = $option['pages']['privacy_page'] ?? '';
     $termsPage = $option['pages']['terms_page'] ?? '';
+
+//    @dd($option['logo_slider']);
 @endphp
 
-<div class="footer bg-{{ $bg_color ?? '' }} text-{{ $text_color ?? 'white' }} text-base pb-6">
+<div class="footer bg-{{ $bg_color ?? '' }} text-{{ $text_color ?? 'white' }} text-base">
     @if(!empty($usps))
         <div class="bg-white text-black py-10 lg:py-20 px-4 md:px-8 lg:px-36">
             @include('components.slider.grid', [
@@ -102,7 +100,7 @@
     @endif
 
     <div class="bottom-info relative ">
-        <div class="custom-flex-styling container mx-auto px-8 flex flex-col md:flex-row">
+        <div class="custom-flex-styling container mx-auto px-8 flex flex-col md:flex-row pb-6">
             <div class="logo-section flex flex-col justify-end lg:w-1/4 lg:pr-8">
 
                 @php
@@ -159,38 +157,6 @@
                     </div>
                 @endif
 
-{{--                <div class="lg:flex lg:flex-row">--}}
-{{--                    @php--}}
-{{--                        $class = 'inline-block hover:underline md:px-2';--}}
-
-{{--                        $menuLocations = get_nav_menu_locations();--}}
-{{--                        $menu = null;--}}
-{{--                        if(isset($menuLocations['footer_menu_three']) && $menuID = $menuLocations['footer_menu_three']) {--}}
-{{--                              $menu = wp_get_nav_menu_items($menuID);--}}
-{{--                        }--}}
-
-{{--                    @endphp--}}
-
-{{--                    @if($menu)--}}
-{{--                        <div id="footer_menu_three" class="bottom-footer">--}}
-{{--                            @foreach($menu as $post)--}}
-{{--                                @include('components.link.simple', [--}}
-{{--                                    'href' => $post->url,--}}
-{{--                                    'class' => $class,--}}
-{{--                                    'text' => __($post->title, 'wefabric')--}}
-{{--                                ])--}}
-
-{{--                                @php--}}
-{{--                                    $last = (in_array($post, $menu) && $post == end($menu));--}}
-{{--                                @endphp--}}
-{{--                                @if(!$last)--}}
-{{--                                    <span class="divider"> / </span>--}}
-{{--                                @endif--}}
-{{--                            @endforeach--}}
-{{--                        </div>--}}
-{{--                    @endif--}}
-{{--                </div>--}}
-
                 <div class="footer-pages text-center md:text-left text-[14px]">
                     @if($termsPage)
                         <a class="terms-text underline"
@@ -238,4 +204,13 @@
             </div>
         </div>
     </div>
+
+    @if($options['show_logo_section'] && !empty($option['logos']['logos']))
+        <div class="footer-logos-section">
+            <div class="container mx-auto px-8">
+                @include ('components.footer.logo-slider')
+            </div>
+        </div>
+    @endif
+
 </div>
