@@ -38,6 +38,12 @@
             }
         }
 
+    $textPosition = $block['data']['text_position'] ?? '';
+    $textOrder = $textPosition === 'left' ? 'lg:order-1 left' : 'lg:order-2 right';
+    $imageOrder = $textPosition === 'left' ? 'lg:order-2 right' : 'lg:order-1 left';
+
+
+    // Links
     $linksCount = $block['data']['links'] ?? 0;
     $links = [];
 
@@ -46,7 +52,6 @@
         $linkText = $block['data'][$linkKey]['title'] ?? '';
         $linkUrl = $block['data'][$linkKey]['url'] ?? '';
         $linkTarget = $block['data'][$linkKey]['target'] ?? '_self';
-
 
         $linkIcon = $block['data']["links_{$i}_link_icon"] ?? '';
         $buttonIcon = '';
@@ -67,10 +72,21 @@
     }
 
 
+    // USP
+    $uspCount = $block['data']['usps'] ?? 0;
+    $usp = [];
 
-    $textPosition = $block['data']['text_position'] ?? '';
-    $textOrder = $textPosition === 'left' ? 'lg:order-1 left' : 'lg:order-2 right';
-    $imageOrder = $textPosition === 'left' ? 'lg:order-2 right' : 'lg:order-1 left';
+        for ($i = 0; $i < $uspCount; $i++) {
+        $uspText = $block['data']["usps_{$i}_usp_text"] ?? '';
+
+        $uspIcon = $block['data']["usps_{$i}_usp_icon"] ?? '';
+        $buttonIcon = '';
+
+        $usps[] = [
+            'uspText' => $uspText,
+            'uspIcon' => $uspIcon,
+        ];
+    }
 
 
     // Afbeelding
@@ -189,15 +205,34 @@
                                                     $iconData = json_decode($link['linkIcon'], true);
                                                     $iconClass = 'fa-' . ($iconData['style'] ?? 'solid') . ' fa-' . ($iconData['id'] ?? '');
                                                 @endphp
-                                                <i class="fa {{ $iconClass }} text-{{ $link['linkIconColor'] }} text-[20px] w-[24px] h-[24px] flex justify-center items-center transition-transform duration-300 ease-in-out" aria-hidden="true"></i>
+                                                <i class="fa {{ $iconClass }} text-[20px] w-[24px] h-[24px] flex justify-center items-center transition-transform duration-300 ease-in-out" aria-hidden="true"></i>
                                             @endif
-                                            <span class="link-text @if($link['linkTextColor']) text-{{ $link['linkTextColor'] }} @else text-cta @endif font-semibold group-hover:underline">{!! $link['linkText'] !!}</span>
+                                            <span class="link-text text-cta font-semibold group-hover:underline">{!! $link['linkText'] !!}</span>
                                         </a>
                                     </div>
                                 @endif
                             @endforeach
                         </div>
                     @endif
+                    @if ($usps)
+                        <div class="usp-list flex flex-col gap-y-4">
+                            @foreach($usps as $usp)
+                                @if($usp['uspText'])
+                                    <div class="usp-item flex items-center gap-x-4">
+                                        @if($usp['uspIcon'])
+                                            @php
+                                                $iconData = json_decode($usp['uspIcon'], true);
+                                                $iconClass = 'fa-' . ($iconData['style'] ?? 'solid') . ' fa-' . ($iconData['id'] ?? '');
+                                            @endphp
+                                            <i class="fa {{ $iconClass }} text-[20px] w-[24px] h-[24px] flex justify-center items-center" aria-hidden="true"></i>
+                                        @endif
+                                        <div class="usp-text text-{{ $titleColor }} font-medium">{!! $usp['uspText'] !!}</div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    @endif
+
                     @if (($button1Text) && ($button1Link))
                         <div class="buttons w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 @if ($flyInAnimation) flyin-animation @endif">
                             @include('components.buttons.default', [
