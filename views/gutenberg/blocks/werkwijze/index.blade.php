@@ -65,7 +65,18 @@
         $stepImage = $block['data']["steps_{$i}_step_image"] ?? '';
         $stepIcon = $block['data']["steps_{$i}_step_icon"] ?? null;
         $stepLink = $block['data']["steps_{$i}_step_link"] ?? '';
-
+        $stepButtonText = $block['data']["steps_{$i}_button_button"]['title'] ?? '';
+        $stepButtonLink = $block['data']["steps_{$i}_button_button"]['url'] ?? '';
+        $stepButtonTarget = $block['data']["steps_{$i}_button_button"]['target'] ?? '_self';
+        $stepButtonColor = $block['data']["steps_{$i}_button_button_color"] ?? '';
+        $stepButtonStyle = $block['data']["steps_{$i}_button_button_style"] ?? '';
+        $stepButtonIcon = $block['data']["steps_{$i}_button_button_icon"] ?? '';
+        if (!empty($stepButtonIcon)) {
+            $iconData = json_decode($stepButtonIcon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $stepButtonIcon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
 
         $iconClass = '';
         if ($stepIcon !== null) {
@@ -84,6 +95,12 @@
             'stepNumber' => $stepNumber,
             'stepIcon' => $iconData ?? null,
             'iconClass' => $iconClass,
+            'stepButtonText' => $stepButtonText,
+            'stepButtonLink' => $stepButtonLink,
+            'stepButtonTarget' => $stepButtonTarget,
+            'stepButtonColor' => $stepButtonColor,
+            'stepButtonStyle' => $stepButtonStyle,
+            'stepButtonIcon' => $stepButtonIcon,
         ];
     }
 
