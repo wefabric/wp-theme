@@ -9,6 +9,7 @@
 return [
     'top-navigation' => __('Top navigation', THEME_TD),
 	'menu-1' => __('Header Navigation', THEME_TD),
+    'mobile-menu' => __('Mobile Menu', THEME_TD),
 	'footer_menu_one' => __('Footer menu 1', THEME_TD),
 	'footer_menu_two' => __('Footer menu 2', THEME_TD),
 	'footer_menu_three' => __('Footer menu 3', THEME_TD),

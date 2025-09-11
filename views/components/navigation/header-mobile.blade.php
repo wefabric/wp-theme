@@ -36,6 +36,8 @@
         }
         break;
     }
+
+    $menuType = $options['mobile_menu_type'] ?? 'desktop_menu"';
 @endphp
 
 <input type="checkbox" class="hidden" id="nav-mobile-active" autocomplete="off">
@@ -91,7 +93,7 @@
             </div>
 
             @if (!empty($options['secondary_menu_show_elements']))
-                <div class="top-navigation flex gap-2 text-md px-4 pb-4 text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
+                <div class="top-navigation flex flex-col gap-2 text-md px-4 pb-4 text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
                     @if (in_array('phone', $options['secondary_menu_show_elements']) || in_array('email', $options['secondary_menu_show_elements']))
                         <div class="contact-info flex gap-x-2">
                             @if (in_array('phone', $options['secondary_menu_show_elements']))
@@ -111,40 +113,48 @@
                         </div>
                     @endif
 
-                    @if (in_array('top_navigation', $options['secondary_menu_show_elements']))
-                        @php
-                            $menuLocations = get_nav_menu_locations();
-                            $menuID = null;
-                            if(isset($menuLocations['top-navigation'])) {
-                                $menuID = $menuLocations['top-navigation'];
-                            }
-                        @endphp
-                        @if(isset($menuID) && !is_null($menuID))
-                            {!! wp_nav_menu([
-                                'theme_location' => 'top-navigation',
-                                'menu_id' => $menuID,
-                                'container_class' => 'secondary-menu-items flex',
-                                'li_class'  => 'li-class',
-                                'li_active_class'  => '',
-                                'echo' => false
-                            ]) !!}
-                        @endif
+                    @if ($menuType == 'desktop_menu')
+                        @if (in_array('top_navigation', $options['secondary_menu_show_elements']))
+                            @php
+                                $menuLocations = get_nav_menu_locations();
+                                $menuID = null;
+                                if(isset($menuLocations['top-navigation'])) {
+                                    $menuID = $menuLocations['top-navigation'];
+                                }
+                            @endphp
+                            @if(isset($menuID) && !is_null($menuID))
+                                {!! wp_nav_menu([
+                                    'theme_location' => 'top-navigation',
+                                    'menu_id' => $menuID,
+                                    'container_class' => 'secondary-menu-items flex',
+                                    'li_class'  => 'li-class',
+                                    'li_active_class'  => '',
+                                    'echo' => false
+                                ]) !!}
+                            @endif
 
+                        @endif
                     @endif
                 </div>
             @endif
 
             <nav id="site-navigation" class="main-navigation">
-
-                <li class="home-item menu-item menu-item-object-page {{ Request::is('/') ? 'current-menu-item current_page_item' : '' }}">
-                    <a href="<?php echo home_url(); ?>">Home</a>
-                </li>
-
-                {!! wp_nav_menu([
-                    'theme_location' => 'menu-1',
-                    'menu_id' => 'primary-menu',
-                    'echo' => false
-                ]) !!}
+                @if ($menuType == 'desktop_menu')
+                    <li class="home-item menu-item menu-item-object-page {{ Request::is('/') ? 'current-menu-item current_page_item' : '' }}">
+                        <a href="<?php echo home_url(); ?>">Home</a>
+                    </li>
+                    {!! wp_nav_menu([
+                        'theme_location' => 'menu-1',
+                        'menu_id' => 'primary-menu',
+                        'echo' => false
+                    ]) !!}
+                @elseif ($menuType == 'mobile_menu')
+                    {!! wp_nav_menu([
+                     'theme_location' => 'mobile-menu',
+                     'menu_id' => 'primary-menu',
+                     'echo' => false
+                 ]) !!}
+                @endif
             </nav>
         </nav>
     </div>

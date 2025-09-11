@@ -73,7 +73,9 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_62ff223307a32",
@@ -411,6 +413,35 @@
             "selected": 0
         },
         {
+            "key": "field_68c2bb42980eb",
+            "label": "Type menu",
+            "name": "mobile_menu_type",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "desktop_menu": "Gebruik desktop menu",
+                "mobile_menu": "Gebruik mobiele menu"
+            },
+            "default_value": "desktop_menu",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_67af3265d134a",
             "label": "Logo",
             "name": "mobile_navigation_logo",
@@ -435,7 +466,9 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_67af3290d134b",
@@ -474,5 +507,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1739536148
+    "modified": 1757593355
 }
