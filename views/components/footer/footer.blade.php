@@ -206,7 +206,7 @@
     </div>
 
     @if($options['show_logo_section'] && !empty($option['logos']['logos']))
-        <div class="footer-logos-section">
+        <div class="footer-logos-section bg-{{ $options['logo_section_background_color'] ?? 'white' }}">
             <div class="container mx-auto px-8">
                 @include ('components.footer.logo-slider')
             </div>

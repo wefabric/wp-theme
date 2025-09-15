@@ -616,6 +616,32 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_68c7e3aafe2c6",
+            "label": "Achtergrond kleur",
+            "name": "logo_section_background_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68c2a558b171c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "white",
+            "allow_in_bindings": 0,
+            "font_size": 14
+        },
+        {
             "key": "field_68c292040939c",
             "label": "Logos",
             "name": "logos",
@@ -1075,5 +1101,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1757587265
+    "modified": 1757930455
 }
