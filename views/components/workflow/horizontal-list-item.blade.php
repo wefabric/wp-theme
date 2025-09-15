@@ -54,7 +54,12 @@
                 @if($stepLink)
                     <a href="{{ $stepLink['url'] }}" aria-label="{{ $stepLink['title'] ?? ('Ga naar ' . $stepTitle) }}">
                         @endif
-                        <div class="step-title mb-2 text-xl text-{{ $stepTitleColor }}">{{ $stepTitle }}</div>
+                        <div class="step-title mb-2 text-xl text-{{ $stepTitleColor }}">
+                            @if (!empty($visibleElements) && in_array('stepnumber_3', $visibleElements))
+                                <div class="title-step-number inline-flex">{{ $stepNumber }}</div>
+                            @endif
+                            {{ $stepTitle }}
+                        </div>
                         @if($stepLink)
                     </a>
                 @endif

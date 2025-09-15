@@ -1053,11 +1053,13 @@
             },
             "choices": {
                 "stepnumber_1": "Stapnummer naast visual",
-                "stepnumber_2": "Stapnummer boven staptitel"
+                "stepnumber_2": "Stapnummer boven staptitel",
+                "stepnumber_3": "Stapnummer naast staptitel"
             },
             "default_value": [],
             "return_format": "value",
             "allow_custom": 0,
+            "allow_in_bindings": 1,
             "layout": "vertical",
             "toggle": 0,
             "save_custom": 0,
@@ -1596,6 +1598,44 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "key": "field_68c8232964ee3",
+            "label": "Paginatie stijl",
+            "name": "pagination_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_678f797a27fff",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "bullets": "Bullets",
+                "progress_bar": "Progressie balk",
+                "none": "Geen"
+            },
+            "default_value": "bullets",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_6512e1613e2e9",
@@ -2671,5 +2711,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1757935266
+    "modified": 1757946712
 }

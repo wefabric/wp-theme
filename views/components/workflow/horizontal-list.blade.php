@@ -17,6 +17,7 @@
     $swiperLoop = $block['data']['loop_slides'] ?? true;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
+    $paginationStyle = $block['data']['pagination_style'] ?? 'bullets';
     $randomId = 'stepSwiper-' . $randomNumber;
 @endphp
 
@@ -30,7 +31,9 @@
                     </div>
                 @endforeach
             </div>
-            <div class="swiper-pagination"></div>
+            @if ($paginationStyle != 'none')
+                <div class="swiper-pagination"></div>
+            @endif
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next steps-button-next-{{ $randomNumber }}"></div>
@@ -68,7 +71,11 @@
             @endif
             pagination: {
                 el: '.swiper-pagination',
-                clickable: true,
+                @if ($paginationStyle == 'progress_bar')
+                    type: 'progressbar',
+                @elseif ($paginationStyle == 'bullets')
+                    clickable: true,
+                @endif
             },
             navigation: {
                 nextEl: ".steps-button-next-{{ $randomNumber }}",

@@ -64,6 +64,14 @@
 	display: none;
 }
 
+.swiper-pagination-progressbar-fill {
+  @apply bg-primary #{!important};
+}
+
+.swiper-pagination-progressbar {
+  @apply bg-background #{!important};
+}
+
 
 
 
