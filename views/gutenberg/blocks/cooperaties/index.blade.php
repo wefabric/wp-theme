@@ -164,9 +164,21 @@
                                     @endphp
 
                                     @if (is_numeric($x) && is_numeric($y))
+
+                                        @php
+                                            $status = $fields['status'] ?? 'cooperation';
+                                            $dotColor = match($status) {
+                                                'cooperation' => 'cooperation',
+                                                'pilot'       => 'pilot',
+                                                'exploration' => 'exploration',
+                                                default       => 'cooperation',
+                                            };
+                                        @endphp
+
+
                                         <div class="cooperatie-dot-wrapper absolute"
                                              style="left: {{ $x }}%; top: {{ $y }}%; transform: translate(-50%, -50%);">
-                                            <div class="cooperatie-dot w-[15px] h-[15px] bg-primary rounded-full cursor-pointer transition duration-300 hover:scale-150"
+                                            <div class="cooperatie-dot w-[15px] h-[15px] {{ $dotColor }} rounded-full cursor-pointer transition duration-300 hover:scale-150"
                                                  data-dot-id="dot-{{ $cooperatie->ID }}">
                                             </div>
                                         </div>
@@ -271,10 +283,20 @@
         @foreach ($cooperaties as $cooperatie)
         @php
             $fields = get_fields($cooperatie->ID);
-            $image = $fields['image'] ?? null;
-            $text = $fields['text'] ?? '';
-            $link = $fields['link'] ?? null;
-            $title = get_the_title($cooperatie->ID);
+            $image  = $fields['image'] ?? null;
+            $text   = $fields['text'] ?? '';
+            $link   = $fields['link'] ?? null;
+            $title  = get_the_title($cooperatie->ID);
+            $status = $fields['status'] ?? 'cooperation';
+
+
+            $prefix = '';
+            if ($status === 'pilot') {
+                $prefix = 'Pilot ';
+            } elseif ($status === 'exploration') {
+                $prefix = 'Verkenning in ';
+            }
+
             ob_start();
         @endphp
 
@@ -282,21 +304,23 @@
         <button class="close-dot-panel absolute bg-white hover:bg-primary hover:text-white rounded-full h-[40px] w-[40px] top-[-18px] right-[-18px] shadow-lg text-primary-dark font-bold text-[24px]">
             &times;
         </button>
+
         @if ($image)
         <div class="cooperatie-image-container">
         {!! wp_get_attachment_image($image, 'full', false, ['class' => 'cooperatie-image w-full object-cover']) !!}
         </div>
         @endif
+
         <div class="cooperatie-content">
-        <div class="cooperatie-title mb-1">{{ $title }}</div>
+        <div class="cooperatie-title mb-1">{{ $prefix }}{{ $title }}</div>
         <div class="cooperatie-text mb-2">{!! $text !!}</div>
         @if ($link)
         @include('components.buttons.default', [
-            'text' => 'Lees meer',
-            'href' => $link,
-            'alt' => 'Lees meer over ' . $title . ' cooperatie',
+            'text'   => 'Lees meer',
+            'href'   => $link,
+            'alt'    => 'Lees meer over ' . $title . ' cooperatie',
             'colors' => 'btn-primary btn-outline',
-            'class' => 'rounded-lg',
+            'class'  => 'rounded-lg',
             'target' => '_blank',
         ])
         @endif
@@ -310,7 +334,7 @@
             tooltipData["dot-{{ $cooperatie->ID }}"] = @json($html);
         @endforeach
 
-        const activeCooperationId = "{{ $activeCooperation }}"; // hier de actieve ID
+        const activeCooperationId = "{{ $activeCooperation }}";
 
         function clearActiveDots() {
             dots.forEach(dot => dot.classList.remove("active"));
@@ -318,7 +342,7 @@
 
         function showDotContent(dot) {
             const dotId = dot.getAttribute("data-dot-id");
-            const html = tooltipData[dotId];
+            const html  = tooltipData[dotId];
             if (html && infoPanel) {
                 infoPanel.innerHTML = html;
 
@@ -337,15 +361,13 @@
 
         dots.forEach(dot => {
             dot.addEventListener("mouseenter", () => showDotContent(dot));
-            dot.addEventListener("click", () => showDotContent(dot));
+            dot.addEventListener("click",      () => showDotContent(dot));
         });
 
         // Als er een actieve cooperatie is, toon deze direct
         if (activeCooperationId) {
             const activeDot = document.querySelector(`.cooperatie-dot[data-dot-id="dot-${activeCooperationId}"]`);
-            if (activeDot) {
-                showDotContent(activeDot);
-            }
+            if (activeDot) showDotContent(activeDot);
         }
     });
 </script>
