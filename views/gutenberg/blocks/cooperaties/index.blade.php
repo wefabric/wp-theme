@@ -178,7 +178,7 @@
 
                                         <div class="cooperatie-dot-wrapper absolute"
                                              style="left: {{ $x }}%; top: {{ $y }}%; transform: translate(-50%, -50%);">
-                                            <div class="cooperatie-dot w-[15px] h-[15px] {{ $dotColor }} rounded-full cursor-pointer transition duration-300 hover:scale-150"
+                                            <div class="cooperatie-dot w-[24px] h-[24px] {{ $dotColor }} rounded-full cursor-pointer transition duration-300 hover:scale-150"
                                                  data-dot-id="dot-{{ $cooperatie->ID }}">
                                             </div>
                                         </div>
