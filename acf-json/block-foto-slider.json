@@ -1181,6 +1181,36 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_68c92360b1753",
+            "label": "Paginatie stijl",
+            "name": "pagination_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "bullets": "Bullets",
+                "progress_bar": "Progressie balk",
+                "none": "Geen"
+            },
+            "default_value": "bullets",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_65253ae6d92f4",
             "label": "Blokinstellingen",
             "name": "",
@@ -2253,5 +2283,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1756285096
+    "modified": 1758012312
 }

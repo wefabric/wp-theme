@@ -57,7 +57,10 @@
     "rest_namespace": "wp\/v2",
     "rest_controller_class": "WP_REST_Posts_Controller",
     "menu_position": "",
-    "menu_icon": "dashicons-portfolio",
+    "menu_icon": {
+        "type": "dashicons",
+        "value": "dashicons-portfolio"
+    },
     "rename_capabilities": false,
     "singular_capability_name": "post",
     "plural_capability_name": "posts",
@@ -65,13 +68,14 @@
         "title",
         "editor",
         "excerpt",
+        "revisions",
         "thumbnail"
     ],
     "taxonomies": [
         "vacature_categories"
     ],
-    "has_archive": false,
-    "has_archive_slug": "",
+    "has_archive": true,
+    "has_archive_slug": "vacatures",
     "rewrite": {
         "permalink_rewrite": "post_type_key",
         "with_front": "1",
@@ -83,5 +87,6 @@
     "can_export": true,
     "delete_with_user": false,
     "register_meta_box_cb": "",
-    "modified": 1705057234
+    "enter_title_here": "",
+    "modified": 1758011709
 }

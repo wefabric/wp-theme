@@ -10,6 +10,7 @@
     $swiperLoop = $block['data']['loop_slides'] ?? true;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
+    $paginationStyle = $block['data']['pagination_style'] ?? 'bullets';
     $randomId = 'photoSliderSwiper-' . $randomNumber;
 
     $spaceBetween = $block['data']['space_between'] ?? 20;
@@ -55,7 +56,11 @@
             @endif
             pagination: {
                 el: '.swiper-pagination',
-                clickable: true,
+                @if ($paginationStyle == 'progress_bar')
+                    type: 'progressbar',
+                @elseif ($paginationStyle == 'bullets')
+                    clickable: true,
+                @endif
             },
             navigation: {
                 nextEl: ".photoslider-button-next-{{ $randomNumber }}",
