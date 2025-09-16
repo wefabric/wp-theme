@@ -292,7 +292,7 @@
 
             $prefix = '';
             if ($status === 'pilot') {
-                $prefix = 'Pilot ';
+                $prefix = 'Pilot composteren in ';
             } elseif ($status === 'exploration') {
                 $prefix = 'Verkenning in ';
             }
