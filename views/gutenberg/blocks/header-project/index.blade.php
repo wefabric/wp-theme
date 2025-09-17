@@ -202,8 +202,8 @@
             @if ($projectData)
                 <div class="project-data-list w-full lg:w-1/2 xl:w-2/5 grid grid-cols-1 sm:grid-cols-2 gap-4 z-20 relative">
                     @foreach ($projectData as $project)
-                        <div class="project-item px-6 lg:px-8 py-2 lg:py-4 w-full bg-{{ $projectBackgroundColor }} rounded-{{ $borderRadius }}">
-                            <div class="project-title text-{{ $projectTextColor }}">{!! $project['title'] !!}</div>
+                        <div class="project-item px-4 lg:px-6 py-2 lg:py-4 w-full bg-{{ $projectBackgroundColor }} rounded-{{ $borderRadius }}">
+                            <div class="project-title font-bold text-{{ $projectTextColor }}">{!! $project['title'] !!}</div>
                             <div class="project-text text-{{ $projectTextColor }}">{!! $project['text'] !!}</div>
                         </div>
                     @endforeach
