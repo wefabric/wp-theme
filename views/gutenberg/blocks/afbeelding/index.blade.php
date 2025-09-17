@@ -74,7 +74,7 @@
     @if ($backgroundOverlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $backgroundOverlayColor }} opacity-{{ $backgroundOverlayOpacity }}"></div>
     @endif
-    <div class="relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+    <div class="custom-styling relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto relative @if ($imageParallax) parallax-image @endif">
             @if ($imageId)
                 @include('components.image', [
