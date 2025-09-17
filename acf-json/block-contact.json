@@ -192,7 +192,8 @@
                 "establishment_phone": "Telefoonnummer van vestiging",
                 "establishment_mail": "E-mailadres van vestiging",
                 "establishment_route": "Routebeschrijving van vestiging",
-                "establishment_opening_hours": "Openingstijden van vestiging"
+                "establishment_opening_hours": "Openingstijden van vestiging",
+                "socials": "Socials"
             },
             "default_value": [],
             "return_format": "value",
@@ -339,7 +340,9 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_67e27e9af54c1",
@@ -369,7 +372,9 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_6530da0066368",
@@ -416,7 +421,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_6530da0066376",
@@ -546,7 +553,9 @@
             "allow_null": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_678eabd4f55a3",
@@ -1382,5 +1391,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742896969
+    "modified": 1758103203
 }

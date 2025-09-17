@@ -92,7 +92,8 @@
     $borderRadius = $roundedDesign ? ($options['border_radius_strength'] ?? '') : 'rounded-none';
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'contact' }}@endif" class="block-contact contact-{{ $randomNumber }}-custom-padding contact-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'contact' }}@endif"
+         class="block-contact contact-{{ $randomNumber }}-custom-padding contact-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
@@ -138,7 +139,7 @@
                                     @if (!empty($visibleElements) && array_intersect(['establishment_name', 'establishment_address', 'establishment_country']))
                                         <div class="location-section">
                                             @if (!empty($visibleElements) && in_array('establishment_name', $visibleElements))
-                                                <div class="establishment-title font-bold">{{ $establishment_title }}</div>
+                                                <div class="establishment-title font-bold mb-2">{{ $establishment_title }}</div>
                                             @endif
 
                                             @if (!empty($visibleElements) && in_array('establishment_address', $visibleElements))
@@ -162,39 +163,56 @@
 
                                     {{-- Contactgegevens --}}
                                     @if (!empty($visibleElements) && array_intersect(['establishment_phone', 'establishment_mail', 'establishment_route'], $visibleElements) && ($phone || $mail || $route))
-                                        <div class="contact-info flex flex-col gap-y-2">
+                                        <div class="contact-info">
                                             <div class="contact-text font-bold mb-2">Contact</div>
-
-                                            @if (!empty($visibleElements) && in_array('establishment_phone', $visibleElements) && $phone)
-                                                <a class="phone-link group flex items-center gap-2 w-fit"
-                                                   href="{{ $phone->uri() }}"
-                                                   title="Telefoonnummer">
-                                                    <i class="fa-solid fa-phone text-primary group-hover:scale-110 duration-200 ease-in-out"></i>
-                                                    <span class="align-middle group-hover:text-primary group-hover:underline">{{ get_bloginfo("language") === 'nl-NL' ? $phone->national() : $phone->international() }}</span>
-                                                </a>
-                                            @endif
-
-                                            @if (!empty($visibleElements) && in_array('establishment_mail', $visibleElements) && $email)
-                                                <a class="email-link group flex items-center gap-2 w-fit"
-                                                   href="mailto:{{ $email }}"
-                                                   title="Email">
-                                                    <i class="fa-solid fa-envelope text-primary group-hover:scale-110 duration-200 ease-in-out"></i>
-                                                    <span class="align-middle group-hover:text-primary group-hover:underline">{{ $email }}</span>
-                                                </a>
-                                            @endif
-
-                                            @if (!empty($visibleElements) && in_array('establishment_route', $visibleElements))
-                                                <div class="route-info">
-                                                    <a class="route-link group flex items-center gap-2 w-fit"
-                                                       href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $postcode }}+{{ $city }}"
-                                                       title="Email">
-                                                        <i class="fa-solid fa-route text-primary group-hover:scale-110 duration-200 ease-in-out"></i>
-                                                        <span class="align-middle group-hover:text-primary group-hover:underline">Route</span>
+                                            <div class="flex-layout flex flex-col gap-y-2">
+                                                @if (!empty($visibleElements) && in_array('establishment_phone', $visibleElements) && $phone)
+                                                    <a class="phone-link group flex items-center gap-2 w-fit"
+                                                       href="{{ $phone->uri() }}"
+                                                       title="Telefoonnummer">
+                                                        <i class="fa-solid fa-phone text-primary group-hover:scale-110 duration-200 ease-in-out"></i>
+                                                        <span class="align-middle group-hover:text-primary group-hover:underline">{{ get_bloginfo("language") === 'nl-NL' ? $phone->national() : $phone->international() }}</span>
                                                     </a>
-                                                </div>
-                                            @endif
+                                                @endif
+
+                                                @if (!empty($visibleElements) && in_array('establishment_mail', $visibleElements) && $email)
+                                                    <a class="email-link group flex items-center gap-2 w-fit"
+                                                       href="mailto:{{ $email }}"
+                                                       title="Email">
+                                                        <i class="fa-solid fa-envelope text-primary group-hover:scale-110 duration-200 ease-in-out"></i>
+                                                        <span class="align-middle group-hover:text-primary group-hover:underline">{{ $email }}</span>
+                                                    </a>
+                                                @endif
+
+                                                @if (!empty($visibleElements) && in_array('establishment_route', $visibleElements))
+                                                    <div class="route-info">
+                                                        <a class="route-link group flex items-center gap-2 w-fit"
+                                                           href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $postcode }}+{{ $city }}"
+                                                           title="Email">
+                                                            <i class="fa-solid fa-route text-primary group-hover:scale-110 duration-200 ease-in-out"></i>
+                                                            <span class="align-middle group-hover:text-primary group-hover:underline">Route</span>
+                                                        </a>
+                                                    </div>
+                                                @endif
+                                            </div>
                                         </div>
                                     @endif
+
+                                    @if (!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($options) && array_key_exists('channels', $options))
+                                        <div class="socials text-{{ $textColor }}">
+                                            <div class="socials-text font-bold mb-2">Volg ons</div>
+                                            <div class="socials flex gap-3 items-center flex-wrap">
+                                                @foreach($options['channels'] as $social)
+                                                    <a class="group footer-social social-{{ strtolower($social['name']) }}"
+                                                       href="{{ $social['url'] }}" title="{{ $social['name'] }} pagina" alt="{{ $social['name'] }}" target="_blank"
+                                                       aria-label="Ga naar {{ $social['name'] }}">
+                                                        <i class="{{ $social['icon'] }} text-xl transition-all group-hover:scale-110"></i>
+                                                    </a>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @endif
+
 
                                     {{-- Openingstijden --}}
                                     @if (!empty($visibleElements) && in_array('establishment_opening_hours', $visibleElements))
@@ -210,7 +228,8 @@
                                                         @else
                                                             <span> {{ $openingHour->openingHour }} uur - {{  $openingHour->closingHour }} uur
                                                                 @if (!empty($openingHour->openingHour2) && !empty($openingHour->closingHour2))
-                                                                    & {{ $openingHour->openingHour2 }} uur - {{ $openingHour->closingHour2 }} uur
+                                                                    & {{ $openingHour->openingHour2 }} uur
+                                                                    - {{ $openingHour->closingHour2 }} uur
                                                                 @endif
                                                             </span>
                                                         @endif
@@ -252,43 +271,67 @@
 <style>
     .contact-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
-            @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
-            @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
-            @if($mobilePaddingBottom) padding-bottom: {{ $mobilePaddingBottom }}px; @endif
-            @if($mobilePaddingLeft) padding-left: {{ $mobilePaddingLeft }}px; @endif
+            @if($mobilePaddingTop)  padding-top: {{ $mobilePaddingTop }}px;
+            @endif
+                       @if($mobilePaddingRight)  padding-right: {{ $mobilePaddingRight }}px;
+            @endif
+                       @if($mobilePaddingBottom)  padding-bottom: {{ $mobilePaddingBottom }}px;
+            @endif
+                       @if($mobilePaddingLeft)  padding-left: {{ $mobilePaddingLeft }}px; @endif
+
         }
         @media only screen and (min-width: 768px) {
-            @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
-            @if($tabletPaddingRight) padding-right: {{ $tabletPaddingRight }}px; @endif
-            @if($tabletPaddingBottom) padding-bottom: {{ $tabletPaddingBottom }}px; @endif
-            @if($tabletPaddingLeft) padding-left: {{ $tabletPaddingLeft }}px; @endif
+            @if($tabletPaddingTop)  padding-top: {{ $tabletPaddingTop }}px;
+            @endif
+                       @if($tabletPaddingRight)  padding-right: {{ $tabletPaddingRight }}px;
+            @endif
+                       @if($tabletPaddingBottom)  padding-bottom: {{ $tabletPaddingBottom }}px;
+            @endif
+                       @if($tabletPaddingLeft)  padding-left: {{ $tabletPaddingLeft }}px; @endif
+
         }
         @media only screen and (min-width: 1024px) {
-            @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
-            @if($desktopPaddingRight) padding-right: {{ $desktopPaddingRight }}px; @endif
-            @if($desktopPaddingBottom) padding-bottom: {{ $desktopPaddingBottom }}px; @endif
-            @if($desktopPaddingLeft) padding-left: {{ $desktopPaddingLeft }}px; @endif
+            @if($desktopPaddingTop)  padding-top: {{ $desktopPaddingTop }}px;
+            @endif
+                       @if($desktopPaddingRight)  padding-right: {{ $desktopPaddingRight }}px;
+            @endif
+                       @if($desktopPaddingBottom)  padding-bottom: {{ $desktopPaddingBottom }}px;
+            @endif
+                       @if($desktopPaddingLeft)  padding-left: {{ $desktopPaddingLeft }}px; @endif
+
         }
     }
 
     .contact-{{ $randomNumber }}-custom-margin {
         @media only screen and (min-width: 0px) {
-            @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
-            @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif
-            @if($mobileMarginBottom) margin-bottom: {{ $mobileMarginBottom }}px; @endif
-            @if($mobileMarginLeft) margin-left: {{ $mobileMarginLeft }}px; @endif
+            @if($mobileMarginTop)  margin-top: {{ $mobileMarginTop }}px;
+            @endif
+                       @if($mobileMarginRight)  margin-right: {{ $mobileMarginRight }}px;
+            @endif
+                       @if($mobileMarginBottom)  margin-bottom: {{ $mobileMarginBottom }}px;
+            @endif
+                       @if($mobileMarginLeft)  margin-left: {{ $mobileMarginLeft }}px; @endif
+
         }
         @media only screen and (min-width: 768px) {
-            @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
-            @if($tabletMarginRight) margin-right: {{ $tabletMarginRight }}px; @endif
-            @if($tabletMarginBottom) margin-bottom: {{ $tabletMarginBottom }}px; @endif
-            @if($tabletMarginLeft) margin-left: {{ $tabletMarginLeft }}px; @endif
+            @if($tabletMarginTop)  margin-top: {{ $tabletMarginTop }}px;
+            @endif
+                       @if($tabletMarginRight)  margin-right: {{ $tabletMarginRight }}px;
+            @endif
+                       @if($tabletMarginBottom)  margin-bottom: {{ $tabletMarginBottom }}px;
+            @endif
+                       @if($tabletMarginLeft)  margin-left: {{ $tabletMarginLeft }}px; @endif
+
         }
         @media only screen and (min-width: 1024px) {
-            @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
-            @if($desktopMarginRight) margin-right: {{ $desktopMarginRight }}px; @endif
-            @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
-            @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
+            @if($desktopMarginTop)  margin-top: {{ $desktopMarginTop }}px;
+            @endif
+                       @if($desktopMarginRight)  margin-right: {{ $desktopMarginRight }}px;
+            @endif
+                       @if($desktopMarginBottom)  margin-bottom: {{ $desktopMarginBottom }}px;
+            @endif
+                       @if($desktopMarginLeft)  margin-left: {{ $desktopMarginLeft }}px; @endif
+
         }
     }
 </style>
