@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('/api/indicator-items')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
 
             // Process each indicator element
             indicators.forEach(function(indicator) {
