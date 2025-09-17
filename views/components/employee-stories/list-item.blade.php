@@ -1,40 +1,40 @@
 @php
-    $fields = get_fields($testimonial);
+    $fields = get_fields($employeeStory);
 
-    $testimonialBackground = $block['data']['testimonial_background_color'] ?? 'none';
-    $testimonialTextColor = $block['data']['testimonial_text_color'] ?? '';
+    $employeeStoryBackground = $block['data']['employee_story_background_color'] ?? 'none';
+    $employeeStoryTextColor = $block['data']['employee_story_text_color'] ?? '';
 
-    $testimonialTitle = get_the_title($testimonial) ?? '';
-    $testimonialUrl = get_permalink($testimonial);
-    $testimonialCustomUrl = $fields['link'] ?? '';
-    $testimonialName = $fields['name'] ?? '';
-    $testimonialText = $fields['testimonial_text'] ?? '';
-    $testimonialFunction = $fields['function'] ?? '';
-    $testimonialAvatarId = $fields['avatar'] ?? '';
-    $testimonialLogoId = $fields['logo_image'] ?? '';
-    $testimonialImageId = $fields['image'] ?? '';
-    $testimonialStars = $fields['star_rating'] ?? '';
+    $employeeStoryTitle = get_the_title($employeeStory) ?? '';
+    $employeeStoryUrl = get_permalink($employeeStory);
+    $employeeStoryCustomUrl = $fields['link'] ?? '';
+    $employeeStoryName = $fields['name'] ?? '';
+    $employeeStoryText = $fields['employee_story_text'] ?? '';
+    $employeeStoryFunction = $fields['function'] ?? '';
+    $employeeStoryAvatarId = $fields['avatar'] ?? '';
+    $employeeStoryLogoId = $fields['logo_image'] ?? '';
+    $employeeStoryImageId = $fields['image'] ?? '';
+    $employeeStoryStars = $fields['star_rating'] ?? '';
 
-    $testimonialLink = $block['data']['testimonial_link'] ?? 'testimonial_link';
+    $employeeStoryLink = $block['data']['employee_story_link'] ?? 'employee_story_link';
     $imagePosition = $block['data']['image_position'] ?? 'right';
 
     $visibleElements = $block['data']['show_element'] ?? [];
-    $testimonialCategories = get_the_terms($testimonial, 'testimonial_categories');
+    $employeeStoryCategories = get_the_terms($employeeStory, 'employee_story_categories');
 @endphp
 
-<div class="testimonial-item custom-styling flex w-full h-full text-{{ $testimonialTextColor }} @if ($flyinEffect) testimonial-hidden @endif">
+<div class="employee-story-item custom-styling flex w-full h-full text-{{ $employeeStoryTextColor }} @if ($flyinEffect) employee-story-hidden @endif">
 
-    <div class="testimonial-block relative w-full h-auto flex flex-col md:flex-row bg-{{ $testimonialBackground }} rounded-{{ $borderRadius }}">
+    <div class="employee-story-block relative w-full h-auto flex flex-col md:flex-row bg-{{ $employeeStoryBackground }} rounded-{{ $borderRadius }}">
 
         @if (!empty($visibleElements) && in_array('category', $visibleElements))
-            <div class="testimonial-categories absolute z-20 top-[15px] @if($imagePosition == 'right') image-right right-[15px] @else image-left left-[15px] @endif flex flex-wrap gap-2">
-                @foreach ($testimonialCategories as $category)
+            <div class="employee-story-categories absolute z-20 top-[15px] @if($imagePosition == 'right') image-right right-[15px] @else image-left left-[15px] @endif flex flex-wrap gap-2">
+                @foreach ($employeeStoryCategories as $category)
                     @php
                         $categoryColor = get_field('category_color', $category);
                         $categoryIcon = get_field('category_icon', $category);
                     @endphp
                     <div style="background-color: {{ $categoryColor }}"
-                         class="testimonial-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1">
+                         class="employee-story-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1">
                         {!! $categoryIcon !!} {!! $category->name !!}
                     </div>
                 @endforeach
@@ -51,11 +51,11 @@
                 </svg>
             @endif
 
-            @if (!empty($visibleElements) && in_array('star_rating', $visibleElements) && $testimonialStars)
+            @if (!empty($visibleElements) && in_array('star_rating', $visibleElements) && $employeeStoryStars)
                 <div class="star-rating flex items-center mb-4 text-[24px] order-2">
                     @php
-                        $fullStars = floor($testimonialStars);
-                        $hasHalfStar = $testimonialStars - $fullStars >= 0.5;
+                        $fullStars = floor($employeeStoryStars);
+                        $hasHalfStar = $employeeStoryStars - $fullStars >= 0.5;
                     @endphp
                     @for ($i = 1; $i <= 5; $i++)
                         @if ($i <= $fullStars)
@@ -69,40 +69,40 @@
                 </div>
             @endif
 
-            @if (!empty($visibleElements) && in_array('testimonial_text', $visibleElements) && $testimonialText)
-                @include('components.content', ['content' => apply_filters('the_content', $testimonialText), 'class' => 'testimonial-text md:mb-6 order-4 md:order-3'])
+            @if (!empty($visibleElements) && in_array('employee_story_text', $visibleElements) && $employeeStoryText)
+                @include('components.content', ['content' => apply_filters('the_content', $employeeStoryText), 'class' => 'employee-story-text md:mb-6 order-4 md:order-3'])
             @endif
 
             <div class="avatar-section flex flex-col md:flex-row items-center gap-x-4 md:gap-x-6 gap-y-4 mb-4 md:mb-0 order-1 md:order-4 text-center md:text-left">
-                @if (!empty($visibleElements) && in_array('avatar_image', $visibleElements) && $testimonialAvatarId)
+                @if (!empty($visibleElements) && in_array('avatar_image', $visibleElements) && $employeeStoryAvatarId)
                     <div class="avatar-image-section">
                         @include('components.image', [
-                            'image_id' => $testimonialAvatarId,
+                            'image_id' => $employeeStoryAvatarId,
                             'size' => 'full',
                             'object_fit' => 'cover',
                             'img_class' => 'avatar-image w-24 h-24 aspect-square rounded-full object-cover object-center',
-                            'alt' => $testimonialTitle,
+                            'alt' => $employeeStoryTitle,
                         ])
                     </div>
                 @endif
-                @if ($testimonialName || $testimonialFunction)
+                @if ($employeeStoryName || $employeeStoryFunction)
                     <div>
-                        @if (!empty($visibleElements) && in_array('name', $visibleElements) && $testimonialName)
-                            <div class="name-text font-bold text-lg">{!! $testimonialName !!}</div>
+                        @if (!empty($visibleElements) && in_array('name', $visibleElements) && $employeeStoryName)
+                            <div class="name-text font-bold text-lg">{!! $employeeStoryName !!}</div>
                         @endif
-                        @if (!empty($visibleElements) && in_array('function', $visibleElements) && $testimonialFunction)
-                            <div class="function-text">{!! $testimonialFunction !!}</div>
+                        @if (!empty($visibleElements) && in_array('function', $visibleElements) && $employeeStoryFunction)
+                            <div class="function-text">{!! $employeeStoryFunction !!}</div>
                         @endif
                     </div>
                 @endif
-                @if (!empty($visibleElements) && in_array('logo_image', $visibleElements) && $testimonialLogoId)
+                @if (!empty($visibleElements) && in_array('logo_image', $visibleElements) && $employeeStoryLogoId)
                     <div class="logo-image-section flex-1">
                         @include('components.image', [
-                            'image_id' => $testimonialLogoId,
+                            'image_id' => $employeeStoryLogoId,
                             'size' => 'full',
                             'object_fit' => 'cover',
                             'img_class' => 'logo-image object-contain object-center',
-                            'alt' => $testimonialTitle,
+                            'alt' => $employeeStoryTitle,
                         ])
                     </div>
                 @endif
@@ -111,15 +111,15 @@
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
                 @php
                     $buttonUrl = '';
-                    if ($testimonialLink === 'testimonial_link') {
-                        $buttonUrl = $testimonialUrl;
-                    } elseif ($testimonialLink === 'custom_link' && !empty($testimonialCustomUrl)) {
-                        $buttonUrl = $testimonialCustomUrl;
+                    if ($employeeStoryLink === 'employee_story_link') {
+                        $buttonUrl = $employeeStoryUrl;
+                    } elseif ($employeeStoryLink === 'custom_link' && !empty($employeeStoryCustomUrl)) {
+                        $buttonUrl = $employeeStoryCustomUrl;
                     }
                 @endphp
 
                 @if ($buttonCardText && $buttonUrl)
-                    <div class="testimonial-button mt-auto pt-8 z-10 order-5">
+                    <div class="employee-story-button mt-auto pt-8 z-10 order-5">
                         @include('components.buttons.default', [
                            'text' => $buttonCardText,
                            'href' => $buttonUrl,
@@ -132,17 +132,16 @@
                 @endif
             @endif
 
-
         </div>
 
-        @if ($testimonialImageId)
-            <div class="testimonial-image w-full md:w-2/5 h-auto flex-grow @if($imagePosition == 'right') order-1 md:order-2 @else order-1 @endif">
+        @if ($employeeStoryImageId)
+            <div class="employee-story-image w-full md:w-2/5 h-auto flex-grow @if($imagePosition == 'right') order-1 md:order-2 @else order-1 @endif">
                 @include('components.image', [
-                    'image_id' => $testimonialImageId,
+                    'image_id' => $employeeStoryImageId,
                     'size' => 'full',
                     'object_fit' => 'cover',
                     'img_class' => 'h-full max-h-[200px] md:max-h-fit w-full aspect-square object-cover rounded-' . $borderRadius,
-                    'alt' => $testimonialTitle,
+                    'alt' => $employeeStoryTitle,
                 ])
             </div>
         @endif
