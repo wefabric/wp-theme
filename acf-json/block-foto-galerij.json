@@ -85,7 +85,14 @@
             "type": "text",
             "instructions": "Voeg &lt;br&gt; toe om een nieuwe regel te beginnen.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6661accd1fd0b",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "75",
                 "class": "",
@@ -106,7 +113,14 @@
             "type": "Thema Kleur",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6661accd1fd0b",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "25",
                 "class": "",
@@ -1952,5 +1966,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758105432
+    "modified": 1758106253
 }
