@@ -487,7 +487,7 @@
         },
         {
             "key": "field_68cc132252074",
-            "label": "Mobiele hoogte afbeeldingen",
+            "label": "Mobiele hoogte",
             "name": "mobile_image_wrapper_height",
             "aria-label": "",
             "type": "number",
@@ -510,7 +510,7 @@
         },
         {
             "key": "field_68cd49433f66b",
-            "label": "Tablet hoogte afbeelding",
+            "label": "Tablet hoogte",
             "name": "tablet_image_wrapper_height",
             "aria-label": "",
             "type": "number",
@@ -533,7 +533,7 @@
         },
         {
             "key": "field_68cd49443f66c",
-            "label": "Desktop hoogte afbeelding",
+            "label": "Desktop hoogte",
             "name": "desktop_image_wrapper_height",
             "aria-label": "",
             "type": "number",
@@ -556,7 +556,7 @@
         },
         {
             "key": "field_68cd49483f66d",
-            "label": "Desktop XL hoogte afbeelding",
+            "label": "Desktop XL hoogte",
             "name": "desktop_xl_image_wrapper_height",
             "aria-label": "",
             "type": "number",
@@ -2288,5 +2288,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758284600
+    "modified": 1758284798
 }
