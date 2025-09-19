@@ -14,7 +14,11 @@
     // Afbeeldingen
     $groupCount  = $block['data']['image_group'] ?? 0;
     $imagesCount = $block['data']['images_count'] ?? 0;
-    $imagesWrapperHeight = $block['data']['image_wrapper_height'] ?? 600;
+
+    $mobileImagesWrapperHeight = $block['data']['mobile_image_wrapper_height'] ?? 400;
+    $tabletImagesWrapperHeight = $block['data']['tablet_image_wrapper_height'] ?? 500;
+    $desktopImagesWrapperHeight = $block['data']['desktop_image_wrapper_height'] ?? 600;
+    $desktopXlImagesWrapperHeight = $block['data']['desktop_xl_image_wrapper_height'] ?? 600;
 
     $imageGroups = [];
     $imageIds = [];
@@ -131,7 +135,7 @@
                 ])
             @endif
 
-            <div class="images-wrapper relative mx-auto w-full" style="height: {{ $imagesWrapperHeight }}px;">
+            <div class="images-wrapper relative mx-auto w-full">
                 @foreach($imageGroups as $groupIndex => $images)
                     <div class="image-group absolute inset-0 transition-opacity duration-700 {{ $loop->first ? 'opacity-100 z-20' : 'opacity-0 z-10' }}"
                          data-group="{{ $loop->index }}">
@@ -163,6 +167,27 @@
 </section>
 
 <style>
+    @media only screen and (min-width: 0px) {
+        .images-wrapper {
+            height: {{ $mobileImagesWrapperHeight }}px;
+        }
+    }
+    @media only screen and (min-width: 768px) {
+        .images-wrapper {
+            height: {{ $tabletImagesWrapperHeight }}px;
+        }
+    }
+    @media only screen and (min-width: 1024px) {
+        .images-wrapper {
+            height: {{ $desktopImagesWrapperHeight }}px;
+        }
+    }
+    @media only screen and (min-width: 1536px) {
+        .images-wrapper {
+            height: {{ $desktopXlImagesWrapperHeight }}px;
+        }
+    }
+
     .gestapelde-afbeeldingen-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
             @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif

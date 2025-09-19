@@ -487,21 +487,90 @@
         },
         {
             "key": "field_68cc132252074",
-            "label": "Hoogte afbeelding canvas",
-            "name": "image_wrapper_height",
+            "label": "Mobiele hoogte afbeeldingen",
+            "name": "mobile_image_wrapper_height",
             "aria-label": "",
             "type": "number",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": 400,
             "min": 0,
-            "max": 1500,
+            "max": 3000,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_68cd49433f66b",
+            "label": "Tablet hoogte afbeelding",
+            "name": "tablet_image_wrapper_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 500,
+            "min": 0,
+            "max": 3000,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_68cd49443f66c",
+            "label": "Desktop hoogte afbeelding",
+            "name": "desktop_image_wrapper_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 600,
+            "min": 0,
+            "max": 3000,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_68cd49483f66d",
+            "label": "Desktop XL hoogte afbeelding",
+            "name": "desktop_xl_image_wrapper_height",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 600,
+            "min": 0,
+            "max": 3000,
             "allow_in_bindings": 0,
             "placeholder": "",
             "step": 1,
@@ -2219,5 +2288,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758267316
+    "modified": 1758284600
 }
