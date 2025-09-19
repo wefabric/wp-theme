@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/gestapelde-afbeeldingen",
+  "title": "Gestapelde afbeeldingen",
+  "description": "Een gestapelde afbeeldingen blok",
+  "category": "wefabric-theme",
+  "icon": "images-alt",
+  "apiVersion": 2,
+  "keywords": [
+    "Gestapelde afbeeldingen"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
