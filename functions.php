@@ -600,3 +600,5 @@ function acf_load_cardblock_post_types($field) {
 
     return $field;
 }
+
+load_theme_textdomain('themosis', WP_CONTENT_DIR . '/languages');
