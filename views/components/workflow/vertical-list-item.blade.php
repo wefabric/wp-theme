@@ -51,13 +51,7 @@
             @if (!empty($visibleElements) && in_array('stepnumber_2', $visibleElements))
                 {{-- Translation for hardcoded text--}}
                 @php
-                    $translatedStepText = 'Stap';
-                    $current_language = get_locale();
-                        if ($current_language == 'en_EN' || $current_language == 'en_GB') {
-                            $translatedStepText = 'Step';
-                        } else {
-                            $translatedStepText = 'Stap';
-                        }
+                    {{ __('Stap', 'themosis'); }}
                 @endphp
 
                 <div class="step-number">{{ $translatedStepText }} {{ $stepNumber }}</div>
