@@ -155,21 +155,24 @@ header.banner {
 }
 
 .mobile-menu {
-  @apply text-white;
+  /* row vars */
+  --row-min-h: 44px;
+  --row-pad-y: 8px;
+  --li-pad-y: 8px;
+  --arrow-size: 36px;
+  --arrow-right: 12px;
+
+  @apply bg-primary text-white;
   position: fixed;
   width: 260px;
-  top: 0;
-  bottom: 0;
-  right: -260px;
+  top: 0; bottom: 0; right: -260px;
   overflow-y: scroll;
   z-index: 1000;
   min-height: 100%;
   transition: right 300ms ease;
   color: #000;
   padding-bottom: 20px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
-
-
+  box-shadow: rgba(0,0,0,.35) 0 5px 15px;
 
   .menu {
     display: block;
@@ -177,89 +180,129 @@ header.banner {
     .sub-menu {
       max-height: 0 !important;
       overflow: hidden;
-      transition: max-height 0.4s ease-out;
+      transition: max-height .3s ease, padding .2s ease;
+      padding-block: 0;
 
-      > li:first-child {
-        margin-top: 0.5rem !important;
-      }
+      > li:first-child { margin-top: .5rem !important; }
     }
 
     .menu-item-has-children.open > .sub-menu {
       display: block;
       max-height: 1000px !important;
+      padding-block: 6px;
     }
 
-    .menu-item-has-children.open > .sub-menu {
-      display: block;
-    }
-  }
+    li, ul, lo { line-height: 1.875rem !important; }
 
-  li, ul, lo {
-    line-height: 1.875rem !important;
-  }
-
-  li.top-navigation {
-    display: flex !important;
-    padding: 0 0px !important;
-
-    a, i {
+    li.top-navigation {
+      display: flex !important;
       padding: 0 !important;
+
+      a, i { padding: 0 !important; }
+      a { padding: 0 18px !important; }
     }
 
-    a  {
-      padding: 0 18px !important;
+    /* base li + anchor */
+    li {
+      position: relative;
+      display: block !important;
+      padding: var(--li-pad-y) 20px !important;
+
+      ul.sub-menu li {
+        padding: var(--li-pad-y) 0 var(--li-pad-y) 10px !important;
+        margin: 0 !important;
+        font-size: 16px;
+      }
+
+      a {
+        @apply text-white w-full;
+        display: block;
+        padding: var(--row-pad-y) calc(var(--arrow-right) + var(--arrow-size) + 4px) var(--row-pad-y) 0;
+        min-height: var(--row-min-h);
+        line-height: 1.4;
+        word-break: break-word;
+        position: relative;
+        z-index: 1; /* link stays under arrow hitbox */
+      }
+
+      &.active { text-decoration: underline; }
+
+      &.current-menu-item > a:first-child:not(.custom) {
+        @apply text-secondary;
+      }
+
+      /* Tailwind circular dependency fix: escape .btn */
+      &.custom\.btn {
+        padding: 0 !important;
+        margin: 20px !important;
+        text-align: center;
+      }
     }
-  }
 
-  li {
-    position: relative;
-    display: block !important;
-    padding: 0.5rem 20px !important;
+    /* ========== ARROWS ========== */
 
-    ul.sub-menu li {
-      padding: 0.5rem 0 0.5rem 10px !important;
-      margin: 0 !important;
-      font-size: 16px;
+    /* PARENT items: ::before */
+    > li.menu-item-has-children {
+      position: relative;
     }
-
-    a {
-      @apply text-white w-full;
-      padding: 0.5rem 0;
-    }
-
-    &.active {
-      text-decoration: underline;
-    }
-
-    &.current-menu-item:not(.custom) > a:first-child {
-      @apply text-secondary;
-    }
-
-    &.menu-item-has-children:after {
-      padding-left: 0rem;
+    > li.menu-item-has-children::before {
+      content: "\f078"; /* FA chevron-down */
       font-family: "Font Awesome 6 Pro";
-      content: "\f078";
-      color: white;
       position: absolute;
-      top: 7px;
-      right: 20px;
-      transition: 0.35s ease-in-out;
-      transform: rotate(0deg);
+      right: var(--arrow-right);
+      /* lock to first row's vertical middle so it won't "drop" when submenu expands */
+      top: calc(var(--li-pad-y) + var(--row-pad-y) + (var(--row-min-h) / 2));
+      transform: translateY(-50%) rotate(0);
+      transition: transform .25s ease-in-out;
+
+      /* clickable hitbox */
+      width: var(--arrow-size);
+      height: var(--arrow-size);
+      display: grid;
+      place-items: center;
       cursor: pointer;
+      z-index: 2;
+      pointer-events: auto;
+      -webkit-tap-highlight-color: transparent;
+    }
+    > li.menu-item-has-children.open::before {
+      transform: translateY(-50%) rotate(180deg);
     }
 
-    &.menu-item-has-children.open:after {
-      transform: rotate(-180deg);
+    /* CHILD items (inside sub-menu): ::after */
+    .sub-menu li.menu-item-has-children {
+      position: relative;
     }
+    .sub-menu li.menu-item-has-children::after {
+      content: "\f078";
+      font-family: "Font Awesome 6 Pro";
+      position: absolute;
+      right: var(--arrow-right);
+      top: calc(var(--li-pad-y) + var(--row-pad-y) + (var(--row-min-h) / 2));
+      transform: translateY(-50%) rotate(0);
+      transition: transform .25s ease-in-out;
 
-    &.custom.btn {
-      padding: 0 !important;
-      margin: 20px !important;
-      text-align: center;
+      width: var(--arrow-size);
+      height: var(--arrow-size);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      z-index: 2;
+      pointer-events: auto;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .sub-menu li.menu-item-has-children.open::after {
+      transform: translateY(-50%) rotate(180deg);
     }
   }
 
 }
+
+/* keep submenu link weight */
+.main-navigation .mobile-menu ul.sub-menu li a {
+  font-weight: 400 !important;
+}
+
 
 .main-navigation .mobile-menu ul.sub-menu li a {
   font-weight: 400 !important;

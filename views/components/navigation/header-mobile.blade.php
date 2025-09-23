@@ -164,18 +164,35 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var menuItems = document.querySelectorAll('.menu-item-has-children');
+        var ARROW_HITBOX = 36 + 12; // arrow-size (36) + right padding (12) -> keep in sync with CSS vars
+
         menuItems.forEach(function (item) {
-            var link = item.querySelector('a');
             item.addEventListener('click', function (event) {
-                if (event.target === link) { //if the click is on the link, navigate
-                    location.href = link.href;
-                } else { //otherwise toggle the class
-                    item.classList.toggle('open');
+                const li   = event.currentTarget;                  // this <li>
+                const link = li.querySelector(':scope > a');       // only the direct link
+
+                // Is the click on the direct link (or anything inside it)?
+                const clickedLink = event.target.closest('a') === link;
+
+                // Is the click within the arrow hitbox on the right?
+                const rect = li.getBoundingClientRect();
+                const clickX = event.clientX;
+                const inArrowZone = (rect.right - clickX) <= ARROW_HITBOX;
+
+                if (clickedLink && !inArrowZone) {
+                    // normal navigation for link clicks (outside arrow zone)
+                    return; // let the browser navigate
                 }
+
+                // From here, we toggle this li only (arrow zone or elsewhere in the li)
+                event.preventDefault();
+                event.stopPropagation(); // <-- prevents parent from also toggling
+                li.classList.toggle('open');
             });
         });
     });
 </script>
+
 
 <style>
     .main-navigation .menu {
