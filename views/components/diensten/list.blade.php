@@ -17,11 +17,14 @@
     $swiperLoop = $block['data']['loop_slides'] ?? true;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
+    $paginationStyle = $block['data']['pagination_style'] ?? 'bullets';
     $randomId = 'dienstSwiper-' . $randomNumber;
+
+    $spaceBetween = $block['data']['space_between'] ?? 20;
 @endphp
 
 @if($block['data']['show_slider'])
-    <div class="slider block relative">
+    <div class="slider dienst-swiper block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($diensten as $dienst)
@@ -30,7 +33,9 @@
                     </div>
                 @endforeach
             </div>
-            <div class="swiper-pagination"></div>
+            @if ($paginationStyle != 'none')
+                <div class="swiper-pagination"></div>
+            @endif
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next dienst-button-next-{{ $randomNumber }}"></div>
@@ -56,7 +61,7 @@
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var dienstSwiper = new Swiper(".{{ $randomId }}", {
-            spaceBetween: 20,
+            spaceBetween: {{ $spaceBetween }},
             @if ($swiperCenteredSlides)
                 centeredSlides: true,
             @endif
@@ -68,7 +73,11 @@
             @endif
             pagination: {
                 el: '.swiper-pagination',
-                clickable: true,
+                @if ($paginationStyle == 'progress_bar')
+                    type: 'progressbar',
+                @elseif ($paginationStyle == 'bullets')
+                    clickable: true,
+                @endif
             },
             navigation: {
                 nextEl: ".dienst-button-next-{{ $randomNumber }}",
