@@ -175,16 +175,7 @@
             <div class="created-section w-full md:w-1/2 xl:w-1/4 flex">
                 <div class="created-layout flex w-full pt-8 lg:pt-0 self-end md:text-right items-center justify-center md:justify-end">
                         <span class="created-text pr-1">
-                            @php
-                                $realizedText = 'Gerealiseerd door:';
-                                $current_language = get_locale();
-                                   if ($current_language == 'en_EN' || $current_language == 'en_GB') {
-                                       $realizedText = 'Realized by:';
-                                   } else {
-                                       $realizedText = 'Gerealiseerd door:';
-                                   }
-                            @endphp
-                            {{ $realizedText }}
+                            {{ __('Gerealiseerd door:', 'themosis') }}
                         </span>
                     @include('components.link.opening', [
                         'href' => 'https://wefabric.nl/',
