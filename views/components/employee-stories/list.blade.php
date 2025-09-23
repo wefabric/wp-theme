@@ -67,7 +67,8 @@
                     disableOnInteraction: true,
                 },
             @endif
-            pagination: {
+            @if ($paginationStyle != 'none')
+                pagination: {
                 el: '.swiper-pagination',
                 @if ($paginationStyle == 'progress_bar')
                     type: 'progressbar',
@@ -75,6 +76,7 @@
                     clickable: true,
                 @endif
             },
+            @endif
             navigation: {
                 nextEl: ".employee-story-button-next-{{ $randomNumber }}",
                 prevEl: ".employee-story-button-prev-{{ $randomNumber }}",

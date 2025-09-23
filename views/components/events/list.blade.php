@@ -71,14 +71,16 @@
                     disableOnInteraction: true,
                 },
             @endif
-            pagination: {
-                el: '.swiper-pagination',
-                @if ($paginationStyle == 'progress_bar')
-                    type: 'progressbar',
-                @elseif ($paginationStyle == 'bullets')
-                    clickable: true,
-                @endif
-            },
+            @if ($paginationStyle != 'none')
+                pagination: {
+                    el: '.swiper-pagination',
+                    @if ($paginationStyle == 'progress_bar')
+                        type: 'progressbar',
+                    @elseif ($paginationStyle == 'bullets')
+                        clickable: true,
+                    @endif
+                },
+            @endif
             navigation: {
                 nextEl: ".event-button-next-{{ $randomNumber }}",
                 prevEl: ".event-button-prev-{{ $randomNumber }}",

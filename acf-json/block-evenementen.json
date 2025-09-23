@@ -1666,7 +1666,7 @@
             "name": "custom_block_id",
             "aria-label": "",
             "type": "text",
-            "instructions": "Meerdere classes scheiden met spaties.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -2536,5 +2536,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758620986
+    "modified": 1758626103
 }
