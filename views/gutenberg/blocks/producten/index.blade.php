@@ -1,12 +1,14 @@
 @php
-    //    todo: Needs block update
-
     // Content
     $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
-    $titlePosition = $block['data']['title_position'] ?? '';
-    $titleClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-    $titleClass = $titleClassMap[$titlePosition] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
+    $subtitleIcon = $block['data']['subtitle_icon'] ?? '';
+    $subtitleIcon = $subtitleIcon ? json_decode($subtitleIcon, true) : null;
+    $subtitleIconColor = $block['data']['subtitle_icon_color'] ?? '';
+    $text = $block['data']['text'] ?? '';
+    $textColor = $block['data']['text_color'] ?? '';
 
         // Buttons
         $button1Text = $block['data']['button_button_1']['title'] ?? '';
@@ -14,16 +16,50 @@
         $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
         $button1Color = $block['data']['button_button_1_color'] ?? '';
         $button1Style = $block['data']['button_button_1_style'] ?? '';
+        $button1Download = $block['data']['button_button_1_download'] ?? false;
+        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+        if (!empty($button1Icon)) {
+            $iconData = json_decode($button1Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+        $button2Text = $block['data']['button_button_2']['title'] ?? '';
+        $button2Link = $block['data']['button_button_2']['url'] ?? '';
+        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
+        $button2Color = $block['data']['button_button_2_color'] ?? '';
+        $button2Style = $block['data']['button_button_2_style'] ?? '';
+        $button2Download = $block['data']['button_button_2_download'] ?? false;
+        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+        if (!empty($button2Icon)) {
+            $iconData = json_decode($button2Icon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+
         $buttonCardText = $block['data']['card_button_button_text'] ?? '';
         $buttonCardColor = $block['data']['card_button_button_color'] ?? '';
         $buttonCardStyle = $block['data']['card_button_button_style'] ?? '';
+        $buttonCardIcon = $block['data']['card_button_button_icon'] ?? '';
+        if (!empty($buttonCardIcon)) {
+            $iconData = json_decode($buttonCardIcon, true);
+            if (isset($iconData['id'], $iconData['style'])) {
+                $buttonCardIcon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+            }
+        }
+
+        $textPosition = $block['data']['text_position'] ?? '';
+        $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
+        $textClass = $textClassMap[$textPosition] ?? '';
 
 
     // Producten
-    $displayType = $block['data']['display_type'];
-
     $productTitleColor = $block['data']['product_title_color'] ?? '';
     $productTextColor = $block['data']['product_text_color'] ?? '';
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
+
+    $displayType = $block['data']['display_type'];
 
 
     // Show all
@@ -182,35 +218,82 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $hoverEffect = $block['data']['hover_effect'] ?? '';
+    $hoverEffectClasses = [
+        'lift-up' => 'group-hover:-translate-y-2 group-hover:md:-translate-y-4',
+        'scale-up' => 'group-hover:scale-105',
+        'scale-down' => 'group-hover:scale-95',
+        'none' => ''
+    ];
+    $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
+
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'producten' }}@endif" class="block-product relative product-{{ $randomNumber }}-custom-padding product-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
+    @if($swiperOutContainer)
+        <div class="overflow-hidden">
+    @endif
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
+            @if ($subTitle)
+                <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">
+                    @if ($subtitleIcon)
+                        <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
+                    @endif
+                    {!! $subTitle !!}
+                </span>
+            @endif
             @if ($title)
-                <h2 class="text-{{ $titleColor }} container mx-auto lg:mb-12 @if($blockWidth == 'fullscreen') px-8 @endif {{ $titleClass }}">{!! $title !!}</h2>
+                <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
+            @endif
+            @if ($text)
+                @include('components.content', [
+                    'content' => apply_filters('the_content', $text),
+                    'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
+                ])
             @endif
             @if ($products)
                 @include('components.products.list', ['products' => $products])
             @endif
             @if (($button1Text) && ($button1Link))
-                <div class="bottom-button w-full text-center mt-4 md:mt-8">
+                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
                     @include('components.buttons.default', [
-                       'text' => $button1Text,
-                       'href' => $button1Link,
-                       'alt' => $button1Text,
-                       'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                       'class' => 'rounded-lg text-left',
-                       'target' => $button1Target,
-                   ])
+                        'text' => $button1Text,
+                        'href' => $button1Link,
+                        'alt' => $button1Text,
+                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                        'class' => 'rounded-lg',
+                        'target' => $button1Target,
+                        'icon' => $button1Icon,
+                        'download' => $button1Download,
+                    ])
+                    @if (($button2Text) && ($button2Link))
+                        @include('components.buttons.default', [
+                            'text' => $button2Text,
+                            'href' => $button2Link,
+                            'alt' => $button2Text,
+                            'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                            'class' => 'rounded-lg',
+                            'target' => $button2Target,
+                            'icon' => $button2Icon,
+                            'download' => $button2Download,
+                        ])
+                    @endif
                 </div>
             @endif
         </div>
     </div>
+    @if($swiperOutContainer)
+        </div>
+    @endif
 </section>
 
 
@@ -256,4 +339,51 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .product-hidden {
+        opacity: 0;
+    }
+
+    .swiper-slide-duplicate .product-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .product-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productItems = document.querySelectorAll('.product-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -30px 0px',
+                threshold: 0.035
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const productItem = entry.target;
+
+                        setTimeout(() => {
+                            if (productItem.classList.contains('product-hidden')) {
+                                productItem.classList.add('product-animated');
+                                productItem.classList.remove('product-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(productItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            productItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif

@@ -17,8 +17,8 @@
     $serviceCategories = get_the_terms($product, 'division_categories');
 @endphp
 
-<div class="product-item group h-full">
-    <div class="product-wrapper relative h-full flex flex-col @if($productUrl)group-hover:-translate-y-4 duration-300 ease-in-out @endif">
+<div class="product-item group h-full @if ($flyinEffect) product-hidden @endif">
+    <div class="product-wrapper relative h-full flex flex-col @if($productUrl) {{ $hoverEffectClass }} duration-300 ease-in-out @endif">
         @if ($productImage)
             <div class="product-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 @if($productUrl)
@@ -46,7 +46,7 @@
                    'object_fit' => 'cover',
                    'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
                    'alt' => $productTitle,
-           ])
+                ])
             </div>
         @endif
         <div class="product-data flex flex-col w-full grow mt-5">
@@ -60,20 +60,21 @@
 
             <div class="product-info mt-4 text-{{ $productTextColor }}">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($productSummary))
-                    <p class="product-summary mt-3 mb-3">{{ $productSummary }}</p>
+                    <div class="product-summary mt-3 mb-3">{{ $productSummary }}</div>
                 @endif
             </div>
 
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
                 @if ($buttonCardText)
-                    <div class="mt-auto pt-8 z-10">
+                    <div class="product-button mt-auto pt-8 z-10">
                         @include('components.buttons.default', [
                            'text' => $buttonCardText,
                            'href' => $productUrl,
                            'alt' => $buttonCardText,
                            'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
-                           'class' => 'rounded-lg text-left',
-                       ])
+                           'class' => 'rounded-lg',
+                           'icon' => $buttonCardIcon,
+                        ])
                     </div>
                 @endif
             @endif
