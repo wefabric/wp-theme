@@ -41,6 +41,35 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_68d6454503e12",
+            "label": "Toon home icoon in navigatie",
+            "name": "desktop_show_home_icon",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_62ff283210db3",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_67af11dd79f0c",
             "label": "Logo",
             "name": "navigation_logo",
@@ -507,5 +536,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1757593355
+    "modified": 1758873090
 }
