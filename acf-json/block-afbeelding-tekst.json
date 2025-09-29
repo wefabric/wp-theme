@@ -932,6 +932,34 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_68da8d41a2435",
+            "label": "Afbeelding mee laten scrollen met tekst",
+            "name": "sticky_image",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Werkt alleen als de afbeelding hoogte kleiner is dan die van de tekst.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6490599eabdca",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6512dcd313517",
             "label": "Blokinstellingen",
             "name": "",
@@ -2093,6 +2121,27 @@
             "placeholder": "",
             "create_options": 0,
             "save_options": 0
+        },
+        {
+            "key": "field_68da96a19f0d7",
+            "label": "Afbeelding in laten vliegen",
+            "name": "flyin_effect",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -2113,5 +2162,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1757579287
+    "modified": 1759155900
 }

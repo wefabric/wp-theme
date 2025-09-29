@@ -95,6 +95,7 @@
     $imageMaxHeight = $block['data']['image_max_height'] ?? '';
     $imageParallax = $block['data']['image_parallax'] ?? false;
     $verticalCentered = $block['data']['vertical_centered'] ?? false;
+    $stickyImage = $block['data']['sticky_image'] ?? false;
     $imageSize = $block['data']['image_size'] ?? '50';
 
     $sizes = [
@@ -165,6 +166,8 @@
     $titleAnimation = $block['data']['title_animation'] ?? false;
     $flyInAnimation = $block['data']['flyin_animation'] ?? false;
     $textFadeDirection = $block['data']['flyin_direction'] ?? 'bottom';
+
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'afbeelding-tekst' }}@endif" class="block-afbeelding-tekst block-{{ $randomNumber }} relative afbeelding-tekst-{{ $randomNumber }}-custom-padding afbeelding-tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -266,7 +269,7 @@
                             'image_id' => $imageId,
                             'size' => 'full',
                             'object_fit' => 'cover',
-                            'img_class' => 'w-full object-cover rounded-' . $borderRadius,
+                            'img_class' => 'image-item w-full object-cover rounded-' . $borderRadius . ($stickyImage ? ' sticky-image sticky top-[150px]' : '') . ($flyinEffect ? ' text-image-hidden' : ''),
                             'alt' => $imageAlt
                         ])
                     </div>
@@ -321,6 +324,14 @@
             @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
+    }
+
+    .text-image-hidden {
+        opacity: 0;
+    }
+
+    .text-image-animated {
+        animation: flyIn 0.6s ease-out forwards;
     }
 </style>
 
@@ -440,6 +451,42 @@
                     });
                 });
             }
+        });
+    </script>
+@endif
+
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const imageItems = document.querySelectorAll('.image-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -30px 0px',
+                threshold: 0.035
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const imageItem = entry.target;
+
+                        setTimeout(() => {
+                            if (imageItem.classList.contains('text-image-hidden')) {
+                                imageItem.classList.add('text-image-animated');
+                                imageItem.classList.remove('text-image-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(imageItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            imageItems.forEach(item => {
+                observer.observe(item);
+            });
         });
     </script>
 @endif
