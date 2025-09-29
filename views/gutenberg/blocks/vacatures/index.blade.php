@@ -261,21 +261,8 @@
             @endif
             @if (!empty($visibleElements) && in_array('post_amount', $visibleElements))
                 {{-- Translation for hardcoded text--}}
-                @php
-                    $vacancyTranslation = 'Vacatures';
-                    $current_language = get_locale();
 
-                    if (count($vacancies) === 1) {
-                        $vacancyTranslation = $current_language == 'en_EN' || $current_language == 'en_GB'
-                            ? 'Vacancy'
-                            : 'Vacature';
-                    } else {
-                        $vacancyTranslation = $current_language == 'en_EN' || $current_language == 'en_GB'
-                            ? 'Vacancies'
-                            : 'Vacatures';
-                    }
-                @endphp
-                <div class="amount-text mt-2 {{ $textClass }}">{{ count($vacancies) }} {{ $vacancyTranslation }}</div>
+                <div class="amount-text mt-2 {{ $textClass }}">{{ count($vacancies) }} {{ __('vacatures', 'themosis') }}</div>
             @endif
             @if ($vacancies)
                 @include('components.vacancies.list', ['vacancies' => $vacancies])

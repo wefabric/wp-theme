@@ -600,3 +600,9 @@ function acf_load_cardblock_post_types($field) {
 
     return $field;
 }
+
+/**
+ * Custom translation file located in htdocs/content/languages
+ */
+
+load_theme_textdomain('themosis', WP_CONTENT_DIR . '/languages');

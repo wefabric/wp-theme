@@ -53,7 +53,7 @@
                 @endforeach
             </div>
             @if (!$swiperLinear)
-                <div class="lg:hidden swiper-pagination"></div>
+                <div class="swiper-pagination"></div>
             @endif
         </div>
         @if (!$swiperLinear)
@@ -94,28 +94,38 @@
             @if ($swiperCenteredSlides)
                 centeredSlides: true,
             @endif
-
             @if ($swiperLinear)
                 freeMode: true,
                 allowTouchMove: false,
                 speed: {{ $swiperRotationSpeed }},
             @endif
-
             @if ($swiperAutoplay)
                 autoplay: {
-                    delay: @if ($swiperLinear) 0 @else {{ $swiperAutoplaySpeed }} @endif,
-                    disableOnInteraction: @if ($swiperLinear) true @else false @endif,
+                    delay:
+                    @if ($swiperLinear)
+                        0
+                    @else
+                        {{ $swiperAutoplaySpeed }}
+                    @endif,
+                    disableOnInteraction:
+                        @if ($swiperLinear)
+                            true
+                        @else
+                            false
+                       @endif,
                     reverseDirection: {{ $swiperDirection === 'right' ? 'true' : 'false' }},
                 },
             @endif
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".logos-button-next-{{ $randomNumber }}",
-                prevEl: ".logos-button-prev-{{ $randomNumber }}",
-            },
+            @if (!$swiperLinear)
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".logos-button-next-{{ $randomNumber }}",
+                    prevEl: ".logos-button-prev-{{ $randomNumber }}",
+                },
+            @endif
             breakpoints: {
                 0: {
                     loop: {{ $swiperLoop && count($logos) > $mobileLayout ? 'true' : 'false' }},

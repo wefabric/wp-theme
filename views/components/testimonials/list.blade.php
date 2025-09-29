@@ -31,7 +31,9 @@
                     </div>
                 @endforeach
             </div>
-            <div class="swiper-pagination"></div>
+            @if ($paginationStyle != 'none')
+                <div class="swiper-pagination"></div>
+            @endif
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next testimonial-button-next-{{ $randomNumber }}"></div>
@@ -67,14 +69,16 @@
                     disableOnInteraction: true,
                 },
             @endif
-            pagination: {
-                el: '.swiper-pagination',
-                @if ($paginationStyle == 'progress_bar')
-                    type: 'progressbar',
-                @elseif ($paginationStyle == 'bullets')
-                    clickable: true,
-                @endif
-            },
+            @if ($paginationStyle != 'none')
+                pagination: {
+                    el: '.swiper-pagination',
+                    @if ($paginationStyle == 'progress_bar')
+                        type: 'progressbar',
+                    @elseif ($paginationStyle == 'bullets')
+                        clickable: true,
+                    @endif
+                },
+            @endif
             navigation: {
                 nextEl: ".testimonial-button-next-{{ $randomNumber }}",
                 prevEl: ".testimonial-button-prev-{{ $randomNumber }}",
