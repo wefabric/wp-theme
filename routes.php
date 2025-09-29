@@ -8,7 +8,7 @@
  */
 
 Route::any('api/indicator-items', function () {
-    $result = Cache::remember('post_types', 3600, function () {
+    $result = Cache::remember('api/indicator-items', 3600, function () {
         $data = [];
 
         foreach (get_post_types(['public' => true]) as $postType) {
