@@ -124,7 +124,7 @@
             </div>
             @if ($links)
                 @if ($linkDisplay == 'button')
-                    <div class="links-list w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }}">
+                    <div class="links-list w-full flex flex-wrap gap-x-2 gap-y-2 mt-4 md:mt-8 {{ $textClass }}">
                         @foreach($links as $link)
                             @if($link['linkText'] && $link['linkUrl'])
                                 @include('components.buttons.default', [

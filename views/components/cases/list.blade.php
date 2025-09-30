@@ -11,10 +11,9 @@
          'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
      ];
 
-
     $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
-    $swiperAutoplaySpeed = max((int)($block['data']['autoplay_speed'] ?? 0) * 1000, 5000);
+    $swiperAutoplaySpeed = ($block['data']['autoplay_speed'] ?? 5) * 1000;
     $swiperLoop = $block['data']['loop_slides'] ?? true;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
@@ -73,13 +72,16 @@
     window.addEventListener("DOMContentLoaded", (event) => {
         var klantcaseSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: {{ $spaceBetween }},
+{{--            @if($swiperDirection == 'vertical')--}}
+{{--                direction: 'vertical',--}}
+{{--            @endif--}}
             @if ($swiperCenteredSlides)
                 centeredSlides: true,
             @endif
             @if ($swiperAutoplay)
                 autoplay: {
                     delay: {{ $swiperAutoplaySpeed }},
-                    disableOnInteraction: true,
+                    disableOnInteraction: false,
                 },
             @endif
             @if ($paginationStyle != 'none')
@@ -117,3 +119,20 @@
         });
     });
 </script>
+
+@if ($swiperAutoplay)
+    <style>
+        .swiper-pagination-bullet-active::after {
+            animation: cases-bullet-progress {{ $swiperAutoplaySpeed }}ms linear forwards !important;
+        }
+
+        @keyframes cases-bullet-progress {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
+        }
+    </style>
+@endif

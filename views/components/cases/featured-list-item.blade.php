@@ -18,8 +18,8 @@
 @endphp
 
 <div class="klantcase-item featured w-full h-full text-{{ $caseTextColor }} @if ($flyinEffect) klantencase-hidden @endif">
-    <div class="relative flex flex-col md:flex-row h-full rounded-{{ $borderRadius }} overflow-hidden">
-        <div class="absolute left-[30px] h-full top-0">
+    <div class="klantcase-styling relative flex flex-col gap-x-12 md:flex-row h-full rounded-{{ $borderRadius }} overflow-hidden">
+        <div class="case-line absolute left-[30px] h-full top-0">
             <div class="h-full py-12 flex flex-col items-center gap-4">
                 <div class="h6 text-quaternary-color vertical-text">Case</div>
                 <div class="hidden md:block h-full w-[1px] bg-quaternary-color"></div>
@@ -27,8 +27,8 @@
         </div>
 
         <div class="flex w-full h-full md:w-3/5 order-2 md:order-1">
-            <div class="h-full flex flex-col flex-1 justify-start bg-{{ $caseBackgroundColor }} py-6 md:py-12 pl-6 md:pl-24 pr-6 md:pr-12">
-                <div class="flex flex-col justify-between h-full">
+            <div class="case-data h-full flex flex-col flex-1 justify-start bg-{{ $caseBackgroundColor }} py-6 md:py-12 px-6 md:pl-24">
+                <div class="flex-layout flex flex-col justify-between h-full">
                     <div class="flex justify-center md:justify-end mb-4 logo">
                         @if ($caseLogo)
                             @include('components.image', [
@@ -48,11 +48,11 @@
                         @endif
                         @if ($caseText)
                             <div class="case-text">
-                                <div class="block lg:hidden">
-                                    @include('components.content', ['content' => apply_filters('the_content', $mobileText), 'class' => 'mb-6'])
+                                <div class="block lg:hidden mb-6">
+                                    {!! $mobileText !!}
                                 </div>
-                                <div class="hidden lg:block">
-                                    @include('components.content', ['content' => apply_filters('the_content', $caseText), 'class' => 'mb-6'])
+                                <div class="hidden lg:block mb-6">
+                                    {!! $caseText !!}
                                 </div>
                             </div>
                         @endif
