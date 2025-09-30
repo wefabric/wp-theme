@@ -4,6 +4,9 @@
     $titleColor = $block['data']['title_color'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
     $subTitleColor = $block['data']['subtitle_color'] ?? '';
+    $subtitleIcon = $block['data']['subtitle_icon'] ?? '';
+    $subtitleIcon = $subtitleIcon ? json_decode($subtitleIcon, true) : null;
+    $subtitleIconColor = $block['data']['subtitle_icon_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -56,6 +59,7 @@
     $caseQuoteColor = $block['data']['case_quote_color'] ?? '';
     $caseTextColor = $block['data']['case_text_color'] ?? '';
     $caseBackgroundColor = $block['data']['case_background_color'] ?? '';
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
     $displayType = $block['data']['display_type'] ?? 'show_all';
 
@@ -213,59 +217,69 @@
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
-@if ($cases)
-    <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'klantencases' }}@endif" class="block-klantencases relative klantencases-{{ $randomNumber }}-custom-padding klantencases-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-             style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
-        @if ($overlayEnabled)
-            <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
-        @endif
-        <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-            <div class="custom-styling {{ $blockClass }} mx-auto">
-                @if ($subTitle)
-                    <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
+
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'klantencases' }}@endif" class="block-klantencases relative klantencases-{{ $randomNumber }}-custom-padding klantencases-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+    @if($swiperOutContainer)
+        <div class="overflow-hidden">
+    @endif
+    @if ($overlayEnabled)
+        <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+    @endif
+    <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+        <div class="custom-styling {{ $blockClass }} mx-auto">
+            @if ($subTitle)
+                <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">
+                @if ($subtitleIcon)
+                    <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
                 @endif
-                @if ($title)
-                    <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
-                @endif
-                @if ($text)
-                    @include('components.content', [
-                        'content' => apply_filters('the_content', $text),
-                        'class' => 'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
+                {!! $subTitle !!}
+            </span>
+            @endif
+            @if ($title)
+                <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
+            @endif
+            @if ($text)
+                @include('components.content', [
+                    'content' => apply_filters('the_content', $text),
+                    'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
+                ])
+            @endif
+            @if ($cases)
+                @include('components.cases.list', ['cases' => $cases])
+            @endif
+            @if (($button1Text) && ($button1Link))
+                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
+                    @include('components.buttons.default', [
+                        'text' => $button1Text,
+                        'href' => $button1Link,
+                        'alt' => $button1Text,
+                        'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                        'class' => 'rounded-lg',
+                        'target' => $button1Target,
+                        'icon' => $button1Icon,
+                        'download' => $button1Download,
                     ])
-                @endif
-                @if ($cases)
-                    @include('components.cases.list', ['cases' => $cases])
-                @endif
-                @if (($button1Text) && ($button1Link))
-                    <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
+                    @if (($button2Text) && ($button2Link))
                         @include('components.buttons.default', [
-                            'text' => $button1Text,
-                            'href' => $button1Link,
-                            'alt' => $button1Text,
-                            'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                            'text' => $button2Text,
+                            'href' => $button2Link,
+                            'alt' => $button2Text,
+                            'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
                             'class' => 'rounded-lg',
-                            'target' => $button1Target,
-                            'icon' => $button1Icon,
-                            'download' => $button1Download,
+                            'target' => $button2Target,
+                            'icon' => $button2Icon,
+                            'download' => $button2Download,
                         ])
-                        @if (($button2Text) && ($button2Link))
-                            @include('components.buttons.default', [
-                                'text' => $button2Text,
-                                'href' => $button2Link,
-                                'alt' => $button2Text,
-                                'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                                'class' => 'rounded-lg',
-                                'target' => $button2Target,
-                                'icon' => $button2Icon,
-                                'download' => $button2Download,
-                            ])
-                        @endif
-                    </div>
-                @endif
-            </div>
+                    @endif
+                </div>
+            @endif
         </div>
-    </section>
-@endif
+    </div>
+    @if($swiperOutContainer)
+        </div>
+    @endif
+</section>
 
 
 <style>
