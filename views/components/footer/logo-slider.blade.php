@@ -31,12 +31,12 @@
                     @endphp
 
                     @if($logoImage)
-                        <div class="swiper-slide flex items-center justify-center w-full">
+                        <div class="swiper-slide flex items-center justify-center w-full ">
                             @include('components.image', [
                                 'image_id' => $logoImage,
                                 'size' => 'full',
                                 'object_fit' => 'contain',
-                                'img_class' => 'w-full h-[80px] transition ease-in-out duration-300',
+                                'img_class' => 'max-w-[130px] max-h-[60px] transition ease-in-out duration-300',
                                 'alt' => $logoName,
                             ])
                         </div>
@@ -59,7 +59,7 @@
                         'image_id' => $logoImage,
                         'size' => 'full',
                         'object_fit' => 'contain',
-                        'img_class' => 'w-full h-[80px] transition ease-in-out duration-300',
+                        'img_class' => 'max-w-[130px] max-h-[60px] transition ease-in-out duration-300',
                         'alt' => $logoName,
                     ])
                 </div>
