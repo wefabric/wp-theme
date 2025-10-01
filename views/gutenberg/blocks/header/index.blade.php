@@ -321,25 +321,21 @@
 @if ($showReadingProgress)
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const header = document.querySelector('header');
+            const progressContainer = document.createElement('div');
+            progressContainer.className = 'reading-progress';
 
-            if (header) {
-                const progressContainer = document.createElement('div');
-                progressContainer.className = 'reading-progress';
+            const progressFill = document.createElement('div');
+            progressFill.className = 'reading-progress-fill';
 
-                const progressFill = document.createElement('div');
-                progressFill.className = 'reading-progress-fill';
+            progressContainer.appendChild(progressFill);
+            document.body.appendChild(progressContainer);
 
-                progressContainer.appendChild(progressFill);
-                header.appendChild(progressContainer);
-
-                document.addEventListener('scroll', function() {
-                    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-                    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                    const width = (scrollTop / scrollHeight) * 100;
-                    progressFill.style.width = width + '%';
-                });
-            }
+            document.addEventListener('scroll', function() {
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const width = (scrollTop / scrollHeight) * 100;
+                progressFill.style.width = width + '%';
+            });
         });
     </script>
 @endif
