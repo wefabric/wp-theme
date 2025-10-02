@@ -2,9 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Select all elements with the class 'indicator'
     const indicators = document.querySelectorAll('.indicator');
 
-    // Als er indicators zijn gedefinieerd .length checken
-   console.log(indicators.length + ' indicators found');
-
     // De items ophalen (/api/indicator-items)
     fetch('/api/indicator-items')
         .then(response => response.json())

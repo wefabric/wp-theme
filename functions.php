@@ -541,17 +541,27 @@ add_action('init', 'disable_wp_emojis');
  * Calculate the estimated reading time of a post by counting words in Gutenberg blocks.
  *
  * @param WP_Post|int $post The post object or post ID.
- * @param int $words_per_minute The average reading speed. Default is 238 words per minute.
+ * @param int $wordsPerMinute The average reading speed. Default is 238 words per minute.
  *
  * @return int Estimated reading time in minutes.
  */
 
-function getReadingTime($post, $words_per_minute = 238) {
+function getReadingTime(int|WP_Post $post, int $wordsPerMinute = 238): int
+{
+    // Do not render in WP Json because the content filter has memory leaks in WP admin
+    if(str_contains(request()->url(), '/wp-json')) {
+        return 0;
+    }
+
     if (is_numeric($post)) {
         $post = get_post($post);
     }
 
-    if (! $post instanceof WP_Post) {
+    if (!$post instanceof WP_Post) {
+        return 0;
+    }
+
+    if(!$post->post_content) {
         return 0;
     }
 
@@ -561,19 +571,8 @@ function getReadingTime($post, $words_per_minute = 238) {
         return 0;
     }
 
-    // Strip alle HTML tags weg
-    $text_content = wp_strip_all_tags($content);
-
-    // Haal extra whitespace weg
-    $text_content = trim(preg_replace('/\s+/', ' ', $text_content));
-
-    // Tel de woorden
-    $word_count = str_word_count($text_content);
-
-    // Bereken de leestijd
-    $reading_time = ceil($word_count / $words_per_minute);
-
-    return max(1, $reading_time);
+    $textContent = trim(preg_replace('/\s+/', ' ', wp_strip_all_tags($content)));
+    return max(1, ceil(str_word_count($textContent) / $wordsPerMinute));
 }
 
 
