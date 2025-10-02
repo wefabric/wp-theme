@@ -23,7 +23,7 @@
 @if($options['logo_show_slider'])
     <div class="slider block relative">
         <div class="swiper {{ $randomId }} py-4">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper items-center">
                 @foreach ($option['logos']['logos'] ?? [] as $logo)
                     @php
                         $logoImage = $logo['image'] ?? null;
