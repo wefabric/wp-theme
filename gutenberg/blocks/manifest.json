@@ -44,6 +44,7 @@
     "medewerkersverhaal/block.json",
     "faq/block.json",
     "google-maps/block.json",
+    "google-maps-advanced/block.json",
     "brochure/block.json",
     "embed/block.json",
     "producten/block.json",

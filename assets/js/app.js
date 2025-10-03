@@ -5,6 +5,7 @@ import Swiper, { Navigation, Pagination, Autoplay, Zoom, Thumbs, EffectFade } fr
 import SplitType from "split-type";
 import gsap from "gsap";
 import TelQr from '@wefabric/telqr';
+import googleMaps from './google_maps';
 
 // Import dependencies
 window.$ = window.jQuery = require('jquery');
@@ -39,6 +40,7 @@ if (ThemeChildApp !== undefined) {
     ThemeChildApp.init();
 }
 
+Alpine.data('google_maps', googleMaps);
 Alpine.start();
 
 // Initialize with default settings

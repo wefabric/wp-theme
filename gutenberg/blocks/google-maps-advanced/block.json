@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/google-maps-advanced",
+  "title": "Google Maps Advanced",
+  "description": "Een Google maps advanced blok",
+  "category": "wefabric-theme",
+  "icon": "location-alt",
+  "apiVersion": 2,
+  "keywords": [
+    "Google maps advanced"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

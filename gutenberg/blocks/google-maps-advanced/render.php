@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.google-maps-advanced.index', ['block' => $block])->render(); ?>
