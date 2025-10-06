@@ -166,11 +166,10 @@ header.banner {
   position: fixed;
   width: 260px;
   top: 0; bottom: 0; right: -260px;
-  overflow-y: scroll;
   z-index: 1000;
   min-height: 100%;
   transition: right 300ms ease;
-  color: #000;
+  color: #FFF;
   padding-bottom: 20px;
   box-shadow: rgba(0,0,0,.35) 0 5px 15px;
 
@@ -183,23 +182,27 @@ header.banner {
       transition: max-height .3s ease, padding .2s ease;
       padding-block: 0;
 
-      > li:first-child { margin-top: .5rem !important; }
+      > li:first-child {
+        margin-top: .5rem !important;
+      }
     }
 
     .menu-item-has-children.open > .sub-menu {
-      display: block;
       max-height: 1000px !important;
       padding-block: 6px;
     }
 
-    li, ul, lo { line-height: 1.875rem !important; }
+    li, ul, ol {
+      line-height: 1.875rem !important;
+    }
 
     li.top-navigation {
       display: flex !important;
       padding: 0 !important;
 
-      a, i { padding: 0 !important; }
-      a { padding: 0 18px !important; }
+      a, i {
+        //padding: 0 !important;
+      }
     }
 
     /* base li + anchor */
@@ -220,23 +223,20 @@ header.banner {
         padding: var(--row-pad-y) calc(var(--arrow-right) + var(--arrow-size) + 4px) var(--row-pad-y) 0;
         min-height: var(--row-min-h);
         line-height: 1.4;
-        word-break: break-word;
+        hyphens: auto;
+        min-width: 0;
         position: relative;
-        z-index: 1; /* link stays under arrow hitbox */
+        z-index: 1;
       }
 
-      &.active { text-decoration: underline; }
+      &.active {
+        text-decoration: underline;
+      }
 
       &.current-menu-item > a:first-child:not(.custom) {
         @apply text-secondary;
       }
 
-      /* Tailwind circular dependency fix: escape .btn */
-      &.custom\.btn {
-        padding: 0 !important;
-        margin: 20px !important;
-        text-align: center;
-      }
     }
 
     /* ========== ARROWS ========== */
@@ -248,10 +248,11 @@ header.banner {
     > li.menu-item-has-children::before {
       content: "\f078"; /* FA chevron-down */
       font-family: "Font Awesome 6 Pro";
+      max-width: 100%;
       position: absolute;
       right: var(--arrow-right);
       /* lock to first row's vertical middle so it won't "drop" when submenu expands */
-      top: calc(var(--li-pad-y) + var(--row-pad-y) + (var(--row-min-h) / 2));
+      top: calc(var(--li-pad-y) + var(--row-pad-y) + (var(--row-min-h) / 3));
       transform: translateY(-50%) rotate(0);
       transition: transform .25s ease-in-out;
 
@@ -278,7 +279,7 @@ header.banner {
       font-family: "Font Awesome 6 Pro";
       position: absolute;
       right: var(--arrow-right);
-      top: calc(var(--li-pad-y) + var(--row-pad-y) + (var(--row-min-h) / 2));
+      top: calc(var(--li-pad-y) + var(--row-pad-y) + (var(--row-min-h) / 3));
       transform: translateY(-50%) rotate(0);
       transition: transform .25s ease-in-out;
 
@@ -298,12 +299,29 @@ header.banner {
 
 }
 
-/* keep submenu link weight */
+.home-item {
+  color: #7ec185;
+  display: block;
+  padding: 0 18px !important;
+  min-height: var(--row-min-h);
+  line-height: 1.4;
+}
+
+.mobile-menu .menu .menu-item-has-children.open>.sub-menu {
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  max-width: 100%;
+}
+
+.main-navigation .mobile-menu .menu li.custom a {
+  line-height: 1.7rem;
+}
+
 .main-navigation .mobile-menu ul.sub-menu li a {
   font-weight: 400 !important;
 }
 
-
-.main-navigation .mobile-menu ul.sub-menu li a {
-  font-weight: 400 !important;
+.mobile-menu .main-navigation .menu .menu-item-has-children>.sub-menu {
+  @apply w-full #{!important};
 }

@@ -164,34 +164,39 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var menuItems = document.querySelectorAll('.menu-item-has-children');
-        var ARROW_HITBOX = 36 + 12; // arrow-size (36) + right padding (12) -> keep in sync with CSS vars
+        var ARROW_HITBOX = 36 + 12; // arrow-size (36) + right padding (12)
 
         menuItems.forEach(function (item) {
             item.addEventListener('click', function (event) {
-                const li   = event.currentTarget;                  // this <li>
-                const link = li.querySelector(':scope > a');       // only the direct link
+                const li = event.currentTarget;
+                const link = li.querySelector(':scope > a');
 
-                // Is the click on the direct link (or anything inside it)?
-                const clickedLink = event.target.closest('a') === link;
-
-                // Is the click within the arrow hitbox on the right?
                 const rect = li.getBoundingClientRect();
                 const clickX = event.clientX;
                 const inArrowZone = (rect.right - clickX) <= ARROW_HITBOX;
 
+                const clickedLink = event.target.closest('a') === link;
+
                 if (clickedLink && !inArrowZone) {
-                    // normal navigation for link clicks (outside arrow zone)
-                    return; // let the browser navigate
+                    // Klik op link buiten pijltje -> navigeer
+                    return;
                 }
 
-                // From here, we toggle this li only (arrow zone or elsewhere in the li)
-                event.preventDefault();
-                event.stopPropagation(); // <-- prevents parent from also toggling
+                // Klik op pijltje of ergens anders in <li> -> toggle submenu
+                event.preventDefault(); // voorkom navigatie
                 li.classList.toggle('open');
+            });
+        });
+
+        // voorkom dat clicks binnen submenu's bubbling veroorzaken
+        document.querySelectorAll('.menu-item-has-children > ul').forEach(function(submenu) {
+            submenu.addEventListener('click', function(event) {
+                event.stopPropagation();
             });
         });
     });
 </script>
+
 
 
 <style>
