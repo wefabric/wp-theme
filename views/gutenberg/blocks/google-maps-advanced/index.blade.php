@@ -1,5 +1,9 @@
 @php
 
+if(empty(config('app.google_maps_api_key'))) {
+    echo "Undefined google maps API key.";
+    return;
+}
         // Content
         $titleColor = $block['data']['title_color'] ?? '';
         $subTitle = $block['data']['subtitle'] ?? '';
