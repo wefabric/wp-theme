@@ -170,7 +170,7 @@
                                                     <a class="phone-link group flex items-center gap-2 w-fit"
                                                        href="{{ $phone->uri() }}"
                                                        title="Telefoonnummer">
-                                                        <i class="fa-solid fa-phone text-primary group-hover:scale-110 duration-200 ease-in-out"></i>
+                                                        <i class="fa-solid fa-phone text-primary"></i>
                                                         <span class="align-middle group-hover:text-primary group-hover:underline">{{ get_bloginfo("language") === 'nl-NL' ? $phone->national() : $phone->international() }}</span>
                                                     </a>
                                                 @endif
@@ -179,7 +179,7 @@
                                                     <a class="email-link group flex items-center gap-2 w-fit"
                                                        href="mailto:{{ $email }}"
                                                        title="Email">
-                                                        <i class="fa-solid fa-envelope text-primary group-hover:scale-110 duration-200 ease-in-out"></i>
+                                                        <i class="fa-solid fa-envelope text-primary"></i>
                                                         <span class="align-middle group-hover:text-primary group-hover:underline">{{ $email }}</span>
                                                     </a>
                                                 @endif
@@ -189,7 +189,7 @@
                                                         <a class="route-link group flex items-center gap-2 w-fit"
                                                            href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $postcode }}+{{ $city }}"
                                                            title="Email">
-                                                            <i class="fa-solid fa-route text-primary group-hover:scale-110 duration-200 ease-in-out"></i>
+                                                            <i class="fa-solid fa-route text-primary"></i>
                                                             <span class="align-middle group-hover:text-primary group-hover:underline">Route</span>
                                                         </a>
                                                     </div>

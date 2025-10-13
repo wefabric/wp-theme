@@ -50,7 +50,9 @@
                      'image_id' => $imageId,
                      'size' => 'full',
                      'object_fit' => 'cover',
-                     'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 @if($hoverImageId) group-hover:opacity-0 @else group-hover:scale-110 @endif rounded-' . $borderRadius,
+                     'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 '
+                                        . ($hoverImageId ? 'group-hover:opacity-0 ' : ($pageLink ? 'group-hover:scale-110 ' : ''))
+                                        . 'rounded-' . $borderRadius,
                      'alt' => $fullName,
                 ])
                 @if (!empty($hoverImageId))

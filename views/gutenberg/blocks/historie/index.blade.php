@@ -160,8 +160,8 @@
             @endif
             <div class="mt-8 lg:mt-16 relative h-full">
                 <div class="history-vertical-line w-[4px] bg-{{ $timelineLineColor }} h-full absolute lg:left-1/2 -translate-x-1/2">
-                    <div class="end-dot w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-                    <div class="end-dot w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"></div>
+                    <div class="timeline-start-dot end-dot w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                    <div class="timeline-end-dot end-dot w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"></div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-12">
