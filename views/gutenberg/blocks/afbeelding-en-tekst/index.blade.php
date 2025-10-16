@@ -170,7 +170,7 @@
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'afbeelding-tekst' }}@endif" class="block-afbeelding-tekst block-{{ $randomNumber }} relative afbeelding-tekst-{{ $randomNumber }}-custom-padding afbeelding-tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'afbeelding-tekst' }}@endif" class="block-afbeelding-tekst @if($textPosition == 'left') block-text-left @else block-text-right @endif block-{{ $randomNumber }} relative afbeelding-tekst-{{ $randomNumber }}-custom-padding afbeelding-tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
