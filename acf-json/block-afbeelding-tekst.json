@@ -810,6 +810,71 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_68f248245b604",
+            "label": "Video bestand",
+            "name": "video_file",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6490599eabdca",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_68f24c3066772",
+            "label": "Video instellingen",
+            "name": "video_setting",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68f248245b604",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "automatic": "Automatisch afspelen als het blok in beeld komt",
+                "on_hover": "Afspelen als je hovert",
+                "standard": "Play button tonen"
+            },
+            "default_value": "automatic",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_649d4b5bb10cc",
             "label": "Afbeelding grootte",
             "name": "image_size",
@@ -862,6 +927,12 @@
                         "field": "field_6490599eabdca",
                         "operator": "!=empty"
                     }
+                ],
+                [
+                    {
+                        "field": "field_68f248245b604",
+                        "operator": "!=empty"
+                    }
                 ]
             ],
             "wrapper": {
@@ -872,6 +943,7 @@
             "default_value": "",
             "min": "",
             "max": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "step": "",
             "prepend": "",
@@ -918,6 +990,12 @@
                         "field": "field_6490599eabdca",
                         "operator": "!=empty"
                     }
+                ],
+                [
+                    {
+                        "field": "field_68f248245b604",
+                        "operator": "!=empty"
+                    }
                 ]
             ],
             "wrapper": {
@@ -927,6 +1005,7 @@
             },
             "message": "",
             "default_value": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
@@ -943,6 +1022,46 @@
                 [
                     {
                         "field": "field_6490599eabdca",
+                        "operator": "!=empty"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_68f248245b604",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_68f251f993002",
+            "label": "Tekst mee laten scrollen met afbeelding",
+            "name": "sticky_text",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Werkt alleen als de afbeelding hoogte groter is dan die van de tekst.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6490599eabdca",
+                        "operator": "!=empty"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_68f248245b604",
                         "operator": "!=empty"
                     }
                 ]
@@ -2162,5 +2281,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1759155900
+    "display_title": "",
+    "modified": 1761050991
 }

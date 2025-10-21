@@ -96,6 +96,7 @@
     $imageParallax = $block['data']['image_parallax'] ?? false;
     $verticalCentered = $block['data']['vertical_centered'] ?? false;
     $stickyImage = $block['data']['sticky_image'] ?? false;
+    $stickyText = $block['data']['sticky_text'] ?? false;
     $imageSize = $block['data']['image_size'] ?? '50';
 
     $sizes = [
@@ -107,6 +108,9 @@
     ];
 
     [$imageClass, $textClass] = $sizes[$imageSize] ?? ['lg:w-1/2', 'lg:w-1/2'];
+
+    $video = $block['data']['video_file'] ?? '';
+    $fileId = is_numeric($video) ? intval($video) : 0;
 
 
     // Blokinstellingen
@@ -168,6 +172,9 @@
     $textFadeDirection = $block['data']['flyin_direction'] ?? 'bottom';
 
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
+
+    // Video settings
+    $videoSetting = $block['data']['video_setting'] ?? 'automatic';
 @endphp
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'afbeelding-tekst' }}@endif" class="block-afbeelding-tekst @if($textPosition == 'left') block-text-left @else block-text-right @endif block-{{ $randomNumber }} relative afbeelding-tekst-{{ $randomNumber }}-custom-padding afbeelding-tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -178,7 +185,7 @@
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             <div class="text-image flex flex-col lg:flex-row gap-8 xl:gap-20 @if ($verticalCentered) lg:items-center @endif">
-                <div class="text {{ $textClass }} order-2 {{ $textOrder }}">
+                <div class="text {{ $textClass }} order-2 {{ $textOrder }} @if($stickyText) h-fit sticky-text sticky top-[150px] @endif">
                     @if ($subTitle)
                         <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if ($titleAnimation) title-animation @endif @if ($flyInAnimation) flyin-animation @endif">
                             @if ($subtitleIcon)
@@ -263,7 +270,97 @@
                         </div>
                     @endif
                 </div>
-                @if ($imageId)
+                @if ($fileId)
+                    @php
+                        $mime = get_post_mime_type($fileId);
+                        $url = wp_get_attachment_url($fileId);
+                    @endphp
+                    @php
+                        $isVideo = ($mime && (strpos($mime, 'video') === 0 || $mime === 'video/quicktime'));
+                    @endphp
+                    @if ($isVideo && $url)
+                        <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }} @if ($imageParallax) parallax-image @endif @if($videoSetting === 'standard') relative @endif">
+                            <video class="image-item w-full object-cover rounded-{{ $borderRadius }} @if($stickyImage) sticky-image sticky top-[150px] @endif @if($flyinEffect) text-image-hidden @endif"
+                                                               @if($videoSetting === 'automatic') autoplay muted loop playsinline @endif
+                                                               @if($videoSetting === 'on_hover') muted loop playsinline @endif
+                                                               preload="metadata">
+                                <source src="{{ esc_url($url) }}" type="{{ esc_attr($mime) }}">
+                                <source src="{{ esc_url($url) }}">
+                                Your browser does not support the video tag.
+                            </video>
+                            @if($videoSetting === 'automatic')
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function(){
+                                        const block = document.querySelector('.block-{{ $randomNumber }}');
+                                        const vid = block ? block.querySelector('video.image-item') : null;
+                                        if(!vid) return;
+                                        const onChange = (entries)=>{
+                                            entries.forEach(entry=>{
+                                                if(entry.isIntersecting){ vid.play().catch(()=>{}); }
+                                                else { vid.pause(); }
+                                            });
+                                        };
+                                        const io = new IntersectionObserver(onChange, { threshold: 0.2 });
+                                        io.observe(vid);
+                                    });
+                                </script>
+                            @elseif($videoSetting === 'on_hover')
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function(){
+                                        const block = document.querySelector('.block-{{ $randomNumber }}');
+                                        const vid = block ? block.querySelector('video.image-item') : null;
+                                        if(!vid) return;
+                                        const startPlaying = ()=>{ if(vid.paused){ vid.play().catch(()=>{}); } };
+                                        vid.addEventListener('mouseenter', startPlaying);
+                                        let started = false;
+                                        vid.addEventListener('touchstart', function(){
+                                            if(!started){ vid.play().catch(()=>{}); started = true; }
+                                        }, {passive:true});
+                                    });
+                                </script>
+                            @elseif($videoSetting === 'standard')
+                                <div class="video-overlay absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                                    <button aria-label="Play video" class="play-button pointer-events-auto w-20 h-20 rounded-full bg-white/70 text-black flex items-center justify-center shadow-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                    </button>
+                                </div>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function(){
+                                        const block = document.querySelector('.block-{{ $randomNumber }}');
+                                        const wrap = block ? block.querySelector('.image.image-{{ $randomNumber }}') : null;
+                                        const vid = wrap ? wrap.querySelector('video.image-item') : null;
+                                        const btn = wrap ? wrap.querySelector('.play-button') : null;
+                                        const overlay = wrap ? wrap.querySelector('.video-overlay') : null;
+                                        if(!vid || !btn) return;
+                                        vid.removeAttribute('autoplay');
+                                        vid.pause();
+                                        btn.addEventListener('click', function(){
+                                            if(overlay){ overlay.remove(); }
+                                            vid.muted = false;
+                                            vid.controls = true;
+                                            vid.removeAttribute('loop');
+                                            vid.play().catch(()=>{});
+                                            vid.addEventListener('ended', function(){
+                                                vid.pause();
+                                                try { vid.currentTime = 0; } catch(e) {}
+                                            }, { once: true });
+                                        });
+                                    });
+                                </script>
+                            @endif
+                        </div>
+                    @elseif ($imageId)
+                        <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }} @if ($imageParallax) parallax-image @endif">
+                            @include('components.image', [
+                                'image_id' => $imageId,
+                                'size' => 'full',
+                                'object_fit' => 'cover',
+                                'img_class' => 'image-item w-full object-cover rounded-' . $borderRadius . ($stickyImage ? ' sticky-image sticky top-[150px]' : '') . ($flyinEffect ? ' text-image-hidden' : ''),
+                                'alt' => $imageAlt
+                            ])
+                        </div>
+                    @endif
+                @elseif ($imageId)
                     <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }} @if ($imageParallax) parallax-image @endif">
                         @include('components.image', [
                             'image_id' => $imageId,
@@ -280,7 +377,7 @@
 </section>
 
 <style>
-    .image-{{ $randomNumber }} img {
+    .image-{{ $randomNumber }} img, .image-{{ $randomNumber }} video {
         @if($imageMaxHeight) max-height: {{ $imageMaxHeight }}px; @endif
     }
 

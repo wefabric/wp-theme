@@ -52,8 +52,7 @@
         <div class="product-data flex flex-col w-full grow mt-5">
 
             @if($productUrl)
-                <a href="{{ $productUrl }}" aria-label="Ga naar {{ $productTitle }} pagina"
-                   class="product-title text-{{ $productTitleColor }} font-bold text-lg group-hover:text-primary">{!! $productTitle !!}</a>
+                <a href="{{ $productUrl }}" aria-label="Ga naar {{ $productTitle }} pagina" class="product-title text-{{ $productTitleColor }} font-bold text-lg group-hover:text-primary">{!! $productTitle !!}</a>
             @else
                 <div class="product-title text-{{ $productTitleColor }} font-bold text-lg">{!! $productTitle !!}</div>
             @endif

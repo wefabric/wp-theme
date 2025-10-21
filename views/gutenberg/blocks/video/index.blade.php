@@ -45,6 +45,10 @@
     $videoUrl = $block['data']['video_url'] ?? '';
     $videoFileUrl = is_numeric($videoFile) ? wp_get_attachment_url($videoFile) : $videoFile;
 
+    $videoSetting = $block['data']['video_setting'] ?? 'standard';
+    $videoSound = $block['data']['video_sound'] ?? true;
+    $videoMaxHeight = $block['data']['video_max_height'] ?? '';
+
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -124,11 +128,81 @@
                 <div class="video-embed-wrapper">
                     {!! apply_filters('the_content', '[embed]' . $videoUrl . '[/embed]') !!}
                 </div>
+                @if($videoSound)
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function(){
+                            const block = document.querySelector('.block-{{ $randomNumber }}');
+                            const wrapper = block ? block.querySelector('.video-embed-wrapper') : null;
+                            if(!wrapper) return;
+                            const vid = wrapper.querySelector('video');
+                            if(vid){
+                                try { vid.muted = false; vid.volume = 1.0; } catch(e) {}
+                            }
+                        });
+                    </script>
+                @endif
             @elseif ($videoFileUrl)
-                <video class="w-full" controls>
-                    <source src="{{ $videoFileUrl }}">
-                    Your browser does not support the video tag.
-                </video>
+                <div class="relative">
+                    <video class="w-full object-cover"
+                           @if($videoSetting === 'automatic') autoplay muted loop playsinline @endif
+                           @if($videoSetting === 'on_hover') muted loop playsinline @endif
+                           @if($videoSetting === 'standard') @endif
+                           preload="metadata">
+                        <source src="{{ $videoFileUrl }}">
+                        Your browser does not support the video tag.
+                    </video>
+                    @if($videoSetting === 'automatic')
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function(){
+                                const block = document.querySelector('.block-{{ $randomNumber }}');
+                                const vid = block ? block.querySelector('video.w-full') : null;
+                                if(!vid) return;
+                                const io = new IntersectionObserver((entries)=>{
+                                    entries.forEach(e=>{ if(e.isIntersecting){ vid.play().catch(()=>{}); } else { vid.pause(); } });
+                                }, { threshold: 0.2 });
+                                io.observe(vid);
+                            });
+                        </script>
+                    @elseif($videoSetting === 'on_hover')
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function(){
+                                const block = document.querySelector('.block-{{ $randomNumber }}');
+                                const vid = block ? block.querySelector('video.w-full') : null;
+                                if(!vid) return;
+                                const startPlaying = ()=>{ if(vid.paused){ vid.play().catch(()=>{}); } };
+                                vid.addEventListener('mouseenter', startPlaying);
+                                let started = false;
+                                vid.addEventListener('touchstart', function(){ if(!started){ vid.play().catch(()=>{}); started = true; } }, {passive:true});
+                            });
+                        </script>
+                    @elseif($videoSetting === 'standard')
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                            <button aria-label="Play video" class="play-button pointer-events-auto w-20 h-20 rounded-full bg-white/90 text-black flex items-center justify-center shadow-lg ring-2 ring-white/80">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                        </div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function(){
+                                const block = document.querySelector('.block-{{ $randomNumber }}');
+                                const wrap = block ? block.querySelector('.relative') : null;
+                                const vid = wrap ? wrap.querySelector('video.w-full') : null;
+                                const btn = wrap ? wrap.querySelector('.play-button') : null;
+                                const overlay = wrap ? wrap.querySelector('.video-overlay') : null;
+                                if(!vid || !btn) return;
+                                vid.removeAttribute('autoplay');
+                                vid.pause();
+                                btn.addEventListener('click', function(){
+                                    if(overlay){ overlay.remove(); }
+                                    vid.muted = false;
+                                    vid.controls = true;
+                                    vid.removeAttribute('loop');
+                                    vid.play().catch(()=>{});
+                                    vid.addEventListener('ended', function(){ vid.pause(); try{ vid.currentTime = 0; }catch(e){} }, { once: true });
+                                });
+                            });
+                        </script>
+                    @endif
+                </div>
             @endif
 
             @if (($button1Text) && ($button1Link))
@@ -162,6 +236,13 @@
 </section>
 
 <style>
+    /* Scoped max-height for video URL (embed wrapper) and file video */
+    .block-{{ $randomNumber }} .video-embed-wrapper iframe,
+    .block-{{ $randomNumber }} .video-embed-wrapper video,
+    .block-{{ $randomNumber }} video.w-full {
+        @if($videoMaxHeight) max-height: {{ $videoMaxHeight }}px; @endif
+    }
+
     .video-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
             @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
@@ -238,12 +319,12 @@
                     ease: 'back',
                     stagger: 0.1,
                     scrollTrigger: {
-                        trigger: element, // The current element that triggers the animation
-                        start: 'top 70%', // When the trigger element is 70% from the top of the viewport
-                        end: 'top 50%', // Animation end point
-                        scrub: true, // If set to false, the animation will not synchronize with the scrollbar
-                        once: false, // Ensures the animation triggers only once
-                        markers: false // Disable markers for production
+                        trigger: element,
+                        start: 'top 70%',
+                        end: 'top 50%',
+                        scrub: true,
+                        once: false,
+                        markers: false
                     }
                 });
             });
@@ -293,12 +374,12 @@
                         ease: 'power4.out',
                         stagger: 0,
                         scrollTrigger: {
-                            trigger: element, // The current element that triggers the animation
-                            start: 'top 65%', // When the trigger element is 60% from the top of the viewport
-                            end: 'top 50%', // Animation end point
-                            scrub: false, // If set to false, the animation will not synchronize with the scrollbar
-                            once: true, // Ensures the animation triggers only once
-                            markers: false // Disable markers for production
+                            trigger: element,
+                            start: 'top 65%',
+                            end: 'top 50%',
+                            scrub: false,
+                            once: true,
+                            markers: false
                         }
                     });
                 });
