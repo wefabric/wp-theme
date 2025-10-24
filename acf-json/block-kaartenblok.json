@@ -655,24 +655,31 @@
                 "id": ""
             },
             "choices": {
-                "organisation": "Organisatie",
+                "aluminiumbouw": "Aluminiumbouw",
+                "branches": "Branche",
+                "chassisbouw": "Chassisbouw",
+                "diensten": "Dienst",
+                "hydraulisch": "Hydraulische laad- en lossysteem",
+                "klantcases": "Klantcase",
+                "employee_stories": "Medewerkersverhaal",
                 "project": "Project",
                 "testimonials": "Testimonial",
-                "verhaal": "Verhaal",
+                "vacatures": "Vacature",
                 "werknemers": "Werknemer",
+                "whitelabel": "Whitelabel",
                 "wf_layouts": "Layout",
-                "post": "Nieuws & activiteit",
+                "post": "Bericht",
                 "page": "Pagina"
             },
-            "default_value": false,
+            "default_value": [],
             "return_format": "value",
-            "multiple": 0,
+            "multiple": 1,
             "allow_null": 1,
             "allow_in_bindings": 0,
-            "ui": 0,
+            "ui": 1,
             "ajax": 0,
-            "placeholder": "",
             "create_options": 0,
+            "placeholder": "",
             "save_options": 0
         },
         {
@@ -1439,6 +1446,29 @@
             ]
         },
         {
+            "key": "field_68fb50bbcb67d",
+            "label": "Horizontale ruimte tussen kaarten",
+            "name": "space_between",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 20,
+            "min": 0,
+            "max": 300,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "px"
+        },
+        {
             "key": "field_6525514efdc03",
             "label": "Blokken in slider weergeven?",
             "name": "show_slider",
@@ -1602,6 +1632,44 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "key": "field_68fb5056cb67c",
+            "label": "Paginatie stijl",
+            "name": "pagination_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6525514efdc03",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "bullets": "Bullets",
+                "progress_bar": "Progressie balk",
+                "none": "Geen"
+            },
+            "default_value": "bullets",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_651fc9be0eed8",
@@ -2717,5 +2785,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1756911174
+    "display_title": "",
+    "modified": 1761301742
 }

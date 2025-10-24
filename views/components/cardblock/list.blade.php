@@ -17,7 +17,10 @@
     $swiperLoop = $block['data']['loop_slides'] ?? true;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
+    $paginationStyle = $block['data']['pagination_style'] ?? 'bullets';
     $randomId = 'kaartenBlockSwiper-' . $randomNumber;
+
+    $spaceBetween = $block['data']['space_between'] ?? 20;
 @endphp
 
 @if($block['data']['show_slider'])
@@ -30,7 +33,9 @@
                     </div>
                 @endforeach
             </div>
-            <div class="swiper-pagination"></div>
+            @if ($paginationStyle != 'none')
+                <div class="swiper-pagination"></div>
+            @endif
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next cardblock-button-next-{{$randomNumber}}"></div>
@@ -56,20 +61,26 @@
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var kaartBlockSwiper = new Swiper(".{{ $randomId }}", {
-            spaceBetween: 20,
+            spaceBetween: {{ $spaceBetween }},
             @if ($swiperCenteredSlides)
                 centeredSlides: true,
             @endif
             @if ($swiperAutoplay)
-            autoplay: {
-                delay: {{ $swiperAutoplaySpeed }},
-                disableOnInteraction: true,
-            },
+                autoplay: {
+                    delay: {{ $swiperAutoplaySpeed }},
+                    disableOnInteraction: true,
+                },
             @endif
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
+            @if ($paginationStyle != 'none')
+                pagination: {
+                    el: '.swiper-pagination',
+                    @if ($paginationStyle == 'progress_bar')
+                        type: 'progressbar',
+                    @elseif ($paginationStyle == 'bullets')
+                        clickable: true,
+                    @endif
+                },
+            @endif
             navigation: {
                 nextEl: ".cardblock-button-next-{{ $randomNumber }}",
                 prevEl: ".cardblock-button-prev-{{ $randomNumber }}",
