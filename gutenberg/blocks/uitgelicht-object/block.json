@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/uitgelicht-object",
+  "title": "Uitgelicht object",
+  "description": "Een uitgelicht object blok",
+  "category": "wefabric-theme",
+  "icon": "universal-access",
+  "apiVersion": 2,
+  "keywords": [
+    "Uitgelicht object"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
