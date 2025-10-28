@@ -94,12 +94,63 @@
     // Use manually selected pages
     for ($i = 0; $i < $numPages; $i++) {
         $pageId      = $block['data']["pages_{$i}_page"] ?? 0;
-        $imageId     = $block['data']["pages_{$i}_image"] ?? 0;
+        $imageIdRaw  = $block['data']["pages_{$i}_image"] ?? 0;
         $externalUrl = $block['data']["pages_{$i}_external_url"] ?? '';
+
+        // Normalize imageId to a valid attachment ID (int)
+        $imageId = 0;
+        if (is_array($imageIdRaw)) {
+            $imageId = intval($imageIdRaw['id'] ?? $imageIdRaw['ID'] ?? 0);
+        } elseif (is_string($imageIdRaw)) {
+            if (ctype_digit($imageIdRaw)) {
+                $imageId = intval($imageIdRaw);
+            } else {
+                $url = $imageIdRaw;
+                if (strpos($url, 'http') !== 0) {
+                    // Likely a relative URL like /content/uploads/...
+                    // Use WP home_url to concatenate correctly without breaking slashes
+                    $url = home_url($url);
+                }
+                $aid = attachment_url_to_postid($url);
+                $imageId = $aid ? intval($aid) : 0;
+            }
+        } else {
+            $imageId = intval($imageIdRaw);
+        }
 
         if ($pageId) {
             // Interne pagina
             $page = get_post($pageId);
+
+            // If page_visual is 'image' and no direct image selected, try subfield 'images'
+            if ($pageVisual === 'image' && empty($imageId)) {
+                // 1) Direct field pages_{$i}_images may contain an image or array
+                $imagesField = $block['data']["pages_{$i}_images"] ?? null;
+                $normalizeToId = function($val){
+                    if (is_array($val)) {
+                        return intval($val['id'] ?? $val['ID'] ?? 0);
+                    } elseif (is_string($val)) {
+                        if (ctype_digit($val)) return intval($val);
+                        $url = $val;
+                        if (strpos($url, 'http') !== 0) { $url = home_url($url); }
+                        $aid = attachment_url_to_postid($url);
+                        return $aid ? intval($aid) : 0;
+                    } else {
+                        return intval($val);
+                    }
+                };
+                $candId = $normalizeToId($imagesField);
+                if (!$candId) {
+                    // 2) Try scanning subkeys like pages_{$i}_images_0_image
+                    foreach (($block['data'] ?? []) as $k => $v) {
+                        if (strpos($k, "pages_{$i}_images") === 0) {
+                            $tmpId = $normalizeToId($v);
+                            if ($tmpId) { $candId = $tmpId; break; }
+                        }
+                    }
+                }
+                if ($candId) { $imageId = $candId; }
+            }
 
             if ($page) {
                 $pagesData[] = [
@@ -109,7 +160,7 @@
                     'url'               => get_permalink($page->ID),
                     'content'           => $page->post_content,
                     'image_id'          => $imageId,
-                    'featured_image_id' => $imageId ?: (has_post_thumbnail($page->ID) ? get_post_thumbnail_id($page->ID) : 0),
+                    'featured_image_id' => has_post_thumbnail($page->ID) ? get_post_thumbnail_id($page->ID) : 0,
                 ];
             }
             } elseif (!empty($externalUrl)) {
@@ -121,11 +172,15 @@
                     'url'               => $externalUrl,
                     'content'           => '',
                     'image_id'          => $imageId,
-                    'featured_image_id' => $imageId,
+                    'featured_image_id' => 0,
                 ];
             }
         }
     }
+
+    // Layout
+    $autoplay = $block['data']['autoplay'] ?? false;
+    $autoplaySpeed = isset($block['data']['autoplay_speed']) && $block['data']['autoplay_speed'] !== ''? (int)$block['data']['autoplay_speed'] * 1000 : 5000;
 
 
     // Blokinstellingen
@@ -192,38 +247,496 @@
     $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
 
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
+
+    // Determine image view and initial background (for background_image mode)
+    $imageView = $block['data']['image_view'] ?? 'normal_image';
+    $initialBgId = 0;
+    $initialBgUrl = '';
+    if ($imageView === 'background_image' && !empty($pagesData)) {
+        foreach ($pagesData as $p) {
+            $pid = $pageVisual === 'image' ? ($p['image_id'] ?? 0) : ($p['featured_image_id'] ?? 0);
+            if ($pid) { $initialBgId = $pid; $initialBgUrl = wp_get_attachment_image_url($pid, 'full'); break; }
+        }
+    }
 @endphp
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'uitgelichte-paginas' }}@endif"
-         class="block-uitgelichte-paginas uitgelichte-paginas-{{ $randomNumber }}-custom-padding uitgelichte-paginas-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat;  @if($backgroundImageParallax) background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
-    @if($swiperOutContainer)
-        <div class="overflow-hidden">
-            @endif
-            @if ($overlayEnabled)
-                <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
-            @endif
-            <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-                <div class="block-content {{ $blockClass }} mx-auto">
-                    @if ($subTitle)
-                        <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if($blockWidth == 'fullscreen') px-8 @endif {{ $textClass }}">
-                        @if ($subtitleIcon)
-                                <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
+         class="block-uitgelichte-paginas uitgelichte-paginas-section-{{ $randomNumber }} uitgelichte-paginas-{{ $randomNumber }}-custom-padding uitgelichte-paginas-{{ $randomNumber }}-custom-margin relative bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ $imageView === 'background_image' && $initialBgUrl ? $initialBgUrl : wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat;  @if($backgroundImageParallax) background-attachment: fixed; @endif background-size: cover; {{ $imageView === 'background_image' && $initialBgId ? \Theme\Helpers\FocalPoint::getBackgroundPosition($initialBgId) : \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+
+        @if ($imageView === 'background_image')
+            <div id="uitgelichte-fade-{{ $randomNumber }}" class="bg-fade-layer" style="position:absolute;inset:0;background-repeat:no-repeat;background-size:cover;opacity:0;transition:opacity 400ms ease;"></div>
+        @endif
+        @if ($overlayEnabled)
+            <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+        @endif
+        <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+            <div class="block-content {{ $blockClass }} mx-auto">
+                @if ($subTitle)
+                    <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if($blockWidth == 'fullscreen') px-8 @endif {{ $textClass }}">
+                    @if ($subtitleIcon)
+                        <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
+                    @endif
+                    {!! $subTitle !!}
+                </span>
+                @endif
+                @if ($title)
+                    <h2 class="title mb-4 text-{{ $titleColor }} @if($blockWidth == 'fullscreen') px-8 @endif {{ $textClass }}">{!! $title !!}</h2>
+                @endif
+                @if ($text)
+                    @include('components.content', [
+                       'content' => apply_filters('the_content', $text),
+                       'class' => 'mt-4 text-' . $textColor . ' ' . $textClass,
+                    ])
+                @endif
+
+                @if ($pagesData)
+                    <div class="py-8">
+                        @if ($imageView === 'normal_image')
+                            @php
+                                $initialPreviewUrl = '';
+                                $initialPreviewId = 0;
+                                foreach ($pagesData as $p) {
+                                    $pid = $pageVisual === 'image' ? ($p['image_id'] ?? 0) : ($p['featured_image_id'] ?? 0);
+                                    if ($pid) { $initialPreviewId = $pid; $initialPreviewUrl = wp_get_attachment_image_url($pid, 'large'); break; }
+                                }
+                            @endphp
+                            <div class="uitgelichte-paginas-{{ $randomNumber }} flex flex-col lg:flex-row gap-6">
+                                <div class="w-full lg:w-1/2">
+                                    <div class="page-items flex flex-col gap-y-4">
+                                        @foreach ($pagesData as $page)
+                                            @php
+                                                $pageTitle = $page['title'] ?? '';
+                                                $customPageTitle = $page['custom_title'] ?? '';
+                                                $pageExcerpt = get_the_excerpt($page['id']);
+                                                $pageUrl = $page['url'] ?? '';
+                                                $imageId = $page['image_id'] ?? 0;
+                                                $featuredImageId = $page['featured_image_id'] ?? '';
+
+                                                $pageId = $page['id'];
+                                                $postType = get_post_type($pageId);
+                                                $terms = [];
+                                                if ($postType === 'page') {
+                                                    $terms = get_the_category($pageId) ?? [];
+                                                } elseif ($postType === 'post') {
+                                                    $terms = get_the_category($pageId) ?? [];
+                                                } else {
+                                                    // Fetch terms from the custom taxonomy 'CPT_categories'
+                                                    $terms = get_the_terms($pageId, $postType . '_categories') ?? [];
+                                                }
+
+                                                // Determine preview image URL for this item
+                                                $previewId = ($pageVisual === 'image') ? $imageId : $featuredImageId;
+                                                $previewUrl = $previewId ? wp_get_attachment_image_url($previewId, 'large') : '';
+                                            @endphp
+
+                                            <div class="page-item w-fit @if ($flyinEffect) page-hidden @endif" @if($previewUrl) data-preview-url="{{ $previewUrl }}" @endif @if($initialPreviewId && $previewId == $initialPreviewId) data-initial="1" @endif>
+                                                <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
+                                                   class="page-title font-bold text-{{ $pageTitleColor }} relative z-20">
+                                                    {!! !empty($customPageTitle) ? $customPageTitle : $pageTitle !!}
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    @if($autoplay && count($pagesData) > 1)
+                                        <div class="autoplay-progress mt-4">
+                                            <div id="uitgelichte-progress-{{ $randomNumber }}" class="progress h-[5px] w-0 bg-current"></div>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="w-full lg:w-1/2">
+                                    <div class="relative w-full overflow-hidden {{ $borderRadius }}" style="aspect-ratio: 4 / 3;">
+                                        @if ($initialPreviewUrl)
+                                            <img id="uitgelichte-preview-{{ $randomNumber }}" src="{{ $initialPreviewUrl }}" alt="Voorbeeldafbeelding" class="h-full w-full object-cover transition-opacity duration-300" />
+                                        @else
+                                            <div id="uitgelichte-preview-{{ $randomNumber }}" class="h-full w-full bg-gray-100"></div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    var container = document.querySelector('.uitgelichte-paginas-{{ $randomNumber }}');
+                                    if (!container) return;
+                                    var preview = document.getElementById('uitgelichte-preview-{{ $randomNumber }}');
+                                    if (!preview) return;
+
+                                    var items = container.querySelectorAll('.page-item');
+                                    var activate = function(item){
+                                        items.forEach(function(i){ i.classList.remove('active'); });
+                                        if(item) item.classList.add('active');
+                                    };
+
+                                    // hover/focus handlers update preview and active state
+                                    container.querySelectorAll('.page-item[data-preview-url]').forEach(function (item) {
+                                        var url = item.getAttribute('data-preview-url');
+                                        if (!url) return;
+                                        var setPreview = function () {
+                                            var targetUrl = url;
+                                            // Preload first
+                                            var pre = new Image();
+                                            pre.onload = function(){
+                                                if (preview.tagName === 'IMG') {
+                                                    // Fade out current, then swap, then fade in
+                                                    preview.style.transition = 'opacity 400ms ease';
+                                                    preview.style.opacity = '0';
+                                                    setTimeout(function(){
+                                                        preview.src = targetUrl;
+                                                        // force reflow
+                                                        void preview.offsetWidth;
+                                                        preview.style.opacity = '1';
+                                                    }, 180);
+                                                } else {
+                                                    // If fallback div used, create an img with opacity 0 and fade in
+                                                    var img = document.createElement('img');
+                                                    img.className = 'h-full w-full object-cover';
+                                                    img.alt = 'Voorbeeldafbeelding';
+                                                    img.id = 'uitgelichte-preview-{{ $randomNumber }}';
+                                                    img.src = targetUrl;
+                                                    img.style.opacity = '0';
+                                                    img.style.transition = 'opacity 400ms ease';
+                                                    preview.replaceWith(img);
+                                                    preview = img;
+                                                    // allow DOM paint
+                                                    requestAnimationFrame(function(){
+                                                        img.style.opacity = '1';
+                                                    });
+                                                }
+                                                activate(item);
+                                            };
+                                            pre.src = targetUrl;
+                                        };
+                                        item.addEventListener('mouseenter', setPreview);
+                                        item.addEventListener('focus', setPreview, true);
+                                    });
+
+                                    // Also allow activation for items without preview URLs
+                                    items.forEach(function (item) {
+                                        if (!item.hasAttribute('data-preview-url')) {
+                                            var setActiveOnly = function () { activate(item); };
+                                            item.addEventListener('mouseenter', setActiveOnly);
+                                            item.addEventListener('focus', setActiveOnly, true);
+                                        }
+                                    });
+
+                                    // Set initial active
+                                    var initial = container.querySelector('.page-item[data-initial="1"]') || items[0];
+                                    if (initial) activate(initial);
+
+                                    @if ($autoplay && $pagesData && count($pagesData) > 1)
+                                    // Autoplay with pause/resume and progress indicator
+                                    var autoplaySpeed = {{ $autoplaySpeed }};
+                                    if (items.length > 1) {
+                                        var arr = Array.prototype.slice.call(items);
+                                        var currentIndex = initial ? arr.indexOf(initial) : 0;
+                                        if (currentIndex < 0) currentIndex = 0;
+                                        var progress = document.getElementById('uitgelichte-progress-{{ $randomNumber }}');
+                                        var listEl = container.querySelector('.page-items');
+
+                                        var timerId = null, rafId = null;
+                                        var startTime = 0, paused = false;
+                                        var cycleDuration = autoplaySpeed; // duration of current cycle
+                                        var remaining = cycleDuration;     // remaining time in ms for current cycle
+                                        var basePercent = 0;               // accumulated percent before current leg
+
+                                        function updateProgress() {
+                                            if (!progress) return;
+                                            var elapsed = performance.now() - startTime;
+                                            var legPct = (elapsed / cycleDuration) * (100 - basePercent);
+                                            var pct = Math.min(100, basePercent + Math.max(0, legPct));
+                                            progress.style.width = pct + '%';
+                                            if (!paused) rafId = requestAnimationFrame(updateProgress);
+                                        }
+
+                                        function advance() {
+                                            // go to next item
+                                            currentIndex = (currentIndex + 1) % arr.length;
+                                            arr[currentIndex].dispatchEvent(new Event('mouseenter'));
+                                            // reset for next full cycle
+                                            cycleDuration = autoplaySpeed;
+                                            remaining = autoplaySpeed;
+                                            basePercent = 0;
+                                            if (progress) progress.style.width = '0%';
+                                            startTime = performance.now();
+                                            timerId = setTimeout(advance, remaining);
+                                            rafId = requestAnimationFrame(updateProgress);
+                                        }
+
+                                        function startTimer(ms) {
+                                            cycleDuration = ms;
+                                            remaining = ms;
+                                            basePercent = 0;
+                                            if (progress) {
+                                                progress.style.transition = 'none';
+                                                progress.style.width = '0%';
+                                                requestAnimationFrame(function(){ progress.style.transition = 'width 0s'; });
+                                            }
+                                            startTime = performance.now();
+                                            paused = false;
+                                            timerId = setTimeout(advance, remaining);
+                                            rafId = requestAnimationFrame(updateProgress);
+                                        }
+
+                                        function pauseTimer() {
+                                            if (paused) return;
+                                            paused = true;
+                                            clearTimeout(timerId);
+                                            if (rafId) cancelAnimationFrame(rafId);
+                                            var elapsed = performance.now() - startTime;
+                                            var legPct = (elapsed / cycleDuration) * (100 - basePercent);
+                                            basePercent = Math.min(100, basePercent + Math.max(0, legPct));
+                                            remaining = Math.max(0, autoplaySpeed * (1 - basePercent / 100));
+                                        }
+
+                                        function resumeTimer() {
+                                            if (!paused) return;
+                                            paused = false;
+                                            cycleDuration = remaining; // animate the rest of the time
+                                            startTime = performance.now();
+                                            timerId = setTimeout(advance, remaining);
+                                            rafId = requestAnimationFrame(updateProgress);
+                                        }
+
+                                        // Pause when hovering an individual page-item; resume when leaving all items
+                                        var hoverCount = 0;
+                                        arr.forEach(function(it, idx){
+                                            it.addEventListener('mouseenter', function(e){
+                                                currentIndex = idx;
+                                                if (!e.isTrusted) return; // ignore programmatic mouseenter from autoplay
+                                                hoverCount++;
+                                                pauseTimer();
+                                            });
+                                            it.addEventListener('mouseleave', function(e){
+                                                if (!e.isTrusted) return; // only resume on real pointer leave
+                                                hoverCount = Math.max(0, hoverCount - 1);
+                                                if (hoverCount === 0) resumeTimer();
+                                            });
+                                            it.addEventListener('focus', function(){
+                                                currentIndex = idx;
+                                                pauseTimer();
+                                            }, true);
+                                            it.addEventListener('blur', function(){
+                                                var anyFocused = arr.some(function(el){ return el.contains(document.activeElement); });
+                                                if (!anyFocused) resumeTimer();
+                                            }, true);
+                                        });
+
+                                        startTimer(autoplaySpeed);
+                                    }
+                                    @endif
+                                });
+                            </script>
+                        @elseif ($imageView === 'background_image')
+                            @php
+                                // Render simple list but with data-preview-url so we can swap the section background on hover
+                            @endphp
+                            <div class="page-items flex flex-col gap-y-4">
+                                @foreach ($pagesData as $page)
+                                    @php
+                                        $pageTitle = $page['title'] ?? '';
+                                        $customPageTitle = $page['custom_title'] ?? '';
+                                        $pageExcerpt = get_the_excerpt($page['id']);
+                                        $pageUrl = $page['url'] ?? '';
+                                        $imageId = $page['image_id'] ?? 0;
+                                        $featuredImageId = $page['featured_image_id'] ?? '';
+
+                                        $pageId = $page['id'];
+                                        $postType = get_post_type($pageId);
+                                        $terms = [];
+                                        if ($postType === 'page') {
+                                            $terms = get_the_category($pageId) ?? [];
+                                        } elseif ($postType === 'post') {
+                                            $terms = get_the_category($pageId) ?? [];
+                                        } else {
+                                            // Fetch terms from the custom taxonomy 'CPT_categories'
+                                            $terms = get_the_terms($pageId, $postType . '_categories') ?? [];
+                                        }
+
+                                        $previewId = ($pageVisual === 'image') ? $imageId : $featuredImageId;
+                                        $previewUrl = $previewId ? wp_get_attachment_image_url($previewId, 'full') : '';
+                                    @endphp
+
+                                    <div class="page-item w-fit @if ($flyinEffect) page-hidden @endif" @if($previewUrl) data-preview-url="{{ $previewUrl }}" data-bgpos="{{ get_post_meta($previewId, 'bg_pos_desktop', true) }}" @endif @if($initialBgId && $previewId == $initialBgId) data-initial="1" @endif>
+                                        <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
+                                           class="page-title font-bold text-{{ $pageTitleColor }} relative z-20">
+                                            {!! !empty($customPageTitle) ? $customPageTitle : $pageTitle !!}
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                            @if($autoplay && count($pagesData) > 1)
+                                <div class="autoplay-progress mt-4">
+                                    <div id="uitgelichte-progressbg-{{ $randomNumber }}" class="progress h-[5px] w-0 bg-current"></div>
+                                </div>
                             @endif
-                            {!! $subTitle !!}
-                    </span>
-                    @endif
-                    @if ($title)
-                        <h2 class="title mb-4 text-{{ $titleColor }} @if($blockWidth == 'fullscreen') px-8 @endif {{ $textClass }}">{!! $title !!}</h2>
-                    @endif
-                    @if ($text)
-                        @include('components.content', [
-                           'content' => apply_filters('the_content', $text),
-                           'class' => 'mt-4 text-' . $textColor . ' ' . $textClass,
-                        ])
-                    @endif
-                    @if ($pagesData)
-                        @foreach ($pagesData as $page)
+
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    var section = document.querySelector('.uitgelichte-paginas-section-{{ $randomNumber }}');
+                                    if (!section) return;
+                                    var container = section; // same section contains the list
+
+                                    var items = container.querySelectorAll('.page-item');
+                                    var activate = function(item){
+                                        items.forEach(function(i){ i.classList.remove('active'); });
+                                        if(item) item.classList.add('active');
+                                    };
+
+                                    container.querySelectorAll('.page-item[data-preview-url]').forEach(function (item) {
+                                        var url = item.getAttribute('data-preview-url');
+                                        if (!url) return;
+                                        var setBg = function () {
+                                            var targetUrl = url;
+                                            var pos = item.getAttribute('data-bgpos');
+                                            var pre = new Image();
+                                            pre.onload = function(){
+                                                var fade = document.getElementById('uitgelichte-fade-{{ $randomNumber }}');
+                                                if (fade) {
+                                                    // prepare fade layer
+                                                    fade.style.transition = 'opacity 400ms ease';
+                                                    fade.style.backgroundImage = 'url(' + targetUrl + ')';
+                                                    if (pos) fade.style.backgroundPosition = pos;
+                                                    fade.style.opacity = '0';
+                                                    void fade.offsetWidth;
+                                                    fade.style.opacity = '1';
+                                                    var onEnd = function(){
+                                                        fade.removeEventListener('transitionend', onEnd);
+                                                        section.style.backgroundImage = 'url(' + targetUrl + ')';
+                                                        if (pos) section.style.backgroundPosition = pos;
+                                                        fade.style.opacity = '0';
+                                                    };
+                                                    fade.addEventListener('transitionend', onEnd);
+                                                } else {
+                                                    section.style.backgroundImage = 'url(' + targetUrl + ')';
+                                                    if (pos) section.style.backgroundPosition = pos;
+                                                }
+                                                activate(item);
+                                            };
+                                            pre.src = targetUrl;
+                                        };
+                                        item.addEventListener('mouseenter', setBg);
+                                        item.addEventListener('focus', setBg, true);
+                                    });
+
+                                    // Also allow activation for items without preview URLs
+                                    items.forEach(function (item) {
+                                        if (!item.hasAttribute('data-preview-url')) {
+                                            var setActiveOnly = function () { activate(item); };
+                                            item.addEventListener('mouseenter', setActiveOnly);
+                                            item.addEventListener('focus', setActiveOnly, true);
+                                        }
+                                    });
+
+                                    // Set initial active
+                                    var initial = container.querySelector('.page-item[data-initial="1"]') || items[0];
+                                    if (initial) activate(initial);
+
+                                    @if ($autoplay && $pagesData && count($pagesData) > 1)
+                                    // Autoplay with pause/resume and progress indicator
+                                    var autoplaySpeed = {{ $autoplaySpeed }};
+                                    if (items.length > 1) {
+                                        var arr = Array.prototype.slice.call(items);
+                                        var currentIndex = initial ? arr.indexOf(initial) : 0;
+                                        if (currentIndex < 0) currentIndex = 0;
+                                        var progress = document.getElementById('uitgelichte-progressbg-{{ $randomNumber }}');
+                                        var listEl = container.querySelector('.page-items');
+
+                                        var timerId = null, rafId = null;
+                                        var startTime = 0, paused = false;
+                                        var cycleDuration = autoplaySpeed; // duration of current cycle
+                                        var remaining = cycleDuration;     // remaining time in ms for current cycle
+                                        var basePercent = 0;               // accumulated percent before current leg
+
+                                        function updateProgress() {
+                                            if (!progress) return;
+                                            var elapsed = performance.now() - startTime;
+                                            var legPct = (elapsed / cycleDuration) * (100 - basePercent);
+                                            var pct = Math.min(100, basePercent + Math.max(0, legPct));
+                                            progress.style.width = pct + '%';
+                                            if (!paused) rafId = requestAnimationFrame(updateProgress);
+                                        }
+
+                                        function advance() {
+                                            // go to next item
+                                            currentIndex = (currentIndex + 1) % arr.length;
+                                            arr[currentIndex].dispatchEvent(new Event('mouseenter'));
+                                            // reset for next full cycle
+                                            cycleDuration = autoplaySpeed;
+                                            remaining = autoplaySpeed;
+                                            basePercent = 0;
+                                            if (progress) progress.style.width = '0%';
+                                            startTime = performance.now();
+                                            timerId = setTimeout(advance, remaining);
+                                            rafId = requestAnimationFrame(updateProgress);
+                                        }
+
+                                        function startTimer(ms) {
+                                            cycleDuration = ms;
+                                            remaining = ms;
+                                            basePercent = 0;
+                                            if (progress) {
+                                                progress.style.transition = 'none';
+                                                progress.style.width = '0%';
+                                                requestAnimationFrame(function(){ progress.style.transition = 'width 0s'; });
+                                            }
+                                            startTime = performance.now();
+                                            paused = false;
+                                            timerId = setTimeout(advance, remaining);
+                                            rafId = requestAnimationFrame(updateProgress);
+                                        }
+
+                                        function pauseTimer() {
+                                            if (paused) return;
+                                            paused = true;
+                                            clearTimeout(timerId);
+                                            if (rafId) cancelAnimationFrame(rafId);
+                                            var elapsed = performance.now() - startTime;
+                                            var legPct = (elapsed / cycleDuration) * (100 - basePercent);
+                                            basePercent = Math.min(100, basePercent + Math.max(0, legPct));
+                                            remaining = Math.max(0, autoplaySpeed * (1 - basePercent / 100));
+                                        }
+
+                                        function resumeTimer() {
+                                            if (!paused) return;
+                                            paused = false;
+                                            cycleDuration = remaining; // animate the rest of the time
+                                            startTime = performance.now();
+                                            timerId = setTimeout(advance, remaining);
+                                            rafId = requestAnimationFrame(updateProgress);
+                                        }
+
+                                        // Pause when hovering an individual page-item; resume when leaving all items
+                                        var hoverCount = 0;
+                                        arr.forEach(function(it, idx){
+                                            it.addEventListener('mouseenter', function(e){
+                                                currentIndex = idx;
+                                                if (!e.isTrusted) return; // ignore programmatic mouseenter from autoplay
+                                                hoverCount++;
+                                                pauseTimer();
+                                            });
+                                            it.addEventListener('mouseleave', function(e){
+                                                if (!e.isTrusted) return; // only resume on real pointer leave
+                                                hoverCount = Math.max(0, hoverCount - 1);
+                                                if (hoverCount === 0) resumeTimer();
+                                            });
+                                            it.addEventListener('focus', function(){
+                                                currentIndex = idx;
+                                                pauseTimer();
+                                            }, true);
+                                            it.addEventListener('blur', function(){
+                                                var anyFocused = arr.some(function(el){ return el.contains(document.activeElement); });
+                                                if (!anyFocused) resumeTimer();
+                                            }, true);
+                                        });
+
+                                        startTimer(autoplaySpeed);
+                                    }
+                                    @endif
+                                });
+                            </script>
+                        @else
+                            @foreach ($pagesData as $page)
                                 @php
                                     $pageTitle = $page['title'] ?? '';
                                     $customPageTitle = $page['custom_title'] ?? '';
@@ -243,9 +756,6 @@
                                         // Fetch terms from the custom taxonomy 'CPT_categories'
                                         $terms = get_the_terms($pageId, $postType . '_categories') ?? [];
                                     }
-
-                                    // Weergave
-                                    $imageView = $block['data']['image_view'] ?? 'normal_image';
                                 @endphp
 
                                 <div class="page-item @if ($flyinEffect) page-hidden @endif">
@@ -254,39 +764,38 @@
                                         {!! !empty($customPageTitle) ? $customPageTitle : $pageTitle !!}
                                     </a>
                                 </div>
-                        @endforeach
-                    @endif
-                    @if (($button1Text) && ($button1Link))
-                        <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }}">
+                            @endforeach
+                        @endif
+                    </div>
+                @endif
+                @if (($button1Text) && ($button1Link))
+                    <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }}">
+                        @include('components.buttons.default', [
+                           'text' => $button1Text,
+                           'href' => $button1Link,
+                           'alt' => $button1Text,
+                           'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                           'class' => 'rounded-lg',
+                           'target' => $button1Target,
+                           'icon' => $button1Icon,
+                           'download' => $button1Download,
+                        ])
+                        @if (($button2Text) && ($button2Link))
                             @include('components.buttons.default', [
-                               'text' => $button1Text,
-                               'href' => $button1Link,
-                               'alt' => $button1Text,
-                               'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                               'class' => 'rounded-lg',
-                               'target' => $button1Target,
-                               'icon' => $button1Icon,
-                               'download' => $button1Download,
+                                'text' => $button2Text,
+                                'href' => $button2Link,
+                                'alt' => $button2Text,
+                                'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                'class' => 'rounded-lg',
+                                'target' => $button2Target,
+                                'icon' => $button2Icon,
+                                'download' => $button2Download,
                             ])
-                            @if (($button2Text) && ($button2Link))
-                                @include('components.buttons.default', [
-                                    'text' => $button2Text,
-                                    'href' => $button2Link,
-                                    'alt' => $button2Text,
-                                    'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                                    'class' => 'rounded-lg',
-                                    'target' => $button2Target,
-                                    'icon' => $button2Icon,
-                                    'download' => $button2Download,
-                                ])
-                            @endif
-                        </div>
-                    @endif
-                </div>
+                        @endif
+                    </div>
+                @endif
             </div>
-            @if($swiperOutContainer)
         </div>
-    @endif
 </section>
 
 <style>
