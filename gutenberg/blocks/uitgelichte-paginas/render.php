@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.uitgelichte-paginas.index', ['block' => $block])->render(); ?>

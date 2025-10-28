@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/uitgelichte-paginas",
+  "title": "Uitgelichte pagina's",
+  "description": "Een uitgelichte pagina's blok",
+  "category": "wefabric-theme",
+  "icon": "admin-page",
+  "apiVersion": 2,
+  "keywords": [
+    "Uitgelichte pagina's"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
