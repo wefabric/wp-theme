@@ -36,7 +36,7 @@
             <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $activityUrl }}" aria-label="Ga naar {{ $activityTitle }}"
                    class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
-                    <span clas="sr-only">Ga naar {{ $activityTitle }}</span>
+                    <span class="sr-only">Ga naar {{ $activityTitle }}</span>
                 </a>
                 @if ($fields['activity_full'])
                     <a href="{{ $activityUrl }}" aria-label="Ga naar {{ $activityTitle }}"
