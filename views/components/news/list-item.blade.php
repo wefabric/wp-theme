@@ -67,7 +67,7 @@
         @endif
         <div class="news-data flex flex-col w-full grow mt-5">
 
-            <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina" class="news-title text-{{ $newsTitleColor }} font-bold text-lg group-hover:text-primary">{!! $postTitle !!}</a>
+            <a href="{{ $postUrl }}" aria-label="Ga naar {{ $postTitle }} pagina" class="news-title text-{{ $newsTitleColor }} font-bold group-hover:text-primary">{!! $postTitle !!}</a>
 
             <div class="news-info">
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($postSummary))
