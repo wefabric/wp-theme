@@ -152,8 +152,8 @@
             </div>
 
             <div class="object-section">
-                <div class="threejs-wrapper threejs-{{ $randomNumber }} w-full">
-                    <div id="threejs-canvas-{{ $randomNumber }}" class="w-full" style="height: 500px; max-height: 70vh;"></div>
+                <div class="threejs-wrapper threejs-{{ $randomNumber }} w-full h-full">
+                    <div id="threejs-canvas-{{ $randomNumber }}" class="w-full h-full"></div>
                 </div>
             </div>
 
@@ -386,7 +386,7 @@
         const width = container.clientWidth || container.offsetWidth || 0;
         const height = container.clientHeight || container.offsetHeight || 0;
         if (width > 0 && height > 0) {
-            renderer.setSize(width, height, false);
+            renderer.setSize(width, height, true);
             camera.aspect = width / height;
             camera.updateProjectionMatrix();
         }
