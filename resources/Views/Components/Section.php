@@ -8,10 +8,6 @@ use Theme\Views\SectionStyling;
 class Section extends Component
 {
 
-    public int $blockWidth = 100;
-    public array $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
-    public string $blockClass = '';
-    public string $fullScreenClass = '';
     public string $backgroundColor = 'default-color';
     public string $backgroundImageId = '';
     public bool $overlayEnabled = false;
@@ -30,11 +26,6 @@ class Section extends Component
         public array $block = []
     )
     {
-        $this->blockWidth = $block['data']['block_width'] ?? 100;
-        $this->blockClass = $this->blockClassMap[$this->blockWidth] ?? '';
-
-        $this->fullScreenClass = $this->blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
-
         $this->backgroundColor = $block['data']['background_color'] ?? 'default-color';
         $this->backgroundImageId = $block['data']['background_image'] ?? '';
         $this->overlayEnabled = $block['data']['overlay_image'] ?? false;
