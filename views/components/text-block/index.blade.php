@@ -66,7 +66,6 @@
 @endif
 
 @if ($flyInAnimation)
-    JA ANIMATE
     <script>
         window.addEventListener('DOMContentLoaded', function () {
             gsap.registerPlugin(ScrollTrigger);

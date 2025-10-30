@@ -5,7 +5,7 @@ namespace Theme\Views\Components;
 use Illuminate\View\Component;
 use Theme\Views\ButtonCollection;
 
-class TextBlock extends Component
+class NewsBlock extends Component
 {
 
     public string $title = '';
@@ -30,7 +30,7 @@ class TextBlock extends Component
         public array $block = []
     )
     {
-        $this->title = $block['data']['title_color'] ?? '';
+        $this->title = $block['data']['title'] ?? '';
         $this->titleColor = $block['data']['title_color'] ?? '';
         $this->subTitle = $block['data']['subtitle'] ?? '';
         $this->subTitleColor = $block['data']['subtitle_color'] ?? '';
@@ -60,6 +60,6 @@ class TextBlock extends Component
      */
     public function render()
     {
-        return view('components.text-block.index');
+        return view('components.nieuws-block.index');
     }
 }
