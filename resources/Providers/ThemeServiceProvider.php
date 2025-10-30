@@ -5,6 +5,8 @@ namespace Theme\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Theme\Views\Components\Content;
+use Theme\Views\Components\Section;
+use Theme\Views\Components\TextBlock;
 use Wefabric\WPSupport\DynamicContent\DynamicContent;
 
 class ThemeServiceProvider extends ServiceProvider
@@ -15,6 +17,8 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Blade::component('wefabric:section', Section::class);
+        Blade::component('wefabric:text-block', TextBlock::class);
         Blade::component('wefabric:content', Content::class);
     }
 
