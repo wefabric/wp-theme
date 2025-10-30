@@ -1,6 +1,4 @@
 @php
-    // Content
-    $title = $block['data']['title'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
     $subTitleColor = $block['data']['subtitle_color'] ?? '';
@@ -96,7 +94,6 @@
     $flyInAnimation = $block['data']['flyin_animation'] ?? false;
     $textFadeDirection = $block['data']['flyin_direction'] ?? 'bottom';
 @endphp
-
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'tekst' }}@endif" class="block-tekst block-{{ $randomNumber }} relative tekst-{{ $randomNumber }}-custom-padding tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
@@ -116,10 +113,7 @@
                 <h2 class="title mb-4 text-{{ $titleColor }} @if ($titleAnimation) title-animation @endif @if ($flyInAnimation) flyin-animation @endif">{!! $title !!}</h2>
             @endif
             @if ($text)
-                @include('components.content', [
-                    'content' => apply_filters('the_content', $text),
-                    'class' => 'mb-8 text-' . $textColor . ($flyInAnimation ? ' flyin-animation' : ''),
-                ])
+                <x-wefabric:content :content="$text" :class="'mb-8 text-' . $textColor . ($flyInAnimation ? ' flyin-animation' : '')"></x-wefabric:content>
             @endif
             @if (($button1Text) && ($button1Link))
                 <div class="{{ $textClass }} buttons w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 @if ($flyInAnimation) flyin-animation @endif">

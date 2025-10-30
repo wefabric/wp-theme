@@ -2,11 +2,21 @@
 
 namespace Theme\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Theme\Views\Components\Content;
 use Wefabric\WPSupport\DynamicContent\DynamicContent;
 
 class ThemeServiceProvider extends ServiceProvider
 {
+
+    /**
+     * Bootstrap your package's services.
+     */
+    public function boot(): void
+    {
+        Blade::component('wefabric:content', Content::class);
+    }
 
     public function register()
     {
