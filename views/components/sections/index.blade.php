@@ -4,46 +4,32 @@
     {{ $slot }}
 </section>
 
-<style>
-    .{{$blockType}}-{{ $randomNumber }}-custom-padding {
-        @media only screen and (min-width: 0px) {
-            @if($padding['mobile']['top']) padding-top: {{ $padding['mobile']['top'] }}px; @endif
-            @if($padding['mobile']['right']) padding-right: {{ $padding['mobile']['right'] }}px; @endif
-            @if($padding['mobile']['bottom']) padding-bottom: {{ $padding['mobile']['bottom'] }}px; @endif
-            @if($padding['mobile']['left']) padding-left: {{ $padding['mobile']['left'] }}px; @endif
-        }
-        @media only screen and (min-width: 768px) {
-            @if($padding['tablet']['top']) padding-top: {{ $padding['tablet']['top'] }}px; @endif
-            @if($padding['tablet']['right']) padding-right: {{ $padding['tablet']['right'] }}px; @endif
-            @if($padding['tablet']['bottom']) padding-bottom: {{ $padding['tablet']['bottom'] }}px; @endif
-            @if($padding['tablet']['left']) padding-left: {{ $padding['tablet']['left'] }}px; @endif
-        }
-        @media only screen and (min-width: 1024px) {
-            @if($padding['desktop']['top']) padding-top: {{ $padding['desktop']['top'] }}px; @endif
-            @if($padding['desktop']['right']) padding-right: {{ $padding['desktop']['right'] }}px; @endif
-            @if($padding['desktop']['bottom']) padding-bottom: {{ $padding['desktop']['bottom'] }}px; @endif
-            @if($padding['desktop']['left']) padding-left: {{ $padding['desktop']['left'] }}px; @endif
-        }
-    }
+@if($styling->isNotEmpty())
+    <style>
+        @if($styling->screenPaddings->where('enabled', true)->first())
+            .{{$blockType}}-{{ $randomNumber }}-custom-padding {
+                @foreach($styling->screenPaddings as $screenPaddingData)
+                    @media only screen and (min-width: {{$screenPaddingData->get('size') }}px) {
+                        @if($screenPaddingData->get('top')) padding-top: {{ $screenPaddingData->get('top') }}px; @endif
+                        @if($screenPaddingData->get('right')) padding-right: {{ $screenPaddingData->get('right') }}px; @endif
+                        @if($screenPaddingData->get('bottom')) padding-bottom: {{ $screenPaddingData->get('bottom') }}px; @endif
+                        @if($screenPaddingData->get('left')) padding-left: {{ $screenPaddingData->get('left') }}px; @endif
+                    }
+                @endforeach
+            }
+        @endif
 
-    .{{$blockType}}-{{ $randomNumber }}-custom-margin {
-        @media only screen and (min-width: 0px) {
-            @if($margin['mobile']['top']) margin-top: {{ $margin['mobile']['top'] }}px; @endif
-            @if($margin['mobile']['right']) margin-right: {{ $margin['mobile']['right'] }}px; @endif
-            @if($margin['mobile']['bottom']) margin-bottom: {{ $margin['mobile']['bottom'] }}px; @endif
-            @if($margin['mobile']['left']) margin-left: {{ $margin['mobile']['left'] }}px; @endif
-        }
-        @media only screen and (min-width: 768px) {
-            @if($margin['tablet']['top']) margin-top: {{ $margin['tablet']['top'] }}px; @endif
-            @if($margin['tablet']['right']) margin-right: {{ $margin['tablet']['right'] }}px; @endif
-            @if($margin['tablet']['bottom']) margin-bottom: {{ $margin['tablet']['bottom'] }}px; @endif
-            @if($margin['tablet']['left']) margin-left: {{ $margin['tablet']['left'] }}px; @endif
-        }
-        @media only screen and (min-width: 1024px) {
-            @if($margin['desktop']['top']) margin-top: {{ $margin['desktop']['top'] }}px; @endif
-            @if($margin['desktop']['right']) margin-right: {{ $margin['desktop']['right'] }}px; @endif
-            @if($margin['desktop']['bottom']) margin-bottom: {{ $margin['desktop']['bottom'] }}px; @endif
-            @if($margin['desktop']['left']) margin-left: {{ $margin['desktop']['left'] }}px; @endif
-        }
-    }
-</style>
+        @if($styling->screenMargins->where('enabled', true)->first())
+            .{{$blockType}}-{{ $randomNumber }}-custom-margin {
+                @foreach($styling->screenMargins as $screenMarginData)
+                    @media only screen and (min-width: {{$screenMarginData->get('size') }}px) {
+                    @if($screenMarginData->get('top')) margin-top: {{ $screenMarginData->get('top') }}px; @endif
+                        @if($screenMarginData->get('right')) margin-right: {{ $screenMarginData->get('right') }}px; @endif
+                        @if($screenMarginData->get('bottom')) margin-bottom: {{ $screenMarginData->get('bottom') }}px; @endif
+                        @if($screenMarginData->get('left')) margin-left: {{ $screenMarginData->get('left') }}px; @endif
+                    }
+              @endforeach
+            }
+        @endif
+    </style>
+@endif
