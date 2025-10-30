@@ -164,18 +164,40 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var menuItems = document.querySelectorAll('.menu-item-has-children');
+        var ARROW_HITBOX = 36 + 12; // arrow-size (36) + right padding (12)
+
         menuItems.forEach(function (item) {
-            var link = item.querySelector('a');
             item.addEventListener('click', function (event) {
-                if (event.target === link) { //if the click is on the link, navigate
-                    location.href = link.href;
-                } else { //otherwise toggle the class
-                    item.classList.toggle('open');
+                const li = event.currentTarget;
+                const link = li.querySelector(':scope > a');
+
+                const rect = li.getBoundingClientRect();
+                const clickX = event.clientX;
+                const inArrowZone = (rect.right - clickX) <= ARROW_HITBOX;
+
+                const clickedLink = event.target.closest('a') === link;
+
+                if (clickedLink && !inArrowZone) {
+                    // Klik op link buiten pijltje -> navigeer
+                    return;
                 }
+
+                // Klik op pijltje of ergens anders in <li> -> toggle submenu
+                event.preventDefault(); // voorkom navigatie
+                li.classList.toggle('open');
+            });
+        });
+
+        // voorkom dat clicks binnen submenu's bubbling veroorzaken
+        document.querySelectorAll('.menu-item-has-children > ul').forEach(function(submenu) {
+            submenu.addEventListener('click', function(event) {
+                event.stopPropagation();
             });
         });
     });
 </script>
+
+
 
 <style>
     .main-navigation .menu {
