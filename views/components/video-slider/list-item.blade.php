@@ -21,20 +21,20 @@
         }
     @endphp
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "VideoObject",
-        "name": "{{ $title }}",
-        "description": "{{ $video['caption'] ?? 'Bekijk deze video' }}",
-        "thumbnailUrl": "{{ $thumbnailUrl }}",
-        "uploadDate": "{{ now()->toIso8601String() }}",
-        "contentUrl": "{{ $video['url'] }}",
-        "embedUrl": "{{ $video['url'] }}",
-        "publisher": {
-            "@type": "Organization",
-            "name": "{{ get_bloginfo('name') }}"
-        }
-    }
-    </script>
+{{--    <script type="application/ld+json">--}}
+{{--        {--}}
+{{--            "@context": "https://schema.org",--}}
+{{--            "@type": "VideoObject",--}}
+{{--            "name": "{{ $title }}",--}}
+{{--            "description": "{{ $video['caption'] ?? 'Bekijk deze video' }}",--}}
+{{--            "thumbnailUrl": "{{ $thumbnailUrl }}",--}}
+{{--            "uploadDate": "{{ now()->toIso8601String() }}",--}}
+{{--            "contentUrl": "{{ $video['url'] }}",--}}
+{{--            "embedUrl": "{{ $video['url'] }}",--}}
+{{--            "publisher": {--}}
+{{--                "@type": "Organization",--}}
+{{--                "name": "{{ get_bloginfo('name') }}"--}}
+{{--            }--}}
+{{--        }--}}
+{{--    </script>--}}
 @endif
