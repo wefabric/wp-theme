@@ -122,7 +122,7 @@
 
 @if ($swiperAutoplay)
     <style>
-        .swiper-pagination-bullet-active::after {
+        .{{ $randomId }} .swiper-pagination-bullet-active::after {
             animation: cases-bullet-progress {{ $swiperAutoplaySpeed }}ms linear forwards !important;
         }
 
