@@ -9,10 +9,10 @@
 @endphp
 
 <div class="image-item group h-full w-full @if ($flyinEffect) image-hidden @endif">
-    <div class="relative">
+    <div class="custom-styling relative overflow-hidden rounded-{{ $borderRadius }}">
         @if ($imageId)
             @if ($imageLinkUrl)
-                <div class="card-overlay absolute w-full h-full overflow-hidden rounded-{{ $borderRadius }}">
+                <div class="card-overlay absolute w-full h-full ">
                     <a href="{{ $imageLinkUrl }}" target="{{ $imageLinkTarget }}" aria-label="Ga naar {{ $imageLinkTitle }} pagina" class="card-overlay absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
                         <span class="sr-only">Ga naar {{ $imageLinkTitle }} pagina</span>
                     </a>
@@ -23,7 +23,9 @@
                  'size' => 'full',
                  'object_fit' => $image['object_fit'],
                  'img_class' => $image['img_class'] . ' ' . $image['img_style'],
-                 'alt' => $image['alt']
+                 'alt' => $image['alt'],
+                 'img_class' => 'transform ease-in-out duration-300 '.  ($imageLinkUrl ? 'group-hover:scale-110 ' : '')
+
             ])
         @endif
     </div>
