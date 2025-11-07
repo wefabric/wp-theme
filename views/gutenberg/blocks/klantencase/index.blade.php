@@ -218,7 +218,7 @@
 @endphp
 
 
-<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'klantencases' }}@endif" class="block-klantencases relative klantencases-{{ $randomNumber }}-custom-padding klantencases-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'klantencases' }}@endif" class="block-klantencases {{ $layoutVersion }} relative klantencases-{{ $randomNumber }}-custom-padding klantencases-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if($swiperOutContainer)
         <div class="overflow-hidden">
