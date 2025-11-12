@@ -48,10 +48,47 @@
                 @if (!empty($visibleElements) && in_array('reading_time', $visibleElements))
                     @php
                         $content = get_post_field('post_content', $post);
-                        $content = strip_shortcodes($content);
-                        $plain = trim(preg_replace('/\s+/', ' ', wp_strip_all_tags($content)));
-                        $wordCount = $plain !== '' ? str_word_count($plain) : 0;
-                        $readingTime = max(1, (int) ceil($wordCount / 200));
+
+                        // Snel en correct: render Gutenberg-blokken naar HTML en lees alleen zichtbare DOM-tekst
+                        $wordsPerMinute = 225; // pas aan indien gewenst
+
+                        $renderBlocksToText = function ($blocks) {
+                            $html = '';
+                            foreach ($blocks as $block) {
+                                // Render elk blok zoals op de frontend (pakt ook dynamic blocks/ACF attrs)
+                                $html .= render_block($block);
+                            }
+                            // Strip alle HTML en normaliseer whitespace
+                            $text = wp_strip_all_tags($html);
+                            return trim(preg_replace('/\s+/', ' ', $text));
+                        };
+
+                        $plain = '';
+                        if (function_exists('has_blocks') && has_blocks($content)) {
+                            $blocks = parse_blocks($content);
+                            $plain = $renderBlocksToText($blocks);
+                        }
+
+                        // Fallback: klassieke editor / geen blokken of geen tekst gevonden
+                        if ($plain === '') {
+                            $raw = strip_shortcodes($content);
+                            $plain = trim(preg_replace('/\s+/', ' ', wp_strip_all_tags($raw)));
+                        }
+
+                        // Laatste redmiddel: titel + excerpt
+                        if ($plain === '') {
+                            $fallback = (string) get_the_title($post) . ' ' . (string) get_the_excerpt($post);
+                            $plain = trim(preg_replace('/\s+/', ' ', wp_strip_all_tags($fallback)));
+                        }
+
+                        // Tel woorden incl. cijfers (alleen DOM-tekst), Unicode-veilig
+                        $wordCount = 0;
+                        if ($plain !== '') {
+                            if (preg_match_all('/[\p{L}\p{N}]+/u', $plain, $m)) {
+                                $wordCount = count($m[0]);
+                            }
+                        }
+                        $readingTime = max(1, (int) ceil($wordCount / $wordsPerMinute));
                     @endphp
                     <div class="news-reading-time absolute z-20 top-[15px] right-[15px]">
                         <div class="reading-time bg-primary text-white px-4 py-2 rounded-full flex items-center gap-x-1">
