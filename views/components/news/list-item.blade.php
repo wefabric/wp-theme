@@ -47,7 +47,11 @@
                 @endif
                 @if (!empty($visibleElements) && in_array('reading_time', $visibleElements))
                     @php
-                        $readingTime = getReadingTime(get_post($post))
+                        $content = get_post_field('post_content', $post);
+                        $content = strip_shortcodes($content);
+                        $plain = trim(preg_replace('/\s+/', ' ', wp_strip_all_tags($content)));
+                        $wordCount = $plain !== '' ? str_word_count($plain) : 0;
+                        $readingTime = max(1, (int) ceil($wordCount / 200));
                     @endphp
                     <div class="news-reading-time absolute z-20 top-[15px] right-[15px]">
                         <div class="reading-time bg-primary text-white px-4 py-2 rounded-full flex items-center gap-x-1">
