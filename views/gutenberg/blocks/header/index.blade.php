@@ -63,6 +63,22 @@
             }
         }
 
+    // Tags
+    $tagsCount = $block['data']['tags'] ?? 0;
+    $tags = [];
+
+    for ($i = 0; $i < $tagsCount; $i++) {
+        $tagKey = "tags_{$i}_tag";
+        $tagText = $block['data'][$tagKey] ?? '';
+
+        if (!empty($tagText)) {
+            $tags[] = [
+                'text' => $tagText,
+            ];
+        }
+    }
+
+
     $textPosition = $block['data']['text_position'] ?? '';
     $textPositionClass = '';
     $textWidthClass = '';
@@ -202,6 +218,16 @@
                                 'download' => $button2Download,
                             ])
                         @endif
+                    </div>
+                @endif
+
+                @if (!empty($tags))
+                    <div class="header-tags flex flex-wrap gap-2 mt-4">
+                        @foreach ($tags as $tag)
+                            <div class="header-tag px-3 py-1 rounded-full">
+                                {!! $tag['text'] !!}
+                            </div>
+                        @endforeach
                     </div>
                 @endif
 

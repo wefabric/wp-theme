@@ -182,6 +182,23 @@
             "font_size": 14
         },
         {
+            "key": "field_678686ba371f3",
+            "label": "Subtitel kleur",
+            "name": "subtitle_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "font_size": 14
+        },
+        {
             "key": "field_661d431ce44c1",
             "label": "Titel tonen",
             "name": "show_title",
@@ -583,6 +600,52 @@
                     "ui": 0,
                     "ui_on_text": "",
                     "ui_off_text": ""
+                }
+            ]
+        },
+        {
+            "key": "field_691592cede8bc",
+            "label": "Tags",
+            "name": "tags",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Nieuwe rij",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_691592edde8bd",
+                    "label": "Tag",
+                    "name": "tag",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_691592cede8bc"
                 }
             ]
         },
@@ -1975,5 +2038,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758637108
+    "modified": 1763021578
 }
