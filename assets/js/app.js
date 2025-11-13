@@ -4,6 +4,7 @@ import Swiper, { Navigation, Pagination, Autoplay, Zoom, Thumbs, EffectFade } fr
 // import Swiper and modules styles
 import SplitType from "split-type";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import TelQr from '@wefabric/telqr';
 
 // Import dependencies
@@ -32,7 +33,11 @@ window.SwiperPagination = Pagination;
 window.SwiperNavigation = Navigation;
 window.SplitType = SplitType;
 window.gsap = gsap;
-window.ScrollTrigger = require("gsap/ScrollTrigger");
+// Register ScrollTrigger plugin and expose it globally
+if (ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    window.ScrollTrigger = ScrollTrigger;
+}
 
 // Initialize child theme integrations before Alpine starts so x-data components are available
 if (ThemeChildApp !== undefined) {
