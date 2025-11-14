@@ -730,7 +730,7 @@
                 "id": ""
             },
             "post_type": [
-                "employee-stories"
+                "employee_stories"
             ],
             "post_status": [
                 "publish"
@@ -2536,5 +2536,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758114715
+    "display_title": "",
+    "modified": 1763113963
 }
