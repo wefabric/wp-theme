@@ -32,7 +32,7 @@
     <div class="step-item-layout flex flex-col items-center gap-y-4">
 
         @if ($stepIcon && $visualType == 'icons')
-            <div class="mx-auto w-24 h-24 bg-primary-light text-primary rounded-full inline-flex items-center justify-center">
+            <div class="icon-background mx-auto w-24 h-24 bg-primary-light text-primary rounded-full inline-flex items-center justify-center">
                 <i class="fa-{{ $stepIcon['style'] }} fa-{{ $stepIcon['id'] }} text-{{ $stepIconColor }} text-3xl w-12 h-12 text-center"
                    aria-hidden="true"></i>
             </div>
