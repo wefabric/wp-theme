@@ -19,13 +19,15 @@
                 </div>
             @endif
             @include('components.image', [
-                 'image_id' => $image['id'],
-                 'size' => 'full',
-                 'object_fit' => $image['object_fit'],
-                 'img_class' => $image['img_class'] . ' ' . $image['img_style'],
-                 'alt' => $image['alt'],
-                 'img_class' => 'transform ease-in-out duration-300 '.  ($imageLinkUrl ? 'group-hover:scale-110 ' : '')
-
+                'image_id'   => $image['id'],
+                'size'       => 'full',
+                'object_fit' => $image['object_fit'],
+                'img_class'  =>
+                    $image['img_class'] . ' ' .
+                    $image['img_style'] . ' ' .
+                    'transform ease-in-out duration-300 ' .
+                    ($imageLinkUrl ? 'group-hover:scale-110 ' : ''),
+                'alt'        => $image['alt'],
             ])
         @endif
     </div>
