@@ -7,7 +7,7 @@
      $layoutClasses = [
          'mobile' => 'grid-cols-' . $mobileLayout,
          'tablet' => 'sm:grid-cols-' . $tabletLayout,
-         'desktop' => 'lg:grid-cols-' . $desktopLayout,
+         'desktop' => 'xl:grid-cols-' . $desktopLayout,
          'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
      ];
 
@@ -103,7 +103,7 @@
                     loop: {{ $swiperLoop && count($cases) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
-                768: {
+                640: {
                     loop: {{ $swiperLoop && count($cases) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },

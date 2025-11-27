@@ -6,7 +6,7 @@
     $layoutClasses = [
         'mobile' => 'grid-cols-' . $mobileLayout,
         'tablet' => 'sm:grid-cols-' . $tabletLayout,
-        'desktop' => 'lg:grid-cols-' . $desktopLayout,
+        'desktop' => 'xl:grid-cols-' . $desktopLayout,
     ];
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
@@ -62,7 +62,7 @@
                     loop: {{count($stories) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
-                768: {
+                640: {
                     loop: {{ count($stories) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },

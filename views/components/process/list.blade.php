@@ -50,7 +50,7 @@
                     loop: {{count($processSteps) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
-                768: {
+                640: {
                     loop: {{ count($processSteps) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },

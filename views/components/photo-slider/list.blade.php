@@ -75,7 +75,7 @@
                     loop: {{ $swiperLoop && count($imagesData) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
-                768: {
+                640: {
                     loop: {{ $swiperLoop && count($imagesData) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },

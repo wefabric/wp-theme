@@ -6,7 +6,7 @@
     $layoutClasses = [
         'mobile' => 'grid-cols-' . $mobileLayout,
         'tablet' => 'sm:grid-cols-' . $tabletLayout,
-        'desktop' => 'lg:grid-cols-' . $desktopLayout,
+        'desktop' => 'xl:grid-cols-' . $desktopLayout,
     ];
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
