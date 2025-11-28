@@ -38,7 +38,7 @@ $wrapper_classes   = apply_filters(
 ?>
 
 <?php
-    the_title( '<h1 class="h2 product_title entry-title">', '  ' . $product->get_sku(). '</h1>' );
+    the_title( '<h1 class="h2 product_title entry-title">', '</h1>' );
 ?>
 
 

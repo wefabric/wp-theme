@@ -76,7 +76,7 @@
 							@php do_action('woocommerce_shop_loop') @endphp
 							@php wc_get_template_part('content', 'product') @endphp
 						@endwhile
-					@endif
+                    @endif
 
 					{!! woocommerce_product_loop_end(false) !!}
 
@@ -89,14 +89,13 @@
 			</div>
 		</div>
 
-		<div class="page-builder">
-			@php
-				$obj = get_queried_object(); //category
-				if($obj instanceof WP_Post_Type && $obj->name === 'product') {
-					$obj = get_option('woocommerce_shop_page_id');
-				} //if shop, get the page ID instead
-			@endphp
-			{!! pageBuilder()->render($obj) !!}
-		</div>
+        @php
+            $postContent = get_post_field('post_content', $page->ID);
+        @endphp
+
+        <div class="page-builder">
+            {!! apply_filters('the_content', $postContent) !!}
+        </div>
+
 	</div>
 @endsection
