@@ -41,7 +41,7 @@
                 @if ($fields['activity_full'])
                     <a href="{{ $activityUrl }}" aria-label="Ga naar {{ $activityTitle }}"
                        class="absolute w-full h-full bg-white z-10 opacity-70 transition-opacity">
-                        <span clas="sr-only">Ga naar {{ $activityTitle }}</span>
+                        <span class="sr-only">Ga naar {{ $activityTitle }}</span>
                     </a>
                 @endif
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))

@@ -215,7 +215,7 @@
 
 
                                     {{-- Openingstijden --}}
-                                    @if (!empty($visibleElements) && in_array('establishment_opening_hours', $visibleElements))
+                                    @if (!empty($visibleElements) && in_array('establishment_opening_hours', $visibleElements) && $establishment->openingHours()->isNotEmpty())
                                         <div class="opening-hours-section">
                                             <div class="opening-hours-text font-bold mb-2">Openingstijden</div>
                                             <div class="flex flex-col">
