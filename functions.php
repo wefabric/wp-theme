@@ -601,84 +601,170 @@ function acf_load_cardblock_post_types($field) {
     return $field;
 }
 
-function add_schema_for_any_video($content) {
+
+add_action('save_post', 'my_cache_video_schemas_on_save');
+function my_cache_video_schemas_on_save($post_id) {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (wp_is_post_revision($post_id)) return;
+
+    $content = get_post_field('post_content', $post_id);
+    if (!$content) return;
+
+    preg_match_all('/https?:\/\/[^\s"]+/', $content, $matches);
+    if (empty($matches[0])) return;
+
     $schemas = [];
-    $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full'); // fallback thumbnail
+    $seen = ['youtube' => [], 'vimeo' => []];
 
-    // 1. oEmbed URLs (YouTube, Vimeo)
-    preg_match_all('/https?:\/\/[^\s"]+/', $content, $url_matches);
-    if (!empty($url_matches[0])) {
-        foreach ($url_matches[0] as $url) {
-            if (strpos($url, 'youtube.com') !== false || strpos($url, 'youtu.be') !== false) {
-                $video_id = null;
-                if (preg_match('/v=([a-zA-Z0-9_-]+)/', $url, $m)) $video_id = $m[1];
-                elseif (preg_match('/youtu\.be\/([a-zA-Z0-9_-]+)/', $url, $m)) $video_id = $m[1];
-                if ($video_id) {
-                    $schemas[] = [
-                        '@context'    => 'https://schema.org',
-                        '@type'       => 'VideoObject',
-                        'name'        => get_the_title(),
-                        'description' => wp_strip_all_tags(get_the_excerpt()),
-                        'thumbnailUrl'=> "https://i.ytimg.com/vi/$video_id/maxresdefault.jpg",
-                        'uploadDate'  => get_the_date('c'),
-                        'embedUrl'    => "https://www.youtube.com/embed/$video_id",
-                        'contentUrl'  => $url
-                    ];
-                }
-            }
-            if (strpos($url, 'vimeo.com') !== false) {
-                $schemas[] = [
-                    '@context'    => 'https://schema.org',
-                    '@type'       => 'VideoObject',
-                    'name'        => get_the_title(),
-                    'description' => wp_strip_all_tags(get_the_excerpt()),
-                    'thumbnailUrl'=> $thumbnail,
-                    'uploadDate'  => get_the_date('c'),
-                    'contentUrl'  => $url
-                ];
-            }
+    foreach ($matches[0] as $url) {
+        // YouTube
+        if (str_contains($url, 'youtube.com') !== false || str_contains($url, 'youtu.be') !== false) {
+            $id = extract_youtube_id($url);
+            if (!$id || isset($seen['youtube'][$id])) continue;
+            $seen['youtube'][$id] = true;
+            $schemas[] = my_fetch_youtube_schema_cached($url);
+        }
+
+        // Vimeo
+        if (str_contains($url, 'vimeo.com') !== false) {
+            $id = extract_vimeo_id($url);
+            if (!$id || isset($seen['vimeo'][$id])) continue;
+            $seen['vimeo'][$id] = true;
+            $schemas[] = my_fetch_vimeo_schema_cached($url);
         }
     }
 
-    // 2. Directe videobestanden (.mp4, .webm, .ogg)
-    preg_match_all('/https?:\/\/[^\s"]+\.(mp4|webm|ogg)/i', $content, $file_matches);
-    if (!empty($file_matches[0])) {
-        foreach ($file_matches[0] as $video_file) {
-            $schemas[] = [
-                '@context'    => 'https://schema.org',
-                '@type'       => 'VideoObject',
-                'name'        => get_the_title(),
-                'description' => wp_strip_all_tags(get_the_excerpt()),
-                'thumbnailUrl'=> $thumbnail ?: 'https://via.placeholder.com/1280x720.png?text=Video',
-                'uploadDate'  => get_the_date('c'),
-                'contentUrl'  => $video_file
-            ];
-        }
-    }
-
-    // 3. <video> tags
-    if (preg_match_all('/<video[^>]*src=["\']([^"\']+)["\']/i', $content, $tag_matches)) {
-        foreach ($tag_matches[1] as $src) {
-            $schemas[] = [
-                '@context'    => 'https://schema.org',
-                '@type'       => 'VideoObject',
-                'name'        => get_the_title(),
-                'description' => wp_strip_all_tags(get_the_excerpt()),
-                'thumbnailUrl'=> $thumbnail ?: 'https://via.placeholder.com/1280x720.png?text=Video',
-                'uploadDate'  => get_the_date('c'),
-                'contentUrl'  => $src
-            ];
-        }
-    }
-
-    if (!empty($schemas)) {
-        $json_ld  = '<script type="application/ld+json">' . "\n";
-        $json_ld .= wp_json_encode($schemas, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-        $json_ld .= "\n</script>";
-        $content .= $json_ld;
-    }
-
-    return $content;
+    // Save all found schemas (overwriting old ones)
+    update_post_meta($post_id, '_cached_video_schemas', $schemas);
 }
-add_filter('the_content', 'add_schema_for_any_video');
+
+
+function extract_youtube_id($url) {
+    $parts = parse_url($url);
+    parse_str($parts['query'], $query);
+    return $query['v'] ?? null;
+}
+
+function extract_vimeo_id($url) {
+    parse_str(parse_url($url, PHP_URL_QUERY), $query);
+    return $query['video_id'] ?? null;
+}
+
+
+function my_fetch_vimeo_schema_cached($url) {
+
+    $oembed_url = 'https://vimeo.com/api/oembed.json?url=' . urlencode($url);
+
+    $response = wp_remote_get($oembed_url, [
+        'timeout' => 2,
+    ]);
+
+    if (is_wp_error($response)) {
+        return my_vimeo_fallback_schema($url);
+    }
+
+    $data = json_decode(wp_remote_retrieve_body($response), true);
+
+    if (empty($data) || empty($data['title'])) {
+        return my_vimeo_fallback_schema($url);
+    }
+
+    return [
+        '@context'        => 'https://schema.org',
+        '@type'           => 'VideoObject',
+        'name'            => $data['title'],
+        'description'     => !empty($data['description'])
+            ? wp_strip_all_tags($data['description'])
+            : $data['title'],
+        'thumbnailUrl'    => $data['thumbnail_url'],
+        'embedUrl'        => !empty($data['html']) ? extract_vimeo_embed_src($data['html']) : $url,
+        'contentUrl'      => $url,
+        'uploadDate'      => !empty($data['upload_date'])
+            ? date('c', strtotime($data['upload_date']))
+            : date('c')
+    ];
+
+}
+
+
+function my_fetch_youtube_schema_cached($url) {
+
+    $oembed_url = 'https://www.youtube.com/oembed?url=' . urlencode($url) . '&format=json';
+
+    $response = wp_remote_get($oembed_url, [
+        'timeout' => 2,
+    ]);
+
+    if (is_wp_error($response)) {
+        return my_youtube_fallback_schema($url);
+    }
+
+    $data = json_decode(wp_remote_retrieve_body($response), true);
+
+    if (empty($data['title'])) {
+        return my_youtube_fallback_schema($url);
+    }
+
+    return [
+        '@context'        => 'https://schema.org',
+        '@type'           => 'VideoObject',
+        'name'            => $data['title'],
+        'description'     => $data['title'],
+        'thumbnailUrl'    => $data['thumbnail_url'],
+        'embedUrl'        => $url,
+        'contentUrl'      => $url,
+        'uploadDate'      => date('c')
+    ];
+}
+
+function my_youtube_fallback_schema($url) {
+    return [
+        '@context'        => 'https://schema.org',
+        '@type'           => 'VideoObject',
+        'name'            => 'YouTube Video',
+        'description'     => 'Video content',
+        'thumbnailUrl'    => 'https://via.placeholder.com/1280x720?text=YouTube+Video',
+        'embedUrl'        => $url,
+        'contentUrl'      => $url,
+        'uploadDate'      => date('c')
+    ];
+}
+
+function my_vimeo_fallback_schema($url) {
+    return [
+        '@context'        => 'https://schema.org',
+        '@type'           => 'VideoObject',
+        'name'            => 'Vimeo Video',
+        'description'     => 'Video content',
+        'thumbnailUrl'    => 'https://via.placeholder.com/1280x720?text=Vimeo+Video',
+        'embedUrl'        => $url,
+        'contentUrl'      => $url,
+        'uploadDate'      => date('c')
+    ];
+}
+
+function extract_vimeo_embed_src($html) {
+    if (preg_match('/src="([^"]+)"/', $html, $matches)) {
+        return $matches[1];
+    }
+
+    return null;
+}
+
+function my_output_cached_video_schemas()
+{
+    if (!is_singular()) return; // Only on single posts/pages
+
+    global $post;
+    if (!$post) return;
+
+    $schemas = get_post_meta($post->ID, '_cached_video_schemas', true);
+    if (empty($schemas)) return;
+
+    foreach ($schemas as $schema) {
+        echo '<script type="application/ld+json">' . wp_json_encode($schema) . '</script>';
+    }
+}
+
+add_action('wp_head', 'my_output_cached_video_schemas');
 
