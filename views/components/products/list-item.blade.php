@@ -34,7 +34,7 @@
                                     $categoryIcon = get_field('category_icon', $category);
                                 @endphp
                                 <div style="background-color: {{ $categoryColor }}" class="product-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1">
-                                    {!! $categoryIcon !!} {!! $category->name !!}
+                                    {!! $categoryIcon !!} {!! html_entity_decode($category->name) !!}
                                 </div>
                             @endforeach
                         </div>
