@@ -173,6 +173,31 @@
             "append": ""
         },
         {
+            "key": "field_6937de8521d44",
+            "label": "Subtitel kleur",
+            "name": "subtitle_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6694c8dee20c2",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "allow_in_bindings": 1,
+            "font_size": 14
+        },
+        {
             "key": "field_6694c8dee20d8",
             "label": "Titel tonen?",
             "name": "show_title",
@@ -1783,5 +1808,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1765268211
+    "modified": 1765269189
 }

@@ -23,6 +23,7 @@
     $title = !empty($block['data']['title']) ? $block['data']['title'] : get_the_title();
     $titleColor = $block['data']['title_color'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
     $showTitle = $block['data']['show_title'] ?? true;
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
@@ -173,7 +174,7 @@
             <div class="header-info w-full lg:w-1/2 z-30 flex flex-col order-2 lg:order-1 {{ $textWidthClass }}">
                 @if ($showTitle)
                     @if ($subTitle)
-                        <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                        <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
                     @endif
                     <h1 class="title text-{{ $titleColor }}">{!! $title !!}</h1>
                 @endif
