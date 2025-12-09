@@ -2,13 +2,15 @@
     //    todo: Needs block update, breadcrumbs and parralax
 
     // Header style
-    $headerHeight = $block['data']['header_height'] ?? '';
-    $heightClasses = [
-        1 => 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]',
-        2 => 'h-[200px] md:h-[400px] 2xl:h-[500px]',
-        3 => 'h-[120px] md:h-[200px]',
-    ];
-    $headerClass = $heightClasses[$headerHeight] ?? '';
+   if ($headerStyle == 'fixed_height') {
+        $headerHeight = $block['data']['header_height'] ?? '';
+        $heightClasses = [
+            1 => 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]',
+            2 => 'h-[200px] md:h-[400px] 2xl:h-[500px]',
+            3 => 'h-[120px] md:h-[200px]',
+        ];
+        $headerClass = $heightClasses[$headerHeight] ?? '';
+    }
 
     $headerNames = [
         1 => 'big-header',
@@ -91,6 +93,8 @@
         }
     }
 
+    $sliderDirection = $block['data']['slider_layout'] ?? 'vertical';
+
 
     // Breadcrumbs
     $breadcrumbsEnabled = $block['data']['show_breadcrumbs'] ?? false;
@@ -152,7 +156,8 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'header-slider' }}@endif" class="block-header-slider relative header-slider-{{ $randomNumber }}-custom-padding header-slider-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'header-slider' }}@endif"
+         class="block-header-slider relative header-slider-{{ $randomNumber }}-custom-padding header-slider-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} @if($headerStyle == 'fixed_height') fixed-header @elseif($headerStyle == 'scalable_height') scaled-header @endif {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
          style="background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
@@ -203,19 +208,22 @@
             </div>
 
             <div class="sliders order-1 lg:order-2 w-full lg:w-1/2">
-                <div class="horizontal-slider block lg:hidden gap-x-8">
-                    @include('components.header-slider.slider', ['images' => array_merge($imagesSlider1Data, $imagesSlider2Data), 'direction' => 'horizontal', 'sliderId' => 'headerHorizontalSwiper1'])
-                </div>
-                <div class="vertical-sliders hidden lg:flex gap-x-8">
-                    <div class="slider-1 @if($imagesSlider2Data) w-1/2 @endif h-full">
-                        @include('components.header-slider.slider', ['images' => $imagesSlider1Data, 'direction' => 'vertical', 'sliderId' => 'headerSwiper1'])
+                @if($sliderDirection === 'horizontal')
+                    <div class="horizontal-slider block gap-x-8">
+                        @include('components.header-slider.slider', ['images' => array_merge($imagesSlider1Data, $imagesSlider2Data), 'direction' => 'horizontal', 'sliderId' => 'headerHorizontalSwiper1'])
                     </div>
-                    @if($imagesSlider2Data)
-                        <div class="slider-2 w-1/2 h-full">
-                            @include('components.header-slider.slider', ['images' => $imagesSlider2Data, 'direction' => 'vertical', 'sliderId' => 'headerSwiper2', 'reverse' => true])
+                @else
+                    <div class="vertical-sliders flex gap-x-8">
+                        <div class="slider-1 @if($imagesSlider2Data) w-1/2 @endif h-full">
+                            @include('components.header-slider.slider', ['images' => $imagesSlider1Data, 'direction' => 'vertical', 'sliderId' => 'headerSwiper1'])
                         </div>
-                    @endif
-                </div>
+                        @if($imagesSlider2Data)
+                            <div class="slider-2 w-1/2 h-full">
+                                @include('components.header-slider.slider', ['images' => $imagesSlider2Data, 'direction' => 'vertical', 'sliderId' => 'headerSwiper2', 'reverse' => true])
+                            </div>
+                        @endif
+                    </div>
+                @endif
             </div>
 
         </div>

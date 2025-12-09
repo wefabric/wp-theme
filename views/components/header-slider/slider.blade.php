@@ -51,7 +51,7 @@
     }
 
     .horizontal-slider {
-        height: 100%;
+        overflow: hidden;
     }
 
     .horizontal-slider .swiper-slide img {
@@ -59,10 +59,10 @@
     }
 
     .horizontal-slider .swiper {
-        overflow: visible;
+        overflow: hidden;
     }
 
     .header-headerHorizontalSwiper1 {
-        overflow: visible;
+        overflow: hidden;
     }
 </style>
