@@ -158,7 +158,7 @@
 @endphp
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'header-slider' }}@endif"
-         class="block-header-slider relative header-slider-{{ $randomNumber }}-custom-padding header-slider-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} @if($headerStyle == 'fixed_height') fixed-header @elseif($headerStyle == 'scalable_height') scaled-header @endif {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
+         class="block-header-slider relative header-slider-{{ $randomNumber }} header-slider-{{ $randomNumber }}-custom-padding header-slider-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} @if($headerStyle == 'fixed_height') fixed-header @elseif($headerStyle == 'scalable_height') scaled-header @endif {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
          style="background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
@@ -229,6 +229,39 @@
 
         </div>
     </div>
+
+    @if($sliderDirection === 'horizontal')
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        var root = document.querySelector('.header-slider-{{ $randomNumber }}');
+        if (!root) return;
+        var slider = root.querySelector('.horizontal-slider');
+        if (!slider) return;
+        function applyWidth() {
+          var isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+          if (!isDesktop) {
+            slider.style.width = '';
+            return;
+          }
+          var rect = slider.getBoundingClientRect();
+          var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+          var newWidth = Math.max(0, Math.round(viewportWidth - rect.left));
+          slider.style.width = newWidth + 'px';
+        }
+        var scheduled = false;
+        function onResize() {
+          if (scheduled) return;
+          scheduled = true;
+          requestAnimationFrame(function() {
+            scheduled = false;
+            applyWidth();
+          });
+        }
+        applyWidth();
+        window.addEventListener('resize', onResize);
+      });
+    </script>
+    @endif
 </section>
 
 @if ($customBlockClasses) <div class="breadcrumbs-{{ $customBlockClasses }}"> @endif
