@@ -232,34 +232,53 @@
 
     @if($sliderDirection === 'horizontal')
     <script>
-      window.addEventListener('DOMContentLoaded', function() {
-        var root = document.querySelector('.header-slider-{{ $randomNumber }}');
-        if (!root) return;
-        var slider = root.querySelector('.horizontal-slider');
-        if (!slider) return;
-        function applyWidth() {
-          var isDesktop = window.matchMedia('(min-width: 1024px)').matches;
-          if (!isDesktop) {
-            slider.style.width = '';
-            return;
+      (function(){
+        function setup() {
+          var root = document.querySelector('.header-slider-{{ $randomNumber }}');
+          if (!root) return;
+          var slider = root.querySelector('.horizontal-slider');
+          if (!slider) return;
+
+          function applyWidthAndUpdate() {
+            var isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+            if (!isDesktop) {
+              slider.style.width = '';
+            } else {
+              var rect = slider.getBoundingClientRect();
+              var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+              var newWidth = Math.max(0, Math.round(viewportWidth - rect.left));
+              slider.style.width = newWidth + 'px';
+            }
+            // If a Swiper instance exists inside, update after reflow
+            var swiperEl = slider.querySelector('.swiper');
+            if (swiperEl && swiperEl.swiper) {
+              requestAnimationFrame(function(){ swiperEl.swiper.update(); });
+            }
           }
-          var rect = slider.getBoundingClientRect();
-          var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-          var newWidth = Math.max(0, Math.round(viewportWidth - rect.left));
-          slider.style.width = newWidth + 'px';
+
+          var scheduled = false;
+          function onResize() {
+            if (scheduled) return;
+            scheduled = true;
+            requestAnimationFrame(function() {
+              scheduled = false;
+              applyWidthAndUpdate();
+            });
+          }
+
+          // Initial sizing
+          applyWidthAndUpdate();
+          // Respond to changes
+          window.addEventListener('resize', onResize);
+          window.addEventListener('load', applyWidthAndUpdate);
         }
-        var scheduled = false;
-        function onResize() {
-          if (scheduled) return;
-          scheduled = true;
-          requestAnimationFrame(function() {
-            scheduled = false;
-            applyWidth();
-          });
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', setup);
+        } else {
+          setup();
         }
-        applyWidth();
-        window.addEventListener('resize', onResize);
-      });
+      })();
     </script>
     @endif
 </section>
