@@ -116,7 +116,7 @@
                 </div>
             @endif
         </div>
-        <div class="contact-info w-full mt-5 flex flex-col">
+        <div class="contact-info w-full mt-5 flex flex-col flex-grow">
             @if (!empty($visibleElements) && in_array('name', $visibleElements))
                 @if ($linkUrl)
                     <a href="{{ $linkUrl }}" aria-label="Ga naar {{ $fullName }} pagina"
@@ -125,8 +125,8 @@
                     <div class="name-text font-bold text-lg text-{{ $employeeTitleColor }}">{{ $firstName }} {{ $lastName }}</div>
                 @endif
             @endif
-            @if (!empty($visibleElements) && in_array('function', $visibleElements))
-                <div class="function-text text-{{ $employeeTextColor }} font-medium">{{ $function }}</div>
+            @if (!empty($visibleElements) && in_array('function', $visibleElements) && $function)
+                <div class="function-text text-{{ $employeeTextColor }} font-medium">{!! $function !!}</div>
             @endif
             @if (!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($socials))
                 <div class="social-items inline-flex gap-x-2">
@@ -140,7 +140,7 @@
                 </div>
             @endif
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements) && ($contactInfoDisplay == 'under_image'))
-                <div class="contact-items relative w-fit @if(!$showFullContactInfo) flex gap-x-2 @endif">
+                <div class="contact-items relative mt-auto w-fit @if(!$showFullContactInfo) flex gap-x-2 @endif">
                     @if ($mail)
                         <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}"
                            class="mail-link text-{{ $employeeTextColor }} hover:text-primary">
