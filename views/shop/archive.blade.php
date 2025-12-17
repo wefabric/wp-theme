@@ -25,6 +25,117 @@
 						@include('components.woocommerce.category-tree')
 					</div>
 
+                        <?php
+                        $buildYearTerms = get_terms([
+                            'taxonomy' => 'pa_bouwjaar',
+                            'hide_empty' => true
+                        ]);
+                        $buildYearValues = [];
+                        if(!empty($buildYearTerms)) {
+                            foreach ($buildYearTerms as $term) {
+                                $buildYearValues[] = [
+                                    'id' => $term->term_id,
+                                    'name' => $term->name
+                                ];
+                            }
+                        }
+
+                        $runTimeTerms = get_terms([
+                            'taxonomy' => 'pa_counter1',
+                            'hide_empty' => false
+                        ]);
+                        $runTimeValues = [];
+                        if(!empty($runTimeTerms)) {
+                            foreach ($runTimeTerms as $runterm) {
+                                $runTimeValues[] = $runterm->name;
+                            }
+                        }
+
+
+                        function filter_products_by_buildyear($query) {
+                            if ( isset($_GET['buildyear']) && !empty($_GET['buildyear']) ) {
+                                $selectedYear = sanitize_text_field($_GET['buildyear']);
+                                $query->set('tax_query', array(
+                                    array(
+                                        'taxonomy' => 'pa_bouwjaar',
+                                        'field'    => 'slug',
+                                        'terms'    => $selectedYear,
+                                    )
+                                ));
+                            }
+                        }
+
+                        ?>
+
+                    <div class="hidden lg:block">
+                        <h1 class="product-search-filter-terms-heading product-search-filter-attribute-heading">Bouwjaar</h1>
+                    <div class="slider-container">
+                        <form method="GET">
+                            <input type="range" id="buildYearRange" name="buildyear" min="0" max="<?= count($buildYearValues)-1 ?>" value="0">
+                            <span id="buildYearValue"><?= $buildYearValues[0]['name'] ?></span>
+                            <input type="hidden" id="buildYearTerm" name="ixwpst[taxonomy][pa_bouwjaar][terms][]" value="<?= $buildYearValues[0]['id'] ?>">
+                            <input type="hidden" name="ixwpst[taxonomy][pa_bouwjaar][filter]" value="1">
+                            <input type="hidden" name="ixwpst[taxonomy][pa_bouwjaar][multiple]" value="1">
+                            <button type="submit">Filter</button>
+                        </form>
+                    </div>
+                    </div>
+                    <style>
+                        .slider-container {
+                            width: 300px;
+                        }
+                        input[type=range] {
+                            width: 100%;
+                        }
+                        .value-display {
+                            margin-top: 10px;
+                            font-weight: bold;
+                        }
+                    </style>
+                    <script>
+
+                        const slider = document.getElementById("buildYearRange");
+                        const output = document.getElementById("buildYearValue");
+                        const hiddenTerm = document.getElementById("buildYearTerm");
+                        let buildYears = <?= json_encode($buildYearValues); ?>;
+
+                        slider.addEventListener("input", function() {
+                            let obj = buildYears[this.value];
+                            output.textContent = obj.name;
+                            hiddenTerm.value = obj.id;
+                        });
+
+                    </script>
+
+                    <div class="hidden lg:block">
+                        <h1 class="product-search-filter-terms-heading product-search-filter-attribute-heading">Aantal Gebruikersuren</h1>
+                        <div class="slider-container">
+                            <input type="range" id="runTimeRange" min="0" max="<?= count($runTimeValues) - 1 ?>" value="0">
+                            <div class="value-display">Value: <span id="runtimeValue"><?=  $runTimeValues[0] ?? '' ?></span></div>
+                        </div>
+                    </div>
+                    <style>
+                        .slider-container {
+                            width: 300px;
+                        }
+                        input[type=range] {
+                            width: 100%;
+                        }
+                        .value-display {
+                            margin-top: 10px;
+                            font-weight: bold;
+                        }
+                    </style>
+                    <script>
+                        const slider = document.getElementById("runTimeRange");
+                        const output = document.getElementById("runtimeValue");
+
+                        let runTime = <?= json_encode($runTimeValues); ?>;
+                        slider.addEventListener("input", function() {
+                            output.textContent = runTime[index = this.value];
+                        });
+                    </script>
+
 
 {{--					<div class="lg:hidden flex flex-row items-center gap-4 px-4 lg:px-0">--}}
 {{--						<div class="">--}}
