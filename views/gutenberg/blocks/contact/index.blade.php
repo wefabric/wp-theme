@@ -162,7 +162,13 @@
                                     @endif
 
                                     {{-- Contactgegevens --}}
-                                    @if (!empty($visibleElements) && array_intersect(['establishment_phone', 'establishment_mail', 'establishment_route'], $visibleElements) && ($phone || $mail || $route))
+                                    @if (!empty($visibleElements) &&
+                                        (
+                                            (in_array('establishment_phone', $visibleElements) && $phone) ||
+                                            (in_array('establishment_mail', $visibleElements) && $email) ||
+                                            in_array('establishment_route', $visibleElements)
+                                        )
+                                    )
                                         <div class="contact-info">
                                             <div class="contact-text font-bold mb-2">Contact</div>
                                             <div class="flex-layout flex flex-col gap-y-2">
