@@ -51,7 +51,7 @@
 	@foreach($categories as $category)
 
 
-		<div class="product-category @if($category->subcategory_count == 0) no-subcategories @endif @if($category->active) bg-black active @else bg-[#F5F3F3] @endif">
+		<div class="product-category break-words px-3 @if($category->subcategory_count == 0) no-subcategories @endif @if($category->active) bg-black active @else bg-[#F5F3F3] @endif">
 
 			@php
 
