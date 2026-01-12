@@ -29,8 +29,15 @@
 </div>
 
 <script>
-    window.addEventListener("DOMContentLoaded", (event) => {
-        var specialStepSliderSwiper = new Swiper(".{{ $randomId }}", {
+    window.addEventListener("DOMContentLoaded", () => {
+
+        const swiperEl = document.querySelector('.{{ $randomId }}');
+        if (!swiperEl) return;
+
+        const werkwijze = swiperEl.closest('.block-werkwijze');
+        if (!werkwijze) return;
+
+        var specialStepSliderSwiper = new Swiper(swiperEl, {
             effect: 'fade',
             fadeEffect: {
                 crossFade: true,
@@ -43,13 +50,11 @@
             mousewheel: false,
         });
 
-        const steps = document.querySelectorAll('.step');
+        const steps = werkwijze.querySelectorAll('.step');
+        if (!steps.length) return;
 
         function updateActiveStep(index) {
-            // Remove active-step class from all steps
             steps.forEach(step => step.classList.remove('active-step'));
-
-            // Add active-step class to the corresponding step
             if (steps[index]) {
                 steps[index].classList.add('active-step');
             }
@@ -63,14 +68,13 @@
         });
 
         specialStepSliderSwiper.on('slideChange', () => {
-            const activeIndex = specialStepSliderSwiper.realIndex;
-            updateActiveStep(activeIndex);
+            updateActiveStep(specialStepSliderSwiper.realIndex);
         });
 
-        // Set the first step as active on page load
         updateActiveStep(0);
     });
 </script>
+
 
 <style>
     .step-slide .image {
