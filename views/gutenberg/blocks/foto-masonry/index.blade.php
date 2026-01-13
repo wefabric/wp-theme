@@ -54,10 +54,22 @@
     $numColumns = (int) ($block['data']['columns'] ?? 3);
     $numColumns = max($numColumns, 1);
 
-    $columns = 1;
-    if($numColumns > 0 && count($images) > 0) {
-        $columns = array_chunk($images, ceil(count($images) / $numColumns));
+   // ===== MOBILE: altijd 2 kolommen =====
+    $mobileColumns = [];
+    if (!empty($images)) {
+        $mobileColumns = array_chunk(
+            $images,
+            ceil(count($images) / 2)
+        );
     }
+
+    // ===== DESKTOP: aantal kolommen uit instelling =====
+    $desktopColumns = array_fill(0, $numColumns, []);
+    foreach ($images as $index => $imageID) {
+        $desktopColumns[$index % $numColumns][] = $imageID;
+    }
+
+
 
     // Blokinstellingen
     $blockWidth = $block['data']['block_width'] ?? 100;
@@ -136,8 +148,9 @@
                 ])
             @endif
             @if ($images)
-                <div class="masonry-layout grid grid-cols-2 md:grid-cols-{{ $numColumns }} gap-4">
-                    @foreach($columns as $column)
+                {{-- MOBILE --}}
+                <div class="masonry-layout grid grid-cols-2 gap-4 md:hidden">
+                    @foreach($mobileColumns as $column)
                         <div class="grid gap-4">
                             @foreach($column as $imageID)
                                 <div class="image-item @if ($flyinEffect) image-hidden @endif">
@@ -145,7 +158,26 @@
                                         'image_id' => $imageID,
                                         'size' => 'full',
                                         'object_fit' => 'cover',
-                                        'img_class' => 'object-cover h-full w-full min-h-[150px] rounded-' . $borderRadius,
+                                        'img_class' => 'object-cover w-full h-full min-h-[150px] rounded-' . $borderRadius,
+                                        'alt' => get_post_meta($imageID, '_wp_attachment_image_alt', true)
+                                    ])
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
+
+                {{-- DESKTOP --}}
+                <div class="masonry-layout hidden md:grid md:grid-cols-{{ $numColumns }} gap-4">
+                    @foreach($desktopColumns as $column)
+                        <div class="grid gap-4">
+                            @foreach($column as $imageID)
+                                <div class="image-item @if ($flyinEffect) image-hidden @endif">
+                                    @include('components.image', [
+                                        'image_id' => $imageID,
+                                        'size' => 'full',
+                                        'object_fit' => 'cover',
+                                        'img_class' => 'object-cover w-full h-full min-h-[150px] rounded-' . $borderRadius,
                                         'alt' => get_post_meta($imageID, '_wp_attachment_image_alt', true)
                                     ])
                                 </div>
