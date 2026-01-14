@@ -41,6 +41,9 @@
 
 			$acfData = get_fields($establishment->post->ID);
 			$opening_hours = $acfData['opening_hours'] ?? [];
+
+            $vatNumber = $acfData['vat_number'] ?? null;
+            $cocNumber = $acfData['coc_number'] ?? null;
 		@endphp
 
 		<div class="establishment-item footer-address flex flex-col gap-y-4">
@@ -76,7 +79,10 @@
 							@if(in_array('establishment_country', $establishmentElements) && $countryName)
 								{{ $countryName }}
 							@endif
-						</div>
+
+
+
+                        </div>
 					@endif
 				</div>
 
@@ -125,24 +131,26 @@
 					'opening_hours' => $opening_hours
 				])
 
-				{{--			Dit kan later weer aan--}}
-{{--				@include('components.establishments.directions')--}}
+                @if((in_array('establishment_vat_number', $establishmentElements) && $vatNumber) || (in_array('establishment_coc_number', $establishmentElements) && $cocNumber))
+                    <div class="establishment-numbers mt-2">
 
-					{{-- todo: KVK en VAT nummers toevoegen aan vestigingen--}}
-{{--				--}}{{-- Establishment KVK Number --}}
-{{--				@if($establishment->getAcfFields()->get('kvk_number'))--}}
-{{--					<div>--}}
-{{--						<span class="inline-block pt-1">KVK: {{ $establishment->getAcfFields()->get('kvk_number') }}</span>--}}
-{{--					</div>--}}
-{{--				@endif--}}
+                        @if(in_array('establishment_vat_number', $establishmentElements) && $vatNumber)
+                            <div class="establishment-vat">
+                                BTW: {{ $vatNumber }}
+                            </div>
+                        @endif
 
-{{--				--}}{{-- Establishment VAT Number --}}
-{{--				@if($establishment->getAcfFields()->get('vat_id'))--}}
-{{--					<div>--}}
-{{--						<span class="inline-block pt-1">BTW: {{ $establishment->getAcfFields()->get('vat_id') }}</span>--}}
-{{--					</div>--}}
-{{--				@endif--}}
-			@endif
+                        @if(in_array('establishment_coc_number', $establishmentElements) && $cocNumber)
+                            <div class="establishment-coc">
+                                KvK: {{ $cocNumber }}
+                            </div>
+                        @endif
+
+                    </div>
+                @endif
+
+
+            @endif
 
 		</div>
 	@endforeach

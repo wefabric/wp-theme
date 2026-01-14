@@ -124,6 +124,8 @@
                                     $phone = $establishment->getContactPhone();
                                     $email = $establishment->getEmailAddress();
                                     $country_id = $establishment->getAddress()->country_id;
+                                    $cocNumber = get_post_meta($establishment_id, 'coc_number', true);
+                                    $vatNumber = get_post_meta($establishment_id, 'vat_number', true);
                                     if($country_id) {
                                         $countryNames = [
                                             'NL' => 'The Netherlands',
@@ -151,13 +153,13 @@
                                                 <div class="establishment-country">{{ $countryName }}</div>
                                             @endif
 
-                                            {{-- @if (!empty($visibleElements) && in_array('establishment_vat_number', $visibleElements) && $vatNumber)--}}
-                                            {{--    <div class="establishment-vat">{{ $vatNumber }}</div>--}}
-                                            {{-- @endif--}}
+                                             @if (!empty($visibleElements) && in_array('establishment_vat_number', $visibleElements) && $vatNumber)
+                                                <div class="establishment-vat mt-2">BTW nummer: {{ $vatNumber }}</div>
+                                             @endif
 
-                                            {{-- @if (!empty($visibleElements) && in_array('establishment_btw_number', $visibleElements) && $btwNumber)--}}
-                                            {{--    <div class="establishment-btw">{{ $vatNumber }}</div>--}}
-                                            {{-- @endif--}}
+                                             @if (!empty($visibleElements) && in_array('establishment_coc_number', $visibleElements) && $cocNumber)
+                                                <div class="establishment-coc">KvK: {{ $cocNumber }}</div>
+                                             @endif
                                         </div>
                                     @endif
 
