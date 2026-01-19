@@ -139,7 +139,7 @@ header {
 					top: 65px;
 
 					.menu-item {
-						width: max-content !important;
+						width: max-content;
 						@apply text-black hover:text-secondary;
 					}
 
