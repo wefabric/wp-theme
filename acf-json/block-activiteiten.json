@@ -723,6 +723,7 @@
                 "location": "Locatie",
                 "date": "Datum",
                 "time": "Start en eindtijd",
+                "costs": "Kosten",
                 "button": "Knop in activiteit blok"
             },
             "default_value": [],
@@ -2527,5 +2528,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1748204516
+    "display_title": "",
+    "modified": 1768917881
 }

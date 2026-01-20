@@ -106,6 +106,13 @@
                         @endforeach
                     </p>
                 @endif
+
+                @if (!empty($visibleElements) && in_array('costs', $visibleElements) && !empty($fields['costs']))
+                    <p class="flex items-baseline leading-[1.5]">
+                        <i class="w-4 fas fa-euro-sign mr-3 inline flex-shrink-0"></i>
+                        {{ $fields['costs'] }}
+                    </p>
+                @endif
             </div>
 
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
