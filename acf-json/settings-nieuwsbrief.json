@@ -83,9 +83,49 @@
                     "choices": {
                         "mailchimp": "Mailchimp",
                         "zoho": "Zoho",
-                        "brevo": "Brevo"
+                        "brevo": "Brevo",
+                        "gravityform": "Gravity Forms"
                     },
                     "default_value": "mailchimp",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_695e36283bac2",
+                    "label": "Selecteer een Gravity Form",
+                    "name": "newsletter_select_gravity_form",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6638acb852ca7",
+                                "operator": "==",
+                                "value": "gravityform"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "0": "Selecteer een Gravity Form",
+                        "1": "Contactformulier",
+                        "3": "Inschrijven nieuwsbrief",
+                        "4": "Contactformulier kort",
+                        "5": "Offerte aanvragen",
+                        "7": "Contact via Linde of Eureka",
+                        "8": "Power Valley 2025"
+                    },
+                    "default_value": false,
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
@@ -154,41 +194,6 @@
                     "placeholder": ""
                 },
                 {
-                    "key": "field_66756ade1ee45",
-                    "label": "Inschrijf Brevo Formulier ID",
-                    "name": "brevo_subscribe_id",
-                    "aria-label": "",
-                    "type": "number",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_63074223c7e7d",
-                                "operator": "==",
-                                "value": "1"
-                            },
-                            {
-                                "field": "field_6638acb852ca7",
-                                "operator": "==",
-                                "value": "brevo"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": 1,
-                    "min": "",
-                    "max": "",
-                    "placeholder": "",
-                    "step": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
                     "key": "field_6667054ca0364",
                     "label": "Nieuwsbrief inschrijven tekst",
                     "name": "newsletter_text",
@@ -229,5 +234,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719235096
+    "modified": 1767796703
 }

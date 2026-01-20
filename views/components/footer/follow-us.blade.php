@@ -60,6 +60,20 @@
 				</div>
 			@endif
 
-		@endif
+                @if ($option['newsletter_footer']['newsletter_type'] === 'gravityform')
+                    <div class="newsletter-signup">
+                        {!! gravity_form(
+                            $option['newsletter_footer']['newsletter_select_gravity_form'],
+                            false,  // title
+                            false,  // description
+                            false,  // inactive
+                            null,   // field values
+                            true    // ajax
+                        ) !!}
+                    </div>
+                @endif
+
+
+        @endif
     </div>
 @endif

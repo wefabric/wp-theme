@@ -1,0 +1,60 @@
+form.newsletter .ginput_container input[type="email"] {
+  --tw-bg-opacity: 1 !important;
+  --tw-text-opacity: 1;
+  border-width: 0;
+  width: 100%;
+  font-size: .875rem !important;
+  line-height: 1.5;
+  padding: 1rem;
+  background-color: rgb(243 241 255) !important;
+  color: #493387 !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+  box-shadow: inset 0 1px 3px 1px rgba(0, 0, 0, .15);
+  height: 48px;
+  --fa-font-solid: normal 900 1em / 1 "Font Awesome 6 Pro";
+}
+
+form.newsletter .gfield--type-submit {
+  @apply bg-primary #{!important};
+  border-radius: 8px;
+  position: relative;
+  width: 46px;
+  height: 46px;
+  transition: all .2s ease-in-out;
+
+  &:after {
+    content: '\f1d8';
+    font-family: 'Font Awesome 6 Pro';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: white;
+    transition: all .2s ease-in-out;
+    transform-origin: center;
+  }
+
+  &:hover {
+    @apply bg-primary-dark #{!important};
+
+    &:after {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  }
+
+  input[type='submit'] {
+    background-color: transparent !important;
+    color: transparent !important;
+    border: none !important;
+    margin-left: 0 !important;
+    width: 46px;
+    height: 46px;
+
+    &:hover {
+      background-color: transparent !important;
+      color: transparent !important;
+    }
+  }
+}
