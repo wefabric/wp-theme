@@ -92,14 +92,16 @@
                     "allow_null": 0,
                     "ui": 0,
                     "ajax": 0,
-                    "placeholder": ""
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
                 },
                 {
                     "key": "field_695e36283bac2",
                     "label": "Selecteer een Gravity Form",
                     "name": "newsletter_select_gravity_form",
                     "aria-label": "",
-                    "type": "select",
+                    "type": "forms",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -116,22 +118,10 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "0": "Selecteer een Gravity Form",
-                        "1": "Contactformulier",
-                        "3": "Inschrijven nieuwsbrief",
-                        "4": "Contactformulier kort",
-                        "5": "Offerte aanvragen",
-                        "7": "Contact via Linde of Eureka",
-                        "8": "Power Valley 2025"
-                    },
-                    "default_value": false,
-                    "return_format": "value",
-                    "multiple": 0,
+                    "return_format": "id",
                     "allow_null": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": ""
+                    "multiple": 0,
+                    "allow_in_bindings": 0
                 },
                 {
                     "key": "field_630739b2c7e7c",
@@ -234,5 +224,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1767796703
+    "display_title": "",
+    "modified": 1768914489
 }
