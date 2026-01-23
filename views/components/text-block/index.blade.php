@@ -26,45 +26,79 @@
 
 @if ($titleAnimation)
     <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            gsap.registerPlugin(ScrollTrigger);
+        (function(){
+            const findPrevSection = (el) => {
+                let node = el ? el.previousElementSibling : null;
+                while (node && node.tagName !== 'SECTION') {
+                    node = node.previousElementSibling;
+                }
+                return node || document;
+            };
+            const __script_ta = document.currentScript;
+            const __root_ta = findPrevSection(__script_ta);
+            window.addEventListener("DOMContentLoaded", () => {
+                gsap.registerPlugin(ScrollTrigger);
 
-            document.querySelectorAll('.title-animation').forEach(element => {
-                let typeSplit = new SplitType(element, {
-                    types: 'lines, words, chars',
-                    tagName: 'span'
-                });
+                const root = __root_ta || document;
+                root.querySelectorAll('.title-animation').forEach(element => {
+                    let typeSplit = new SplitType(element, {
+                        types: 'lines, words, chars',
+                        tagName: 'span'
+                    });
 
-                gsap.from(element.querySelectorAll('.word'), {
-                    y: '100%',
-                    opacity: 0,
-                    duration: 0.5,
-                    ease: 'back',
-                    stagger: 0.1,
-                    scrollTrigger: {
-                        trigger: element, // The current element that triggers the animation
-                        start: 'top 70%', // When the trigger element is 70% from the top of the viewport
-                        end: 'top 50%', // Animation end point
-                        scrub: true, // If set to false, the animation will not synchronize with the scrollbar
-                        once: false, // Ensures the animation triggers only once
-                        markers: false // Disable markers for production
+                    const tl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: element, // The current element that triggers the animation
+                            start: 'top 70%', // When the trigger element is 70% from the top of the viewport
+                            end: 'top 50%', // Animation end point
+                            scrub: true, // Synchronize with the scrollbar
+                            once: false, // Ensures the animation can play multiple times with scroll
+                            markers: false // Disable markers for production
+                        }
+                    });
+
+                    const icon = element.querySelector('.subtitle-icon');
+
+                    if (icon) {
+                        tl.from(icon, {
+                            y: '100%',
+                            opacity: 0,
+                            rotate: -10,
+                            duration: 0.3,
+                            ease: 'back.out(1.7)'
+                        });
                     }
+
+                    tl.from(element.querySelectorAll('.word'), {
+                        y: '100%',
+                        opacity: 0,
+                        duration: 0.5,
+                        ease: 'back',
+                        stagger: 0.1
+                    }, icon ? '>-0.05' : 0);
                 });
             });
-        });
+        })();
     </script>
 @endif
 
 @if ($flyInAnimation)
     <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            gsap.registerPlugin(ScrollTrigger);
+        (function(){
+            const findPrevSection = (el) => {
+                let node = el ? el.previousElementSibling : null;
+                while (node && node.tagName !== 'SECTION') {
+                    node = node.previousElementSibling;
+                }
+                return node || document;
+            };
+            const __script_fi = document.currentScript;
+            const __root_fi = findPrevSection(__script_fi);
+            window.addEventListener('DOMContentLoaded', function () {
+                gsap.registerPlugin(ScrollTrigger);
 
-            const randomNumber = @json($randomNumber);
-            const block = document.querySelector(`.block-${randomNumber}`);
-
-            if (block) {
-                block.querySelectorAll('.flyin-animation').forEach(element => {
+                const root = __root_fi || document;
+                root.querySelectorAll('.flyin-animation').forEach(element => {
                     let typeSplit = new SplitType(element, {
                         types: 'lines',
                         tagName: 'span'
@@ -89,13 +123,7 @@
                         yValue = '0%';
                     }
 
-                    gsap.from(element.querySelectorAll('.line'), {
-                        x: xValue,
-                        y: yValue,
-                        opacity: 0,
-                        duration: 1.5,
-                        ease: 'power4.out',
-                        stagger: 0,
+                    const tl = gsap.timeline({
                         scrollTrigger: {
                             trigger: element, // The current element that triggers the animation
                             start: 'top 65%', // When the trigger element is 60% from the top of the viewport
@@ -105,8 +133,28 @@
                             markers: false // Disable markers for production
                         }
                     });
+
+                    const icon = element.querySelector('.subtitle-icon');
+                    if (icon) {
+                        tl.from(icon, {
+                            x: xValue,
+                            y: yValue,
+                            opacity: 0,
+                            duration: 0.6,
+                            ease: 'power3.out'
+                        });
+                    }
+
+                    tl.from(element.querySelectorAll('.line'), {
+                        x: xValue,
+                        y: yValue,
+                        opacity: 0,
+                        duration: 1.5,
+                        ease: 'power4.out',
+                        stagger: 0
+                    }, icon ? '>-0.1' : 0);
                 });
-            }
-        });
+            });
+        })();
     </script>
 @endif
