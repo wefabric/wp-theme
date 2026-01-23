@@ -15,6 +15,7 @@ class Button extends Component
         public string $style = '',
         public bool $download = false,
         public string $icon = '',
+        public bool $iconBefore = true,
     )
     {
         if (!empty($button1Icon)) {
@@ -49,6 +50,7 @@ class Button extends Component
             'class' => 'rounded-lg',
             'target' => $this->target,
             'icon' => $this->icon,
+            'iconBefore' => $this->iconBefore,
             'download' => $this->download,
         ]);
     }

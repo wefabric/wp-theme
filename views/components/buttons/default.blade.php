@@ -36,10 +36,13 @@
         'class' => ($a_class ?? ''). 'w-fit no-underline',
     ])
         <span class="btn {{ $size ?? '' }} {{ $colors }} {{ $class ?? '' }}">
-            @if($icon ?? '')
+            @if(($icon ?? '') && ($iconBefore ?? true))
                 <i class="{{ $icon }}"></i>
             @endif
             {{ $text }}
+            @if(($icon ?? '') && !($iconBefore ?? true))
+                <i class="{{ $icon }}"></i>
+            @endif
         </span>
     @include('components.link.closing')
 @endif
