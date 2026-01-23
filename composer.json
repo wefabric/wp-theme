@@ -4,16 +4,16 @@
   "keywords": ["wefabric", "WordPress", "theme"],
   "license": "GPL-2.0-or-later",
   "authors":[
+	{
+	  "name": "Sebastiaan Hartman",
+	  "email": "sebastiaan@wefabric.nl",
+	  "homepage": "https://wefabric.nl/"
+	},
     {
       "name": "Leo Flapper",
       "email": "leo@wefabric.nl",
       "homepage": "https://wefabric.nl/"
-    },
-	{
-	  "name": "Kevin Nauta",
-	  "email": "kevin@wefabric.nl",
-	  "homepage": "https://wefabric.nl/"
-	}
+    }
   ],
   "type": "wordpress-theme",
   "require": {
