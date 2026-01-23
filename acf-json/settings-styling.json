@@ -17,7 +17,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_6184ef734796b",
@@ -51,7 +52,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 },
                 {
                     "key": "field_6184efa14796d",
@@ -69,7 +73,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 },
                 {
                     "key": "field_6184efb64796e",
@@ -87,7 +94,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 }
             ]
         },
@@ -123,7 +133,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 },
                 {
                     "key": "field_61853e5d00a1c",
@@ -141,7 +154,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 },
                 {
                     "key": "field_61853e5d00a1d",
@@ -159,7 +175,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 }
             ]
         },
@@ -195,7 +214,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 },
                 {
                     "key": "field_61853e5e00a20",
@@ -213,7 +235,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 },
                 {
                     "key": "field_61853e5e00a21",
@@ -231,7 +256,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 }
             ]
         },
@@ -267,7 +295,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 },
                 {
                     "key": "field_6565c1a7a56f4",
@@ -285,7 +316,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 },
                 {
                     "key": "field_6565c1a7a56f5",
@@ -303,7 +337,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 }
             ]
         },
@@ -339,7 +376,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 },
                 {
                     "key": "field_648c6941d3389",
@@ -357,7 +397,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 },
                 {
                     "key": "field_648c6941d338a",
@@ -375,7 +418,10 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 }
             ]
         },
@@ -411,9 +457,102 @@
                     },
                     "default_value": "",
                     "enable_opacity": 0,
-                    "return_format": "string"
+                    "return_format": "string",
+                    "custom_palette_source": "",
+                    "palette_colors": "",
+                    "show_color_wheel": true
                 }
             ]
+        },
+        {
+            "key": "field_6973331c7dd4b",
+            "label": "Tekst",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6973336f7bebb",
+            "label": "Titels kleur",
+            "name": "global_title_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "allow_in_bindings": 0,
+            "font_size": 14
+        },
+        {
+            "key": "field_6973338c7bebc",
+            "label": "Subtitels kleur",
+            "name": "global_subtitle_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "allow_in_bindings": 0,
+            "font_size": 14
+        },
+        {
+            "key": "field_69733b9001e17",
+            "label": "Subtitels icoon kleur",
+            "name": "global_subtitle_icon_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "allow_in_bindings": 0,
+            "font_size": 14
+        },
+        {
+            "key": "field_697333a47bebd",
+            "label": "Teksten kleur",
+            "name": "global_text_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": null,
+            "allow_in_bindings": 0,
+            "font_size": 14
         },
         {
             "key": "field_6516a44b6e379",
@@ -430,63 +569,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_6516a3e6039c7",
-            "label": "Ronde hoeken",
-            "name": "rounded_design",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_6516a3fd039c8",
-            "label": "Sterkte ronde hoeken",
-            "name": "border_radius_strength",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6516a3e6039c7",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "[10px]": "Kleine ronde randen",
-                "[30px]": "Gemiddelde ronde randen",
-                "[50px]": "Grote ronde randen",
-                "full": "Volledig rond"
-            },
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
+            "endpoint": 0,
+            "selected": 0
         }
     ],
     "location": [
@@ -507,5 +591,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701167958
+    "display_title": "",
+    "modified": 1769159585
 }

@@ -19,7 +19,15 @@ class TextBlock extends BlockComponent
     public function setBlockData(): void
     {
         $this->text = $this->block['data']['text'] ?? '';
-        $this->textColor = $this->block['data']['text_color'] ?? '';
+
+        // Load global options for default text color
+        $options = function_exists('get_fields') ? \get_fields('option') : [];
+        $globalTextColor = is_string($options['global_text_color'] ?? null) ? $options['global_text_color'] : '';
+
+        // Prefer block-specific text color; fallback to global; treat 0/'0' as unset (Standaard)
+        $blockTextColor = $this->block['data']['text_color'] ?? null;
+        $hasBlockTextColor = (is_string($blockTextColor) && $blockTextColor !== '' && $blockTextColor !== '0') || (is_int($blockTextColor) && $blockTextColor !== 0);
+        $this->textColor = $hasBlockTextColor ? (string) $blockTextColor : $globalTextColor;
 
         $this->buttons = ButtonCollection::fromBlockData($this->block);
 

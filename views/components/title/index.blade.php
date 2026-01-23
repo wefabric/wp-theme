@@ -1,10 +1,10 @@
 @if ($subTitle)
     <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if ($titleAnimation) title-animation @endif @if ($flyInAnimation) flyin-animation @endif">
-                    @if ($subtitleIcon)
+        @if ($subtitleIcon)
             <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
         @endif
         {!! $subTitle !!}
-                </span>
+    </span>
 @endif
 
 @if ($title)
