@@ -8,7 +8,8 @@ use Theme\Views\SectionStyling;
 class Section extends Component
 {
 
-    public string $backgroundColor = 'default-color';
+    public string $backgroundColor = '';
+    public string $backgroundClass = '';
     public string $backgroundImageId = '';
     public bool $overlayEnabled = false;
     public string $overlayColor = '';
@@ -26,7 +27,12 @@ class Section extends Component
         public array $block = []
     )
     {
-        $this->backgroundColor = $block['data']['background_color'] ?? 'default-color';
+        // Normalize background color: treat 0 / '0' / '' as unset
+        $backgroundColorRaw = $block['data']['background_color'] ?? '';
+        $hasBackgroundColor = (is_string($backgroundColorRaw) && $backgroundColorRaw !== '' && $backgroundColorRaw !== '0') || (is_int($backgroundColorRaw) && $backgroundColorRaw !== 0);
+        $this->backgroundColor = $hasBackgroundColor ? (string)$backgroundColorRaw : '';
+        $this->backgroundClass = $this->backgroundColor !== '' ? 'bg-' . $this->backgroundColor : '';
+
         $this->backgroundImageId = $block['data']['background_image'] ?? '';
         $this->overlayEnabled = $block['data']['overlay_image'] ?? false;
         $this->overlayColor = $block['data']['overlay_color'] ?? '';

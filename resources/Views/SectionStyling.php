@@ -12,8 +12,9 @@ class SectionStyling
 
     public static array $screenSizes = [
         'mobile' => 0,
-        'tablet' => 768,
-        'desktop' => 1024,
+        'tablet' => 640,
+        'desktop' => 1280,
+        'desktop_xl' => 1536,
     ];
 
     public function __construct(Collection $screenPaddings = null, Collection $screenMargins = null)

@@ -1,4 +1,4 @@
-<section id="@if($customBlockId){{ $customBlockId }}@else{{ $blockType }}@endif" class="block-{{$blockType}} block-{{ $randomNumber }} relative tekst-{{ $randomNumber }}-custom-padding tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ $blockType }}@endif" class="block-{{$blockType}} block-{{ $randomNumber }} relative tekst-{{ $randomNumber }}-custom-padding tekst-{{ $randomNumber }}-custom-margin {{ $backgroundClass }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     {{ $slot }}
 </section>
@@ -22,7 +22,7 @@
             .{{$blockType}}-{{ $randomNumber }}-custom-margin {
                 @foreach($styling->screenMargins as $screenMarginData)
                     @media only screen and (min-width: {{$screenMarginData->get('size') }}px) {
-                    @if($screenMarginData->get('top')) margin-top: {{ $screenMarginData->get('top') }}px; @endif
+                        @if($screenMarginData->get('top')) margin-top: {{ $screenMarginData->get('top') }}px; @endif
                         @if($screenMarginData->get('right')) margin-right: {{ $screenMarginData->get('right') }}px; @endif
                         @if($screenMarginData->get('bottom')) margin-bottom: {{ $screenMarginData->get('bottom') }}px; @endif
                         @if($screenMarginData->get('left')) margin-left: {{ $screenMarginData->get('left') }}px; @endif
