@@ -12,7 +12,7 @@ abstract class BlockComponent extends Component
     public int|string $blockWidth = 100;
     public string $blockClass = '';
     public string $fullScreenClass = '';
-    public array $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full', 'full-screen' => 'w-full'];
+    public array $blockClassMap = [50 => 'w-full xl:w-1/2', 66 => 'w-full xl:w-2/3', 80 => 'w-full xl:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full', 'full-screen' => 'w-full'];
 
 
     public function __construct(

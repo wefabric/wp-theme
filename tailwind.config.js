@@ -64,6 +64,9 @@ module.exports = {
     'md:w-fit',
     'lg:w-fit',
     'xl:w-fit',
+    'xl:w-1/2',
+    'xl:w-2/3',
+    'xl:w-4/5',
     '2xl:w-3/4',
     '2xl:w-1/4',
 
