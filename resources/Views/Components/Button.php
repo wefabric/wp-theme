@@ -32,11 +32,20 @@ class Button extends Component
      */
     public function render()
     {
+        // Ensure a valid color slug; fall back to 'primary-color' if empty or '0'
+        $colorSlug = trim($this->color);
+        if ($colorSlug === '' || $colorSlug === '0') {
+            $colorSlug = 'primary-color';
+        }
+        // Defensive: strip any accidental prefixes
+        if (strpos($colorSlug, 'bg-') === 0) $colorSlug = substr($colorSlug, 3);
+        if (strpos($colorSlug, 'text-') === 0) $colorSlug = substr($colorSlug, 5);
+
         return view('components.buttons.default', [
             'text' => $this->text,
             'href' => $this->link,
             'alt' => $this->text,
-            'colors' => 'btn-' . $this->color . ' btn-' . $this->style,
+            'colors' => 'btn-' . $colorSlug . ' btn-' . $this->style,
             'class' => 'rounded-lg',
             'target' => $this->target,
             'icon' => $this->icon,
