@@ -10,6 +10,55 @@ class SectionStyling
 
     public ?Collection $screenMargins = null;
 
+    /**
+     * Build inline CSS for paddings and margins for a specific section instance.
+     * Returns a complete <style>...</style> block or an empty string.
+     */
+    public function toInlineCss(string $blockType, int $randomNumber): string
+    {
+        $hasPadding = $this->screenPaddings && $this->screenPaddings->where('enabled', true)->first();
+        $hasMargin = $this->screenMargins && $this->screenMargins->where('enabled', true)->first();
+        if (!$hasPadding && !$hasMargin) {
+            return '';
+        }
+
+        $css = '';
+
+        if ($hasPadding) {
+            $css .= '.' . $blockType . '-' . $randomNumber . '-custom-padding {' . PHP_EOL;
+            foreach ($this->screenPaddings as $screenPaddingData) {
+                $size = (int)$screenPaddingData->get('size');
+                $css .= '    @media only screen and (min-width: ' . $size . 'px) {' . PHP_EOL;
+                foreach (['top','right','bottom','left'] as $side) {
+                    $val = $screenPaddingData->get($side);
+                    if ($val !== null && $val !== '') {
+                        $css .= '        padding-' . $side . ': ' . (int)$val . 'px;' . PHP_EOL;
+                    }
+                }
+                $css .= '    }' . PHP_EOL;
+            }
+            $css .= '}' . PHP_EOL . PHP_EOL;
+        }
+
+        if ($hasMargin) {
+            $css .= '.' . $blockType . '-' . $randomNumber . '-custom-margin {' . PHP_EOL;
+            foreach ($this->screenMargins as $screenMarginData) {
+                $size = (int)$screenMarginData->get('size');
+                $css .= '    @media only screen and (min-width: ' . $size . 'px) {' . PHP_EOL;
+                foreach (['top','right','bottom','left'] as $side) {
+                    $val = $screenMarginData->get($side);
+                    if ($val !== null && $val !== '') {
+                        $css .= '        margin-' . $side . ': ' . (int)$val . 'px;' . PHP_EOL;
+                    }
+                }
+                $css .= '    }' . PHP_EOL;
+            }
+            $css .= '}' . PHP_EOL;
+        }
+
+        return '<style>' . PHP_EOL . $css . '</style>';
+    }
+
     public static array $screenSizes = [
         'mobile' => 0,
         'tablet' => 640,
@@ -37,8 +86,9 @@ class SectionStyling
             ]);
 
             $padding->put('enabled', false);
-            if($padding->get('top') || $padding->get('right') || $padding->get('bottom') || $padding->get('left')) {
-                $padding->put('enabled', true);
+            foreach (['top','right','bottom','left'] as $side) {
+                $val = $padding->get($side);
+                if ($val !== null && $val !== '') { $padding->put('enabled', true); break; }
             }
             $screenPaddings->put($screenSize, $padding);
         }
@@ -54,8 +104,9 @@ class SectionStyling
             ]);
 
             $margin->put('enabled', false);
-            if($margin->get('top') || $margin->get('right') || $margin->get('bottom') || $margin->get('left')) {
-                $margin->put('enabled', true);
+            foreach (['top','right','bottom','left'] as $side) {
+                $val = $margin->get($side);
+                if ($val !== null && $val !== '') { $margin->put('enabled', true); break; }
             }
             $screenMargins->put($screenSize, $margin);
         }

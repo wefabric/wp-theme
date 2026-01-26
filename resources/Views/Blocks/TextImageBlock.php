@@ -1,10 +1,11 @@
 <?php
 
-namespace Theme\Views\Components;
+namespace Theme\Views\Blocks;
 
 use Theme\Views\ButtonCollection;
+use Theme\Views\Components\BlockComponent;
 
-class TextBlock extends BlockComponent
+class TextImageBlock extends BlockComponent
 {
 
     public string $text = '';
@@ -33,6 +34,12 @@ class TextBlock extends BlockComponent
 
         $this->textPosition = $this->block['data']['text_position'] ?? '';
         $this->textClass = $this->textClassMap[$this->textPosition] ?? '';
+
+        // Special rule for this block: when text is positioned on the right side,
+        // keep the column order on the right but align text content to the left.
+        if ($this->textPosition === 'right') {
+            $this->textClass = 'text-left justify-start';
+        }
     }
 
     /**
@@ -42,6 +49,6 @@ class TextBlock extends BlockComponent
      */
     public function render()
     {
-        return view('components.text-block.index');
+        return view('components.blocks.text-image.index');
     }
 }

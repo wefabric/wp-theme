@@ -582,7 +582,7 @@
         },
         {
             "key": "field_6973738da5797",
-            "label": "Button (NIEUW)",
+            "label": "Buttons",
             "name": "buttons",
             "aria-label": "",
             "type": "repeater",
@@ -2190,5 +2190,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1769183158
+    "modified": 1769424204
 }
