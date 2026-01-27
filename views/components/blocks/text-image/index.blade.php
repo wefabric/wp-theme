@@ -135,7 +135,7 @@
                                             <i class="fa {{ $iconClass }} text-[20px] w-[24px] h-[24px] flex justify-center items-center"
                                                aria-hidden="true"></i>
                                         @endif
-                                        <div class="usp-text text-{{ $titleColor }} font-medium">{!! $usp['uspText'] !!}</div>
+                                        <div class="usp-text text-{{ $textColor }} font-medium">{!! $usp['uspText'] !!}</div>
                                     </div>
                                 @endif
                             @endforeach

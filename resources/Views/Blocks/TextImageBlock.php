@@ -2,38 +2,16 @@
 
 namespace Theme\Views\Blocks;
 
-use Theme\Views\ButtonCollection;
+use Theme\Concerns\HasTextContent;
 use Theme\Views\Components\BlockComponent;
 
 class TextImageBlock extends BlockComponent
 {
-
-    public string $text = '';
-    public string $textColor = '';
-
-    public ?ButtonCollection $buttons = null;
-
-    public string $textPosition = '';
-    public array $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
-    public string $textClass = '';
+    use HasTextContent;
 
     public function setBlockData(): void
     {
-        $this->text = $this->block['data']['text'] ?? '';
-
-        // Load global options for default text color
-        $options = function_exists('get_fields') ? \get_fields('option') : [];
-        $globalTextColor = is_string($options['global_text_color'] ?? null) ? $options['global_text_color'] : '';
-
-        // Prefer block-specific text color; fallback to global; treat 0/'0' as unset (Standaard)
-        $blockTextColor = $this->block['data']['text_color'] ?? null;
-        $hasBlockTextColor = (is_string($blockTextColor) && $blockTextColor !== '' && $blockTextColor !== '0') || (is_int($blockTextColor) && $blockTextColor !== 0);
-        $this->textColor = $hasBlockTextColor ? (string) $blockTextColor : $globalTextColor;
-
-        $this->buttons = ButtonCollection::fromBlockData($this->block);
-
-        $this->textPosition = $this->block['data']['text_position'] ?? '';
-        $this->textClass = $this->textClassMap[$this->textPosition] ?? '';
+        $this->setTextContentData();
 
         // Special rule for this block: when text is positioned on the right side,
         // keep the column order on the right but align text content to the left.
