@@ -1,6 +1,6 @@
 <div id="{!! trim(preg_replace('/[^a-z0-9]+/', '-', strtolower(html_entity_decode($pageTitle))), '-') !!}" class="content-under-card-item card-item group h-full @if ($flyinEffect) card-hidden @endif">
     <div class="custom-radius bg-{{ $cardBackgroundColor }} rounded-{{ $borderRadius }} h-full flex flex-col {{ $hoverEffectClass }} duration-300 ease-in-out overflow-hidden">
-        <div>
+        <div class="image-wrapper">
             <div class="image-container h-[360px] relative overflow-hidden rounded-t-{{ $borderRadius }}">
 
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
