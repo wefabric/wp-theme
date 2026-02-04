@@ -19,7 +19,7 @@
                             $categoryIcon = get_field('category_icon', $term);
                         @endphp
                         <div style="background-color: {{ $categoryColor }}" class="card-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1">
-                            {!! $categoryIcon !!} {!! $term->name !!}
+                            {!! $categoryIcon !!} <span>{!! $term->name !!}</span>
                         </div>
                     @endforeach
                 </div>
