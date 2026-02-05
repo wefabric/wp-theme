@@ -655,18 +655,14 @@
                 "id": ""
             },
             "choices": {
-                "aluminiumbouw": "Aluminiumbouw",
-                "branches": "Branche",
-                "chassisbouw": "Chassisbouw",
-                "diensten": "Dienst",
-                "hydraulisch": "Hydraulische laad- en lossysteem",
+                "assortiment": "Assortiment",
                 "klantcases": "Klantcase",
+                "maatwerk": "Maatwerk",
                 "employee_stories": "Medewerkersverhaal",
-                "project": "Project",
+                "products": "Product",
                 "testimonials": "Testimonial",
                 "vacatures": "Vacature",
                 "werknemers": "Werknemer",
-                "whitelabel": "Whitelabel",
                 "wf_layouts": "Layout",
                 "post": "Bericht",
                 "page": "Pagina"
@@ -681,6 +677,139 @@
             "create_options": 0,
             "placeholder": "",
             "save_options": 0
+        },
+        {
+            "key": "field_698497b9d2d39",
+            "label": "Welke posts wil je tonen?",
+            "name": "display_type",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_686d030374dd0",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "show_all": "Toon alle posts",
+                "show_category": "Toon posts van een categorie",
+                "show_random": "Toon willekeurige posts",
+                "show_latest": "Toon laatste posts"
+            },
+            "default_value": "show_all",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_69849878d2d3a",
+            "label": "Categorie",
+            "name": "category",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_698497b9d2d39",
+                        "operator": "==",
+                        "value": "show_category"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Bericht - Categorie": {
+                    "1": "Nieuws"
+                },
+                "Assortiment - Assortiment categorie": {
+                    "6": "Gevolgelte",
+                    "10": "Kalf",
+                    "5": "Kip",
+                    "7": "Rund",
+                    "9": "Specials",
+                    "8": "Varken"
+                },
+                "Klantcase - Categorie": {
+                    "1": "Nieuws"
+                },
+                "Product - Product categorie": {
+                    "15": "Gevogelte",
+                    "13": "Kalf",
+                    "14": "Kip",
+                    "12": "Rund",
+                    "16": "Specials",
+                    "11": "Varken"
+                }
+            },
+            "default_value": [],
+            "return_format": "value",
+            "multiple": 1,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_69849c8510c38",
+            "label": "Hoeveel posts wil je tonen?",
+            "name": "post_amount",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_698497b9d2d39",
+                        "operator": "==",
+                        "value": "show_random"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_698497b9d2d39",
+                        "operator": "==",
+                        "value": "show_latest"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_6527b2439ad98",
@@ -2786,5 +2915,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1761301742
+    "modified": 1770298693
 }
