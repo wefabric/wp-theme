@@ -90,7 +90,7 @@
                     </div>
                 @endif
                 @if ($testimonialName || $testimonialFunction)
-                    <div>
+                    <div class="avatar-details">
                         @if (!empty($visibleElements) && in_array('name', $visibleElements) && $testimonialName)
                             <div class="name-text font-bold text-lg">{!! $testimonialName !!}</div>
                         @endif
