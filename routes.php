@@ -8,11 +8,13 @@
  */
 
 Route::any('api/indicator-items', function () {
-    $result = Cache::remember('api/indicator-items', 3600, function () {
+    $cacheKey = 'api/indicator-items-v2';
+    $result = Cache::remember($cacheKey, 60, function () {
         $data = [];
 
         foreach (get_post_types(['public' => true]) as $postType) {
-            $data[$postType] = (int) wp_count_posts($postType)->publish;
+            $counts = wp_count_posts($postType);
+            $data[$postType] = (int) ($counts->publish ?? 0);
         }
 
         return $data;
