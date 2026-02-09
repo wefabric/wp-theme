@@ -67,6 +67,8 @@
     $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
     $selectedPostType = $block['data']['cardblock_post_type'] ?? '';
+    $displayType = $block['data']['display_type'] ?? 'show_all';
+    $selectedCategory = $block['data']['category'] ?? '';
     $parentPagesOnly = ($block['data']['parent_pages_only']) ?? false;
     $cardVisual = $block['data']['block_visual'] ?? 'featured_image';
 
@@ -79,15 +81,90 @@
             'post_status' => 'publish',
         ];
 
+        // Aantal posts instellen voor specifieke weergave types
+        if (in_array($displayType, ['show_random', 'show_latest'])) {
+            $args['posts_per_page'] = $block['data']['post_amount'] ?? 3;
+        }
+
+        // Filter op categorie
+        if ($displayType === 'show_category' && !empty($selectedCategory)) {
+            $categories = is_array($selectedCategory) ? $selectedCategory : array_filter(explode(',', (string)$selectedCategory));
+            $tax_query = [];
+            $terms_by_tax = [];
+
+            // Haal relevante taxonomies op voor de geselecteerde post types
+            $relevant_taxonomies = [];
+            foreach ((array)$selectedPostType as $pt) {
+                if (empty($pt)) continue;
+                $taxonomies = get_object_taxonomies($pt);
+                if (!empty($taxonomies)) {
+                    $relevant_taxonomies = array_merge($relevant_taxonomies, (array)$taxonomies);
+                }
+            }
+            $relevant_taxonomies = array_unique($relevant_taxonomies);
+
+
+            foreach ($categories as $cat_id) {
+                if (empty($cat_id)) continue;
+
+                $found_in_tax = false;
+                if (!empty($relevant_taxonomies)) {
+                    foreach ($relevant_taxonomies as $tax) {
+                        $term = get_term((int)$cat_id, $tax);
+                        if ($term && !is_wp_error($term)) {
+                            $terms_by_tax[$tax][] = (int)$cat_id;
+                            $found_in_tax = true;
+                            break;
+                        }
+                    }
+                }
+
+                // Fallback: als niet gevonden in relevante taxonomies, probeer algemeen
+                if (!$found_in_tax) {
+                    $term = get_term((int)$cat_id);
+                    if ($term && !is_wp_error($term)) {
+                        $terms_by_tax[$term->taxonomy][] = (int)$cat_id;
+                    }
+                }
+            }
+
+            if (!empty($terms_by_tax)) {
+                if (count($terms_by_tax) > 1) {
+                    $tax_query['relation'] = 'OR';
+                }
+                foreach ($terms_by_tax as $taxonomy => $terms) {
+                    $tax_query[] = [
+                        'taxonomy' => $taxonomy,
+                        'field' => 'term_id',
+                        'terms' => array_unique($terms),
+                        'operator' => 'IN',
+                    ];
+                }
+                $args['tax_query'] = $tax_query;
+            }
+        }
+
+        // Random volgorde
+        if ($displayType === 'show_random') {
+            $args['orderby'] = 'rand';
+        }
+
+        // Laatste posts
+        if ($displayType === 'show_latest') {
+            $args['orderby'] = 'date';
+            $args['order'] = 'DESC';
+        }
+
         // Alleen parent pages meenemen
         if ($parentPagesOnly) {
             $args['post_parent'] = 0;
         }
 
         // Exclude current post
-        if(!is_archive()){
-            if(get_post()->post_type == $selectedPostType) {
-                $args['post__not_in'] = [get_post()->ID];
+        if (!is_archive()) {
+            $currentPostId = get_the_ID();
+            if ($currentPostId) {
+                $args['post__not_in'] = [$currentPostId];
             }
         }
 

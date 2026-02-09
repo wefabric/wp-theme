@@ -600,6 +600,41 @@ function acf_load_cardblock_post_types($field) {
     return $field;
 }
 
+add_filter('acf/load_field/name=category', 'acf_load_cardblock_categories');
+function acf_load_cardblock_categories($field) {
+    $field['choices'] = [];
+
+    $post_types = get_post_types(['public' => true], 'objects');
+
+    foreach ($post_types as $post_type_name => $post_type_object) {
+        // Sla post types over die we niet willen (optioneel)
+        if (in_array($post_type_name, ['attachment', 'revision', 'nav_menu_item', 'custom_css', 'customize_changeset', 'oembed_cache', 'user_request', 'wp_block', 'wp_template', 'wp_template_part', 'wp_navigation'])) {
+            continue;
+        }
+
+        $taxonomies = get_object_taxonomies($post_type_name, 'objects');
+        foreach ($taxonomies as $taxonomy_name => $taxonomy_object) {
+            if (!$taxonomy_object->public || !$taxonomy_object->show_ui) {
+                continue;
+            }
+
+            $terms = get_terms([
+                'taxonomy' => $taxonomy_name,
+                'hide_empty' => false,
+            ]);
+
+            if (!is_wp_error($terms) && !empty($terms)) {
+                $group_label = $post_type_object->labels->singular_name . ' - ' . $taxonomy_object->labels->singular_name;
+                foreach ($terms as $term) {
+                    $field['choices'][$group_label][$term->term_id] = $term->name;
+                }
+            }
+        }
+    }
+
+    return $field;
+}
+
 /**
  * Custom translation file located in htdocs/content/languages
  */

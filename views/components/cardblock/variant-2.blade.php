@@ -1,6 +1,6 @@
 <div id="{!! trim(preg_replace('/[^a-z0-9]+/', '-', strtolower(html_entity_decode($pageTitle))), '-') !!}" class="content-under-card-item card-item group h-full @if ($flyinEffect) card-hidden @endif">
     <div class="custom-radius bg-{{ $cardBackgroundColor }} rounded-{{ $borderRadius }} h-full flex flex-col {{ $hoverEffectClass }} duration-300 ease-in-out overflow-hidden">
-        <div>
+        <div class="image-wrapper">
             <div class="image-container h-[360px] relative overflow-hidden rounded-t-{{ $borderRadius }}">
 
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
@@ -10,9 +10,13 @@
                                 @php
                                     $categoryColor = get_field('category_color', $term);
                                     $categoryIcon = get_field('category_icon', $term);
+                                    $categoryImage = get_field('category_image', $term);
                                 @endphp
                                 <div style="background-color: {{ $categoryColor }}" class="card-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1">
-                                    {!! $categoryIcon !!} {!! $term->name !!}
+                                    @if($categoryImage)
+                                        <img src="{{ wp_get_attachment_image_url($categoryImage, 'thumbnail') }}" alt="{{ $term->name }}" class="w-5 h-5 object-contain">
+                                    @endif
+                                    {!! $categoryIcon !!} <span>{!! $term->name !!}</span>
                                 </div>
                             @endforeach
                         </div>
