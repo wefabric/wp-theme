@@ -1,6 +1,4 @@
 <x-wefabric:section block-type="tekst" :block="$block">
-
-
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             <div class="text-block {{ $textClass }}">
