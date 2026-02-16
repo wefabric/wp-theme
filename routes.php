@@ -7,6 +7,9 @@
  * defined on the application global scope.
  */
 
+
+Route::get('vacancies/csv', [\Theme\Http\Controllers\VacancyExportController::class, 'export']);
+
 Route::any('api/indicator-items', function () {
     $cacheKey = 'api/indicator-items-v2';
     $result = Cache::remember($cacheKey, 60, function () {
