@@ -9,29 +9,61 @@
     $vacancySummary = $fields['excerpt'] ?? '';
     $vacancyCategories = get_the_terms($vacancy, 'vacature_categories');
 
-     if (!empty($visibleElements) && in_array('working_hours', $visibleElements) && !empty($fields['working_hours'])) {
+    $workingHours = '';
+    $employmentTypeSchema = '';
+    if (!empty($fields['working_hours'])) {
         switch ($fields['working_hours']) {
             case 'parttime':
                 $workingHours = 'Parttime';
+                $employmentTypeSchema = 'PART_TIME';
                 break;
             case 'fulltime':
                 $workingHours = 'Fulltime';
+                $employmentTypeSchema = 'FULL_TIME';
                 break;
             case 'both':
                 $workingHours = 'Parttime en fulltime';
+                $employmentTypeSchema = ['FULL_TIME', 'PART_TIME'];
                 break;
             default:
                 $workingHours = '';
+                $employmentTypeSchema = '';
                 break;
         }
     }
 @endphp
 
-<div class="vacature-item group h-full @if ($flyinEffect) vacancy-hidden @endif">
+<div class="vacature-item group h-full @if ($flyinEffect) vacancy-hidden @endif" itemscope itemtype="https://schema.org/JobPosting">
+    <meta itemprop="title" content="{{ strip_tags($vacancyTitle) }}">
+    <meta itemprop="datePosted" content="{{ get_the_date('Y-m-d', $vacancy) }}">
+    <meta itemprop="description" content="{{ strip_tags(!empty($vacancySummary) ? $vacancySummary : $vacancyTitle) }}">
+
+    @if ($employmentTypeSchema)
+        @if (is_array($employmentTypeSchema))
+            @foreach ($employmentTypeSchema as $type)
+                <meta itemprop="employmentType" content="{{ $type }}">
+            @endforeach
+        @else
+            <meta itemprop="employmentType" content="{{ $employmentTypeSchema }}">
+        @endif
+    @endif
+
+    <div itemprop="hiringOrganization" itemscope itemtype="https://schema.org/Organization">
+        <meta itemprop="name" content="{{ get_bloginfo('name') }}">
+        <meta itemprop="logo" content="{{ get_site_icon_url() }}">
+    </div>
+
+    @if (!empty($fields['location']))
+        <div itemprop="jobLocation" itemscope itemtype="https://schema.org/Place" class="hidden">
+            <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                <meta itemprop="addressLocality" content="{{ $fields['location'] }}">
+            </div>
+        </div>
+    @endif
     <div class="h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         @if ($vacancyThumbnailID)
             <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
-                <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina"
+                <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina" itemprop="url"
                    class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
                     <span class="sr-only">Ga naar {{ $vacancyTitle }} pagina</span>
                 </a>
@@ -60,6 +92,7 @@
                    'object_fit' => 'cover',
                    'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
                    'alt' => $vacancyTitle,
+                   'attributes' => 'itemprop="image"'
                 ])
             </div>
         @endif
@@ -72,21 +105,21 @@
                 @if (!empty($visibleElements) && in_array('location', $visibleElements) && !empty($fields['location']))
                     <div class="vacature-location flex items-center">
                         <i class="w-4 object-cover fas fa-map-marker-alt mr-3"></i>
-                        {{ $fields['location'] }}
+                        <span>{{ $fields['location'] }}</span>
                     </div>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('working_hours', $visibleElements) && !empty($fields['working_hours']))
                     <div class="vacature-working-hours flex items-center">
                         <i class="w-4 object-cover fas fa-clock mr-3"></i>
-                        {{ $workingHours }}
+                        <span>{{ $workingHours }}</span>
                     </div>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('salary', $visibleElements) && !empty($fields['salary']))
-                    <div class="vacature-salary flex items-center">
+                    <div class="vacature-salary flex items-center" itemprop="baseSalary" itemscope itemtype="https://schema.org/MonetaryAmount">
                         <i class="w-4 fas fa-money-bill-simple-wave mr-3"></i>
-                        {{ $fields['salary'] }}
+                        <span itemprop="value">{{ $fields['salary'] }}</span>
                     </div>
                 @endif
 
@@ -94,6 +127,7 @@
                     <div class="mt-3 mb-3">{{ $vacancySummary }}</div>
                 @endif
             </div>
+
 
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
                 @if ($buttonCardText)
