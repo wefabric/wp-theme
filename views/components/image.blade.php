@@ -1,5 +1,5 @@
 @if($image_id)
-    <span class="image {{ $class ?? '' }}">
+    <span class="image {{ $class ?? '' }}" {!! $attributes ?? '' !!}>
         {!!
             wp_get_attachment_image($image_id, $size ?? 'full', 'false', [
                 'class' => 'object-'. ($object_fit ?? 'cover') .' '. ($img_class ?? ''). ' ',

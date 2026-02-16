@@ -22,7 +22,21 @@
     $testimonialCategories = get_the_terms($testimonial, 'testimonial_categories');
 @endphp
 
-<div class="testimonial-item custom-styling flex w-full h-full text-{{ $testimonialTextColor }} @if ($flyinEffect) testimonial-hidden @endif">
+<div class="testimonial-item custom-styling flex w-full h-full text-{{ $testimonialTextColor }} @if ($flyinEffect) testimonial-hidden @endif" itemscope itemtype="https://schema.org/Review">
+    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
+        <meta itemprop="name" content="{{ get_bloginfo('name') }}">
+    </div>
+
+    @if ($testimonialStars)
+        <div itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+            <meta itemprop="ratingValue" content="{{ $testimonialStars }}">
+            <meta itemprop="bestRating" content="5">
+        </div>
+    @endif
+
+    @if (!empty($testimonialText))
+        <meta itemprop="reviewBody" content="{{ strip_tags($testimonialText) }}">
+    @endif
 
     <div class="testimonial-block relative w-full h-auto flex flex-col md:flex-row bg-{{ $testimonialBackground }} rounded-{{ $borderRadius }}">
 
@@ -74,7 +88,9 @@
             @endif
 
             @if (!empty($visibleElements) && in_array('testimonial_text', $visibleElements) && $testimonialText)
-                @include('components.content', ['content' => apply_filters('the_content', $testimonialText), 'class' => 'testimonial-text md:mb-6 order-4 md:order-3'])
+                <div>
+                    @include('components.content', ['content' => apply_filters('the_content', $testimonialText), 'class' => 'testimonial-text md:mb-6 order-4 md:order-3'])
+                </div>
             @endif
 
             <div class="avatar-section flex flex-col md:flex-row items-center gap-x-4 md:gap-x-6 gap-y-4 mb-4 md:mb-0 order-1 md:order-4 text-center md:text-left">
@@ -86,16 +102,20 @@
                             'object_fit' => 'cover',
                             'img_class' => 'avatar-image w-24 h-24 aspect-square rounded-full object-cover object-center',
                             'alt' => $testimonialTitle,
+                            'attributes' => 'itemprop="image"'
                         ])
                     </div>
                 @endif
                 @if ($testimonialName || $testimonialFunction)
-                    <div class="avatar-details">
+                    <div class="avatar-details" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                        @if ($testimonialName)
+                            <meta itemprop="name" content="{!! $testimonialName !!}">
+                        @endif
                         @if (!empty($visibleElements) && in_array('name', $visibleElements) && $testimonialName)
                             <div class="name-text font-bold text-lg">{!! $testimonialName !!}</div>
                         @endif
                         @if (!empty($visibleElements) && in_array('function', $visibleElements) && $testimonialFunction)
-                            <div class="function-text">{!! $testimonialFunction !!}</div>
+                            <div class="function-text" itemprop="jobTitle">{!! $testimonialFunction !!}</div>
                         @endif
                     </div>
                 @endif
