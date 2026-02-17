@@ -132,22 +132,24 @@
                 @if ($questionsAndAnswers)
                     @php
                         $faqSchema = [
-                            '@context' => 'https://schema.org',
                             '@type' => 'FAQPage',
                             'mainEntity' => []
                         ];
+                        foreach ($questionsAndAnswers as $faq) {
+                            $faqSchema['mainEntity'][] = [
+                                '@type' => 'Question',
+                                'name' => $faq['question_and_answer']['question'],
+                                'acceptedAnswer' => [
+                                    '@type' => 'Answer',
+                                    'text' => strip_tags($faq['question_and_answer']['answer'])
+                                ]
+                            ];
+                        }
+                        \Wefabric\WPSupport\Schema\JsonLd::addSchema('faq_' . $randomNumber, $faqSchema);
                     @endphp
                     @foreach ($questionsAndAnswers as $key => $faq)
                             @php
                                 $uniqueFaqId = "faq-drawer-{$randomNumber}-{$key}";
-                                $faqSchema['mainEntity'][] = [
-                                    '@type' => 'Question',
-                                    'name' => $faq['question_and_answer']['question'],
-                                    'acceptedAnswer' => [
-                                        '@type' => 'Answer',
-                                        'text' => strip_tags($faq['question_and_answer']['answer'])
-                                    ]
-                                ];
                             @endphp
                             <div class="faq-item mb-2 text-left relative @if ($flyinEffect) faq-hidden @endif">
                                 <input class="faq-drawer__trigger mb-4" id="{{ $uniqueFaqId }}" type="checkbox"/>
@@ -160,7 +162,6 @@
                                 </div>
                             </div>
                     @endforeach
-                    <script type="application/ld+json">{!! json_encode($faqSchema) !!}</script>
                 @endif
                 @if (($button1Text) && ($button1Link))
                     <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">

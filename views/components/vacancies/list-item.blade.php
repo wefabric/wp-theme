@@ -31,39 +31,58 @@
                 break;
         }
     }
+
+    $vacancySchema = [
+        '@type' => 'JobPosting',
+        'title' => strip_tags($vacancyTitle),
+        'datePosted' => get_the_date('Y-m-d', $vacancy),
+        'description' => strip_tags(!empty($vacancySummary) ? $vacancySummary : $vacancyTitle),
+        'hiringOrganization' => [
+            '@type' => 'Organization',
+            'name' => get_bloginfo('name'),
+            'logo' => get_site_icon_url(),
+        ],
+    ];
+
+    if ($employmentTypeSchema) {
+        $vacancySchema['employmentType'] = $employmentTypeSchema;
+    }
+
+    if (!empty($fields['location'])) {
+        $vacancySchema['jobLocation'] = [
+            '@type' => 'Place',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'addressLocality' => $fields['location'],
+            ],
+        ];
+    }
+
+    if ($vacancyThumbnailID) {
+        $vacancySchema['image'] = wp_get_attachment_image_url($vacancyThumbnailID, 'job-thumbnail');
+    }
+
+    if (!empty($fields['salary'])) {
+        $vacancySchema['baseSalary'] = [
+            '@type' => 'MonetaryAmount',
+            'currency' => 'EUR', // Fallback or detect
+            'value' => [
+                '@type' => 'QuantitativeValue',
+                'value' => $fields['salary'],
+                'unitText' => 'MONTH' // Fallback
+            ]
+        ];
+    }
+
+    \Wefabric\WPSupport\Schema\JsonLd::addSchema('vacancy_' . $vacancy, $vacancySchema);
+
 @endphp
 
-<div class="vacature-item group h-full @if ($flyinEffect) vacancy-hidden @endif" itemscope itemtype="https://schema.org/JobPosting">
-    <meta itemprop="title" content="{{ strip_tags($vacancyTitle) }}">
-    <meta itemprop="datePosted" content="{{ get_the_date('Y-m-d', $vacancy) }}">
-    <meta itemprop="description" content="{{ strip_tags(!empty($vacancySummary) ? $vacancySummary : $vacancyTitle) }}">
-
-    @if ($employmentTypeSchema)
-        @if (is_array($employmentTypeSchema))
-            @foreach ($employmentTypeSchema as $type)
-                <meta itemprop="employmentType" content="{{ $type }}">
-            @endforeach
-        @else
-            <meta itemprop="employmentType" content="{{ $employmentTypeSchema }}">
-        @endif
-    @endif
-
-    <div itemprop="hiringOrganization" itemscope itemtype="https://schema.org/Organization">
-        <meta itemprop="name" content="{{ get_bloginfo('name') }}">
-        <meta itemprop="logo" content="{{ get_site_icon_url() }}">
-    </div>
-
-    @if (!empty($fields['location']))
-        <div itemprop="jobLocation" itemscope itemtype="https://schema.org/Place" class="hidden">
-            <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                <meta itemprop="addressLocality" content="{{ $fields['location'] }}">
-            </div>
-        </div>
-    @endif
+<div class="vacature-item group h-full @if ($flyinEffect) vacancy-hidden @endif">
     <div class="h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         @if ($vacancyThumbnailID)
             <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
-                <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina" itemprop="url"
+                <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina"
                    class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
                     <span class="sr-only">Ga naar {{ $vacancyTitle }} pagina</span>
                 </a>
@@ -91,8 +110,7 @@
                    'size' => 'job-thumbnail',
                    'object_fit' => 'cover',
                    'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
-                   'alt' => $vacancyTitle,
-                   'attributes' => 'itemprop="image"'
+                   'alt' => $vacancyTitle
                 ])
             </div>
         @endif
@@ -117,9 +135,9 @@
                 @endif
 
                 @if (!empty($visibleElements) && in_array('salary', $visibleElements) && !empty($fields['salary']))
-                    <div class="vacature-salary flex items-center" itemprop="baseSalary" itemscope itemtype="https://schema.org/MonetaryAmount">
+                    <div class="vacature-salary flex items-center">
                         <i class="w-4 fas fa-money-bill-simple-wave mr-3"></i>
-                        <span itemprop="value">{{ $fields['salary'] }}</span>
+                        <span>{{ $fields['salary'] }}</span>
                     </div>
                 @endif
 

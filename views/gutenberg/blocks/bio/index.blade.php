@@ -131,14 +131,23 @@
             @endif
 
             @if ($employee)
-                <div class="bio-item bg-{{ $bioBackgroundColor }} rounded-{{ $borderRadius }}" itemscope itemtype="https://schema.org/Person">
-                    <meta itemprop="name" content="{{ strip_tags($employeeFullName) }}">
-                    @if ($employeeFunction)
-                        <meta itemprop="jobTitle" content="{{ strip_tags($employeeFunction) }}">
-                    @endif
-                    @if ($employeeBioText)
-                        <meta itemprop="description" content="{{ strip_tags($employeeBioText) }}">
-                    @endif
+                @php
+                    $bioSchema = [
+                        '@type' => 'Person',
+                        'name' => strip_tags($employeeFullName),
+                    ];
+                    if ($employeeFunction) {
+                        $bioSchema['jobTitle'] = strip_tags($employeeFunction);
+                    }
+                    if ($employeeBioText) {
+                        $bioSchema['description'] = strip_tags($employeeBioText);
+                    }
+                    if ($employeeImageId) {
+                        $bioSchema['image'] = wp_get_attachment_image_url($employeeImageId, 'full');
+                    }
+                    \Wefabric\WPSupport\Schema\JsonLd::addSchema('bio_' . $randomNumber, $bioSchema);
+                @endphp
+                <div class="bio-item bg-{{ $bioBackgroundColor }} rounded-{{ $borderRadius }}">
                     <div class="custom-styling px-4 py-8 sm:p-12">
                         @if ($bioTitle)
                             <div class="bio-title mb-4 text-xl sm:text-2xl font-bold text-{{ $bioTitleColor }}">{!! $bioTitle !!}</div>
@@ -150,8 +159,7 @@
                                     'size' => 'full',
                                     'object_fit' => 'cover',
                                     'img_class' => 'aspect-square w-full h-full object-cover object-center' . $borderRadius,
-                                    'alt' => $employeeFullName,
-                                    'attributes' => 'itemprop="image"'
+                                    'alt' => $employeeFullName
                                 ])
                             </div>
                             <div class="bio-content w-full lg:w-4/5 text-{{ $bioTextColor }}">

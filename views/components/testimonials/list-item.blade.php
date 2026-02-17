@@ -20,24 +20,44 @@
 
     $visibleElements = $block['data']['show_element'] ?? [];
     $testimonialCategories = get_the_terms($testimonial, 'testimonial_categories');
+
+    $reviewSchema = [
+        '@type' => 'Review',
+        'itemReviewed' => [
+            '@type' => 'Organization',
+            'name' => get_bloginfo('name'),
+        ],
+        'author' => [
+            '@type' => 'Person',
+            'name' => strip_tags($testimonialName) ?: $testimonialTitle,
+        ],
+    ];
+
+    if ($testimonialStars) {
+        $reviewSchema['reviewRating'] = [
+            '@type' => 'Rating',
+            'ratingValue' => $testimonialStars,
+            'bestRating' => '5',
+        ];
+    }
+
+    if ($testimonialText) {
+        $reviewSchema['reviewBody'] = strip_tags($testimonialText);
+    }
+
+    if ($testimonialAvatarId) {
+        $reviewSchema['author']['image'] = wp_get_attachment_image_url($testimonialAvatarId, 'full');
+    }
+
+    if ($testimonialFunction) {
+        $reviewSchema['author']['jobTitle'] = strip_tags($testimonialFunction);
+    }
+
+    \Wefabric\WPSupport\Schema\JsonLd::addSchema('testimonial_' . $testimonial, $reviewSchema);
+
 @endphp
 
-<div class="testimonial-item custom-styling flex w-full h-full text-{{ $testimonialTextColor }} @if ($flyinEffect) testimonial-hidden @endif" itemscope itemtype="https://schema.org/Review">
-    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Organization">
-        <meta itemprop="name" content="{{ get_bloginfo('name') }}">
-    </div>
-
-    @if ($testimonialStars)
-        <div itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-            <meta itemprop="ratingValue" content="{{ $testimonialStars }}">
-            <meta itemprop="bestRating" content="5">
-        </div>
-    @endif
-
-    @if (!empty($testimonialText))
-        <meta itemprop="reviewBody" content="{{ strip_tags($testimonialText) }}">
-    @endif
-
+<div class="testimonial-item custom-styling flex w-full h-full text-{{ $testimonialTextColor }} @if ($flyinEffect) testimonial-hidden @endif">
     <div class="testimonial-block relative w-full h-auto flex flex-col md:flex-row bg-{{ $testimonialBackground }} rounded-{{ $borderRadius }}">
 
         @if (!empty($visibleElements) && in_array('category', $visibleElements))
@@ -101,21 +121,17 @@
                             'size' => 'full',
                             'object_fit' => 'cover',
                             'img_class' => 'avatar-image w-24 h-24 aspect-square rounded-full object-cover object-center',
-                            'alt' => $testimonialTitle,
-                            'attributes' => 'itemprop="image"'
+                            'alt' => $testimonialTitle
                         ])
                     </div>
                 @endif
                 @if ($testimonialName || $testimonialFunction)
-                    <div class="avatar-details" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        @if ($testimonialName)
-                            <meta itemprop="name" content="{!! $testimonialName !!}">
-                        @endif
+                    <div class="avatar-details">
                         @if (!empty($visibleElements) && in_array('name', $visibleElements) && $testimonialName)
                             <div class="name-text font-bold text-lg">{!! $testimonialName !!}</div>
                         @endif
                         @if (!empty($visibleElements) && in_array('function', $visibleElements) && $testimonialFunction)
-                            <div class="function-text" itemprop="jobTitle">{!! $testimonialFunction !!}</div>
+                            <div class="function-text">{!! $testimonialFunction !!}</div>
                         @endif
                     </div>
                 @endif
