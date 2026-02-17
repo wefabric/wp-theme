@@ -505,8 +505,6 @@ function remove_wp_meta_tags() {
     remove_action('wp_head', 'rsd_link'); // Really Simple Discovery link
     remove_action('wp_head', 'wlwmanifest_link'); // Windows Live Writer manifest link
     remove_action('wp_head', 'wp_shortlink_wp_head'); // Shortlink
-    remove_action('wp_head', 'feed_links_extra', 3); // Extra RSS feeds
-    remove_action('wp_head', 'feed_links', 2); // RSS feed links
     remove_action('wp_head', 'rest_output_link_wp_head'); // REST API link
     remove_action('wp_head', 'wp_oembed_add_discovery_links'); // oEmbed links
     remove_action('wp_head', 'wp_oembed_add_host_js'); // oEmbed JavaScript
@@ -534,6 +532,33 @@ function disable_wp_emojis() {
     remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 }
 add_action('init', 'disable_wp_emojis');
+
+/**
+ * Disable RSS Feeds based on ACF setting
+ */
+function maybe_disable_rss_feeds() {
+    $rss_feeds_settings = get_field('rss_feeds', 'option');
+    if (empty($rss_feeds_settings) || empty($rss_feeds_settings['disable_rss'])) {
+        return;
+    }
+
+    $disable_rss_callback = function() {
+        wp_die( __( 'No feed available, please visit the <a href="'. esc_url( home_url( '/' ) ) .'">homepage</a>!' ) );
+    };
+
+    add_action('do_feed', $disable_rss_callback, 1);
+    add_action('do_feed_rdf', $disable_rss_callback, 1);
+    add_action('do_feed_rss', $disable_rss_callback, 1);
+    add_action('do_feed_rss2', $disable_rss_callback, 1);
+    add_action('do_feed_atom', $disable_rss_callback, 1);
+    add_action('do_feed_rss2_comments', $disable_rss_callback, 1);
+    add_action('do_feed_atom_comments', $disable_rss_callback, 1);
+
+    // Remove RSS feed links from header
+    remove_action('wp_head', 'feed_links', 2);
+    remove_action('wp_head', 'feed_links_extra', 3);
+}
+add_action('init', 'maybe_disable_rss_feeds');
 
 
 
