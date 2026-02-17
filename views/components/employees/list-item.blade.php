@@ -32,20 +32,40 @@
         $linkUrl = null;
     }
 
+    $employeeSchema = [
+        '@type' => 'Person',
+        'name' => strip_tags($fullName),
+    ];
+    if ($function) {
+        $employeeSchema['jobTitle'] = strip_tags($function);
+    }
+    if ($overviewText) {
+        $employeeSchema['description'] = strip_tags($overviewText);
+    }
+    if ($imageId) {
+        $employeeSchema['image'] = wp_get_attachment_image_url($imageId, 'full');
+    }
+    if ($mail) {
+        $employeeSchema['email'] = $mail;
+    }
+    if ($phoneNumber) {
+        $employeeSchema['telephone'] = $phoneNumber;
+    }
+    if ($linkUrl) {
+        $employeeSchema['url'] = $linkUrl;
+    }
+    if (!empty($socials)) {
+        $employeeSchema['sameAs'] = array_column($socials, 'url');
+    }
+    \Wefabric\WPSupport\Schema\JsonLd::addSchema('employee_' . $employee, $employeeSchema);
+
 @endphp
 
-<div class="werknemer-item group h-full @if ($flyinEffect) employee-hidden @endif" itemscope itemtype="https://schema.org/Person">
-    <meta itemprop="name" content="{{ strip_tags($fullName) }}">
-    @if ($function)
-        <meta itemprop="jobTitle" content="{{ strip_tags($function) }}">
-    @endif
-    @if ($overviewText)
-        <meta itemprop="description" content="{{ strip_tags($overviewText) }}">
-    @endif
+<div class="werknemer-item group h-full @if ($flyinEffect) employee-hidden @endif">
     <div class="werknemer-card relative h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         <div class="custom-height @if ($contactInfoDisplay == 'under_image') overflow-hidden @endif relative max-h-[360px] w-full rounded-{{ $borderRadius }}">
             @if ($linkUrl)
-                <a href="{{ $linkUrl }}" aria-label="Ga naar {{ $fullName }} pagina" itemprop="url"
+                <a href="{{ $linkUrl }}" aria-label="Ga naar {{ $fullName }} pagina"
                    class="card-overlay overlay left-0 top-0 absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
             @endif
             @if (!empty($visibleElements) && in_array('category', $visibleElements))
@@ -74,8 +94,7 @@
                      'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 '
                                         . ($hoverImageId ? 'group-hover:opacity-0 ' : ($linkUrl ? 'group-hover:scale-110 ' : ''))
                                         . 'rounded-' . $borderRadius,
-                     'alt' => $fullName,
-                     'attributes' => 'itemprop="image"'
+                     'alt' => $fullName
                 ])
                 @if (!empty($hoverImageId))
                     @include('components.image', [
@@ -90,7 +109,7 @@
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements) && ($contactInfoDisplay == 'in_image'))
                 <div class="contact-items absolute bottom-0 right-0 flex gap-x-2">
                     @if ($mail)
-                        <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" itemprop="email"
+                        <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}"
                            class="text-{{ $employeeTextColor }} hover:text-white ">
                             <div class="contact-icon-wrapper relative bg-primary w-10 h-10 flex justify-center items-center">
                                 <div class="mail-icon">
@@ -108,7 +127,7 @@
                         </a>
                     @endif
                     @if ($phoneNumber)
-                        <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" itemprop="telephone"
+                        <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}"
                            class="text-{{ $employeeTextColor }} hover:text-white">
                             <div class="contact-icon-wrapper relative bg-primary w-10 h-10 flex justify-center items-center">
                                 <div class="phone-icon">
@@ -144,7 +163,7 @@
                 <div class="social-items inline-flex gap-x-2">
                     @foreach ($socials as $social)
                         <a class="text-{{ $employeeTextColor }} text-2xl transform ease-in-out duration-300 hover:scale-110 hover:text-primary"
-                           href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer" itemprop="sameAs"
+                           href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
                            aria-label="Ga naar social media pagina">
                             {!! $social['icon'] !!}
                         </a>
@@ -154,7 +173,7 @@
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements) && ($contactInfoDisplay == 'under_image'))
                 <div class="contact-items relative mt-auto w-fit @if(!$showFullContactInfo) flex gap-x-2 @endif">
                     @if ($mail)
-                        <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}" itemprop="email"
+                        <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}"
                            class="mail-link text-{{ $employeeTextColor }} hover:text-primary">
                             <div class="contact-icon-wrapper relative">
                                 <div class="mail-icon">
@@ -172,7 +191,7 @@
                         </a>
                     @endif
                     @if ($phoneNumber)
-                        <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}" itemprop="telephone"
+                        <a href="tel:{{ $phoneNumber }}" aria-label="Bel naar {{ $phoneNumber }}"
                            class="phone-link text-{{ $employeeTextColor }} hover:text-primary">
                             <div class="contact-icon-wrapper relative">
                                 <div class="phone-icon">
