@@ -169,7 +169,6 @@
                 @if ($videoUrl || $videoFileUrl)
                     @php
                         $videoSchema = [
-                            '@context' => 'https://schema.org',
                             '@type' => 'VideoObject',
                             'name' => $title ?: get_the_title(),
                             'description' => strip_tags($text) ?: (get_the_excerpt() ?: get_the_title()),
@@ -182,8 +181,8 @@
                         if ($videoFileUrl) {
                             $videoSchema['contentUrl'] = $videoFileUrl;
                         }
+                        \Wefabric\WPSupport\Schema\JsonLd::addSchema('video_tekst_' . $randomNumber, $videoSchema);
                     @endphp
-                    <script type="application/ld+json">{!! json_encode($videoSchema) !!}</script>
                     <div class="video video-{{ $randomNumber }} {{ $videoClass }} order-1 {{ $videoOrder }}">
                         @if ($videoUrl)
                             <div class="video-embed-wrapper">

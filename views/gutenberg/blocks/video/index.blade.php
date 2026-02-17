@@ -127,7 +127,6 @@
             @if ($videoUrl)
                 @php
                     $videoSchema = [
-                        '@context' => 'https://schema.org',
                         '@type' => 'VideoObject',
                         'name' => $title ?: get_the_title(),
                         'description' => strip_tags($text) ?: (get_the_excerpt() ?: get_the_title()),
@@ -135,8 +134,8 @@
                         'uploadDate' => get_the_date('c'),
                         'embedUrl' => $videoUrl
                     ];
+                    \Wefabric\WPSupport\Schema\JsonLd::addSchema('video_' . $randomNumber, $videoSchema);
                 @endphp
-                <script type="application/ld+json">{!! json_encode($videoSchema) !!}</script>
                 <div class="video-embed-wrapper">
                     {!! apply_filters('the_content', '[embed]' . $videoUrl . '[/embed]') !!}
                 </div>
@@ -156,7 +155,6 @@
             @elseif ($videoFileUrl)
                 @php
                     $videoSchema = [
-                        '@context' => 'https://schema.org',
                         '@type' => 'VideoObject',
                         'name' => $title ?: get_the_title(),
                         'description' => strip_tags($text) ?: (get_the_excerpt() ?: get_the_title()),
@@ -164,8 +162,8 @@
                         'uploadDate' => get_the_date('c'),
                         'contentUrl' => $videoFileUrl
                     ];
+                    \Wefabric\WPSupport\Schema\JsonLd::addSchema('video_file_' . $randomNumber, $videoSchema);
                 @endphp
-                <script type="application/ld+json">{!! json_encode($videoSchema) !!}</script>
                 <div class="relative">
                     <video class="w-full object-cover"
                            @if($videoSetting === 'automatic') autoplay muted loop playsinline @endif
