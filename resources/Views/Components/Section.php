@@ -24,9 +24,15 @@ class Section extends Component
 
     public function __construct(
         public string $blockType,
-        public array $block = []
+        public array $block = [],
+        ?int $randomNumber = null
     )
     {
+        if ($randomNumber === null) {
+            $this->randomNumber = rand(0, 1000);
+        } else {
+            $this->randomNumber = $randomNumber;
+        }
         // Normalize background color: treat 0 / '0' / '' as unset
         $backgroundColorRaw = $block['data']['background_color'] ?? '';
         $hasBackgroundColor = (is_string($backgroundColorRaw) && $backgroundColorRaw !== '' && $backgroundColorRaw !== '0') || (is_int($backgroundColorRaw) && $backgroundColorRaw !== 0);
@@ -43,7 +49,6 @@ class Section extends Component
         $this->customBlockId = $block['data']['custom_block_id'] ?? '';
         $this->hideBlock = $block['data']['hide_block'] ?? false;
 
-        $this->randomNumber = rand(0, 1000);
         $this->styling = SectionStyling::fromBlockData($this->block);
     }
 

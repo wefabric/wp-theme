@@ -1,4 +1,4 @@
-<x-wefabric:section block-type="afbeelding-en-tekst" :block="$block">
+<x-wefabric:section block-type="afbeelding-en-tekst" :block="$block" :random-number="$randomNumber">
     @php
         // Image / video data
         $imageId = $block['data']['image'] ?? 0;

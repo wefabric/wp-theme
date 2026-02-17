@@ -9,6 +9,7 @@ abstract class BlockComponent extends Component
 {
     use HasAnimations;
 
+    public int $randomNumber = 0;
     public int|string $blockWidth = 100;
     public string $blockClass = '';
     public string $fullScreenClass = '';
@@ -19,6 +20,7 @@ abstract class BlockComponent extends Component
         public array $block = []
     )
     {
+        $this->randomNumber = rand(0, 1000);
         $this->blockWidth = $this->block['data']['block_width'] ?? 100;
         $this->blockClass = $this->blockClassMap[$this->blockWidth] ?? '';
 

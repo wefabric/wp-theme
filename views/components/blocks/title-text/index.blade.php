@@ -1,4 +1,4 @@
-<x-wefabric:section block-type="titel-tekst" :block="$block">
+<x-wefabric:section block-type="titel-tekst" :block="$block" :random-number="$randomNumber">
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="layout {{ $blockClass }} mx-auto flex flex-col lg:flex-row justify-center gap-x-16">
             <div class="text-section w-full order-2 @if($textPosition === 'left') lg:order-1 @else lg:order-2 @endif">
