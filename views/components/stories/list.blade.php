@@ -10,7 +10,10 @@
     ];
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
-    $randomNumber = rand(0, 1000);
+    if (!isset($randomNumber)) {
+        \Theme\Views\Components\BlockComponent::$blockCounter++;
+        $randomNumber = \Theme\Views\Components\BlockComponent::$blockCounter;
+    }
     $randomId = 'storySwiper-' . $randomNumber;
 @endphp
 

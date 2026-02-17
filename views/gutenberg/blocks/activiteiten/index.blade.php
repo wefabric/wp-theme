@@ -177,7 +177,7 @@
 
 
     // Paddings & margins
-    $randomNumber = rand(0, 1000);
+    \Theme\Views\Components\BlockComponent::$blockCounter++; $randomNumber = \Theme\Views\Components\BlockComponent::$blockCounter;
 
     $mobilePaddingTop = $block['data']['padding_mobile_padding_top'] ?? '';
     $mobilePaddingRight = $block['data']['padding_mobile_padding_right'] ?? '';

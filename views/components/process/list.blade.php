@@ -4,7 +4,7 @@
     $desktopLayout = $block['data']['layout_desktop'] ?? 3;
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
-    $randomNumber = rand(0, 1000);
+    if (!isset($randomNumber)) { if (!isset($randomNumber)) { \Theme\Views\Components\BlockComponent::$blockCounter++; $randomNumber = \Theme\Views\Components\BlockComponent::$blockCounter; } }
     $randomId = 'process-' . $randomNumber;
 
     $spaceBetween = $block['data']['space_between'] ?? 40;

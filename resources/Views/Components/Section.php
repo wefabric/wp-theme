@@ -29,7 +29,8 @@ class Section extends Component
     )
     {
         if ($randomNumber === null) {
-            $this->randomNumber = rand(0, 1000);
+            BlockComponent::$blockCounter++;
+            $this->randomNumber = BlockComponent::$blockCounter;
         } else {
             $this->randomNumber = $randomNumber;
         }

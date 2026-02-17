@@ -16,7 +16,7 @@
     $swiperAutoplaySpeed = max((int)($options['logo_autoplay_speed'] ?? 0) * 1000, 5000);
     $swiperLoop = $options['logo_loop_slides'] ?? true;
     $swiperCenteredSlides = $options['logo_centered_slides'] ?? false;
-    $randomNumber = rand(0, 1000);
+    if (!isset($randomNumber)) { \Theme\Views\Components\BlockComponent::$blockCounter++; $randomNumber = \Theme\Views\Components\BlockComponent::$blockCounter; }
     $randomId = 'footerLogoSwiper-' . $randomNumber;
 @endphp
 

@@ -1,5 +1,5 @@
 <?php
-    $randomNumber = rand(0, 1000);
+    \Theme\Views\Components\BlockComponent::$blockCounter++; $randomNumber = \Theme\Views\Components\BlockComponent::$blockCounter;
     $template = $block['data']['template'] ?? 'default';
 ?>
 

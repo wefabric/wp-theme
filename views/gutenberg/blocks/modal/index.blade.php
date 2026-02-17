@@ -71,7 +71,7 @@
      $customBlockId = $block['data']['custom_block_id'] ?? '';
      $hideBlock = $block['data']['hide_block'] ?? false;
 
-     $randomNumber = rand(0, 1000);
+     \Theme\Views\Components\BlockComponent::$blockCounter++; $randomNumber = \Theme\Views\Components\BlockComponent::$blockCounter;
 @endphp
 
 @if ($backdrop)
