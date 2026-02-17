@@ -133,6 +133,52 @@
                                         ];
                                         $countryName = isset($countryNames[$country_id]) ? $countryNames[$country_id] : $country_id;
                                     }
+
+                                    $establishmentSchema = [
+                                        '@type' => 'LocalBusiness',
+                                        'name' => $establishment_title,
+                                        'image' => get_site_icon_url(),
+                                        'address' => [
+                                            '@type' => 'PostalAddress',
+                                            'streetAddress' => trim($street . ' ' . $house_number . ' ' . $house_number_addition),
+                                            'addressLocality' => $city,
+                                            'postalCode' => $postcode,
+                                            'addressCountry' => $country_id ?: 'NL',
+                                        ],
+                                    ];
+
+                                    if ($phone) {
+                                        $establishmentSchema['telephone'] = $phone->international();
+                                    }
+                                    if ($email) {
+                                        $establishmentSchema['email'] = $email;
+                                    }
+
+                                    $openingHours = $establishment->openingHours();
+                                    if ($openingHours->isNotEmpty()) {
+                                        $establishmentSchema['openingHoursSpecification'] = [];
+                                        foreach ($openingHours as $hour) {
+                                            if ($hour->isClosed()) continue;
+                                            
+                                            $spec = [
+                                                '@type' => 'OpeningHoursSpecification',
+                                                'dayOfWeek' => $hour->day,
+                                                'opens' => $hour->openingHour,
+                                                'closes' => $hour->closingHour,
+                                            ];
+                                            $establishmentSchema['openingHoursSpecification'][] = $spec;
+
+                                            if (!empty($hour->openingHour2) && !empty($hour->closingHour2)) {
+                                                $establishmentSchema['openingHoursSpecification'][] = [
+                                                    '@type' => 'OpeningHoursSpecification',
+                                                    'dayOfWeek' => $hour->day,
+                                                    'opens' => $hour->openingHour2,
+                                                    'closes' => $hour->closingHour2,
+                                                ];
+                                            }
+                                        }
+                                    }
+                                    \Wefabric\WPSupport\Schema\JsonLd::addSchema('establishment_' . $establishment_id, $establishmentSchema);
                                 @endphp
 
                                 <div class="establishment flex flex-col gap-y-6 text-{{ $textColor }}">
