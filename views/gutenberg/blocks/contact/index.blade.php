@@ -4,6 +4,9 @@
     $titleColor = $block['data']['title_color'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
     $subTitleColor = $block['data']['subtitle_color'] ?? '';
+    $subtitleIcon = $block['data']['subtitle_icon'] ?? '';
+    $subtitleIcon = $subtitleIcon ? json_decode($subtitleIcon, true) : null;
+    $subtitleIconColor = $block['data']['subtitle_icon_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -102,7 +105,12 @@
         <div class="custom-layout {{ $blockClass }} mx-auto flex flex-col lg:flex-row gap-2 lg:gap-8">
             <div class="content-block h-fit w-full {{ $contentClass }} order-1 @if ($formPosition == 'right') lg:order-0 @else lg:order-1 @endif py-8 px-8 lg:py-12 bg-{{ $contentBackgroundColor }}">
                 @if ($subTitle)
-                    <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
+                    <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if($blockWidth == 'fullscreen') px-8 @endif {{ $textClass }}">
+                        @if ($subtitleIcon)
+                            <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
+                        @endif
+                        {!! $subTitle !!}
+                    </span>
                 @endif
                 @if ($title)
                     <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
