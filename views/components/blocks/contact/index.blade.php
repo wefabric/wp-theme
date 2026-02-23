@@ -2,7 +2,9 @@
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="custom-layout {{ $blockClass }} mx-auto flex flex-col lg:flex-row gap-2 lg:gap-8">
             <div class="content-block h-fit w-full {{ $contentClass }} order-1 @if ($formPosition == 'right') lg:order-0 @else lg:order-1 @endif py-8 px-8 lg:py-12 bg-{{ $contentBackgroundColor }}">
-                <x-wefabric:title :block="$block" />
+                <div class="text-block {{ $textClass }}">
+                    <x-wefabric:title :block="$block" />
+                </div>
                 <div class="flex flex-col content-layout">
                     @if ($establishment_query->have_posts())
                         <div class="establishment-list flex flex-col gap-y-8">
@@ -199,7 +201,9 @@
                         </div>
                     @endif
                     @if ($text)
-                        <x-wefabric:content :content="$text" :class="'mt-4 text-' . $textColor "></x-wefabric:content>
+                        <div class="text-block {{ $textClass }}">
+                            <x-wefabric:content :content="$text" :class="'mt-4 text-' . $textColor"></x-wefabric:content>
+                        </div>
                     @endif
                 </div>
             </div>
@@ -208,12 +212,14 @@
                 <div class="form-block w-full {{ $formClass }} order-0 @if ($formPosition == 'right') lg:order-1 @else lg:order-0 @endif">
                     <div class="contact-block bg-{{ $formBackgroundColor }} p-8 lg:p-12">
                         <div class="form h-full w-full">
-                            @if ($formSubTitle)
-                                <span class="subtitle block mb-2 @if($formSubTitleColor) text-{{ $formSubTitleColor }} @endif">{!! $formSubTitle !!}</span>
-                            @endif
-                            @if ($formTitle)
-                                <h2 class="form-title mb-4 @if($formTitleColor) text-{{ $formTitleColor }} @endif">{!! $formTitle !!}</h2>
-                            @endif
+                            <div class="text-block {{ $textClass }}">
+                                @if ($formSubTitle)
+                                    <span class="subtitle block mb-2 @if($formSubTitleColor) text-{{ $formSubTitleColor }} @endif">{!! $formSubTitle !!}</span>
+                                @endif
+                                @if ($formTitle)
+                                    <h2 class="form-title mb-4 @if($formTitleColor) text-{{ $formTitleColor }} @endif">{!! $formTitle !!}</h2>
+                                @endif
+                            </div>
                             {!! gravity_form($form, false) !!}
                         </div>
                     </div>

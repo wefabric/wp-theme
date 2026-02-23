@@ -1,19 +1,23 @@
 <x-wefabric:section block-type="formulier" :block="$block" :random-number="$randomNumber">
     <div class="custom-styling relative z-10 @if (!$formBackgroundColor) px-8 @endif sm:px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
-            <x-wefabric:title :block="$block" :class="$formBackgroundColor ? 'px-8 sm:px-0' : ''" />
-            @if ($text)
-                <x-wefabric:content :content="$text" :class="'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '') . ($formBackgroundColor ? ' px-8 sm:px-0' : '')"></x-wefabric:content>
-            @endif
+            <div class="text-block {{ $textClass }}">
+                <x-wefabric:title :block="$block" :class="$formBackgroundColor ? 'px-8 sm:px-0' : ''" />
+                @if ($text)
+                    <x-wefabric:content :content="$text" :class="'mb-8 text-' . $textColor . ($blockWidth == 'fullscreen' ? ' ' : '') . ($formBackgroundColor ? ' px-8 sm:px-0' : '')"></x-wefabric:content>
+                @endif
+            </div>
 
             @if ($form)
                 <div class="form @if ($formBackgroundColor) p-8 md:p-16 @endif {{ $formBackgroundColor }} bg-{{ $formBackgroundColor }}">
-                    @if ($formSubTitle)
-                        <span class="subtitle block mb-2 @if($formSubTitleColor) text-{{ $formSubTitleColor }} @endif @if ($formBackgroundColor) px-8 sm:px-0 @endif">{!! $formSubTitle !!}</span>
-                    @endif
-                    @if ($formTitle)
-                        <h2 class="title mb-4 @if($formTitleColor) text-{{ $formTitleColor }} @endif @if ($formBackgroundColor) px-8 sm:px-0 @endif">{!! $formTitle !!}</h2>
-                    @endif
+                    <div class="text-block {{ $textClass }}">
+                        @if ($formSubTitle)
+                            <span class="subtitle block mb-2 @if($formSubTitleColor) text-{{ $formSubTitleColor }} @endif @if ($formBackgroundColor) px-8 sm:px-0 @endif">{!! $formSubTitle !!}</span>
+                        @endif
+                        @if ($formTitle)
+                            <h2 class="title mb-4 @if($formTitleColor) text-{{ $formTitleColor }} @endif @if ($formBackgroundColor) px-8 sm:px-0 @endif">{!! $formTitle !!}</h2>
+                        @endif
+                    </div>
                     {!! gravity_form($form, false) !!}
                 </div>
             @endif
