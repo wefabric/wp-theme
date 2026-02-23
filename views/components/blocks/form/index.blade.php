@@ -12,10 +12,10 @@
                 <div class="form @if ($formBackgroundColor) p-8 md:p-16 @endif {{ $formBackgroundColor }} bg-{{ $formBackgroundColor }}">
                     <div class="text-block {{ $textClass }}">
                         @if ($formSubTitle)
-                            <span class="subtitle block mb-2 @if($formSubTitleColor) text-{{ $formSubTitleColor }} @endif @if ($formBackgroundColor) px-8 sm:px-0 @endif">{!! $formSubTitle !!}</span>
+                            <span class="subtitle block mb-2 @if($formSubTitleColor) text-{{ $formSubTitleColor }} @endif">{!! $formSubTitle !!}</span>
                         @endif
                         @if ($formTitle)
-                            <h2 class="title mb-4 @if($formTitleColor) text-{{ $formTitleColor }} @endif @if ($formBackgroundColor) px-8 sm:px-0 @endif">{!! $formTitle !!}</h2>
+                            <h2 class="title mb-4 @if($formTitleColor) text-{{ $formTitleColor }} @endif @if ($formBackgroundColor) px-0 sm:px-0 @endif">{!! $formTitle !!}</h2>
                         @endif
                     </div>
                     {!! gravity_form($form, false) !!}
@@ -23,7 +23,7 @@
             @endif
 
             @if ($buttons && $buttons->count() >= 1)
-                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
+                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} @if ($formBackgroundColor) px-8 sm:px-0 @endif @if($blockWidth != 'fullscreen') container mx-auto @endif">
                     @foreach($buttons as $button)
                         {!! $button->render()->render() !!}
                     @endforeach
