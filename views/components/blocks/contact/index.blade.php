@@ -229,3 +229,30 @@
         </div>
     </div>
 </x-wefabric:section>
+
+@if ($formTextColor || $formInputColor)
+    <style>
+        @if ($formTextColor)
+        .block-{{ $randomNumber }} form label,
+        .block-{{ $randomNumber }} form legend,
+        .block-{{ $randomNumber }} form .gfield_description {
+            color:
+            @if ($formTextColor === 'white') white !important
+            @elseif ($formTextColor === 'black') black !important;
+            @else var(--{{ $formTextColor }}) !important;
+            @endif
+        }
+        @endif
+
+        @if ($formInputColor)
+        .block-{{ $randomNumber }} form input,
+        .block-{{ $randomNumber }} form textarea {
+            background-color:
+            @if ($formInputColor === 'white') white !important
+            @elseif ($formInputColor === 'black') black !important;
+            @else var(--{{ $formInputColor }}) !important;
+            @endif
+        }
+        @endif
+    </style>
+@endif

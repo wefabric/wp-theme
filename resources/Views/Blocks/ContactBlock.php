@@ -25,6 +25,8 @@ class ContactBlock extends BlockComponent
     public $form = null;
     public string $formTitle = '';
     public string $formTitleColor = '';
+    public string $formTextColor = '';
+    public string $formInputColor = '';
     public string $formBackgroundColor = '';
     public string $formClass = '';
 
@@ -80,6 +82,8 @@ class ContactBlock extends BlockComponent
         $this->form = $this->block['data']['form'] ?? null;
         $this->formTitle = $this->block['data']['form_title'] ?? '';
         $this->formTitleColor = $this->getBlockColor('form_title_color', $globalTitleColor ?: $globalTextColor);
+        $this->formTextColor = $this->getBlockColor('form_text_color', '');
+        $this->formInputColor = $this->getBlockColor('form_input_color', '');
         $this->formBackgroundColor = $this->getBlockColor('form_background_color', '');
 
         $this->visibleElements = $this->block['data']['show_element'] ?? [];
