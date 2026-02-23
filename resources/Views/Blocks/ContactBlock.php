@@ -11,13 +11,6 @@ class ContactBlock extends BlockComponent
 {
     use HasTextContent;
 
-    public string $title = '';
-    public string $titleColor = '';
-    public string $subTitle = '';
-    public string $subTitleColor = '';
-    public ?array $subtitleIcon = null;
-    public string $subtitleIconColor = '';
-
     public string $contentBackgroundColor = '';
     public string $contentClass = '';
     public string $formPosition = 'right';
@@ -25,6 +18,8 @@ class ContactBlock extends BlockComponent
     public $form = null;
     public string $formTitle = '';
     public string $formTitleColor = '';
+    public string $formSubTitle = '';
+    public string $formSubTitleColor = '';
     public string $formTextColor = '';
     public string $formInputColor = '';
     public string $formBackgroundColor = '';
@@ -33,33 +28,9 @@ class ContactBlock extends BlockComponent
     public array $visibleElements = [];
     public $establishment_query = null;
 
-    public string $borderRadius = 'rounded-none';
-
     public function setBlockData(): void
     {
         $this->setTextContentData();
-
-        $this->title = $this->block['data']['title'] ?? '';
-        $this->subTitle = $this->block['data']['subtitle'] ?? '';
-
-        // Colors
-        $options = function_exists('get_fields') ? \get_fields('option') : [];
-        $globalTitleColor = $options['global_title_color'] ?? '';
-        $globalSubTitleColor = $options['global_subtitle_color'] ?? '';
-        $globalSubtitleIconColor = $options['global_subtitle_icon_color'] ?? '';
-        $globalTextColor = $options['global_text_color'] ?? '';
-
-        $this->titleColor = $this->getBlockColor('title_color', $globalTitleColor ?: $globalTextColor);
-        $this->subTitleColor = $this->getBlockColor('subtitle_color', $globalSubTitleColor ?: $globalTextColor);
-
-        $icon = $this->block['data']['subtitle_icon'] ?? null;
-        if (is_string($icon)) {
-            $this->subtitleIcon = json_decode($icon, true);
-        } elseif (is_array($icon)) {
-            $this->subtitleIcon = $icon;
-        }
-
-        $this->subtitleIconColor = $this->getBlockColor('subtitle_icon_color', $globalSubtitleIconColor ?: ($globalSubTitleColor ?: $globalTextColor));
 
         $this->contentBackgroundColor = $this->getBlockColor('content_background_color', '');
         $this->formPosition = $this->block['data']['form_position'] ?? 'right';
@@ -81,7 +52,11 @@ class ContactBlock extends BlockComponent
 
         $this->form = $this->block['data']['form'] ?? null;
         $this->formTitle = $this->block['data']['form_title'] ?? '';
-        $this->formTitleColor = $this->getBlockColor('form_title_color', $globalTitleColor ?: $globalTextColor);
+        $this->formSubTitle = $this->block['data']['form_subtitle'] ?? '';
+
+        // Colors
+        $this->formTitleColor = $this->getBlockColor('form_title_color', '');
+        $this->formSubTitleColor = $this->getBlockColor('form_subtitle_color', '');
         $this->formTextColor = $this->getBlockColor('form_text_color', '');
         $this->formInputColor = $this->getBlockColor('form_input_color', '');
         $this->formBackgroundColor = $this->getBlockColor('form_background_color', '');
@@ -100,8 +75,6 @@ class ContactBlock extends BlockComponent
         }
 
         $this->establishment_query = new WP_Query($args);
-
-        $this->borderRadius = $options['border_radius_strength'] ?? '';
     }
 
     protected function getBlockColor(string $key, string $default): string

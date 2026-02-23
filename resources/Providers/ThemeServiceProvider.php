@@ -5,6 +5,7 @@ namespace Theme\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Theme\Views\Blocks\ContactBlock;
+use Theme\Views\Blocks\FormBlock;
 use Theme\Views\Blocks\ImageBlock;
 use Theme\Views\Blocks\TextBlock;
 use Theme\Views\Blocks\TextImageBlock;
@@ -34,6 +35,7 @@ class ThemeServiceProvider extends ServiceProvider
         Blade::component('wefabric:title-text-block', TitleTextBlock::class);
         Blade::component('wefabric:image-block', ImageBlock::class);
         Blade::component('wefabric:contact-block', ContactBlock::class);
+        Blade::component('wefabric:form-block', FormBlock::class);
         Blade::component('wefabric:content', Content::class);
     }
 

@@ -18,7 +18,8 @@ class TitleComponent extends Component
     public string $subtitleIconColor = '';
 
     public function __construct(
-        public array $block = []
+        public array $block = [],
+        public string $class = ''
     )
     {
         $this->title = $this->block['data']['title'] ?? '';

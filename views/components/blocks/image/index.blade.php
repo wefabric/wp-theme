@@ -1,6 +1,6 @@
 @if ($imageId)
 <x-wefabric:section block-type="afbeelding" :block="$block" :random-number="$randomNumber">
-    <div class="custom-styling relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+    <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto relative @if ($imageParallax) parallax-image @endif @if($textPosition === 'center') text-center @elseif($textPosition === 'right') text-right @endif">
             @if ($imageId)
                 @include('components.image', [

@@ -72,6 +72,8 @@ module.exports = {
 
     // Margin & paddings
     'mr-1',
+    'sm:px-0',
+    'sm:px-8',
 
     // Text
     'md:text-[18px]',
