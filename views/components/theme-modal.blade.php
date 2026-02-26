@@ -28,13 +28,15 @@
     $textClass = $titleClassMap[$textPosition] ?? '';
 
     $modalBackground = $custom_modal['background_color'] ?? 'white';
+    $modalLayout = $custom_modal['modal_layout'] ?? 'middle';
+    $displaySettings = $custom_modal['display_settings'] ?? 'hide_after_closing';
 @endphp
 
-<div id="theme-modal" style="z-index: 99999;" class="fixed top-0 left-0 w-full h-full">
+<div id="theme-modal" data-display="{{ $displaySettings }}" style="z-index: 99999; display: none;" class="fixed top-0 left-0 w-full h-full @if($modalLayout === 'right_bottom') pointer-events-none @endif">
 
-    <div class="theme-modal-close w-screen h-screen bg-black opacity-50"></div>
+    <div class="theme-modal-close w-screen h-screen bg-black opacity-50 @if($modalLayout === 'right_bottom') block md:hidden @else block @endif"></div>
 
-    <div class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 container w-5/6 md:w-2/3 xl:w-1/2 2xl:w-1/3 h-fit bg-{{ $modalBackground }} mx-auto rounded-lg">
+    <div class="fixed @if($modalLayout === 'right_bottom') left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-5/6 md:left-auto md:top-auto md:right-10 md:bottom-10 md:translate-x-0 md:translate-y-0 md:w-1/3 xl:w-1/4 2xl:w-1/5 @else left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-5/6 md:w-2/3 xl:w-1/2 2xl:w-1/3 @endif container max-h-[90vh] overflow-y-auto bg-{{ $modalBackground }} mx-auto rounded-lg pointer-events-auto shadow-2xl">
 
         {{--        Modal header--}}
         <div class="p-5 border-b">
@@ -58,25 +60,36 @@
                     <div class="@if($imagePosition == 'horizontal') order-1 md:order-0 w-full md:w-2/3 @elseif($imagePosition == 'vertical') order-1 md:order-1 w-full @endif">
                         @include('components.content', ['content' => apply_filters('the_content', $text), 'class' => 'text-' . $textColor])
 
-                        @if (($button1Text) && ($button1Link))
-                            <div class="{{ $textClass }} w-full flex flex-col sm:flex-row gap-y-2 gap-x-4 mt-4 md:mt-8">
-                                @include('components.buttons.default', [
-                                   'text' => $button1Text,
-                                   'href' => $button1Link,
-                                   'alt' => $button1Text,
-                                   'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                                   'class' => 'rounded-lg',
-                                   'target' => $button1Target,
-                               ])
+                        @if (($button1Text) && ($button1Link) || $closeModalButton)
+                            <div class="{{ $textClass }} w-full flex flex-wrap flex-col sm:flex-row gap-y-2 gap-x-4 mt-4 md:mt-8 items-center">
+                                @if (($button1Text) && ($button1Link))
+                                    <div class="flex items-center">
+                                        @include('components.buttons.default', [
+                                           'text' => $button1Text,
+                                           'href' => $button1Link,
+                                           'alt' => $button1Text,
+                                           'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                                           'class' => 'rounded-lg',
+                                           'target' => $button1Target,
+                                       ])
+                                    </div>
+                                @endif
                                 @if (($button2Text) && ($button2Link))
-                                    @include('components.buttons.default', [
-                                       'text' => $button2Text,
-                                       'href' => $button2Link,
-                                       'alt' => $button2Text,
-                                       'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                                       'class' => 'rounded-lg',
-                                       'target' => $button2Target,
-                                   ])
+                                    <div class="flex items-center">
+                                        @include('components.buttons.default', [
+                                           'text' => $button2Text,
+                                           'href' => $button2Link,
+                                           'alt' => $button2Text,
+                                           'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                           'class' => 'rounded-lg',
+                                           'target' => $button2Target,
+                                       ])
+                                    </div>
+                                @endif
+                                @if($closeModalButton)
+                                    <div class="flex items-center">
+                                        <div class="btn btn-primary btn-filled rounded-lg theme-modal-close cursor-pointer">Sluiten</div>
+                                    </div>
                                 @endif
                             </div>
                         @endif
@@ -95,12 +108,6 @@
                     </div>
                 @endif
             </div>
-
-            @if($closeModalButton)
-                <div class="flex justify-end">
-                    <div class=" mt-4 btn btn-primary btn-filled rounded-lg theme-modal-close cursor-pointer">Sluiten</div>
-                </div>
-            @endif
         </div>
 
     </div>
