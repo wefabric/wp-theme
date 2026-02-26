@@ -483,8 +483,25 @@
                     "selected": 0
                 },
                 {
+                    "key": "field_65b26d5499cca",
+                    "label": "Achtergrond kleur",
+                    "name": "background_color",
+                    "aria-label": "",
+                    "type": "Thema Kleur",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "theme_color": null,
+                    "font_size": 14
+                },
+                {
                     "key": "field_69a027bebc958",
-                    "label": "Modal layout",
+                    "label": "Modal positie",
                     "name": "modal_layout",
                     "aria-label": "",
                     "type": "select",
@@ -510,23 +527,6 @@
                     "placeholder": "",
                     "create_options": 0,
                     "save_options": 0
-                },
-                {
-                    "key": "field_65b26d5499cca",
-                    "label": "Achtergrond kleur",
-                    "name": "background_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": null,
-                    "font_size": 14
                 },
                 {
                     "key": "field_69a02f769a656",
@@ -579,5 +579,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1772105685
+    "modified": 1772106797
 }
