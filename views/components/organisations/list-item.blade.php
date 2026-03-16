@@ -11,15 +11,10 @@
   $organisationLink2Title = $fields['link2']['title'] ?? '';
   $organisationLink2Url = $fields['link2']['url'] ?? '';
   $organisationLink2Target = $fields['link2']['target'] ?? '';
-
-
-//     $button1Text = $block['data']['button_button_1']['title'] ?? '';
-//    $button1Link = $block['data']['button_button_1']['url'] ?? '';
-//    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
 @endphp
 
-<div class="organisation-item group rounded-{{ $borderRadius }}">
-    <div class="h-full @if($organisationUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif"">
+<div class="organisation-item group rounded-{{ $borderRadius }} @if ($flyinEffect) organisation-hidden @endif">
+    <div class="h-full @if($organisationUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
         <div class="overflow-hidden w-full relative p-4 md:p-6 bg-{{ $organisationBackgroundColor }} rounded-{{ $borderRadius }}">
             @if ($organisationLink2Url)
                 <a href="{{ $organisationLink2Url }}" target="_blank" aria-label="Ga naar {{ $organisationLink2Title }}"
