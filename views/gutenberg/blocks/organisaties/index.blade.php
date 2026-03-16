@@ -43,12 +43,13 @@
     $textClass = $textClassMap[$textPosition] ?? '';
 
 
- // Organisations
- $displayType = $block['data']['display_type'];
+    // Organisations
+    $displayType = $block['data']['display_type'];
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
- $organisationBackgroundColor = $block['data']['organisation_background_color'] ?? '';
- $organisationTitleColor = $block['data']['organisation_title_color'] ?? '';
- $organisationTextColor = $block['data']['organisation_text_color'] ?? '';
+    $organisationBackgroundColor = $block['data']['organisation_background_color'] ?? '';
+    $organisationTitleColor = $block['data']['organisation_title_color'] ?? '';
+    $organisationTextColor = $block['data']['organisation_text_color'] ?? '';
 
 
  // Show all
