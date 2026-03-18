@@ -17,8 +17,9 @@
         <div class="pagination text-center mt-12 lg:mt-24">
             @php
                 the_posts_pagination( [
-                    'mid_size'  => 1,
-                    'prev_next' => false,
+                    'mid_size'           => 1,
+                    'prev_next'          => false,
+                    'screen_reader_text' => '',
 //						'prev_text' => __( '<', 'textdomain' ),
 //						'next_text' => __( '>', 'textdomain' ),
                 ]);

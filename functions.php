@@ -104,6 +104,16 @@ $theme->images($theme->config('images'));
 */
 $theme->menus($theme->config('menus'));
 
+/**
+ * Remove the screen reader text from the pagination.
+ */
+add_filter('navigation_markup_template', function($template) {
+    return '
+	<nav class="navigation %1$s" aria-label="%4$s">
+		<div class="nav-links">%3$s</div>
+	</nav>';
+}, 10);
+
 /*
 |--------------------------------------------------------------------------
 | Theme Sidebars
