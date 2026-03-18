@@ -663,7 +663,6 @@
                 "testimonials": "Testimonial",
                 "vacatures": "Vacature",
                 "werknemers": "Werknemer",
-                "wf_layouts": "Layout",
                 "post": "Bericht",
                 "page": "Pagina"
             },
@@ -740,6 +739,7 @@
             },
             "choices": {
                 "Bericht - Categorie": {
+                    "18": "Events",
                     "1": "Nieuws"
                 },
                 "Assortiment - Assortiment categorie": {
@@ -751,12 +751,14 @@
                     "8": "Varken"
                 },
                 "Klantcase - Categorie": {
+                    "18": "Events",
                     "1": "Nieuws"
                 },
                 "Product - Product categorie": {
                     "15": "Gevogelte",
                     "13": "Kalf",
                     "14": "Kip",
+                    "17": "Lamsvlees",
                     "12": "Rund",
                     "16": "Specials",
                     "11": "Varken"
@@ -1128,6 +1130,27 @@
             "toggle": 0,
             "save_custom": 0,
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
+        },
+        {
+            "key": "field_69ba8a49af5ec",
+            "label": "Doorlinken naar pagina?",
+            "name": "link_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
             "key": "field_6527ab5c852ba",
@@ -2915,5 +2938,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1770298693
+    "modified": 1773832818
 }

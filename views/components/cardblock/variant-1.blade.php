@@ -7,8 +7,12 @@
         @else >
         @endif
 
+        @if($linkEnabled)
         <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
            class="card-overlay left-0 top-0 absolute h-full w-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
+        @else
+        <div class="card-overlay left-0 top-0 absolute h-full w-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></div>
+        @endif
 
         @if (!empty($visibleElements) && in_array('category', $visibleElements))
             @if (!empty($terms) && is_array($terms) && !is_bool($terms))
@@ -32,9 +36,15 @@
 
         <div class="content-wrapper w-full flex flex-col items-center gap-y-4">
             @if ($pageIcon)
+                @if($linkEnabled)
                 <a class="page-icon" href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina">
                     <i class="text-{{ $cardIconColor }} page-icon relative z-20 text-[32px] md:text-[40px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-white transition-all duration-300 ease-in-out"></i>
                 </a>
+                @else
+                <div class="page-icon">
+                    <i class="text-{{ $cardIconColor }} page-icon relative z-20 text-[32px] md:text-[40px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-white transition-all duration-300 ease-in-out"></i>
+                </div>
+                @endif
             @endif
 
             @if (($cardVisual == 'image' && $imageId) && ($imageView == 'normal_image') || ($cardVisual == 'featured_image' && $featuredImageId) && ($imageView == 'normal_image'))
@@ -49,10 +59,16 @@
 
 
             @if (is_array($visibleElements) && !empty($visibleElements) && in_array('title_text', $visibleElements) && $pageTitle)
+                @if($linkEnabled)
                 <a href="{{ $pageUrl }} " aria-label="Ga naar {{ $pageTitle }} pagina"
                    class="page-title h4 text-{{ $cardTitleColor }} relative z-20 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
                     {!! !empty($customPageTitle) ? $customPageTitle : $pageTitle !!}
                 </a>
+                @else
+                <div class="page-title h4 text-{{ $cardTitleColor }} relative z-20 font-bold group-hover:text-white transition-all duration-300 ease-in-out">
+                    {!! !empty($customPageTitle) ? $customPageTitle : $pageTitle !!}
+                </div>
+                @endif
             @endif
             @if (is_array($visibleElements) && !empty($visibleElements) && in_array('overview_text', $visibleElements) && $pageExcerpt)
                 <p class="text-{{ $cardTextColor }} page-excerpt relative z-20 group-hover:text-white transition-all duration-300 ease-in-out">{!! $pageExcerpt !!}</p>
@@ -62,7 +78,7 @@
                     <div class="page-button relative z-20 flex items-center">
                         @include('components.buttons.default', [
                             'text' => $buttonCardText,
-                            'href' => $pageUrl,
+                            'href' => $linkEnabled ? $pageUrl : '',
                             'alt' => $buttonCardText,
                             'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
                             'class' => 'rounded-lg',

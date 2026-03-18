@@ -287,7 +287,6 @@
         'none' => ''
     ];
     $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
-
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 

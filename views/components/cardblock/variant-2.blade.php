@@ -24,8 +24,12 @@
                 @endif
 
                 @if ($cardVisual == 'featured_image' && $featuredImageId)
+                    @if($linkEnabled)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                        class="card-overlay absolute left-0 top-0 w-full h-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out"></a>
+                    @else
+                    <div class="card-overlay absolute left-0 top-0 w-full h-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out"></div>
+                    @endif
 
                     @include('components.image', [
                      'image_id' => $featuredImageId,
@@ -35,16 +39,30 @@
                      'alt' => $pageTitle
                   ])
                 @elseif ($cardVisual == 'icon' && $pageIcon)
+                    @if($linkEnabled)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                        class="absolute left-0 top-0 w-full h-full"></a>
+                    @else
+                    <div class="absolute left-0 top-0 w-full h-full"></div>
+                    @endif
                     <div class="h-full flex justify-center items-center">
+                        @if($linkEnabled)
                         <a class="page-icon" href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina">
                             <i class="text-{{ $cardIconColor }} relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
                         </a>
+                        @else
+                        <div class="page-icon">
+                            <i class="text-{{ $cardIconColor }} relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
+                        </div>
+                        @endif
                     </div>
                 @elseif ($cardVisual == 'image' && $imageId)
+                    @if($linkEnabled)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                        class="card-overlay absolute left-0 w-full h-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out"></a>
+                    @else
+                    <div class="card-overlay absolute left-0 w-full h-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out"></div>
+                    @endif
                     @include('components.image', [
                        'image_id' => $imageId,
                        'size' => 'full',
@@ -61,10 +79,16 @@
              in_array('button', $visibleElements)))
             <div class="content-box h-full flex flex-col gap-y-4 p-6 xl:p-8">
                 @if (in_array('title_text', $visibleElements) && $pageTitle)
+                    @if($linkEnabled)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
                        class="card-title h3 text-{{ $cardTitleColor }} relative z-20 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
                         {!! !empty($customPageTitle) ? $customPageTitle : $pageTitle !!}
                     </a>
+                    @else
+                    <div class="card-title h3 text-{{ $cardTitleColor }} relative z-20 font-bold group-hover:text-primary transition-all duration-300 ease-in-out">
+                        {!! !empty($customPageTitle) ? $customPageTitle : $pageTitle !!}
+                    </div>
+                    @endif
                 @endif
                 @if (in_array('overview_text', $visibleElements) && $pageExcerpt)
                     <p class="card-excerpt text-{{ $cardTextColor }}">{{ $pageExcerpt }}</p>
@@ -74,7 +98,7 @@
                         <div class="button-container mt-auto z-10">
                             @include('components.buttons.default', [
                                 'text' => $buttonCardText,
-                                'href' => $pageUrl,
+                                'href' => $linkEnabled ? $pageUrl : '',
                                 'alt' => $buttonCardText,
                                 'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
                                 'class' => 'rounded-lg',

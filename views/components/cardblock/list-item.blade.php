@@ -30,6 +30,7 @@
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
     $imageView = $block['data']['image_view'] ?? 'background_image';
+    $linkEnabled = $block['data']['link_enabled'] ?? true;
 @endphp
 
 {{--Variant 1 is content in kaart--}}
