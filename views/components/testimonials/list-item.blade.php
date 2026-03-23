@@ -108,9 +108,7 @@
             @endif
 
             @if (!empty($visibleElements) && in_array('testimonial_text', $visibleElements) && $testimonialText)
-                <div>
-                    @include('components.content', ['content' => apply_filters('the_content', $testimonialText), 'class' => 'testimonial-text md:mb-6 order-4 md:order-3'])
-                </div>
+                @include('components.content', ['content' => apply_filters('the_content', $testimonialText), 'class' => 'testimonial-text md:mb-6 order-4 md:order-3'])
             @endif
 
             <div class="avatar-section flex flex-col md:flex-row items-center gap-x-4 md:gap-x-6 gap-y-4 mb-4 md:mb-0 order-1 md:order-4 text-center md:text-left">
