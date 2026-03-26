@@ -32,6 +32,8 @@
         }
     }
 
+    $baseSalary = $fields['salary'] ?? '';
+
     $vacancySchema = [
         '@type' => 'JobPosting',
         'title' => strip_tags($vacancyTitle),
@@ -40,7 +42,7 @@
         'hiringOrganization' => [
             '@type' => 'Organization',
             'name' => get_bloginfo('name'),
-            'logo' => get_site_icon_url(),
+            'logo' => str_replace('//content', '/content', get_site_icon_url()),
         ],
     ];
 
@@ -59,23 +61,46 @@
     }
 
     if ($vacancyThumbnailID) {
-        $vacancySchema['image'] = wp_get_attachment_image_url($vacancyThumbnailID, 'job-thumbnail');
+        $vacancySchema['image'] = str_replace('//content', '/content', wp_get_attachment_image_url($vacancyThumbnailID, 'job-thumbnail'));
     }
 
-    if (!empty($fields['salary'])) {
+    if (!empty($baseSalary)) {
         $vacancySchema['baseSalary'] = [
             '@type' => 'MonetaryAmount',
-            'currency' => 'EUR', // Fallback or detect
+            'currency' => 'EUR',
             'value' => [
                 '@type' => 'QuantitativeValue',
-                'value' => $fields['salary'],
-                'unitText' => 'MONTH' // Fallback
+                'unitText' => 'MONTH'
             ]
         ];
+
+        if (str_contains($baseSalary, '-')) {
+            $salaryParts = explode('-', $baseSalary);
+            $minValue = (int) preg_replace('/[^0-9]/', '', $salaryParts[0]);
+            $maxValue = (int) preg_replace('/[^0-9]/', '', $salaryParts[1]);
+
+            if ($minValue > 0 && $maxValue > 0) {
+                $vacancySchema['baseSalary']['value']['minValue'] = $minValue;
+                $vacancySchema['baseSalary']['value']['maxValue'] = $maxValue;
+                $vacancySchema['baseSalary']['value']['value'] = $minValue; // Fallback to minValue
+            } else {
+                $vacancySchema['baseSalary']['value']['value'] = $baseSalary;
+            }
+        } else {
+            $salaryValue = (int) preg_replace('/[^0-9]/', '', $baseSalary);
+            if ($salaryValue > 0) {
+                $vacancySchema['baseSalary']['value']['value'] = $salaryValue;
+            } else {
+                $vacancySchema['baseSalary']['value']['value'] = $baseSalary;
+            }
+        }
+    }
+
+    if (is_singular('vacatures') && get_the_ID() === $vacancy) {
+        $vacancySchema['directApply'] = true;
     }
 
     \Wefabric\WPSupport\Schema\JsonLd::addSchema('vacancy_' . $vacancy, $vacancySchema);
-
 @endphp
 
 <div class="vacature-item group h-full @if ($flyinEffect) vacancy-hidden @endif">
@@ -134,10 +159,10 @@
                     </div>
                 @endif
 
-                @if (!empty($visibleElements) && in_array('salary', $visibleElements) && !empty($fields['salary']))
+                @if (!empty($visibleElements) && in_array('salary', $visibleElements) && !empty($baseSalary))
                     <div class="vacature-salary flex items-center">
                         <i class="w-4 fas fa-money-bill-simple-wave mr-3"></i>
-                        <span>{{ $fields['salary'] }}</span>
+                        <span>{{ $baseSalary }}</span>
                     </div>
                 @endif
 
