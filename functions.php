@@ -671,6 +671,54 @@ function acf_load_cardblock_categories($field) {
 }
 
 /**
+ * Change Open Graph type to 'website' for all pages except single news posts
+ * and specifically set Open Graph types (like jobPosting).
+ */
+function force_og_type_website($type) {
+    // Behoud 'article' voor individuele nieuwsberichten.
+    if (is_singular('post')) {
+        return 'article';
+    }
+
+    // Als het type al iets anders is dan 'article', dan is dit waarschijnlijk 
+    // specifiek ingesteld door Rank Math (zoals 'product' of 'profile') en behouden we dit.
+    if ($type !== 'article') {
+        return $type;
+    }
+
+    // Controleer of de huidige post een specifiek Schema Type heeft ingesteld in Rank Math.
+    // Dit is nodig omdat Rank Math's og:type standaard op 'article' staat voor CPT's,
+    // zelfs als er een specifiek Schema (zoals JobPosting) is gekoppeld.
+    if (is_singular() && class_exists('\RankMath\Helper')) {
+        $post_id = get_the_ID();
+        $schema_type = \RankMath\Helper::get_default_schema_type($post_id);
+        
+        if ($schema_type && !in_array(strtolower($schema_type), ['article', 'blogposting', 'newsarticle'], true)) {
+            return strtolower($schema_type);
+        }
+
+        // Check ook handmatig ingestelde schemas
+        if (class_exists('\RankMath\Schema\DB')) {
+            $schemas = \RankMath\Schema\DB::get_schemas($post_id);
+            if (!empty($schemas)) {
+                foreach ($schemas as $schema) {
+                    if (isset($schema['@type']) && !in_array(strtolower($schema['@type']), ['article', 'blogposting', 'newsarticle'], true)) {
+                        return strtolower($schema['@type']);
+                    }
+                }
+            }
+        }
+    }
+
+    // Voor alle overige gevallen die Rank Math standaard op 'article' zet (pagina's, CPT's zonder specifiek ingesteld type),
+    // forceren we 'website'.
+    return 'website';
+}
+add_filter('rank_math/opengraph/type', 'force_og_type_website', 999);
+add_filter('rank_math/opengraph/facebook/type', 'force_og_type_website', 999);
+add_filter('rank_math/opengraph/facebook/og_type', 'force_og_type_website', 999);
+
+/**
  * Custom translation file located in htdocs/content/languages
  */
 
