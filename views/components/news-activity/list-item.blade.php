@@ -34,6 +34,52 @@
             });
         }
     }
+
+    // Structured data
+    if (!empty($fields) && !empty($fields['activity'])) {
+        $postId = is_numeric($post) ? (int)$post : ($post->ID ?? 0);
+        $eventSchema = [
+            '@type' => 'Event',
+            'name' => strip_tags($postTitle),
+            'description' => strip_tags($postSummary),
+            'url' => $postUrl,
+            'eventStatus' => 'https://schema.org/EventScheduled',
+            'eventAttendanceMode' => 'https://schema.org/OfflineEventAttendanceMode',
+            'organizer' => [
+                '@type' => 'Organization',
+                'name' => get_bloginfo('name'),
+                'url' => get_home_url(),
+            ],
+        ];
+
+        if ($postThumbnailId) {
+            $eventSchema['image'] = wp_get_attachment_image_url($postThumbnailId, 'full');
+        }
+
+        if (!empty($fields['location'])) {
+            $eventSchema['location'] = [
+                '@type' => 'Place',
+                'name' => $fields['location'],
+                'address' => $fields['location'],
+            ];
+        }
+
+        if (!empty($fields['dates'])) {
+            $firstDate = $fields['dates'][0];
+            $startDate = DateTime::createFromFormat('d/m/Y H:i', $firstDate['date'] . ' ' . ($firstDate['start_time'] ?: '00:00'));
+            if ($startDate) {
+                $eventSchema['startDate'] = $startDate->format('c');
+            }
+
+            if (!empty($firstDate['end_time'])) {
+                $endDate = DateTime::createFromFormat('d/m/Y H:i', $firstDate['date'] . ' ' . $firstDate['end_time']);
+                if ($endDate) {
+                    $eventSchema['endDate'] = $endDate->format('c');
+                }
+            }
+        }
+        \Wefabric\WPSupport\Schema\JsonLd::addSchema('activity_news_' . $postId, $eventSchema);
+    }
 @endphp
 
 <div class="nieuws-item group h-full">
