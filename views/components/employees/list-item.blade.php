@@ -7,7 +7,6 @@
     $imageId = $fields['image'] ?? '';
     $hoverImageId = $fields['hover_image'] ?? '';
 
-
     $visibleElements = $block['data']['show_element'] ?? [];
     $function = $fields['function'] ?? '';
     $overviewText = $fields['overview_text'] ?? '';
@@ -32,32 +31,49 @@
         $linkUrl = null;
     }
 
-    $employeeSchema = [
+    $personSchema = [
         '@type' => 'Person',
         'name' => strip_tags($fullName),
     ];
     if ($function) {
-        $employeeSchema['jobTitle'] = strip_tags($function);
+        $personSchema['jobTitle'] = strip_tags($function);
     }
     if ($overviewText) {
-        $employeeSchema['description'] = strip_tags($overviewText);
+        $personSchema['description'] = strip_tags($overviewText);
     }
     if ($imageId) {
-        $employeeSchema['image'] = wp_get_attachment_image_url($imageId, 'full');
+        $personSchema['image'] = wp_get_attachment_image_url($imageId, 'full');
     }
     if ($mail) {
-        $employeeSchema['email'] = $mail;
+        $personSchema['email'] = $mail;
     }
     if ($phoneNumber) {
-        $employeeSchema['telephone'] = $phoneNumber;
+        $personSchema['telephone'] = $phoneNumber;
     }
     if ($linkUrl) {
-        $employeeSchema['url'] = $linkUrl;
+        $personSchema['url'] = $linkUrl;
     }
     if (!empty($socials)) {
-        $employeeSchema['sameAs'] = array_column($socials, 'url');
+        $personSchema['sameAs'] = array_column($socials, 'url');
     }
-    \Wefabric\WPSupport\Schema\JsonLd::addSchema('employee_' . $employee, $employeeSchema);
+
+    $personSchema['worksFor'] = [
+        '@type' => 'Organization',
+        'name' => get_bloginfo('name')
+    ];
+
+    $employeeId = is_numeric($employee) ? (int)$employee : ($employee->ID ?? 0);
+
+    if (is_singular('werknemers') && get_the_ID() === $employeeId) {
+        $employeeSchema = [
+            '@type' => 'ProfilePage',
+            'mainEntity' => $personSchema
+        ];
+    } else {
+        $employeeSchema = $personSchema;
+    }
+
+    \Wefabric\WPSupport\Schema\JsonLd::addSchema('employee_' . $employeeId, $employeeSchema);
 
 @endphp
 
