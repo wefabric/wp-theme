@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Theme\Views\Blocks\ContactBlock;
 use Theme\Views\Blocks\FormBlock;
 use Theme\Views\Blocks\GoogleMapsBlock;
+use Theme\Views\Blocks\HeaderBlock;
 use Theme\Views\Blocks\ImageBlock;
 use Theme\Views\Blocks\TextBlock;
 use Theme\Views\Blocks\TextImageBlock;
@@ -39,6 +40,7 @@ class ThemeServiceProvider extends ServiceProvider
         Blade::component('wefabric:form-block', FormBlock::class);
         Blade::component('wefabric:google-maps-block', GoogleMapsBlock::class);
         Blade::component('wefabric:content', Content::class);
+        Blade::component('wefabric:header-block', HeaderBlock::class);
     }
 
     public function register()
