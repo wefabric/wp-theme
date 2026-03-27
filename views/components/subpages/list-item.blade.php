@@ -35,9 +35,13 @@
                             @php
                                 $categoryColor = get_field('category_color', $category);
                                 $categoryIcon = get_field('category_icon', $category);
+                                $categoryImage = get_field('category_image', $category);
                             @endphp
                             <div style="background-color: {{ $categoryColor }}" class="subpage-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1">
-                                {!! $categoryIcon !!} {!! $category->name !!}
+                                @if($categoryImage)
+                                    <img src="{{ wp_get_attachment_image_url($categoryImage, 'thumbnail') }}" alt="{{ $category->name }}" class="w-5 h-5 object-contain">
+                                @endif
+                                {!! $categoryIcon !!} <span>{!! $category->name !!}</span>
                             </div>
                         @endforeach
                     </div>

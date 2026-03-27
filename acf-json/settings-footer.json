@@ -331,6 +331,8 @@
                         "establishment_name": "Naam van vestiging",
                         "establishment_address": "Adres van vestiging",
                         "establishment_country": "Land van vestiging",
+                        "establishment_vat_number": "BTW nummer van vestiging",
+                        "establishment_coc_number": "KvK nummer van vestiging",
                         "establishment_phone": "Telefoonnummer van vestiging",
                         "establishment_mail": "E-mailadres van vestiging",
                         "establishment_route": "Routebeschrijving van vestiging",
@@ -1101,5 +1103,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1757930455
+    "modified": 1768380101
 }

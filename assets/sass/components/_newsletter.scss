@@ -1,0 +1,43 @@
+footer form .gfield--type-submit {
+  @apply bg-cta;
+  position: relative;
+  width: 46px;
+  height: 46px;
+  transition: all .2s ease-in-out;
+
+  &:after {
+    content: '\f1d8';
+    font-family: 'Font Awesome 6 Pro';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: white;
+    transition: all .2s ease-in-out;
+    transform-origin: center;
+    pointer-events: none !important;
+  }
+
+  &:hover {
+    @apply bg-cta #{!important};
+
+    &:after {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  }
+
+  input[type='submit'] {
+    background-color: transparent !important;
+    color: transparent !important;
+    border: none !important;
+    margin-left: 0 !important;
+    width: 46px;
+    height: 46px;
+
+    &:hover {
+      background-color: transparent !important;
+      color: transparent !important;
+    }
+  }
+}

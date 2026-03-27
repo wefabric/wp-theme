@@ -28,6 +28,61 @@
     } else {
         $fields['dates'] = [];
     }
+
+    // Structured data
+    $activityId = is_numeric($activity) ? (int)$activity : ($activity->ID ?? 0);
+    $eventSchema = [
+        '@type' => 'Event',
+        'name' => strip_tags($activityTitle),
+        'description' => strip_tags($activitySummary),
+        'url' => $activityUrl,
+        'eventStatus' => 'https://schema.org/EventScheduled',
+        'eventAttendanceMode' => 'https://schema.org/OfflineEventAttendanceMode',
+        'organizer' => [
+            '@type' => 'Organization',
+            'name' => get_bloginfo('name'),
+            'url' => get_home_url(),
+        ],
+    ];
+
+    if ($activityThumbnailID) {
+        $eventSchema['image'] = wp_get_attachment_image_url($activityThumbnailID, 'full');
+    }
+
+    if (!empty($fields['location'])) {
+        $eventSchema['location'] = [
+            '@type' => 'Place',
+            'name' => $fields['location'],
+            'address' => $fields['location'],
+        ];
+    }
+
+    if (!empty($fields['dates'])) {
+        $firstDate = $fields['dates'][0];
+        $startDate = DateTime::createFromFormat('d/m/Y H:i', $firstDate['date'] . ' ' . ($firstDate['start_time'] ?: '00:00'));
+        if ($startDate) {
+            $eventSchema['startDate'] = $startDate->format('c');
+        }
+
+        if (!empty($firstDate['end_time'])) {
+            $endDate = DateTime::createFromFormat('d/m/Y H:i', $firstDate['date'] . ' ' . $firstDate['end_time']);
+            if ($endDate) {
+                $eventSchema['endDate'] = $endDate->format('c');
+            }
+        }
+    }
+
+    if (!empty($fields['costs'])) {
+        $eventSchema['offers'] = [
+            '@type' => 'Offer',
+            'price' => $fields['costs'],
+            'priceCurrency' => 'EUR',
+            'url' => $activityUrl,
+            'availability' => ($fields['activity_full'] ?? false) ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock'
+        ];
+    }
+
+    \Wefabric\WPSupport\Schema\JsonLd::addSchema('activity_' . $activityId, $eventSchema);
 @endphp
 
 <div class="activiteit-item group h-full @if ($flyinEffect) activity-hidden @endif">
@@ -41,7 +96,7 @@
                 @if ($fields['activity_full'])
                     <a href="{{ $activityUrl }}" aria-label="Ga naar {{ $activityTitle }}"
                        class="absolute w-full h-full bg-white z-10 opacity-70 transition-opacity">
-                        <span clas="sr-only">Ga naar {{ $activityTitle }}</span>
+                        <span class="sr-only">Ga naar {{ $activityTitle }}</span>
                     </a>
                 @endif
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
@@ -104,6 +159,13 @@
                             @endif
                             <br>
                         @endforeach
+                    </p>
+                @endif
+
+                @if (!empty($visibleElements) && in_array('costs', $visibleElements) && !empty($fields['costs']))
+                    <p class="flex items-baseline leading-[1.5]">
+                        <i class="w-4 fas fa-euro-sign mr-3 inline flex-shrink-0"></i>
+                        {{ $fields['costs'] }}
                     </p>
                 @endif
             </div>

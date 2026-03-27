@@ -18,7 +18,10 @@
             },
             "default_value": "",
             "enable_opacity": 0,
-            "return_format": "string"
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
         },
         {
             "key": "field_6720dbfa8e300",
@@ -53,6 +56,32 @@
             "allow_in_bindings": 0,
             "fa_live_preview": "",
             "choices": []
+        },
+        {
+            "key": "field_6984afa7e46ef",
+            "label": "Categorie afbeelding",
+            "name": "category_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
         },
         {
             "key": "field_68907f5afebb6",
@@ -94,5 +123,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1754300305
+    "display_title": "",
+    "modified": 1770303423
 }

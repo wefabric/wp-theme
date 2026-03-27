@@ -124,6 +124,8 @@
                                     $phone = $establishment->getContactPhone();
                                     $email = $establishment->getEmailAddress();
                                     $country_id = $establishment->getAddress()->country_id;
+                                    $cocNumber = get_post_meta($establishment_id, 'coc_number', true);
+                                    $vatNumber = get_post_meta($establishment_id, 'vat_number', true);
                                     if($country_id) {
                                         $countryNames = [
                                             'NL' => 'The Netherlands',
@@ -131,6 +133,52 @@
                                         ];
                                         $countryName = isset($countryNames[$country_id]) ? $countryNames[$country_id] : $country_id;
                                     }
+
+                                    $establishmentSchema = [
+                                        '@type' => 'LocalBusiness',
+                                        'name' => $establishment_title,
+                                        'image' => get_site_icon_url(),
+                                        'address' => [
+                                            '@type' => 'PostalAddress',
+                                            'streetAddress' => trim($street . ' ' . $house_number . ' ' . $house_number_addition),
+                                            'addressLocality' => $city,
+                                            'postalCode' => $postcode,
+                                            'addressCountry' => $country_id ?: 'NL',
+                                        ],
+                                    ];
+
+                                    if ($phone) {
+                                        $establishmentSchema['telephone'] = $phone->international();
+                                    }
+                                    if ($email) {
+                                        $establishmentSchema['email'] = $email;
+                                    }
+
+                                    $openingHours = $establishment->openingHours();
+                                    if ($openingHours->isNotEmpty()) {
+                                        $establishmentSchema['openingHoursSpecification'] = [];
+                                        foreach ($openingHours as $hour) {
+                                            if ($hour->isClosed()) continue;
+                                            
+                                            $spec = [
+                                                '@type' => 'OpeningHoursSpecification',
+                                                'dayOfWeek' => $hour->day,
+                                                'opens' => $hour->openingHour,
+                                                'closes' => $hour->closingHour,
+                                            ];
+                                            $establishmentSchema['openingHoursSpecification'][] = $spec;
+
+                                            if (!empty($hour->openingHour2) && !empty($hour->closingHour2)) {
+                                                $establishmentSchema['openingHoursSpecification'][] = [
+                                                    '@type' => 'OpeningHoursSpecification',
+                                                    'dayOfWeek' => $hour->day,
+                                                    'opens' => $hour->openingHour2,
+                                                    'closes' => $hour->closingHour2,
+                                                ];
+                                            }
+                                        }
+                                    }
+                                    \Wefabric\WPSupport\Schema\JsonLd::addSchema('establishment_' . $establishment_id, $establishmentSchema);
                                 @endphp
 
                                 <div class="establishment flex flex-col gap-y-6 text-{{ $textColor }}">
@@ -151,18 +199,24 @@
                                                 <div class="establishment-country">{{ $countryName }}</div>
                                             @endif
 
-                                            {{-- @if (!empty($visibleElements) && in_array('establishment_vat_number', $visibleElements) && $vatNumber)--}}
-                                            {{--    <div class="establishment-vat">{{ $vatNumber }}</div>--}}
-                                            {{-- @endif--}}
+                                             @if (!empty($visibleElements) && in_array('establishment_vat_number', $visibleElements) && $vatNumber)
+                                                <div class="establishment-vat mt-2">BTW nummer: {{ $vatNumber }}</div>
+                                             @endif
 
-                                            {{-- @if (!empty($visibleElements) && in_array('establishment_btw_number', $visibleElements) && $btwNumber)--}}
-                                            {{--    <div class="establishment-btw">{{ $vatNumber }}</div>--}}
-                                            {{-- @endif--}}
+                                             @if (!empty($visibleElements) && in_array('establishment_coc_number', $visibleElements) && $cocNumber)
+                                                <div class="establishment-coc">KvK: {{ $cocNumber }}</div>
+                                             @endif
                                         </div>
                                     @endif
 
                                     {{-- Contactgegevens --}}
-                                    @if (!empty($visibleElements) && array_intersect(['establishment_phone', 'establishment_mail', 'establishment_route'], $visibleElements) && ($phone || $mail || $route))
+                                    @if (!empty($visibleElements) &&
+                                        (
+                                            (in_array('establishment_phone', $visibleElements) && $phone) ||
+                                            (in_array('establishment_mail', $visibleElements) && $email) ||
+                                            in_array('establishment_route', $visibleElements)
+                                        )
+                                    )
                                         <div class="contact-info">
                                             <div class="contact-text font-bold mb-2">Contact</div>
                                             <div class="flex-layout flex flex-col gap-y-2">
@@ -215,7 +269,7 @@
 
 
                                     {{-- Openingstijden --}}
-                                    @if (!empty($visibleElements) && in_array('establishment_opening_hours', $visibleElements))
+                                    @if (!empty($visibleElements) && in_array('establishment_opening_hours', $visibleElements) && $establishment->openingHours()->isNotEmpty())
                                         <div class="opening-hours-section">
                                             <div class="opening-hours-text font-bold mb-2">Openingstijden</div>
                                             <div class="flex flex-col">

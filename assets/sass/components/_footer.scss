@@ -96,7 +96,7 @@
     .accordion-drawer__trigger:checked
     + .accordion-drawer__title
     + .accordion-drawer__content-wrapper {
-      max-height: 450px;
+      max-height: 600px;
     }
 
     .accordion-drawer__trigger:checked + .accordion-drawer__title::after {

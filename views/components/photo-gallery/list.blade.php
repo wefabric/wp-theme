@@ -1,9 +1,11 @@
 @php
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
     $swiperAutoplaySpeed = max((int)($block['data']['autoplay_speed'] ?? 0) * 1000, 5000);
-    $randomNumber = rand(0, 1000);
-    $swiperTopRandomId = 'photoGallerySwiper-' . $randomNumber;
-    $swiperThumbsRandomId = 'photoGallerySwiperThumbs-' . $randomNumber;
+    // Use a deterministic unique identifier per block instance to avoid collisions when multiple galleries are on the same page
+    $galleryUnique = $block['id'] ?? uniqid('pg-');
+    $randomNumber = $galleryUnique; // keep backward compatibility for existing class references
+    $swiperTopRandomId = 'photoGallerySwiper-' . $galleryUnique;
+    $swiperThumbsRandomId = 'photoGallerySwiperThumbs-' . $galleryUnique;
 
     $dynamicImageCount = $block['data']['dynamic_image_count'] ?? false;
 
@@ -73,39 +75,14 @@
 
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
-        // Top Slider
-        var topSwiper = new Swiper(".{{ $swiperTopRandomId }}", {
-            spaceBetween: {{ $spaceBetween }},
-            slidesPerView: 1,
-            loopedSlides: 1,
-            @if ($swiperAutoplay)
-            autoplay: {
-                delay: {{ $swiperAutoplaySpeed }},
-                disableOnInteraction: true,
-            },
-            @endif
-
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".photogallery-button-next-{{ $randomNumber }}",
-                prevEl: ".photogallery-button-prev-{{ $randomNumber }}",
-            },
-            thumbs: {
-                swiper: {
-                    el: ".{{ $swiperThumbsRandomId }}",
-                    slidesPerView: 5,
-                    spaceBetween: 10,
-                },
-            },
-        });
-
-        // Thumbs Slider
+        // Thumbs Slider (init first to avoid double-initialization and ensure correct linkage)
         var thumbsSwiper = new Swiper(".{{ $swiperThumbsRandomId }}", {
             spaceBetween: {{ $spaceBetween }},
-
+            freeMode: true,
+            watchSlidesProgress: true,
+            slideToClickedSlide: true,
+            observer: true,
+            observeParents: true,
             breakpoints: {
                 0: {
                     loop: false,
@@ -122,9 +99,42 @@
             }
         });
 
-        // Link the two sliders
-        topSwiper.controller.control = thumbsSwiper;
-        thumbsSwiper.controller.control = topSwiper;
+        // Top Slider
+        var topSwiper = new Swiper(".{{ $swiperTopRandomId }}", {
+            spaceBetween: {{ $spaceBetween }},
+            slidesPerView: 1,
+            observer: true,
+            observeParents: true,
+            @if ($swiperAutoplay)
+            autoplay: {
+                delay: {{ $swiperAutoplaySpeed }},
+                disableOnInteraction: true,
+            },
+            @endif
+
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".photogallery-button-next-{{ $randomNumber }}",
+                prevEl: ".photogallery-button-prev-{{ $randomNumber }}",
+            },
+            thumbs: {
+                swiper: thumbsSwiper,
+            },
+        });
+
+        // Ensure initial sync of Top with current Thumb active index
+        if (typeof thumbsSwiper.activeIndex !== 'undefined') {
+            topSwiper.slideTo(thumbsSwiper.activeIndex, 0);
+        }
+        // Extra safety: react on click when slideToClickedSlide is not enough in some Swiper versions
+        thumbsSwiper.on('click', function(swiper){
+            if (typeof swiper.clickedIndex !== 'undefined' && swiper.clickedIndex !== null) {
+                topSwiper.slideTo(swiper.clickedIndex);
+            }
+        });
     });
 </script>
 

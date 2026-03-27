@@ -131,6 +131,22 @@
             @endif
 
             @if ($employee)
+                @php
+                    $bioSchema = [
+                        '@type' => 'Person',
+                        'name' => strip_tags($employeeFullName),
+                    ];
+                    if ($employeeFunction) {
+                        $bioSchema['jobTitle'] = strip_tags($employeeFunction);
+                    }
+                    if ($employeeBioText) {
+                        $bioSchema['description'] = strip_tags($employeeBioText);
+                    }
+                    if ($employeeImageId) {
+                        $bioSchema['image'] = wp_get_attachment_image_url($employeeImageId, 'full');
+                    }
+                    \Wefabric\WPSupport\Schema\JsonLd::addSchema('bio_' . $randomNumber, $bioSchema);
+                @endphp
                 <div class="bio-item bg-{{ $bioBackgroundColor }} rounded-{{ $borderRadius }}">
                     <div class="custom-styling px-4 py-8 sm:p-12">
                         @if ($bioTitle)
@@ -143,7 +159,7 @@
                                     'size' => 'full',
                                     'object_fit' => 'cover',
                                     'img_class' => 'aspect-square w-full h-full object-cover object-center' . $borderRadius,
-                                    'alt' => $employeeFullName,
+                                    'alt' => $employeeFullName
                                 ])
                             </div>
                             <div class="bio-content w-full lg:w-4/5 text-{{ $bioTextColor }}">

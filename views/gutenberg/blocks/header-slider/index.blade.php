@@ -2,13 +2,15 @@
     //    todo: Needs block update, breadcrumbs and parralax
 
     // Header style
-    $headerHeight = $block['data']['header_height'] ?? '';
-    $heightClasses = [
-        1 => 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]',
-        2 => 'h-[200px] md:h-[400px] 2xl:h-[500px]',
-        3 => 'h-[120px] md:h-[200px]',
-    ];
-    $headerClass = $heightClasses[$headerHeight] ?? '';
+   if ($headerStyle == 'fixed_height') {
+        $headerHeight = $block['data']['header_height'] ?? '';
+        $heightClasses = [
+            1 => 'h-[400px] sm:h-[500px] md:h-[500px] lg:h-[500px] xl:h-[500px] 2xl:h-[800px]',
+            2 => 'h-[200px] md:h-[400px] 2xl:h-[500px]',
+            3 => 'h-[120px] md:h-[200px]',
+        ];
+        $headerClass = $heightClasses[$headerHeight] ?? '';
+    }
 
     $headerNames = [
         1 => 'big-header',
@@ -21,6 +23,7 @@
     $title = !empty($block['data']['title']) ? $block['data']['title'] : get_the_title();
     $titleColor = $block['data']['title_color'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
     $showTitle = $block['data']['show_title'] ?? true;
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
@@ -91,6 +94,8 @@
         }
     }
 
+    $sliderDirection = $block['data']['slider_layout'] ?? 'vertical';
+
 
     // Breadcrumbs
     $breadcrumbsEnabled = $block['data']['show_breadcrumbs'] ?? false;
@@ -152,7 +157,8 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'header-slider' }}@endif" class="block-header-slider relative header-slider-{{ $randomNumber }}-custom-padding header-slider-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'header-slider' }}@endif"
+         class="block-header-slider relative header-slider-{{ $randomNumber }} header-slider-{{ $randomNumber }}-custom-padding header-slider-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} @if($headerStyle == 'fixed_height') fixed-header @elseif($headerStyle == 'scalable_height') scaled-header @endif {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
     <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
          style="background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
         @if ($backgroundVideoURL)
@@ -168,7 +174,7 @@
             <div class="header-info w-full lg:w-1/2 z-30 flex flex-col order-2 lg:order-1 {{ $textWidthClass }}">
                 @if ($showTitle)
                     @if ($subTitle)
-                        <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                        <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
                     @endif
                     <h1 class="title text-{{ $titleColor }}">{!! $title !!}</h1>
                 @endif
@@ -203,23 +209,78 @@
             </div>
 
             <div class="sliders order-1 lg:order-2 w-full lg:w-1/2">
-                <div class="horizontal-slider block lg:hidden gap-x-8">
-                    @include('components.header-slider.slider', ['images' => array_merge($imagesSlider1Data, $imagesSlider2Data), 'direction' => 'horizontal', 'sliderId' => 'headerHorizontalSwiper1'])
-                </div>
-                <div class="vertical-sliders hidden lg:flex gap-x-8">
-                    <div class="slider-1 @if($imagesSlider2Data) w-1/2 @endif h-full">
-                        @include('components.header-slider.slider', ['images' => $imagesSlider1Data, 'direction' => 'vertical', 'sliderId' => 'headerSwiper1'])
+                @if($sliderDirection === 'horizontal')
+                    <div class="horizontal-slider block gap-x-8">
+                        @include('components.header-slider.slider', ['images' => array_merge($imagesSlider1Data, $imagesSlider2Data), 'direction' => 'horizontal', 'sliderId' => 'headerHorizontalSwiper1'])
                     </div>
-                    @if($imagesSlider2Data)
-                        <div class="slider-2 w-1/2 h-full">
-                            @include('components.header-slider.slider', ['images' => $imagesSlider2Data, 'direction' => 'vertical', 'sliderId' => 'headerSwiper2', 'reverse' => true])
+                @else
+                    <div class="vertical-sliders flex gap-x-8">
+                        <div class="slider-1 @if($imagesSlider2Data) w-1/2 @endif h-full">
+                            @include('components.header-slider.slider', ['images' => $imagesSlider1Data, 'direction' => 'vertical', 'sliderId' => 'headerSwiper1'])
                         </div>
-                    @endif
-                </div>
+                        @if($imagesSlider2Data)
+                            <div class="slider-2 w-1/2 h-full">
+                                @include('components.header-slider.slider', ['images' => $imagesSlider2Data, 'direction' => 'vertical', 'sliderId' => 'headerSwiper2', 'reverse' => true])
+                            </div>
+                        @endif
+                    </div>
+                @endif
             </div>
 
         </div>
     </div>
+
+    @if($sliderDirection === 'horizontal')
+    <script>
+      (function(){
+        function setup() {
+          var root = document.querySelector('.header-slider-{{ $randomNumber }}');
+          if (!root) return;
+          var slider = root.querySelector('.horizontal-slider');
+          if (!slider) return;
+
+          function applyWidthAndUpdate() {
+            var isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+            if (!isDesktop) {
+              slider.style.width = '';
+            } else {
+              var rect = slider.getBoundingClientRect();
+              var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+              var newWidth = Math.max(0, Math.round(viewportWidth - rect.left));
+              slider.style.width = newWidth + 'px';
+            }
+            // If a Swiper instance exists inside, update after reflow
+            var swiperEl = slider.querySelector('.swiper');
+            if (swiperEl && swiperEl.swiper) {
+              requestAnimationFrame(function(){ swiperEl.swiper.update(); });
+            }
+          }
+
+          var scheduled = false;
+          function onResize() {
+            if (scheduled) return;
+            scheduled = true;
+            requestAnimationFrame(function() {
+              scheduled = false;
+              applyWidthAndUpdate();
+            });
+          }
+
+          // Initial sizing
+          applyWidthAndUpdate();
+          // Respond to changes
+          window.addEventListener('resize', onResize);
+          window.addEventListener('load', applyWidthAndUpdate);
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', setup);
+        } else {
+          setup();
+        }
+      })();
+    </script>
+    @endif
 </section>
 
 @if ($customBlockClasses) <div class="breadcrumbs-{{ $customBlockClasses }}"> @endif

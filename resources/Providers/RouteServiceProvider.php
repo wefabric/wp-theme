@@ -12,7 +12,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Theme\Controllers';
+    protected $namespace = 'Theme\Http\Controllers';
 
     public function boot()
     {

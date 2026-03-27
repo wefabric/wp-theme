@@ -98,7 +98,7 @@
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto flex flex-col lg:flex-row justify-center gap-x-16">
+        <div class="layout {{ $blockClass }} mx-auto flex flex-col lg:flex-row justify-center gap-x-16">
             <div class="text-section w-full order-2 {{ $textOrder }}">
                 @if ($text)
                     @include('components.content', [

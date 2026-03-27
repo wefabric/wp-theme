@@ -41,20 +41,93 @@
 
     // Video's
     $captionTextColor = $block['data']['caption_text_color'] ?? '';
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
     $videosData = [];
     $numVideos = intval($block['data']['videos']);
 
     for ($i = 0; $i < $numVideos; $i++) {
-       $videoKey = "videos_{$i}_video";
+       $embedKey = "videos_{$i}_video";
+       $linkKeyPrimary = "videos_{$i}_video_url_url";
+       $linkKeyFallback = "videos_{$i}_video_url";
+       $fileKey = "videos_{$i}_video_file";
        $captionKey = "videos_{$i}_caption";
 
-        $videoUrl = $block['data'][$videoKey] ?? '';
+        $videoUrl = '';
+        $videoType = '';
+
+        // 1) Prefer file if provided
+        $fileVal = $block['data'][$fileKey] ?? '';
+        if (!empty($fileVal)) {
+            // file field may be attachment ID, array with url, or a direct URL
+            if (is_numeric($fileVal)) {
+                $resolved = wp_get_attachment_url((int)$fileVal) ?: '';
+                if ($resolved) {
+                    $videoUrl = $resolved;
+                    $videoType = 'file';
+                }
+            } elseif (is_array($fileVal)) {
+                // try common shapes
+                $resolved = $fileVal['url'] ?? ($fileVal['ID'] ?? '');
+                if ($resolved) {
+                    if (is_numeric($resolved)) {
+                        $resolved = wp_get_attachment_url((int)$resolved) ?: '';
+                    }
+                    if ($resolved) {
+                        $videoUrl = $resolved;
+                        $videoType = 'file';
+                    }
+                }
+            } elseif (is_string($fileVal)) {
+                $videoUrl = $fileVal;
+                $videoType = 'file';
+            }
+        }
+
+        // 2) If no file, check link field
+        if (!$videoUrl) {
+            $linkVal = $block['data'][$linkKeyPrimary] ?? ($block['data'][$linkKeyFallback] ?? '');
+            if (!empty($linkVal)) {
+                if (is_array($linkVal)) {
+                    $candidate = $linkVal['url'] ?? '';
+                } else {
+                    $candidate = $linkVal;
+                }
+                if (!empty($candidate)) {
+                    $videoUrl = $candidate;
+                    $videoType = 'url';
+                }
+            }
+        }
+
+        // 3) Finally, use existing embed/url field
+        if (!$videoUrl) {
+            $embedVal = $block['data'][$embedKey] ?? '';
+            if (!empty($embedVal)) {
+                $videoUrl = $embedVal;
+                $videoType = 'embed';
+            }
+        }
+
+        // Normalize: if URL points to a direct media file, treat as 'file' so we render <video>
+        if ($videoUrl && $videoType !== 'file' && is_string($videoUrl)) {
+            $path = parse_url($videoUrl, PHP_URL_PATH);
+            $lower = strtolower($path ?: $videoUrl);
+            $exts = ['.mp4', '.webm', '.ogg', '.ogv', '.mov', '.m4v'];
+            foreach ($exts as $ext) {
+                if (substr($lower, -strlen($ext)) === $ext) {
+                    $videoType = 'file';
+                    break;
+                }
+            }
+        }
+
         $videoCaption = $block['data'][$captionKey] ?? '';
 
         if ($videoUrl) {
             $videosData[] = [
                 'url' => $videoUrl,
+                'type' => $videoType ?: 'url',
                 'caption' => $videoCaption,
             ];
         }
@@ -116,6 +189,9 @@
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'video-slider' }}@endif" class="block-video-slider relative video-slider-{{ $randomNumber }}-custom-padding video-slider-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+    @if($swiperOutContainer)
+        <div class="overflow-hidden">
+    @endif
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -164,6 +240,9 @@
             @endif
         </div>
     </div>
+    @if($swiperOutContainer)
+        </div>
+    @endif
 </section>
 
 <style>
@@ -207,5 +286,34 @@
             @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
+    }
+
+    /* Ensure embeds fill the available width/height inside slider items */
+    .block-video-slider .video-container { width: 100%; position: relative; }
+    .block-video-slider .video-container iframe,
+    .block-video-slider .video-container video {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
+    }
+    /* Handle WP oEmbed wrappers that inject figures/divs with intrinsic widths */
+    .block-video-slider .video-container figure,
+    .block-video-slider .video-container .wp-block-embed,
+    .block-video-slider .video-container .wp-embed,
+    .block-video-slider .video-container .wp-embed-aspect-16-9,
+    .block-video-slider .video-container .embed-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        position: relative;
+    }
+    .block-video-slider .video-container figure iframe,
+    .block-video-slider .video-container .wp-block-embed iframe,
+    .block-video-slider .video-container .wp-embed iframe,
+    .block-video-slider .video-container .wp-embed-aspect-16-9 iframe {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100% !important;
+        height: 100% !important;
     }
 </style>

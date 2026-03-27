@@ -104,6 +104,16 @@ $theme->images($theme->config('images'));
 */
 $theme->menus($theme->config('menus'));
 
+/**
+ * Remove the screen reader text from the pagination.
+ */
+add_filter('navigation_markup_template', function($template) {
+    return '
+	<nav class="navigation %1$s" aria-label="%4$s">
+		<div class="nav-links">%3$s</div>
+	</nav>';
+}, 10);
+
 /*
 |--------------------------------------------------------------------------
 | Theme Sidebars
@@ -505,8 +515,6 @@ function remove_wp_meta_tags() {
     remove_action('wp_head', 'rsd_link'); // Really Simple Discovery link
     remove_action('wp_head', 'wlwmanifest_link'); // Windows Live Writer manifest link
     remove_action('wp_head', 'wp_shortlink_wp_head'); // Shortlink
-    remove_action('wp_head', 'feed_links_extra', 3); // Extra RSS feeds
-    remove_action('wp_head', 'feed_links', 2); // RSS feed links
     remove_action('wp_head', 'rest_output_link_wp_head'); // REST API link
     remove_action('wp_head', 'wp_oembed_add_discovery_links'); // oEmbed links
     remove_action('wp_head', 'wp_oembed_add_host_js'); // oEmbed JavaScript
@@ -534,6 +542,33 @@ function disable_wp_emojis() {
     remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 }
 add_action('init', 'disable_wp_emojis');
+
+/**
+ * Disable RSS Feeds based on ACF setting
+ */
+function maybe_disable_rss_feeds() {
+    $rss_feeds_settings = get_field('rss_feeds', 'option');
+    if (empty($rss_feeds_settings) || empty($rss_feeds_settings['disable_rss'])) {
+        return;
+    }
+
+    $disable_rss_callback = function() {
+        wp_die( __( 'No feed available, please visit the <a href="'. esc_url( home_url( '/' ) ) .'">homepage</a>!' ) );
+    };
+
+    add_action('do_feed', $disable_rss_callback, 1);
+    add_action('do_feed_rdf', $disable_rss_callback, 1);
+    add_action('do_feed_rss', $disable_rss_callback, 1);
+    add_action('do_feed_rss2', $disable_rss_callback, 1);
+    add_action('do_feed_atom', $disable_rss_callback, 1);
+    add_action('do_feed_rss2_comments', $disable_rss_callback, 1);
+    add_action('do_feed_atom_comments', $disable_rss_callback, 1);
+
+    // Remove RSS feed links from header
+    remove_action('wp_head', 'feed_links', 2);
+    remove_action('wp_head', 'feed_links_extra', 3);
+}
+add_action('init', 'maybe_disable_rss_feeds');
 
 
 
@@ -599,6 +634,89 @@ function acf_load_cardblock_post_types($field) {
 
     return $field;
 }
+
+add_filter('acf/load_field/name=category', 'acf_load_cardblock_categories');
+function acf_load_cardblock_categories($field) {
+    $field['choices'] = [];
+
+    $post_types = get_post_types(['public' => true], 'objects');
+
+    foreach ($post_types as $post_type_name => $post_type_object) {
+        // Sla post types over die we niet willen (optioneel)
+        if (in_array($post_type_name, ['attachment', 'revision', 'nav_menu_item', 'custom_css', 'customize_changeset', 'oembed_cache', 'user_request', 'wp_block', 'wp_template', 'wp_template_part', 'wp_navigation'])) {
+            continue;
+        }
+
+        $taxonomies = get_object_taxonomies($post_type_name, 'objects');
+        foreach ($taxonomies as $taxonomy_name => $taxonomy_object) {
+            if (!$taxonomy_object->public || !$taxonomy_object->show_ui) {
+                continue;
+            }
+
+            $terms = get_terms([
+                'taxonomy' => $taxonomy_name,
+                'hide_empty' => false,
+            ]);
+
+            if (!is_wp_error($terms) && !empty($terms)) {
+                $group_label = $post_type_object->labels->singular_name . ' - ' . $taxonomy_object->labels->singular_name;
+                foreach ($terms as $term) {
+                    $field['choices'][$group_label][$term->term_id] = $term->name;
+                }
+            }
+        }
+    }
+
+    return $field;
+}
+
+/**
+ * Change Open Graph type to 'website' for all pages except single news posts
+ * and specifically set Open Graph types (like jobPosting).
+ */
+function force_og_type_website($type) {
+    // Behoud 'article' voor individuele nieuwsberichten.
+    if (is_singular('post')) {
+        return 'article';
+    }
+
+    // Als het type al iets anders is dan 'article', dan is dit waarschijnlijk 
+    // specifiek ingesteld door Rank Math (zoals 'product' of 'profile') en behouden we dit.
+    if ($type !== 'article') {
+        return $type;
+    }
+
+    // Controleer of de huidige post een specifiek Schema Type heeft ingesteld in Rank Math.
+    // Dit is nodig omdat Rank Math's og:type standaard op 'article' staat voor CPT's,
+    // zelfs als er een specifiek Schema (zoals JobPosting) is gekoppeld.
+    if (is_singular() && class_exists('\RankMath\Helper')) {
+        $post_id = get_the_ID();
+        $schema_type = \RankMath\Helper::get_default_schema_type($post_id);
+        
+        if ($schema_type && !in_array(strtolower($schema_type), ['article', 'blogposting', 'newsarticle'], true)) {
+            return strtolower($schema_type);
+        }
+
+        // Check ook handmatig ingestelde schemas
+        if (class_exists('\RankMath\Schema\DB')) {
+            $schemas = \RankMath\Schema\DB::get_schemas($post_id);
+            if (!empty($schemas)) {
+                foreach ($schemas as $schema) {
+                    if (isset($schema['@type']) && !in_array(strtolower($schema['@type']), ['article', 'blogposting', 'newsarticle'], true)) {
+                        return strtolower($schema['@type']);
+                    }
+                }
+            }
+        }
+    }
+
+    // Voor alle overige gevallen die Rank Math standaard op 'article' zet (pagina's, CPT's zonder specifiek ingesteld type),
+    // forceren we 'website'.
+    return 'website';
+}
+add_filter('rank_math/opengraph/type', 'force_og_type_website', 999);
+add_filter('rank_math/opengraph/facebook/type', 'force_og_type_website', 999);
+add_filter('rank_math/opengraph/facebook/og_type', 'force_og_type_website', 999);
 
 /**
  * Custom translation file located in htdocs/content/languages

@@ -9,22 +9,98 @@
     $vacancySummary = $fields['excerpt'] ?? '';
     $vacancyCategories = get_the_terms($vacancy, 'vacature_categories');
 
-     if (!empty($visibleElements) && in_array('working_hours', $visibleElements) && !empty($fields['working_hours'])) {
+    $workingHours = '';
+    $employmentTypeSchema = '';
+    if (!empty($fields['working_hours'])) {
         switch ($fields['working_hours']) {
             case 'parttime':
                 $workingHours = 'Parttime';
+                $employmentTypeSchema = 'PART_TIME';
                 break;
             case 'fulltime':
                 $workingHours = 'Fulltime';
+                $employmentTypeSchema = 'FULL_TIME';
                 break;
             case 'both':
-                $workingHours = 'Parttime en fulltime';
+                $workingHours = 'Parttime/fulltime';
+                $employmentTypeSchema = ['FULL_TIME', 'PART_TIME'];
                 break;
             default:
                 $workingHours = '';
+                $employmentTypeSchema = '';
                 break;
         }
     }
+
+    $baseSalary = $fields['salary'] ?? '';
+
+    $vacancySchema = [
+        '@type' => 'JobPosting',
+        'title' => strip_tags($vacancyTitle),
+        'datePosted' => get_the_date('Y-m-d', $vacancy),
+        'description' => strip_tags(!empty($vacancySummary) ? $vacancySummary : $vacancyTitle),
+        'hiringOrganization' => [
+            '@type' => 'Organization',
+            'name' => get_bloginfo('name'),
+            'logo' => str_replace('//content', '/content', get_site_icon_url()),
+        ],
+    ];
+
+    if ($employmentTypeSchema) {
+        $vacancySchema['employmentType'] = $employmentTypeSchema;
+    }
+
+    if (!empty($fields['location'])) {
+        $vacancySchema['jobLocation'] = [
+            '@type' => 'Place',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'addressLocality' => $fields['location'],
+            ],
+        ];
+    }
+
+    if ($vacancyThumbnailID) {
+        $vacancySchema['image'] = str_replace('//content', '/content', wp_get_attachment_image_url($vacancyThumbnailID, 'job-thumbnail'));
+    }
+
+    if (!empty($baseSalary)) {
+        $vacancySchema['baseSalary'] = [
+            '@type' => 'MonetaryAmount',
+            'currency' => 'EUR',
+            'value' => [
+                '@type' => 'QuantitativeValue',
+                'unitText' => 'MONTH'
+            ]
+        ];
+
+        if (str_contains($baseSalary, '-')) {
+            $salaryParts = explode('-', $baseSalary);
+            $minValue = (int) preg_replace('/[^0-9]/', '', $salaryParts[0]);
+            $maxValue = (int) preg_replace('/[^0-9]/', '', $salaryParts[1]);
+
+            if ($minValue > 0 && $maxValue > 0) {
+                $vacancySchema['baseSalary']['value']['minValue'] = $minValue;
+                $vacancySchema['baseSalary']['value']['maxValue'] = $maxValue;
+                $vacancySchema['baseSalary']['value']['value'] = $minValue; // Fallback to minValue
+            } else {
+                $vacancySchema['baseSalary']['value']['value'] = $baseSalary;
+            }
+        } else {
+            $salaryValue = (int) preg_replace('/[^0-9]/', '', $baseSalary);
+            if ($salaryValue > 0) {
+                $vacancySchema['baseSalary']['value']['value'] = $salaryValue;
+            } else {
+                $vacancySchema['baseSalary']['value']['value'] = $baseSalary;
+            }
+        }
+    }
+
+    if (is_singular('vacatures') && get_the_ID() === $vacancy) {
+        $vacancySchema['directApply'] = true;
+    }
+
+    \Wefabric\WPSupport\Schema\JsonLd::addSchema('vacancy_' . $vacancy, $vacancySchema);
 @endphp
 
 <div class="vacature-item group h-full @if ($flyinEffect) vacancy-hidden @endif">
@@ -33,7 +109,7 @@
             <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina"
                    class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
-                    <span class="sr-only">Ga naar {{ $vacancyTitle }} pagina</span>c
+                    <span class="sr-only">Ga naar {{ $vacancyTitle }} pagina</span>
                 </a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     @if ($vacancyCategories && !is_bool($vacancyCategories))
@@ -42,9 +118,13 @@
                                 @php
                                     $categoryColor = get_field('category_color', $category);
                                     $categoryIcon = get_field('category_icon', $category);
+                                    $categoryImage = get_field('category_image', $category);
                                 @endphp
                                 <div style="background-color: {{ $categoryColor }}" class="vacature-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1">
-                                    {!! $categoryIcon !!} {!! $category->name !!}
+                                    @if($categoryImage)
+                                        <img src="{{ wp_get_attachment_image_url($categoryImage, 'thumbnail') }}" alt="{{ $category->name }}" class="w-5 h-5 object-contain">
+                                    @endif
+                                    {!! $categoryIcon !!} <span>{!! $category->name !!}</span>
                                 </div>
                             @endforeach
                         </div>
@@ -55,7 +135,7 @@
                    'size' => 'job-thumbnail',
                    'object_fit' => 'cover',
                    'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
-                   'alt' => $vacancyTitle,
+                   'alt' => $vacancyTitle
                 ])
             </div>
         @endif
@@ -68,21 +148,21 @@
                 @if (!empty($visibleElements) && in_array('location', $visibleElements) && !empty($fields['location']))
                     <div class="vacature-location flex items-center">
                         <i class="w-4 object-cover fas fa-map-marker-alt mr-3"></i>
-                        {{ $fields['location'] }}
+                        <span>{{ $fields['location'] }}</span>
                     </div>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('working_hours', $visibleElements) && !empty($fields['working_hours']))
                     <div class="vacature-working-hours flex items-center">
                         <i class="w-4 object-cover fas fa-clock mr-3"></i>
-                        {{ $workingHours }}
+                        <span>{{ $workingHours }}</span>
                     </div>
                 @endif
 
-                @if (!empty($visibleElements) && in_array('salary', $visibleElements) && !empty($fields['salary']))
+                @if (!empty($visibleElements) && in_array('salary', $visibleElements) && !empty($baseSalary))
                     <div class="vacature-salary flex items-center">
                         <i class="w-4 fas fa-money-bill-simple-wave mr-3"></i>
-                        {{ $fields['salary'] }}
+                        <span>{{ $baseSalary }}</span>
                     </div>
                 @endif
 
@@ -90,6 +170,7 @@
                     <div class="mt-3 mb-3">{{ $vacancySummary }}</div>
                 @endif
             </div>
+
 
             @if (!empty($visibleElements) && in_array('button', $visibleElements))
                 @if ($buttonCardText)

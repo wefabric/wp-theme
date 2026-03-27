@@ -7,7 +7,6 @@
     $imageId = $fields['image'] ?? '';
     $hoverImageId = $fields['hover_image'] ?? '';
 
-
     $visibleElements = $block['data']['show_element'] ?? [];
     $function = $fields['function'] ?? '';
     $overviewText = $fields['overview_text'] ?? '';
@@ -32,6 +31,50 @@
         $linkUrl = null;
     }
 
+    $personSchema = [
+        '@type' => 'Person',
+        'name' => strip_tags($fullName),
+    ];
+    if ($function) {
+        $personSchema['jobTitle'] = strip_tags($function);
+    }
+    if ($overviewText) {
+        $personSchema['description'] = strip_tags($overviewText);
+    }
+    if ($imageId) {
+        $personSchema['image'] = wp_get_attachment_image_url($imageId, 'full');
+    }
+    if ($mail) {
+        $personSchema['email'] = $mail;
+    }
+    if ($phoneNumber) {
+        $personSchema['telephone'] = $phoneNumber;
+    }
+    if ($linkUrl) {
+        $personSchema['url'] = $linkUrl;
+    }
+    if (!empty($socials)) {
+        $personSchema['sameAs'] = array_column($socials, 'url');
+    }
+
+    $personSchema['worksFor'] = [
+        '@type' => 'Organization',
+        'name' => get_bloginfo('name')
+    ];
+
+    $employeeId = is_numeric($employee) ? (int)$employee : ($employee->ID ?? 0);
+
+    if (is_singular('werknemers') && get_the_ID() === $employeeId) {
+        $employeeSchema = [
+            '@type' => 'ProfilePage',
+            'mainEntity' => $personSchema
+        ];
+    } else {
+        $employeeSchema = $personSchema;
+    }
+
+    \Wefabric\WPSupport\Schema\JsonLd::addSchema('employee_' . $employeeId, $employeeSchema);
+
 @endphp
 
 <div class="werknemer-item group h-full @if ($flyinEffect) employee-hidden @endif">
@@ -47,10 +90,14 @@
                         @php
                             $categoryColor = get_field('category_color', $category);
                             $categoryIcon = get_field('category_icon', $category);
+                            $categoryImage = get_field('category_image', $category);
                         @endphp
                         <div style="background-color: {{ $categoryColor }}"
                              class="employee-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1">
-                            {!! $categoryIcon !!} {!! $category->name !!}
+                            @if($categoryImage)
+                                <img src="{{ wp_get_attachment_image_url($categoryImage, 'thumbnail') }}" alt="{{ $category->name }}" class="w-5 h-5 object-contain">
+                            @endif
+                            {!! $categoryIcon !!} <span>{!! $category->name !!}</span>
                         </div>
                     @endforeach
                 </div>
@@ -63,7 +110,7 @@
                      'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 '
                                         . ($hoverImageId ? 'group-hover:opacity-0 ' : ($linkUrl ? 'group-hover:scale-110 ' : ''))
                                         . 'rounded-' . $borderRadius,
-                     'alt' => $fullName,
+                     'alt' => $fullName
                 ])
                 @if (!empty($hoverImageId))
                     @include('components.image', [
@@ -116,7 +163,7 @@
                 </div>
             @endif
         </div>
-        <div class="contact-info w-full mt-5 flex flex-col">
+        <div class="contact-info w-full mt-5 flex flex-col flex-grow">
             @if (!empty($visibleElements) && in_array('name', $visibleElements))
                 @if ($linkUrl)
                     <a href="{{ $linkUrl }}" aria-label="Ga naar {{ $fullName }} pagina"
@@ -125,8 +172,8 @@
                     <div class="name-text font-bold text-lg text-{{ $employeeTitleColor }}">{{ $firstName }} {{ $lastName }}</div>
                 @endif
             @endif
-            @if (!empty($visibleElements) && in_array('function', $visibleElements))
-                <div class="function-text text-{{ $employeeTextColor }} font-medium">{{ $function }}</div>
+            @if (!empty($visibleElements) && in_array('function', $visibleElements) && $function)
+                <div class="function-text text-{{ $employeeTextColor }} font-medium">{!! $function !!}</div>
             @endif
             @if (!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($socials))
                 <div class="social-items inline-flex gap-x-2">
@@ -140,7 +187,7 @@
                 </div>
             @endif
             @if (!empty($visibleElements) && in_array('contact_info', $visibleElements) && ($contactInfoDisplay == 'under_image'))
-                <div class="contact-items relative w-fit @if(!$showFullContactInfo) flex gap-x-2 @endif">
+                <div class="contact-items relative mt-auto w-fit @if(!$showFullContactInfo) flex gap-x-2 @endif">
                     @if ($mail)
                         <a href="mailto:{{ $mail }}" aria-label="Mail naar {{ $mail }}"
                            class="mail-link text-{{ $employeeTextColor }} hover:text-primary">

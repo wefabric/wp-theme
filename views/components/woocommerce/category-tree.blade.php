@@ -44,8 +44,7 @@
 	}
 
 @endphp
-
-<div class="sidebar-widget sidebar-widget--category-tree">
+<div  class="sidebar-widget sidebar-widget--category-tree">
 
 	<div class="title-text">Categorie</div>
 
@@ -64,7 +63,7 @@
 			@endphp
 			 @include('components.link.simple', [
 				'href' => get_category_link($category->term_taxonomy_id),
-				'text' => $category->name,
+				'text' => html_entity_decode($category->name),
 				'class' => $linkClass
 			])
 
@@ -79,9 +78,10 @@
 
 							@include('components.link.simple', [
 								'href' => get_category_link($subcategory->term_taxonomy_id),
-								'text' => $subcategory->name,
+								'text' => html_entity_decode($subcategory->name),
 								'class' => 'inline-block '. $subcategory->activeClass
 							])
+
 
 							@if($subcategory->subcategory_count > 0)
 								<div class="product-subcategories">
@@ -90,7 +90,7 @@
 
 											@include('components.link.simple', [
                                                 'href' => get_category_link($subSubcategory->term_taxonomy_id),
-                                                'text' => '-'. $subcategory->name,
+                                                'text' => '-'. html_entity_decode($subcategory->name),
                                                 'class' => 'inline-block '. $subSubcategory->activeClass
                                             ])
 

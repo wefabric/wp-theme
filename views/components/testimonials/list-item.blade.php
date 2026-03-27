@@ -20,10 +20,44 @@
 
     $visibleElements = $block['data']['show_element'] ?? [];
     $testimonialCategories = get_the_terms($testimonial, 'testimonial_categories');
+
+    $reviewSchema = [
+        '@type' => 'Review',
+        'itemReviewed' => [
+            '@type' => 'Organization',
+            'name' => get_bloginfo('name'),
+        ],
+        'author' => [
+            '@type' => 'Person',
+            'name' => strip_tags($testimonialName) ?: $testimonialTitle,
+        ],
+    ];
+
+    if ($testimonialStars) {
+        $reviewSchema['reviewRating'] = [
+            '@type' => 'Rating',
+            'ratingValue' => $testimonialStars,
+            'bestRating' => '5',
+        ];
+    }
+
+    if ($testimonialText) {
+        $reviewSchema['reviewBody'] = strip_tags($testimonialText);
+    }
+
+    if ($testimonialAvatarId) {
+        $reviewSchema['author']['image'] = wp_get_attachment_image_url($testimonialAvatarId, 'full');
+    }
+
+    if ($testimonialFunction) {
+        $reviewSchema['author']['jobTitle'] = strip_tags($testimonialFunction);
+    }
+
+    \Wefabric\WPSupport\Schema\JsonLd::addSchema('testimonial_' . $testimonial, $reviewSchema);
+
 @endphp
 
 <div class="testimonial-item custom-styling flex w-full h-full text-{{ $testimonialTextColor }} @if ($flyinEffect) testimonial-hidden @endif">
-
     <div class="testimonial-block relative w-full h-auto flex flex-col md:flex-row bg-{{ $testimonialBackground }} rounded-{{ $borderRadius }}">
 
         @if (!empty($visibleElements) && in_array('category', $visibleElements))
@@ -32,10 +66,14 @@
                     @php
                         $categoryColor = get_field('category_color', $category);
                         $categoryIcon = get_field('category_icon', $category);
+                        $categoryImage = get_field('category_image', $category);
                     @endphp
                     <div style="background-color: {{ $categoryColor }}"
                          class="testimonial-category @if(empty($categoryColor)) bg-primary @endif text-white px-4 py-2 rounded-full flex items-center gap-x-1">
-                        {!! $categoryIcon !!} {!! $category->name !!}
+                        @if($categoryImage)
+                            <img src="{{ wp_get_attachment_image_url($categoryImage, 'thumbnail') }}" alt="{{ $category->name }}" class="w-5 h-5 object-contain">
+                        @endif
+                        {!! $categoryIcon !!} <span>{!! $category->name !!}</span>
                     </div>
                 @endforeach
             </div>
@@ -81,12 +119,12 @@
                             'size' => 'full',
                             'object_fit' => 'cover',
                             'img_class' => 'avatar-image w-24 h-24 aspect-square rounded-full object-cover object-center',
-                            'alt' => $testimonialTitle,
+                            'alt' => $testimonialTitle
                         ])
                     </div>
                 @endif
                 @if ($testimonialName || $testimonialFunction)
-                    <div>
+                    <div class="avatar-details">
                         @if (!empty($visibleElements) && in_array('name', $visibleElements) && $testimonialName)
                             <div class="name-text font-bold text-lg">{!! $testimonialName !!}</div>
                         @endif

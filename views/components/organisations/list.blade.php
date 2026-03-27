@@ -2,16 +2,44 @@
     $mobileLayout = $block['data']['layout_mobile'] ?? 1;
     $tabletLayout = $block['data']['layout_tablet'] ?? 2;
     $desktopLayout = $block['data']['layout_desktop'] ?? 3;
+    $desktopXlLayout = $block['data']['layout_desktop_xl'] ?? 4;
 
     $layoutClasses = [
         'mobile' => 'grid-cols-' . $mobileLayout,
         'tablet' => 'sm:grid-cols-' . $tabletLayout,
         'desktop' => 'xl:grid-cols-' . $desktopLayout,
+        'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
     ];
 
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
     $swiperAutoplay = $block['data']['autoplay'] ?? false;
-    $randomNumber = rand(0, 1000);
+    $swiperAutoplaySpeed = max((int)($block['data']['autoplay_speed'] ?? 0) * 1000, 5000);
+    $swiperLoop = $block['data']['loop_slides'] ?? true;
+    $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
+
+    $swiperLinear = $block['data']['linear_rotation'] ?? false;
+    $swiperDirection = $block['data']['swiper_direction'] ?? 'left';
+    $swiperRotationSpeed = [
+        'super_slow' => 15000,
+        'slow' => 10000,
+        'normal' => 5000,
+        'fast' => 3000,
+        'super_fast' => 1000,
+    ][$block['data']['rotation_speed']] ?? 5000;
+
     $randomId = 'organisationsSwiper-' . $randomNumber;
+    $organisationsCount = count($organisations);
+
+    // Determine $gridStartClass based on $organisationsCount
+    if ($organisationsCount === 1) {
+        $gridStartClass = 'col-start-4';
+    } elseif ($organisationsCount === 2) {
+        $gridStartClass = 'col-start-3';
+    } elseif ($organisationsCount === 3) {
+        $gridStartClass = 'col-start-2';
+    } else {
+        $gridStartClass = '';
+    }
 @endphp
 
 @if($block['data']['show_slider'])
@@ -24,54 +52,116 @@
                     </div>
                 @endforeach
             </div>
-            <div class="lg:hidden swiper-pagination"></div>
+            @if (!$swiperLinear)
+                <div class="swiper-pagination"></div>
+            @endif
         </div>
-        <div class="swiper-navigation">
-            <div class="swiper-button-next organisations-button-next-{{ $randomNumber }}"></div>
-            <div class="swiper-button-prev organisations-button-prev-{{ $randomNumber }}"></div>
-        </div>
+        @if (!$swiperLinear)
+            <div class="swiper-navigation">
+                <div class="swiper-button-next organisations-button-next-{{ $randomNumber }}"></div>
+                <div class="swiper-button-prev organisations-button-prev-{{ $randomNumber }}"></div>
+            </div>
+        @endif
+    </div>
+
+@elseif($block['data']['alternative_row_layout'])
+    <div class="alternative-row organisation-list hidden md:grid grid-cols-8 gap-y-4 gap-x-4 py-8">
+        @foreach ($organisations as $organisation)
+            <div class="col-span-2 {{ ($index + 1) % 7 === 5 ? 'col-start-2' : '' }} {{ $index === 0 ? $gridStartClass : '' }}">
+                @include('components.organisations.list-item')
+            </div>
+        @endforeach
+    </div>
+
+    <div class="organisation-list grid md:hidden {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} {{ $layoutClasses['desktop-xl'] }} gap-y-4 gap-x-4 py-8">
+        @foreach ($organisations as $organisation)
+            @include('components.organisations.list-item')
+        @endforeach
     </div>
 
 @else
-    <div class="organisation-list grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} gap-y-12 gap-x-4 py-8">
+    <div class="organisation-list grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} {{ $layoutClasses['desktop-xl'] }} gap-y-12 gap-x-4 py-8">
         @foreach ($organisations as $organisation)
             @include('components.organisations.list-item')
         @endforeach
     </div>
 @endif
 
+
+
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var organisationsSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
-            centeredSlides: false,
+            @if ($swiperCenteredSlides)
+                centeredSlides: true,
+            @endif
+            @if ($swiperLinear)
+                freeMode: true,
+                allowTouchMove: false,
+                speed: {{ $swiperRotationSpeed }},
+            @endif
             @if ($swiperAutoplay)
-            autoplay: {
-                disableOnInteraction: true,
+                autoplay: {
+                    delay:
+                    @if ($swiperLinear)
+                        0
+                    @else
+                        {{ $swiperAutoplaySpeed }}
+                    @endif,
+                disableOnInteraction:
+                    @if ($swiperLinear)
+                        true
+                    @else
+                        false
+                    @endif,
+                reverseDirection: {{ $swiperDirection === 'right' ? 'true' : 'false' }},
             },
             @endif
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".organisations-button-next-{{ $randomNumber }}",
-                prevEl: ".organisations-button-prev-{{ $randomNumber }}",
-            },
+            @if (!$swiperLinear)
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".organisations-button-next-{{ $randomNumber }}",
+                    prevEl: ".organisations-button-prev-{{ $randomNumber }}",
+                },
+            @endif
             breakpoints: {
                 0: {
-                    loop: {{count($organisations) > $mobileLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($organisations) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 640: {
-                    loop: {{ count($organisations) > $tabletLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($organisations) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ count($organisations) > $desktopLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($organisations) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
+                },
+                1536: {
+                    loop: {{ $swiperLoop && count($organisations) > $desktopXlLayout ? 'true' : 'false' }},
+                    slidesPerView: {{ $desktopXlLayout }},
                 },
             }
         });
     });
 </script>
+
+@if ($swiperOutContainer)
+    <style>
+        .organisationsSwiper-{{ $randomNumber }} {
+            overflow: unset !important;
+        }
+    </style>
+@endif
+
+@if ($swiperLinear)
+    <style>
+        .organisaties-{{ $randomNumber }} .swiper-wrapper {
+            transition-timing-function: linear !important;
+        }
+    </style>
+@endif

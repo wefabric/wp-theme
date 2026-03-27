@@ -130,6 +130,23 @@
                     ])
                 @endif
                 @if ($questionsAndAnswers)
+                    @php
+                        $faqSchema = [
+                            '@type' => 'FAQPage',
+                            'mainEntity' => []
+                        ];
+                        foreach ($questionsAndAnswers as $faq) {
+                            $faqSchema['mainEntity'][] = [
+                                '@type' => 'Question',
+                                'name' => $faq['question_and_answer']['question'],
+                                'acceptedAnswer' => [
+                                    '@type' => 'Answer',
+                                    'text' => strip_tags($faq['question_and_answer']['answer'])
+                                ]
+                            ];
+                        }
+                        \Wefabric\WPSupport\Schema\JsonLd::addSchema('faq_' . $randomNumber, $faqSchema);
+                    @endphp
                     @foreach ($questionsAndAnswers as $key => $faq)
                             @php
                                 $uniqueFaqId = "faq-drawer-{$randomNumber}-{$key}";

@@ -343,6 +343,44 @@
                     "first_day": 1
                 }
             ]
+        },
+        {
+            "key": "field_67b36a7a0b3f1",
+            "label": "RSS Feeds",
+            "name": "rss_feeds",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_67b36a8d0b3f2",
+                    "label": "RSS feeds uitzetten",
+                    "name": "disable_rss",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Vink dit aan om alle RSS feeds op de website uit te schakelen.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "Uitgeschakeld",
+                    "ui_off_text": "Ingeschakeld"
+                }
+            ]
         }
     ],
     "location": [

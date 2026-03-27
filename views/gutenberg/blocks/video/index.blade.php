@@ -125,6 +125,17 @@
             @endif
 
             @if ($videoUrl)
+                @php
+                    $videoSchema = [
+                        '@type' => 'VideoObject',
+                        'name' => $title ?: get_the_title(),
+                        'description' => strip_tags($text) ?: (get_the_excerpt() ?: get_the_title()),
+                        'thumbnailUrl' => wp_get_attachment_image_url($backgroundImageId, 'full') ?: get_site_icon_url(),
+                        'uploadDate' => get_the_date('c'),
+                        'embedUrl' => $videoUrl
+                    ];
+                    \Wefabric\WPSupport\Schema\JsonLd::addSchema('video_' . $randomNumber, $videoSchema);
+                @endphp
                 <div class="video-embed-wrapper">
                     {!! apply_filters('the_content', '[embed]' . $videoUrl . '[/embed]') !!}
                 </div>
@@ -142,6 +153,17 @@
                     </script>
                 @endif
             @elseif ($videoFileUrl)
+                @php
+                    $videoSchema = [
+                        '@type' => 'VideoObject',
+                        'name' => $title ?: get_the_title(),
+                        'description' => strip_tags($text) ?: (get_the_excerpt() ?: get_the_title()),
+                        'thumbnailUrl' => wp_get_attachment_image_url($backgroundImageId, 'full') ?: get_site_icon_url(),
+                        'uploadDate' => get_the_date('c'),
+                        'contentUrl' => $videoFileUrl
+                    ];
+                    \Wefabric\WPSupport\Schema\JsonLd::addSchema('video_file_' . $randomNumber, $videoSchema);
+                @endphp
                 <div class="relative">
                     <video class="w-full object-cover"
                            @if($videoSetting === 'automatic') autoplay muted loop playsinline @endif

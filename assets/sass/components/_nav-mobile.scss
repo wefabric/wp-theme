@@ -164,6 +164,7 @@ header.banner {
 
   @apply bg-primary text-white;
   position: fixed;
+  overflow-y: scroll;
   width: 260px;
   top: 0; bottom: 0; right: -260px;
   z-index: 1000;

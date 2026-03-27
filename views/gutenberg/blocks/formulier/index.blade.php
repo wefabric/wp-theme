@@ -133,7 +133,7 @@
                 ])
             @endif
             @if ($form)
-                <div class="form @if ($formBackgroundColor) p-8 md:p-16 @endif bg-{{ $formBackgroundColor }} rounded-{{ $borderRadius }}">
+                <div class="form @if ($formBackgroundColor) p-8 md:p-16 @endif {{ $formBackgroundColor }} bg-{{ $formBackgroundColor }} rounded-{{ $borderRadius }}">
                     @if ($formSubTitle)
                         <span class="subtitle block mb-2 text-{{ $formSubTitleColor }}">{!! $formSubTitle !!}</span>
                     @endif

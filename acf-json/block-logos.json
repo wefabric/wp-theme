@@ -1,4 +1,4 @@
-{
+  {
     "key": "group_6566ff7988436",
     "title": "Block: Logo's",
     "fields": [
@@ -104,31 +104,6 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
-        },
-        {
-            "key": "field_678e187b35101",
-            "label": "Subtitel kleur",
-            "name": "subtitle_color",
-            "aria-label": "",
-            "type": "Thema Kleur",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6566ff7994774",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "25",
-                "class": "",
-                "id": ""
-            },
-            "theme_color": null,
-            "allow_in_bindings": 1,
-            "font_size": 14
         },
         {
             "key": "field_678e187b35101",
@@ -1106,41 +1081,6 @@
                     "placeholder": "",
                     "create_options": 0,
                     "save_options": 0
-                },
-                {
-                    "key": "field_67e2c2d6dedff",
-                    "label": "Desktop XL",
-                    "name": "desktop_xl",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "1": "1 per rij",
-                        "2": "2 per rij",
-                        "3": "3 per rij",
-                        "4": "4 per rij",
-                        "5": "5 per rij",
-                        "6": "6 per rij",
-                        "7": "7 per rij",
-                        "8": "8 per rij"
-                    },
-                    "default_value": 4,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "allow_in_bindings": 1,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "create_options": 0,
-                    "save_options": 0
                 }
             ]
         },
@@ -1173,42 +1113,6 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_675804feac1eb",
-            "label": "Autoplay snelheid",
-            "name": "autoplay_speed",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6566ff79947d9",
-                        "operator": "==",
-                        "value": "1"
-                    },
-                    {
-                        "field": "field_6798c107882a1",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "40",
-                "class": "",
-                "id": ""
-            },
-            "default_value": 5,
-            "min": 0,
-            "max": 60,
-            "allow_in_bindings": 1,
-            "placeholder": "",
-            "step": "0.1",
-            "prepend": "",
-            "append": "Seconden"
-        },
-        {
             "key": "field_6566ff79947d1",
             "label": "Logo's in slider weergeven?",
             "name": "show_slider",
@@ -1224,35 +1128,6 @@
             },
             "message": "",
             "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_6798c107882a1",
-            "label": "Swiper vloeiend laten verlopen",
-            "name": "linear_rotation",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6566ff79947d9",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "60",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "allow_in_bindings": 0,
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
@@ -1285,83 +1160,6 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
-        },
-        {
-            "key": "field_6798c1a5882a3",
-            "label": "Rotatie snelheid",
-            "name": "rotation_speed",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6798c107882a1",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "40",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "super_slow": "Super langzaam",
-                "slow": "Langzaam",
-                "normal": "Normaal",
-                "fast": "Snel",
-                "super_fast": "Super snel"
-            },
-            "default_value": "normal",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 1,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
-        },
-        {
-            "key": "field_6798c138882a2",
-            "label": "Swiper richting",
-            "name": "swiper_direction",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_6798c107882a1",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "left": "Links",
-                "right": "Rechts"
-            },
-            "default_value": "left",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
         },
         {
             "key": "field_675804feac1eb",
@@ -1824,27 +1622,6 @@
             },
             "default_value": "",
             "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_68e7c3de51e1d",
-            "label": "Custom block ID",
-            "name": "custom_block_id",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -2673,5 +2450,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1760019446
+    "modified": 1768208206
 }

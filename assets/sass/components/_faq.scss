@@ -46,7 +46,7 @@
 	}
 
 	.faq-drawer__trigger:checked + .faq-drawer__title + .faq-drawer__content-wrapper {
-		max-height: 800px;
+		max-height: 1500px;
 	}
 
 	.faq-drawer__trigger:checked + .faq-drawer__title::after {
@@ -55,8 +55,8 @@
 	}
 
 	ol, ul, menu {
-		list-style: initial !important;
-		margin-left: 20px;
+		//list-style: initial !important;
+		//margin-left: 20px;
 	}
 }
 

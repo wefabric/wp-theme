@@ -167,6 +167,22 @@
                 </div>
 
                 @if ($videoUrl || $videoFileUrl)
+                    @php
+                        $videoSchema = [
+                            '@type' => 'VideoObject',
+                            'name' => $title ?: get_the_title(),
+                            'description' => strip_tags($text) ?: (get_the_excerpt() ?: get_the_title()),
+                            'thumbnailUrl' => wp_get_attachment_image_url($backgroundImageId, 'full') ?: get_site_icon_url(),
+                            'uploadDate' => get_the_date('c')
+                        ];
+                        if ($videoUrl) {
+                            $videoSchema['embedUrl'] = $videoUrl;
+                        }
+                        if ($videoFileUrl) {
+                            $videoSchema['contentUrl'] = $videoFileUrl;
+                        }
+                        \Wefabric\WPSupport\Schema\JsonLd::addSchema('video_tekst_' . $randomNumber, $videoSchema);
+                    @endphp
                     <div class="video video-{{ $randomNumber }} {{ $videoClass }} order-1 {{ $videoOrder }}">
                         @if ($videoUrl)
                             <div class="video-embed-wrapper">

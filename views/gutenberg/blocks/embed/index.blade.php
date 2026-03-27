@@ -112,7 +112,18 @@
                 ])
             @endif
             @if ($embedSource)
-                <iframe width="100%" height="{{ $embedHeight }}" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="{!! $embedSource !!}"></iframe>
+                @php
+                    $embedHtml = '';
+                    if (strpos($embedSource, '<iframe') !== false) {
+                        $embedHtml = $embedSource;
+                    } else {
+                        $embedHtml = wp_oembed_get($embedSource);
+                        if (!$embedHtml) {
+                            $embedHtml = '<iframe width="100%" height="' . $embedHeight . '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="' . $embedSource . '"></iframe>';
+                        }
+                    }
+                @endphp
+                {!! $embedHtml !!}
             @endif
             @if (($button1Text) && ($button1Link))
                 <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
