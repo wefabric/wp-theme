@@ -41,6 +41,8 @@
 
 
     // Afbeeldingen
+    $enableLightbox = $block['data']['enable_lightbox'] ?? false;
+
     $imagesCount = $block['data']['images'] ?? 0;
     $images = [];
     for ($i = 0; $i < $imagesCount; $i++) {
@@ -147,13 +149,22 @@
                     'class' => 'mb-8 text-' . $textColor . ' ' .  $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
                 ])
             @endif
+
             @if ($images)
-                {{-- MOBILE --}}
+                @if ($enableLightbox)
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+                    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+                @endif
+
+                {{-- Mobile --}}
                 <div class="masonry-layout grid grid-cols-2 gap-4 md:hidden">
                     @foreach($mobileColumns as $column)
                         <div class="grid gap-4">
                             @foreach($column as $imageID)
                                 <div class="image-item @if ($flyinEffect) image-hidden @endif">
+                                    @if ($enableLightbox)
+                                        <a href="{{ wp_get_attachment_image_url($imageID, 'full') }}" class="glightbox-{{ $randomNumber }}" data-gallery="gallery-{{ $randomNumber }}">
+                                    @endif
                                     @include('components.image', [
                                         'image_id' => $imageID,
                                         'size' => 'full',
@@ -161,18 +172,24 @@
                                         'img_class' => 'object-cover w-full h-full min-h-[150px] rounded-' . $borderRadius,
                                         'alt' => get_post_meta($imageID, '_wp_attachment_image_alt', true)
                                     ])
+                                    @if ($enableLightbox)
+                                        </a>
+                                    @endif
                                 </div>
                             @endforeach
                         </div>
                     @endforeach
                 </div>
 
-                {{-- DESKTOP --}}
+                {{-- Desktop --}}
                 <div class="masonry-layout hidden md:grid md:grid-cols-{{ $numColumns }} gap-4">
                     @foreach($desktopColumns as $column)
                         <div class="grid gap-4">
                             @foreach($column as $imageID)
                                 <div class="image-item @if ($flyinEffect) image-hidden @endif">
+                                    @if ($enableLightbox)
+                                        <a href="{{ wp_get_attachment_image_url($imageID, 'full') }}" class="glightbox-{{ $randomNumber }}" data-gallery="gallery-{{ $randomNumber }}">
+                                    @endif
                                     @include('components.image', [
                                         'image_id' => $imageID,
                                         'size' => 'full',
@@ -180,6 +197,9 @@
                                         'img_class' => 'object-cover w-full h-full min-h-[150px] rounded-' . $borderRadius,
                                         'alt' => get_post_meta($imageID, '_wp_attachment_image_alt', true)
                                     ])
+                                    @if ($enableLightbox)
+                                        </a>
+                                    @endif
                                 </div>
                             @endforeach
                         </div>
@@ -298,6 +318,18 @@
             const observer = new IntersectionObserver(observerCallback, observerOptions);
             imageItems.forEach(item => {
                 observer.observe(item);
+            });
+        });
+    </script>
+@endif
+
+@if ($enableLightbox)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightbox = GLightbox({
+                selector: '.glightbox-{{ $randomNumber }}',
+                touchNavigation: true,
+                loop: true,
             });
         });
     </script>
