@@ -22,7 +22,7 @@
                 $employmentTypeSchema = 'FULL_TIME';
                 break;
             case 'both':
-                $workingHours = 'Parttime en fulltime';
+                $workingHours = 'Parttime/fulltime';
                 $employmentTypeSchema = ['FULL_TIME', 'PART_TIME'];
                 break;
             default:
