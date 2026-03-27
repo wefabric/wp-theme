@@ -28,7 +28,7 @@ if (empty($product) || !$product->is_visible()) {
 }
 ?>
 
-<div <?php wc_product_class('card group flex flex-col justify-between p-5 bg-white ', $product); ?> >
+<div <?php wc_product_class('card group flex flex-col justify-between py-5 bg-white ', $product); ?> >
     <div class="wrapper relative h-full flex flex-col group-hover:-translate-y-4 duration-300 ease-in-out">
 
         <?php //min-h-[488px] lg:min-h-[465px]      pb-32 relative

@@ -2,9 +2,10 @@
 
 @section('content')
 
-    @include('components.breadcrumbs.index')
+
 
     <div class="container mx-auto">
+        @include('components.breadcrumbs.index')
         @php(do_action('woocommerce_before_main_content'))
 
         <div class="woocommerce-product-container">
@@ -12,7 +13,7 @@
 
             {{--			@php(do_action('woocommerce_before_single_product'))--}}
 
-            <div id="product-{{ Loop::id() }}" {{ wc_product_class('lg:mt-24 lg:grid-cols-10 lg:gap-16 px-8') }}>
+            <div id="product-{{ Loop::id() }}" {{ wc_product_class('lg:mt-4 lg:grid-cols-10 lg:gap-16') }}>
                 <div class="before-summary order-1 lg:order-1 lg:col-span-5">
                     @php(do_action('woocommerce_before_single_product_summary'))
                 </div>

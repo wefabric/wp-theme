@@ -35,7 +35,7 @@ if ( ! empty( $product_tabs ) ) : ?>
 		<div class="faq-drawer lg:px-0">
 			<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
 				<div class="faq-drawer__block <?php echo esc_attr( $key ); ?>_tab" id="tab-title-<?php echo esc_attr( $key ); ?>" role="tab" aria-controls="tab-<?php echo esc_attr( $key ); ?>">
-					<input class="faq-drawer__trigger" id="faq-drawer-<?php echo esc_attr( $key ); ?>" type="checkbox" />
+					<input class="faq-drawer__trigger" id="faq-drawer-<?php echo esc_attr( $key ); ?>" type="checkbox" checked />
 					<label class="faq-drawer__title p-6" for="faq-drawer-<?php echo esc_attr( $key ); ?>"><?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?></label>
 					
 					<div class="faq-drawer__content-wrapper">
