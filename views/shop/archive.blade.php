@@ -1,10 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-
-
-
-	<div class="container mx-auto px-8">
+	<div class="container mx-auto lg:px-8">
 		@include('components.breadcrumbs.index')
 		@php do_action('woocommerce_before_main_content') @endphp
 
@@ -73,7 +70,7 @@
             $postContent = get_post_field('post_content', $page->ID);
         @endphp
 
-        <div class="page-builder">
+        <div class="page-builder px-4 lg:px-0">
             {!! apply_filters('the_content', $postContent) !!}
         </div>
 

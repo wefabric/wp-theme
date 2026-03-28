@@ -107,7 +107,7 @@ form.cart {
 	}
 
 	.woocommerce-product-attributes-item__label, .woocommerce-product-attributes-item__value {
-		@apply text-base font-normal not-italic #{!important};
+		@apply text-base font-normal not-italic;
 	}
 }
 
