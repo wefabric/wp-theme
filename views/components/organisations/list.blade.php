@@ -66,7 +66,7 @@
 
 @elseif($block['data']['alternative_row_layout'])
     <div class="alternative-row organisation-list hidden md:grid grid-cols-8 gap-y-4 gap-x-4 py-8">
-        @foreach ($organisations as $organisation)
+        @foreach ($organisations as $index => $organisation)
             <div class="col-span-2 {{ ($index + 1) % 7 === 5 ? 'col-start-2' : '' }} {{ $index === 0 ? $gridStartClass : '' }}">
                 @include('components.organisations.list-item')
             </div>
