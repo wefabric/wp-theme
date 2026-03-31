@@ -4,117 +4,125 @@
     $titleColor = $block['data']['title_color'] ?? '';
     $subTitle = $block['data']['subtitle'] ?? '';
     $subTitleColor = $block['data']['subtitle_color'] ?? '';
+    $subtitleIcon = $block['data']['subtitle_icon'] ?? '';
+    $subtitleIcon = $subtitleIcon ? json_decode($subtitleIcon, true) : null;
+    $subtitleIconColor = $block['data']['subtitle_icon_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
-        // Buttons
-        $button1Text = $block['data']['button_button_1']['title'] ?? '';
-        $button1Link = $block['data']['button_button_1']['url'] ?? '';
-        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
-        $button1Color = $block['data']['button_button_1_color'] ?? '';
-        $button1Style = $block['data']['button_button_1_style'] ?? '';
-        $button1Download = $block['data']['button_button_1_download'] ?? false;
-        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
-        if (!empty($button1Icon)) {
-            $iconData = json_decode($button1Icon, true);
-            if (isset($iconData['id'], $iconData['style'])) {
-                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
-            }
+    // Buttons
+    $button1Text = $block['data']['button_button_1']['title'] ?? '';
+    $button1Link = $block['data']['button_button_1']['url'] ?? '';
+    $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
+    $button1Color = $block['data']['button_button_1_color'] ?? '';
+    $button1Style = $block['data']['button_button_1_style'] ?? '';
+    $button1Download = $block['data']['button_button_1_download'] ?? false;
+    $button1Icon = $block['data']['button_button_1_icon'] ?? '';
+    if (!empty($button1Icon)) {
+        $iconData = json_decode($button1Icon, true);
+        if (isset($iconData['id'], $iconData['style'])) {
+            $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
         }
-        $button2Text = $block['data']['button_button_2']['title'] ?? '';
-        $button2Link = $block['data']['button_button_2']['url'] ?? '';
-        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
-        $button2Color = $block['data']['button_button_2_color'] ?? '';
-        $button2Style = $block['data']['button_button_2_style'] ?? '';
-        $button2Download = $block['data']['button_button_2_download'] ?? false;
-        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
-        if (!empty($button2Icon)) {
-            $iconData = json_decode($button2Icon, true);
-            if (isset($iconData['id'], $iconData['style'])) {
-                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
-            }
+    }
+    $button2Text = $block['data']['button_button_2']['title'] ?? '';
+    $button2Link = $block['data']['button_button_2']['url'] ?? '';
+    $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
+    $button2Color = $block['data']['button_button_2_color'] ?? '';
+    $button2Style = $block['data']['button_button_2_style'] ?? '';
+    $button2Download = $block['data']['button_button_2_download'] ?? false;
+    $button2Icon = $block['data']['button_button_2_icon'] ?? '';
+    if (!empty($button2Icon)) {
+        $iconData = json_decode($button2Icon, true);
+        if (isset($iconData['id'], $iconData['style'])) {
+            $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
         }
+    }
 
-    $textPosition = $block['data']['text_position'] ?? '';
-    $textOrder = $textPosition === 'left' ? 'lg:order-1 left' : 'lg:order-2 right';
-    $videoOrder = $textPosition === 'left' ? 'lg:order-2 right' : 'lg:order-1 left';
-
-
-    // Video
-    $videoFile = $block['data']['video_file'] ?? '';
-    $videoUrl = $block['data']['video_url'] ?? '';
-    $videoFileUrl = is_numeric($videoFile) ? wp_get_attachment_url($videoFile) : $videoFile;
-    $verticalCentered = $block['data']['vertical_centered'] ?? false;
-    $videoSize = $block['data']['video_size'] ?? '50';
-
-    $sizes = [
-        '33' => ['lg:w-1/3', 'lg:w-2/3'],
-        '40' => ['lg:w-2/5', 'lg:w-3/5'],
-        '50' => ['lg:w-1/2', 'lg:w-1/2'],
-        '60' => ['lg:w-3/5', 'lg:w-2/5'],
-        '66' => ['lg:w-2/3', 'lg:w-1/3'],
-    ];
-
-    [$videoClass, $textClass] = $sizes[$videoSize] ?? ['lg:w-1/2', 'lg:w-1/2'];
+$textPosition = $block['data']['text_position'] ?? '';
+$textOrder = $textPosition === 'left' ? 'lg:order-1 left' : 'lg:order-2 right';
+$videoOrder = $textPosition === 'left' ? 'lg:order-2 right' : 'lg:order-1 left';
 
 
-    // Blokinstellingen
-    $blockWidth = $block['data']['block_width'] ?? 100;
-    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
-    $blockClass = $blockClassMap[$blockWidth] ?? '';
-    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
+// Video
+$videoFormat = $block['data']['video_format'] ?? 'landscape';
+$videoSetting = $block['data']['video_setting'] ?? 'standard';
+$videoFormatMap = ['landscape' => 'aspect-video', 'portrait' => 'aspect-portrait', 'square' => 'aspect-square'];
+$videoFormatClass = $videoFormatMap[$videoFormat] ?? 'aspect-video';
+$videoEmbed = $block['data']['video_embed'] ?? '';
+$videoFile = $block['data']['video_file'] ?? '';
+$videoUrl = $block['data']['video_url'] ?? '';
+$videoFileUrl = is_numeric($videoFile) ? wp_get_attachment_url($videoFile) : $videoFile;
+$verticalCentered = $block['data']['vertical_centered'] ?? false;
+$videoSize = $block['data']['video_size'] ?? '50';
 
-    $backgroundColor = $block['data']['background_color'] ?? 'none';
-    $backgroundImageId = $block['data']['background_image'] ?? '';
-    $overlayEnabled = $block['data']['overlay_image'] ?? false;
-    $overlayColor = $block['data']['overlay_color'] ?? '';
-    $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
-    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
+$sizes = [
+    '33' => ['lg:w-1/3', 'lg:w-2/3'],
+    '40' => ['lg:w-2/5', 'lg:w-3/5'],
+    '50' => ['lg:w-1/2', 'lg:w-1/2'],
+    '60' => ['lg:w-3/5', 'lg:w-2/5'],
+    '66' => ['lg:w-2/3', 'lg:w-1/3'],
+];
 
-    $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
-    $customBlockId = $block['data']['custom_block_id'] ?? '';
-    $hideBlock = $block['data']['hide_block'] ?? false;
-
-
-    // Theme settings
-    $options = get_fields('option');
-    $borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength'] ?? '' : 'rounded-none';
-
-
-    // Paddings & margins
-    $randomNumber = rand(0, 1000);
-
-    $mobilePaddingTop = $block['data']['padding_mobile_padding_top'] ?? '';
-    $mobilePaddingRight = $block['data']['padding_mobile_padding_right'] ?? '';
-    $mobilePaddingBottom = $block['data']['padding_mobile_padding_bottom'] ?? '';
-    $mobilePaddingLeft = $block['data']['padding_mobile_padding_left'] ?? '';
-    $tabletPaddingTop = $block['data']['padding_tablet_padding_top'] ?? '';
-    $tabletPaddingRight = $block['data']['padding_tablet_padding_right'] ?? '';
-    $tabletPaddingBottom = $block['data']['padding_tablet_padding_bottom'] ?? '';
-    $tabletPaddingLeft = $block['data']['padding_tablet_padding_left'] ?? '';
-    $desktopPaddingTop = $block['data']['padding_desktop_padding_top'] ?? '';
-    $desktopPaddingRight = $block['data']['padding_desktop_padding_right'] ?? '';
-    $desktopPaddingBottom = $block['data']['padding_desktop_padding_bottom'] ?? '';
-    $desktopPaddingLeft = $block['data']['padding_desktop_padding_left'] ?? '';
-
-    $mobileMarginTop = $block['data']['margin_mobile_margin_top'] ?? '';
-    $mobileMarginRight = $block['data']['margin_mobile_margin_right'] ?? '';
-    $mobileMarginBottom = $block['data']['margin_mobile_margin_bottom'] ?? '';
-    $mobileMarginLeft = $block['data']['margin_mobile_margin_left'] ?? '';
-    $tabletMarginTop = $block['data']['margin_tablet_margin_top'] ?? '';
-    $tabletMarginRight = $block['data']['margin_tablet_margin_right'] ?? '';
-    $tabletMarginBottom = $block['data']['margin_tablet_margin_bottom'] ?? '';
-    $tabletMarginLeft = $block['data']['margin_tablet_margin_left'] ?? '';
-    $desktopMarginTop = $block['data']['margin_desktop_margin_top'] ?? '';
-    $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
-    $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
-    $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+[$videoClass, $textClass] = $sizes[$videoSize] ?? ['lg:w-1/2', 'lg:w-1/2'];
 
 
-    // Animaties
-    $titleAnimation = $block['data']['title_animation'] ?? false;
-    $flyInAnimation = $block['data']['flyin_animation'] ?? false;
-    $textFadeDirection = $block['data']['flyin_direction'] ?? 'bottom';
+// Blokinstellingen
+$blockWidth = $block['data']['block_width'] ?? 100;
+$blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
+$blockClass = $blockClassMap[$blockWidth] ?? '';
+$fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
+
+$backgroundColor = $block['data']['background_color'] ?? 'none';
+$backgroundImageId = $block['data']['background_image'] ?? '';
+$overlayEnabled = $block['data']['overlay_image'] ?? false;
+$overlayColor = $block['data']['overlay_color'] ?? '';
+$overlayOpacity = $block['data']['overlay_opacity'] ?? '';
+$backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
+
+$customBlockClasses = $block['data']['custom_css_classes'] ?? '';
+$customBlockId = $block['data']['custom_block_id'] ?? '';
+$hideBlock = $block['data']['hide_block'] ?? false;
+
+
+// Theme settings
+$options = get_fields('option');
+$borderRadius = $options['rounded_design'] === true ? $options['border_radius_strength'] ?? '' : 'rounded-none';
+
+
+// Paddings & margins
+$randomNumber = rand(0, 1000);
+
+$mobilePaddingTop = $block['data']['padding_mobile_padding_top'] ?? '';
+$mobilePaddingRight = $block['data']['padding_mobile_padding_right'] ?? '';
+$mobilePaddingBottom = $block['data']['padding_mobile_padding_bottom'] ?? '';
+$mobilePaddingLeft = $block['data']['padding_mobile_padding_left'] ?? '';
+$tabletPaddingTop = $block['data']['padding_tablet_padding_top'] ?? '';
+$tabletPaddingRight = $block['data']['padding_tablet_padding_right'] ?? '';
+$tabletPaddingBottom = $block['data']['padding_tablet_padding_bottom'] ?? '';
+$tabletPaddingLeft = $block['data']['padding_tablet_padding_left'] ?? '';
+$desktopPaddingTop = $block['data']['padding_desktop_padding_top'] ?? '';
+$desktopPaddingRight = $block['data']['padding_desktop_padding_right'] ?? '';
+$desktopPaddingBottom = $block['data']['padding_desktop_padding_bottom'] ?? '';
+$desktopPaddingLeft = $block['data']['padding_desktop_padding_left'] ?? '';
+
+$mobileMarginTop = $block['data']['margin_mobile_margin_top'] ?? '';
+$mobileMarginRight = $block['data']['margin_mobile_margin_right'] ?? '';
+$mobileMarginBottom = $block['data']['margin_mobile_margin_bottom'] ?? '';
+$mobileMarginLeft = $block['data']['margin_mobile_margin_left'] ?? '';
+$tabletMarginTop = $block['data']['margin_tablet_margin_top'] ?? '';
+$tabletMarginRight = $block['data']['margin_tablet_margin_right'] ?? '';
+$tabletMarginBottom = $block['data']['margin_tablet_margin_bottom'] ?? '';
+$tabletMarginLeft = $block['data']['margin_tablet_margin_left'] ?? '';
+$desktopMarginTop = $block['data']['margin_desktop_margin_top'] ?? '';
+$desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
+$desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
+$desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+// Animaties
+$titleAnimation = $block['data']['title_animation'] ?? false;
+$flyInAnimation = $block['data']['flyin_animation'] ?? false;
+$textFadeDirection = $block['data']['flyin_direction'] ?? 'bottom';
 @endphp
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'video-tekst' }}@endif" class="block-video-tekst block-{{ $randomNumber }} relative video-tekst-{{ $randomNumber }}-custom-padding video-tekst-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -127,7 +135,12 @@
             <div class="text-video flex flex-col lg:flex-row gap-8 xl:gap-20 @if ($verticalCentered) lg:items-center @endif">
                 <div class="text {{ $textClass }} order-2 {{ $textOrder }}">
                     @if ($subTitle)
-                        <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if ($titleAnimation) title-animation @endif @if ($flyInAnimation) flyin-animation @endif">{!! $subTitle !!}</span>
+                        <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">
+                            @if ($subtitleIcon)
+                                <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
+                            @endif
+                            {!! $subTitle !!}
+                        </span>
                     @endif
                     @if ($title)
                         <h2 class="title mb-4 text-{{ $titleColor }} @if ($titleAnimation) title-animation @endif @if ($flyInAnimation) flyin-animation @endif">{!! $title !!}</h2>
@@ -166,7 +179,7 @@
                     @endif
                 </div>
 
-                @if ($videoUrl || $videoFileUrl)
+                @if ($videoUrl || $videoFileUrl || $videoEmbed)
                     @php
                         $videoSchema = [
                             '@type' => 'VideoObject',
@@ -177,22 +190,117 @@
                         ];
                         if ($videoUrl) {
                             $videoSchema['embedUrl'] = $videoUrl;
+                        } elseif ($videoEmbed) {
+                            $videoSchema['embedUrl'] = $videoEmbed;
                         }
                         if ($videoFileUrl) {
                             $videoSchema['contentUrl'] = $videoFileUrl;
                         }
                         \Wefabric\WPSupport\Schema\JsonLd::addSchema('video_tekst_' . $randomNumber, $videoSchema);
                     @endphp
-                    <div class="video video-{{ $randomNumber }} {{ $videoClass }} order-1 {{ $videoOrder }}">
-                        @if ($videoUrl)
-                            <div class="video-embed-wrapper">
-                                {!! apply_filters('the_content', '[embed]' . $videoUrl . '[/embed]') !!}
+                    <div class="video video-{{ $randomNumber }} {{ $videoClass }} order-1 {{ $videoOrder }} {{ $videoFormatClass }} relative">
+                        @php
+                            $targetUrl = $videoUrl ?: $videoEmbed;
+                        @endphp
+                        @if ($targetUrl)
+                            <div class="video-embed-wrapper h-full w-full">
+                                @php
+                                    $html = '';
+                                    if (is_string($targetUrl)) {
+                                        if (strpos($targetUrl, '<iframe') !== false) {
+                                            $html = $targetUrl;
+                                        } else {
+                                            $oembed = function_exists('wp_oembed_get') ? wp_oembed_get($targetUrl) : '';
+                                            if ($oembed) {
+                                                $html = $oembed;
+                                            } else {
+                                                $src = $targetUrl;
+                                                $ytId = '';
+                                                $vmId = '';
+                                                if (preg_match('~youtu\.be/([A-Za-z0-9_-]{6,})~', $targetUrl, $m) || preg_match('~youtube\.com/watch\\?v=([A-Za-z0-9_-]{6,})~', $targetUrl, $m) || preg_match('~youtube\.com/embed/([A-Za-z0-9_-]{6,})~',$targetUrl,$m)) {
+                                                    $ytId = $m[1];
+                                                }
+                                                if (!$ytId && preg_match('~vimeo\.com/(?:video/)?(\d+)~', $targetUrl, $m)) {
+                                                    $vmId = $m[1];
+                                                }
+                                                if ($ytId) {
+                                                    $params = 'rel=0&modestbranding=1&playsinline=1';
+                                                    $src = 'https://www.youtube.com/embed/' . $ytId . '?' . $params;
+                                                } elseif ($vmId) {
+                                                    $src = 'https://player.vimeo.com/video/' . $vmId;
+                                                }
+                                                $html = '<iframe width="100%" height="100%" src="' . esc_url($src) . '" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+                                            }
+                                        }
+                                    }
+                                @endphp
+                                {!! $html !!}
                             </div>
                         @elseif ($videoFileUrl)
-                            <video class="w-full" controls>
+                            <video class="video-item w-full h-full object-cover rounded-{{ $borderRadius }}"
+                                   @if($videoSetting === 'automatic') autoplay muted loop playsinline @endif
+                                   @if($videoSetting === 'on_hover') muted loop playsinline @endif
+                                   preload="metadata">
                                 <source src="{{ $videoFileUrl }}">
                                 Your browser does not support the video tag.
                             </video>
+
+                            @if($videoSetting === 'automatic')
+                                <script>
+                                    (function() {
+                                        const vid = document.currentScript.previousElementSibling;
+                                        if(!vid) return;
+                                        const onChange = (entries)=>{
+                                            entries.forEach(entry=>{
+                                                if(entry.isIntersecting){ vid.play().catch(()=>{}); }
+                                                else { vid.pause(); }
+                                            });
+                                        };
+                                        const io = new IntersectionObserver(onChange, { threshold: 0.2 });
+                                        io.observe(vid);
+                                    })();
+                                </script>
+                            @elseif($videoSetting === 'on_hover')
+                                <script>
+                                    (function() {
+                                        const vid = document.currentScript.previousElementSibling;
+                                        if(!vid) return;
+                                        const startPlaying = ()=>{ if(vid.paused){ vid.play().catch(()=>{}); } };
+                                        const stopPlaying = ()=>{ vid.pause(); };
+                                        vid.addEventListener('mouseenter', startPlaying);
+                                        vid.addEventListener('mouseleave', stopPlaying);
+                                        let started = false;
+                                        vid.addEventListener('touchstart', function(){
+                                            if(!started){ vid.play().catch(()=>{}); started = true; }
+                                            else { vid.pause(); started = false; }
+                                        }, {passive:true});
+                                    })();
+                                </script>
+                            @elseif($videoSetting === 'standard')
+                                <div class="video-overlay absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                                    <button aria-label="Play video" class="play-button pointer-events-auto w-20 h-20 rounded-full bg-white/70 text-black flex items-center justify-center shadow-lg transition-transform hover:scale-110">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                    </button>
+                                </div>
+                                <script>
+                                    (function() {
+                                        const container = document.currentScript.parentElement;
+                                        const vid = container.querySelector('video.video-item');
+                                        const btn = container.querySelector('.play-button');
+                                        const overlay = container.querySelector('.video-overlay');
+                                        if(!vid || !btn) return;
+                                        vid.removeAttribute('autoplay');
+                                        vid.pause();
+                                        btn.addEventListener('click', function(){
+                                            if(overlay){ overlay.style.display = 'none'; }
+                                            vid.muted = false;
+                                            vid.controls = true;
+                                            vid.removeAttribute('loop');
+                                            vid.play().catch(()=>{});
+                                        });
+                                    })();
+                                </script>
+                            @endif
                         @endif
                     </div>
                 @endif
@@ -248,8 +356,14 @@
    .video-embed-wrapper iframe {
        width: 100%;
        height: 100%;
-       aspect-ratio: 16 / 9;
+       position: absolute;
+       top: 0;
+       left: 0;
    }
+
+   .video.aspect-video { aspect-ratio: 16 / 9; }
+   .video.aspect-square { aspect-ratio: 1 / 1; }
+   .video.aspect-portrait { aspect-ratio: 9 / 16; }
 </style>
 
 

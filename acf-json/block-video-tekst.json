@@ -131,6 +131,72 @@
             "font_size": 14
         },
         {
+            "key": "field_69cb9ad91024d",
+            "label": "Icoon voor subtitel",
+            "name": "subtitle_icon",
+            "aria-label": "",
+            "type": "font-awesome",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_67d95cf9c15a9",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+            },
+            "icon_sets": [
+                "solid",
+                "regular",
+                "light",
+                "thin",
+                "duotone_solid",
+                "fak",
+                "brands"
+            ],
+            "custom_icon_set": "",
+            "default_label": "",
+            "default_value": "",
+            "save_format": "element",
+            "allow_null": 1,
+            "show_preview": 1,
+            "enqueue_fa": 0,
+            "allow_in_bindings": 0,
+            "fa_live_preview": "",
+            "choices": []
+        },
+        {
+            "key": "field_69cb9b011024e",
+            "label": "Icoon kleur",
+            "name": "subtitle_icon_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_67d95cf9c15a9",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "black",
+            "allow_in_bindings": 1,
+            "font_size": 14
+        },
+        {
             "key": "field_67d95cf9c15bf",
             "label": "Tekst",
             "name": "text",
@@ -561,6 +627,24 @@
             "selected": 0
         },
         {
+            "key": "field_69cb9b4310250",
+            "label": "Video embed",
+            "name": "video_embed",
+            "aria-label": "",
+            "type": "oembed",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "width": "",
+            "height": "",
+            "allow_in_bindings": 0
+        },
+        {
             "key": "field_67d9604b25f28",
             "label": "Video URL",
             "name": "video_url",
@@ -619,6 +703,66 @@
                 "66": "66%"
             },
             "default_value": 50,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_69cb9c0e8c20b",
+            "label": "Video formaat",
+            "name": "video_format",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "landscape": "16:9 (Landscape)",
+                "portrait": "9:16 (Portrait)",
+                "square": "1:1 (Square)"
+            },
+            "default_value": "landscape",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_69cb9c278c20c",
+            "label": "Video instellingen",
+            "name": "video_setting",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Dit werkt alleen voor bestand video's.\r\nNiet op video links of embed.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "standard": "Play button tonen",
+                "automatic": "Automatisch afspelen als het blok in beeld komt",
+                "on_hover": "Afspelen als je hovert"
+            },
+            "default_value": "standard",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -876,6 +1020,27 @@
             },
             "default_value": "",
             "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69cb9b1d1024f",
+            "label": "Custom block ID",
+            "name": "custom_block_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -1810,5 +1975,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1753278957
+    "display_title": "",
+    "modified": 1774951491
 }
