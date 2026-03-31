@@ -290,7 +290,7 @@
                             </video>
                             @if($videoSetting === 'automatic')
                                 <script>
-                                    document.addEventListener('DOMContentLoaded', function(){
+                                    (function() {
                                         const block = document.querySelector('.block-{{ $randomNumber }}');
                                         const vid = block ? block.querySelector('video.image-item') : null;
                                         if(!vid) return;
@@ -302,21 +302,24 @@
                                         };
                                         const io = new IntersectionObserver(onChange, { threshold: 0.2 });
                                         io.observe(vid);
-                                    });
+                                    })();
                                 </script>
                             @elseif($videoSetting === 'on_hover')
                                 <script>
-                                    document.addEventListener('DOMContentLoaded', function(){
+                                    (function() {
                                         const block = document.querySelector('.block-{{ $randomNumber }}');
                                         const vid = block ? block.querySelector('video.image-item') : null;
                                         if(!vid) return;
                                         const startPlaying = ()=>{ if(vid.paused){ vid.play().catch(()=>{}); } };
+                                        const stopPlaying = ()=>{ vid.pause(); };
                                         vid.addEventListener('mouseenter', startPlaying);
+                                        vid.addEventListener('mouseleave', stopPlaying);
                                         let started = false;
                                         vid.addEventListener('touchstart', function(){
                                             if(!started){ vid.play().catch(()=>{}); started = true; }
+                                            else { vid.pause(); started = false; }
                                         }, {passive:true});
-                                    });
+                                    })();
                                 </script>
                             @elseif($videoSetting === 'standard')
                                 <div class="video-overlay absolute inset-0 flex items-center justify-center pointer-events-none z-10">
@@ -325,7 +328,7 @@
                                     </button>
                                 </div>
                                 <script>
-                                    document.addEventListener('DOMContentLoaded', function(){
+                                    (function() {
                                         const block = document.querySelector('.block-{{ $randomNumber }}');
                                         const wrap = block ? block.querySelector('.image.image-{{ $randomNumber }}') : null;
                                         const vid = wrap ? wrap.querySelector('video.image-item') : null;
@@ -335,7 +338,7 @@
                                         vid.removeAttribute('autoplay');
                                         vid.pause();
                                         btn.addEventListener('click', function(){
-                                            if(overlay){ overlay.remove(); }
+                                            if(overlay){ overlay.style.display = 'none'; }
                                             vid.muted = false;
                                             vid.controls = true;
                                             vid.removeAttribute('loop');
@@ -345,7 +348,7 @@
                                                 try { vid.currentTime = 0; } catch(e) {}
                                             }, { once: true });
                                         });
-                                    });
+                                    })();
                                 </script>
                             @endif
                         </div>

@@ -66,6 +66,8 @@ module.exports = {
     'xl:w-fit',
     '2xl:w-3/4',
     '2xl:w-1/4',
+    'w-16',
+    'h-16',
 
     // Margin & paddings
     'mr-1',

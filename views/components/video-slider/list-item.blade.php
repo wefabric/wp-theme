@@ -1,10 +1,70 @@
 @if ($video['url'])
     <div class="flex flex-col lg:flex-row items-center gap-x-8 gap-y-4 @if(!$video['caption']) justify-center @endif">
-        <div class="video-container aspect-video w-full  @if ($video['caption']) lg:w-3/5 @endif">
+        <div class="video-container {{ $videoFormatClass ?? 'aspect-video' }} w-full  @if ($video['caption']) lg:w-3/5 @endif relative">
             @if(isset($video['type']) && $video['type'] === 'file')
-                <video controls playsinline preload="metadata" style="width:100%;height:100%">
+                <video class="video-item w-full h-full object-cover rounded-{{ $borderRadius }}"
+                    @if($videoSetting === 'automatic') autoplay muted loop playsinline @endif
+                    @if($videoSetting === 'on_hover') muted loop playsinline @endif
+                    preload="metadata">
                     <source src="{{ $video['url'] }}">
                 </video>
+
+                @if($videoSetting === 'automatic')
+                    <script>
+                        (function() {
+                            const vid = document.currentScript.previousElementSibling;
+                            if(!vid) return;
+                            const onChange = (entries)=>{
+                                entries.forEach(entry=>{
+                                    if(entry.isIntersecting){ vid.play().catch(()=>{}); }
+                                    else { vid.pause(); }
+                                });
+                            };
+                            const io = new IntersectionObserver(onChange, { threshold: 0.2 });
+                            io.observe(vid);
+                        })();
+                    </script>
+                @elseif($videoSetting === 'on_hover')
+                    <script>
+                        (function() {
+                            const vid = document.currentScript.previousElementSibling;
+                            if(!vid) return;
+                            const startPlaying = ()=>{ if(vid.paused){ vid.play().catch(()=>{}); } };
+                            const stopPlaying = ()=>{ vid.pause(); };
+                            vid.addEventListener('mouseenter', startPlaying);
+                            vid.addEventListener('mouseleave', stopPlaying);
+                            let started = false;
+                            vid.addEventListener('touchstart', function(){
+                                if(!started){ vid.play().catch(()=>{}); started = true; }
+                                else { vid.pause(); started = false; }
+                            }, {passive:true});
+                        })();
+                    </script>
+                @elseif($videoSetting === 'standard')
+                    <div class="video-overlay absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                        <button aria-label="Play video" class="play-button pointer-events-auto w-16 h-16 rounded-full bg-white/70 text-black flex items-center justify-center shadow-lg transition-transform hover:scale-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                    </div>
+                    <script>
+                        (function() {
+                            const container = document.currentScript.parentElement;
+                            const vid = container.querySelector('video.video-item');
+                            const btn = container.querySelector('.play-button');
+                            const overlay = container.querySelector('.video-overlay');
+                            if(!vid || !btn) return;
+                            vid.removeAttribute('autoplay');
+                            vid.pause();
+                            btn.addEventListener('click', function(){
+                                if(overlay){ overlay.style.display = 'none'; }
+                                vid.muted = false;
+                                vid.controls = true;
+                                vid.removeAttribute('loop');
+                                vid.play().catch(()=>{});
+                            });
+                        })();
+                    </script>
+                @endif
             @else
                 @php $val = $video['url']; @endphp
                 @if (is_string($val) && strpos($val, '<') !== false)
