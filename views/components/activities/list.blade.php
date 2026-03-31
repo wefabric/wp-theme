@@ -17,11 +17,14 @@
     $swiperLoop = $block['data']['loop_slides'] ?? true;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
+    $paginationStyle = $block['data']['pagination_style'] ?? 'bullets';
     $randomId = 'activiteitenSwiper-' . $randomNumber;
+
+    $spaceBetween = $block['data']['space_between'] ?? 20;
 @endphp
 
 @if ($block['data']['show_slider'])
-    <div class="block relative">
+    <div class="slider block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
                 @foreach ($activities as $activity)
@@ -30,7 +33,9 @@
                     </div>
                 @endforeach
             </div>
-            <div class="swiper-pagination"></div>
+            @if ($paginationStyle != 'none')
+                <div class="swiper-pagination"></div>
+            @endif
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next activity-button-next-{{ $randomNumber }}"></div>
@@ -57,7 +62,7 @@
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var activiteitenSwiper = new Swiper(".{{ $randomId }}", {
-            spaceBetween: 20,
+            spaceBetween: {{ $spaceBetween }},
             @if ($swiperCenteredSlides)
                 centeredSlides: true,
             @endif
@@ -67,10 +72,16 @@
                     disableOnInteraction: true,
                 },
             @endif
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
+            @if ($paginationStyle != 'none')
+                pagination: {
+                    el: '.swiper-pagination',
+                    @if ($paginationStyle == 'progress_bar')
+                        type: 'progressbar',
+                    @elseif ($paginationStyle == 'bullets')
+                        clickable: true,
+                    @endif
+                },
+            @endif
             navigation: {
                 nextEl: ".activity-button-next-{{ $randomNumber }}",
                 prevEl: ".activity-button-prev-{{ $randomNumber }}",

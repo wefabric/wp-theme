@@ -86,9 +86,9 @@
 @endphp
 
 <div class="activiteit-item group h-full @if ($flyinEffect) activity-hidden @endif">
-    <div class="h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
+    <div class="activity-wrapper h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         @if ($activityThumbnailID)
-            <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
+            <div class="activity-image image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $activityUrl }}" aria-label="Ga naar {{ $activityTitle }}"
                    class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
                     <span class="sr-only">Ga naar {{ $activityTitle }}</span>
