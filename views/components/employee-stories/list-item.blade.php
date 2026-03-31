@@ -11,22 +11,60 @@
     $employeeStoryText = $fields['employee_story_text'] ?? '';
     $employeeStoryFunction = $fields['function'] ?? '';
     $employeeStoryAvatarId = $fields['avatar'] ?? '';
+    if (is_array($employeeStoryAvatarId)) {
+        $employeeStoryAvatarId = $employeeStoryAvatarId['ID'] ?? ($employeeStoryAvatarId['id'] ?? '');
+    }
     $employeeStoryLogoId = $fields['logo_image'] ?? '';
+    if (is_array($employeeStoryLogoId)) {
+        $employeeStoryLogoId = $employeeStoryLogoId['ID'] ?? ($employeeStoryLogoId['id'] ?? '');
+    }
     $employeeStoryImageId = $fields['image'] ?? '';
+    if (is_array($employeeStoryImageId)) {
+        $employeeStoryImageId = $employeeStoryImageId['ID'] ?? ($employeeStoryImageId['id'] ?? '');
+    }
+    $employeeStoryVideoEmbed = $fields['video_embed'] ?? '';
+    $employeeStoryVideoFile = $fields['video_file'] ?? '';
+
     $employeeStoryStars = $fields['star_rating'] ?? '';
 
     $employeeStoryLink = $block['data']['employee_story_link'] ?? 'employee_story_link';
     $imagePosition = $block['data']['image_position'] ?? 'right';
 
     $visibleElements = $block['data']['show_element'] ?? [];
-    $employeeStoryCategories = get_the_terms($employeeStory, 'employee_story_categories');
+    $employeeStoryCategories = get_the_terms($employeeStory, 'employee_story_categories') ?: [];
+
+    $buttonCardText = $block['data']['employee_story_button_text'] ?? '';
+    $buttonCardColor = $block['data']['employee_story_button_color'] ?? 'primary';
+    $buttonCardStyle = $block['data']['employee_story_button_style'] ?? 'filled';
+    $buttonCardIcon = $block['data']['employee_story_button_icon'] ?? '';
+    if (!empty($buttonCardIcon) && is_string($buttonCardIcon)) {
+        $iconData = json_decode($buttonCardIcon, true);
+        if (isset($iconData['id'], $iconData['style'])) {
+            $buttonCardIcon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
+        }
+    }
+
+    // Video format
+    $videoFormat = $block['data']['video_format'] ?? 'square';
+    $videoFormatMap = ['landscape' => 'aspect-video', 'portrait' => 'aspect-portrait', 'square' => 'aspect-square'];
+    $videoFormatClass = $videoFormatMap[$videoFormat] ?? 'aspect-square';
 @endphp
+
+<style>
+    .employee-story-video.aspect-video { aspect-ratio: 16 / 9; }
+    .employee-story-video.aspect-square { aspect-ratio: 1 / 1; }
+    .employee-story-video.aspect-portrait { aspect-ratio: 9 / 16; }
+
+    .employee-story-image .aspect-video { aspect-ratio: 16 / 9; }
+    .employee-story-image .aspect-square { aspect-ratio: 1 / 1; }
+    .employee-story-image .aspect-portrait { aspect-ratio: 9 / 16; }
+</style>
 
 <div class="employee-story-item custom-styling flex w-full h-full text-{{ $employeeStoryTextColor }} @if ($flyinEffect) employee-story-hidden @endif">
 
     <div class="employee-story-block relative w-full h-auto flex flex-col md:flex-row bg-{{ $employeeStoryBackground }} rounded-{{ $borderRadius }}">
 
-        @if (!empty($visibleElements) && in_array('category', $visibleElements))
+        @if (!empty($employeeStoryCategories) && !is_wp_error($employeeStoryCategories) && in_array('category', $visibleElements))
             <div class="employee-story-categories absolute z-20 top-[15px] @if($imagePosition == 'right') image-right right-[15px] @else image-left left-[15px] @endif flex flex-wrap gap-2">
                 @foreach ($employeeStoryCategories as $category)
                     @php
@@ -138,13 +176,146 @@
 
         </div>
 
-        @if ($employeeStoryImageId)
+        @php
+            $videoUrl = '';
+            $videoType = '';
+            $videoFileUrl = '';
+            
+    if (!empty($employeeStoryVideoFile)) {
+        if (is_array($employeeStoryVideoFile)) {
+            $videoFileUrl = $employeeStoryVideoFile['url'] ?? '';
+        } else {
+            $videoFileUrl = is_numeric($employeeStoryVideoFile) ? wp_get_attachment_url($employeeStoryVideoFile) : $employeeStoryVideoFile;
+        }
+        if ($videoFileUrl) {
+           $videoType = 'file';
+           $videoUrl = $videoFileUrl;
+        }
+    }
+    
+    if (!$videoUrl && !empty($employeeStoryVideoEmbed)) {
+        if (is_array($employeeStoryVideoEmbed)) {
+            $videoUrl = $employeeStoryVideoEmbed['url'] ?? ($employeeStoryVideoEmbed['embed'] ?? '');
+        } else {
+            $videoUrl = $employeeStoryVideoEmbed;
+        }
+        $videoType = 'embed';
+    }
+
+            $videoSetting = $block['data']['video_setting'] ?? 'standard';
+        @endphp
+
+        @if (!empty($visibleElements) && in_array('video', $visibleElements) && ($videoUrl))
+            <div class="employee-story-video w-full md:w-2/5 h-auto flex-grow @if($imagePosition == 'right') order-1 md:order-2 @else order-1 @endif relative {{ $videoFormatClass }}">
+                @if ($videoType === 'file')
+                    <video class="video-item w-full h-full object-cover rounded-{{ $borderRadius }}"
+                           @if($videoSetting === 'automatic') autoplay muted loop playsinline @endif
+                           @if($videoSetting === 'on_hover') muted loop playsinline @endif
+                           preload="metadata">
+                        <source src="{{ $videoUrl }}">
+                        Your browser does not support the video tag.
+                    </video>
+
+                    @if($videoSetting === 'automatic')
+                        <script>
+                            (function() {
+                                const vid = document.currentScript.previousElementSibling;
+                                if(!vid) return;
+                                const onChange = (entries)=>{
+                                    entries.forEach(entry=>{
+                                        if(entry.isIntersecting){ vid.play().catch(()=>{}); }
+                                        else { vid.pause(); }
+                                    });
+                                };
+                                const io = new IntersectionObserver(onChange, { threshold: 0.2 });
+                                io.observe(vid);
+                            })();
+                        </script>
+                    @elseif($videoSetting === 'on_hover')
+                        <script>
+                            (function() {
+                                const vid = document.currentScript.previousElementSibling;
+                                if(!vid) return;
+                                const startPlaying = ()=>{ if(vid.paused){ vid.play().catch(()=>{}); } };
+                                const stopPlaying = ()=>{ vid.pause(); };
+                                vid.addEventListener('mouseenter', startPlaying);
+                                vid.addEventListener('mouseleave', stopPlaying);
+                                let started = false;
+                                vid.addEventListener('touchstart', function(){
+                                    if(!started){ vid.play().catch(()=>{}); started = true; }
+                                    else { vid.pause(); started = false; }
+                                }, {passive:true});
+                            })();
+                        </script>
+                    @elseif($videoSetting === 'standard')
+                        <div class="video-overlay absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                            <button aria-label="Play video" class="play-button pointer-events-auto w-16 h-16 rounded-full bg-white/70 text-black flex items-center justify-center shadow-lg transition-transform hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                        </div>
+                        <script>
+                            (function() {
+                                const container = document.currentScript.parentElement;
+                                const vid = container.querySelector('video.video-item');
+                                const btn = container.querySelector('.play-button');
+                                const overlay = container.querySelector('.video-overlay');
+                                if(!vid || !btn) return;
+                                vid.removeAttribute('autoplay');
+                                vid.pause();
+                                btn.addEventListener('click', function(){
+                                    if(overlay){ overlay.style.display = 'none'; }
+                                    vid.muted = false;
+                                    vid.controls = true;
+                                    vid.removeAttribute('loop');
+                                    vid.play().catch(()=>{});
+                                });
+                            })();
+                        </script>
+                    @endif
+                @else
+                    @php
+                        $html = '';
+                        $val = $videoUrl;
+                        if (is_string($val)) {
+                            if (strpos($val, '<iframe') !== false) {
+                                $html = $val;
+                            } else {
+                                $oembed = function_exists('wp_oembed_get') ? wp_oembed_get($val) : '';
+                                if ($oembed) {
+                                    $html = $oembed;
+                                } else {
+                                    $src = $val;
+                                    $ytId = '';
+                                    $vmId = '';
+                                    if (preg_match('~youtu\.be/([A-Za-z0-9_-]{6,})~', $val, $m) || preg_match('~youtube\.com/watch\\?v=([A-Za-z0-9_-]{6,})~', $val, $m) || preg_match('~youtube\.com/embed/([A-Za-z0-9_-]{6,})~',$val,$m)) {
+                                        $ytId = $m[1];
+                                    }
+                                    if (!$ytId && preg_match('~vimeo\.com/(?:video/)?(\d+)~', $val, $m)) {
+                                        $vmId = $m[1];
+                                    }
+                                    if ($ytId) {
+                                        $params = 'rel=0&modestbranding=1&playsinline=1';
+                                        $src = 'https://www.youtube.com/embed/' . $ytId . '?' . $params;
+                                    } elseif ($vmId) {
+                                        $src = 'https://player.vimeo.com/video/' . $vmId;
+                                    }
+                                    $html = '<iframe width="100%" height="100%" src="' . esc_url($src) . '" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+                                }
+                            }
+                        }
+                    @endphp
+                    <div class="video-embed-wrapper h-full w-full">
+                        {!! $html !!}
+                    </div>
+                @endif
+            </div>
+        @elseif (!empty($visibleElements) && in_array('image', $visibleElements) && $employeeStoryImageId)
             <div class="employee-story-image w-full md:w-2/5 h-auto flex-grow @if($imagePosition == 'right') order-1 md:order-2 @else order-1 @endif">
                 @include('components.image', [
                     'image_id' => $employeeStoryImageId,
                     'size' => 'full',
                     'object_fit' => 'cover',
-                    'img_class' => 'h-full max-h-[200px] md:max-h-fit w-full aspect-square object-cover rounded-' . $borderRadius,
+                    'img_class' => 'h-full max-h-[200px] md:max-h-fit w-full object-cover rounded-' . $borderRadius . ' ' . $videoFormatClass,
                     'alt' => $employeeStoryTitle,
                 ])
             </div>

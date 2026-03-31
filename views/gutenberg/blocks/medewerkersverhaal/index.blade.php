@@ -286,9 +286,6 @@ $flyinEffect = $block['data']['flyin_effect'] ?? false;
                     'class' => 'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
                 ])
             @endif
-{{--            @if (!empty($visibleElements) && in_array('category_filter', $visibleElements))--}}
-{{--                @include('components.employee-stories.category-filter')--}}
-{{--            @endif--}}
             @if ($employeeStories)
                 @include('components.employee-stories.list', ['employeeStories' => $employeeStories])
             @endif

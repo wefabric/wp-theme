@@ -705,7 +705,14 @@
             "allow_null": 0,
             "bidirectional": 0,
             "multiple": 0,
-            "bidirectional_target": []
+            "bidirectional_target": [],
+            "choices": {
+                "Bericht - Categorie": {
+                    "6": "Activiteiten",
+                    "7": "Blog",
+                    "1": "Nieuws"
+                }
+            }
         },
         {
             "key": "field_68cab16d15b1d",
@@ -802,11 +809,12 @@
                 "avatar_image": "Avatar afbeelding",
                 "logo_image": "Logo afbeelding",
                 "employee_story_text": "Medewerkersverhaal tekst",
+                "image": "Afbeelding",
+                "video": "Video",
                 "star_rating": "Sterren rating",
                 "quote": "Quote icoon",
                 "button": "Knop in medewerkersverhaal",
-                "category": "Categorie",
-                "category_filter": "Categorie filter"
+                "category": "Categorie"
             },
             "default_value": [],
             "return_format": "value",
@@ -847,13 +855,28 @@
         },
         {
             "key": "field_68cab16d15b28",
-            "label": "Afbeelding positie",
+            "label": "Afbeelding\/video positie",
             "name": "image_position",
             "aria-label": "",
             "type": "select",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68cab16d15b23",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_68cab16d15b23",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -867,6 +890,83 @@
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_69cbc3492ce73",
+            "label": "Video formaat",
+            "name": "video_format",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68cab16d15b23",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "landscape": "16:9 (Landscape)",
+                "portrait": "9:16 (Portrait)",
+                "square": "1:1 (Square)"
+            },
+            "default_value": "landscape",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_69cbc37a2ce74",
+            "label": "Video instellingen",
+            "name": "video_setting",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68cab16d15b23",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "standard": "Play button tonen",
+                "automatic": "Automatisch afspelen als het blok in beeld komt",
+                "on_hover": "Afspelen als je hovert"
+            },
+            "default_value": "standard",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
             "ui": 0,
             "ajax": 0,
             "placeholder": "",
@@ -2537,5 +2637,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763113963
+    "modified": 1774961570
 }
