@@ -48,6 +48,7 @@
     "google-maps/block.json",
     "brochure/block.json",
     "embed/block.json",
+    "embed-slider/block.json",
     "producten/block.json",
     "services/block.json",
     "product-pakketten/block.json",

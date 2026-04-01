@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.embed-slider.index', ['block' => $block])->render(); ?>
