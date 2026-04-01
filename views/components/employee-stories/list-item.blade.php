@@ -33,17 +33,6 @@
     $visibleElements = $block['data']['show_element'] ?? [];
     $employeeStoryCategories = get_the_terms($employeeStory, 'employee_story_categories') ?: [];
 
-    $buttonCardText = $block['data']['employee_story_button_text'] ?? '';
-    $buttonCardColor = $block['data']['employee_story_button_color'] ?? 'primary';
-    $buttonCardStyle = $block['data']['employee_story_button_style'] ?? 'filled';
-    $buttonCardIcon = $block['data']['employee_story_button_icon'] ?? '';
-    if (!empty($buttonCardIcon) && is_string($buttonCardIcon)) {
-        $iconData = json_decode($buttonCardIcon, true);
-        if (isset($iconData['id'], $iconData['style'])) {
-            $buttonCardIcon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
-        }
-    }
-
     // Video format
     $videoFormat = $block['data']['video_format'] ?? 'square';
     $videoFormatMap = ['landscape' => 'aspect-video', 'portrait' => 'aspect-portrait', 'square' => 'aspect-square'];
