@@ -34,7 +34,7 @@
             @if ($organisationLink2Title)
                 <a href="{{ $organisationLink2Url }}" target="_blank" aria-label="Ga naar {{ $organisationTitle }}">
             @endif
-            <div class="mt-2 text-lg font-bold text-{{ $organisationTitleColor }} @if($organisationLink2Url) group-hover:text-primary @endif">{!! $organisationLink2Title !!}</div>
+            <div class="organisation-title mt-2 text-lg font-bold text-{{ $organisationTitleColor }} @if($organisationLink2Url) group-hover:text-primary @endif">{!! $organisationLink2Title !!}</div>
             @if ($organisationLink2Title)</a>@endif
         @endif
         @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && ($organisationSummary))
