@@ -1,4 +1,4 @@
-  {
+{
     "key": "group_6566ff7988436",
     "title": "Block: Logo's",
     "fields": [
@@ -708,7 +708,12 @@
             "allow_in_bindings": 1,
             "bidirectional": 0,
             "multiple": 0,
-            "bidirectional_target": []
+            "bidirectional_target": [],
+            "choices": {
+                "Bericht - Categorie": {
+                    "1": "Niet gecategoriseerd"
+                }
+            }
         },
         {
             "key": "field_6566ff79947a4",
@@ -1133,6 +1138,36 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_69cf66ff6adbc",
+            "label": "Horizontale ruimte tussen logo's",
+            "name": "space_between",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6566ff7994774",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 20,
+            "min": 0,
+            "max": 300,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "px"
+        },
+        {
             "key": "field_6566ff79947d9",
             "label": "Autoplay swiper",
             "name": "autoplay",
@@ -1396,6 +1431,49 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_69cf68813933d",
+            "label": "Paginatie stijl",
+            "name": "pagination_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6566ff79947d1",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_6798c107882a1",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "bullets": "Bullets",
+                "progress_bar": "Progressie balk",
+                "none": "Geen"
+            },
+            "default_value": "bullets",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_6566ff79947e0",
             "label": "Blokinstellingen",
             "name": "",
@@ -1622,6 +1700,27 @@
             },
             "default_value": "",
             "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_69cf68ac3933e",
+            "label": "Custom block ID",
+            "name": "custom_block_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -2450,5 +2549,8 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1768208206
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1775200496
 }

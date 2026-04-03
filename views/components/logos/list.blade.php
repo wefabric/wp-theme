@@ -27,7 +27,10 @@
         'super_fast' => 1000,
     ][$block['data']['rotation_speed']] ?? 5000;
 
+    $paginationStyle = $block['data']['pagination_style'] ?? 'bullets';
     $randomId = 'logosSwiper-' . $randomNumber;
+    $spaceBetween = $block['data']['space_between'] ?? 20;
+
     $logoCount = count($logos);
 
     // Determine $gridStartClass based on $logoCount
@@ -52,7 +55,7 @@
                     </div>
                 @endforeach
             </div>
-            @if (!$swiperLinear)
+            @if (!$swiperLinear && ($paginationStyle != 'none'))
                 <div class="swiper-pagination"></div>
             @endif
         </div>
@@ -90,7 +93,7 @@
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var logosSwiper = new Swiper(".{{ $randomId }}", {
-            spaceBetween: 20,
+            spaceBetween: {{ $spaceBetween }},
             @if ($swiperCenteredSlides)
                 centeredSlides: true,
             @endif
@@ -117,10 +120,16 @@
                 },
             @endif
             @if (!$swiperLinear)
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
+                @if ($paginationStyle != 'none')
+                    pagination: {
+                        el: '.swiper-pagination',
+                        @if ($paginationStyle == 'progress_bar')
+                            type: 'progressbar',
+                        @elseif ($paginationStyle == 'bullets')
+                            clickable: true,
+                       @endif
+                    },
+               @endif
                 navigation: {
                     nextEl: ".logos-button-next-{{ $randomNumber }}",
                     prevEl: ".logos-button-prev-{{ $randomNumber }}",
