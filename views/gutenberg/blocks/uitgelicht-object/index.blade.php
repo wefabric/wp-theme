@@ -95,6 +95,22 @@
     $titleAnimation = $block['data']['title_animation'] ?? false;
     $flyInAnimation = $block['data']['flyin_animation'] ?? false;
     $textFadeDirection = $block['data']['flyin_direction'] ?? 'bottom';
+
+    // Pinpoints — posities zijn in world units t.o.v. het model-middelpunt (0,0,0)
+    $pinpoints = [];
+    $pinpointCount = (int)($block['data']['pinpoints'] ?? 0);
+    for ($i = 0; $i < $pinpointCount; $i++) {
+        $label = get_field("pinpoints_{$i}_label");
+        if (!empty($label)) {
+            $pinpoints[] = [
+                'label' => $label,
+                'text'  => get_field("pinpoints_{$i}_text") ?? '',
+                'x'     => (float)(get_field("pinpoints_{$i}_pos_x") ?? 0),
+                'y'     => (float)(get_field("pinpoints_{$i}_pos_y") ?? 0),
+                'z'     => (float)(get_field("pinpoints_{$i}_pos_z") ?? 0),
+            ];
+        }
+    }
 @endphp
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'uitgelicht-object' }}@endif" class="block-uitgelicht-object block-{{ $randomNumber }} relative uitgelicht-object-{{ $randomNumber }}-custom-padding uitgelicht-object-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -152,8 +168,20 @@
             </div>
 
             <div class="object-section">
-                <div class="threejs-wrapper threejs-{{ $randomNumber }} w-full h-full">
+                <div class="threejs-wrapper threejs-{{ $randomNumber }} w-full h-full relative">
                     <div id="threejs-canvas-{{ $randomNumber }}" class="w-full h-full"></div>
+
+                    {{-- Pinpoint popup --}}
+                    <div id="pinpoint-popup-{{ $randomNumber }}"
+                         class="absolute hidden"
+                         style="transform: translate(-50%, calc(-100% - 14px)); pointer-events: none; z-index: 50;">
+                        <div class="bg-white rounded-xl shadow-xl p-4 relative" style="width: 220px; pointer-events: auto;">
+                            <button class="pinpoint-popup-close absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-xl leading-none">&times;</button>
+                            <p class="pinpoint-popup-title font-semibold text-gray-900 text-sm pr-5 mb-1"></p>
+                            <p class="pinpoint-popup-text text-xs text-gray-500 leading-relaxed"></p>
+                        </div>
+                        <div class="absolute left-1/2" style="bottom: -8px; transform: translateX(-50%); width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-top:8px solid white;"></div>
+                    </div>
                 </div>
             </div>
 
@@ -339,6 +367,50 @@
     scene.add(hemi);
 
     let object;
+    const pinpointMeshes = [];
+    let activePinSprite = null;
+    let hoveredSprite = null;
+    let pinBaseScale = 1;
+    const popup = document.getElementById('pinpoint-popup-{{ $randomNumber }}');
+    const raycaster = new THREE.Raycaster();
+    const pinpointDefs = @json($pinpoints);
+
+    const ctaColor = getComputedStyle(document.documentElement).getPropertyValue('--cta-color').trim() || '#facc15';
+
+    function createPinTex(isActive) {
+        const c = document.createElement('canvas');
+        c.width = c.height = 128;
+        const ctx = c.getContext('2d');
+
+        // Drop shadow
+        ctx.shadowColor = 'rgba(0,0,0,0.28)';
+        ctx.shadowBlur = 10;
+        ctx.shadowOffsetY = 2;
+
+        // Outer ring: wit (active) of lichtgrijs (inactive)
+        ctx.beginPath();
+        ctx.arc(64, 64, 58, 0, Math.PI * 2);
+        ctx.fillStyle = isActive ? '#ffffff' : '#d1d5db';
+        ctx.fill();
+        ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
+
+        // Gekleurde cirkel: donkerblauw (active) of medium blauw (inactive)
+        ctx.beginPath();
+        ctx.arc(64, 64, 46, 0, Math.PI * 2);
+        ctx.fillStyle = isActive ? '#1e3a8a' : '#5b7db5';
+        ctx.fill();
+
+        // Center dot: cta kleur (active) of wit (inactive)
+        ctx.beginPath();
+        ctx.arc(64, 64, 17, 0, Math.PI * 2);
+        ctx.fillStyle = isActive ? ctaColor : '#ffffff';
+        ctx.fill();
+
+        return new THREE.CanvasTexture(c);
+    }
+    const pinTex       = createPinTex(false);
+    const pinTexActive = createPinTex(true);
+
     const loader = new GLTFLoader();
     const modelUrl = '{{ get_stylesheet_directory_uri() }}/assets/models/forklift/scene.gltf';
 
@@ -374,6 +446,20 @@
 
                 controls.target.set(0, 0, 0);
                 controls.update();
+
+                // Pinpoints aanmaken na centreren van het model
+                pinBaseScale = maxDim * 0.10;
+                console.log('[Uitgelicht Object] Model bounds — size:', JSON.stringify({x: size.x.toFixed(2), y: size.y.toFixed(2), z: size.z.toFixed(2)}), '| Gebruik deze waarden om pinpoint posities in te stellen t.o.v. middelpunt (0,0,0).');
+                pinpointDefs.forEach((def, idx) => {
+                    const mat = new THREE.SpriteMaterial({ map: pinTex, depthTest: false, transparent: true });
+                    const sprite = new THREE.Sprite(mat);
+                    sprite.scale.setScalar(pinBaseScale);
+                    sprite.position.set(def.x, def.y, def.z);
+                    sprite.userData = { pinData: def, idx };
+                    sprite.renderOrder = 999;
+                    scene.add(sprite);
+                    pinpointMeshes.push(sprite);
+                });
             } catch (e) {
                 console.warn('Model framing failed:', e);
             }
@@ -399,10 +485,76 @@
         ro.observe(container);
     }
 
+    // Popup positie bijwerken op basis van 3D→2D projectie
+    function updatePopupPos() {
+        if (!activePinSprite || !popup || popup.classList.contains('hidden')) return;
+        const wp = new THREE.Vector3();
+        activePinSprite.getWorldPosition(wp);
+        wp.project(camera);
+        popup.style.left = ((wp.x * 0.5 + 0.5) * container.clientWidth) + 'px';
+        popup.style.top  = ((-wp.y * 0.5 + 0.5) * container.clientHeight) + 'px';
+    }
+
+    function deactivatePin() {
+        if (activePinSprite) {
+            activePinSprite.material.map = pinTex;
+            activePinSprite.material.needsUpdate = true;
+            activePinSprite = null;
+        }
+        if (popup) popup.classList.add('hidden');
+    }
+
+    if (popup) {
+        popup.querySelector('.pinpoint-popup-close').addEventListener('click', () => {
+            deactivatePin();
+        });
+    }
+
+    container.addEventListener('click', (e) => {
+        if (!pinpointMeshes.length || !popup) return;
+        const rect = container.getBoundingClientRect();
+        const mouse = new THREE.Vector2(
+            ((e.clientX - rect.left) / rect.width) * 2 - 1,
+            -((e.clientY - rect.top) / rect.height) * 2 + 1
+        );
+        raycaster.setFromCamera(mouse, camera);
+        const hits = raycaster.intersectObjects(pinpointMeshes);
+        if (hits.length > 0) {
+            deactivatePin();
+            activePinSprite = hits[0].object;
+            activePinSprite.material.map = pinTexActive;
+            activePinSprite.material.needsUpdate = true;
+            const d = activePinSprite.userData.pinData;
+            popup.querySelector('.pinpoint-popup-title').textContent = d.label;
+            popup.querySelector('.pinpoint-popup-text').textContent  = d.text;
+            popup.classList.remove('hidden');
+            updatePopupPos();
+        }
+    });
+
+    container.addEventListener('mousemove', (e) => {
+        if (!pinpointMeshes.length) return;
+        const rect = container.getBoundingClientRect();
+        const mouse = new THREE.Vector2(
+            ((e.clientX - rect.left) / rect.width) * 2 - 1,
+            -((e.clientY - rect.top) / rect.height) * 2 + 1
+        );
+        raycaster.setFromCamera(mouse, camera);
+        const hoverHits = raycaster.intersectObjects(pinpointMeshes);
+        hoveredSprite = hoverHits.length > 0 ? hoverHits[0].object : null;
+        container.style.cursor = hoveredSprite ? 'pointer' : '';
+    });
+
     (function animate(){
         requestAnimationFrame(animate);
         controls.update();
         renderer.render(scene, camera);
+        pinpointMeshes.forEach(s => {
+            const enlarged = s === activePinSprite || s === hoveredSprite;
+            const target = pinBaseScale * (enlarged ? 1.25 : 1.0);
+            s.scale.setScalar(s.scale.x + (target - s.scale.x) * 0.15);
+        });
+        updatePopupPos();
     })();
 }
 </script>

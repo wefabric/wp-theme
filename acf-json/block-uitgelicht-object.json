@@ -610,6 +610,165 @@
             "save_options": 0
         },
         {
+            "key": "field_68fb90653dcf0",
+            "label": "Pinpoints",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_68fb90653dcf1",
+            "label": "Pinpoints",
+            "name": "pinpoints",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Voeg klikbare punten toe op het 3D model. Gebruik de browser-console na het laden van de pagina om de exacte modelafmetingen te zien en coördinaten te bepalen. Alle posities zijn in world units t.o.v. het middelpunt van het model (0, 0, 0).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_68fb90653dcf2",
+            "button_label": "Pinpoint toevoegen",
+            "rows_per_page": 20,
+            "allow_in_bindings": 0,
+            "sub_fields": [
+                {
+                    "key": "field_68fb90653dcf2",
+                    "label": "Label",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Naam van het onderdeel, bijv. 'Heftmast'.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_68fb90653dcf1"
+                },
+                {
+                    "key": "field_68fb90653dcf3",
+                    "label": "Beschrijving",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Tekst die in de popup verschijnt.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "new_lines": "br",
+                    "placeholder": "",
+                    "parent_repeater": "field_68fb90653dcf1"
+                },
+                {
+                    "key": "field_68fb90653dcf4",
+                    "label": "Positie X",
+                    "name": "pos_x",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Horizontale positie t.o.v. model-middelpunt.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 0,
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": 0,
+                    "prepend": "",
+                    "append": "",
+                    "step": "0.1",
+                    "parent_repeater": "field_68fb90653dcf1"
+                },
+                {
+                    "key": "field_68fb90653dcf5",
+                    "label": "Positie Y",
+                    "name": "pos_y",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Verticale positie t.o.v. model-middelpunt.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 0,
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": 0,
+                    "prepend": "",
+                    "append": "",
+                    "step": "0.1",
+                    "parent_repeater": "field_68fb90653dcf1"
+                },
+                {
+                    "key": "field_68fb90653dcf6",
+                    "label": "Positie Z",
+                    "name": "pos_z",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Diepte positie t.o.v. model-middelpunt.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 0,
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": 0,
+                    "prepend": "",
+                    "append": "",
+                    "step": "0.1",
+                    "parent_repeater": "field_68fb90653dcf1"
+                }
+            ]
+        },
+        {
             "key": "field_68fb90653dcb4",
             "label": "Blokinstellingen",
             "name": "",
@@ -1792,5 +1951,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1761317330
+    "modified": 1775638526
 }
