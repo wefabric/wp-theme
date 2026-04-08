@@ -610,6 +610,93 @@
             "save_options": 0
         },
         {
+            "key": "field_68fb90653dcee",
+            "label": "Uitgelicht object",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_68fb90653dceea",
+            "label": "Hoogte op mobiel",
+            "name": "object_height_mobile",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 400,
+            "min": 100,
+            "max": 1200,
+            "allow_in_bindings": 0,
+            "placeholder": 400,
+            "step": 10,
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_68fb90653dceeb",
+            "label": "Hoogte op tablet",
+            "name": "object_height_tablet",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 500,
+            "min": 100,
+            "max": 1200,
+            "allow_in_bindings": 0,
+            "placeholder": 500,
+            "step": 10,
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_68fb90653dceec",
+            "label": "Hoogte op desktop",
+            "name": "object_height_desktop",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 600,
+            "min": 100,
+            "max": 1200,
+            "allow_in_bindings": 0,
+            "placeholder": 600,
+            "step": 10,
+            "prepend": "",
+            "append": "px"
+        },
+        {
             "key": "field_68fb90653dcf0",
             "label": "Pinpoints",
             "name": "",
@@ -656,7 +743,7 @@
                     "name": "label",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "Naam van het onderdeel, bijv. 'Heftmast'.",
+                    "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -1951,5 +2038,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1775638526
+    "modified": 1775640147
 }

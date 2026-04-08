@@ -96,6 +96,11 @@
     $flyInAnimation = $block['data']['flyin_animation'] ?? false;
     $textFadeDirection = $block['data']['flyin_direction'] ?? 'bottom';
 
+    // Object hoogte
+    $mobileHeight  = $block['data']['object_height_mobile']  ?? 400;
+    $tabletHeight  = $block['data']['object_height_tablet']  ?? 500;
+    $desktopHeight = $block['data']['object_height_desktop'] ?? 600;
+
     // Pinpoints — posities zijn in world units t.o.v. het model-middelpunt (0,0,0)
     $pinpoints = [];
     $pinpointCount = (int)($block['data']['pinpoints'] ?? 0);
@@ -119,7 +124,7 @@
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="content-background {{ $blockClass }} mx-auto {{ $textClass }}">
+        <div class="content-background flex-col lg:flex-row {{ $blockClass }} mx-auto {{ $textClass }}">
             <div class="text-section">
                 @if ($subTitle)
                     <span class="subtitle block mb-2 text-{{ $subTitleColor }} @if ($titleAnimation) title-animation @endif @if ($flyInAnimation) flyin-animation @endif">
@@ -167,7 +172,7 @@
                     @endif
             </div>
 
-            <div class="object-section">
+            <div class="object-section uitgelicht-object-{{ $randomNumber }}-canvas-height">
                 <div class="threejs-wrapper threejs-{{ $randomNumber }} w-full h-full relative">
                     <div id="threejs-canvas-{{ $randomNumber }}" class="w-full h-full"></div>
 
@@ -230,6 +235,18 @@
             @if($desktopMarginRight) margin-right: {{ $desktopMarginRight }}px; @endif
             @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
+        }
+    }
+
+    .uitgelicht-object-{{ $randomNumber }}-canvas-height {
+        @media only screen and (min-width: 0px) {
+            height: {{ $mobileHeight }}px;
+        }
+        @media only screen and (min-width: 768px) {
+            height: {{ $tabletHeight }}px;
+        }
+        @media only screen and (min-width: 1024px) {
+            height: {{ $desktopHeight }}px;
         }
     }
 </style>
