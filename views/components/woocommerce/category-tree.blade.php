@@ -3,7 +3,8 @@
 		'taxonomy' => 'product_cat',
 		'hide_empty' => false,
         'order_by' => 'menu_order',
-		'parent' => 0
+		'parent' => 0,
+        'exclude' => [get_option('default_product_cat')]
 	]);
 
 	$categories = [];

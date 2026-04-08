@@ -225,8 +225,8 @@ add_filter( 'woocommerce_page_title', function ( $page_title ) {
 }, 10, 2 ); //Fix quotes on search page title. Would otherwise show the literal strings.
 
 //Move the description tabs from <after the summary> to <after the thumbnails>
-remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs');
-add_action( 'woocommerce_before_single_product_summary', 'woocommerce_output_product_data_tabs', 99 );
+// remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs');
+// add_action( 'woocommerce_before_single_product_summary', 'woocommerce_output_product_data_tabs', 99 );
 
 // Align the 'add to cart' button on the right
 add_action('woocommerce_before_add_to_cart_form', function() {
@@ -270,16 +270,16 @@ add_filter( 'woocommerce_breadcrumb_defaults', function () {
 	);
 });
 add_action('woocommerce_archive_description', function() {
-	woocommerce_breadcrumb();
+	// woocommerce_breadcrumb();
 }, 1);
 
 add_action('woocommerce_before_single_product', function() {
-    echo view('woocommerce.single-product.breadcrumbs')->render();
+    // echo view('woocommerce.single-product.breadcrumbs')->render();
 }, 1);
 
-add_action('wp', function () {
-	remove_theme_support( 'wc-product-gallery-zoom' ); //also removes zoom icon on main image.
-}, 99 );
+// add_action('wp', function () {
+// 	remove_theme_support( 'wc-product-gallery-zoom' ); //also removes zoom icon on main image.
+// }, 99 );
 
 add_filter( 'woocommerce_checkout_fields' , function ( $fields ) {
 
@@ -327,6 +327,129 @@ add_filter( 'woocommerce_email_order_items_args', function ($args){
     $args['show_sku'] = true;
     return $args;
 }, 10, 2 );
+
+/**
+ * Filter RankMath breadcrumbs for products
+ */
+add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
+	$new_crumbs = [];
+	
+	// Add Home icon
+	$new_crumbs[] = [
+		'Home',
+		home_url()
+	];
+
+	if ( is_product() ) {
+		// Find the shop page
+		$shop_page_id = wc_get_page_id( 'shop' );
+		if ( $shop_page_id > 0 ) {
+			$new_crumbs[] = [
+				get_the_title( $shop_page_id ),
+				get_permalink( $shop_page_id )
+			];
+		}
+
+		// Add categories
+		global $post;
+		$terms = get_the_terms( $post->ID, 'product_cat' );
+		if ( $terms && ! is_wp_error( $terms ) ) {
+			// Get the first category (or primary if RankMath has one set)
+			$main_term = $terms[0];
+			if ( class_exists( 'RankMath\Post' ) ) {
+				$primary_cat = get_post_meta( $post->ID, 'rank_math_primary_product_cat', true );
+				if ( $primary_cat ) {
+					foreach ( $terms as $term ) {
+						if ( $term->term_id == $primary_cat ) {
+							$main_term = $term;
+							break;
+						}
+					}
+				}
+			}
+
+			// Add ancestors if any
+			$ancestors = get_ancestors( $main_term->term_id, 'product_cat' );
+			if ( ! empty( $ancestors ) ) {
+				$ancestors = array_reverse( $ancestors );
+				foreach ( $ancestors as $ancestor ) {
+					$ancestor_term = get_term( $ancestor, 'product_cat' );
+					$new_crumbs[] = [
+						$ancestor_term->name,
+						get_term_link( $ancestor_term )
+					];
+				}
+			}
+			
+			$new_crumbs[] = [
+				$main_term->name,
+				get_term_link( $main_term )
+			];
+		}
+
+		// Add product title
+		$new_crumbs[] = [
+			get_the_title( $post->ID ),
+			get_permalink( $post->ID )
+		];
+		
+		return $new_crumbs;
+	}
+
+	if ( is_shop() || is_product_category() || is_product_tag() ) {
+		// Voor shop/archive pagina's
+		$shop_page_id = wc_get_page_id( 'shop' );
+		if ( $shop_page_id > 0 ) {
+			$new_crumbs[] = [
+				get_the_title( $shop_page_id ),
+				get_permalink( $shop_page_id )
+			];
+		}
+
+		if ( is_product_category() || is_product_tag() ) {
+			$queried_object = get_queried_object();
+			if ( $queried_object ) {
+				// Voor categorieën: ook ancestors toevoegen
+				if ( is_product_category() ) {
+					$ancestors = get_ancestors( $queried_object->term_id, 'product_cat' );
+					if ( ! empty( $ancestors ) ) {
+						$ancestors = array_reverse( $ancestors );
+						foreach ( $ancestors as $ancestor ) {
+							$ancestor_term = get_term( $ancestor, 'product_cat' );
+							$new_crumbs[] = [
+								$ancestor_term->name,
+								get_term_link( $ancestor_term )
+							];
+						}
+					}
+				}
+
+				$new_crumbs[] = [
+					$queried_object->name,
+					get_term_link( $queried_object )
+				];
+			}
+		}
+		
+		return $new_crumbs;
+	}
+
+	// Voor andere pagina's (blog, etc), probeer Home icoon te forceren als het er niet is
+	// Of gewoon de bestaande crumbs gebruiken maar de eerste (Home) vervangen door icoon
+	if ( ! empty( $crumbs ) ) {
+		foreach ( $crumbs as $index => $crumb ) {
+			$name = is_array( $crumb ) ? ( $crumb[0] ?? '' ) : $crumb;
+			if ( $index === 0 && in_array( strtolower( strip_tags( $name ) ), [ 'home' ] ) ) {
+				$crumbs[ $index ][0] = 'Home';
+				return $crumbs;
+			}
+		}
+		// Als Home niet de eerste is, voegen we hem toe
+		return array_merge( [ $new_crumbs[0] ], $crumbs );
+	}
+
+	return $new_crumbs;
+}, 10, 2);
 
 /**
  * @snippet       Show SKU @ WooCommerce Cart

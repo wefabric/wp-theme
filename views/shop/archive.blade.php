@@ -2,7 +2,12 @@
 
 @section('content')
 	<div class="container mx-auto lg:px-8">
-		@include('components.breadcrumbs.index')
+		@include('components.breadcrumbs.index', [
+            'breadcrumbsLocation' => 'outside',
+            'headerName' => '',
+            'breadcrumbsBackgroundColor' => 'bg-transparent',
+            'breadcrumbsTextColor' => 'text-black'
+        ])
 		@php do_action('woocommerce_before_main_content') @endphp
 
 		<div class="lg:flex lg:flex-row w-full gap-4 lg:gap-16">
