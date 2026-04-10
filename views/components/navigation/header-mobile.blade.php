@@ -194,6 +194,39 @@
                 event.stopPropagation();
             });
         });
+
+        // Desktop submenu overflow detection
+        var desktopMenuItems = document.querySelectorAll('.menu-item-has-children');
+        desktopMenuItems.forEach(function (item) {
+            item.addEventListener('mouseenter', function () {
+                if (window.innerWidth >= 1280) {
+                    var submenu = this.querySelector('.sub-menu');
+                    if (submenu) {
+                        this.classList.remove('open-left');
+                        var rect = submenu.getBoundingClientRect();
+                        
+                        // If it's hidden, we might need to briefly show it to measure
+                        if (rect.width === 0) {
+                            submenu.style.visibility = 'hidden';
+                            submenu.style.display = 'block';
+                            rect = submenu.getBoundingClientRect();
+                            submenu.style.display = '';
+                            submenu.style.visibility = '';
+                        }
+                        
+                        if (rect.right > (window.innerWidth || document.documentElement.clientWidth)) {
+                            this.classList.add('open-left');
+                        }
+                    }
+                }
+            });
+
+            item.addEventListener('mouseleave', function () {
+                if (window.innerWidth >= 1280) {
+                    this.classList.remove('open-left');
+                }
+            });
+        });
     });
 </script>
 

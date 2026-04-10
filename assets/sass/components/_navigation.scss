@@ -117,6 +117,13 @@ header {
 					top: -.75rem !important;
                     width: max-content;
 				}
+
+				.menu-item-has-children.open-left > .sub-menu {
+					@screen xl {
+						left: auto !important;
+						right: 100% !important;
+					}
+				}
 				
 				@screen xl {
 					@apply shadow-md shadow-gray-600;
