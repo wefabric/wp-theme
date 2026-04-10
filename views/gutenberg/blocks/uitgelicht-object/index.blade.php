@@ -180,10 +180,10 @@
                     <div id="pinpoint-popup-{{ $randomNumber }}"
                          class="absolute hidden"
                          style="transform: translate(-50%, calc(-100% - 14px)); pointer-events: none; z-index: 50;">
-                        <div class="bg-white rounded-xl shadow-xl p-4 relative" style="width: 220px; pointer-events: auto;">
+                        <div class="bg-white shadow-xl p-4 relative" style="width: 240px; pointer-events: auto;">
                             <button class="pinpoint-popup-close absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-xl leading-none">&times;</button>
-                            <p class="pinpoint-popup-title font-semibold text-gray-900 text-sm pr-5 mb-1"></p>
-                            <p class="pinpoint-popup-text text-xs text-gray-500 leading-relaxed"></p>
+                            <div class="pinpoint-popup-title text-primary text-[20px] font-semibold pr-5 mb-1"></div>
+                            <div class="pinpoint-popup-text text-primary text-[14px] leading-relaxed"></div>
                         </div>
                         <div class="absolute left-1/2" style="bottom: -8px; transform: translateX(-50%); width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-top:8px solid white;"></div>
                     </div>
