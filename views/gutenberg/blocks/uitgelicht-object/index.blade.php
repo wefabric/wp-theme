@@ -365,6 +365,17 @@
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
+    controls.enableZoom = false; // Standaard zoom uit voor betere pagina-scroll
+
+    // Zoom activeren bij interactie (klik/touch)
+    renderer.domElement.addEventListener('pointerdown', () => {
+        controls.enableZoom = true;
+    });
+
+    // Zoom deactiveren wanneer de muis de container verlaat
+    container.addEventListener('mouseleave', () => {
+        controls.enableZoom = false;
+    });
 
     // Key lights with soft shadows
     const dir = new THREE.DirectionalLight(0xffffff, 1.4);
