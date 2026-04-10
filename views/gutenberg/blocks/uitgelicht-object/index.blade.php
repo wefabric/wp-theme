@@ -538,12 +538,16 @@
         });
     }
 
-    container.addEventListener('click', (e) => {
+    // Tap/click detectie voor muis én touch
+    // Pointer-positie bijhouden bij pointerdown zodat we tap van drag kunnen onderscheiden
+    let pointerDownX = 0, pointerDownY = 0;
+
+    function handleTap(clientX, clientY) {
         if (!pinpointMeshes.length || !popup) return;
         const rect = container.getBoundingClientRect();
         const mouse = new THREE.Vector2(
-            ((e.clientX - rect.left) / rect.width) * 2 - 1,
-            -((e.clientY - rect.top) / rect.height) * 2 + 1
+            ((clientX - rect.left) / rect.width) * 2 - 1,
+            -((clientY - rect.top) / rect.height) * 2 + 1
         );
         raycaster.setFromCamera(mouse, camera);
         const hits = raycaster.intersectObjects(pinpointMeshes);
@@ -557,6 +561,20 @@
             popup.querySelector('.pinpoint-popup-text').textContent  = d.text;
             popup.classList.remove('hidden');
             updatePopupPos();
+        }
+    }
+
+    container.addEventListener('pointerdown', (e) => {
+        pointerDownX = e.clientX;
+        pointerDownY = e.clientY;
+    });
+
+    container.addEventListener('pointerup', (e) => {
+        const dx = e.clientX - pointerDownX;
+        const dy = e.clientY - pointerDownY;
+        // Alleen als pointer nauwelijks bewogen is (tap, geen drag/rotate)
+        if (Math.sqrt(dx * dx + dy * dy) < 8) {
+            handleTap(e.clientX, e.clientY);
         }
     });
 
