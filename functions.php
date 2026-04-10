@@ -340,9 +340,9 @@ add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
 		home_url()
 	];
 
-	if ( is_product() ) {
+	if ( function_exists( 'is_product' ) && is_product() ) {
 		// Find the shop page
-		$shop_page_id = wc_get_page_id( 'shop' );
+		$shop_page_id = function_exists( 'wc_get_page_id' ) ? wc_get_page_id( 'shop' ) : 0;
 		if ( $shop_page_id > 0 ) {
 			$new_crumbs[] = [
 				get_the_title( $shop_page_id ),
@@ -396,9 +396,9 @@ add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
 		return $new_crumbs;
 	}
 
-	if ( is_shop() || is_product_category() || is_product_tag() ) {
+	if ( function_exists( 'is_shop' ) && ( is_shop() || ( function_exists( 'is_product_category' ) && is_product_category() ) || ( function_exists( 'is_product_tag' ) && is_product_tag() ) ) ) {
 		// Voor shop/archive pagina's
-		$shop_page_id = wc_get_page_id( 'shop' );
+		$shop_page_id = function_exists( 'wc_get_page_id' ) ? wc_get_page_id( 'shop' ) : 0;
 		if ( $shop_page_id > 0 ) {
 			$new_crumbs[] = [
 				get_the_title( $shop_page_id ),
@@ -406,11 +406,11 @@ add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
 			];
 		}
 
-		if ( is_product_category() || is_product_tag() ) {
+		if ( ( function_exists( 'is_product_category' ) && is_product_category() ) || ( function_exists( 'is_product_tag' ) && is_product_tag() ) ) {
 			$queried_object = get_queried_object();
 			if ( $queried_object ) {
 				// Voor categorieën: ook ancestors toevoegen
-				if ( is_product_category() ) {
+				if ( function_exists( 'is_product_category' ) && is_product_category() ) {
 					$ancestors = get_ancestors( $queried_object->term_id, 'product_cat' );
 					if ( ! empty( $ancestors ) ) {
 						$ancestors = array_reverse( $ancestors );
@@ -461,6 +461,9 @@ add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
 
 // First, let's write the function that returns a given product SKU
 function renderSku( $product ) {
+    if ( ! is_object( $product ) || ! method_exists( $product, 'get_sku' ) ) {
+        return '';
+    }
     $sku = $product->get_sku();
     if ( ! empty( $sku ) ) {
         return '<span class="inline-block pl-2"> - ' . $sku . '</span>';
@@ -541,7 +544,7 @@ add_filter('woocommerce_cart_shipping_method_full_label', function ($label, WC_S
  * @return int The threshold corresponding to the zone, if there is any. If there is no such zone, or no free shipping method, null will be returned.
  */
 function get_free_shipping_minimum($zone_name = 'Netherlands') {
-    if ( ! isset( $zone_name ) ) return null;
+    if ( ! isset( $zone_name ) || ! class_exists( 'WC_Shipping_Zones' ) ) return null;
 
     $result = null;
     $zone = null;

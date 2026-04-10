@@ -18,11 +18,11 @@
                 @php
                     the_post();
                     global $product;
-                    $product = wc_get_product(get_the_ID());
-                    do_action('woocommerce_before_single_product');
+                    $product = function_exists('wc_get_product') ? wc_get_product(get_the_ID()) : null;
+                    if (function_exists('do_action')) do_action('woocommerce_before_single_product');
                 @endphp
 
-                <div id="product-{{ get_the_ID() }}" @php wc_product_class('grid lg:mt-4 lg:grid-cols-10 lg:gap-16') @endphp>
+                <div id="product-{{ get_the_ID() }}" @php if (function_exists('wc_product_class')) wc_product_class('grid lg:mt-4 lg:grid-cols-10 lg:gap-16') @endphp>
                 <div class="before-summary order-1 lg:order-1 lg:col-span-5">
                     @php 
                         remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
