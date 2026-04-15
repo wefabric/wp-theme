@@ -1,0 +1,25 @@
+{
+  "name": "wefabric/uitgelicht-medewerkersverhaal",
+  "title": "Uitgelicht medewerkersverhaal",
+  "description": "Een uitgelicht medewerkersverhaal blok",
+  "category": "wefabric-theme",
+  "icon": "format-status",
+  "apiVersion": 2,
+  "keywords": [
+    "Uitgelicht mederwerkersverhaal"
+  ],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "render.php"
+  },
+  "attributes": {
+  },
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.uitgelicht-medewerkersverhaal.index', ['block' => $block])->render(); ?>
