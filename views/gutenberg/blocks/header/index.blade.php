@@ -35,6 +35,11 @@
     $title2 = $block['data']['title_2'] ?? '';
     $text2 = $block['data']['text_2'] ?? '';
 
+    // Video settings
+    $video = $block['data']['video_file'] ?? '';
+    $fileId = is_numeric($video) ? intval($video) : 0;
+    $videoSetting = $block['data']['video_setting'] ?? 'automatic';
+
         // Buttons
         $button1Text = $block['data']['button_button_1']['title'] ?? '';
         $button1Link = $block['data']['button_button_1']['url'] ?? '';
@@ -83,7 +88,7 @@
     $textPositionClass = '';
     $textWidthClass = '';
 
-    if (!$contentImageId) {
+    if (!$contentImageId && !$fileId) {
         if ($textPosition === 'left') {
             $textPositionClass = 'justify-start text-left';
             $textWidthClass = ($headerHeight == 3) ? 'w-full' : 'w-full md:w-2/3 xl:w-2/3';
@@ -183,8 +188,8 @@
         @if ($overlayEnabled)
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
-        <div class="custom-width @if (!$fullHeightContentImage) relative @endif container mx-auto px-8 h-full flex flex-col lg:flex-row items-center z-30 {{ $textPositionClass }} @if ($contentImageId) gap-x-8 @endif @if ($fullHeightContentImage && $textPosition === 'right') justify-end @endif">
-            <div class="header-info z-30 flex flex-col @if ($headerStyle == 'scalable_height') py-20 @endif {{ $textWidthClass }} @if ($contentImageId) w-full md:w-1/2 @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 pl-8 @endif @endif">
+        <div class="custom-width @if (!$fullHeightContentImage) relative @endif container mx-auto px-8 h-full flex flex-col lg:flex-row items-center z-30 {{ $textPositionClass }} @if ($contentImageId || $fileId) gap-x-8 @endif @if ($fullHeightContentImage && $textPosition === 'right') justify-end @endif">
+            <div class="header-info z-30 flex flex-col @if ($headerStyle == 'scalable_height') py-20 @endif {{ $textWidthClass }} @if ($contentImageId || $fileId) w-full md:w-1/2 @if ($textPosition === 'left') order-1 @elseif ($textPosition === 'right') order-2 pl-8 @endif @endif">
                 @if ($showTitle)
                     @if ($subTitle)
                         <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
@@ -249,20 +254,108 @@
                     @include('components.breadcrumbs.index')
                 @endif
             </div>
-            @if ($contentImageId)
+            @if ($contentImageId || $fileId)
                 <div class="content-image w-full md:w-1/2
                 @if ($textPosition === 'left') order-2 @elseif ($textPosition === 'right') order-1 @endif
                 @if ($fullHeightContentImage) absolute h-full
                     @if ($textPosition === 'left') left-0 md:left-[50%] custom-image-width { @endif
                     @if ($textPosition === 'right') right-0 md:right-[50%] custom-image-width @endif
-                @endif">
-                    @include('components.image', [
-                        'image_id' => $contentImageId,
-                        'size' => 'full',
-                        'object_fit' => 'cover',
-                        'img_class' => 'w-full h-full object-cover rounded-' . $borderRadius,
-                        'alt' => $contentImageAlt
-                    ])
+                @endif @if($videoSetting === 'standard') relative @endif">
+                    @if ($fileId)
+                        @php
+                            $mime = get_post_mime_type($fileId);
+                            $url = wp_get_attachment_url($fileId);
+                            $isVideo = ($mime && (strpos($mime, 'video') === 0 || $mime === 'video/quicktime'));
+                        @endphp
+                        @if ($isVideo && $url)
+                            <video class="w-full h-full object-cover rounded-{{ $borderRadius }}"
+                                   @if($videoSetting === 'automatic') autoplay muted loop playsinline @endif
+                                   @if($videoSetting === 'on_hover') muted loop playsinline @endif
+                                   preload="metadata">
+                                <source src="{{ esc_url($url) }}" type="{{ esc_attr($mime) }}">
+                                <source src="{{ esc_url($url) }}">
+                                Your browser does not support the video tag.
+                            </video>
+                            @if($videoSetting === 'automatic')
+                                <script>
+                                    (function() {
+                                        const block = document.querySelector('.header-{{ $randomNumber }}-custom-padding');
+                                        const vid = block ? block.querySelector('video') : null;
+                                        if(!vid) return;
+                                        const onChange = (entries)=>{
+                                            entries.forEach(entry=>{
+                                                if(entry.isIntersecting){ vid.play().catch(()=>{}); }
+                                                else { vid.pause(); }
+                                            });
+                                        };
+                                        const io = new IntersectionObserver(onChange, { threshold: 0.2 });
+                                        io.observe(vid);
+                                    })();
+                                </script>
+                            @elseif($videoSetting === 'on_hover')
+                                <script>
+                                    (function() {
+                                        const block = document.querySelector('.header-{{ $randomNumber }}-custom-padding');
+                                        const vid = block ? block.querySelector('video') : null;
+                                        if(!vid) return;
+                                        const startPlaying = ()=>{ if(vid.paused){ vid.play().catch(()=>{}); } };
+                                        const stopPlaying = ()=>{ vid.pause(); };
+                                        vid.addEventListener('mouseenter', startPlaying);
+                                        vid.addEventListener('mouseleave', stopPlaying);
+                                        let started = false;
+                                        vid.addEventListener('touchstart', function(){
+                                            if(!started){ vid.play().catch(()=>{}); started = true; }
+                                            else { vid.pause(); started = false; }
+                                        }, {passive:true});
+                                    })();
+                                </script>
+                            @elseif($videoSetting === 'standard')
+                                <div class="video-overlay absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                                    <button aria-label="Play video" class="play-button pointer-events-auto w-20 h-20 rounded-full bg-white/70 text-black flex items-center justify-center shadow-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                    </button>
+                                </div>
+                                <script>
+                                    (function() {
+                                        const block = document.querySelector('.header-{{ $randomNumber }}-custom-padding');
+                                        const vid = block ? block.querySelector('video') : null;
+                                        const btn = block ? block.querySelector('.play-button') : null;
+                                        const overlay = block ? block.querySelector('.video-overlay') : null;
+                                        if(!vid || !btn) return;
+                                        vid.removeAttribute('autoplay');
+                                        vid.pause();
+                                        btn.addEventListener('click', function(){
+                                            if(overlay){ overlay.style.display = 'none'; }
+                                            vid.muted = false;
+                                            vid.controls = true;
+                                            vid.removeAttribute('loop');
+                                            vid.play().catch(()=>{});
+                                            vid.addEventListener('ended', function(){
+                                                vid.pause();
+                                                try { vid.currentTime = 0; } catch(e) {}
+                                            }, { once: true });
+                                        });
+                                    })();
+                                </script>
+                            @endif
+                        @elseif ($contentImageId)
+                            @include('components.image', [
+                                'image_id' => $contentImageId,
+                                'size' => 'full',
+                                'object_fit' => 'cover',
+                                'img_class' => 'w-full h-full object-cover rounded-' . $borderRadius,
+                                'alt' => $contentImageAlt
+                            ])
+                        @endif
+                    @elseif ($contentImageId)
+                        @include('components.image', [
+                            'image_id' => $contentImageId,
+                            'size' => 'full',
+                            'object_fit' => 'cover',
+                            'img_class' => 'w-full h-full object-cover rounded-' . $borderRadius,
+                            'alt' => $contentImageAlt
+                        ])
+                    @endif
                     <div class="z-30 text-white absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 hidden md:block">
                         @if ($title2)
                             <h2 class="">{!! $title2 !!}</h2>

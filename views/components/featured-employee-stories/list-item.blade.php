@@ -201,7 +201,7 @@
                                         $src = $val;
                                         $ytId = '';
                                         $vmId = '';
-                                        if (preg_match('~youtu\.be/([A-Za-z0-9_-]{6,})~', $val, $m) || preg_match('~youtube\.com/watch\\?v=([A-Za-z0-9_-]{6,})~', $val, $m) || preg_match('~youtube\.com/embed/([A-Za-z0-9_-]{6,})~',$val,$m)) {
+                                        if (preg_match('~youtu\.be/([A-Za-z0-9_-]{6,})~', $val, $m) || preg_match('~youtube\.com/watch\\?v=([A-Za-z0-9_-]{6,})~', $val, $m) || preg_match('~youtube\.com/embed/([A-Za-z0-9_-]{6,})~',$val,$m) || preg_match('~youtube\.com/shorts/([A-Za-z0-9_-]{6,})~',$val,$m)) {
                                             $ytId = $m[1];
                                         }
                                         if (!$ytId && preg_match('~vimeo\.com/(?:video/)?(\d+)~', $val, $m)) {
@@ -209,18 +209,61 @@
                                         }
                                         if ($ytId) {
                                             $params = 'rel=0&modestbranding=1&playsinline=1';
+                                            if ($videoSetting === 'automatic' || $videoSetting === 'on_hover') {
+                                                $params .= '&autoplay=1&mute=1&loop=1&playlist=' . $ytId . '&controls=0';
+                                            }
                                             $src = 'https://www.youtube.com/embed/' . $ytId . '?' . $params;
                                         } elseif ($vmId) {
                                             $src = 'https://player.vimeo.com/video/' . $vmId;
+                                            if ($videoSetting === 'automatic' || $videoSetting === 'on_hover') {
+                                                $src .= '?autoplay=1&muted=1&loop=1&background=1';
+                                            }
                                         }
                                         $html = '<iframe width="100%" height="100%" src="' . esc_url($src) . '" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
                                     }
                                 }
                             }
                         @endphp
-                        <div class="video-embed-wrapper h-full w-full">
+                        <div class="video-embed-wrapper absolute inset-0 pointer-events-none overflow-hidden">
                             {!! $html !!}
                         </div>
+
+                        <style>
+                            .video-embed-wrapper iframe {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                width: 100%;
+                                height: 100%;
+                                transform: translate(-50%, -50%);
+                                pointer-events: none;
+                            }
+                            
+                            /* YouTube/Vimeo cover effect voor 16:9 videos */
+                            @media (min-aspect-ratio: 16/9) {
+                                .video-embed-wrapper iframe {
+                                    height: 300%; /* Overscale height to ensure coverage */
+                                    width: 100%;
+                                }
+                            }
+                            
+                            @media (max-aspect-ratio: 16/9) {
+                                .video-embed-wrapper iframe {
+                                    width: 300%; /* Overscale width to ensure coverage */
+                                    height: 100%;
+                                }
+                            }
+
+                            /* Voor Shorts en andere embeds, gebruik object-fit: cover 
+                               Modernere browsers ondersteunen dit op iframes om de content te schalen */
+                            .video-embed-wrapper iframe {
+                                object-fit: cover;
+                                width: 100%;
+                                height: 100%;
+                                min-width: 100%;
+                                min-height: 100%;
+                            }
+                        </style>
 
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
                         <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
@@ -249,6 +292,28 @@
                                         });
                                         lightbox.open();
                                     });
+                                } else {
+                                    @if($videoSetting === 'standard')
+                                        const overlay = document.createElement('div');
+                                        overlay.className = 'video-embed-standard-overlay absolute inset-0 z-[5] cursor-pointer flex items-center justify-center bg-black/10';
+                                        overlay.innerHTML = '<button aria-label="Play video" class="play-button w-16 h-16 rounded-full bg-white/70 text-black flex items-center justify-center shadow-lg transition-transform hover:scale-110"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>';
+                                        container.appendChild(overlay);
+
+                                        overlay.addEventListener('click', function(e) {
+                                            const lightbox = GLightbox({
+                                                elements: [
+                                                    {
+                                                        'href': videoUrl,
+                                                        'type': 'video',
+                                                        'source': videoUrl.includes('vimeo') ? 'vimeo' : 'youtube',
+                                                        'width': '90vw',
+                                                    }
+                                                ],
+                                                autoplayVideos: true,
+                                            });
+                                            lightbox.open();
+                                        });
+                                    @endif
                                 }
                             })();
                         </script>
