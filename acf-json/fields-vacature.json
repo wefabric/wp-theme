@@ -47,7 +47,7 @@
             "label": "Aantal uren",
             "name": "working_hours",
             "aria-label": "",
-            "type": "select",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -56,18 +56,12 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "parttime": "Parttime",
-                "fulltime": "Fulltime",
-                "both": "Parttime en fulltime"
-            },
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_652003597895d",
@@ -108,5 +102,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726750154
+    "display_title": "",
+    "modified": 1777038955
 }

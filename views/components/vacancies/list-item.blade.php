@@ -12,23 +12,15 @@
     $workingHours = '';
     $employmentTypeSchema = '';
     if (!empty($fields['working_hours'])) {
-        switch ($fields['working_hours']) {
-            case 'parttime':
-                $workingHours = 'Parttime';
-                $employmentTypeSchema = 'PART_TIME';
-                break;
-            case 'fulltime':
-                $workingHours = 'Fulltime';
-                $employmentTypeSchema = 'FULL_TIME';
-                break;
-            case 'both':
-                $workingHours = 'Parttime/fulltime';
-                $employmentTypeSchema = ['FULL_TIME', 'PART_TIME'];
-                break;
-            default:
-                $workingHours = '';
-                $employmentTypeSchema = '';
-                break;
+        $workingHours = $fields['working_hours'];
+        $workingHoursLower = strtolower($workingHours);
+
+        if (str_contains($workingHoursLower, 'parttime') && str_contains($workingHoursLower, 'fulltime')) {
+            $employmentTypeSchema = ['FULL_TIME', 'PART_TIME'];
+        } elseif (str_contains($workingHoursLower, 'parttime')) {
+            $employmentTypeSchema = 'PART_TIME';
+        } elseif (str_contains($workingHoursLower, 'fulltime')) {
+            $employmentTypeSchema = 'FULL_TIME';
         }
     }
 
