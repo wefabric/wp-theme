@@ -673,6 +673,9 @@ add_action('init', 'disable_wp_emojis');
  * Disable RSS Feeds based on ACF setting
  */
 function maybe_disable_rss_feeds() {
+    if (!function_exists('get_field')) {
+        return;
+    }
     $rss_feeds_settings = get_field('rss_feeds', 'option');
     if (empty($rss_feeds_settings) || empty($rss_feeds_settings['disable_rss'])) {
         return;
