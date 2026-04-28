@@ -70,7 +70,13 @@
 
         {{-- Background Section --}}
         <div class="absolute inset-0 z-0">
-            @if (!empty($visibleElements) && in_array('video', $visibleElements) && ($videoUrl))
+            @php
+                $showVideo = !empty($visibleElements) && in_array('video', $visibleElements) && $videoUrl;
+                $showImage = !empty($visibleElements) && in_array('image', $visibleElements) && $employeeStoryImageId;
+                $useImageAsPlaceholder = $showVideo && $showImage && $videoSetting === 'standard';
+            @endphp
+
+            @if ($showVideo && !$useImageAsPlaceholder)
                 <div class="employee-story-video w-full h-full relative">
                     @if ($videoType === 'file')
                         <video class="video-item w-full h-full object-cover"
@@ -319,8 +325,8 @@
                         </script>
                     @endif
                 </div>
-            @elseif (!empty($visibleElements) && in_array('image', $visibleElements) && $employeeStoryImageId)
-                <div class="employee-story-image w-full h-full">
+            @elseif ($showImage || $useImageAsPlaceholder)
+                <div class="employee-story-image w-full h-full relative">
                     @include('components.image', [
                         'image_id' => $employeeStoryImageId,
                         'size' => 'full',
@@ -328,6 +334,44 @@
                         'img_class' => 'h-full w-full object-cover',
                         'alt' => $employeeStoryTitle,
                     ])
+
+                    @if ($useImageAsPlaceholder)
+                        <div class="video-placeholder-overlay absolute inset-0 flex items-center justify-center z-10 cursor-pointer bg-black/10">
+                            <button aria-label="Play video" class="play-button w-16 h-16 rounded-full bg-white/70 text-black flex items-center justify-center shadow-lg transition-transform hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                        </div>
+
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+                        <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+                        <script>
+                            (function() {
+                                const container = document.currentScript.parentElement;
+                                const overlay = container.querySelector('.video-placeholder-overlay');
+                                if(!overlay) return;
+
+                                const isMobile = () => window.innerWidth < 768;
+                                const videoUrl = "{{ $videoUrl }}";
+                                const videoType = "{{ $videoType }}";
+
+                                overlay.addEventListener('click', function(e){
+                                    const lightbox = GLightbox({
+                                        elements: [
+                                            {
+                                                'href': videoUrl,
+                                                'type': 'video',
+                                                'source': videoType === 'file' ? 'local' : (videoUrl.includes('vimeo') ? 'vimeo' : 'youtube'),
+                                                'width': '90vw',
+                                            }
+                                        ],
+                                        autoplayVideos: true,
+                                    });
+                                    lightbox.open();
+                                });
+                            })();
+                        </script>
+                    @endif
                 </div>
             @endif
             {{-- Dark overlay for readability --}}
