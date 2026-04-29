@@ -97,9 +97,9 @@
     $textFadeDirection = $block['data']['flyin_direction'] ?? 'bottom';
 
     // Object hoogte
-    $mobileHeight  = $block['data']['object_height_mobile']  ?? 400;
-    $tabletHeight  = $block['data']['object_height_tablet']  ?? 500;
-    $desktopHeight = $block['data']['object_height_desktop'] ?? 600;
+    $mobileHeight  = $block['data']['object_height_mobile']  ?: 400;
+    $tabletHeight  = $block['data']['object_height_tablet']  ?: 500;
+    $desktopHeight = $block['data']['object_height_desktop'] ?: 600;
 
     // Pinpoints — posities zijn in world units t.o.v. het model-middelpunt (0,0,0)
     $pinpoints = [];
@@ -339,10 +339,10 @@
 @endif
 
 <script type="module">
-    import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
-    import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
-    import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
-    import { RoomEnvironment } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/environments/RoomEnvironment.js";
+    import * as THREE from "https://esm.sh/three@0.129.0";
+    import { OrbitControls } from "https://esm.sh/three@0.129.0/examples/jsm/controls/OrbitControls";
+    import { GLTFLoader } from "https://esm.sh/three@0.129.0/examples/jsm/loaders/GLTFLoader";
+    import { RoomEnvironment } from "https://esm.sh/three@0.129.0/examples/jsm/environments/RoomEnvironment";
 
     const container = document.getElementById('threejs-canvas-{{ $randomNumber }}');
     if (!container) { console.warn('Three.js container not found for block {{ $randomNumber }}'); } else {
