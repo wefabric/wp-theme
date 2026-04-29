@@ -628,6 +628,27 @@
             "selected": 0
         },
         {
+            "key": "field_68fb90653dced0",
+            "label": "3D Model",
+            "name": "model_3d",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "Upload een 3D model in <strong>GLB-formaat</strong> (aanbevolen: één bestand, geen losse bestanden). GLTF is ook mogelijk, maar dan moeten alle bijbehorende .bin en texture-bestanden in dezelfde map staan.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "glb, gltf",
+            "allow_in_bindings": 0
+        },
+        {
             "key": "field_68fb90653dceea",
             "label": "Hoogte op mobiel",
             "name": "object_height_mobile",

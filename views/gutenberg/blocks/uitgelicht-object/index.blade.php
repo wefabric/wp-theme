@@ -96,6 +96,13 @@
     $flyInAnimation = $block['data']['flyin_animation'] ?? false;
     $textFadeDirection = $block['data']['flyin_direction'] ?? 'bottom';
 
+    // 3D Model
+    // 3D Model — fallback naar Hatzmann Scania als geen model geüpload is
+    $model3dId  = $block['data']['model_3d'] ?? '';
+    $modelUrl   = $model3dId
+        ? wp_get_attachment_url((int) $model3dId)
+        : get_stylesheet_directory_uri() . '/assets/models/hatzmann/Hatzmann.draco.glb';
+
     // Object hoogte
     $mobileHeight  = $block['data']['object_height_mobile']  ?: 400;
     $tabletHeight  = $block['data']['object_height_tablet']  ?: 500;
@@ -342,6 +349,7 @@
     import * as THREE from "https://esm.sh/three@0.129.0";
     import { OrbitControls } from "https://esm.sh/three@0.129.0/examples/jsm/controls/OrbitControls";
     import { GLTFLoader } from "https://esm.sh/three@0.129.0/examples/jsm/loaders/GLTFLoader";
+    import { DRACOLoader } from "https://esm.sh/three@0.129.0/examples/jsm/loaders/DRACOLoader";
     import { RoomEnvironment } from "https://esm.sh/three@0.129.0/examples/jsm/environments/RoomEnvironment";
 
     const container = document.getElementById('threejs-canvas-{{ $randomNumber }}');
@@ -439,8 +447,13 @@
     const pinTex       = createPinTex(false);
     const pinTexActive = createPinTex(true);
 
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+
     const loader = new GLTFLoader();
-    const modelUrl = '{{ get_stylesheet_directory_uri() }}/assets/models/forklift/scene.gltf';
+    loader.setDRACOLoader(dracoLoader);
+
+    const modelUrl = '{{ $modelUrl }}';
 
     loader.load(
         modelUrl,
@@ -477,7 +490,7 @@
 
                 // Pinpoints aanmaken na centreren van het model
                 pinBaseScale = maxDim * 0.10;
-                console.log('[Uitgelicht Object] Model bounds — size:', JSON.stringify({x: size.x.toFixed(2), y: size.y.toFixed(2), z: size.z.toFixed(2)}), '| Gebruik deze waarden om pinpoint posities in te stellen t.o.v. middelpunt (0,0,0).');
+                // console.log('[Uitgelicht Object] Model bounds — size:', JSON.stringify({x: size.x.toFixed(2), y: size.y.toFixed(2), z: size.z.toFixed(2)}), '| Gebruik deze waarden om pinpoint posities in te stellen t.o.v. middelpunt (0,0,0).');
                 pinpointDefs.forEach((def, idx) => {
                     const mat = new THREE.SpriteMaterial({ map: pinTex, depthTest: false, transparent: true });
                     const sprite = new THREE.Sprite(mat);
