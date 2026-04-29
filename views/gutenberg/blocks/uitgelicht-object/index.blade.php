@@ -101,7 +101,7 @@
     $model3dId  = $block['data']['model_3d'] ?? '';
     $modelUrl   = $model3dId
         ? wp_get_attachment_url((int) $model3dId)
-        : get_stylesheet_directory_uri() . '/assets/models/hatzmann/Hatzmann.draco.glb';
+        : get_stylesheet_directory_uri() . '/assets/models/hatzmann/Hatzmann.optimized.glb';
 
     // Object hoogte
     $mobileHeight  = $block['data']['object_height_mobile']  ?: 400;
