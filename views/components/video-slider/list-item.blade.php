@@ -75,7 +75,10 @@
                         if (is_string($val)) {
                             $oembed = function_exists('wp_oembed_get') ? wp_oembed_get($val) : '';
                             if ($oembed) {
-                                $html = $oembed;
+                                // Voeg enablejsapi toe zodat postMessage play/pause werkt
+                                $html = strpos($oembed, 'enablejsapi') === false
+                                    ? preg_replace('~(src="https://www\.youtube\.com/embed/[^"]*)"~', '$1&enablejsapi=1"', $oembed) ?? $oembed
+                                    : $oembed;
                             } else {
                                 $src = $val;
                                 $ytId = '';
@@ -87,7 +90,7 @@
                                     $vmId = $m[1];
                                 }
                                 if ($ytId) {
-                                    $params = 'rel=0&modestbranding=1&playsinline=1';
+                                    $params = 'rel=0&modestbranding=1&playsinline=1&enablejsapi=1';
                                     $src = 'https://www.youtube.com/embed/' . $ytId . '?' . $params;
                                 } elseif ($vmId) {
                                     $src = 'https://player.vimeo.com/video/' . $vmId;

@@ -61,6 +61,7 @@
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var videoSliderSwiper = new Swiper(".{{ $randomId }}", {
+            touchStartPreventDefault: false,
             spaceBetween: {{ $spaceBetween }},
             @if ($swiperCenteredSlides)
                 centeredSlides: true,
@@ -102,5 +103,79 @@
                 },
             }
         });
+
+        // Overlay blijft altijd actief: swipes gaan naar Swiper, taps via postMessage naar de player
+        var swiperContainerEl = document.querySelector('.{{ $randomId }}');
+        if (swiperContainerEl) {
+            function sendVideoCommand(iframe, playing) {
+                if (!iframe || !iframe.contentWindow) return;
+                var src = iframe.src || '';
+                if (src.indexOf('youtube.com') !== -1) {
+                    iframe.contentWindow.postMessage(JSON.stringify({
+                        event: 'command',
+                        func: playing ? 'pauseVideo' : 'playVideo',
+                        args: []
+                    }), 'https://www.youtube.com');
+                } else if (src.indexOf('vimeo.com') !== -1) {
+                    iframe.contentWindow.postMessage(JSON.stringify({
+                        method: playing ? 'pause' : 'play'
+                    }), 'https://player.vimeo.com');
+                }
+            }
+
+            function pauseAllVideos() {
+                swiperContainerEl.querySelectorAll('[data-iframe-guard]').forEach(function(g) {
+                    if (g._playing) {
+                        sendVideoCommand(g.closest('.video-container').querySelector('iframe'), true);
+                        g._playing = false;
+                    }
+                });
+            }
+
+            function addIframeGuards() {
+                swiperContainerEl.querySelectorAll('.video-container').forEach(function(container) {
+                    if (!container.querySelector('iframe') || container.querySelector('[data-iframe-guard]')) return;
+
+                    var guard = document.createElement('div');
+                    guard.setAttribute('data-iframe-guard', '');
+                    guard.style.cssText = 'position:absolute;inset:0;z-index:2;cursor:pointer;';
+                    guard._playing = false;
+                    container.appendChild(guard);
+
+                    var startX = 0, startY = 0, moved = false;
+
+                    guard.addEventListener('touchstart', function(e) {
+                        startX = e.touches[0].clientX;
+                        startY = e.touches[0].clientY;
+                        moved = false;
+                    }, {passive: true});
+
+                    guard.addEventListener('touchmove', function(e) {
+                        if (Math.abs(e.touches[0].clientX - startX) > 8 ||
+                            Math.abs(e.touches[0].clientY - startY) > 8) {
+                            moved = true;
+                        }
+                    }, {passive: true});
+
+                    function toggleVideo() {
+                        sendVideoCommand(container.querySelector('iframe'), guard._playing);
+                        guard._playing = !guard._playing;
+                    }
+
+                    guard.addEventListener('touchend', function() {
+                        if (!moved) toggleVideo();
+                    }, {passive: true});
+
+                    guard.addEventListener('click', toggleVideo);
+                });
+            }
+
+            addIframeGuards();
+
+            videoSliderSwiper.on('slideChange', function() {
+                pauseAllVideos();
+                addIframeGuards();
+            });
+        }
     });
 </script>
