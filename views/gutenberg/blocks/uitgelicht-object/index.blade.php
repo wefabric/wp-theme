@@ -376,6 +376,16 @@
     const container = document.getElementById('threejs-canvas-{{ $randomNumber }}');
     if (!container) { console.warn('Three.js container not found for block {{ $randomNumber }}'); } else {
 
+    // Lazy load: initialiseer Three.js pas als het blok in de viewport komt
+    const observer = new IntersectionObserver((entries, obs) => {
+        if (!entries[0].isIntersecting) return;
+        obs.disconnect();
+        initScene();
+    }, { rootMargin: '200px' }); // 200px voor de rand alvast beginnen laden
+    observer.observe(container);
+
+    function initScene() {
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
 
@@ -645,5 +655,7 @@
         });
         updatePopupPos();
     })();
-}
+
+    } // einde initScene()
+    } // einde container else
 </script>
