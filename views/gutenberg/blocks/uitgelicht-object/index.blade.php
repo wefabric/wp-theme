@@ -183,6 +183,12 @@
                 <div class="threejs-wrapper threejs-{{ $randomNumber }} w-full h-full relative">
                     <div id="threejs-canvas-{{ $randomNumber }}" class="w-full h-full"></div>
 
+                    {{-- Loading indicator --}}
+                    <div id="threejs-loader-{{ $randomNumber }}" class="absolute inset-0 flex flex-col items-center justify-center gap-3" style="z-index: 40;">
+                        <div class="threejs-spinner"></div>
+                        <span class="text-sm font-medium" style="color: var(--primary-color, #1e3a8a); opacity: 0.6;">3D model laden…</span>
+                    </div>
+
                     {{-- Pinpoint popup --}}
                     <div id="pinpoint-popup-{{ $randomNumber }}"
                          class="absolute hidden"
@@ -243,6 +249,21 @@
             @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
+    }
+
+    @keyframes uitgelicht-spin-{{ $randomNumber }} {
+        to { transform: rotate(360deg); }
+    }
+    #threejs-loader-{{ $randomNumber }} .threejs-spinner {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 4px solid rgba(0,0,0,0.08);
+        border-top-color: var(--cta-color, #1a56db);
+        animation: uitgelicht-spin-{{ $randomNumber }} 0.8s linear infinite;
+    }
+    #threejs-loader-{{ $randomNumber }}.hidden {
+        display: none;
     }
 
     .uitgelicht-object-{{ $randomNumber }}-canvas-height {
@@ -455,6 +476,8 @@
 
     const modelUrl = '{{ $modelUrl }}';
 
+    const loaderEl = document.getElementById('threejs-loader-{{ $randomNumber }}');
+
     loader.load(
         modelUrl,
         (gltf) => {
@@ -463,6 +486,7 @@
                 if (child.isMesh) { child.castShadow = true; child.receiveShadow = true; }
             });
             scene.add(object);
+            if (loaderEl) loaderEl.classList.add('hidden');
 
             resizeToContainer();
             try {
@@ -505,8 +529,14 @@
                 console.warn('Model framing failed:', e);
             }
         },
-        undefined,
-        (err) => console.error(err)
+        (xhr) => { /* progress — optioneel */ },
+        (err) => {
+            console.error(err);
+            if (loaderEl) {
+                loaderEl.querySelector('.threejs-spinner').style.display = 'none';
+                loaderEl.querySelector('span').textContent = 'Model kon niet worden geladen.';
+            }
+        }
     );
 
     function resizeToContainer() {
