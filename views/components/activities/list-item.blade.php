@@ -29,6 +29,31 @@
         $fields['dates'] = [];
     }
 
+    $dutchMonths = ['', 'januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
+    $formatActivityDate = function (string $dateStr, string $dateEndStr = '') use ($dutchMonths): string {
+        $date = DateTime::createFromFormat('d/m/Y', $dateStr);
+        if (!$date) return $dateStr;
+
+        if (!empty($dateEndStr)) {
+            $dateEnd = DateTime::createFromFormat('d/m/Y', $dateEndStr);
+            if ($dateEnd) {
+                $dayStart  = (int) $date->format('j');
+                $dayEnd    = (int) $dateEnd->format('j');
+                $monthEnd  = (int) $dateEnd->format('n');
+                $yearEnd   = $dateEnd->format('Y');
+
+                if ((int) $date->format('n') === $monthEnd && $date->format('Y') === $yearEnd) {
+                    return $dayStart . ' t/m ' . $dayEnd . ' ' . $dutchMonths[$monthEnd] . ' ' . $yearEnd;
+                }
+
+                return $dayStart . ' ' . $dutchMonths[(int) $date->format('n')] . ' ' . $date->format('Y')
+                    . ' t/m ' . $dayEnd . ' ' . $dutchMonths[$monthEnd] . ' ' . $yearEnd;
+            }
+        }
+
+        return (int) $date->format('j') . ' ' . $dutchMonths[(int) $date->format('n')] . ' ' . $date->format('Y');
+    };
+
     // Structured data
     $activityId = is_numeric($activity) ? (int)$activity : ($activity->ID ?? 0);
     $eventSchema = [
@@ -64,11 +89,12 @@
             $eventSchema['startDate'] = $startDate->format('c');
         }
 
-        if (!empty($firstDate['end_time'])) {
-            $endDate = DateTime::createFromFormat('d/m/Y H:i', $firstDate['date'] . ' ' . $firstDate['end_time']);
-            if ($endDate) {
-                $eventSchema['endDate'] = $endDate->format('c');
-            }
+        $lastDate = end($fields['dates']);
+        $endDateStr = !empty($lastDate['date_end']) ? $lastDate['date_end'] : $lastDate['date'];
+        $endTimeStr = !empty($lastDate['end_time']) ? $lastDate['end_time'] : (!empty($lastDate['start_time']) ? $lastDate['start_time'] : '23:59');
+        $endDate = DateTime::createFromFormat('d/m/Y H:i', $endDateStr . ' ' . $endTimeStr);
+        if ($endDate) {
+            $eventSchema['endDate'] = $endDate->format('c');
         }
     }
 
@@ -149,7 +175,7 @@
                     <p class="flex items-baseline leading-[1.5]">
                         <i class="w-4 fas fa-calendar-alt mr-3"></i>
                         @foreach ($fields['dates'] as $date)
-                            {{ ($date['date']) }}
+                            {{ $formatActivityDate($date['date'], $date['date_end'] ?? '') }}
 
                             @if (!empty($visibleElements) && in_array('time', $visibleElements) && !empty($date['start_time']))
                                 van {{ ($date['start_time']) }}
