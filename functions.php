@@ -870,9 +870,12 @@ add_action('admin_menu', function () {
 add_action('admin_menu', function () {
     global $menu;
 
-    // Verwijder standaard WordPress-separators
-    if (isset($menu[4]) && strpos($menu[4][4] ?? '', 'wp-menu-separator') !== false) unset($menu[4]);
-    if (isset($menu[59]) && strpos($menu[59][4] ?? '', 'wp-menu-separator') !== false) unset($menu[59]);
+    // Verwijder alle standaard WordPress-separators
+    foreach ($menu as $pos => $item) {
+        if (strpos($item[4] ?? '', 'wp-menu-separator') !== false) {
+            unset($menu[$pos]);
+        }
+    }
 
     // Verplaats Berichten (pos 5) naar Inhoud-sectie (pos 24)
     if (isset($menu[5]) && ($menu[5][2] ?? '') === 'edit.php') {
@@ -942,13 +945,19 @@ add_action('admin_init', function () {
 add_action('admin_head', function () {
     ?>
     <style>
+    #adminmenu li.wp-menu-separator {
+        display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
     #adminmenu li.wf-admin-section-header {
         margin-top: 12px;
-        margin-bottom: 0;
+        margin-bottom: -4px;
         pointer-events: none;
     }
     #adminmenu li.wf-admin-section-header > a {
-        padding: 0 12px 2px !important;
+        padding: 0 12px 0 !important;
         min-height: auto !important;
         pointer-events: none;
         cursor: default;
