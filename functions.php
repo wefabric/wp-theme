@@ -852,3 +852,127 @@ add_filter('rank_math/opengraph/facebook/og_type', 'force_og_type_website', 999)
  */
 
 load_theme_textdomain('themosis', WP_CONTENT_DIR . '/languages');
+
+// ── Admin sidebar: Patronen menu-item ─────────────────────────────────────────
+add_action('admin_menu', function () {
+    add_menu_page(
+        'Patronen',
+        'Patronen',
+        'edit_posts',
+        'edit.php?post_type=wp_block',
+        '',
+        'dashicons-screenoptions',
+        19
+    );
+});
+
+// ── Admin sidebar: sectie-indeling ────────────────────────────────────────────
+add_action('admin_menu', function () {
+    global $menu;
+
+    // Verwijder standaard WordPress-separators
+    if (isset($menu[4]) && strpos($menu[4][4] ?? '', 'wp-menu-separator') !== false) unset($menu[4]);
+    if (isset($menu[59]) && strpos($menu[59][4] ?? '', 'wp-menu-separator') !== false) unset($menu[59]);
+
+    // Verplaats Berichten (pos 5) naar Inhoud-sectie (pos 24)
+    if (isset($menu[5]) && ($menu[5][2] ?? '') === 'edit.php') {
+        $menu[24] = $menu[5];
+        unset($menu[5]);
+    }
+
+    // Verplaats Pagina's (pos 20) naar pos 22 — maakt pos 20 vrij voor de Inhoud-header
+    // (NB: PHP converteert float keys naar int, dus 19.5 zou pos 19 = Patronen overschrijven)
+    if (isset($menu[20]) && ($menu[20][2] ?? '') === 'edit.php?post_type=page') {
+        $menu[22] = $menu[20];
+        unset($menu[20]);
+    }
+
+    // Verplaats ACF naar Beheer-sectie (pos 60)
+    foreach ($menu as $pos => $item) {
+        if (($item[2] ?? '') === 'edit.php?post_type=acf-field-group') {
+            $menu[60] = $item;
+            unset($menu[$pos]);
+            break;
+        }
+    }
+
+    // Verplaats Rank Math (pos 50) naar Beheer-sectie (pos 61)
+    foreach ($menu as $pos => $item) {
+        if (($item[2] ?? '') === 'rank-math') {
+            $menu[61] = $item;
+            unset($menu[$pos]);
+            break;
+        }
+    }
+
+    // Sorteer custom CPTs alfabetisch op positie 30+
+    // Uitsluitingen: standaard post types en items al in Sjablonen & Media
+    $uitgesloten = ['page', 'post', 'wp_block', 'wf_layouts', 'acf-field-group'];
+    $cpt_items   = [];
+    foreach ($menu as $pos => $item) {
+        $slug = $item[2] ?? '';
+        if (strpos($slug, 'edit.php?post_type=') === 0) {
+            $type = substr($slug, strlen('edit.php?post_type='));
+            if (!in_array($type, $uitgesloten, true)) {
+                $cpt_items[] = $item;
+                unset($menu[$pos]);
+            }
+        }
+    }
+    usort($cpt_items, fn($a, $b) => strcasecmp($a[0] ?? '', $b[0] ?? ''));
+    foreach ($cpt_items as $i => $item) {
+        $menu[30 + $i] = $item;
+    }
+
+    // Sectie-headers: [label, capability, slug, page_title, css_classes, id, icon]
+    $menu[3]  = ['Sjablonen & Media', 'edit_posts',    'wf-section-1', '', 'wf-admin-section-header', 'wf-section-header-1', 'none'];
+    $menu[20] = ['Inhoud',            'edit_posts',    'wf-section-2', '', 'wf-admin-section-header', 'wf-section-header-2', 'none'];
+    $menu[58] = ['Beheer',            'manage_options','wf-section-3', '', 'wf-admin-section-header', 'wf-section-header-3', 'none'];
+}, 999);
+
+// Redirect als iemand per ongeluk op een sectie-header klikt
+add_action('admin_init', function () {
+    if (isset($_GET['page']) && in_array($_GET['page'], ['wf-section-1', 'wf-section-2', 'wf-section-3'], true)) {
+        wp_safe_redirect(admin_url());
+        exit;
+    }
+});
+
+// CSS voor de sectie-headers in de sidebar
+add_action('admin_head', function () {
+    ?>
+    <style>
+    #adminmenu li.wf-admin-section-header {
+        margin-top: 12px;
+        margin-bottom: 0;
+        pointer-events: none;
+    }
+    #adminmenu li.wf-admin-section-header > a {
+        padding: 0 12px 2px !important;
+        min-height: auto !important;
+        pointer-events: none;
+        cursor: default;
+        background: transparent !important;
+    }
+    #adminmenu li.wf-admin-section-header .wp-menu-image {
+        display: none !important;
+    }
+    #adminmenu li.wf-admin-section-header .wp-menu-name {
+        color: #8c8f94 !important;
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.8px !important;
+        padding: 0 !important;
+        line-height: 1.6 !important;
+    }
+    #adminmenu li.wf-admin-section-header:hover > a {
+        background: transparent !important;
+    }
+    #adminmenu li.wf-admin-section-header .wp-menu-arrow {
+        display: none !important;
+    }
+    </style>
+    <?php
+});
+
