@@ -953,7 +953,7 @@ add_action('admin_head', function () {
     }
     #adminmenu li.wf-admin-section-header {
         margin-top: 12px;
-        margin-bottom: -4px;
+        margin-bottom: 0px;
         pointer-events: none;
     }
     #adminmenu li.wf-admin-section-header > a {
@@ -973,6 +973,7 @@ add_action('admin_head', function () {
         text-transform: uppercase !important;
         letter-spacing: 0.8px !important;
         padding: 0 !important;
+        margin-bottom: 10px;
         line-height: 1.6 !important;
     }
     #adminmenu li.wf-admin-section-header:hover > a {
