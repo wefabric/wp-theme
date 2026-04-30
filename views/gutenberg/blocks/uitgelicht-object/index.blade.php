@@ -386,16 +386,19 @@
 
     function initScene() {
 
+    const isMobile = window.innerWidth < 768 || /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setPixelRatio(window.devicePixelRatio || 1);
-    renderer.shadowMap.enabled = true;
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: !isMobile });
+    renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = !isMobile;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMapping = isMobile ? THREE.LinearToneMapping : THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.1;
     renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.domElement.style.touchAction = 'none';
     container.appendChild(renderer.domElement);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
@@ -644,16 +647,38 @@
         container.style.cursor = hoveredSprite ? 'pointer' : '';
     });
 
+    // On-demand rendering: alleen renderen als er iets verandert
+    let needsRender = true;
+    const requestRender = () => { needsRender = true; };
+    controls.addEventListener('change', requestRender);
+    controls.addEventListener('start', requestRender);
+
+    // Render triggeren bij interactie
+    container.addEventListener('pointerdown', requestRender);
+    container.addEventListener('pointermove', requestRender);
+
     (function animate(){
         requestAnimationFrame(animate);
         controls.update();
-        renderer.render(scene, camera);
+
+        // Pinpoints schaal animeren — check of iets aan het bewegen is
+        let animating = false;
         pinpointMeshes.forEach(s => {
             const enlarged = s === activePinSprite || s === hoveredSprite;
             const target = pinBaseScale * (enlarged ? 1.25 : 1.0);
-            s.scale.setScalar(s.scale.x + (target - s.scale.x) * 0.15);
+            const diff = target - s.scale.x;
+            if (Math.abs(diff) > 0.001) {
+                s.scale.setScalar(s.scale.x + diff * 0.15);
+                animating = true;
+            }
         });
+
         updatePopupPos();
+
+        if (needsRender || animating || activePinSprite) {
+            renderer.render(scene, camera);
+            needsRender = false;
+        }
     })();
 
     } // einde initScene()
