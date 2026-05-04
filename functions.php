@@ -890,6 +890,12 @@ add_action('admin_menu', function () {
         unset($menu[20]);
     }
 
+    // Verplaats Weergave (themes.php, standaard pos 60) naar pos 59 — valt onder Beheer
+    if (isset($menu[60]) && ($menu[60][2] ?? '') === 'themes.php') {
+        $menu[59] = $menu[60];
+        unset($menu[60]);
+    }
+
     // Verplaats ACF naar Beheer-sectie (pos 60)
     foreach ($menu as $pos => $item) {
         if (($item[2] ?? '') === 'edit.php?post_type=acf-field-group') {
