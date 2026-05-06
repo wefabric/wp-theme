@@ -159,7 +159,7 @@
                 @endif
 
                 @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && !empty($vacancySummary))
-                    <div class="mt-3 mb-3">{{ $vacancySummary }}</div>
+                    <div class="vacancy-excerpt mt-3 mb-3">{{ $vacancySummary }}</div>
                 @endif
             </div>
 
