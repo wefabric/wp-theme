@@ -877,6 +877,23 @@ add_action('admin_menu', function () {
         }
     }
 
+    // Verzamel en verwijder custom CPTs EERST — vendor-CPTs (bijv. faq via Themosis) krijgen
+    // standaard menu_position=20, waardoor WP ze op 21/22/... plaatst. Door ze hier weg te
+    // halen vóór de expliciete posities worden gezet, voorkom je dat Pagina's (→22) zo'n
+    // CPT overschrijft.
+    $uitgesloten = ['page', 'post', 'wp_block', 'wf_layouts', 'acf-field-group'];
+    $cpt_items   = [];
+    foreach ($menu as $pos => $item) {
+        $slug = $item[2] ?? '';
+        if (strpos($slug, 'edit.php?post_type=') === 0) {
+            $type = substr($slug, strlen('edit.php?post_type='));
+            if (!in_array($type, $uitgesloten, true)) {
+                $cpt_items[] = $item;
+                unset($menu[$pos]);
+            }
+        }
+    }
+
     // Verplaats Berichten (pos 5) naar Inhoud-sectie (pos 24)
     if (isset($menu[5]) && ($menu[5][2] ?? '') === 'edit.php') {
         $menu[24] = $menu[5];
@@ -914,20 +931,7 @@ add_action('admin_menu', function () {
         }
     }
 
-    // Sorteer custom CPTs alfabetisch op positie 30+
-    // Uitsluitingen: standaard post types en items al in Sjablonen & Media
-    $uitgesloten = ['page', 'post', 'wp_block', 'wf_layouts', 'acf-field-group'];
-    $cpt_items   = [];
-    foreach ($menu as $pos => $item) {
-        $slug = $item[2] ?? '';
-        if (strpos($slug, 'edit.php?post_type=') === 0) {
-            $type = substr($slug, strlen('edit.php?post_type='));
-            if (!in_array($type, $uitgesloten, true)) {
-                $cpt_items[] = $item;
-                unset($menu[$pos]);
-            }
-        }
-    }
+    // Sorteer verzamelde CPTs alfabetisch op positie 30+
     usort($cpt_items, fn($a, $b) => strcasecmp($a[0] ?? '', $b[0] ?? ''));
     foreach ($cpt_items as $i => $item) {
         $menu[30 + $i] = $item;
