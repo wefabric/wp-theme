@@ -18,7 +18,38 @@
     $privacyPage = $option['pages']['privacy_page'] ?? '';
     $termsPage = $option['pages']['terms_page'] ?? '';
 
-//    @dd($option['logo_slider']);
+    $sectionTypes = [
+        1 => $option['footer_section_1_type'] ?? 'menu_1',
+        2 => $option['footer_section_2_type'] ?? 'menu_2',
+        3 => $option['footer_section_3_type'] ?? 'contact',
+        4 => $option['footer_section_4_type'] ?? 'newsletter',
+    ];
+
+    $defaultTitles = [
+        'menu_1'      => wp_get_nav_menu_name('footer_menu_one'),
+        'menu_2'      => wp_get_nav_menu_name('footer_menu_two'),
+        'menu_3'      => wp_get_nav_menu_name('footer_menu_three'),
+        'contact'     => __('Contactgegevens', 'wefabric'),
+        'newsletter'  => __('Volg ons', 'wefabric'),
+        'custom_text' => '',
+    ];
+
+    $sectionTitles = [
+        1 => !empty($footerTitles['footer_title_1']) ? $footerTitles['footer_title_1'] : ($defaultTitles[$sectionTypes[1]] ?? ''),
+        2 => !empty($footerTitles['footer_title_2']) ? $footerTitles['footer_title_2'] : ($defaultTitles[$sectionTypes[2]] ?? ''),
+        3 => !empty($footerTitles['footer_title_3']) ? $footerTitles['footer_title_3'] : ($defaultTitles[$sectionTypes[3]] ?? ''),
+        4 => !empty($footerTitles['footer_title_4']) ? $footerTitles['footer_title_4'] : ($defaultTitles[$sectionTypes[4]] ?? ''),
+    ];
+
+    $menuLocations = [
+        'menu_1' => 'footer_menu_one',
+        'menu_2' => 'footer_menu_two',
+        'menu_3' => 'footer_menu_three',
+    ];
+
+    $activeSectionCount = count(array_filter($sectionTypes, fn($t) => $t !== 'none' && !empty($t)));
+    $gridColsMap = [1 => 'lg:grid-cols-1', 2 => 'lg:grid-cols-2', 3 => 'lg:grid-cols-3', 4 => 'lg:grid-cols-4'];
+    $gridColsClass = $gridColsMap[$activeSectionCount] ?? 'lg:grid-cols-4';
 @endphp
 
 <div class="footer bg-{{ $bg_color ?? '' }} text-{{ $text_color ?? 'white' }} text-base">
@@ -41,51 +72,75 @@
         <div class="container mx-auto px-8 relative">
 
             <div class="w-full">
-                <div class="footer-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-8 pt-12 lg:pt-16 pb-6 lg:pb-0">
+                <div class="footer-grid grid grid-cols-1 md:grid-cols-2 {{ $gridColsClass }} lg:gap-8 pt-12 lg:pt-16 pb-6 lg:pb-0">
 
-                    <div class="lg:pb-6 menu-1-section">
+                    @foreach([1, 2, 3, 4] as $sectionNum)
                         @php
-                            $menu = wp_nav_menu([
-                                'theme_location' => 'footer_menu_one',
-                                'menu_id' => 'footer_menu_one',
-                                'echo' => false
-                            ]);
-                        @endphp
-                        @include('components.footer.accordion-menu', ['menu' => $menu,
-                            'title' => !empty($footerTitles['footer_title_1']) ? $footerTitles['footer_title_1'] : wp_get_nav_menu_name('footer_menu_one'),
-                            'accordionId' => 1,
-                            'setAccordion' => true])
-                    </div>
-
-                    <div class="lg:pb-6 menu-2-section">
-                        @php
-                            $menu = wp_nav_menu([
-                                'theme_location' => 'footer_menu_two',
-                                'menu_id' => 'footer_menu_two',
-                                'echo' => false
-                            ]);
+                            $sectionType = $sectionTypes[$sectionNum];
+                            $sectionTitle = $sectionTitles[$sectionNum];
                         @endphp
 
-                        @include('components.footer.accordion-menu', ['menu' => $menu,
-                            'title' => !empty($footerTitles['footer_title_2']) ? $footerTitles['footer_title_2'] : wp_get_nav_menu_name('footer_menu_two'),
-                            'accordionId' => 2,
-                            'setAccordion' => true])
-                    </div>
+                        @if($sectionType === 'none' || empty($sectionType))
+                            @continue
+                        @endif
 
-                    <div class="lg:pb-6 contact-section">
-                        @include('components.footer.accordion-menu', ['menu' => view('components.footer.contact'),
-                            'title' => !empty($footerTitles['footer_title_3']) ? $footerTitles['footer_title_3'] : __('Contactgegevens', 'wefabric'),
-                            'accordionId' => 3,
-                            'setAccordion' => true])
-                    </div>
+                        <div class="lg:pb-6 section-{{ $sectionNum }}-type-{{ $sectionType }}">
+                            @if(isset($menuLocations[$sectionType]))
+                                @php
+                                    $menuLocation = $menuLocations[$sectionType];
+                                    $menu = wp_nav_menu([
+                                        'theme_location' => $menuLocation,
+                                        'menu_id'        => $menuLocation,
+                                        'echo'           => false
+                                    ]);
+                                @endphp
+                                @include('components.footer.accordion-menu', [
+                                    'menu'        => $menu,
+                                    'title'       => $sectionTitle,
+                                    'accordionId' => $sectionNum,
+                                    'setAccordion' => true
+                                ])
+                            @elseif($sectionType === 'contact')
+                                @include('components.footer.accordion-menu', [
+                                    'menu'        => view('components.footer.contact'),
+                                    'title'       => $sectionTitle,
+                                    'accordionId' => $sectionNum,
+                                    'setAccordion' => true
+                                ])
+                            @elseif($sectionType === 'newsletter')
+                                @include('components.footer.accordion-menu', [
+                                    'menu'        => view('components.footer.follow-us'),
+                                    'title'       => $sectionTitle,
+                                    'accordionId' => $sectionNum,
+                                    'setAccordion' => true
+                                ])
+                            @elseif($sectionType === 'custom_text')
+                                @php
+                                    $customData        = $option['footer_section_' . $sectionNum . '_custom'] ?? [];
+                                    $customText        = $customData['text'] ?? '';
+                                    $customButtonLink  = $customData['button_link'] ?? null;
+                                    $customButtonColor = $customData['button_color'] ?? 'primary-color';
+                                    $customButtonStyle = $customData['button_style'] ?? 'filled';
+                                    $customButtonIcon  = $customData['button_icon'] ?? '';
+                                    $customButtonDownload = $customData['button_download'] ?? false;
+                                @endphp
+                                @include('components.footer.accordion-menu', [
+                                    'menu'        => view('components.footer.custom-section', [
+                                        'customText'           => $customText,
+                                        'customButtonLink'     => $customButtonLink,
+                                        'customButtonColor'    => $customButtonColor,
+                                        'customButtonStyle'    => $customButtonStyle,
+                                        'customButtonIcon'     => $customButtonIcon,
+                                        'customButtonDownload' => $customButtonDownload,
+                                    ]),
+                                    'title'       => $sectionTitle,
+                                    'accordionId' => $sectionNum,
+                                    'setAccordion' => true
+                                ])
+                            @endif
+                        </div>
+                    @endforeach
 
-
-                    <div class="lg:pb-6 follow-section">
-                        @include('components.footer.accordion-menu', ['menu' => view('components.footer.follow-us'),
-                            'title' => !empty($footerTitles['footer_title_4']) ? $footerTitles['footer_title_4'] : __('Volg ons', 'wefabric'),
-                            'accordionId' => 4,
-                            'setAccordion' => true])
-                    </div>
                 </div>
             </div>
         </div>
