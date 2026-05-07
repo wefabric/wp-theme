@@ -8,14 +8,29 @@
 			$title_color = $option['title_color'];
 		}
 	}
+
+    // Show socials — new field, default true
+    $showSocials = $option['footer_show_socials'] ?? true;
+
+    // Show newsletter — new top-level field, falls back to old sub-field path for existing sites
+    $showNewsletter = $option['newsletter_footer_show']
+        ?? $option['newsletter_footer']['show']
+        ?? true;
+
+    // Newsletter text — same fallback pattern
+    $newsletterText = $option['newsletter_footer_newsletter_text']
+        ?? $option['newsletter_footer']['newsletter_text']
+        ?? '';
 @endphp
 
-@include('components.socials.list', ['icon_class' => 'text-xl'])
+@if($showSocials)
+    @include('components.socials.list', ['icon_class' => 'text-xl'])
+@endif
 
-@if(isset($option['newsletter_footer'], $option['newsletter_footer']['show']) && $option['newsletter_footer']['show'] === true)
+@if($showNewsletter)
 	@php
 		$title = !empty($option['newsletter_footer']['title']) ? $option['newsletter_footer']['title'] : 'Blijf op de hoogte';
-        $text = $option['newsletter_footer']['newsletter_text'] ?? '';
+        $text = $newsletterText;
 
 		$mailChimpUrl = $option['newsletter_footer']['embed_subscribe_url'] ?? '';
         $zohoUrl = $option['newsletter_footer']['zoho_subscribe_url'] ?? '';

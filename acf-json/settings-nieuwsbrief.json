@@ -19,54 +19,6 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_63074223c7e7d",
-                    "label": "Tonen?",
-                    "name": "show",
-                    "aria-label": "",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "20",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 1,
-                    "ui": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": ""
-                },
-                {
-                    "key": "field_6307450bf2088",
-                    "label": "Titel",
-                    "name": "title",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_63074223c7e7d",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "80",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "Blijf op de hoogte!",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
                     "key": "field_6638acb852ca7",
                     "label": "Type nieuwsbrief doorverwijzing",
                     "name": "newsletter_type",
@@ -129,15 +81,10 @@
                     "name": "embed_subscribe_url",
                     "aria-label": "",
                     "type": "url",
-                    "instructions": "Lees hier meer over de Inschrijf url: https:\/\/www.notion.so\/wefabric\/Nieuwsbriefinschrijving-Mailchimp-364fea4b0c6b41c2b32736620bd42f09",
+                    "instructions": "Lees hier meer over de Inschrijf url: https://www.notion.so/wefabric/Nieuwsbriefinschrijving-Mailchimp-364fea4b0c6b41c2b32736620bd42f09",
                     "required": 0,
                     "conditional_logic": [
                         [
-                            {
-                                "field": "field_63074223c7e7d",
-                                "operator": "==",
-                                "value": "1"
-                            },
                             {
                                 "field": "field_6638acb852ca7",
                                 "operator": "==",
@@ -150,7 +97,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "https:\/\/wefabric.us16.list-manage.com\/subscribe\/post?u=97458c1812b52842329db8e54&amp;id=5af5026eaf&amp;f_id=005f67e0f0",
+                    "default_value": "https://wefabric.us16.list-manage.com/subscribe/post?u=97458c1812b52842329db8e54&amp;id=5af5026eaf&amp;f_id=005f67e0f0",
                     "placeholder": ""
                 },
                 {
@@ -164,11 +111,6 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_63074223c7e7d",
-                                "operator": "==",
-                                "value": "1"
-                            },
-                            {
                                 "field": "field_6638acb852ca7",
                                 "operator": "==",
                                 "value": "zoho"
@@ -180,28 +122,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "https:\/\/forms.zohopublic.eu\/marketing128\/form\/Emailabonnement\/formperma\/tSQIp6-8fqEuBIyjuqPFnO8Q0yT-rzMcEhCWBenFVOM\/htmlRecords\/submit",
+                    "default_value": "https://forms.zohopublic.eu/marketing128/form/Emailabonnement/formperma/tSQIp6-8fqEuBIyjuqPFnO8Q0yT-rzMcEhCWBenFVOM/htmlRecords/submit",
                     "placeholder": ""
-                },
-                {
-                    "key": "field_6667054ca0364",
-                    "label": "Nieuwsbrief inschrijven tekst",
-                    "name": "newsletter_text",
-                    "aria-label": "",
-                    "type": "wysiwyg",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "Door je aan te melden ga je ermee akkoord dat we je maximaal 1x per maand marketingmails sturen. Alles in overeenstemming met onze privacyverklaring . Je kunt je ook altijd weer afmelden voor deze e-mails.",
-                    "tabs": "all",
-                    "toolbar": "full",
-                    "media_upload": 1,
-                    "delay": 0
                 }
             ]
         }
@@ -225,5 +147,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1768914489
+    "modified": 1778250000
 }

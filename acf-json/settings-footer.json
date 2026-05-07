@@ -1148,7 +1148,7 @@
         },
         {
             "key": "field_68c292380939d",
-            "label": "Vestigingen",
+            "label": "Contactgegevens",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -1210,57 +1210,6 @@
                     "ui": 1,
                     "parent_repeater": "field_6329d0bc5b549",
                     "bidirectional_target": []
-                }
-            ]
-        },
-        {
-            "key": "field_65dc76b20a021",
-            "label": "Footer vestigingen slider",
-            "name": "footer_secondary_establishments",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "Selecteer hier de vestigingen. Deze komen onder de footer kolommen te staan.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "table",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Nieuwe regel",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_65dc76b20a026",
-                    "label": "Vestiging",
-                    "name": "establishment",
-                    "aria-label": "",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "establishments"
-                    ],
-                    "post_status": "",
-                    "taxonomy": "",
-                    "return_format": "id",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "bidirectional": 0,
-                    "ui": 1,
-                    "bidirectional_target": [],
-                    "parent_repeater": "field_65dc76b20a021"
                 }
             ]
         },
@@ -1348,6 +1297,163 @@
                     "toolbar": "full",
                     "media_upload": 1,
                     "delay": 0
+                }
+            ]
+        },
+        {
+            "key": "field_footer_nwtab001",
+            "label": "Nieuwsbrief & socials",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_footer_nw_show01",
+            "label": "Nieuwsbrief tonen?",
+            "name": "newsletter_footer_show",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_footer_nw_text01",
+            "label": "Nieuwsbrief inschrijven tekst",
+            "name": "newsletter_footer_newsletter_text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_footer_nw_show01",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_footer_socials01",
+            "label": "Socials tonen?",
+            "name": "footer_show_socials",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_footer_vstab001",
+            "label": "Vestigingen slider",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_65dc76b20a021",
+            "label": "Footer vestigingen slider",
+            "name": "footer_secondary_establishments",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Selecteer hier de vestigingen. Deze komen onder de footer kolommen te staan.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Nieuwe regel",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_65dc76b20a026",
+                    "label": "Vestiging",
+                    "name": "establishment",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "establishments"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "return_format": "id",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": [],
+                    "parent_repeater": "field_65dc76b20a021"
                 }
             ]
         },
@@ -2077,5 +2183,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1778220000
+    "modified": 1778240000
 }
