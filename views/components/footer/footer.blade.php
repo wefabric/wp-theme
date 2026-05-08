@@ -68,7 +68,11 @@
         </div>
     @endif
 
-    <div class="custom-styling relative">
+    @if(!empty($option['footer_top_show']))
+        @include('components.footer.footer-top')
+    @endif
+
+    <div class="footer-main custom-styling relative">
         <div class="container mx-auto px-8 relative">
 
             <div class="w-full">
@@ -154,7 +158,7 @@
         </div>
     @endif
 
-    <div class="bottom-info relative ">
+    <div class="footer-bottom bottom-info relative ">
         <div class="custom-flex-styling container mx-auto px-8 flex flex-col md:flex-row pb-6">
             <div class="logo-section flex flex-col justify-end lg:w-1/4 lg:pr-8">
 
