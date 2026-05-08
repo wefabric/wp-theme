@@ -212,7 +212,7 @@
                         @endif
 
                         @if ($showContact && $contactEstablishment)
-                            <div class="contact-details mt-6 flex flex-col gap-y-3 text-base leading-7">
+                            <div class="contact-details mt-6 flex flex-col gap-y-3">
 
                                 {{-- Naam --}}
                                 @if(in_array('establishment_name', $establishmentElements))
@@ -246,9 +246,9 @@
                                     @include('components.link.opening', [
                                         'href' => $contactPhone->uri(),
                                         'alt' => 'Telefoonnummer',
-                                        'class' => 'phone-text flex w-fit items-start'
+                                        'class' => 'phone-text flex w-fit items-center'
                                     ])
-                                    <i class="fa-solid fa-phone mr-3 text-{{ $contactIconColor }} mt-1 text-sm"></i>
+                                    <i class="fa-solid fa-phone mr-3 text-{{ $contactIconColor }} text-md"></i>
                                     <span>{{ get_bloginfo('language') === 'nl-NL' ? $contactPhone->national() : $contactPhone->international() }}</span>
                                     @include('components.link.closing')
                                 @endif
@@ -258,9 +258,9 @@
                                     @include('components.link.opening', [
                                         'href' => 'mailto:' . $contactEmail,
                                         'alt' => 'E-mailadres',
-                                        'class' => 'email-text flex w-fit items-start'
+                                        'class' => 'email-text flex w-fit items-center'
                                     ])
-                                    <i class="fa-solid fa-envelope mr-3 text-{{ $contactIconColor }} mt-1 text-sm"></i>
+                                    <i class="fa-solid fa-envelope mr-3 text-{{ $contactIconColor }} text-md"></i>
                                     <span>{{ $contactEmail }}</span>
                                     @include('components.link.closing')
                                 @endif
@@ -271,10 +271,10 @@
                                     @include('components.link.opening', [
                                         'href' => 'https://www.google.com/maps/search/?api=1&query=' . urlencode($addr->street . ' ' . $addr->full_housenumber . ' ' . $addr->postcode . ' ' . $addr->city),
                                         'alt' => 'Route',
-                                        'class' => 'route-text flex w-fit items-start',
+                                        'class' => 'route-text flex w-fit items-center',
                                         'target' => '_blank'
                                     ])
-                                    <i class="fa-solid fa-route mr-3 text-{{ $contactIconColor }} mt-1 text-sm"></i>
+                                    <i class="fa-solid fa-route mr-3 text-{{ $contactIconColor }} text-md"></i>
                                     <span>Route</span>
                                     @include('components.link.closing')
                                 @endif
