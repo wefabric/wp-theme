@@ -931,6 +931,15 @@ add_action('admin_menu', function () {
         }
     }
 
+    // Verplaats Activity Log naar Beheer-sectie (pos 62)
+    foreach ($menu as $pos => $item) {
+        if (($item[2] ?? '') === 'activity-log-page') {
+            $menu[62] = $item;
+            unset($menu[$pos]);
+            break;
+        }
+    }
+
     // Sorteer verzamelde CPTs alfabetisch op positie 30+
     usort($cpt_items, fn($a, $b) => strcasecmp($a[0] ?? '', $b[0] ?? ''));
     foreach ($cpt_items as $i => $item) {
