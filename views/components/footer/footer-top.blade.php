@@ -8,11 +8,16 @@
 
     $title_color = $option['title_color'] ?? '';
 
-    if (isset($option['footer_logo']) && $option['footer_logo'] === 'logo_2') {
-        $footerLogoToDisplay = 'logo_white';
-    } else {
-        $footerLogoToDisplay = 'logo';
-    }
+    $logoMap = [
+        'logo_1'       => 'logo',
+        'logo_2'       => 'logo_white',
+        'logo_3'       => 'logo_3',
+        'logo_1_small' => 'logo_1_small',
+        'logo_2_small' => 'logo_2_small',
+        'logo_3_small' => 'logo_3_small',
+    ];
+    $footerTopLogoKey    = $option['footer_top_logo'] ?? $option['footer_logo'] ?? 'logo_1';
+    $footerLogoToDisplay = $logoMap[$footerTopLogoKey] ?? 'logo';
 
     $establishment = null;
     $footerEstablishments = $option['footer_establishments'] ?? [];

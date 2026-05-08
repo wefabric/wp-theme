@@ -6,19 +6,16 @@
         $footer_establishments = [\Wefabric\WPEstablishments\Establishment::primary()];
     }
 
-    $logoToDisplay = '';
-    if (isset($options['navigation_logo']) && $options['navigation_logo'] === 'logo_2') {
-        $logoToDisplay = 'logo_white';
-    } else {
-        $logoToDisplay = 'logo';
-    }
-
-    $mobileLogoToDisplay = '';
-    if (isset($options['mobile_navigation_logo']) && $options['mobile_navigation_logo'] === 'logo_2') {
-        $mobileLogoToDisplay = 'logo_white';
-    } else {
-        $mobileLogoToDisplay = 'logo';
-    }
+    $logoMap = [
+        'logo_1'       => 'logo',
+        'logo_2'       => 'logo_white',
+        'logo_3'       => 'logo_3',
+        'logo_1_small' => 'logo_1_small',
+        'logo_2_small' => 'logo_2_small',
+        'logo_3_small' => 'logo_3_small',
+    ];
+    $logoToDisplay       = $logoMap[$options['navigation_logo'] ?? 'logo_1'] ?? 'logo';
+    $mobileLogoToDisplay = $logoMap[$options['mobile_navigation_logo'] ?? 'logo_1'] ?? 'logo';
 
     $mobileMenuBackgroundColor = $options['mobile_menu_background_color'] ?? 'primary';
 

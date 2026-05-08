@@ -92,8 +92,12 @@
                 "id": ""
             },
             "choices": {
-                "logo_1": "Logo",
-                "logo_2": "Logo (wit)"
+                "logo_1": "Logo 1",
+                "logo_2": "Logo 2",
+                "logo_3": "Logo 3",
+                "logo_1_small": "Logo 1 klein",
+                "logo_2_small": "Logo 2 klein",
+                "logo_3_small": "Logo 3 klein"
             },
             "default_value": "logo_1",
             "return_format": "value",
@@ -485,8 +489,12 @@
                 "id": ""
             },
             "choices": {
-                "logo_1": "Logo",
-                "logo_2": "Logo (wit)"
+                "logo_1": "Logo 1",
+                "logo_2": "Logo 2",
+                "logo_3": "Logo 3",
+                "logo_1_small": "Logo 1 klein",
+                "logo_2_small": "Logo 2 klein",
+                "logo_3_small": "Logo 3 klein"
             },
             "default_value": "logo_1",
             "return_format": "value",

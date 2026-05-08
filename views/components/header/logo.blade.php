@@ -2,11 +2,15 @@
     $options = get_fields('option');
     $logoToDisplay = '';
 
-    if (isset($options['navigation_logo']) && $options['navigation_logo'] === 'logo_2') {
-        $logoToDisplay = 'logo_white';
-    } else {
-        $logoToDisplay = 'logo';
-    }
+    $logoMap = [
+        'logo_1'       => 'logo',
+        'logo_2'       => 'logo_white',
+        'logo_3'       => 'logo_3',
+        'logo_1_small' => 'logo_1_small',
+        'logo_2_small' => 'logo_2_small',
+        'logo_3_small' => 'logo_3_small',
+    ];
+    $logoToDisplay = $logoMap[$options['navigation_logo'] ?? 'logo_1'] ?? 'logo';
 @endphp
 
 

@@ -164,13 +164,15 @@
 
                 @php
                     $options = get_fields('option');
-                    $footerLogoToDisplay = '';
-
-                    if (isset($options['footer_logo']) && $options['footer_logo'] === 'logo_2') {
-                        $footerLogoToDisplay = 'logo_white';
-                    } else {
-                        $footerLogoToDisplay = 'logo';
-                    }
+                    $logoMap = [
+                        'logo_1'       => 'logo',
+                        'logo_2'       => 'logo_white',
+                        'logo_3'       => 'logo_3',
+                        'logo_1_small' => 'logo_1_small',
+                        'logo_2_small' => 'logo_2_small',
+                        'logo_3_small' => 'logo_3_small',
+                    ];
+                    $footerLogoToDisplay = $logoMap[$options['footer_logo'] ?? 'logo_1'] ?? 'logo';
                 @endphp
 
                 @if (!empty($visibleFooterElements) && in_array('logo', $visibleFooterElements))

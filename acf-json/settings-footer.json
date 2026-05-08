@@ -229,7 +229,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "25",
+                "width": "60",
                 "class": "",
                 "id": ""
             },
@@ -239,6 +239,50 @@
             "ui": 1,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "key": "field_footer_top_lgsel",
+            "label": "Logo",
+            "name": "footer_top_logo",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_footer_top_show0",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_footer_top_logo0",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "logo_1": "Logo 1",
+                "logo_2": "Logo 2",
+                "logo_3": "Logo 3",
+                "logo_1_small": "Logo 1 klein",
+                "logo_2_small": "Logo 2 klein",
+                "logo_3_small": "Logo 3 klein"
+            },
+            "default_value": "logo_1",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_footer_top_cont0",
@@ -258,7 +302,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "25",
+                "width": "60",
                 "class": "",
                 "id": ""
             },
@@ -287,7 +331,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "25",
+                "width": "60",
                 "class": "",
                 "id": ""
             },
@@ -1857,8 +1901,12 @@
                 "id": ""
             },
             "choices": {
-                "logo_1": "Logo",
-                "logo_2": "Logo (wit)"
+                "logo_1": "Logo 1",
+                "logo_2": "Logo 2",
+                "logo_3": "Logo 3",
+                "logo_1_small": "Logo 1 klein",
+                "logo_2_small": "Logo 2 klein",
+                "logo_3_small": "Logo 3 klein"
             },
             "default_value": "logo_1",
             "return_format": "value",
