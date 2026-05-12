@@ -4,7 +4,7 @@
   "description": "Een embed blok",
   "category": "wefabric-theme",
   "icon": "media-code",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Embed"
   ],

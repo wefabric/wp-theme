@@ -4,7 +4,7 @@
   "description": "Een uitgelicht slider blok",
   "category": "wefabric-theme",
   "icon": "star-filled",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Uitgelicht slider"
   ],

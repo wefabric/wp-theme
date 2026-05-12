@@ -4,7 +4,7 @@
   "description": "Een foto galerij blok",
   "category": "wefabric-theme",
   "icon": "format-gallery",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Foto galerij"
   ],

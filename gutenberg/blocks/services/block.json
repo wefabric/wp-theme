@@ -4,7 +4,7 @@
   "description": "Een services blok",
   "category": "wefabric-theme",
   "icon": "clipboard",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Services"
   ],

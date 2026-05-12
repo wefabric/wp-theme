@@ -4,7 +4,7 @@
   "description": "Een subpagina's blok",
   "category": "wefabric-theme",
   "icon": "networking",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Subpagina's"
   ],

@@ -4,7 +4,7 @@
   "description": "Een nieuws & activiteit blok",
   "category": "wefabric-theme",
   "icon": "index-card",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Nieuws activiteit"
   ],

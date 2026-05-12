@@ -4,7 +4,7 @@
   "description": "Een album blok",
   "category": "wefabric-theme",
   "icon": "camera",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Albums"
   ],

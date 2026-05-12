@@ -4,7 +4,7 @@
   "description": "Een afbeelding en tekst blok",
   "category": "wefabric-theme",
   "icon": "align-pull-left",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Afbeelding en tekst"
   ],

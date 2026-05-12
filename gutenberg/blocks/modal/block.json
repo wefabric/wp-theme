@@ -4,7 +4,7 @@
   "description": "Een modal blok",
   "category": "wefabric-theme",
   "icon": "bell",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Modal"
   ],

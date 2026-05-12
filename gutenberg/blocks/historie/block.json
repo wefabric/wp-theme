@@ -4,7 +4,7 @@
   "description": "Een historie blok",
   "category": "wefabric-theme",
   "icon": "hourglass",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Historie"
   ],

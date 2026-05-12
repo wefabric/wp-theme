@@ -4,7 +4,7 @@
   "description": "Een privé events blok",
   "category": "wefabric-theme",
   "icon": "lock",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Evenementen"
   ],

@@ -4,7 +4,7 @@
   "description": "Een uitgelichte pagina's blok",
   "category": "wefabric-theme",
   "icon": "admin-page",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Uitgelichte pagina's"
   ],

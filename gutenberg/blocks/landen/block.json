@@ -4,7 +4,7 @@
   "description": "Een landen blok",
   "category": "wefabric-theme",
   "icon": "flag",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Landen"
   ],

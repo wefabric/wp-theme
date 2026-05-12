@@ -4,7 +4,7 @@
   "description": "Een video en tekst blok",
   "category": "wefabric-theme",
   "icon": "playlist-video",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Video en tekst"
   ],

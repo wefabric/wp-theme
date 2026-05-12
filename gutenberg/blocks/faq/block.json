@@ -4,7 +4,7 @@
   "description": "Een veelgestelde vragen blok",
   "category": "wefabric-theme",
   "icon": "format-chat",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "FAQ"
   ],

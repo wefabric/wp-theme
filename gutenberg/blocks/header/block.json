@@ -4,7 +4,7 @@
   "description": "Een header blok",
   "category": "wefabric-theme",
   "icon": "align-center",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Header"
   ],

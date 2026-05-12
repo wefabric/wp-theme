@@ -4,7 +4,7 @@
   "description": "Een submenu blok",
   "category": "wefabric-theme",
   "icon": "admin-links",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Submenu"
   ],

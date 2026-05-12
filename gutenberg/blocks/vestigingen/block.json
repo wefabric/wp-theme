@@ -4,7 +4,7 @@
   "description": "Een vestigingen blok",
   "category": "wefabric-theme",
   "icon": "building",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Vestigingen"
   ],

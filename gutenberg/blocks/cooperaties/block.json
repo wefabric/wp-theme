@@ -4,7 +4,7 @@
   "description": "Een cooperaties",
   "category": "wefabric-theme",
   "icon": "location-alt",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Cooperaties"
   ],

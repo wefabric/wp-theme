@@ -4,7 +4,7 @@
   "description": "Een vacatures blok",
   "category": "wefabric-theme",
   "icon": "portfolio",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Vacatures"
   ],

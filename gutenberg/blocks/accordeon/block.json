@@ -4,7 +4,7 @@
   "description": "Een accordeon blok",
   "category": "wefabric-theme",
   "icon": "editor-kitchensink",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Accordeon"
   ],

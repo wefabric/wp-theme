@@ -4,7 +4,7 @@
   "description": "Een werkwijze blok",
   "category": "wefabric-theme",
   "icon": "editor-ol",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Werkwijze"
   ],

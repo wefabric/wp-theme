@@ -4,7 +4,7 @@
   "description": "Een salespitch blok",
   "category": "wefabric-theme",
   "icon": "megaphone",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Salespitch"
   ],

@@ -4,7 +4,7 @@
   "description": "Een brochure blok",
   "category": "wefabric-theme",
   "icon": "book",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Brochure"
   ],

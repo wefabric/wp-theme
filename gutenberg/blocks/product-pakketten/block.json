@@ -4,7 +4,7 @@
   "description": "Een product pakketten blok",
   "category": "wefabric-theme",
   "icon": "archive",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Product pakketten"
   ],

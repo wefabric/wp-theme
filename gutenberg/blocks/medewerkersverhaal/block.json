@@ -4,7 +4,7 @@
   "description": "Een medewerkersverhaal blok",
   "category": "wefabric-theme",
   "icon": "format-status",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Mederwerkersverhaal"
   ],

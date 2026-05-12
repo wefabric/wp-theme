@@ -4,7 +4,7 @@
   "description": "Een producten blok",
   "category": "wefabric-theme",
   "icon": "cart",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Producten"
   ],

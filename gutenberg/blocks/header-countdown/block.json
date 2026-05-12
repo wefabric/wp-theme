@@ -4,7 +4,7 @@
   "description": "Een header blok met een countdown timer",
   "category": "wefabric-theme",
   "icon": "clock",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Header countdown"
   ],

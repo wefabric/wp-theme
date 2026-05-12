@@ -4,7 +4,7 @@
   "description": "Een technologie blok",
   "category": "wefabric-theme",
   "icon": "lightbulb",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Technologie"
   ],

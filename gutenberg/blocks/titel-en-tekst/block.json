@@ -4,7 +4,7 @@
   "description": "Een titel en tekst blok",
   "category": "wefabric-theme",
   "icon": "editor-paragraph",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Titel en tekst"
   ],
