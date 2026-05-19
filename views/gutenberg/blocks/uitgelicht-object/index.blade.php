@@ -183,6 +183,18 @@
                 <div class="threejs-wrapper threejs-{{ $randomNumber }} w-full h-full relative">
                     <div id="threejs-canvas-{{ $randomNumber }}" class="w-full h-full"></div>
 
+                    {{-- Rotatie pijlen links en rechts (zelfde stijl als .swiper-button-prev/next) --}}
+                    <button id="rotate-left-{{ $randomNumber }}" aria-label="Naar links draaien"
+                            class="absolute top-1/2 flex items-center justify-center bg-white hover:bg-primary group transition-colors rounded-none"
+                            style="transform: translateY(-50%); left: 0; width: 52px; height: 52px; z-index: 30; border: none; cursor: pointer;">
+                        <i class="fa-regular fa-chevron-left text-[24px] text-primary group-hover:text-white"></i>
+                    </button>
+                    <button id="rotate-right-{{ $randomNumber }}" aria-label="Naar rechts draaien"
+                            class="absolute top-1/2 flex items-center justify-center bg-white hover:bg-primary group transition-colors rounded-none"
+                            style="transform: translateY(-50%); right: 0; width: 52px; height: 52px; z-index: 30; border: none; cursor: pointer;">
+                        <i class="fa-regular fa-chevron-right text-[24px] text-primary group-hover:text-white"></i>
+                    </button>
+
                     {{-- Loading indicator --}}
                     <div id="threejs-loader-{{ $randomNumber }}" class="absolute inset-0 flex flex-col items-center justify-center gap-3" style="z-index: 40;">
                         <div class="threejs-spinner"></div>
@@ -265,6 +277,7 @@
     #threejs-loader-{{ $randomNumber }}.hidden {
         display: none;
     }
+
 
     .uitgelicht-object-{{ $randomNumber }}-canvas-height {
         @media only screen and (min-width: 0px) {
@@ -409,6 +422,9 @@
     controls.enableDamping = true;
     controls.enableZoom = false; // Standaard zoom uit voor betere pagina-scroll
 
+    // Onderkant geblokkeerd: camera mag niet onder de horizon (PI/2 = 90°)
+    controls.maxPolarAngle = Math.PI / 2;
+
     // Zoom activeren bij interactie (klik/touch)
     renderer.domElement.addEventListener('pointerdown', () => {
         controls.enableZoom = true;
@@ -418,6 +434,23 @@
     container.addEventListener('mouseleave', () => {
         controls.enableZoom = false;
     });
+
+    // Rotatie-knoppen: 30° per klik draaien
+    function rotateCamera(direction) {
+        const spherical = new THREE.Spherical();
+        const offset = camera.position.clone().sub(controls.target);
+        spherical.setFromVector3(offset);
+        spherical.theta += direction * (Math.PI / 6); // 30°
+        offset.setFromSpherical(spherical);
+        camera.position.copy(controls.target).add(offset);
+        camera.lookAt(controls.target);
+        controls.update();
+        requestRender();
+    }
+    const rotateBtnLeft  = document.getElementById('rotate-left-{{ $randomNumber }}');
+    const rotateBtnRight = document.getElementById('rotate-right-{{ $randomNumber }}');
+    if (rotateBtnLeft)  rotateBtnLeft.addEventListener('click',  (e) => { e.stopPropagation(); rotateCamera(1);  });
+    if (rotateBtnRight) rotateBtnRight.addEventListener('click', (e) => { e.stopPropagation(); rotateCamera(-1); });
 
     // Key lights with soft shadows
     const dir = new THREE.DirectionalLight(0xffffff, 1.4);
@@ -523,6 +556,12 @@
                 camera.updateProjectionMatrix();
 
                 controls.target.set(0, 0, 0);
+
+                // Max zoom: niet verder inzoomen dan 60% van de standaard cameraafstand
+                controls.minDistance = cameraZ * 0.6;
+                // Min zoom: niet verder uitzoomen dan 2.5x de standaard cameraafstand
+                controls.maxDistance = cameraZ * 2.5;
+
                 controls.update();
 
                 // Pinpoints aanmaken na centreren van het model
