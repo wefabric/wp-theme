@@ -4,7 +4,7 @@
   "description": "Een contact blok",
   "category": "wefabric-theme",
   "icon": "email",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "keywords": [
     "Contact"
   ],
@@ -12,8 +12,7 @@
     "mode": "edit",
     "renderTemplate": "render.php"
   },
-  "attributes": {
-  },
+  "attributes": {},
   "example": {
     "attributes": {
       "data": {

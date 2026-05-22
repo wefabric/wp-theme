@@ -4,7 +4,7 @@
   "description": "Een call to action blok met button(s)",
   "category": "wefabric-theme",
   "icon": "button",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "keywords": [
     "CTA button"
   ],
@@ -12,8 +12,7 @@
     "mode": "edit",
     "renderTemplate": "render.php"
   },
-  "attributes": {
-  },
+  "attributes": {},
   "example": {
     "attributes": {
       "data": {

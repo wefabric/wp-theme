@@ -4,7 +4,7 @@
   "description": "Een Google maps blok",
   "category": "wefabric-theme",
   "icon": "location-alt",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "keywords": [
     "Google maps"
   ],
@@ -12,8 +12,7 @@
     "mode": "edit",
     "renderTemplate": "render.php"
   },
-  "attributes": {
-  },
+  "attributes": {},
   "example": {
     "attributes": {
       "data": {

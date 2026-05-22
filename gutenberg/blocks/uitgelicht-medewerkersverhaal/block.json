@@ -4,7 +4,7 @@
   "description": "Een uitgelicht medewerkersverhaal blok",
   "category": "wefabric-theme",
   "icon": "format-status",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "keywords": [
     "Uitgelicht mederwerkersverhaal"
   ],
@@ -12,8 +12,7 @@
     "mode": "edit",
     "renderTemplate": "render.php"
   },
-  "attributes": {
-  },
+  "attributes": {},
   "example": {
     "attributes": {
       "data": {

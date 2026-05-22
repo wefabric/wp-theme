@@ -4,7 +4,7 @@
   "description": "Een foto masonry blok",
   "category": "wefabric-theme",
   "icon": "layout",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "keywords": [
     "Foto masonry"
   ],
@@ -12,8 +12,7 @@
     "mode": "edit",
     "renderTemplate": "render.php"
   },
-  "attributes": {
-  },
+  "attributes": {},
   "example": {
     "attributes": {
       "data": {

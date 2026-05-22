@@ -4,7 +4,7 @@
   "description": "Een uitgelichte pagina's blok",
   "category": "wefabric-theme",
   "icon": "admin-page",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "keywords": [
     "Uitgelichte pagina's"
   ],
@@ -12,8 +12,7 @@
     "mode": "edit",
     "renderTemplate": "render.php"
   },
-  "attributes": {
-  },
+  "attributes": {},
   "example": {
     "attributes": {
       "data": {

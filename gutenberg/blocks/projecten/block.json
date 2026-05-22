@@ -4,7 +4,7 @@
   "description": "Een projecten blok",
   "category": "wefabric-theme",
   "icon": "welcome-view-site",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "keywords": [
     "Projecten"
   ],
@@ -12,8 +12,7 @@
     "mode": "edit",
     "renderTemplate": "render.php"
   },
-  "attributes": {
-  },
+  "attributes": {},
   "example": {
     "attributes": {
       "data": {

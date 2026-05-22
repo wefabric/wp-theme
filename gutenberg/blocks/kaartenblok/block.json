@@ -4,7 +4,7 @@
   "description": "Een kaarten blok",
   "category": "wefabric-theme",
   "icon": "grid-view",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "keywords": [
     "Kaartenblok"
   ],
@@ -12,8 +12,7 @@
     "mode": "edit",
     "renderTemplate": "render.php"
   },
-  "attributes": {
-  },
+  "attributes": {},
   "example": {
     "attributes": {
       "data": {

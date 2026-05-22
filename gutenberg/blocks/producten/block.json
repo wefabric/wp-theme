@@ -4,7 +4,7 @@
   "description": "Een producten blok",
   "category": "wefabric-theme",
   "icon": "cart",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "keywords": [
     "Producten"
   ],
@@ -12,8 +12,7 @@
     "mode": "edit",
     "renderTemplate": "render.php"
   },
-  "attributes": {
-  },
+  "attributes": {},
   "example": {
     "attributes": {
       "data": {

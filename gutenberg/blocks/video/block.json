@@ -4,7 +4,7 @@
   "description": "Een video blok",
   "category": "wefabric-theme",
   "icon": "video-alt2",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "keywords": [
     "Video"
   ],
@@ -12,8 +12,7 @@
     "mode": "edit",
     "renderTemplate": "render.php"
   },
-  "attributes": {
-  },
+  "attributes": {},
   "example": {
     "attributes": {
       "data": {

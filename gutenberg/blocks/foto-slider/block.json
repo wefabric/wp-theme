@@ -4,7 +4,7 @@
   "description": "Een foto slider blok",
   "category": "wefabric-theme",
   "icon": "format-gallery",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "keywords": [
     "Foto slider"
   ],
@@ -12,8 +12,7 @@
     "mode": "edit",
     "renderTemplate": "render.php"
   },
-  "attributes": {
-  },
+  "attributes": {},
   "example": {
     "attributes": {
       "data": {

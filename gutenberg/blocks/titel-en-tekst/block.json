@@ -4,7 +4,7 @@
   "description": "Een titel en tekst blok",
   "category": "wefabric-theme",
   "icon": "editor-paragraph",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "keywords": [
     "Titel en tekst"
   ],
@@ -12,8 +12,7 @@
     "mode": "edit",
     "renderTemplate": "render.php"
   },
-  "attributes": {
-  },
+  "attributes": {},
   "example": {
     "attributes": {
       "data": {

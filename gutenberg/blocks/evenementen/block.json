@@ -4,7 +4,7 @@
   "description": "Een evenementen blok",
   "category": "wefabric-theme",
   "icon": "buddicons-community",
-  "apiVersion": 3,
+  "apiVersion": 2,
   "keywords": [
     "Evenementen"
   ],
@@ -12,8 +12,7 @@
     "mode": "edit",
     "renderTemplate": "render.php"
   },
-  "attributes": {
-  },
+  "attributes": {},
   "example": {
     "attributes": {
       "data": {
