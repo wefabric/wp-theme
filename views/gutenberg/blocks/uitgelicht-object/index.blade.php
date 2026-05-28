@@ -425,6 +425,15 @@
     // Onderkant geblokkeerd: camera mag niet onder de horizon (PI/2 = 90°)
     controls.maxPolarAngle = Math.PI / 2;
 
+    // Auto-rotatie: model draait langzaam totdat gebruiker het aanraakt
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 1.2;
+
+    // Stoppen met auto-roteren zodra gebruiker interacteert
+    renderer.domElement.addEventListener('pointerdown', () => {
+        controls.autoRotate = false;
+    }, { once: true });
+
     // Zoom activeren bij interactie (klik/touch)
     renderer.domElement.addEventListener('pointerdown', () => {
         controls.enableZoom = true;
@@ -549,7 +558,7 @@
                 const maxDim = Math.max(size.x, size.y, size.z);
                 const fov = camera.fov * (Math.PI / 180);
                 let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
-                cameraZ *= 1.5;
+                cameraZ *= 1.05;
                 camera.position.set(0, 0, cameraZ);
                 camera.near = cameraZ / 100;
                 camera.far = cameraZ * 100;
@@ -714,7 +723,7 @@
 
         updatePopupPos();
 
-        if (needsRender || animating || activePinSprite) {
+        if (needsRender || animating || activePinSprite || controls.autoRotate) {
             renderer.render(scene, camera);
             needsRender = false;
         }
