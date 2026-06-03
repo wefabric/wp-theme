@@ -1,8 +1,63 @@
 @php
     $options = get_fields('option');
+
+    // Nav-instellingen zitten in een ACF group 'nav' voor sub-tab UI.
+    // Merge de sub-velden terug naar het root-niveau.
+    if (!empty($options['nav']) && is_array($options['nav'])) {
+        $options = array_merge($options, $options['nav']);
+    }
+
+    // Meldingen zitten in een ACF group 'meldingen'.
+    if (!empty($options['meldingen']) && is_array($options['meldingen'])) {
+        $options = array_merge($options, $options['meldingen']);
+    }
+
+    // Navigatie gedrag
+    $navSticky      = !empty($options['nav_sticky']);
+    $navTransparent = !empty($options['nav_transparent']);
+
+    $logoMap = [
+        'logo_1'       => 'logo',
+        'logo_2'       => 'logo_white',
+        'logo_3'       => 'logo_3',
+        'logo_1_small' => 'logo_1_small',
+        'logo_2_small' => 'logo_2_small',
+        'logo_3_small' => 'logo_3_small',
+    ];
+
+    // Kleur classes voor de navigatie
+    $navBgColor   = $options['menu_background_color'] ?? '';
+    $navTextColor = $options['menu_text_color'] ?? 'white';
+
+    // Gescrold staat
+    $scrolledBgColor         = $options['nav_scrolled_bg_color'] ?: $navBgColor;
+    $scrolledTextColor       = $options['nav_scrolled_text_color'] ?: $navTextColor;
+    $scrolledLogoKey         = $options['nav_scrolled_logo'] ?: ($options['navigation_logo'] ?? 'logo_1');
+    $scrolledActiveTextColor = $options['nav_scrolled_active_text_color'] ?? '';
+
+    // CSS klassen voor de nav wrapper
+    $navClasses = ['main-navigation', 'main-navigation-bar'];
+    if ($navSticky) {
+        $navClasses[] = 'nav-is-sticky';
+    }
+    if (!empty($scrolledActiveTextColor)) {
+        $navClasses[] = 'has-nav-active-scrolled';
+    }
+    if ($navTransparent) {
+        $navClasses[] = 'nav-transparent';
+        $navClasses[] = 'text-' . str_replace('-color', '', $navTextColor);
+    } else {
+        $navClasses[] = 'bg-' . $navBgColor;
+        $navClasses[] = 'text-' . str_replace('-color', '', $navTextColor);
+    }
+
+    // Body classes
+    $bodyExtraClasses = [];
+    if ($navTransparent) $bodyExtraClasses[] = 'has-transparent-nav';
+    if ($navSticky)      $bodyExtraClasses[] = 'has-sticky-nav';
 @endphp
 
-        <!doctype html>
+<!doctype html>
 <html {!! get_language_attributes() !!}>
 <head>
     <meta charset="{{ get_bloginfo('charset') }}">
@@ -13,18 +68,28 @@
         {!! $options['header_codes'] !!}
     @endif
 </head>
-<body @php(body_class())>
+<body @php(body_class(implode(' ', $bodyExtraClasses)))>
 @if(isset($options['body_codes']) && $options['body_codes'])
     {!! $options['body_codes'] !!}
 @endif
 <div id="page" class="site">
-    @if(isset($options['show_menu']) && $options['show_menu'])
-
-        <header id="masthead">
+    <header id="masthead">
             @if (isset($options['show_secondary_menu']) && $options['show_secondary_menu'])
                @include('components.navigation.secondary-nav')
             @endif
-            <div class="main-navigation main-navigation-bar bg-{{ $options['menu_background_color'] }} text-{{ $options['menu_text_color'] ?? 'white' }}">
+
+            <div class="{{ implode(' ', $navClasses) }}"
+                 data-nav-transparent="{{ $navTransparent ? 'true' : 'false' }}"
+                 data-nav-sticky="{{ $navSticky ? 'true' : 'false' }}"
+                 data-bg-default="bg-{{ $navBgColor }}"
+                 data-bg-scrolled="bg-{{ $scrolledBgColor }}"
+                 data-text-default="text-{{ str_replace('-color', '', $navTextColor) }}"
+                 data-text-scrolled="text-{{ str_replace('-color', '', $scrolledTextColor) }}"
+                 data-active-text-default="{{ !empty($options['menu_active_text_color']) ? 'text-' . str_replace('-color', '', $options['menu_active_text_color']) : '' }}"
+                 data-active-text-scrolled="{{ !empty($scrolledActiveTextColor) ? 'text-' . str_replace('-color', '', $scrolledActiveTextColor) : '' }}"
+                 data-logo-scrolled="{{ $scrolledLogoKey }}"
+                 data-logo-default="{{ $options['navigation_logo'] ?? 'logo_1' }}">
+
                 <div class="nav-container flex flex-row container mx-auto py-3 px-4">
                     <div class="logo hidden xl:flex w-1/6 items-center">
                         @include('components.header.logo')
@@ -35,8 +100,7 @@
                     </div>
                 </div>
             </div>
-        </header>
-    @endif
+    </header>
 
     <div id="content" class="">
         <div id="primary">
@@ -48,11 +112,13 @@
     <footer id="colophon" class="site-footer">
         @include('components.footer.footer')
     </footer><!-- #colophon -->
+
+    @include('components.back-to-top')
 </div><!-- #page -->
 
-@footer
-
 {!! styleCustomizer()->renderCustomColors() !!}
+
+@footer
 
 @if(isset($options['footer_codes']) && $options['footer_codes'])
     {!! $options['footer_codes'] !!}

@@ -1,9 +1,122 @@
-header {
-	position: sticky;
-	top: 0;
+// Mobile banner: absolute gepositioneerd, vult de nav bar hoogte voor centrering.
+// pointer-events: none zodat de banner zelf geen clicks blokkeert.
+// De kinderen (hamburger, icons, mobile-menu-wrap) krijgen pointer-events: auto.
+header.banner {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	pointer-events: none;
+
+	.hamburger-menu,
+	.mobile-menu-wrap {
+		pointer-events: auto;
+	}
+}
+
+// Alleen de hoofd-header (#masthead) krijgt sticky/transition behandeling.
+// header-mobile.blade.php bevat ook een <header class="banner"> — die moet
+// niet worden beïnvloed door deze regels.
+header#masthead {
 	z-index: 9999;
+}
+
+// Transitions worden via JS toegevoegd ná de eerste paint,
+// zodat de initiële kleur direct wordt getoond zonder animatie.
+header#masthead.nav-ready {
 	transition: transform 0.2s ease-out;
 }
+
+// Sticky navigatie — alleen actief wanneer de optie in Site instellingen aan staat.
+// De body krijgt de klasse 'has-sticky-nav' via main.blade.php.
+.has-sticky-nav header#masthead {
+	position: sticky;
+	top: 0;
+}
+
+// ============================================================
+// Sticky navigatiebalk (scrolled state)
+// ============================================================
+
+.main-navigation-bar.nav-is-sticky.nav-ready {
+	transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+// Desktop hoofdmenu tekstkleur via CSS custom property (gezet door JS).
+// !important is nodig om te winnen van text-* klassen op <li> elementen.
+// De .mobile-menu-wrap selector zorgt dat mobiele menu items hier NIET
+// door worden beïnvloed — die erven gewoon hun li_class kleur.
+.main-navigation-bar .main-navigation .menu li.menu-item > a,
+.main-navigation-bar .main-navigation .menu li.menu-item-has-children::after {
+	color: var(--nav-text-color, currentColor) !important;
+}
+
+// Hover kleur desktop menu
+.main-navigation-bar .main-navigation .menu li.menu-item:hover > a,
+.main-navigation-bar .main-navigation .menu li.menu-item-has-children:hover::after {
+	color: var(--nav-active-color, var(--nav-text-color, currentColor)) !important;
+}
+
+// Mobiele menu: tekstkleur staat als Tailwind class op nav.main-navigation.
+// li én a erven die kleur (met !important om menu-editor klassen te overwinnen).
+// Hover/actief gebruikt --mobile-active-color, inline gezet via PHP op de nav.
+.mobile-menu-wrap nav.main-navigation .menu li.menu-item {
+	color: inherit !important;
+
+	> a {
+		color: inherit !important;
+	}
+
+	&:hover > a,
+	&.current-menu-item > a,
+	&.current_page_item > a {
+		color: var(--mobile-active-color, inherit) !important;
+	}
+}
+
+// Topbalk tekst- en linkkleur via CSS custom property (gezet door JS).
+// !important is nodig om te winnen van klassen die via het WordPress menu-editor
+// per menu-item worden ingesteld (bv. text-white hover:text-cta op <li>).
+.secondary-navigation .menu li.menu-item > a,
+.secondary-navigation .secondary-menu-text {
+	color: var(--secondary-text-color, currentColor) !important;
+}
+
+// Hover tekstkleur topbalk — altijd actief wanneer --secondary-active-color gezet is door JS.
+.secondary-navigation .menu li.menu-item:hover > a {
+	color: var(--secondary-active-color, var(--secondary-text-color, currentColor)) !important;
+}
+
+// ============================================================
+// Transparante navigatie
+// ============================================================
+
+.main-navigation-bar.nav-transparent {
+	&:not(.scrolled) {
+		background-color: transparent !important;
+	}
+
+	&.nav-ready {
+		transition: background-color 0.3s ease, color 0.2s ease;
+	}
+}
+
+// Gescrold logo: altijd verborgen, JS toont het wanneer nodig.
+.logo-img--scrolled {
+	display: none;
+}
+
+// Body classes — voor globale layout-aanpassingen per nav-staat
+
+// Als de nav transparant is, trekt JS de hoogte van de header uit
+// en zet die als --nav-height. De content schuift daarmee omhoog
+// zodat hij precies achter de transparante nav begint.
+.has-transparent-nav {
+    #content {
+        margin-top: calc(-1 * var(--nav-height, 0px));
+    }
+}
+
+.has-sticky-nav {}
 
 .main-nav-items {
 	margin-bottom: -25px;

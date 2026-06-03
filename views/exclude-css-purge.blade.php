@@ -132,6 +132,7 @@
 	text-primary-color-light text-primary text-primary-dark hover:text-primary-light hover:text-primary hover:text-primary-dark bg-primary bg-primary-light bg-primary-dark
 	text-secondary-light text-secondary text-secondary-dark hover:text-secondary-light hover:text-secondary hover:text-secondary-darkd bg-secondairy bg-secondairy-light bg-secondairy-dark
 	text-tertiary-light text-tertiary text-tertiary-dark hover:text-tertiary-light hover:text-tertiary hover:text-tertiary-dark bg-tertiary bg-tertiary-light bg-tertiary-dark
+	text-cta hover:text-cta bg-cta
 	text-basic-success text-basic-danger bg-basic-success bg-basic-danger
 	text-green-600 text-red-500
 	

@@ -5,15 +5,39 @@
     if (empty($footer_establishments) || empty($footer_establishments[0])) {
         $footer_establishments = [\Wefabric\WPEstablishments\Establishment::primary()];
     }
+
+    // Nav-instellingen zitten in ACF group 'nav' — merge terug naar root niveau
+    if (!empty($options['nav']) && is_array($options['nav'])) {
+        $options = array_merge($options, $options['nav']);
+    }
+
+    // Kleur-waarden voor de topbalk
+    $secBgColor              = $options['secondary_menu_background_color'] ?? '';
+    $secTextColor            = $options['secondary_menu_text_color'] ?? '';
+    $secActiveTextColor      = $options['secondary_menu_active_text_color'] ?? '';
+    $secScrolledBgColor      = $options['secondary_menu_scrolled_bg_color'] ?? '';
+    $secScrolledTextColor    = $options['secondary_menu_scrolled_text_color'] ?? '';
+    $secScrolledActiveText   = $options['secondary_menu_scrolled_active_text_color'] ?? '';
+
+    $secClasses = ['secondary-navigation', 'hidden', 'xl:block', 'w-full'];
+    if ($secBgColor) $secClasses[] = 'bg-' . $secBgColor;
+    // Tekst kleur op de wrapper zetten zodat color: inherit werkt in submenu-links
+    if ($secTextColor) $secClasses[] = 'text-' . str_replace('-color', '', $secTextColor);
+    if (!empty($secScrolledActiveText)) $secClasses[] = 'has-secondary-active-scrolled';
 @endphp
 
-<div class="secondary-navigation hidden xl:block w-full bg-{{ $options['secondary_menu_background_color'] ?? '' }}">
+<div class="{{ implode(' ', $secClasses) }}"
+     data-bg-scrolled="{{ !empty($secScrolledBgColor) ? 'bg-' . $secScrolledBgColor : '' }}"
+     data-text-default="{{ !empty($secTextColor) ? 'text-' . str_replace('-color', '', $secTextColor) : '' }}"
+     data-active-text-default="{{ !empty($secActiveTextColor) ? 'text-' . str_replace('-color', '', $secActiveTextColor) : '' }}"
+     data-text-scrolled="{{ !empty($secScrolledTextColor) ? 'text-' . str_replace('-color', '', $secScrolledTextColor) : '' }}"
+     data-active-text-scrolled="{{ !empty($secScrolledActiveText) ? 'text-' . str_replace('-color', '', $secScrolledActiveText) : '' }}">
     <div class="secondary-navigation-items flex items-center justify-between flex-row container mx-auto h-12 px-4">
         @if (!empty($options['secondary_menu_text']))
-            <div class="secondary-menu-text text-sm text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">{!! $options['secondary_menu_text'] !!}</div>
+            <div class="secondary-menu-text text-sm">{!! $options['secondary_menu_text'] !!}</div>
         @endif
         @if (!empty($options['secondary_menu_show_elements']))
-            <div class="layout flex gap-4 text-sm h-full items-center text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
+            <div class="layout flex gap-4 text-sm h-full items-center">
 
 
                 @if (in_array('top_navigation', $options['secondary_menu_show_elements']))
@@ -49,16 +73,13 @@
                 @foreach($footer_establishments as $key => $establishment)
                     @php
                         if ($establishment instanceof \Wefabric\WPEstablishments\Establishment) {
-                           // If $establishment is an object
                            $phone = $establishment->getContactPhone();
                            $email = $establishment->getContactEmailAddress();
                         } elseif (is_array($establishment)) {
-                           // If $establishment is an array
                            $establishment = new \Wefabric\WPEstablishments\Establishment($establishment['establishment']);
                            $phone = $establishment->getContactPhone();
                            $email = $establishment->getContactEmailAddress();
                         } else {
-                           // Handle other cases if needed
                            $phone = '';
                            $email = '';
                         }

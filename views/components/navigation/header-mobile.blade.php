@@ -6,6 +6,11 @@
         $footer_establishments = [\Wefabric\WPEstablishments\Establishment::primary()];
     }
 
+    // Nav-instellingen zitten in ACF group 'nav' — merge terug naar root niveau
+    if (!empty($options['nav']) && is_array($options['nav'])) {
+        $options = array_merge($options, $options['nav']);
+    }
+
     $logoMap = [
         'logo_1'       => 'logo',
         'logo_2'       => 'logo_white',
@@ -18,6 +23,8 @@
     $mobileLogoToDisplay = $logoMap[$options['mobile_navigation_logo'] ?? 'logo_1'] ?? 'logo';
 
     $mobileMenuBackgroundColor = $options['mobile_menu_background_color'] ?? 'primary';
+    $mobileMenuTextColor       = $options['mobile_menu_text_color'] ?? 'white';
+    $mobileMenuActiveTextColor = $options['mobile_menu_active_text_color'] ?? 'cta';
 
 
     $phone = '';
@@ -34,7 +41,7 @@
         break;
     }
 
-    $menuType = $options['mobile_menu_type'] ?? 'desktop_menu"';
+    $menuType = $options['mobile_menu_type'] ?? 'desktop_menu';
 @endphp
 
 <input type="checkbox" class="hidden" id="nav-mobile-active" autocomplete="off">
@@ -53,7 +60,7 @@
 <label for="nav-mobile-active" class="nav-mobile-toggle-visibility nav-mobile-toggler nav-mobile-overlay z-0"></label>
 <header class="banner absolute left-0 w-full">
     <div class="hamburger-menu z-50">
-        <div class="hamburger-navigation flex items-center gap-x-2 xl:hidden mt-5">
+        <div class="hamburger-navigation flex items-center gap-x-2 xl:hidden">
 
             @if($phone)
                 <a href="tel:{{ $phone }}" title="Telefoonnummer"
@@ -78,7 +85,9 @@
         </div>
 
     </div>
-    <div class="block xl:hidden mobile-menu-wrap">
+    <div class="block xl:hidden mobile-menu-wrap"
+         data-mobile-text="text-{{ str_replace('-color', '', $mobileMenuTextColor) }}"
+         data-mobile-active="text-{{ str_replace('-color', '', $mobileMenuActiveTextColor) }}">
         <nav class="mobile-menu flex flex-col bg-{{ $mobileMenuBackgroundColor }}">
             <div class="mobile-logo">
                 <a href="{{ esc_url(home_url('/')) }}" class="block" aria-label="home" rel="home">
@@ -135,7 +144,17 @@
                 </div>
             @endif
 
-            <nav id="site-navigation" class="main-navigation">
+            @php
+                // Tekstkleur direct als Tailwind class op de nav zetten.
+                // CSS forceert li + a om deze kleur te erven (zie _navigation.scss).
+                $mobileTextClass = 'text-' . str_replace('-color', '', $mobileMenuTextColor ?: 'white');
+                // Actieve kleur via CSS custom property die verwijst naar de styleCustomizer variabele.
+                // 'cta-color' → var(--cta-color), 'white-color' → var(--white-color, white)
+                $mobileActiveColorVar = 'var(--' . ($mobileMenuActiveTextColor ?: 'cta-color') . ')';
+            @endphp
+            <nav id="site-navigation"
+                 class="main-navigation {{ $mobileTextClass }}"
+                 style="--mobile-active-color: {{ $mobileActiveColorVar }};">
                 @if ($menuType == 'desktop_menu')
                     <li class="home-item menu-item menu-item-object-page {{ Request::is('/') ? 'current-menu-item current_page_item' : '' }}">
                         <a href="<?php echo home_url(); ?>">Home</a>
@@ -147,10 +166,10 @@
                     ]) !!}
                 @elseif ($menuType == 'mobile_menu')
                     {!! wp_nav_menu([
-                     'theme_location' => 'mobile-menu',
-                     'menu_id' => 'primary-menu',
-                     'echo' => false
-                 ]) !!}
+                        'theme_location' => 'mobile-menu',
+                        'menu_id' => 'primary-menu',
+                        'echo' => false
+                    ]) !!}
                 @endif
             </nav>
         </nav>
@@ -201,8 +220,7 @@
                     if (submenu) {
                         this.classList.remove('open-left');
                         var rect = submenu.getBoundingClientRect();
-                        
-                        // If it's hidden, we might need to briefly show it to measure
+
                         if (rect.width === 0) {
                             submenu.style.visibility = 'hidden';
                             submenu.style.display = 'block';
@@ -210,7 +228,7 @@
                             submenu.style.display = '';
                             submenu.style.visibility = '';
                         }
-                        
+
                         if (rect.right > (window.innerWidth || document.documentElement.clientWidth)) {
                             this.classList.add('open-left');
                         }
