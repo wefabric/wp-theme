@@ -4,13 +4,14 @@
   "description": "Een video en tekst blok",
   "category": "wefabric-theme",
   "icon": "playlist-video",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Video en tekst"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

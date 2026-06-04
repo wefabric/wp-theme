@@ -4,13 +4,14 @@
   "description": "Een vacatures blok",
   "category": "wefabric-theme",
   "icon": "portfolio",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Vacatures"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

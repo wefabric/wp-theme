@@ -4,13 +4,14 @@
   "description": "Een merken blok",
   "category": "wefabric-theme",
   "icon": "format-gallery",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Merken"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

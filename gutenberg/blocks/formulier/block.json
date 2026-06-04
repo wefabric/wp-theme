@@ -4,13 +4,14 @@
   "description": "Een formulier blok",
   "category": "wefabric-theme",
   "icon": "text-page",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Formulier"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

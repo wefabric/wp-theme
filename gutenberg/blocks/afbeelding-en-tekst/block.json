@@ -4,13 +4,14 @@
   "description": "Een afbeelding en tekst blok",
   "category": "wefabric-theme",
   "icon": "align-pull-left",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Afbeelding en tekst"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

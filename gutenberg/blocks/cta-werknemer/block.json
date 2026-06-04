@@ -4,13 +4,14 @@
   "description": "Een call to action blok met werknemer",
   "category": "wefabric-theme",
   "icon": "button",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "CTA werknemer"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

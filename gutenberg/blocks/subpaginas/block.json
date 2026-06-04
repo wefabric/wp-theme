@@ -4,13 +4,14 @@
   "description": "Een subpagina's blok",
   "category": "wefabric-theme",
   "icon": "networking",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Subpagina's"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

@@ -4,13 +4,14 @@
   "description": "Een video slider blok",
   "category": "wefabric-theme",
   "icon": "format-video",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Video slider"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

@@ -4,13 +4,14 @@
   "description": "Een accordeon blok",
   "category": "wefabric-theme",
   "icon": "editor-kitchensink",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Accordeon"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

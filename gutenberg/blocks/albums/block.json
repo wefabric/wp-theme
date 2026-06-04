@@ -4,13 +4,14 @@
   "description": "Een album blok",
   "category": "wefabric-theme",
   "icon": "camera",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Albums"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

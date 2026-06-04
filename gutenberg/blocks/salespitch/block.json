@@ -4,13 +4,14 @@
   "description": "Een salespitch blok",
   "category": "wefabric-theme",
   "icon": "megaphone",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Salespitch"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

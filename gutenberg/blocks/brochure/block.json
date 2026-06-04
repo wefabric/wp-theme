@@ -4,13 +4,14 @@
   "description": "Een brochure blok",
   "category": "wefabric-theme",
   "icon": "book",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Brochure"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

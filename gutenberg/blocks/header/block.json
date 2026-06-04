@@ -4,13 +4,14 @@
   "description": "Een header blok",
   "category": "wefabric-theme",
   "icon": "align-center",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Header"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "blockVersion": 3,
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

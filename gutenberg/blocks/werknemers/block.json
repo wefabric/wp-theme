@@ -4,13 +4,14 @@
   "description": "Een werknemers blok",
   "category": "wefabric-theme",
   "icon": "groups",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Werknemers"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {

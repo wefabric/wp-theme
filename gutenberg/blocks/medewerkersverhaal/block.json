@@ -4,13 +4,14 @@
   "description": "Een medewerkersverhaal blok",
   "category": "wefabric-theme",
   "icon": "format-status",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "keywords": [
     "Mederwerkersverhaal"
   ],
   "acf": {
-    "mode": "edit",
-    "renderTemplate": "render.php"
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3
   },
   "attributes": {},
   "example": {
