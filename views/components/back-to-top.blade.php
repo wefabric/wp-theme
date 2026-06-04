@@ -17,7 +17,7 @@
 @endphp
 
 <button id="back-to-top"
-        class="fixed bottom-8 {{ $posClass }} z-50 w-12 h-12 flex items-center justify-center {{ $bgClass }} {{ $iconClass }} {{ $shapeClass }} shadow-lg cursor-pointer"
+        class="back-to-top-button fixed bottom-8 {{ $posClass }} z-50 w-12 h-12 flex items-center justify-center {{ $bgClass }} {{ $iconClass }} {{ $shapeClass }} shadow-lg cursor-pointer"
         style="opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease; transform: scale(0.8);"
         aria-label="Terug naar boven">
     <i class="fa-solid fa-chevron-up"></i>
