@@ -21,8 +21,8 @@
     <div class="klantcase-styling relative flex flex-col gap-x-12 md:flex-row h-full rounded-{{ $borderRadius }} overflow-hidden">
         <div class="case-line absolute left-[30px] h-full top-0">
             <div class="h-full py-12 flex flex-col items-center gap-4">
-                <div class="h6 text-quaternary-color vertical-text">Case</div>
-                <div class="hidden md:block h-full w-[1px] bg-quaternary-color"></div>
+                <div class="vertical-text h6 text-quaternary-color">Case</div>
+                <div class="quote-line hidden md:block h-full w-[1px] bg-quaternary-color"></div>
             </div>
         </div>
 
