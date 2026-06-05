@@ -11,7 +11,8 @@
   "acf": {
     "blockVersion": 3,
     "renderTemplate": "render.php",
-    "blockVersion": 3
+    "blockVersion": 3,
+    "hideFieldsInSidebar": true
   },
   "attributes": {},
   "example": {
