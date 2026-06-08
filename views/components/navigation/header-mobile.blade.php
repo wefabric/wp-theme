@@ -41,8 +41,13 @@
         break;
     }
 
-    $menuType = $options['mobile_menu_type'] ?? 'desktop_menu';
+    $menuType          = $options['mobile_menu_type']    ?? 'desktop_menu';
+    $mobileMenuVersion = $options['mobile_menu_version'] ?? 'v1';
 @endphp
+
+@if ($mobileMenuVersion === 'v2')
+    @php add_filter('body_class', fn($c) => array_merge($c, ['mobile-menu-v2'])) @endphp
+@endif
 
 <input type="checkbox" class="hidden" id="nav-mobile-active" autocomplete="off">
 
@@ -177,6 +182,60 @@
     </div>
 
 </header>
+
+@if ($mobileMenuVersion === 'v2')
+{{-- ============================================================ --}}
+{{-- Versie 2: fullscreen overlay — wordt via JS naar <body> verplaatst --}}
+{{-- De bestaande hamburger label triggert dit menu via JS. --}}
+{{-- ============================================================ --}}
+<div class="mnav2-overlay bg-{{ $mobileMenuBackgroundColor }} text-{{ str_replace('-color', '', $mobileMenuTextColor) }}"
+     id="mnav2-overlay"
+     aria-hidden="true"
+     role="dialog"
+     aria-modal="true"
+     data-active-color="text-{{ str_replace('-color', '', $mobileMenuActiveTextColor) }}">
+    <div class="mnav2-overlay__inner">
+
+        {{-- Logo --}}
+        <div class="mnav2-overlay__logo">
+            <a href="{{ esc_url(home_url('/')) }}" aria-label="home">
+                @if(isset(get_field('common', 'option')[$mobileLogoToDisplay]) && $logoId = get_field('common', 'option')[$mobileLogoToDisplay])
+                    {!! wp_get_attachment_image($logoId, 'full', false, ['class' => 'max-h-12 w-auto']) !!}
+                @endif
+            </a>
+        </div>
+
+        {{-- Nav --}}
+        <nav class="mnav2-overlay__nav" aria-label="Mobiele navigatie">
+            @php
+                $mnav2MenuArgs = [
+                    'theme_location' => $menuType === 'mobile_menu' ? 'mobile-menu' : 'menu-1',
+                    'menu_id'        => 'mnav2-menu',
+                    'menu_class'     => 'mnav2-overlay__list',
+                    'echo'           => false,
+                    'disable_mega_menu' => true,
+                    'walker'         => new Walker_Nav_Menu(),
+                ];
+            @endphp
+            {!! wp_nav_menu($mnav2MenuArgs) !!}
+        </nav>
+
+        {{-- Footer --}}
+        <footer class="mnav2-overlay__footer text-{{ str_replace('-color', '', $mobileMenuTextColor) }}">
+            @if($phone)
+                <a href="tel:{{ $phone }}" class="mnav2-overlay__contact">
+                    <i class="fa fa-phone mr-2"></i>{{ $phone }}
+                </a>
+            @endif
+            @if($email)
+                <a href="mailto:{{ $email }}" class="mnav2-overlay__contact">
+                    <i class="fa fa-envelope mr-2"></i>{{ $email }}
+                </a>
+            @endif
+        </footer>
+    </div>
+</div>
+@endif
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {

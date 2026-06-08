@@ -1172,6 +1172,35 @@
                     "save_options": 0
                 },
                 {
+                    "key": "field_mobile_menu_version",
+                    "label": "Menu stijl",
+                    "name": "mobile_menu_version",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "v1": "Versie 1 — standaard (schuifmenu)",
+                        "v2": "Versie 2 — fullscreen overlay"
+                    },
+                    "default_value": "v1",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
+                },
+                {
                     "key": "field_67af3265d134a",
                     "label": "Logo",
                     "name": "mobile_navigation_logo",
@@ -2286,5 +2315,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1780926898
+    "modified": 1780939698
 }
