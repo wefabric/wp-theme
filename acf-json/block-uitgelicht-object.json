@@ -718,6 +718,32 @@
             "append": "px"
         },
         {
+            "key": "field_68fb90653dceed",
+            "label": "Preview afbeelding (laadscherm)",
+            "name": "model_preview_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Optioneel: upload een stilstaande afbeelding van het voertuig. Deze wordt direct getoond terwijl het 3D model laadt, zodat de pagina direct compleet oogt.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        },
+        {
             "key": "field_68fb90653dcf0",
             "label": "Pinpoints",
             "name": "",

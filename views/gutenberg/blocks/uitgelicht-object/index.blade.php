@@ -98,10 +98,11 @@
 
     // 3D Model
     // 3D Model — fallback naar Hatzmann Scania als geen model geüpload is
-    $model3dId  = $block['data']['model_3d'] ?? '';
-    $modelUrl   = $model3dId
+    $model3dId    = $block['data']['model_3d'] ?? '';
+    $modelUrl     = $model3dId
         ? wp_get_attachment_url((int) $model3dId)
         : get_stylesheet_directory_uri() . '/assets/models/hatzmann/Hatzmann.optimized.glb';
+    $previewImage = $block['data']['model_preview_image'] ?? '';
 
     // Object hoogte
     $mobileHeight  = $block['data']['object_height_mobile']  ?: 400;
@@ -195,10 +196,21 @@
                         <i class="fa-regular fa-chevron-right text-[24px] text-primary group-hover:text-white"></i>
                     </button>
 
-                    {{-- Loading indicator --}}
-                    <div id="threejs-loader-{{ $randomNumber }}" class="absolute inset-0 flex flex-col items-center justify-center gap-3" style="z-index: 40;">
-                        <div class="threejs-spinner"></div>
-                        <span class="text-sm font-medium" style="color: var(--primary-color, #1e3a8a); opacity: 0.6;">3D model laden…</span>
+                    {{-- Loading indicator met optionele preview-afbeelding --}}
+                    <div id="threejs-loader-{{ $randomNumber }}" class="absolute inset-0 flex flex-col items-center justify-center gap-3" style="z-index: 40; transition: opacity 0.5s ease;">
+                        @if($previewImage)
+                            {{-- Preview-afbeelding: direct zichtbaar terwijl 3D laadt --}}
+                            <div class="absolute inset-0 bg-gray-50"
+                                 style="background-image: url('{{ $previewImage }}'); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
+                            {{-- Subtiele spinner rechtsboven --}}
+                            <div class="absolute bottom-4 right-4 flex items-center gap-2" style="z-index: 41;">
+                                <div class="threejs-spinner" style="width: 18px; height: 18px; border-width: 3px;"></div>
+                                <span class="text-xs font-medium" style="color: var(--primary-color, #1e3a8a); opacity: 0.5;">3D laden…</span>
+                            </div>
+                        @else
+                            <div class="threejs-spinner"></div>
+                            <span class="text-sm font-medium" style="color: var(--primary-color, #1e3a8a); opacity: 0.6;">3D model laden…</span>
+                        @endif
                     </div>
 
                     {{-- Pinpoint popup --}}
@@ -275,7 +287,8 @@
         animation: uitgelicht-spin-{{ $randomNumber }} 0.8s linear infinite;
     }
     #threejs-loader-{{ $randomNumber }}.hidden {
-        display: none;
+        opacity: 0;
+        pointer-events: none;
     }
 
 
@@ -379,6 +392,11 @@
     </script>
 @endif
 
+{{-- Preload hint: browser begint GLB downloaden zodra de pagina parsed is --}}
+@if($modelUrl)
+<link rel="preload" href="{{ $modelUrl }}" as="fetch" crossorigin="anonymous">
+@endif
+
 <script type="module">
     import * as THREE from "https://esm.sh/three@0.129.0";
     import { OrbitControls } from "https://esm.sh/three@0.129.0/examples/jsm/controls/OrbitControls";
@@ -394,7 +412,7 @@
         if (!entries[0].isIntersecting) return;
         obs.disconnect();
         initScene();
-    }, { rootMargin: '200px' }); // 200px voor de rand alvast beginnen laden
+    }, { rootMargin: '600px' }); // 600px: model laadt al ver voordat het in beeld komt
     observer.observe(container);
 
     function initScene() {
