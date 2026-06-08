@@ -364,13 +364,14 @@ header#masthead.nav-ready {
 // Mega menu panel — full-width background
 .mega-menu {
 	display: none;
-	position: fixed; // viewport stacking context — beats all parent overflow/z-index issues
+	position: absolute;
 	left: 0;
+	right: 0;
+	top: 100%;
 	width: 100%;
-	// top is set via JS (navBar.getBoundingClientRect().bottom)
 	background: var(--submenu-bg, #1a1a1a);
 	color: var(--submenu-text-color, white);
-	z-index: 99999;
+	z-index: 9998;
 	pointer-events: auto;
 
 	// Container-width inner wrapper

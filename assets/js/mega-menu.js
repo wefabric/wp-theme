@@ -1,12 +1,11 @@
 /**
  * Mega menu — open on nav item hover, close when leaving the entire nav bar.
  *
- * The panel uses position:fixed so it is in the viewport stacking context,
- * guaranteeing it renders above all page content and receives pointer events.
- * The top position is calculated from the nav bar's bounding rect.
+ * Keeps the panel open during diagonal mouse movements by listening to
+ * mouseleave on the nav bar as a whole rather than individual items.
  */
 document.addEventListener('DOMContentLoaded', () => {
-    const navBar  = document.querySelector('.main-navigation-bar');
+    const navBar = document.querySelector('.main-navigation-bar');
     if (!navBar) return;
 
     const megaItems    = navBar.querySelectorAll('.main-navigation .menu > li.has-mega-menu');
@@ -14,15 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!megaItems.length) return;
 
     let closeTimer = null;
-
-    // Position all mega menu panels below the nav bar.
-    function positionPanels() {
-        const bottom = navBar.getBoundingClientRect().bottom;
-        megaItems.forEach(item => {
-            const panel = item.querySelector(':scope > .mega-menu');
-            if (panel) panel.style.top = bottom + 'px';
-        });
-    }
 
     function closeAll() {
         megaItems.forEach(i => i.classList.remove('mega-open'));
@@ -34,24 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
         closeTimer = setTimeout(closeAll, 100);
     }
 
-    // Open the correct mega menu panel.
     megaItems.forEach(item => {
         item.addEventListener('mouseenter', () => {
             clearTimeout(closeTimer);
-            positionPanels();
             closeAll();
             item.classList.add('mega-open');
         });
-
-        // Keep open while mouse is inside the panel itself.
-        const panel = item.querySelector(':scope > .mega-menu');
-        if (panel) {
-            panel.addEventListener('mouseenter', () => clearTimeout(closeTimer));
-            panel.addEventListener('mouseleave', scheduleClose);
-        }
     });
 
-    // Open regular submenus.
     regularItems.forEach(item => {
         item.addEventListener('mouseenter', () => {
             clearTimeout(closeTimer);
@@ -60,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close when leaving plain nav items.
     const plainItems = navBar.querySelectorAll('.main-navigation .menu > li:not(.menu-item-has-children):not(.has-mega-menu)');
     plainItems.forEach(item => {
         item.addEventListener('mouseenter', () => {
@@ -69,13 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close when mouse leaves the nav bar (but NOT when entering a fixed panel).
     navBar.addEventListener('mouseleave', scheduleClose);
     navBar.addEventListener('mouseenter', () => clearTimeout(closeTimer));
-
-    // Keep position correct on scroll and resize.
-    window.addEventListener('scroll', positionPanels, { passive: true });
-    window.addEventListener('resize', positionPanels, { passive: true });
-
-    positionPanels();
 });
