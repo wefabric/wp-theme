@@ -13,6 +13,12 @@ header.banner {
 	}
 }
 
+// Mega menu panel overrides any pointer-events:auto from header.banner descendants.
+.mega-menu,
+.mega-menu * {
+	pointer-events: auto !important;
+}
+
 // Alleen de hoofd-header (#masthead) krijgt sticky/transition behandeling.
 // header-mobile.blade.php bevat ook een <header class="banner"> — die moet
 // niet worden beïnvloed door deze regels.
@@ -249,10 +255,13 @@ header#masthead.nav-ready {
 				}
             }
 
-            &:hover > .sub-menu {
+            &:hover > .sub-menu,
+			&.submenu-open > .sub-menu {
 				@screen xl {
 
 					@apply bg-white p-3 block z-10 border border-gray-100;
+					background-color: var(--submenu-bg, white) !important;
+					border-color: transparent !important;
 					z-index: 66;
 					position: absolute;
 					left: -10%;
@@ -260,16 +269,202 @@ header#masthead.nav-ready {
 
 					.menu-item {
 						width: max-content;
-						@apply text-black hover:text-secondary;
+						color: var(--submenu-text-color, black);
+						@apply hover:text-secondary;
+
+						> a {
+							color: var(--submenu-text-color, black) !important;
+
+							&:before {
+								content: '\f061';
+								font-family: $fa-font-family;
+								font-size: 0.7rem;
+								margin-right: 0.5rem;
+								display: inline-block;
+							}
+						}
+
+						&:hover > a {
+							color: var(--submenu-active-color, var(--submenu-text-color, black)) !important;
+						}
 					}
 
-					.current-menu-item {
-						@apply text-secondary;
+					.current-menu-item > a {
+						color: var(--submenu-active-color, var(--submenu-text-color, black)) !important;
 					}
 				}
 			}
         }
     }
+}
+
+
+// ============================================================
+// Mega menu
+// ============================================================
+
+// .main-navigation-bar is the positioning context for the full-width panel.
+// z-index creates a stacking context so the mega menu panel is always above page content.
+.main-navigation-bar {
+	position: relative;
+	z-index: 100;
+}
+
+@screen xl {
+	.main-navigation .menu > li.has-mega-menu {
+		position: static; // panel escapes the li and positions relative to .main-navigation-bar
+
+		padding-bottom: 0 !important;
+
+		// Show the panel on hover or JS-added .mega-open class
+		&:hover > .mega-menu,
+		&.mega-open > .mega-menu {
+			display: block;
+		}
+	}
+}
+
+// ============================================================
+// Submenu kleur overrides — hogere specificiteit dan child theme regels
+// ============================================================
+
+// Normaal sub-menu: tekst- en hoverkleur via custom properties
+@screen xl {
+	.main-navigation .menu .menu-item-has-children {
+		&:hover > .sub-menu,
+		&.submenu-open > .sub-menu {
+			.menu-item > a {
+				color: var(--submenu-text-color, inherit) !important;
+			}
+			.menu-item:hover > a,
+			.current-menu-item > a {
+				color: var(--submenu-active-color, var(--submenu-text-color, inherit)) !important;
+			}
+		}
+	}
+}
+
+// Mega menu tekst- en hoverkleur
+// .mega-menu erft --submenu-text-color; alle a's erin erven via `inherit`.
+// Specificiteit (0,5,2) wint van de nav-tekst-kleur-regel (0,4,2).
+.main-navigation-bar .main-navigation .menu li .mega-menu {
+	color: var(--submenu-text-color, white);
+}
+
+.main-navigation-bar .main-navigation .menu li .mega-menu a {
+	color: inherit !important;
+}
+
+.main-navigation-bar .main-navigation .menu li .mega-menu a:hover,
+.main-navigation-bar .main-navigation .menu li .mega-menu .current-menu-item > a {
+	color: var(--submenu-active-color, inherit) !important;
+}
+
+
+// Mega menu panel — full-width background
+.mega-menu {
+	display: none;
+	position: fixed; // viewport stacking context — beats all parent overflow/z-index issues
+	left: 0;
+	width: 100%;
+	// top is set via JS (navBar.getBoundingClientRect().bottom)
+	background: var(--submenu-bg, #1a1a1a);
+	color: var(--submenu-text-color, white);
+	z-index: 99999;
+	pointer-events: auto;
+
+	// Container-width inner wrapper
+	&__inner {
+		@apply container mx-auto flex flex-row;
+		align-items: flex-start;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
+
+	// One column per level-2 menu item
+	&__column {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		padding: 0 2rem;
+
+		&:first-child {
+			padding-left: 0;
+		}
+
+		&:last-child {
+			padding-right: 0;
+		}
+
+	}
+
+	// Column heading (level-2 item)
+	&__heading {
+		display: block;
+		font-weight: 700;
+		font-size: 1.1rem;
+		margin-bottom: 1rem;
+		padding-bottom: 0.75rem;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		color: var(--submenu-text-color, inherit);
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	// Links list (level-3 items)
+	&__links {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		li {
+			display: block !important; // override .main-navigation li { inline-block }
+			list-style: none;
+			margin: 0 !important;
+			padding: 0 !important;
+
+			a {
+				display: block;
+				padding: 0.35rem 0;
+				font-size: 0.95rem;
+				font-weight: 400;
+				color: var(--submenu-text-color, inherit);
+
+				&:before {
+					content: '\f061';
+					font-family: $fa-font-family;
+					font-size: 0.7rem;
+					margin-right: 0.5rem;
+					display: inline-block;
+				}
+
+				&:hover {
+					color: var(--submenu-active-color, var(--submenu-text-color, inherit)) !important;
+					text-decoration: none;
+				}
+			}
+
+			// CTA button: add class "mega-menu-cta" to a level-3 item
+			&.mega-menu-cta {
+				margin-top: 1.5rem;
+
+				a {
+					@apply btn btn-primary;
+					display: inline-block;
+					padding: 0.6rem 1.5rem;
+
+					&:before {
+						content: '\f061';
+						font-family: $fa-font-family;
+						font-size: 0.8rem;
+						margin-right: 0.5rem;
+					}
+				}
+			}
+		}
+	}
 }
 
 

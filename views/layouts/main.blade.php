@@ -87,6 +87,9 @@
                  data-text-scrolled="text-{{ str_replace('-color', '', $scrolledTextColor) }}"
                  data-active-text-default="{{ !empty($options['menu_active_text_color']) ? 'text-' . str_replace('-color', '', $options['menu_active_text_color']) : '' }}"
                  data-active-text-scrolled="{{ !empty($scrolledActiveTextColor) ? 'text-' . str_replace('-color', '', $scrolledActiveTextColor) : '' }}"
+                 data-submenu-bg="text-{{ str_replace('-color', '', $options['submenu_background_color'] ?? '') }}"
+                 data-submenu-text="text-{{ str_replace('-color', '', $options['submenu_text_color'] ?? '') }}"
+                 data-submenu-active-text="text-{{ str_replace('-color', '', $options['submenu_active_text_color'] ?? '') }}"
                  data-logo-scrolled="{{ $scrolledLogoKey }}"
                  data-logo-default="{{ $options['navigation_logo'] ?? 'logo_1' }}">
 

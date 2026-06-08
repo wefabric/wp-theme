@@ -162,7 +162,8 @@
                     {!! wp_nav_menu([
                         'theme_location' => 'menu-1',
                         'menu_id' => 'primary-menu',
-                        'echo' => false
+                        'echo' => false,
+                        'disable_mega_menu' => true,
                     ]) !!}
                 @elseif ($menuType == 'mobile_menu')
                     {!! wp_nav_menu([
@@ -184,6 +185,12 @@
 
         menuItems.forEach(function (item) {
             item.addEventListener('click', function (event) {
+                // Op desktop: mega menu items en hun children altijd door laten navigeren
+                if (window.innerWidth >= 1280) {
+                    if (item.classList.contains('has-mega-menu')) return;
+                    if (event.target.closest('.mega-menu')) return;
+                }
+
                 const li = event.currentTarget;
                 const link = li.querySelector(':scope > a');
 

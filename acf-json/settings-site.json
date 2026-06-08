@@ -507,6 +507,60 @@
                     "font_size": 14
                 },
                 {
+                    "key": "field_submenu_bg_color",
+                    "label": "Submenu achtergrond kleur",
+                    "name": "submenu_background_color",
+                    "aria-label": "",
+                    "type": "Thema Kleur",
+                    "instructions": "Achtergrondkleur van het dropdown submenu en mega menu.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "theme_color": "background-light",
+                    "allow_in_bindings": 1,
+                    "font_size": 14
+                },
+                {
+                    "key": "field_submenu_text_color",
+                    "label": "Submenu tekst kleur",
+                    "name": "submenu_text_color",
+                    "aria-label": "",
+                    "type": "Thema Kleur",
+                    "instructions": "Tekstkleur van menu-items in het submenu en mega menu.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "theme_color": "white",
+                    "allow_in_bindings": 1,
+                    "font_size": 14
+                },
+                {
+                    "key": "field_submenu_active_text_color",
+                    "label": "Submenu actief / hover tekst kleur",
+                    "name": "submenu_active_text_color",
+                    "aria-label": "",
+                    "type": "Thema Kleur",
+                    "instructions": "Hover en actieve tekstkleur van menu-items in het submenu en mega menu.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "theme_color": "primary-color",
+                    "allow_in_bindings": 1,
+                    "font_size": 14
+                },
+                {
                     "key": "field_6900msg_gedrag",
                     "label": "Gedrag",
                     "name": "",
@@ -2232,5 +2286,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1779368750
+    "modified": 1780926898
 }
