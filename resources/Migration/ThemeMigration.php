@@ -23,7 +23,7 @@ class ThemeMigration
      * Verhoog dit versienummer elke keer dat je een nieuwe migratie toevoegt.
      * Format: major.minor.patch — komt overeen met het thema-versienummer.
      */
-    const CURRENT_VERSION = '2.1.0';
+    const CURRENT_VERSION = '2.2.0';
 
     /**
      * Sleutel in wp_options waarmee we bijhouden tot welke versie gemigreerd is.
@@ -52,6 +52,7 @@ class ThemeMigration
         self::migrate_2_0_0_nav_group();
         self::migrate_2_0_0_meldingen_group();
         self::migrate_2_1_0_nav_new_fields();
+        self::migrate_2_2_0_fix_field_key_storage();
 
         // Sla nieuwe versie op — migratie wordt niet opnieuw uitgevoerd
         update_option(self::OPTION_KEY, self::CURRENT_VERSION);
@@ -122,8 +123,9 @@ class ThemeMigration
             'mobile_menu_active_text_color'             => 'cta-color',
         ];
 
-        // ACF slaat de group op via de field key — dit garandeert het juiste formaat
-        update_field('field_6900nav_group', $navData, 'option');
+        // Gebruik de field NAME (niet de key) zodat ACF altijd de juiste
+        // wp_options sleutel 'options_nav_*' gebruikt, ongeacht het child theme.
+        update_field('nav', $navData, 'option');
     }
 
     /**
@@ -152,7 +154,7 @@ class ThemeMigration
             'custom_modal'  => is_array($oldCustomModal)  ? $oldCustomModal  : [],
         ];
 
-        update_field('field_6900meld_group', $meldingenData, 'option');
+        update_field('meldingen', $meldingenData, 'option');
     }
 
     // ====================================================================
@@ -206,7 +208,39 @@ class ThemeMigration
         }
 
         if ($changed) {
-            update_field('field_6900nav_group', $navData, 'option');
+            update_field('nav', $navData, 'option');
+        }
+    }
+
+    // ====================================================================
+    // Migratie 2.2.0
+    // Achtergrond: op sommige sites sloeg update_field('field_6900nav_group')
+    // de data op als 'options_field_6900nav_group' in plaats van 'options_nav_*'
+    // omdat ACF de field key niet kon resolven naar een field name (timing issue
+    // of child theme was nog niet gesynchroniseerd).
+    // Deze migratie detecteert de fout-opgeslagen data en herstelt die.
+    // ====================================================================
+
+    /**
+     * Herstelt nav- en meldingendata die fout zijn opgeslagen met de field key
+     * als wp_options sleutelnaam in plaats van de field name.
+     */
+    private static function migrate_2_2_0_fix_field_key_storage(): void
+    {
+        // ── Nav ──────────────────────────────────────────────────────────
+        $badNav = get_option('options_field_6900nav_group');
+        if (is_array($badNav) && !empty(array_filter($badNav)) && empty(get_option('options_nav'))) {
+            update_field('nav', $badNav, 'option');
+            delete_option('options_field_6900nav_group');
+            delete_option('_options_field_6900nav_group');
+        }
+
+        // ── Meldingen ────────────────────────────────────────────────────
+        $badMeld = get_option('options_field_6900meld_group');
+        if (is_array($badMeld) && !empty(array_filter($badMeld)) && empty(get_option('options_meldingen'))) {
+            update_field('meldingen', $badMeld, 'option');
+            delete_option('options_field_6900meld_group');
+            delete_option('_options_field_6900meld_group');
         }
     }
 
