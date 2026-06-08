@@ -27,6 +27,7 @@
 @endphp
 
 <div class="{{ implode(' ', $secClasses) }}"
+     data-bg-default="{{ !empty($secBgColor) ? 'bg-' . $secBgColor : '' }}"
      data-bg-scrolled="{{ !empty($secScrolledBgColor) ? 'bg-' . $secScrolledBgColor : '' }}"
      data-text-default="{{ !empty($secTextColor) ? 'text-' . str_replace('-color', '', $secTextColor) : '' }}"
      data-active-text-default="{{ !empty($secActiveTextColor) ? 'text-' . str_replace('-color', '', $secActiveTextColor) : '' }}"

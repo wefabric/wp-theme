@@ -30,6 +30,7 @@ const HIDE_DELTA       = 25;  // minimale scroll-afstand voor hide/show
     const activeTextScrolled = nav.dataset.activeTextScrolled || '';
 
     // Topbalk kleurinstellingen (gezet als data-* op .secondary-navigation)
+    const secondaryBgDefault            = secondaryNav ? (secondaryNav.dataset.bgDefault          || '') : '';
     const secondaryBgScrolled          = secondaryNav ? (secondaryNav.dataset.bgScrolled        || '') : '';
     const secondaryTextDefault         = secondaryNav ? (secondaryNav.dataset.textDefault        || '') : '';
     const secondaryActiveTextDefault   = secondaryNav ? (secondaryNav.dataset.activeTextDefault  || '') : '';
@@ -106,10 +107,17 @@ const HIDE_DELTA       = 25;  // minimale scroll-afstand voor hide/show
     function applySecondaryScrolledColors(scrolledState) {
         if (!secondaryNav || !secondaryBgScrolled) return;
 
+        // Alleen wisselen als de scrolled-kleur verschilt van de default-kleur.
+        // Als ze gelijk zijn hoeft er niets te gebeuren — de default class staat
+        // er al via PHP en mag niet worden verwijderd bij terugscrolling.
+        if (secondaryBgScrolled === secondaryBgDefault) return;
+
         if (scrolledState) {
+            if (secondaryBgDefault) secondaryNav.classList.remove(secondaryBgDefault);
             secondaryNav.classList.add(secondaryBgScrolled);
         } else {
             secondaryNav.classList.remove(secondaryBgScrolled);
+            if (secondaryBgDefault) secondaryNav.classList.add(secondaryBgDefault);
         }
     }
 
