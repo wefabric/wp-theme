@@ -314,7 +314,6 @@ header#masthead.nav-ready {
 	.main-navigation .menu > li.has-mega-menu {
 		position: static; // panel escapes the li and positions relative to .main-navigation-bar
 
-		padding-bottom: 0 !important;
 
 		// Show the panel on hover or JS-added .mega-open class
 		&:hover > .mega-menu,
