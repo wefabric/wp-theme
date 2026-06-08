@@ -92,6 +92,7 @@
     // Afbeelding
     $imageId = $block['data']['image'] ?? '';
     $imageAlt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
+    $hoverImageId = $block['data']['hover_image'] ?? '';
     $imageMaxHeight = $block['data']['image_max_height'] ?? '';
     $imageParallax = $block['data']['image_parallax'] ?? false;
     $verticalCentered = $block['data']['vertical_centered'] ?? false;
@@ -353,25 +354,43 @@
                             @endif
                         </div>
                     @elseif ($imageId)
-                        <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }} @if ($imageParallax) parallax-image @endif">
+                        <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }} @if ($imageParallax) parallax-image @endif @if($hoverImageId) image-hover-wrapper-{{ $randomNumber }} @endif">
                             @include('components.image', [
                                 'image_id' => $imageId,
                                 'size' => 'full',
                                 'object_fit' => 'cover',
-                                'img_class' => 'image-item w-full object-cover rounded-' . $borderRadius . ($stickyImage ? ' sticky-image sticky top-[150px]' : '') . ($flyinEffect ? ' text-image-hidden' : ''),
+                                'img_class' => 'image-item w-full object-cover rounded-' . $borderRadius . ($stickyImage ? ' sticky-image sticky top-[150px]' : '') . ($flyinEffect ? ' text-image-hidden' : '') . ($hoverImageId ? ' image-normal' : ''),
                                 'alt' => $imageAlt
                             ])
+                            @if ($hoverImageId)
+                                @include('components.image', [
+                                    'image_id' => $hoverImageId,
+                                    'size' => 'full',
+                                    'object_fit' => 'cover',
+                                    'img_class' => 'image-item image-hover w-full object-cover rounded-' . $borderRadius . ($stickyImage ? ' sticky-image sticky top-[150px]' : ''),
+                                    'alt' => get_post_meta($hoverImageId, '_wp_attachment_image_alt', true)
+                                ])
+                            @endif
                         </div>
                     @endif
                 @elseif ($imageId)
-                    <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }} @if ($imageParallax) parallax-image @endif">
+                    <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }} @if ($imageParallax) parallax-image @endif @if($hoverImageId) image-hover-wrapper-{{ $randomNumber }} @endif">
                         @include('components.image', [
                             'image_id' => $imageId,
                             'size' => 'full',
                             'object_fit' => 'cover',
-                            'img_class' => 'image-item w-full object-cover rounded-' . $borderRadius . ($stickyImage ? ' sticky-image sticky top-[150px]' : '') . ($flyinEffect ? ' text-image-hidden' : ''),
+                            'img_class' => 'image-item w-full object-cover rounded-' . $borderRadius . ($stickyImage ? ' sticky-image sticky top-[150px]' : '') . ($flyinEffect ? ' text-image-hidden' : '') . ($hoverImageId ? ' image-normal' : ''),
                             'alt' => $imageAlt
                         ])
+                        @if ($hoverImageId)
+                            @include('components.image', [
+                                'image_id' => $hoverImageId,
+                                'size' => 'full',
+                                'object_fit' => 'cover',
+                                'img_class' => 'image-item image-hover w-full object-cover rounded-' . $borderRadius . ($stickyImage ? ' sticky-image sticky top-[150px]' : ''),
+                                'alt' => get_post_meta($hoverImageId, '_wp_attachment_image_alt', true)
+                            ])
+                        @endif
                     </div>
                 @endif
             </div>
@@ -383,6 +402,35 @@
     .image-{{ $randomNumber }} img, .image-{{ $randomNumber }} video {
         @if($imageMaxHeight) max-height: {{ $imageMaxHeight }}px; @endif
     }
+
+    @if ($hoverImageId)
+    .image-hover-wrapper-{{ $randomNumber }} {
+        position: relative;
+    }
+
+    .image-hover-wrapper-{{ $randomNumber }} .image-normal {
+        opacity: 1;
+        transition: opacity 0.4s ease;
+    }
+
+    .image-hover-wrapper-{{ $randomNumber }} .image-hover {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        object-fit: cover;
+    }
+
+    .image-hover-wrapper-{{ $randomNumber }}:hover .image-normal {
+        opacity: 0;
+    }
+
+    .image-hover-wrapper-{{ $randomNumber }}:hover .image-hover {
+        opacity: 1;
+    }
+    @endif
 
     .afbeelding-tekst-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
