@@ -9,6 +9,9 @@
     // Nav-instellingen zitten in ACF group 'nav' — merge terug naar root niveau
     if (!empty($options['nav']) && is_array($options['nav'])) {
         $options = array_merge($options, $options['nav']);
+        if (!empty($options['nav']['desktop']) && is_array($options['nav']['desktop'])) {
+            $options = array_merge($options, $options['nav']['desktop']);
+        }
     }
 
     $logoMap = [
@@ -220,19 +223,59 @@
             {!! wp_nav_menu($mnav2MenuArgs) !!}
         </nav>
 
-        {{-- Footer --}}
-        <footer class="mnav2-overlay__footer text-{{ str_replace('-color', '', $mobileMenuTextColor) }}">
-            @if($phone)
-                <a href="tel:{{ $phone }}" class="mnav2-overlay__contact">
-                    <i class="fa fa-phone mr-2"></i>{{ $phone }}
-                </a>
-            @endif
-            @if($email)
-                <a href="mailto:{{ $email }}" class="mnav2-overlay__contact">
-                    <i class="fa fa-envelope mr-2"></i>{{ $email }}
-                </a>
-            @endif
-        </footer>
+        {{-- Topbalk-elementen (secondary menu) --}}
+        @if (!empty($options['show_secondary_menu']) && !empty($options['secondary_menu_show_elements']))
+            <div class="mnav2-overlay__secondary">
+                @if (in_array('top_navigation', $options['secondary_menu_show_elements']))
+                    @php
+                        $menuLocations = get_nav_menu_locations();
+                        $topNavMenuId  = $menuLocations['top-navigation'] ?? null;
+                    @endphp
+                    @if ($topNavMenuId)
+                        {!! wp_nav_menu([
+                            'theme_location'  => 'top-navigation',
+                            'menu_id'         => $topNavMenuId,
+                            'container_class' => 'mnav2-overlay__secondary-nav',
+                            'echo'            => false,
+                        ]) !!}
+                    @endif
+                @endif
+
+                @if (in_array('phone', $options['secondary_menu_show_elements']) && $phone)
+                    <a href="tel:{{ $phone }}" class="mnav2-overlay__contact">
+                        <i class="fa fa-phone mr-2"></i>{{ $phone }}
+                    </a>
+                @endif
+
+                @if (in_array('email', $options['secondary_menu_show_elements']) && $email)
+                    <a href="mailto:{{ $email }}" class="mnav2-overlay__contact">
+                        <i class="fa fa-envelope mr-2"></i>{{ $email }}
+                    </a>
+                @endif
+
+                @if (in_array('whatsapp', $options['secondary_menu_show_elements']) && !empty($options['whatsapp_link']))
+                    <a href="{{ $options['whatsapp_link'] }}" class="mnav2-overlay__contact" target="_blank" rel="noopener">
+                        <i class="fa fa-whatsapp mr-2"></i>{{ $options['whatsapp_text'] ?? 'WhatsApp' }}
+                    </a>
+                @endif
+            </div>
+        @endif
+
+        {{-- Footer: vestigingscontactinfo (fallback als topbalk uit staat) --}}
+        @if (empty($options['show_secondary_menu']))
+            <footer class="mnav2-overlay__footer text-{{ str_replace('-color', '', $mobileMenuTextColor) }}">
+                @if($phone)
+                    <a href="tel:{{ $phone }}" class="mnav2-overlay__contact">
+                        <i class="fa fa-phone mr-2"></i>{{ $phone }}
+                    </a>
+                @endif
+                @if($email)
+                    <a href="mailto:{{ $email }}" class="mnav2-overlay__contact">
+                        <i class="fa fa-envelope mr-2"></i>{{ $email }}
+                    </a>
+                @endif
+            </footer>
+        @endif
     </div>
 </div>
 @endif

@@ -5,6 +5,10 @@
     // Merge de sub-velden terug naar het root-niveau.
     if (!empty($options['nav']) && is_array($options['nav'])) {
         $options = array_merge($options, $options['nav']);
+        // Desktop-velden zitten in een extra sub-group 'desktop'.
+        if (!empty($options['nav']['desktop']) && is_array($options['nav']['desktop'])) {
+            $options = array_merge($options, $options['nav']['desktop']);
+        }
     }
 
     // Meldingen zitten in een ACF group 'meldingen'.

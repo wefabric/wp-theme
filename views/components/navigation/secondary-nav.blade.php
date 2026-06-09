@@ -9,6 +9,9 @@
     // Nav-instellingen zitten in ACF group 'nav' — merge terug naar root niveau
     if (!empty($options['nav']) && is_array($options['nav'])) {
         $options = array_merge($options, $options['nav']);
+        if (!empty($options['nav']['desktop']) && is_array($options['nav']['desktop'])) {
+            $options = array_merge($options, $options['nav']['desktop']);
+        }
     }
 
     // Kleur-waarden voor de topbalk
