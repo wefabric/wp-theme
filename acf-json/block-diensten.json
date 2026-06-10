@@ -712,7 +712,7 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "dienst_categories",
+            "taxonomy": "diensten_categories",
             "add_term": 1,
             "save_terms": 0,
             "load_terms": 0,
@@ -722,7 +722,22 @@
             "allow_in_bindings": 1,
             "bidirectional": 0,
             "multiple": 0,
-            "bidirectional_target": []
+            "bidirectional_target": [],
+            "choices": {
+                "Bericht - Categorie": {
+                    "1": "Niet gecategoriseerd",
+                    "8": "Nieuws"
+                },
+                "Dienst - Dienst categorie": {
+                    "12": "Aanvullende diensten",
+                    "10": "Binnen",
+                    "11": "Buiten"
+                },
+                "Klantcase - Categorie": {
+                    "1": "Niet gecategoriseerd",
+                    "8": "Nieuws"
+                }
+            }
         },
         {
             "key": "field_678e7115c99bc",
@@ -2611,5 +2626,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758616526
+    "display_title": "",
+    "modified": 1780652021
 }

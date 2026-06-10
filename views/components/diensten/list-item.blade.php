@@ -6,7 +6,7 @@
 
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
-    $dienstCategories = get_the_terms($dienst, 'dienst_categories');
+    $dienstCategories = get_the_terms($dienst, 'diensten_categories');
 @endphp
 
 <div class="dienst-item group h-full @if ($flyinEffect) dienst-hidden @endif">

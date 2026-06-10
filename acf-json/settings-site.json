@@ -382,7 +382,7 @@
             "sub_fields": [
                 {
                     "key": "field_6900subtab_desktop",
-                    "label": "Desktop navigatie",
+                    "label": "Desktop",
                     "name": "",
                     "aria-label": "",
                     "type": "tab",
@@ -399,325 +399,11 @@
                     "selected": 0
                 },
                 {
-                    "key": "field_68d6454503e12",
-                    "label": "Toon home icoon in navigatie",
-                    "name": "desktop_show_home_icon",
-                    "aria-label": "",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 1,
-                    "allow_in_bindings": 0,
-                    "ui_on_text": "Aan",
-                    "ui_off_text": "Uit",
-                    "ui": 1
-                },
-                {
-                    "key": "field_67af11dd79f0c",
-                    "label": "Logo",
-                    "name": "navigation_logo",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "logo_1": "Logo 1",
-                        "logo_2": "Logo 2",
-                        "logo_3": "Logo 3",
-                        "logo_1_small": "Logo 1 klein",
-                        "logo_2_small": "Logo 2 klein",
-                        "logo_3_small": "Logo 3 klein"
-                    },
-                    "default_value": "logo_1",
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "allow_in_bindings": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "create_options": 0,
-                    "save_options": 0
-                },
-                {
-                    "key": "field_62ff223307a32",
-                    "label": "Achtergrond kleur",
-                    "name": "menu_background_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": null,
-                    "allow_in_bindings": 1,
-                    "font_size": 14
-                },
-                {
-                    "key": "field_62ff333ad3aad",
-                    "label": "Tekst kleur",
-                    "name": "menu_text_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": "white",
-                    "allow_in_bindings": 1,
-                    "font_size": 14
-                },
-                {
-                    "key": "field_62ff34321c493",
-                    "label": "Actief tekst kleur",
-                    "name": "menu_active_text_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": "primary-color",
-                    "allow_in_bindings": 1,
-                    "font_size": 14
-                },
-                {
-                    "key": "field_6900msg_gedrag",
-                    "label": "Gedrag",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "message",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "<strong>Gedrag van de navigatie</strong><br>Stel in hoe de navigatie zich gedraagt op de pagina.",
-                    "new_lines": "wpautop",
-                    "esc_html": 0
-                },
-                {
-                    "key": "field_6900nav_sticky",
-                    "label": "Sticky navigatie",
-                    "name": "nav_sticky",
-                    "aria-label": "",
-                    "type": "true_false",
-                    "instructions": "De navigatie blijft bovenaan de pagina plakken tijdens het scrollen.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 0,
-                    "allow_in_bindings": 0,
-                    "ui": 1,
-                    "ui_on_text": "Aan",
-                    "ui_off_text": "Uit"
-                },
-                {
-                    "key": "field_6900nav_transparent",
-                    "label": "Start transparant",
-                    "name": "nav_transparent",
-                    "aria-label": "",
-                    "type": "true_false",
-                    "instructions": "De navigatie start transparant en krijgt een achtergrond zodra er gescrolld wordt. Ideaal in combinatie met een hero header. Gebruik de padding-instelling op het header blok om tekst onder de navigatiebalk te plaatsen.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 0,
-                    "allow_in_bindings": 0,
-                    "ui": 1,
-                    "ui_on_text": "Aan",
-                    "ui_off_text": "Uit"
-                },
-                {
-                    "key": "field_6900msg_scrolled",
-                    "label": "Na scrollen",
-                    "name": "",
-                    "aria-label": "",
-                    "type": "message",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_6900nav_sticky",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "<strong>Staat na scrollen</strong><br>Hoe ziet de navigatie eruit zodra de bezoeker naar beneden scrolt?",
-                    "new_lines": "wpautop",
-                    "esc_html": 0
-                },
-                {
-                    "key": "field_6900scrolled_logo",
-                    "label": "Logo na scrollen",
-                    "name": "nav_scrolled_logo",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "Welk logo tonen nadat er gescrolld is. Standaard wordt het gewone navigatielogo gebruikt.",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_6900nav_sticky",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "100",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "": "Standaard (navigatielogo)",
-                        "logo_1": "Logo 1",
-                        "logo_2": "Logo 2",
-                        "logo_3": "Logo 3",
-                        "logo_1_small": "Logo 1 klein",
-                        "logo_2_small": "Logo 2 klein",
-                        "logo_3_small": "Logo 3 klein"
-                    },
-                    "default_value": false,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 1,
-                    "allow_in_bindings": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "create_options": 0,
-                    "save_options": 0
-                },
-                {
-                    "key": "field_6900scrolled_bg",
-                    "label": "Achtergrond kleur na scrollen",
-                    "name": "nav_scrolled_bg_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_6900nav_sticky",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": null,
-                    "allow_in_bindings": 1,
-                    "font_size": 14
-                },
-                {
-                    "key": "field_6900scrolled_text",
-                    "label": "Tekst kleur na scrollen",
-                    "name": "nav_scrolled_text_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_6900nav_sticky",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": null,
-                    "allow_in_bindings": 1,
-                    "font_size": 14
-                },
-                {
-                    "key": "field_6900scrolled_active_text",
-                    "label": "Actief tekst kleur na scrollen",
-                    "name": "nav_scrolled_active_text_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_6900nav_sticky",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": null,
-                    "allow_in_bindings": 1,
-                    "font_size": 14
-                },
-                {
-                    "key": "field_6900msg_topbalk_divider",
+                    "key": "field_6900desktop_group",
                     "label": "",
-                    "name": "",
+                    "name": "desktop",
                     "aria-label": "",
-                    "type": "message",
+                    "type": "group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -726,353 +412,793 @@
                         "class": "",
                         "id": ""
                     },
-                    "message": "<hr style=\"margin: 8px 0 16px; border-color: #e5e7eb;\"><strong>Topbalk</strong>",
-                    "new_lines": "wpautop",
-                    "esc_html": 0
-                },
-                {
-                    "key": "field_65572959eb777",
-                    "label": "Tonen",
-                    "name": "show_secondary_menu",
-                    "aria-label": "",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 0,
-                    "allow_in_bindings": 1,
-                    "ui": 1,
-                    "ui_on_text": "Aan",
-                    "ui_off_text": "Uit"
-                },
-                {
-                    "key": "field_65572acf067df",
-                    "label": "Achtergrond kleur",
-                    "name": "secondary_menu_background_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_65572959eb777",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": "primary-color",
-                    "allow_in_bindings": 1,
-                    "font_size": 14
-                },
-                {
-                    "key": "field_65572da165511",
-                    "label": "Tekst kleur",
-                    "name": "secondary_menu_text_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_65572959eb777",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": null,
-                    "allow_in_bindings": 1,
-                    "font_size": 14
-                },
-                {
-                    "key": "field_6900sec_active_text",
-                    "label": "Actief tekst kleur",
-                    "name": "secondary_menu_active_text_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_65572959eb777",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": null,
-                    "allow_in_bindings": 1,
-                    "font_size": 14
-                },
-                {
-                    "key": "field_6900sec_scrolled_bg",
-                    "label": "Achtergrond kleur na scrollen",
-                    "name": "secondary_menu_scrolled_bg_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_65572959eb777",
-                                "operator": "==",
-                                "value": "1"
+                    "layout": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_6900subtab_hoofdmenu",
+                            "label": "Hoofdmenu",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "tab",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
                             },
-                            {
-                                "field": "field_6900nav_sticky",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": null,
-                    "allow_in_bindings": 1,
-                    "font_size": 14
-                },
-                {
-                    "key": "field_6900sec_scrolled_text",
-                    "label": "Tekst kleur na scrollen",
-                    "name": "secondary_menu_scrolled_text_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_65572959eb777",
-                                "operator": "==",
-                                "value": "1"
+                            "placement": "top",
+                            "endpoint": 0,
+                            "selected": 0
+                        },
+                        {
+                            "key": "field_6900msg_hoofdmenu_divider",
+                            "label": "",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
                             },
-                            {
-                                "field": "field_6900nav_sticky",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": null,
-                    "allow_in_bindings": 1,
-                    "font_size": 14
-                },
-                {
-                    "key": "field_6900sec_scrolled_active_text",
-                    "label": "Actief tekst kleur na scrollen",
-                    "name": "secondary_menu_scrolled_active_text_color",
-                    "aria-label": "",
-                    "type": "Thema Kleur",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_65572959eb777",
-                                "operator": "==",
-                                "value": "1"
+                            "message": "<strong>Hoofdmenu</strong>",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_68d6454503e12",
+                            "label": "Toon home icoon in navigatie",
+                            "name": "desktop_show_home_icon",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
                             },
-                            {
-                                "field": "field_6900nav_sticky",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "theme_color": null,
-                    "allow_in_bindings": 1,
-                    "font_size": 14
-                },
-                {
-                    "key": "field_65572a0ba5882",
-                    "label": "Tekst links",
-                    "name": "secondary_menu_text",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_65572959eb777",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "key": "field_655730670ebc4",
-                    "label": "Elementen",
-                    "name": "secondary_menu_show_elements",
-                    "aria-label": "",
-                    "type": "checkbox",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_65572959eb777",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "phone": "Telefoonnummer",
-                        "email": "E-mail",
-                        "whatsapp": "WhatsApp",
-                        "top_navigation": "Top navigatie",
-                        "search": "Zoekfunctie"
-                    },
-                    "default_value": [],
-                    "return_format": "value",
-                    "allow_custom": 0,
-                    "layout": "vertical",
-                    "toggle": 0,
-                    "save_custom": 0,
-                    "custom_choice_button_text": "Nieuwe keuze toevoegen"
-                },
-                {
-                    "key": "field_666aaf67171b0",
-                    "label": "Tekst voor de top navigatie",
-                    "name": "secondary_menu_navigation_text",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_655730670ebc4",
-                                "operator": "==",
-                                "value": "top_navigation"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
-                {
-                    "key": "field_670e66e9b6ad8",
-                    "label": "WhatsApp link",
-                    "name": "whatsapp_link",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_655730670ebc4",
-                                "operator": "==",
-                                "value": "whatsapp"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "allow_in_bindings": 1,
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_673b034f4a96b",
-                    "label": "WhatsApp tekst",
-                    "name": "whatsapp_text",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_655730670ebc4",
-                                "operator": "==",
-                                "value": "whatsapp"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
+                            "message": "",
+                            "default_value": 1,
+                            "allow_in_bindings": 0,
+                            "ui_on_text": "Aan",
+                            "ui_off_text": "Uit",
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_67af11dd79f0c",
+                            "label": "Logo",
+                            "name": "navigation_logo",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "logo_1": "Logo 1",
+                                "logo_2": "Logo 2",
+                                "logo_3": "Logo 3",
+                                "logo_1_small": "Logo 1 klein",
+                                "logo_2_small": "Logo 2 klein",
+                                "logo_3_small": "Logo 3 klein"
+                            },
+                            "default_value": "logo_1",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_62ff223307a32",
+                            "label": "Achtergrond kleur",
+                            "name": "menu_background_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62ff333ad3aad",
+                            "label": "Tekst kleur",
+                            "name": "menu_text_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": "white",
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_62ff34321c493",
+                            "label": "Actief en hover tekst kleur",
+                            "name": "menu_active_text_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": "primary-color",
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_6900msg_kleuren_submenu",
+                            "label": "",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "<hr style=\"margin: 8px 0 12px; border-color: #e5e7eb;\"><strong>Submenu</strong>",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_submenu_bg_color",
+                            "label": "Submenu achtergrond kleur",
+                            "name": "submenu_background_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "Achtergrondkleur van het dropdown submenu en mega menu.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": "background-light",
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_submenu_text_color",
+                            "label": "Submenu tekst kleur",
+                            "name": "submenu_text_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "Tekstkleur van menu-items in het submenu en mega menu.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": "white",
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_submenu_active_text_color",
+                            "label": "Submenu actief / hover tekst kleur",
+                            "name": "submenu_active_text_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "Hover en actieve tekstkleur van menu-items in het submenu en mega menu.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": "primary-color",
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_6900msg_scrolled",
+                            "label": "Na scrollen",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6900nav_sticky",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "<strong>Staat na scrollen</strong><br>Hoe ziet de navigatie eruit zodra de bezoeker naar beneden scrolt?",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_6900scrolled_logo",
+                            "label": "Logo na scrollen",
+                            "name": "nav_scrolled_logo",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Welk logo tonen nadat er gescrolld is. Standaard wordt het gewone navigatielogo gebruikt.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6900nav_sticky",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "": "Standaard (navigatielogo)",
+                                "logo_1": "Logo 1",
+                                "logo_2": "Logo 2",
+                                "logo_3": "Logo 3",
+                                "logo_1_small": "Logo 1 klein",
+                                "logo_2_small": "Logo 2 klein",
+                                "logo_3_small": "Logo 3 klein"
+                            },
+                            "default_value": false,
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 1,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_6900scrolled_bg",
+                            "label": "Achtergrond kleur na scrollen",
+                            "name": "nav_scrolled_bg_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6900nav_sticky",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_6900scrolled_text",
+                            "label": "Tekst kleur na scrollen",
+                            "name": "nav_scrolled_text_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6900nav_sticky",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_6900scrolled_active_text",
+                            "label": "Actief en hover tekst kleur na scrollen",
+                            "name": "nav_scrolled_active_text_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6900nav_sticky",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_6900subtab_topbalk",
+                            "label": "Topbalk",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "tab",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placement": "top",
+                            "endpoint": 0,
+                            "selected": 0
+                        },
+                        {
+                            "key": "field_65572959eb777",
+                            "label": "Tonen",
+                            "name": "show_secondary_menu",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "allow_in_bindings": 1,
+                            "ui": 1,
+                            "ui_on_text": "Aan",
+                            "ui_off_text": "Uit"
+                        },
+                        {
+                            "key": "field_65572acf067df",
+                            "label": "Achtergrond kleur",
+                            "name": "secondary_menu_background_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_65572959eb777",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": "primary-color",
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_65572da165511",
+                            "label": "Tekst kleur",
+                            "name": "secondary_menu_text_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_65572959eb777",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_6900sec_active_text",
+                            "label": "Actief en hover tekst kleur",
+                            "name": "secondary_menu_active_text_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_65572959eb777",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_6900sec_scrolled_bg",
+                            "label": "Achtergrond kleur na scrollen",
+                            "name": "secondary_menu_scrolled_bg_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_65572959eb777",
+                                        "operator": "==",
+                                        "value": "1"
+                                    },
+                                    {
+                                        "field": "field_6900nav_sticky",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_6900sec_scrolled_text",
+                            "label": "Tekst kleur na scrollen",
+                            "name": "secondary_menu_scrolled_text_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_65572959eb777",
+                                        "operator": "==",
+                                        "value": "1"
+                                    },
+                                    {
+                                        "field": "field_6900nav_sticky",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_6900sec_scrolled_active_text",
+                            "label": "Actief en hover tekst kleur na scrollen",
+                            "name": "secondary_menu_scrolled_active_text_color",
+                            "aria-label": "",
+                            "type": "Thema Kleur",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_65572959eb777",
+                                        "operator": "==",
+                                        "value": "1"
+                                    },
+                                    {
+                                        "field": "field_6900nav_sticky",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "theme_color": null,
+                            "allow_in_bindings": 1,
+                            "font_size": 14
+                        },
+                        {
+                            "key": "field_65572a0ba5882",
+                            "label": "Tekst links",
+                            "name": "secondary_menu_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_65572959eb777",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_655730670ebc4",
+                            "label": "Elementen",
+                            "name": "secondary_menu_show_elements",
+                            "aria-label": "",
+                            "type": "checkbox",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_65572959eb777",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "phone": "Telefoonnummer",
+                                "email": "E-mail",
+                                "whatsapp": "WhatsApp",
+                                "top_navigation": "Top navigatie",
+                                "search": "Zoekfunctie"
+                            },
+                            "default_value": [],
+                            "return_format": "value",
+                            "allow_custom": 0,
+                            "layout": "vertical",
+                            "toggle": 0,
+                            "save_custom": 0,
+                            "custom_choice_button_text": "Nieuwe keuze toevoegen"
+                        },
+                        {
+                            "key": "field_666aaf67171b0",
+                            "label": "Tekst voor de top navigatie",
+                            "name": "secondary_menu_navigation_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_655730670ebc4",
+                                        "operator": "==",
+                                        "value": "top_navigation"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_670e66e9b6ad8",
+                            "label": "WhatsApp link",
+                            "name": "whatsapp_link",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_655730670ebc4",
+                                        "operator": "==",
+                                        "value": "whatsapp"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 1,
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_673b034f4a96b",
+                            "label": "WhatsApp tekst",
+                            "name": "whatsapp_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_655730670ebc4",
+                                        "operator": "==",
+                                        "value": "whatsapp"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_6900subtab_gedrag",
+                            "label": "Gedrag",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "tab",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placement": "top",
+                            "endpoint": 0,
+                            "selected": 0
+                        },
+                        {
+                            "key": "field_6900nav_sticky",
+                            "label": "Sticky navigatie",
+                            "name": "nav_sticky",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "De navigatie blijft bovenaan de pagina plakken tijdens het scrollen.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ui_on_text": "Aan",
+                            "ui_off_text": "Uit"
+                        },
+                        {
+                            "key": "field_6900nav_transparent",
+                            "label": "Start transparant",
+                            "name": "nav_transparent",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "De navigatie start transparant en krijgt een achtergrond zodra er gescrolld wordt. Ideaal in combinatie met een hero header. Gebruik de padding-instelling op het header blok om tekst onder de navigatiebalk te plaatsen.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ui_on_text": "Aan",
+                            "ui_off_text": "Uit"
+                        }
+                    ]
                 },
                 {
                     "key": "field_6900subtab_mobiel",
-                    "label": "Mobiele navigatie",
+                    "label": "Mobiel",
                     "name": "",
                     "aria-label": "",
                     "type": "tab",
@@ -1107,6 +1233,35 @@
                         "mobile_menu": "Gebruik mobiele menu"
                     },
                     "default_value": "desktop_menu",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0
+                },
+                {
+                    "key": "field_mobile_menu_version",
+                    "label": "Menu stijl",
+                    "name": "mobile_menu_version",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "v1": "Versie 1 — standaard (schuifmenu)",
+                        "v2": "Versie 2 — fullscreen overlay"
+                    },
+                    "default_value": "v1",
                     "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
@@ -1188,7 +1343,7 @@
                 },
                 {
                     "key": "field_6900mobile_active_text_color",
-                    "label": "Actief tekst kleur",
+                    "label": "Actief en hover tekst kleur",
                     "name": "mobile_menu_active_text_color",
                     "aria-label": "",
                     "type": "Thema Kleur",
@@ -2232,5 +2387,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1779368750
+    "modified": 1780992440
 }

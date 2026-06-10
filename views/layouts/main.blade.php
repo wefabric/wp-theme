@@ -5,6 +5,10 @@
     // Merge de sub-velden terug naar het root-niveau.
     if (!empty($options['nav']) && is_array($options['nav'])) {
         $options = array_merge($options, $options['nav']);
+        // Desktop-velden zitten in een extra sub-group 'desktop'.
+        if (!empty($options['nav']['desktop']) && is_array($options['nav']['desktop'])) {
+            $options = array_merge($options, $options['nav']['desktop']);
+        }
     }
 
     // Meldingen zitten in een ACF group 'meldingen'.
@@ -87,6 +91,9 @@
                  data-text-scrolled="text-{{ str_replace('-color', '', $scrolledTextColor) }}"
                  data-active-text-default="{{ !empty($options['menu_active_text_color']) ? 'text-' . str_replace('-color', '', $options['menu_active_text_color']) : '' }}"
                  data-active-text-scrolled="{{ !empty($scrolledActiveTextColor) ? 'text-' . str_replace('-color', '', $scrolledActiveTextColor) : '' }}"
+                 data-submenu-bg="text-{{ str_replace('-color', '', $options['submenu_background_color'] ?? '') }}"
+                 data-submenu-text="text-{{ str_replace('-color', '', $options['submenu_text_color'] ?? '') }}"
+                 data-submenu-active-text="text-{{ str_replace('-color', '', $options['submenu_active_text_color'] ?? '') }}"
                  data-logo-scrolled="{{ $scrolledLogoKey }}"
                  data-logo-default="{{ $options['navigation_logo'] ?? 'logo_1' }}">
 

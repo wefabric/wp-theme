@@ -23,6 +23,8 @@ import './cad-download-toggle';
 import './lazyload';
 import './indicator';
 import './scroll-navigation';
+import './mega-menu';
+import './mobile-menu-v2';
 import ThemeChildApp from './../../../theme-child/assets/js/app';
 
 // Use Swiper and the necessary modules
