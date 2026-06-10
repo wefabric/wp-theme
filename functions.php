@@ -396,6 +396,49 @@ add_filter( 'rank_math/frontend/breadcrumb/items', function( $crumbs, $class ) {
 		return $new_crumbs;
 	}
 
+	if ( is_tax() ) {
+		$queried_object = get_queried_object();
+		$taxonomy       = $queried_object ? $queried_object->taxonomy : '';
+
+		// Voeg post type archive toe als tussenstap (bijv. Projecten voor project_categories)
+		if ( $taxonomy ) {
+			$tax_object   = get_taxonomy( $taxonomy );
+			$object_types = $tax_object ? (array) $tax_object->object_type : [];
+			foreach ( $object_types as $post_type ) {
+				$archive_link = get_post_type_archive_link( $post_type );
+				if ( $archive_link ) {
+					$pt_object = get_post_type_object( $post_type );
+					$new_crumbs[] = [
+						$pt_object->labels->name,
+						$archive_link,
+					];
+					break;
+				}
+			}
+		}
+
+		if ( $queried_object ) {
+			$ancestors = get_ancestors( $queried_object->term_id, $taxonomy );
+			if ( ! empty( $ancestors ) ) {
+				$ancestors = array_reverse( $ancestors );
+				foreach ( $ancestors as $ancestor_id ) {
+					$ancestor_term = get_term( $ancestor_id, $taxonomy );
+					$new_crumbs[] = [
+						$ancestor_term->name,
+						get_term_link( $ancestor_term ),
+					];
+				}
+			}
+
+			$new_crumbs[] = [
+				$queried_object->name,
+				get_term_link( $queried_object ),
+			];
+		}
+
+		return $new_crumbs;
+	}
+
 	if ( function_exists( 'is_shop' ) && ( is_shop() || ( function_exists( 'is_product_category' ) && is_product_category() ) || ( function_exists( 'is_product_tag' ) && is_product_tag() ) ) ) {
 		// Voor shop/archive pagina's
 		$shop_page_id = function_exists( 'wc_get_page_id' ) ? wc_get_page_id( 'shop' ) : 0;
