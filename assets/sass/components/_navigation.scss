@@ -51,15 +51,26 @@ header#masthead.nav-ready {
 // !important is nodig om te winnen van text-* klassen op <li> elementen.
 // De .mobile-menu-wrap selector zorgt dat mobiele menu items hier NIET
 // door worden beïnvloed — die erven gewoon hun li_class kleur.
-.main-navigation-bar .main-navigation .menu li.menu-item > a,
-.main-navigation-bar .main-navigation .menu li.menu-item-has-children::after {
+.main-navigation-bar .main-navigation .menu > li.menu-item > a,
+.main-navigation-bar .main-navigation .menu > li.menu-item-has-children::after {
 	color: var(--nav-text-color, currentColor) !important;
 }
 
 // Hover kleur desktop menu
-.main-navigation-bar .main-navigation .menu li.menu-item:hover > a,
-.main-navigation-bar .main-navigation .menu li.menu-item-has-children:hover::after {
+.main-navigation-bar .main-navigation .menu > li.menu-item:hover > a,
+.main-navigation-bar .main-navigation .menu > li.menu-item-has-children:hover::after {
 	color: var(--nav-active-color, var(--nav-text-color, currentColor)) !important;
+}
+
+// Submenu tekst- en chevronkleur — expliciet zodat --nav-text-color niet doorlekt
+.main-navigation-bar .main-navigation .menu .sub-menu li.menu-item > a,
+.main-navigation-bar .main-navigation .menu .sub-menu li.menu-item-has-children::after {
+	color: var(--submenu-text-color, currentColor) !important;
+}
+
+.main-navigation-bar .main-navigation .menu .sub-menu li.menu-item:hover > a,
+.main-navigation-bar .main-navigation .menu .sub-menu li.menu-item-has-children:hover::after {
+	color: var(--submenu-active-color, var(--submenu-text-color, currentColor)) !important;
 }
 
 // Mobiele menu: tekstkleur staat als Tailwind class op nav.main-navigation.
