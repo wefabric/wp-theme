@@ -540,8 +540,8 @@ header#masthead.nav-ready {
 			&:hover > .sub-menu {
 				@screen xl {
 
-					@apply bg-white p-3 block z-10 border border-gray-100;
-					z-index: 66;
+					@apply bg-white p-3 block border border-gray-100;
+					z-index: 10000;
 					position: absolute;
 					left: -10%;
 					top: 38px;
