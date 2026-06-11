@@ -161,6 +161,7 @@ header.banner {
   --li-pad-y: 8px;
   --arrow-size: 36px;
   --arrow-right: 12px;
+  padding: 0 20px 0 20px !important;
 
   @apply bg-primary text-white;
   position: fixed;
@@ -171,12 +172,12 @@ header.banner {
   min-height: 100%;
   transition: right 300ms ease;
   color: #FFF;
-  padding-bottom: 20px;
+
   box-shadow: rgba(0,0,0,.35) 0 5px 15px;
+
 
   .menu {
     display: block;
-    padding: 8px 20px !important;
 
     .sub-menu {
       max-height: 0 !important;
@@ -241,9 +242,9 @@ header.banner {
       // zodat right: var(--arrow-right) op sub-items uitlijnt met die van hoofditems.
       > ul.sub-menu {
         border-top: 1px solid rgba(255, 255, 255, 0.1);
-        margin-top: 4px !important;
-        padding-top: 4px !important;
-        padding-bottom: 4px !important;
+        //margin-top: 4px !important;
+        //padding-top: 4px !important;
+        //padding-bottom: 4px !important;
       }
 
       a {
@@ -325,14 +326,18 @@ header.banner {
       transform: translateY(-50%) rotate(180deg);
     }
   }
-
 }
 
 .home-item {
   display: block;
-  padding: 0 18px !important;
-  min-height: var(--row-min-h);
-  line-height: 1.4;
+
+  a {
+    line-height: 1.4;
+    min-height: var(--row-min-h);
+    min-width: 0;
+    display: block;
+    padding: var(--row-pad-y) calc(var(--arrow-right) + var(--arrow-size) + 4px) var(--row-pad-y) 0;
+  }
 }
 
 .mobile-menu .menu .menu-item-has-children.open>.sub-menu {
