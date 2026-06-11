@@ -609,16 +609,27 @@ header.banner {
 
     li {
       position: relative;
-      margin-bottom: clamp(0.5rem, 2vw, 1rem);
+      margin-bottom: clamp(1rem, 3vw, 1.75rem);
 
       > a {
-        display: block;
+        display: inline-flex;
+        align-items: center;
         font-size: clamp(1.5rem, 5vw, 3rem);
         font-weight: 300;
         color: inherit;
         text-decoration: none;
         opacity: 0.85;
         transition: opacity 0.15s ease, color 0.15s ease, letter-spacing 0.18s ease;
+
+        &::before {
+          content: '\f061';
+          display: inline-block;
+          font-family: 'Font Awesome 6 Pro';
+          font-weight: 900;
+          font-size: 0.5em;
+          margin-right: 0.5rem;
+          flex-shrink: 0;
+        }
 
         &:hover {
           opacity: 1;
