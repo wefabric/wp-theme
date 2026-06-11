@@ -76,6 +76,7 @@ header#masthead.nav-ready {
 // Mobiele menu: tekstkleur staat als Tailwind class op nav.main-navigation.
 // li én a erven die kleur (met !important om menu-editor klassen te overwinnen).
 // Hover/actief gebruikt --mobile-active-color, inline gezet via PHP op de nav.
+// Sub-menu items erven ook — zodat de desktop --submenu-text-color hier niet doorlekt.
 .mobile-menu-wrap nav.main-navigation .menu li.menu-item {
 	color: inherit !important;
 
@@ -88,6 +89,18 @@ header#masthead.nav-ready {
 	&.current_page_item > a {
 		color: var(--mobile-active-color, inherit) !important;
 	}
+}
+
+// Sub-menu items in mobiel menu: overschrijf de desktop submenu-kleur rules.
+.mobile-menu-wrap nav.main-navigation .menu .sub-menu li.menu-item > a,
+.mobile-menu-wrap nav.main-navigation .menu .sub-menu li.menu-item-has-children::after {
+	color: inherit !important;
+}
+
+.mobile-menu-wrap nav.main-navigation .menu .sub-menu li.menu-item:hover > a,
+.mobile-menu-wrap nav.main-navigation .menu .sub-menu li.menu-item.current-menu-item > a,
+.mobile-menu-wrap nav.main-navigation .menu .sub-menu li.menu-item.current_page_item > a {
+	color: var(--mobile-active-color, inherit) !important;
 }
 
 // Topbalk tekst- en linkkleur via CSS custom property (gezet door JS).
