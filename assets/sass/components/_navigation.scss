@@ -250,7 +250,7 @@ header#masthead.nav-ready {
                 width: max-content;
 				
 				li {
-					width: calc(100% + .75rem) #{!important};
+					width: 100% !important;
 					display: list-item !important;
 					margin-left: 20px;
 				}

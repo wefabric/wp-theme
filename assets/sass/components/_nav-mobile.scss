@@ -95,7 +95,7 @@ header.banner {
 
   ~ .banner {
     .hamburger-menu {
-      right: 270px;
+      right: 290px;
       position: fixed;
     }
 
@@ -165,8 +165,8 @@ header.banner {
   @apply bg-primary text-white;
   position: fixed;
   overflow-y: scroll;
-  width: 260px;
-  top: 0; bottom: 0; right: -260px;
+  width: 280px;
+  top: 0; bottom: 0; right: -280px;
   z-index: 1000;
   min-height: 100%;
   transition: right 300ms ease;
@@ -176,6 +176,7 @@ header.banner {
 
   .menu {
     display: block;
+    padding: 8px 20px !important;
 
     .sub-menu {
       max-height: 0 !important;
@@ -210,12 +211,39 @@ header.banner {
     li {
       position: relative;
       display: block !important;
-      padding: var(--li-pad-y) 20px !important;
+      padding: 0 !important;
 
       ul.sub-menu li {
-        padding: var(--li-pad-y) 0 var(--li-pad-y) 10px !important;
+        --li-pad-y: 10px;
+        --row-pad-y: 0px;
+        --row-min-h: 0px;
+        padding: var(--li-pad-y) 0 !important;
         margin: 0 !important;
-        font-size: 16px;
+        font-size: 15px;
+        opacity: 0.8;
+
+        > a {
+          min-height: 0 !important;
+          padding-top: 0 !important;
+          padding-bottom: 0 !important;
+          line-height: 1.4;
+        }
+
+        // Sub-sub items
+        ul.sub-menu li {
+          font-size: 14px;
+          opacity: 0.7;
+        }
+      }
+
+      // Visuele scheiding: sub-menu krijgt een subtiele top-border
+      // margin-right: -20px compenseert de 20px rechter-padding van de parent li,
+      // zodat right: var(--arrow-right) op sub-items uitlijnt met die van hoofditems.
+      > ul.sub-menu {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 4px !important;
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
       }
 
       a {
@@ -251,9 +279,9 @@ header.banner {
       font-family: "Font Awesome 6 Pro";
       max-width: 100%;
       position: absolute;
-      right: var(--arrow-right);
+      right: -10px;
       /* lock to first row's vertical middle so it won't "drop" when submenu expands */
-      top: calc(var(--li-pad-y) + var(--row-pad-y) + (var(--row-min-h) / 3));
+      top: calc(var(--row-min-h) / 2);
       transform: translateY(-50%) rotate(0);
       transition: transform .25s ease-in-out;
 
@@ -279,8 +307,8 @@ header.banner {
       content: "\f078";
       font-family: "Font Awesome 6 Pro";
       position: absolute;
-      right: var(--arrow-right);
-      top: calc(var(--li-pad-y) + var(--row-pad-y) + (var(--row-min-h) / 3));
+      right: -10px;
+      top: calc(var(--li-pad-y) + 10px);
       transform: translateY(-50%) rotate(0);
       transition: transform .25s ease-in-out;
 
@@ -319,12 +347,31 @@ header.banner {
 }
 
 .main-navigation .mobile-menu ul.sub-menu li a {
+  display: flex !important;
+  align-items: flex-start !important;
   font-weight: 400 !important;
+
+  &::before {
+    content: '\f061';
+    display: inline-block;
+    font-family: 'Font Awesome 6 Pro';
+    font-weight: 900;
+    font-size: 0.7rem;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+    margin-top: 0.2em;
+  }
+}
+
+.main-navigation .mobile-menu ul.sub-menu li:not(.menu-item-has-children) > a {
+  padding-right: 0 !important;
 }
 
 .mobile-menu .main-navigation .menu .menu-item-has-children>.sub-menu {
   @apply w-full #{!important};
 }
+
+
 
 // ============================================================
 // Mobiel menu versie 2 — fullscreen overlay
