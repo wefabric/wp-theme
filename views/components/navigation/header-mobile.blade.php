@@ -107,7 +107,7 @@
             </div>
 
             @if (!empty($options['secondary_menu_show_elements']))
-                <div class="top-navigation flex flex-col gap-2 text-md pb-4 text-{{ $options['secondary_menu_text_color'] ?? 'white' }}">
+                <div class="top-navigation flex flex-col gap-2 text-md pb-4 text-{{ str_replace('-color', '', $mobileMenuTextColor) }}">
                     @if (in_array('phone', $options['secondary_menu_show_elements']) || in_array('email', $options['secondary_menu_show_elements']))
                         <div class="contact-info flex gap-x-2">
                             @if (in_array('phone', $options['secondary_menu_show_elements']))

@@ -103,6 +103,29 @@ header#masthead.nav-ready {
 	color: var(--mobile-active-color, inherit) !important;
 }
 
+// Secondary menu items in slide-out mobiel menu: gebruik mobiele tekst- en actief kleur.
+.mobile-menu-wrap .secondary-menu-items li.menu-item > a,
+.mobile-menu-wrap .secondary-menu-items li.menu-item-has-children::after {
+	color: var(--mobile-text-color, inherit) !important;
+}
+
+.mobile-menu-wrap .secondary-menu-items li.menu-item:hover > a,
+.mobile-menu-wrap .secondary-menu-items li.menu-item.current-menu-item > a,
+.mobile-menu-wrap .secondary-menu-items li.menu-item.current_page_item > a,
+.mobile-menu-wrap .secondary-menu-items li.menu-item-has-children:hover::after {
+	color: var(--mobile-active-color, inherit) !important;
+}
+
+// Sub-menu items binnen secondary menu items: zelfde kleuren
+.mobile-menu-wrap .secondary-menu-items .sub-menu li.menu-item > a {
+	color: var(--mobile-text-color, inherit) !important;
+}
+
+.mobile-menu-wrap .secondary-menu-items .sub-menu li.menu-item:hover > a,
+.mobile-menu-wrap .secondary-menu-items .sub-menu li.menu-item.current-menu-item > a {
+	color: var(--mobile-active-color, inherit) !important;
+}
+
 // Topbalk tekst- en linkkleur via CSS custom property (gezet door JS).
 // !important is nodig om te winnen van klassen die via het WordPress menu-editor
 // per menu-item worden ingesteld (bv. text-white hover:text-cta op <li>).
@@ -565,6 +588,8 @@ header#masthead.nav-ready {
 				@screen xl {
 
 					@apply bg-white p-3 block border border-gray-100;
+					background-color: var(--submenu-bg, white) !important;
+					border-color: transparent !important;
 					z-index: 10000;
 					position: absolute;
 					left: -10%;
@@ -572,11 +597,27 @@ header#masthead.nav-ready {
 
 					.menu-item {
 						width: max-content;
-						@apply text-black hover:text-secondary;
+						color: var(--submenu-text-color, black);
+
+						> a {
+							color: var(--submenu-text-color, black) !important;
+
+							&:before {
+								content: '\f061';
+								font-family: $fa-font-family;
+								font-size: 0.7rem;
+								margin-right: 0.5rem;
+								display: inline-block;
+							}
+						}
+
+						&:hover > a {
+							color: var(--submenu-active-color, var(--submenu-text-color, black)) !important;
+						}
 					}
 
-					.current-menu-item {
-						@apply text-secondary;
+					.current-menu-item > a {
+						color: var(--submenu-active-color, var(--submenu-text-color, black)) !important;
 					}
 				}
 			}

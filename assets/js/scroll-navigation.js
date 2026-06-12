@@ -285,9 +285,9 @@ const HIDE_DELTA       = 25;  // minimale scroll-afstand voor hide/show
     const submenuBgClass         = nav.dataset.submenuBg         || '';
     const submenuTextClass       = nav.dataset.submenuText       || '';
     const submenuActiveTextClass = nav.dataset.submenuActiveText || '';
-    if (submenuBgClass)         { const c = resolveColorFromClass(submenuBgClass);         if (c) nav.style.setProperty('--submenu-bg',          c); }
-    if (submenuTextClass)       { const c = resolveColorFromClass(submenuTextClass);       if (c) nav.style.setProperty('--submenu-text-color',   c); }
-    if (submenuActiveTextClass) { const c = resolveColorFromClass(submenuActiveTextClass); if (c) nav.style.setProperty('--submenu-active-color', c); }
+    if (submenuBgClass)         { const c = resolveColorFromClass(submenuBgClass);         if (c) { nav.style.setProperty('--submenu-bg',          c); if (secondaryNav) secondaryNav.style.setProperty('--submenu-bg',          c); } }
+    if (submenuTextClass)       { const c = resolveColorFromClass(submenuTextClass);       if (c) { nav.style.setProperty('--submenu-text-color',   c); if (secondaryNav) secondaryNav.style.setProperty('--submenu-text-color',   c); } }
+    if (submenuActiveTextClass) { const c = resolveColorFromClass(submenuActiveTextClass); if (c) { nav.style.setProperty('--submenu-active-color', c); if (secondaryNav) secondaryNav.style.setProperty('--submenu-active-color', c); } }
 
     // Mobiele menu kleuren — eenmalig op load, nooit aangepast bij scrollen
     const mobileWrap = document.querySelector('.mobile-menu-wrap');

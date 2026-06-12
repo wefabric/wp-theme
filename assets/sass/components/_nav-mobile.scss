@@ -347,6 +347,10 @@ header.banner {
   max-width: 100%;
 }
 
+.mobile-menu .menu .menu-item-has-children>.sub-menu {
+  width: 100%;
+}
+
 .main-navigation .mobile-menu .menu li.custom a {
   line-height: 1.7rem;
 }
@@ -753,12 +757,54 @@ header.banner {
     align-items: center;
     font-size: clamp(0.85rem, 2.5vw, 1rem);
 
-    a { text-decoration: none; opacity: 0.85; transition: opacity 0.2s; &:hover { opacity: 1; } }
+    a {
+      color: var(--mnav2-text-color, currentColor);
+      text-decoration: none;
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+
+      &:hover {
+        opacity: 1;
+        color: var(--mnav2-active-color, currentColor);
+      }
+    }
   }
 
   &__secondary-nav {
     ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
-    li a { text-decoration: none; opacity: 0.85; transition: opacity 0.2s; &:hover { opacity: 1; } }
+
+    // Top-level items
+    li > a {
+      color: var(--mnav2-text-color, currentColor);
+      text-decoration: none;
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+
+      &:hover {
+        opacity: 1;
+        color: var(--mnav2-active-color, currentColor);
+      }
+    }
+
+    // Sub-menu items
+    .sub-menu {
+      list-style: none;
+      padding: 0.25rem 0 0 0.75rem;
+      margin: 0;
+
+      li > a {
+        color: var(--mnav2-text-color, currentColor);
+        text-decoration: none;
+        opacity: 0.75;
+        font-size: 0.9em;
+        transition: opacity 0.2s, color 0.2s;
+
+        &:hover {
+          opacity: 1;
+          color: var(--mnav2-active-color, currentColor);
+        }
+      }
+    }
   }
 }
 
