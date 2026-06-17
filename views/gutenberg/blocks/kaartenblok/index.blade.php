@@ -222,6 +222,7 @@
             ];
         }
     }
+    } // end else (manually selected pages)
 
 
     // Blokinstellingen
