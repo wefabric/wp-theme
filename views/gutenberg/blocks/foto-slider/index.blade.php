@@ -46,7 +46,6 @@
     // Afbeeldingen
     $captionColor = $block['data']['caption_color'] ?? '';
     $imagesData = [];
-    $numImages = intval($block['data']['images']);
     $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
     $imageFormat = $block['data']['image_format'] ?? 'custom';
@@ -78,32 +77,28 @@
     $imgStyle = $customStyle;
 
     // Loop door de afbeeldingen
-    for ($i = 0; $i < $numImages; $i++) {
-        $imageKey = "images_{$i}_image";
-        $captionKey = "images_{$i}_caption";
-        $linkKey = "images_{$i}_link";
-
-        $imageId = $block['data'][$imageKey] ?? '';
-        $caption = $block['data'][$captionKey] ?? '';
-        $imageLink = $block['data'][$linkKey] ?? [];
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'images') as $idx => $row) {
+        $imageId = $row['image'] ?? '';
+        $caption = $row['caption'] ?? '';
+        $imageLink = is_array($row['link'] ?? null) ? $row['link'] : [];
 
         if ($imageId) {
             $imageInfo = wp_get_attachment_image_src($imageId, 'full');
             if ($imageInfo) {
-                $alt = get_post_meta($imageId, '_wp_attachment_image_alt', true) ?: "image_$i";
+                $alt = get_post_meta($imageId, '_wp_attachment_image_alt', true) ?: "image_{$idx}";
 
                 $imagesData[] = [
-                    'id' => $imageId,
-                    'url' => $imageInfo[0],
-                    'caption' => $caption,
-                    'alt' => $alt,
-                    'link' => [
-                        'title' => $imageLink['title'] ?? '',
-                        'url' => $imageLink['url'] ?? '',
+                    'id'         => $imageId,
+                    'url'        => $imageInfo[0],
+                    'caption'    => $caption,
+                    'alt'        => $alt,
+                    'link'       => [
+                        'title'  => $imageLink['title'] ?? '',
+                        'url'    => $imageLink['url'] ?? '',
                         'target' => $imageLink['target'] ?? ''
                     ],
-                    'img_class' => $imgClass,
-                    'img_style' => $imgStyle,
+                    'img_class'  => $imgClass,
+                    'img_style'  => $imgStyle,
                     'object_fit' => $imageStyle
                 ];
             }

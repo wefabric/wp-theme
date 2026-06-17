@@ -24,17 +24,13 @@
 
 
     // Links
-    $itemsCount = $block['data']['items'] ?? 0;
     $items = [];
-
-    for ($i = 0; $i < $itemsCount; $i++) {
-        $item = [
-            'image' => $block['data']['items_' . $i . '_image'] ?? '',
-            'title' => $block['data']['items_' . $i . '_title'] ?? '',
-            'url' => $block['data']['items_' . $i . '_url'] ?? '',
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'items') as $row) {
+        $items[] = [
+            'image' => $row['image'] ?? '',
+            'title' => $row['title'] ?? '',
+            'url'   => $row['url'] ?? '',
         ];
-
-        $items[] = $item;
     }
 
     $swiperAutoplay = $block['data']['autoplay'] ?? false;

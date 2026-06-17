@@ -187,10 +187,10 @@
         wp_reset_postdata();
     } else {
     // Use manually selected pages
-    for ($i = 0; $i < $numPages; $i++) {
-        $pageId      = $block['data']["pages_{$i}_page"] ?? 0;
-        $imageId     = $block['data']["pages_{$i}_image"] ?? 0;
-        $externalUrl = $block['data']["pages_{$i}_external_url"] ?? '';
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'pages') as $row) {
+        $pageId      = $row['page'] ?? 0;
+        $imageId     = intval($row['image'] ?? 0);
+        $externalUrl = $row['external_url'] ?? '';
 
         if ($pageId) {
             // Interne pagina
@@ -200,27 +200,26 @@
                 $pagesData[] = [
                     'id'                => $page->ID,
                     'title'             => $page->post_title,
-                    'custom_title'      => $block['data']["pages_{$i}_custom_page_title"] ?? '',
+                    'custom_title'      => $row['custom_page_title'] ?? '',
                     'url'               => get_permalink($page->ID),
                     'content'           => $page->post_content,
-                    'icon'              => $block['data']["pages_{$i}_icon"] ?? '',
+                    'icon'              => $row['icon'] ?? '',
                     'image_id'          => $imageId,
                     'featured_image_id' => $imageId ?: (has_post_thumbnail($page->ID) ? get_post_thumbnail_id($page->ID) : 0),
                 ];
             }
-            } elseif (!empty($externalUrl)) {
-                // Externe link
-                $pagesData[] = [
-                    'id'                => 0,
-                    'title'             => $block['data']["pages_{$i}_custom_page_title"] ?? $externalUrl,
-                    'custom_title'      => $block['data']["pages_{$i}_custom_page_title"] ?? '',
-                    'url'               => $externalUrl,
-                    'content'           => '',
-                    'icon'              => $block['data']["pages_{$i}_icon"] ?? '',
-                    'image_id'          => $imageId,
-                    'featured_image_id' => $imageId,
-                ];
-            }
+        } elseif (!empty($externalUrl)) {
+            // Externe link
+            $pagesData[] = [
+                'id'                => 0,
+                'title'             => $row['custom_page_title'] ?? $externalUrl,
+                'custom_title'      => $row['custom_page_title'] ?? '',
+                'url'               => $externalUrl,
+                'content'           => '',
+                'icon'              => $row['icon'] ?? '',
+                'image_id'          => $imageId,
+                'featured_image_id' => $imageId,
+            ];
         }
     }
 

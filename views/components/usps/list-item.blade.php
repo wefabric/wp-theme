@@ -1,70 +1,58 @@
 @php
-    $visualType = $block['data']['visual_type'] ?? 'icons';
+    $uspUrl = $usp->link['url'] ?? '';
+    $altText = get_post_meta($usp->image, '_wp_attachment_image_alt', true) ?: 'usp-image';
 
-    $uspTitle = $usp['uspTitle'];
-    $uspText = $usp['uspText'];
-    $uspLink = $usp['uspLink'];
-    $uspUrl = $uspLink['url'] ?? '';
-    $icon = $usp['uspIcon'];
-
-    $imageId = $usp['uspImage'];
-    $altText = get_post_meta($imageId, '_wp_attachment_image_alt', true) ?: 'usp-image';
-    $numberAnimation = $block['data']['number_animation'] ?? false;
-
-    // Extract numeric part from $uspTitle
-    preg_match('/(\d+)/', $uspTitle, $matches);
+    // Extract numeric part from title for optional counter animation
+    preg_match('/(\d+)/', $usp->title, $matches);
     $numericPart = $matches[0] ?? '';
     $isNumber = !empty($numericPart);
 @endphp
 
+<div class="USP-item h-full usp-{{ $uspBlock->uspLayout }} @if ($uspBlock->flyinEffect) usp-hidden @endif @if($uspBlock->uspBackgroundColor) bg-{{ $uspBlock->uspBackgroundColor }} p-4 lg:p-8 @endif">
 
-<div class="USP-item h-full usp-{{ $uspLayout }} @if ($flyinEffect) usp-hidden @endif @if($uspBackgroundColor) bg-{{ $uspBackgroundColor }} p-4 lg:p-8 @endif">
-
-    @if (!empty($uspUrl) && $uspUrl)
-        <a href="{{ $uspUrl }}" class="usp-url" aria-label="Ga naar {{ $uspTitle }} pagina">
+    @if ($uspUrl)
+        <a href="{{ $uspUrl }}" class="usp-url" aria-label="Ga naar {{ $usp->title }} pagina">
     @endif
 
-
-    <div class="item-styling h-full @if( $uspLayout == 'horizontal') flex flex-row gap-x-6 items-center text-left justify-start @elseif( $uspLayout == 'vertical') flex flex-col gap-y-4 text-center @endif">
-        @if (($visualType == 'icons') && ($icon))
-            <i class="fa-{{ $icon['style'] }} fa-{{ $icon['id'] }} text-{{ $uspIconColor }} text-[70px] inline-block"
+    <div class="item-styling h-full @if($uspBlock->uspLayout == 'horizontal') flex flex-row gap-x-6 items-center text-left justify-start @elseif($uspBlock->uspLayout == 'vertical') flex flex-col gap-y-4 text-center @endif">
+        @if ($uspBlock->visualType === 'icons' && $usp->iconData)
+            <i class="fa-{{ $usp->iconData['style'] }} fa-{{ $usp->iconData['id'] }} text-{{ $uspBlock->uspIconColor }} text-[70px] inline-block"
                aria-hidden="true"></i>
         @endif
-        @if (($visualType == 'images') && ($imageId))
+        @if ($uspBlock->visualType === 'images' && $usp->image)
             @include('components.image', [
-                'image_id' => $imageId,
+                'image_id' => $usp->image,
                 'size' => 'full',
                 'object_fit' => 'cover',
                 'img_class' => 'mx-auto w-auto h-auto max-w-full max-h-20',
                 'alt' => $altText,
             ])
         @endif
-        @if ($uspTitle || $uspText)
+        @if ($usp->title || $usp->text)
             <div class="usp-data">
-                @if ($uspTitle)
-                    <div class="usp-title text-{{ $uspTitleColor }} font-bold h4">
-                        @if ($isNumber && $numberAnimation)
-                            <span class="counter" data-target="{{ $numericPart }}">0</span>{{ str_replace($numericPart, '', $uspTitle) }}
+                @if ($usp->title)
+                    <div class="usp-title text-{{ $uspBlock->uspTitleColor }} font-bold h4">
+                        @if ($isNumber && $uspBlock->numberAnimation)
+                            <span class="counter" data-target="{{ $numericPart }}">0</span>{{ str_replace($numericPart, '', $usp->title) }}
                         @else
-                            @include('components.content', ['content' => $uspTitle])
+                            @include('components.content', ['content' => $usp->title])
                         @endif
                     </div>
                 @endif
-                @if ($uspText)
-                    @include('components.content', ['content' => $uspText, 'class' => 'usp-text mt-2 text-' . $uspTextColor])
+                @if ($usp->text)
+                    @include('components.content', ['content' => $usp->text, 'class' => 'usp-text mt-2 text-' . $uspBlock->uspTextColor])
                 @endif
             </div>
         @endif
     </div>
 
-    @if (!empty($uspUrl) && $uspUrl)
+    @if ($uspUrl)
         </a>
     @endif
 
-
 </div>
 
-@if ($isNumber && $numberAnimation)
+@if ($isNumber && $uspBlock->numberAnimation)
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const counters = document.querySelectorAll('.counter');

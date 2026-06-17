@@ -1,223 +1,97 @@
 @php
-    // Content
-    $title = $block['data']['title'] ?? '';
-    $titleColor = $block['data']['title_color'] ?? '';
-    $subTitle = $block['data']['subtitle'] ?? '';
-    $subTitleColor = $block['data']['subtitle_color'] ?? '';
-    $subtitleIcon = $block['data']['subtitle_icon'] ?? '';
-    $subtitleIcon = $subtitleIcon ? json_decode($subtitleIcon, true) : null;
-    $subtitleIconColor = $block['data']['subtitle_icon_color'] ?? '';
-    $text = $block['data']['text'] ?? '';
-    $textColor = $block['data']['text_color'] ?? '';
-
-        // Buttons
-        $button1Text = $block['data']['button_button_1']['title'] ?? '';
-        $button1Link = $block['data']['button_button_1']['url'] ?? '';
-        $button1Target = $block['data']['button_button_1']['target'] ?? '_self';
-        $button1Color = $block['data']['button_button_1_color'] ?? '';
-        $button1Style = $block['data']['button_button_1_style'] ?? '';
-        $button1Download = $block['data']['button_button_1_download'] ?? false;
-        $button1Icon = $block['data']['button_button_1_icon'] ?? '';
-        if (!empty($button1Icon)) {
-            $iconData = json_decode($button1Icon, true);
-            if (isset($iconData['id'], $iconData['style'])) {
-                $button1Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
-            }
-        }
-        $button2Text = $block['data']['button_button_2']['title'] ?? '';
-        $button2Link = $block['data']['button_button_2']['url'] ?? '';
-        $button2Target = $block['data']['button_button_2']['target'] ?? '_self';
-        $button2Color = $block['data']['button_button_2_color'] ?? '';
-        $button2Style = $block['data']['button_button_2_style'] ?? '';
-        $button2Download = $block['data']['button_button_2_download'] ?? false;
-        $button2Icon = $block['data']['button_button_2_icon'] ?? '';
-        if (!empty($button2Icon)) {
-            $iconData = json_decode($button2Icon, true);
-            if (isset($iconData['id'], $iconData['style'])) {
-                $button2Icon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
-            }
-        }
-
-        $button_position = $block['data']['button_position'] ?? 'bottom';
-
-        $textPosition = $block['data']['text_position'] ?? '';
-        $textClassMap = ['left' => 'text-left justify-start', 'center' => 'text-center justify-center', 'right' => 'text-right justify-end',];
-        $textClass = $textClassMap[$textPosition] ?? '';
-
-
-    // USP's
-    $uspTitleColor = $block['data']['usp_title_color'] ?? '';
-    $uspTextColor = $block['data']['usp_text_color'] ?? '';
-    $uspBackgroundColor = $block['data']['usp_background_color'] ?? '';
-    $uspIconColor = $block['data']['usp_icon_color'] ?? '';
-    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
-
-    $uspLayout = $block['data']['usp_layout'] ?? 'vertical';
-
-    $uspsCount = $block['data']['usps'];
-    $usps = [];
-
-    for ($i = 0; $i < $uspsCount; $i++) {
-        $uspTitle = $block['data']["usps_{$i}_usp_title"];
-        $uspText = $block['data']["usps_{$i}_usp_text"];
-        $uspLink = $block['data']["usps_{$i}_usp_link"];
-        $uspImage = $block['data']["usps_{$i}_image"] ?? '';
-        $uspIcon = $block['data']["usps_{$i}_icon"] ?? null;
-
-        $iconClass = '';
-        if ($uspIcon !== null) {
-            $iconData = json_decode($uspIcon, true);
-        }
-
-        $usps[] = [
-            'uspTitle' => $uspTitle,
-            'uspText' => $uspText,
-            'uspLink' => $uspLink,
-            'uspImage' => $uspImage,
-            'uspIcon' => $iconData,
-        ];
-    }
-
-
-    // Blokinstellingen
-    $blockWidth = $block['data']['block_width'] ?? 100;
-    $blockClassMap = [50 => 'w-full lg:w-1/2', 66 => 'w-full lg:w-2/3', 80 => 'w-full lg:w-4/5', 100 => 'w-full', 'fullscreen' => 'w-full'];
-    $blockClass = $blockClassMap[$blockWidth] ?? '';
-    $fullScreenClass = $blockWidth !== 'fullscreen' ? 'container mx-auto' : '';
-
-    $backgroundColor = $block['data']['background_color'] ?? 'none';
-    $backgroundImageId = $block['data']['background_image'] ?? '';
-    $overlayEnabled = $block['data']['overlay_image'] ?? false;
-    $overlayColor = $block['data']['overlay_color'] ?? '';
-    $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
-    $backgroundImageParallax = $block['data']['background_image_parallax'] ?? false;
-
-    $customBlockClasses = $block['data']['custom_css_classes'] ?? '';
-    $customBlockId = $block['data']['custom_block_id'] ?? '';
-    $hideBlock = $block['data']['hide_block'] ?? false;
-
-
-    // Paddings & margins
+    use Theme\Blocks\Usp\UspBlock;
+    $uspBlock = new UspBlock($block);
     $randomNumber = rand(0, 1000);
-
-    $mobilePaddingTop = $block['data']['padding_mobile_padding_top'] ?? '';
-    $mobilePaddingRight = $block['data']['padding_mobile_padding_right'] ?? '';
-    $mobilePaddingBottom = $block['data']['padding_mobile_padding_bottom'] ?? '';
-    $mobilePaddingLeft = $block['data']['padding_mobile_padding_left'] ?? '';
-    $tabletPaddingTop = $block['data']['padding_tablet_padding_top'] ?? '';
-    $tabletPaddingRight = $block['data']['padding_tablet_padding_right'] ?? '';
-    $tabletPaddingBottom = $block['data']['padding_tablet_padding_bottom'] ?? '';
-    $tabletPaddingLeft = $block['data']['padding_tablet_padding_left'] ?? '';
-    $desktopPaddingTop = $block['data']['padding_desktop_padding_top'] ?? '';
-    $desktopPaddingRight = $block['data']['padding_desktop_padding_right'] ?? '';
-    $desktopPaddingBottom = $block['data']['padding_desktop_padding_bottom'] ?? '';
-    $desktopPaddingLeft = $block['data']['padding_desktop_padding_left'] ?? '';
-
-    $mobileMarginTop = $block['data']['margin_mobile_margin_top'] ?? '';
-    $mobileMarginRight = $block['data']['margin_mobile_margin_right'] ?? '';
-    $mobileMarginBottom = $block['data']['margin_mobile_margin_bottom'] ?? '';
-    $mobileMarginLeft = $block['data']['margin_mobile_margin_left'] ?? '';
-    $tabletMarginTop = $block['data']['margin_tablet_margin_top'] ?? '';
-    $tabletMarginRight = $block['data']['margin_tablet_margin_right'] ?? '';
-    $tabletMarginBottom = $block['data']['margin_tablet_margin_bottom'] ?? '';
-    $tabletMarginLeft = $block['data']['margin_tablet_margin_left'] ?? '';
-    $desktopMarginTop = $block['data']['margin_desktop_margin_top'] ?? '';
-    $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
-    $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
-    $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
-
-
-    // Animaties
-    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'usps' }}@endif" class="block-usps relative usp-{{ $randomNumber }}-custom-padding usp-{{ $randomNumber }}-custom-margin layout-{{ $uspLayout }} bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
-    @if($swiperOutContainer)
+<section id="@if($uspBlock->customBlockId){{ $uspBlock->customBlockId }}@else{{ 'usps' }}@endif"
+         class="block-usps relative usp-{{ $randomNumber }}-custom-padding usp-{{ $randomNumber }}-custom-margin layout-{{ $uspBlock->uspLayout }} bg-{{ $uspBlock->backgroundColor }} {{ $uspBlock->customBlockClasses }} {{ $uspBlock->hideBlock ? 'hidden' : '' }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($uspBlock->backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($uspBlock->backgroundImageParallax) background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($uspBlock->backgroundImageId) }}">
+    @if($uspBlock->swiperOutContainer)
         <div class="overflow-hidden">
     @endif
-    @if ($overlayEnabled)
-        <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
+    @if ($uspBlock->overlayEnabled)
+        <div class="overlay absolute inset-0 bg-{{ $uspBlock->overlayColor }} opacity-{{ $uspBlock->overlayOpacity }}"></div>
     @endif
-        <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-            <div class="custom-width {{ $blockClass }} {{ $textClass }} mx-auto">
-                <div class="content-section">
-                    @if ($subTitle)
-                        <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">
-                        @if ($subtitleIcon)
-                                <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
+    <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $uspBlock->fullScreenClass }}">
+        <div class="custom-width {{ $uspBlock->blockClass }} {{ $uspBlock->textClass }} mx-auto">
+            <div class="content-section">
+                @if ($uspBlock->subTitle)
+                    <span class="subtitle block mb-2 text-{{ $uspBlock->subTitleColor }} {{ $uspBlock->textClass }}">
+                        @if ($uspBlock->subtitleIcon)
+                            <i class="subtitle-icon text-{{ $uspBlock->subtitleIconColor }} fa-{{ $uspBlock->subtitleIcon['style'] }} fa-{{ $uspBlock->subtitleIcon['id'] }} mr-1"></i>
                         @endif
-                        {!! $subTitle !!}
-                        </span>
-                    @endif
-                    @if ($title)
-                        <h2 class="title mb-4 text-{{ $titleColor }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">{!! $title !!}</h2>
-                    @endif
-                    @if ($text)
-                        @include('components.content', [
-                            'content' => apply_filters('the_content', $text),
-                            'class' => 'container mx-auto mb-4 text-' . $textColor . ($blockWidth == 'fullscreen' ? ' px-8' : '')
-                        ])
-                    @endif
-                    @if (($button1Text) && ($button1Link) && ($button_position == 'top'))
-                        <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
-                            @include('components.buttons.default', [
-                                'text' => $button1Text,
-                                'href' => $button1Link,
-                                'alt' => $button1Text,
-                                'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
-                                'class' => 'rounded-lg',
-                                'target' => $button1Target,
-                                'icon' => $button1Icon,
-                                'download' => $button1Download,
-                            ])
-                            @if (($button2Text) && ($button2Link))
-                                @include('components.buttons.default', [
-                                    'text' => $button2Text,
-                                    'href' => $button2Link,
-                                    'alt' => $button2Text,
-                                    'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
-                                    'class' => 'rounded-lg',
-                                    'target' => $button2Target,
-                                    'icon' => $button2Icon,
-                                    'download' => $button2Download,
-                                ])
-                            @endif
-                        </div>
-                    @endif
-                </div>
-                @if ($usps)
-                    @include('components.usps.list', ['usps' => $usps])
+                        {!! $uspBlock->subTitle !!}
+                    </span>
                 @endif
-                @if (($button1Text) && ($button1Link) && ($button_position == 'bottom'))
-                    <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
+                @if ($uspBlock->title)
+                    <h2 class="title mb-4 text-{{ $uspBlock->titleColor }} container mx-auto @if($uspBlock->blockWidth == 'fullscreen') px-8 @endif">{!! $uspBlock->title !!}</h2>
+                @endif
+                @if ($uspBlock->text)
+                    @include('components.content', [
+                        'content' => apply_filters('the_content', $uspBlock->text),
+                        'class' => 'container mx-auto mb-4 text-' . $uspBlock->textColor . ($uspBlock->blockWidth == 'fullscreen' ? ' px-8' : '')
+                    ])
+                @endif
+                @if ($uspBlock->button1Text && $uspBlock->button1Link && $uspBlock->buttonPosition === 'top')
+                    <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $uspBlock->textClass }} container mx-auto @if($uspBlock->blockWidth == 'fullscreen') px-8 @endif">
                         @include('components.buttons.default', [
-                            'text' => $button1Text,
-                            'href' => $button1Link,
-                            'alt' => $button1Text,
-                            'colors' => 'btn-' . $button1Color . ' btn-' . $button1Style,
+                            'text' => $uspBlock->button1Text,
+                            'href' => $uspBlock->button1Link,
+                            'alt' => $uspBlock->button1Text,
+                            'colors' => 'btn-' . $uspBlock->button1Color . ' btn-' . $uspBlock->button1Style,
                             'class' => 'rounded-lg',
-                            'target' => $button1Target,
-                            'icon' => $button1Icon,
-                            'download' => $button1Download,
+                            'target' => $uspBlock->button1Target,
+                            'icon' => $uspBlock->button1Icon,
+                            'download' => $uspBlock->button1Download,
                         ])
-                        @if (($button2Text) && ($button2Link))
+                        @if ($uspBlock->button2Text && $uspBlock->button2Link)
                             @include('components.buttons.default', [
-                                'text' => $button2Text,
-                                'href' => $button2Link,
-                                'alt' => $button2Text,
-                                'colors' => 'btn-' . $button2Color . ' btn-' . $button2Style,
+                                'text' => $uspBlock->button2Text,
+                                'href' => $uspBlock->button2Link,
+                                'alt' => $uspBlock->button2Text,
+                                'colors' => 'btn-' . $uspBlock->button2Color . ' btn-' . $uspBlock->button2Style,
                                 'class' => 'rounded-lg',
-                                'target' => $button2Target,
-                                'icon' => $button2Icon,
-                                'download' => $button2Download,
+                                'target' => $uspBlock->button2Target,
+                                'icon' => $uspBlock->button2Icon,
+                                'download' => $uspBlock->button2Download,
                             ])
                         @endif
                     </div>
                 @endif
             </div>
+            @if ($uspBlock->usps)
+                @include('components.usps.list', ['usps' => $uspBlock->usps, 'uspBlock' => $uspBlock])
+            @endif
+            @if ($uspBlock->button1Text && $uspBlock->button1Link && $uspBlock->buttonPosition === 'bottom')
+                <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $uspBlock->textClass }} container mx-auto @if($uspBlock->blockWidth == 'fullscreen') px-8 @endif">
+                    @include('components.buttons.default', [
+                        'text' => $uspBlock->button1Text,
+                        'href' => $uspBlock->button1Link,
+                        'alt' => $uspBlock->button1Text,
+                        'colors' => 'btn-' . $uspBlock->button1Color . ' btn-' . $uspBlock->button1Style,
+                        'class' => 'rounded-lg',
+                        'target' => $uspBlock->button1Target,
+                        'icon' => $uspBlock->button1Icon,
+                        'download' => $uspBlock->button1Download,
+                    ])
+                    @if ($uspBlock->button2Text && $uspBlock->button2Link)
+                        @include('components.buttons.default', [
+                            'text' => $uspBlock->button2Text,
+                            'href' => $uspBlock->button2Link,
+                            'alt' => $uspBlock->button2Text,
+                            'colors' => 'btn-' . $uspBlock->button2Color . ' btn-' . $uspBlock->button2Style,
+                            'class' => 'rounded-lg',
+                            'target' => $uspBlock->button2Target,
+                            'icon' => $uspBlock->button2Icon,
+                            'download' => $uspBlock->button2Download,
+                        ])
+                    @endif
+                </div>
+            @endif
         </div>
-    @if($swiperOutContainer)
+    </div>
+    @if($uspBlock->swiperOutContainer)
         </div>
     @endif
 </section>
@@ -225,43 +99,43 @@
 <style>
     .usp-{{ $randomNumber }}-custom-padding {
         @media only screen and (min-width: 0px) {
-            @if($mobilePaddingTop) padding-top: {{ $mobilePaddingTop }}px; @endif
-            @if($mobilePaddingRight) padding-right: {{ $mobilePaddingRight }}px; @endif
-            @if($mobilePaddingBottom) padding-bottom: {{ $mobilePaddingBottom }}px; @endif
-            @if($mobilePaddingLeft) padding-left: {{ $mobilePaddingLeft }}px; @endif
+            @if($uspBlock->mobilePaddingTop) padding-top: {{ $uspBlock->mobilePaddingTop }}px; @endif
+            @if($uspBlock->mobilePaddingRight) padding-right: {{ $uspBlock->mobilePaddingRight }}px; @endif
+            @if($uspBlock->mobilePaddingBottom) padding-bottom: {{ $uspBlock->mobilePaddingBottom }}px; @endif
+            @if($uspBlock->mobilePaddingLeft) padding-left: {{ $uspBlock->mobilePaddingLeft }}px; @endif
         }
         @media only screen and (min-width: 768px) {
-            @if($tabletPaddingTop) padding-top: {{ $tabletPaddingTop }}px; @endif
-            @if($tabletPaddingRight) padding-right: {{ $tabletPaddingRight }}px; @endif
-            @if($tabletPaddingBottom) padding-bottom: {{ $tabletPaddingBottom }}px; @endif
-            @if($tabletPaddingLeft) padding-left: {{ $tabletPaddingLeft }}px; @endif
+            @if($uspBlock->tabletPaddingTop) padding-top: {{ $uspBlock->tabletPaddingTop }}px; @endif
+            @if($uspBlock->tabletPaddingRight) padding-right: {{ $uspBlock->tabletPaddingRight }}px; @endif
+            @if($uspBlock->tabletPaddingBottom) padding-bottom: {{ $uspBlock->tabletPaddingBottom }}px; @endif
+            @if($uspBlock->tabletPaddingLeft) padding-left: {{ $uspBlock->tabletPaddingLeft }}px; @endif
         }
         @media only screen and (min-width: 1024px) {
-            @if($desktopPaddingTop) padding-top: {{ $desktopPaddingTop }}px; @endif
-            @if($desktopPaddingRight) padding-right: {{ $desktopPaddingRight }}px; @endif
-            @if($desktopPaddingBottom) padding-bottom: {{ $desktopPaddingBottom }}px; @endif
-            @if($desktopPaddingLeft) padding-left: {{ $desktopPaddingLeft }}px; @endif
+            @if($uspBlock->desktopPaddingTop) padding-top: {{ $uspBlock->desktopPaddingTop }}px; @endif
+            @if($uspBlock->desktopPaddingRight) padding-right: {{ $uspBlock->desktopPaddingRight }}px; @endif
+            @if($uspBlock->desktopPaddingBottom) padding-bottom: {{ $uspBlock->desktopPaddingBottom }}px; @endif
+            @if($uspBlock->desktopPaddingLeft) padding-left: {{ $uspBlock->desktopPaddingLeft }}px; @endif
         }
     }
 
     .usp-{{ $randomNumber }}-custom-margin {
         @media only screen and (min-width: 0px) {
-            @if($mobileMarginTop) margin-top: {{ $mobileMarginTop }}px; @endif
-            @if($mobileMarginRight) margin-right: {{ $mobileMarginRight }}px; @endif
-            @if($mobileMarginBottom) margin-bottom: {{ $mobileMarginBottom }}px; @endif
-            @if($mobileMarginLeft) margin-left: {{ $mobileMarginLeft }}px; @endif
+            @if($uspBlock->mobileMarginTop) margin-top: {{ $uspBlock->mobileMarginTop }}px; @endif
+            @if($uspBlock->mobileMarginRight) margin-right: {{ $uspBlock->mobileMarginRight }}px; @endif
+            @if($uspBlock->mobileMarginBottom) margin-bottom: {{ $uspBlock->mobileMarginBottom }}px; @endif
+            @if($uspBlock->mobileMarginLeft) margin-left: {{ $uspBlock->mobileMarginLeft }}px; @endif
         }
         @media only screen and (min-width: 768px) {
-            @if($tabletMarginTop) margin-top: {{ $tabletMarginTop }}px; @endif
-            @if($tabletMarginRight) margin-right: {{ $tabletMarginRight }}px; @endif
-            @if($tabletMarginBottom) margin-bottom: {{ $tabletMarginBottom }}px; @endif
-            @if($tabletMarginLeft) margin-left: {{ $tabletMarginLeft }}px; @endif
+            @if($uspBlock->tabletMarginTop) margin-top: {{ $uspBlock->tabletMarginTop }}px; @endif
+            @if($uspBlock->tabletMarginRight) margin-right: {{ $uspBlock->tabletMarginRight }}px; @endif
+            @if($uspBlock->tabletMarginBottom) margin-bottom: {{ $uspBlock->tabletMarginBottom }}px; @endif
+            @if($uspBlock->tabletMarginLeft) margin-left: {{ $uspBlock->tabletMarginLeft }}px; @endif
         }
         @media only screen and (min-width: 1024px) {
-            @if($desktopMarginTop) margin-top: {{ $desktopMarginTop }}px; @endif
-            @if($desktopMarginRight) margin-right: {{ $desktopMarginRight }}px; @endif
-            @if($desktopMarginBottom) margin-bottom: {{ $desktopMarginBottom }}px; @endif
-            @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
+            @if($uspBlock->desktopMarginTop) margin-top: {{ $uspBlock->desktopMarginTop }}px; @endif
+            @if($uspBlock->desktopMarginRight) margin-right: {{ $uspBlock->desktopMarginRight }}px; @endif
+            @if($uspBlock->desktopMarginBottom) margin-bottom: {{ $uspBlock->desktopMarginBottom }}px; @endif
+            @if($uspBlock->desktopMarginLeft) margin-left: {{ $uspBlock->desktopMarginLeft }}px; @endif
         }
     }
 
@@ -278,7 +152,7 @@
     }
 </style>
 
-@if ($flyinEffect)
+@if ($uspBlock->flyinEffect)
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const uspItems = document.querySelectorAll('.USP-item');

@@ -65,14 +65,11 @@
     $resultBackgroundColor = $block['data']['result_background_color'] ?? '';
 
     $results = [];
-    for ($i = 0; $i < 4; $i++) {
-        $result_title_key = "results_{$i}_result_title";
-        $result_text_key = "results_{$i}_result_text";
-
-        if (isset($block['data'][$result_title_key]) && isset($block['data'][$result_text_key])) {
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'results') as $row) {
+        if (!empty($row['result_title']) || !empty($row['result_text'])) {
             $results[] = [
-                'title' => $block['data'][$result_title_key],
-                'text' => $block['data'][$result_text_key],
+                'title' => $row['result_title'] ?? '',
+                'text'  => $row['result_text'] ?? '',
             ];
         }
     }

@@ -46,50 +46,28 @@
 
 
 
-    // Number of images in the slider
-    $numImages = $block['data']['slider_1_images'] ?? 0;
+    // Slider 1 images
     $imagesSlider1Data = [];
-
-       // Fetch images and their details
-    for ($i = 0; $i < $numImages; $i++) {
-        $imageKey = "slider_1_images_{$i}_image";
-        $imageId = $block['data'][$imageKey] ?? '';
-
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'slider_1_images') as $idx => $row) {
+        $imageId = $row['image'] ?? '';
         if ($imageId) {
             $imageInfo = wp_get_attachment_image_src($imageId, 'full');
             if ($imageInfo) {
-                $alt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
-                $alt = $alt ? $alt : "image_$i";
-
-                $imagesSlider1Data[] = [
-                    'id' => $imageId,
-                    'url' => $imageInfo[0],
-                    'alt' => $alt
-                ];
+                $alt = get_post_meta($imageId, '_wp_attachment_image_alt', true) ?: "image_{$idx}";
+                $imagesSlider1Data[] = ['id' => $imageId, 'url' => $imageInfo[0], 'alt' => $alt];
             }
         }
     }
 
-    // Number of images in slider 2
-    $numImagesSlider2 = $block['data']['slider_2_images'] ?? 0;
+    // Slider 2 images
     $imagesSlider2Data = [];
-
-    // Fetch images and their details for slider 2
-    for ($i = 0; $i < $numImagesSlider2; $i++) {
-        $imageKey = "slider_2_images_{$i}_image";
-        $imageId = $block['data'][$imageKey] ?? '';
-
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'slider_2_images') as $idx => $row) {
+        $imageId = $row['image'] ?? '';
         if ($imageId) {
             $imageInfo = wp_get_attachment_image_src($imageId, 'full');
             if ($imageInfo) {
-                $alt = get_post_meta($imageId, '_wp_attachment_image_alt', true);
-                $alt = $alt ? $alt : "image_$i";
-
-                $imagesSlider2Data[] = [
-                    'id' => $imageId,
-                    'url' => $imageInfo[0],
-                    'alt' => $alt
-                ];
+                $alt = get_post_meta($imageId, '_wp_attachment_image_alt', true) ?: "image_{$idx}";
+                $imagesSlider2Data[] = ['id' => $imageId, 'url' => $imageInfo[0], 'alt' => $alt];
             }
         }
     }

@@ -57,25 +57,14 @@
     // Planning
     $planningDisplay = $block['data']['planning_display'] ?? 'percentage';
     $planningMarkers = [];
-    $numMarkers = intval($block['data']['planning_marker'] ?? 0);
     $markersTemp = [];
-
-    for ($i = 0; $i < $numMarkers; $i++) {
-        $titleKey = "planning_marker_{$i}_marker_title";
-        $textKey = "planning_marker_{$i}_marker_text";
-        $percentageKey = "planning_marker_{$i}_marker_percentage";
-        $dateKey = "planning_marker_{$i}_marker_date";
-
-        $markerTitle = $block['data'][$titleKey] ?? '';
-        $markerText = $block['data'][$textKey] ?? '';
-        $markerPercentage = $block['data'][$percentageKey] ?? 0;
-        $markerDate = $block['data'][$dateKey] ?? null;
-
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'planning_marker') as $row) {
+        $markerDate = $row['marker_date'] ?? null;
         $markersTemp[] = [
-            'marker_title' => $markerTitle,
-            'marker_text' => $markerText,
-            'marker_percentage' => $markerPercentage,
-            'marker_date' => $markerDate ? strtotime($markerDate) : null,
+            'marker_title'      => $row['marker_title'] ?? '',
+            'marker_text'       => $row['marker_text'] ?? '',
+            'marker_percentage' => $row['marker_percentage'] ?? 0,
+            'marker_date'       => $markerDate ? strtotime($markerDate) : null,
         ];
     }
 

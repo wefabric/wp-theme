@@ -15,21 +15,13 @@
     $linkColor = $block['data']['link_color'] ?? '';
     $stickyMenu = $block['data']['sticky_submenu'] ?? true;
 
-    $linksCount = $block['data']['links'] ?? 0;
     $links = [];
-
-    for ($i = 0; $i < $linksCount; $i++) {
-
-     $linkKey = "links_{$i}_link";
-     $linkUrl = $block['data'][$linkKey]['url'] ?? '';
-     $linkText = $block['data'][$linkKey]['title'] ?? '';
-     $linkTarget = $block['data'][$linkKey]['target'] ?? '';
-
-     $links[] = [
-         'text' => $linkText,
-         'link' => $linkUrl,
-         'target' => $linkTarget,
-     ];
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'links') as $row) {
+        $links[] = [
+            'text'   => $row['link']['title'] ?? '',
+            'link'   => $row['link']['url'] ?? '',
+            'target' => $row['link']['target'] ?? '',
+        ];
     }
 
 

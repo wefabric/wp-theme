@@ -92,31 +92,23 @@
         wp_reset_postdata();
     } else {
     // Use manually selected pages
-    for ($i = 0; $i < $numPages; $i++) {
-        $pageId      = $block['data']["pages_{$i}_page"] ?? 0;
-        $imageIdRaw  = $block['data']["pages_{$i}_image"] ?? 0;
-        $externalUrl = $block['data']["pages_{$i}_external_url"] ?? '';
-
-        // Normalize imageId to a valid attachment ID (int)
-        $imageId = 0;
-        if (is_array($imageIdRaw)) {
-            $imageId = intval($imageIdRaw['id'] ?? $imageIdRaw['ID'] ?? 0);
-        } elseif (is_string($imageIdRaw)) {
-            if (ctype_digit($imageIdRaw)) {
-                $imageId = intval($imageIdRaw);
-            } else {
-                $url = $imageIdRaw;
-                if (strpos($url, 'http') !== 0) {
-                    // Likely a relative URL like /content/uploads/...
-                    // Use WP home_url to concatenate correctly without breaking slashes
-                    $url = home_url($url);
-                }
-                $aid = attachment_url_to_postid($url);
-                $imageId = $aid ? intval($aid) : 0;
-            }
+    $normalizeToId = function($val) {
+        if (is_array($val)) {
+            return intval($val['id'] ?? $val['ID'] ?? 0);
+        } elseif (is_string($val)) {
+            if (ctype_digit($val)) { return intval($val); }
+            $url = $val;
+            if (strpos($url, 'http') !== 0) { $url = home_url($url); }
+            $aid = attachment_url_to_postid($url);
+            return $aid ? intval($aid) : 0;
         } else {
-            $imageId = intval($imageIdRaw);
+            return intval($val);
         }
+    };
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'pages') as $row) {
+        $pageId      = $row['page'] ?? 0;
+        $imageId     = $normalizeToId($row['image'] ?? 0);
+        $externalUrl = $row['external_url'] ?? '';
 
         if ($pageId) {
             // Interne pagina
@@ -124,27 +116,12 @@
 
             // If page_visual is 'image' and no direct image selected, try subfield 'images'
             if ($pageVisual === 'image' && empty($imageId)) {
-                // 1) Direct field pages_{$i}_images may contain an image or array
-                $imagesField = $block['data']["pages_{$i}_images"] ?? null;
-                $normalizeToId = function($val){
-                    if (is_array($val)) {
-                        return intval($val['id'] ?? $val['ID'] ?? 0);
-                    } elseif (is_string($val)) {
-                        if (ctype_digit($val)) return intval($val);
-                        $url = $val;
-                        if (strpos($url, 'http') !== 0) { $url = home_url($url); }
-                        $aid = attachment_url_to_postid($url);
-                        return $aid ? intval($aid) : 0;
-                    } else {
-                        return intval($val);
-                    }
-                };
+                $imagesField = $row['images'] ?? null;
                 $candId = $normalizeToId($imagesField);
-                if (!$candId) {
-                    // 2) Try scanning subkeys like pages_{$i}_images_0_image
-                    foreach (($block['data'] ?? []) as $k => $v) {
-                        if (strpos($k, "pages_{$i}_images") === 0) {
-                            $tmpId = $normalizeToId($v);
+                if (!$candId && is_array($imagesField)) {
+                    foreach (array_values($imagesField) as $imgRow) {
+                        if (is_array($imgRow)) {
+                            $tmpId = $normalizeToId($imgRow['image'] ?? 0);
                             if ($tmpId) { $candId = $tmpId; break; }
                         }
                     }
@@ -156,25 +133,24 @@
                 $pagesData[] = [
                     'id'                => $page->ID,
                     'title'             => $page->post_title,
-                    'custom_title'      => $block['data']["pages_{$i}_custom_page_title"] ?? '',
+                    'custom_title'      => $row['custom_page_title'] ?? '',
                     'url'               => get_permalink($page->ID),
                     'content'           => $page->post_content,
                     'image_id'          => $imageId,
                     'featured_image_id' => has_post_thumbnail($page->ID) ? get_post_thumbnail_id($page->ID) : 0,
                 ];
             }
-            } elseif (!empty($externalUrl)) {
-                // Externe link
-                $pagesData[] = [
-                    'id'                => 0,
-                    'title'             => $block['data']["pages_{$i}_custom_page_title"] ?? $externalUrl,
-                    'custom_title'      => $block['data']["pages_{$i}_custom_page_title"] ?? '',
-                    'url'               => $externalUrl,
-                    'content'           => '',
-                    'image_id'          => $imageId,
-                    'featured_image_id' => 0,
-                ];
-            }
+        } elseif (!empty($externalUrl)) {
+            // Externe link
+            $pagesData[] = [
+                'id'                => 0,
+                'title'             => $row['custom_page_title'] ?? $externalUrl,
+                'custom_title'      => $row['custom_page_title'] ?? '',
+                'url'               => $externalUrl,
+                'content'           => '',
+                'image_id'          => $imageId,
+                'featured_image_id' => 0,
+            ];
         }
     }
 

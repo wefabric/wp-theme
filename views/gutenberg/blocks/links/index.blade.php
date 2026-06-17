@@ -15,21 +15,9 @@
     // Links
     $linkLayout = $block['data']['link_layout'] ?? 'horizontal';
     $linkDisplay = $block['data']['link_display'] ?? 'button';
-    $linksCount = $block['data']['links'] ?? 0;
     $links = [];
-
-    for ($i = 0; $i < $linksCount; $i++) {
-        $linkKey = "links_{$i}_link";
-        $linkText = $block['data'][$linkKey]['title'] ?? '';
-        $linkUrl = $block['data'][$linkKey]['url'] ?? '';
-        $linkTarget = $block['data'][$linkKey]['target'] ?? '_self';
-
-        $buttonColor = $block['data']["links_{$i}_button_color"] ?? '';
-        $buttonStyle = $block['data']["links_{$i}_button_style"] ?? '';
-        $linkImage = $block['data']["links_{$i}_link_image"] ?? '';
-        $linkIcon = $block['data']["links_{$i}_link_icon"] ?? '';
-        $linkIconColor = $block['data']["links_{$i}_link_icon_color"] ?? '';
-        $linkTextColor = $block['data']["links_{$i}_link_text_color"] ?? '';
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'links') as $row) {
+        $linkIcon = $row['link_icon'] ?? '';
         $buttonIcon = '';
         if (!empty($linkIcon)) {
             $iconData = json_decode($linkIcon, true);
@@ -37,18 +25,17 @@
                 $buttonIcon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
             }
         }
-
         $links[] = [
-            'linkText' => $linkText,
-            'linkUrl' => $linkUrl,
-            'linkTarget' => $linkTarget,
-            'buttonColor' => $buttonColor,
-            'buttonStyle' => $buttonStyle,
-            'buttonIcon' => $buttonIcon,
-            'linkImage' => $linkImage,
-            'linkIcon' => $linkIcon,
-            'linkTextColor' => $linkTextColor,
-            'linkIconColor' => $linkIconColor,
+            'linkText'      => $row['link']['title'] ?? '',
+            'linkUrl'       => $row['link']['url'] ?? '',
+            'linkTarget'    => $row['link']['target'] ?? '_self',
+            'buttonColor'   => $row['button_color'] ?? '',
+            'buttonStyle'   => $row['button_style'] ?? '',
+            'buttonIcon'    => $buttonIcon,
+            'linkImage'     => $row['link_image'] ?? '',
+            'linkIcon'      => $linkIcon,
+            'linkTextColor' => $row['link_text_color'] ?? '',
+            'linkIconColor' => $row['link_icon_color'] ?? '',
         ];
     }
 

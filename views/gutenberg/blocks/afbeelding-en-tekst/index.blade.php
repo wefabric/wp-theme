@@ -44,16 +44,9 @@
 
 
     // Links
-    $linksCount = $block['data']['links'] ?? 0;
     $links = [];
-
-        for ($i = 0; $i < $linksCount; $i++) {
-        $linkKey = "links_{$i}_link";
-        $linkText = $block['data'][$linkKey]['title'] ?? '';
-        $linkUrl = $block['data'][$linkKey]['url'] ?? '';
-        $linkTarget = $block['data'][$linkKey]['target'] ?? '_self';
-
-        $linkIcon = $block['data']["links_{$i}_link_icon"] ?? '';
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'links') as $row) {
+        $linkIcon = $row['link_icon'] ?? '';
         $buttonIcon = '';
         if (!empty($linkIcon)) {
             $iconData = json_decode($linkIcon, true);
@@ -61,30 +54,22 @@
                 $buttonIcon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
             }
         }
-
         $links[] = [
-            'linkText' => $linkText,
-            'linkUrl' => $linkUrl,
-            'linkTarget' => $linkTarget,
+            'linkText'   => $row['link']['title'] ?? '',
+            'linkUrl'    => $row['link']['url'] ?? '',
+            'linkTarget' => $row['link']['target'] ?? '_self',
             'buttonIcon' => $buttonIcon,
-            'linkIcon' => $linkIcon,
+            'linkIcon'   => $linkIcon,
         ];
     }
 
 
     // USP
-    $uspCount = $block['data']['usps'] ?? 0;
-    $usp = [];
-
-        for ($i = 0; $i < $uspCount; $i++) {
-        $uspText = $block['data']["usps_{$i}_usp_text"] ?? '';
-
-        $uspIcon = $block['data']["usps_{$i}_usp_icon"] ?? '';
-        $buttonIcon = '';
-
+    $usps = [];
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'usps') as $row) {
         $usps[] = [
-            'uspText' => $uspText,
-            'uspIcon' => $uspIcon,
+            'uspText' => $row['usp_text'] ?? '',
+            'uspIcon' => $row['usp_icon'] ?? '',
         ];
     }
 

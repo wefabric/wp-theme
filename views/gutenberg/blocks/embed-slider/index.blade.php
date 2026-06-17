@@ -44,12 +44,9 @@
 
 
  // Embeds
- $embedsCount = $block['data']['embeds'] ?? 0;
  $embeds = [];
- for ($i = 0; $i < $embedsCount; $i++) {
-     $embeds[] = [
-         'embed' => $block['data']["embeds_{$i}_embed"] ?? '',
-     ];
+ foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'embeds') as $row) {
+     $embeds[] = ['embed' => $row['embed'] ?? ''];
  }
 
  $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;

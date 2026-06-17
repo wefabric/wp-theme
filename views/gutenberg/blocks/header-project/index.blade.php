@@ -68,14 +68,11 @@
 
 
      $projectData = [];
-     for ($i = 0; $i < 4; $i++) {
-         $project_title_key = "project_data_{$i}_project_title";
-         $project_text_key = "project_data_{$i}_project_text";
-
-         if (isset($block['data'][$project_title_key]) && isset($block['data'][$project_text_key])) {
+     foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'project_data') as $row) {
+         if (!empty($row['project_title']) || !empty($row['project_text'])) {
              $projectData[] = [
-                'title' => $block['data'][$project_title_key],
-                'text' => $block['data'][$project_text_key],
+                 'title' => $row['project_title'] ?? '',
+                 'text'  => $row['project_text'] ?? '',
              ];
          }
      }

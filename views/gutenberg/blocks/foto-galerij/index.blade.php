@@ -44,12 +44,10 @@
 
 
     // Images
-    $imagesCount = $block['data']['images'] ?? 0;
     $images = [];
-    for ($i = 0; $i < $imagesCount; $i++) {
-        $imageKey = 'images_' . $i . '_image';
-        if (isset($block['data'][$imageKey])) {
-            $images[] = $block['data'][$imageKey];
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'images') as $row) {
+        if (!empty($row['image'])) {
+            $images[] = $row['image'];
         }
     }
 

@@ -69,17 +69,10 @@
         }
 
     // Tags
-    $tagsCount = $block['data']['tags'] ?? 0;
     $tags = [];
-
-    for ($i = 0; $i < $tagsCount; $i++) {
-        $tagKey = "tags_{$i}_tag";
-        $tagText = $block['data'][$tagKey] ?? '';
-
-        if (!empty($tagText)) {
-            $tags[] = [
-                'text' => $tagText,
-            ];
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'tags') as $row) {
+        if (!empty($row['tag'])) {
+            $tags[] = ['text' => $row['tag']];
         }
     }
 

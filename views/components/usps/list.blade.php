@@ -1,26 +1,16 @@
 @php
-    $mobileLayout = $block['data']['layout_mobile'] ?? 3;
-    $tabletLayout = $block['data']['layout_tablet'] ?? 3;
-    $desktopLayout = $block['data']['layout_desktop'] ?? 3;
-    $desktopXlLayout = $block['data']['layout_desktop_xl'] ?? 4;
-
-    $layoutClasses = [
-        'mobile' => 'grid-cols-' . $mobileLayout,
-        'tablet' => 'sm:grid-cols-' . $tabletLayout,
-        'desktop' => 'xl:grid-cols-' . $desktopLayout,
-        'desktop-xl' => '2xl:grid-cols-' . $desktopXlLayout,
-    ];
-
-    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
-    $swiperAutoplay = $block['data']['autoplay'] ?? false;
-    $swiperAutoplaySpeed = max((int)($block['data']['autoplay_speed'] ?? 0) * 1000, 5000);
-    $swiperLoop = $block['data']['loop_slides'] ?? true;
-    $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'uspSwiper-' . $randomNumber;
+
+    $layoutClasses = [
+        'mobile'     => 'grid-cols-' . $uspBlock->mobileLayout,
+        'tablet'     => 'sm:grid-cols-' . $uspBlock->tabletLayout,
+        'desktop'    => 'xl:grid-cols-' . $uspBlock->desktopLayout,
+        'desktop-xl' => '2xl:grid-cols-' . $uspBlock->desktopXlLayout,
+    ];
 @endphp
 
-@if($block['data']['show_slider'])
+@if($uspBlock->showSlider)
     <div class="slider usp-swiper block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
@@ -45,7 +35,7 @@
     </div>
 @endif
 
-@if ($swiperOutContainer)
+@if ($uspBlock->swiperOutContainer)
     <style>
         .uspSwiper-{{ $randomNumber }} {
             overflow: unset !important;
@@ -57,12 +47,12 @@
     window.addEventListener("DOMContentLoaded", (event) => {
         var uspSwiper = new Swiper(".{{ $randomId }}", {
             spaceBetween: 20,
-            @if ($swiperCenteredSlides)
+            @if ($uspBlock->swiperCenteredSlides)
                 centeredSlides: true,
             @endif
-            @if ($swiperAutoplay)
+            @if ($uspBlock->swiperAutoplay)
                 autoplay: {
-                    delay: {{ $swiperAutoplaySpeed }},
+                    delay: {{ $uspBlock->swiperAutoplaySpeed }},
                     disableOnInteraction: true,
                 },
             @endif
@@ -76,20 +66,20 @@
             },
             breakpoints: {
                 0: {
-                    loop: {{ $swiperLoop && count($usps) > $mobileLayout ? 'true' : 'false' }},
-                    slidesPerView: {{ $mobileLayout }},
+                    loop: {{ $uspBlock->swiperLoop && count($usps) > $uspBlock->mobileLayout ? 'true' : 'false' }},
+                    slidesPerView: {{ $uspBlock->mobileLayout }},
                 },
                 640: {
-                    loop: {{ $swiperLoop && count($usps) > $tabletLayout ? 'true' : 'false' }},
-                    slidesPerView: {{ $tabletLayout }},
+                    loop: {{ $uspBlock->swiperLoop && count($usps) > $uspBlock->tabletLayout ? 'true' : 'false' }},
+                    slidesPerView: {{ $uspBlock->tabletLayout }},
                 },
                 1280: {
-                    loop: {{ $swiperLoop && count($usps) > $desktopLayout ? 'true' : 'false' }},
-                    slidesPerView: {{ $desktopLayout }},
+                    loop: {{ $uspBlock->swiperLoop && count($usps) > $uspBlock->desktopLayout ? 'true' : 'false' }},
+                    slidesPerView: {{ $uspBlock->desktopLayout }},
                 },
                 1536: {
-                    loop: {{ $swiperLoop && count($usps) > $desktopXlLayout ? 'true' : 'false' }},
-                    slidesPerView: {{ $desktopXlLayout }},
+                    loop: {{ $uspBlock->swiperLoop && count($usps) > $uspBlock->desktopXlLayout ? 'true' : 'false' }},
+                    slidesPerView: {{ $uspBlock->desktopXlLayout }},
                 },
             }
         });

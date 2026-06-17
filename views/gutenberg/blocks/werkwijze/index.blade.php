@@ -58,52 +58,40 @@
     $stepsLocation = $block['data']['steps_location'] ?? 'left';
 
 
-    $stepCount = $block['data']['steps'];
     $steps = [];
-
-    for ($i = 0; $i < $stepCount; $i++) {
-        $stepTitle = $block['data']["steps_{$i}_step_title"];
-        $stepText = $block['data']["steps_{$i}_step_text"];
-        $stepNumber = $i + 1;
-        $stepImage = $block['data']["steps_{$i}_step_image"] ?? '';
-        $stepIcon = $block['data']["steps_{$i}_step_icon"] ?? null;
-        $stepLink = $block['data']["steps_{$i}_step_link"] ?? '';
-        $stepButtonText = $block['data']["steps_{$i}_button_button"]['title'] ?? '';
-        $stepButtonLink = $block['data']["steps_{$i}_button_button"]['url'] ?? '';
-        $stepButtonTarget = $block['data']["steps_{$i}_button_button"]['target'] ?? '_self';
-        $stepButtonColor = $block['data']["steps_{$i}_button_button_color"] ?? '';
-        $stepButtonStyle = $block['data']["steps_{$i}_button_button_style"] ?? '';
-        $stepButtonIcon = $block['data']["steps_{$i}_button_button_icon"] ?? '';
-        if (!empty($stepButtonIcon)) {
-            $iconData = json_decode($stepButtonIcon, true);
-            if (isset($iconData['id'], $iconData['style'])) {
-                $stepButtonIcon = 'fa-' . $iconData['style'] . ' fa-' . $iconData['id'];
-            }
-        }
-
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'steps') as $stepIndex => $row) {
+        $stepIcon = $row['step_icon'] ?? null;
         $iconClass = '';
+        $iconData = null;
         if ($stepIcon !== null) {
             $iconData = json_decode($stepIcon, true);
-
-            if ($iconData && isset($iconData['style']) && isset($iconData['id'])) {
+            if ($iconData && isset($iconData['style'], $iconData['id'])) {
                 $iconClass = $iconData['style'] . ' fa-' . $iconData['id'];
             }
         }
 
+        $stepButtonIcon = $row['button_button_icon'] ?? '';
+        if (!empty($stepButtonIcon)) {
+            $btnIconData = json_decode($stepButtonIcon, true);
+            if (isset($btnIconData['id'], $btnIconData['style'])) {
+                $stepButtonIcon = 'fa-' . $btnIconData['style'] . ' fa-' . $btnIconData['id'];
+            }
+        }
+
         $steps[] = [
-            'stepTitle' => $stepTitle,
-            'stepText' => $stepText,
-            'stepLink' => $stepLink,
-            'stepImage' => $stepImage,
-            'stepNumber' => $stepNumber,
-            'stepIcon' => $iconData ?? null,
-            'iconClass' => $iconClass,
-            'stepButtonText' => $stepButtonText,
-            'stepButtonLink' => $stepButtonLink,
-            'stepButtonTarget' => $stepButtonTarget,
-            'stepButtonColor' => $stepButtonColor,
-            'stepButtonStyle' => $stepButtonStyle,
-            'stepButtonIcon' => $stepButtonIcon,
+            'stepTitle'        => $row['step_title'] ?? '',
+            'stepText'         => $row['step_text'] ?? '',
+            'stepLink'         => $row['step_link'] ?? '',
+            'stepImage'        => $row['step_image'] ?? '',
+            'stepNumber'       => $stepIndex + 1,
+            'stepIcon'         => $iconData,
+            'iconClass'        => $iconClass,
+            'stepButtonText'   => $row['button_button']['title'] ?? '',
+            'stepButtonLink'   => $row['button_button']['url'] ?? '',
+            'stepButtonTarget' => $row['button_button']['target'] ?? '_self',
+            'stepButtonColor'  => $row['button_button_color'] ?? '',
+            'stepButtonStyle'  => $row['button_button_style'] ?? '',
+            'stepButtonIcon'   => $stepButtonIcon,
         ];
     }
 

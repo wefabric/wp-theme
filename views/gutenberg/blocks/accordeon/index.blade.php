@@ -55,13 +55,11 @@
 
 
     // Accordion
-    $accordionCount = $block['data']['accordion'] ?? 0;
-    $accordions = []; // this will hold the structured items
-
-    for ($i = 0; $i < $accordionCount; $i++) {
+    $accordions = [];
+    foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'accordion') as $row) {
         $accordions[] = [
-            'title' => $block['data']["accordion_{$i}_title"] ?? '',
-            'text'  => $block['data']["accordion_{$i}_text"] ?? '',
+            'title' => $row['title'] ?? '',
+            'text'  => $row['text'] ?? '',
         ];
     }
 
