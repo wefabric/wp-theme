@@ -153,6 +153,7 @@
             ];
         }
     }
+    } // end else (manually selected pages)
 
     // Layout
     $autoplay = $block['data']['autoplay'] ?? false;
