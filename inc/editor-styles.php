@@ -1,17 +1,8 @@
 <?php
 /**
- * Editor styles — adds link styling to TinyMCE (ACF WYSIWYG) and the Gutenberg
- * inline RichText editor. The primary colour is read from ACF options so it stays
- * in sync with the frontend without requiring a CSS build step.
+ * Editor styles — injects link colour into the Gutenberg block editor.
  */
 
-add_action('after_setup_theme', function () {
-    add_theme_support('editor-styles');
-});
-
-/**
- * Return the primary colour hex from ACF options, with a safe fallback.
- */
 function wf_get_editor_primary_color(): string
 {
     if (!function_exists('get_field')) {
@@ -21,23 +12,23 @@ function wf_get_editor_primary_color(): string
 }
 
 /**
- * Inject link styles into TinyMCE / ACF WYSIWYG fields via the mce_css filter.
- * A data: URI avoids the need for a separate compiled CSS file.
+ * Remove app.css from TinyMCE WYSIWYG fields only.
+ *
+ * The mce_css filter targets exclusively TinyMCE's content_css setting.
+ * It does not affect the Gutenberg block editor, which receives app.css
+ * separately via add_editor_style() in BlockEditorHook.
  */
 add_filter('mce_css', function (string $mce_css): string {
-    $primary = esc_attr(wf_get_editor_primary_color());
+    if (empty($mce_css)) {
+        return $mce_css;
+    }
 
-    $css = "a { color: {$primary}; text-decoration: underline; font-weight: 700; } "
-         . "a:hover { text-decoration: none; }";
+    $styles = explode(',', $mce_css);
+    $styles = array_filter($styles, fn (string $url): bool => ! str_contains($url, 'app.css'));
 
-    $uri = 'data:text/css;charset=utf-8,' . rawurlencode($css);
-
-    return $mce_css ? "{$mce_css},{$uri}" : $uri;
+    return implode(',', $styles);
 });
 
-/**
- * Inject link styles into the Gutenberg block editor (inline RichText editing).
- */
 add_action('enqueue_block_editor_assets', function () {
     $primary = esc_attr(wf_get_editor_primary_color());
 
