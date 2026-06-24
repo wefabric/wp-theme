@@ -29,8 +29,8 @@
         <div class="flex w-full h-full md:w-3/5 order-2 md:order-1">
             <div class="case-data h-full flex flex-col flex-1 justify-start bg-{{ $caseBackgroundColor }} py-6 md:py-12 px-6 md:pl-24">
                 <div class="flex-layout flex flex-col justify-between h-full">
-                    <div class="flex justify-center md:justify-end mb-4 logo">
-                        @if ($caseLogo)
+                    @if ($caseLogo)
+                        <div class="flex justify-center md:justify-end mb-4 logo">
                             @include('components.image', [
                                 'image_id' => $caseLogo,
                                 'size' => 'full',
@@ -38,8 +38,8 @@
                                 'img_class' => 'w-auto max-h-[120px] object-contain',
                                 'alt' => 'Case logo'
                             ])
-                        @endif
-                    </div>
+                        </div>
+                    @endif
                     <div class="case-content">
                         @if($caseQuote)
                             <div class="case-quote">
