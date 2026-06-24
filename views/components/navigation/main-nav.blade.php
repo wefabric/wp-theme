@@ -1,5 +1,11 @@
 @php
     $options = get_fields('option');
+    if (!empty($options['nav']) && is_array($options['nav'])) {
+        $options = array_merge($options, $options['nav']);
+        if (!empty($options['nav']['desktop']) && is_array($options['nav']['desktop'])) {
+            $options = array_merge($options, $options['nav']['desktop']);
+        }
+    }
     $isHomePage = is_front_page();
     $showHomeIcon = (bool) get_option('options_nav_desktop_desktop_show_home_icon', 1);
 @endphp
@@ -20,6 +26,10 @@
                 $menu = wp_get_nav_menu_items($menuID);
             }
         @endphp
+
+        @if (!empty($options['menu_navigation_text']))
+            <div class="pre-navigation-text">{!! $options['menu_navigation_text'] !!}</div>
+        @endif
 
         @if($menuID)
             {!! wp_nav_menu([

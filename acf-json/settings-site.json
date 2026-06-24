@@ -559,6 +559,26 @@
                             "font_size": 14
                         },
                         {
+                            "key": "field_sneekweek_menu_nav_text",
+                            "label": "Tekst voor de navigatie",
+                            "name": "menu_navigation_text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_6900msg_kleuren_submenu",
                             "label": "",
                             "name": "",
