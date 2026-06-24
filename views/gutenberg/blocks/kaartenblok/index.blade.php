@@ -188,7 +188,8 @@
     } else {
     // Use manually selected pages
     foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'pages') as $row) {
-        $pageId      = $row['page'] ?? 0;
+        $pageRaw     = $row['page'] ?? 0;
+        $pageId      = is_string($pageRaw) && filter_var($pageRaw, FILTER_VALIDATE_URL) ? url_to_postid($pageRaw) : intval($pageRaw);
         $imageId     = intval($row['image'] ?? 0);
         $externalUrl = $row['external_url'] ?? '';
 
