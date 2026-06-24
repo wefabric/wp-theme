@@ -1,7 +1,7 @@
 @php
     $options = get_fields('option');
     $isHomePage = is_front_page();
-    $showHomeIcon = $options['desktop_show_home_icon'] ?? true;
+    $showHomeIcon = (bool) get_option('options_nav_desktop_desktop_show_home_icon', 1);
 @endphp
 <div class="main-nav-items hidden xl:flex lg:flex-col py-4 text-base">
     <nav id="site-navigation" class="main-navigation custom-width flex justify-end">
