@@ -12,9 +12,11 @@
 
     // Show establishments
     $establishment_args = [
-        'post_type' => 'establishments',
+        'post_type'      => 'establishments',
         'posts_per_page' => -1,
         'post_status'    => 'publish',
+        'orderby'        => 'menu_order',
+        'order'          => 'ASC',
     ];
     $establishment_query = new WP_Query($establishment_args);
 
