@@ -100,7 +100,7 @@
             @if ($packages)
                 @include('components.prices.packages-list', ['packages' => $packages])
             @endif
-            @if ($showTables)
+            @if ($showTables && !empty($tables))
                 <div class="container w-full mx-auto @if(($blockWidth == '50') || ($blockWidth == '66') || ($blockWidth == '80')) w-full @else md:w-2/3 @endif">
                     @include('components.prices.tables-list', ['tables' => $tables])
                 </div>
