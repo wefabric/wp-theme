@@ -118,6 +118,18 @@
                                     'accordionId' => $sectionNum,
                                     'setAccordion' => true
                                 ])
+                            @elseif($sectionType === 'logos')
+                                @php
+                                    $logosData = $option['footer_section_' . $sectionNum . '_logos'] ?? [];
+                                @endphp
+                                @include('components.footer.accordion-menu', [
+                                    'menu'        => view('components.footer.logos-section', [
+                                        'logos' => $logosData,
+                                    ]),
+                                    'title'       => $sectionTitle,
+                                    'accordionId' => $sectionNum,
+                                    'setAccordion' => true
+                                ])
                             @elseif($sectionType === 'custom_text')
                                 @php
                                     $customData        = $option['footer_section_' . $sectionNum . '_custom'] ?? [];
@@ -160,22 +172,25 @@
 
     <div class="footer-bottom bottom-info relative ">
         <div class="custom-flex-styling container mx-auto px-8 flex flex-col md:flex-row pb-6">
+            @php
+                $options = get_fields('option');
+                $logoMap = [
+                    'logo_1'       => 'logo',
+                    'logo_2'       => 'logo_white',
+                    'logo_3'       => 'logo_3',
+                    'logo_1_small' => 'logo_1_small',
+                    'logo_2_small' => 'logo_2_small',
+                    'logo_3_small' => 'logo_3_small',
+                ];
+                $footerLogoToDisplay = $logoMap[$options['footer_logo'] ?? 'logo_1'] ?? 'logo';
+                $showFooterLogo      = !empty($visibleFooterElements) && in_array('logo', $visibleFooterElements);
+                $showFooterCopyright = !empty($visibleFooterElements) && in_array('copyright', $visibleFooterElements);
+            @endphp
+
+            @if($showFooterLogo || $showFooterCopyright)
             <div class="logo-section flex flex-col justify-end lg:w-1/4 lg:pr-8">
 
-                @php
-                    $options = get_fields('option');
-                    $logoMap = [
-                        'logo_1'       => 'logo',
-                        'logo_2'       => 'logo_white',
-                        'logo_3'       => 'logo_3',
-                        'logo_1_small' => 'logo_1_small',
-                        'logo_2_small' => 'logo_2_small',
-                        'logo_3_small' => 'logo_3_small',
-                    ];
-                    $footerLogoToDisplay = $logoMap[$options['footer_logo'] ?? 'logo_1'] ?? 'logo';
-                @endphp
-
-                @if (!empty($visibleFooterElements) && in_array('logo', $visibleFooterElements))
+                @if($showFooterLogo)
                     <div class="footer-logo hidden lg:block">
                         @if(isset(get_field('common', 'option')[$footerLogoToDisplay]) && $logoId = get_field('common', 'option')[$footerLogoToDisplay])
                             {!! wp_get_attachment_image($logoId, 'footer_logo', false, ['class' => 'footer-logo-image']) !!}
@@ -183,10 +198,11 @@
                     </div>
                 @endif
 
-                @if (!empty($visibleFooterElements) && in_array('copyright', $visibleFooterElements))
+                @if($showFooterCopyright)
                     <div class="copyright-text">© {{ date('Y') }} {{ get_bloginfo('name') }}</div>
                 @endif
             </div>
+            @endif
 
             <div class="partners-section w-full md:w-1/2 flex flex-col self-end">
                 @php

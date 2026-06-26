@@ -587,7 +587,8 @@
                 "menu_3": "Menu 3",
                 "contact": "Contactgegevens",
                 "newsletter": "Nieuwsbrief & Socials",
-                "custom_text": "Eigen tekst met button"
+                "custom_text": "Eigen tekst met button",
+                "logos": "Logo's"
             },
             "default_value": "menu_1",
             "return_format": "value",
@@ -806,6 +807,61 @@
             ]
         },
         {
+            "key": "field_footer_s1lg0001",
+            "label": "Sectie 1 - Logo's",
+            "name": "footer_section_1_logos",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_footer_s1t00001",
+                        "operator": "==",
+                        "value": "logos"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Logo toevoegen",
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_footer_s1lgi001",
+                    "label": "Afbeelding",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
+                }
+            ]
+        },
+        {
             "key": "field_footer_s2t00001",
             "label": "Sectie 2 - Type",
             "name": "footer_section_2_type",
@@ -826,7 +882,8 @@
                 "menu_3": "Menu 3",
                 "contact": "Contactgegevens",
                 "newsletter": "Nieuwsbrief & Socials",
-                "custom_text": "Eigen tekst met button"
+                "custom_text": "Eigen tekst met button",
+                "logos": "Logo's"
             },
             "default_value": "menu_2",
             "return_format": "value",
@@ -1045,6 +1102,61 @@
             ]
         },
         {
+            "key": "field_footer_s2lg0001",
+            "label": "Sectie 2 - Logo's",
+            "name": "footer_section_2_logos",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_footer_s2t00001",
+                        "operator": "==",
+                        "value": "logos"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Logo toevoegen",
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_footer_s2lgi001",
+                    "label": "Afbeelding",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
+                }
+            ]
+        },
+        {
             "key": "field_footer_s3t00001",
             "label": "Sectie 3 - Type",
             "name": "footer_section_3_type",
@@ -1065,7 +1177,8 @@
                 "menu_3": "Menu 3",
                 "contact": "Contactgegevens",
                 "newsletter": "Nieuwsbrief & Socials",
-                "custom_text": "Eigen tekst met button"
+                "custom_text": "Eigen tekst met button",
+                "logos": "Logo's"
             },
             "default_value": "contact",
             "return_format": "value",
@@ -1284,6 +1397,61 @@
             ]
         },
         {
+            "key": "field_footer_s3lg0001",
+            "label": "Sectie 3 - Logo's",
+            "name": "footer_section_3_logos",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_footer_s3t00001",
+                        "operator": "==",
+                        "value": "logos"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Logo toevoegen",
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_footer_s3lgi001",
+                    "label": "Afbeelding",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
+                }
+            ]
+        },
+        {
             "key": "field_footer_s4t00001",
             "label": "Sectie 4 - Type",
             "name": "footer_section_4_type",
@@ -1304,7 +1472,8 @@
                 "menu_3": "Menu 3",
                 "contact": "Contactgegevens",
                 "newsletter": "Nieuwsbrief & Socials",
-                "custom_text": "Eigen tekst met button"
+                "custom_text": "Eigen tekst met button",
+                "logos": "Logo's"
             },
             "default_value": "newsletter",
             "return_format": "value",
@@ -1519,6 +1688,61 @@
                     "ui": 0,
                     "ui_on_text": "",
                     "ui_off_text": ""
+                }
+            ]
+        },
+        {
+            "key": "field_footer_s4lg0001",
+            "label": "Sectie 4 - Logo's",
+            "name": "footer_section_4_logos",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_footer_s4t00001",
+                        "operator": "==",
+                        "value": "logos"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Logo toevoegen",
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_footer_s4lgi001",
+                    "label": "Afbeelding",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
                 }
             ]
         },
@@ -2564,5 +2788,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1778230049
+    "modified": 1782600000
 }
