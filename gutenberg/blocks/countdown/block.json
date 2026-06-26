@@ -1,0 +1,26 @@
+{
+  "name": "wefabric/countdown",
+  "title": "Countdown",
+  "description": "Een countdown timer blok",
+  "category": "wefabric-theme",
+  "icon": "clock",
+  "apiVersion": 3,
+  "keywords": [
+    "Countdown"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3,
+    "hideFieldsInSidebar": true
+  },
+  "attributes": {},
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}
