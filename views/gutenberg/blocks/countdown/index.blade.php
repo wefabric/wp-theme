@@ -107,8 +107,16 @@
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 
 
+    // Countdown
+    $countdownTime = $block['data']['time'] ?? '';
+    $countdownDisplay = $block['data']['timer_display'] ?? [];
+    $countdownValueColor = $block['data']['countdown_value_color'] ?? '';
+    $countdownLabelColor = $block['data']['countdown_label_color'] ?? '';
+    $countdownItemBgColor = $block['data']['countdown_item_background_color'] ?? '';
+
     // Animaties
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
+    $confetti = $block['data']['confetti'] ?? false;
 @endphp
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'countdown' }}@endif" class="block-countdown relative countdown-{{ $randomNumber }}-custom-padding countdown-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -117,7 +125,7 @@
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-        <div class="{{ $blockClass }} mx-auto">
+        <div class="custom-styling {{ $blockClass }} mx-auto">
             @if ($subTitle)
                 <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">
                     @if ($subtitleIcon)
@@ -136,7 +144,35 @@
                 ])
             @endif
 
-            // HIER MOET COUNTDOWN KOMEN
+            @if ($countdownTime)
+                @php
+                    $countdownUnits = [];
+                    if(in_array('days',    $countdownDisplay)) $countdownUnits[] = ['id'=>'days',    'label'=>'Dagen'];
+                    if(in_array('hours',   $countdownDisplay)) $countdownUnits[] = ['id'=>'hours',   'label'=>'Uren'];
+                    if(in_array('minutes', $countdownDisplay)) $countdownUnits[] = ['id'=>'minutes', 'label'=>'Minuten'];
+                    if(in_array('seconds', $countdownDisplay)) $countdownUnits[] = ['id'=>'seconds', 'label'=>'Seconden'];
+                @endphp
+                <div class="countdown-timer countdown-{{ $randomNumber }} mt-6 {{ $textClass }}">
+                    <div class="countdown-wrap">
+                        @foreach($countdownUnits as $i => $unit)
+                            @if($i > 0)
+                                <div class="countdown-sep-wrap">
+                                    <span class="countdown-sep @if($countdownLabelColor) text-{{ $countdownLabelColor }} @endif">:</span>
+                                </div>
+                            @endif
+                            <div class="countdown-unit @if($flyinEffect) countdown-item-hidden @endif"
+                                 style="--unit-delay: {{ $i * 200 }}ms">
+                                <div class="countdown-card @if($countdownItemBgColor) bg-{{ $countdownItemBgColor }} @endif" id="{{ $unit['id'] }}-{{ $randomNumber }}">
+                                    <span class="countdown-number @if($countdownValueColor) text-{{ $countdownValueColor }} @endif">00</span>
+                                    <span class="countdown-label @if($countdownLabelColor) text-{{ $countdownLabelColor }} @endif">
+                                        {{ $unit['label'] }}
+                                    </span>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
 
             @if (($button1Text) && ($button1Link))
                 <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
@@ -211,42 +247,200 @@
         }
     }
 
-    .countdown-hidden {
+    /* Countdown */
+    .countdown-wrap {
+        display: flex;
+        align-items: stretch;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .countdown-unit {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .countdown-card {
+        width: 100%;
+        padding: 24px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        gap: 8px;
+        @if(!$countdownItemBgColor) background: #1e293b; @endif
+    }
+
+    .countdown-number {
+        font-size: clamp(2rem, 5vw, 5rem);
+        font-weight: 700;
+        line-height: 1;
+        display: block;
+        @if(!$countdownValueColor) color: #ffffff; @endif
+    }
+
+    .countdown-label {
+        font-size: clamp(0.45rem, 1vw, 0.8rem);
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        @if(!$countdownLabelColor) color: #ffffff; @endif
+    }
+
+    .countdown-sep-wrap {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .countdown-sep {
+        font-size: clamp(1rem, 2.5vw, 2rem);
+        font-weight: 700;
+        line-height: 1;
+        @if(!$countdownLabelColor) color: currentColor; @endif
+    }
+
+    @media (max-width: 640px) {
+        .countdown-sep-wrap { display: none; }
+    }
+
+    .countdown-number-exit {
+        animation: numSlideOut 0.2s ease-in forwards;
+    }
+    .countdown-number-enter {
+        animation: numSlideIn 0.2s ease-out forwards;
+    }
+
+    @keyframes numSlideOut {
+        from { transform: translateY(0);   opacity: 1; }
+        to   { transform: translateY(60%); opacity: 0; }
+    }
+    @keyframes numSlideIn {
+        from { transform: translateY(-60%); opacity: 0; }
+        to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    /* Fly-in */
+    .countdown-item-hidden {
         opacity: 0;
+        transform: translateY(30px);
+    }
+    .countdown-item-visible {
+        animation: unitFlyIn 0.5s ease-out forwards;
+    }
+
+    @keyframes unitFlyIn {
+        from { opacity: 0; transform: translateY(30px); }
+        to   { opacity: 1; transform: translateY(0); }
     }
 </style>
 
-{{--@if ($flyinEffect)--}}
-{{--    <script>--}}
-{{--        document.addEventListener('DOMContentLoaded', () => {--}}
-{{--            const newsItems = document.querySelectorAll('.nieuws-item');--}}
-{{--            const observerOptions = {--}}
-{{--                root: null,--}}
-{{--                rootMargin: '0px 0px -30px 0px',--}}
-{{--                threshold: 0.035--}}
-{{--            };--}}
+@if ($countdownTime)
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var countdownDate = {{ $countdownTime ? strtotime($countdownTime) * 1000 : 0 }};
+        var countdownDisplay = @json($countdownDisplay);
+        var confettiEnabled = {{ (int) $confetti }};
+        var flyinEnabled = {{ (int) $flyinEffect }};
+        var rn = {{ $randomNumber }};
 
-{{--            const observerCallback = (entries, observer) => {--}}
-{{--                entries.forEach((entry, index) => {--}}
-{{--                    if (entry.isIntersecting) {--}}
-{{--                        const newsItem = entry.target;--}}
+        // --- Nummer updaten met slide-animatie ---
+        function setUnit(unitId, value) {
+            var card = document.getElementById(unitId + '-' + rn);
+            if (!card) return;
+            var numEl = card.querySelector('.countdown-number');
+            if (!numEl) return;
+            var padded = String(value).padStart(2, '0');
+            if (numEl.textContent === padded) return;
 
-{{--                        setTimeout(() => {--}}
-{{--                            if (newsItem.classList.contains('news-hidden')) {--}}
-{{--                                newsItem.classList.add('news-animated');--}}
-{{--                                newsItem.classList.remove('news-hidden');--}}
-{{--                            }--}}
-{{--                        }, index * 200);--}}
+            numEl.classList.add('countdown-number-exit');
+            setTimeout(function() {
+                numEl.textContent = padded;
+                numEl.classList.remove('countdown-number-exit');
+                numEl.classList.add('countdown-number-enter');
+                setTimeout(function() {
+                    numEl.classList.remove('countdown-number-enter');
+                }, 200);
+            }, 200);
+        }
 
-{{--                        observer.unobserve(newsItem);--}}
-{{--                    }--}}
-{{--                });--}}
-{{--            };--}}
+        // --- Fly-in ---
+        if (flyinEnabled) {
+            var units = Array.from(document.querySelectorAll('.countdown-' + rn + ' .countdown-item-hidden'));
+            var obs = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var el = entry.target;
+                        var delay = parseInt(el.style.getPropertyValue('--unit-delay')) || 0;
+                        observer.unobserve(el);
+                        setTimeout(function() {
+                            el.classList.remove('countdown-item-hidden');
+                            el.classList.add('countdown-item-visible');
+                        }, delay);
+                    }
+                });
+            }, { root: null, rootMargin: '0px', threshold: 0 });
+            units.forEach(function(el) { obs.observe(el); });
+        }
 
-{{--            const observer = new IntersectionObserver(observerCallback, observerOptions);--}}
-{{--            newsItems.forEach(item => {--}}
-{{--                observer.observe(item);--}}
-{{--            });--}}
-{{--        });--}}
-{{--    </script>--}}
-{{--@endif--}}
+        // --- Countdown loop ---
+        function tick() {
+            var now = new Date().getTime();
+            var distance = countdownDate - now;
+            var total = Math.max(Math.floor(distance / 1000), 0);
+            var days = 0, hours = 0, minutes = 0, seconds = 0;
+
+            if (countdownDisplay.includes('days')) {
+                days = Math.floor(total / 86400);
+                total -= days * 86400;
+            }
+            if (countdownDisplay.includes('hours')) {
+                hours = Math.floor(total / 3600);
+                total -= hours * 3600;
+            }
+            if (countdownDisplay.includes('minutes')) {
+                minutes = Math.floor(total / 60);
+                total -= minutes * 60;
+            }
+            if (countdownDisplay.includes('seconds')) {
+                seconds = total;
+            }
+
+            if (countdownDisplay.includes('days'))    setUnit('days',    days);
+            if (countdownDisplay.includes('hours'))   setUnit('hours',   hours);
+            if (countdownDisplay.includes('minutes')) setUnit('minutes', minutes);
+            if (countdownDisplay.includes('seconds')) setUnit('seconds', seconds);
+
+            if (distance <= 0) {
+                clearInterval(timer);
+                if (confettiEnabled) {
+                    if (typeof confetti === 'function') {
+                        startConfetti();
+                    }
+                }
+            }
+        }
+
+        var timer = setInterval(tick, 1000);
+        tick(); // direct eerste waarde tonen
+
+        function startConfetti() {
+            var duration = 10000;
+            var end = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+            function rnd(min, max) { return Math.random() * (max - min) + min; }
+            var iv = setInterval(function() {
+                var left = end - Date.now();
+                if (left <= 0) { return clearInterval(iv); }
+                var n = 50 * (left / duration);
+                confetti(Object.assign({}, defaults, { particleCount: n, origin: { x: rnd(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount: n, origin: { x: rnd(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+@endif
