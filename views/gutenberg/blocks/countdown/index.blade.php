@@ -274,17 +274,12 @@
 
     .countdown-number {
         font-size: clamp(2rem, 5vw, 5rem);
-        font-weight: 700;
-        line-height: 1;
         display: block;
         @if(!$countdownValueColor) color: #ffffff; @endif
     }
 
     .countdown-label {
         font-size: clamp(0.45rem, 1vw, 0.8rem);
-        font-weight: 600;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
         white-space: nowrap;
         @if(!$countdownLabelColor) color: #ffffff; @endif
     }
@@ -298,8 +293,6 @@
 
     .countdown-sep {
         font-size: clamp(1rem, 2.5vw, 2rem);
-        font-weight: 700;
-        line-height: 1;
         @if(!$countdownLabelColor) color: currentColor; @endif
     }
 
