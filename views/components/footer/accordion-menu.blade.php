@@ -1,10 +1,18 @@
 <div class="accordion-item mb-3">
     <div class="leading-relaxed">
         <div class="@if($setAccordion === true) accordion-drawer @endif">
-            @if($setAccordion === true) <input class="accordion-drawer__trigger mb-4" id="accordion-drawer-{{ $accordionId }}" type="checkbox" /> @endif
-            <label class="accordion-drawer__title relative block h5 py-4 text-{{ $title_color ?? '' }}" for="accordion-drawer-{{ $accordionId }}">
-                {!! $title !!}
-            </label>
+            @if($setAccordion === true)
+                <input class="accordion-drawer__trigger mb-4" id="accordion-drawer-{{ $accordionId }}" type="checkbox" />
+                @if(!empty($title))
+                    <label class="accordion-drawer__title relative block h5 py-4 text-{{ $title_color ?? '' }}" for="accordion-drawer-{{ $accordionId }}">
+                        {!! $title !!}
+                    </label>
+                @endif
+            @elseif(!empty($title))
+                <div class="accordion-drawer__title relative block h5 py-4 text-{{ $title_color ?? '' }}">
+                    {!! $title !!}
+                </div>
+            @endif
             <div class="@if($setAccordion === true) accordion-drawer__content-wrapper @endif">
                 <div class="@if($setAccordion === true) accordion-drawer__content @endif">
                     <p class="text-base text-primary">

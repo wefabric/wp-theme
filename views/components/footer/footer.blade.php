@@ -25,6 +25,9 @@
         4 => $option['footer_section_4_type'] ?? 'newsletter',
     ];
 
+    // Default true: uitklapbaar tenzij expliciet uitgeschakeld
+    $mobileAccordion = !isset($option['footer_mobile_accordion']) || $option['footer_mobile_accordion'];
+
     $defaultTitles = [
         'menu_1'      => wp_get_nav_menu_name('footer_menu_one'),
         'menu_2'      => wp_get_nav_menu_name('footer_menu_two'),
@@ -102,21 +105,21 @@
                                     'menu'        => $menu,
                                     'title'       => $sectionTitle,
                                     'accordionId' => $sectionNum,
-                                    'setAccordion' => true
+                                    'setAccordion' => $mobileAccordion
                                 ])
                             @elseif($sectionType === 'contact')
                                 @include('components.footer.accordion-menu', [
                                     'menu'        => view('components.footer.contact'),
                                     'title'       => $sectionTitle,
                                     'accordionId' => $sectionNum,
-                                    'setAccordion' => true
+                                    'setAccordion' => $mobileAccordion
                                 ])
                             @elseif($sectionType === 'newsletter')
                                 @include('components.footer.accordion-menu', [
                                     'menu'        => view('components.footer.follow-us'),
                                     'title'       => $sectionTitle,
                                     'accordionId' => $sectionNum,
-                                    'setAccordion' => true
+                                    'setAccordion' => $mobileAccordion
                                 ])
                             @elseif($sectionType === 'logos')
                                 @php
@@ -128,7 +131,7 @@
                                     ]),
                                     'title'       => $sectionTitle,
                                     'accordionId' => $sectionNum,
-                                    'setAccordion' => true
+                                    'setAccordion' => $mobileAccordion
                                 ])
                             @elseif($sectionType === 'custom_text')
                                 @php
@@ -151,7 +154,7 @@
                                     ]),
                                     'title'       => $sectionTitle,
                                     'accordionId' => $sectionNum,
-                                    'setAccordion' => true
+                                    'setAccordion' => $mobileAccordion
                                 ])
                             @endif
                         </div>

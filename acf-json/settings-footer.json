@@ -1747,6 +1747,43 @@
             ]
         },
         {
+            "key": "field_footer_mobtab01",
+            "label": "Footer Mobiel",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_footer_mobaccord",
+            "label": "Secties uitklapbaar op mobiel",
+            "name": "footer_mobile_accordion",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Als dit uit staat zijn de footer secties op mobiel altijd zichtbaar en niet uitklapbaar.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Uitklapbaar",
+            "ui_off_text": "Altijd zichtbaar"
+        },
+        {
             "key": "field_68c292380939d",
             "label": "Contactgegevens",
             "name": "",
@@ -2788,5 +2825,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1782600000
+    "modified": 1782601000
 }
