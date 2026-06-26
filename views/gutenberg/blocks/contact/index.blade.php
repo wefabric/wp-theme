@@ -12,9 +12,11 @@
 
     // Show establishments
     $establishment_args = [
-        'post_type' => 'establishments',
+        'post_type'      => 'establishments',
         'posts_per_page' => -1,
         'post_status'    => 'publish',
+        'orderby'        => 'menu_order',
+        'order'          => 'ASC',
     ];
     $establishment_query = new WP_Query($establishment_args);
 
@@ -258,7 +260,7 @@
                                             <div class="socials flex gap-3 items-center flex-wrap">
                                                 @foreach($options['channels'] as $social)
                                                     <a class="group footer-social social-{{ strtolower($social['name']) }}"
-                                                       href="{{ $social['url'] }}" title="{{ $social['name'] }} pagina" alt="{{ $social['name'] }}" target="_blank"
+                                                       href="{{ $social['url'] }}" title="{{ $social['name'] }} pagina" alt="{{ $social['name'] }}" target="_blank" rel="noopener noreferrer"
                                                        aria-label="Ga naar {{ $social['name'] }}">
                                                         <i class="{{ $social['icon'] }} text-xl transition-all group-hover:scale-110"></i>
                                                     </a>
