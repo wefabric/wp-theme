@@ -161,15 +161,17 @@ header.banner {
   --li-pad-y: 8px;
   --arrow-size: 36px;
   --arrow-right: 12px;
-  padding: 0 20px 0 20px !important;
+  padding: 0 20px 24px 20px !important;
 
   @apply bg-primary text-white;
   position: fixed;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   width: 280px;
-  top: 0; bottom: 0; right: -280px;
+  top: 0; right: -280px;
+  height: 100vh;
+  height: 100dvh;
   z-index: 1000;
-  min-height: 100%;
   transition: right 300ms ease;
   color: #FFF;
 
