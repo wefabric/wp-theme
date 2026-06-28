@@ -10,6 +10,7 @@
         @foreach($option['channels'] as $social)
             <a class="group footer-social social-{{ strtolower($social['name']) }} hover:text-{{ $title_color }}"
                href="{{ $social['url'] }}" title="{{ $social['name'] }} pagina" target="_blank"
+               rel="noopener noreferrer"
                aria-label="Ga naar {{ $social['name'] }}">
                 <i class="{{ $social['icon'] }} text-xl hover:text-{{ $title_color }} transition-all group-hover:scale-110" aria-hidden="true"></i>
                 <span class="sr-only">{{ $social['name'] }}</span>
