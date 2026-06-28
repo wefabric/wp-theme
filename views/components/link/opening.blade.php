@@ -1,15 +1,12 @@
 <a href="{{ $href }}"
 
-    title="{{ $alt }}"
     aria-label="{{ $alt }}"
 
     @if(!empty($class))
        class="{{ $class }}"
     @endif
 
-    @if(!empty($target) && $target === '_blank')
-        rel="{{ !empty($rel) ? $rel : 'noopener noreferrer' }}"
-    @elseif(!empty($rel))
+    @if(!empty($rel))
         rel="{{ $rel }}"
     @endif
 
