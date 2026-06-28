@@ -38,15 +38,15 @@
                             continue;
                         }
 
+                        // Google requires 'item' (URL) on every ListItem — fall back to current page URL
+                        $resolved_url = !empty($crumb_url) ? $crumb_url : get_permalink();
+
                         $item = [
                             '@type' => 'ListItem',
                             'position' => $i,
                             'name' => strip_tags($crumb_name),
+                            'item' => $resolved_url,
                         ];
-
-                        if (!empty($crumb_url)) {
-                            $item['item'] = $crumb_url;
-                        }
 
                         $itemListElement[] = $item;
                         $i++;
