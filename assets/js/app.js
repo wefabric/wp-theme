@@ -1,6 +1,6 @@
 import Alpine from 'alpinejs'
 // core version + navigation, pagination modules:
-import Swiper, { Navigation, Pagination, Autoplay, Zoom, Thumbs, EffectFade } from 'swiper';
+import Swiper, { Navigation, Pagination, Autoplay, Zoom, Thumbs, EffectFade, FreeMode } from 'swiper';
 // import Swiper and modules styles
 import SplitType from "split-type";
 import gsap from "gsap";
@@ -29,7 +29,7 @@ import './employee-swiper-popup';
 import ThemeChildApp from './../../../theme-child/assets/js/app';
 
 // Use Swiper and the necessary modules
-Swiper.use([Navigation, Pagination, Autoplay, Zoom, Thumbs, EffectFade]);
+Swiper.use([Navigation, Pagination, Autoplay, Zoom, Thumbs, EffectFade, FreeMode]);
 
 window.Alpine = Alpine
 window.Swiper = Swiper;
