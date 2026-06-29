@@ -65,11 +65,11 @@
 }
 
 .swiper-pagination-progressbar-fill {
-  @apply bg-primary #{!important};
+  @apply bg-primary;
 }
 
 .swiper-pagination-progressbar {
-  @apply bg-background #{!important};
+  @apply bg-background;
 }
 
 
