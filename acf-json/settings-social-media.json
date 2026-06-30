@@ -49,7 +49,7 @@
                     "label": "URL",
                     "name": "url",
                     "aria-label": "",
-                    "type": "url",
+                    "type": "link",
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
@@ -58,8 +58,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
+                    "return_format": "array",
                     "parent_repeater": "field_60b381020e75a"
                 },
                 {
@@ -137,5 +136,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1698159382
+    "modified": 1782864000
 }
