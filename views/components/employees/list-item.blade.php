@@ -54,7 +54,10 @@
         $personSchema['url'] = $linkUrl;
     }
     if (!empty($socials)) {
-        $personSchema['sameAs'] = array_column($socials, 'url');
+        $personSchema['sameAs'] = array_map(function($s) {
+            $linkData = $s['url'] ?? '';
+            return is_array($linkData) ? ($linkData['url'] ?? '') : $linkData;
+        }, $socials);
     }
 
     $personSchema['worksFor'] = [
@@ -178,9 +181,17 @@
             @if (!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($socials))
                 <div class="social-items inline-flex gap-x-2">
                     @foreach ($socials as $social)
+                        @php
+                            $socialLinkData = $social['url'] ?? '';
+                            $socialUrl = is_array($socialLinkData) ? ($socialLinkData['url'] ?? '') : $socialLinkData;
+                            $socialTarget = is_array($socialLinkData) ? ($socialLinkData['target'] ?? '_blank') : '_blank';
+                            $socialAriaLabel = is_array($socialLinkData) && !empty($socialLinkData['title'])
+                                ? 'Ga naar ' . $socialLinkData['title']
+                                : 'Ga naar social media pagina';
+                        @endphp
                         <a class="text-{{ $employeeTextColor }} text-2xl transform ease-in-out duration-300 hover:scale-110 hover:text-primary"
-                           href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
-                           aria-label="Ga naar social media pagina">
+                           href="{{ $socialUrl }}" target="{{ $socialTarget }}" rel="noopener noreferrer"
+                           aria-label="{{ $socialAriaLabel }}">
                             {!! $social['icon'] !!}
                         </a>
                     @endforeach

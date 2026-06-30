@@ -259,8 +259,13 @@
                                             <div class="socials-text font-bold mb-2">Volg ons</div>
                                             <div class="socials flex gap-3 items-center flex-wrap">
                                                 @foreach($options['channels'] as $social)
+                                                    @php
+                                                        $socialLinkData = $social['url'] ?? '';
+                                                        $socialUrl = is_array($socialLinkData) ? ($socialLinkData['url'] ?? '') : $socialLinkData;
+                                                        $socialTarget = is_array($socialLinkData) ? ($socialLinkData['target'] ?? '_blank') : '_blank';
+                                                    @endphp
                                                     <a class="group footer-social social-{{ strtolower($social['name']) }}"
-                                                       href="{{ $social['url'] }}" title="{{ $social['name'] }} pagina" alt="{{ $social['name'] }}" target="_blank"
+                                                       href="{{ $socialUrl }}" title="{{ $social['name'] }} pagina" target="{{ $socialTarget }}"
                                                        aria-label="Ga naar {{ $social['name'] }}">
                                                         <i class="{{ $social['icon'] }} text-xl transition-all group-hover:scale-110"></i>
                                                     </a>
