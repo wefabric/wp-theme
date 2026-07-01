@@ -151,6 +151,26 @@
                     "prepend": "",
                     "append": "",
                     "maxlength": ""
+                },
+                {
+                    "key": "field_630653cecd6b0",
+                    "label": "Footer titel 5",
+                    "name": "footer_title_5",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
                 }
             ]
         },
@@ -1743,6 +1763,197 @@
                     "max_size": "",
                     "mime_types": "",
                     "preview_size": "medium"
+                }
+            ]
+        },
+        {
+            "key": "field_footer_s5t00001",
+            "label": "Sectie 5 - Type",
+            "name": "footer_section_5_type",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "none": "— Leeg —",
+                "menu_1": "Menu 1",
+                "menu_2": "Menu 2",
+                "menu_3": "Menu 3",
+                "contact": "Contactgegevens",
+                "newsletter": "Nieuwsbrief & Socials",
+                "custom_text": "Eigen tekst met button",
+                "logos": "Logo's"
+            },
+            "default_value": "none",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_footer_s5c00001",
+            "label": "Sectie 5 - Eigen inhoud",
+            "name": "footer_section_5_custom",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_footer_s5t00001",
+                        "operator": "==",
+                        "value": "custom_text"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_footer_s5ct0001",
+                    "label": "Tekst",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
+                    "key": "field_footer_s5bl001",
+                    "label": "Button tekst en link",
+                    "name": "button_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_footer_s5bc001",
+                    "label": "Button kleur",
+                    "name": "button_color",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [[{"field": "field_footer_s5bl001","operator": "!=empty"}]],
+                    "wrapper": { "width": "33", "class": "", "id": "" },
+                    "choices": {"primary-color":"Primary","secondary-color":"Secondary","tertiary-color":"Tertiary","quaternary-color":"Quaternary","cta":"CTA","white":"Wit","black":"Zwart","gray":"Grijs"},
+                    "default_value": "primary-color",
+                    "return_format": "value",
+                    "multiple": 0, "allow_null": 0, "ui": 0, "ajax": 0, "placeholder": "", "create_options": 0, "save_options": 0
+                },
+                {
+                    "key": "field_footer_s5bs001",
+                    "label": "Button stijl",
+                    "name": "button_style",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [[{"field": "field_footer_s5bl001","operator": "!=empty"}]],
+                    "wrapper": { "width": "33", "class": "", "id": "" },
+                    "choices": {"filled":"Gevuld","outline":"Omlijnd","underline":"Onderlijn"},
+                    "default_value": "filled",
+                    "return_format": "value",
+                    "multiple": 0, "allow_null": 0, "ui": 0, "ajax": 0, "placeholder": "", "create_options": 0, "save_options": 0
+                },
+                {
+                    "key": "field_footer_s5bi001",
+                    "label": "Button icoon",
+                    "name": "button_icon",
+                    "aria-label": "",
+                    "type": "font-awesome",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [[{"field": "field_footer_s5bl001","operator": "!=empty"}]],
+                    "wrapper": { "width": "33", "class": "", "id": "" },
+                    "icon_sets": ["solid","regular","light","thin","duotone","fak","brands"],
+                    "custom_icon_set": "", "default_label": "", "default_value": "",
+                    "save_format": "class", "allow_null": 1, "show_preview": 1,
+                    "enqueue_fa": 0, "fa_live_preview": "", "choices": []
+                },
+                {
+                    "key": "field_footer_s5bd001",
+                    "label": "Button download",
+                    "name": "button_download",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [[{"field": "field_footer_s5bl001","operator": "!=empty"}]],
+                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "message": "", "default_value": 0, "ui": 0, "ui_on_text": "", "ui_off_text": ""
+                }
+            ]
+        },
+        {
+            "key": "field_footer_s5lg0001",
+            "label": "Sectie 5 - Logo's",
+            "name": "footer_section_5_logos",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_footer_s5t00001",
+                        "operator": "==",
+                        "value": "logos"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Logo toevoegen",
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_footer_s5lgi001",
+                    "label": "Afbeelding",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": { "width": "", "class": "", "id": "" },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "", "min_height": "", "min_size": "",
+                    "max_width": "", "max_height": "", "max_size": "",
+                    "mime_types": "", "preview_size": "medium"
                 }
             ]
         },

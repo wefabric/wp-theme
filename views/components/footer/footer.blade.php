@@ -23,6 +23,7 @@
         2 => $option['footer_section_2_type'] ?? 'menu_2',
         3 => $option['footer_section_3_type'] ?? 'contact',
         4 => $option['footer_section_4_type'] ?? 'newsletter',
+        5 => $option['footer_section_5_type'] ?? 'none',
     ];
 
     // Default true: uitklapbaar tenzij expliciet uitgeschakeld
@@ -42,6 +43,7 @@
         2 => !empty($footerTitles['footer_title_2']) ? $footerTitles['footer_title_2'] : ($defaultTitles[$sectionTypes[2]] ?? ''),
         3 => !empty($footerTitles['footer_title_3']) ? $footerTitles['footer_title_3'] : ($defaultTitles[$sectionTypes[3]] ?? ''),
         4 => !empty($footerTitles['footer_title_4']) ? $footerTitles['footer_title_4'] : ($defaultTitles[$sectionTypes[4]] ?? ''),
+        5 => !empty($footerTitles['footer_title_5']) ? $footerTitles['footer_title_5'] : ($defaultTitles[$sectionTypes[5]] ?? ''),
     ];
 
     $menuLocations = [
@@ -51,7 +53,7 @@
     ];
 
     $activeSectionCount = count(array_filter($sectionTypes, fn($t) => $t !== 'none' && !empty($t)));
-    $gridColsMap = [1 => 'lg:grid-cols-1', 2 => 'lg:grid-cols-2', 3 => 'lg:grid-cols-3', 4 => 'lg:grid-cols-4'];
+    $gridColsMap = [1 => 'lg:grid-cols-1', 2 => 'lg:grid-cols-2', 3 => 'lg:grid-cols-3', 4 => 'lg:grid-cols-4', 5 => 'lg:grid-cols-5'];
     $gridColsClass = $gridColsMap[$activeSectionCount] ?? 'lg:grid-cols-4';
 @endphp
 
@@ -81,7 +83,7 @@
             <div class="w-full">
                 <div class="footer-grid grid grid-cols-1 md:grid-cols-2 {{ $gridColsClass }} lg:gap-8 pt-12 lg:pt-16 pb-6 lg:pb-0">
 
-                    @foreach([1, 2, 3, 4] as $sectionNum)
+                    @foreach([1, 2, 3, 4, 5] as $sectionNum)
                         @php
                             $sectionType = $sectionTypes[$sectionNum];
                             $sectionTitle = $sectionTitles[$sectionNum];
