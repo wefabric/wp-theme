@@ -17,7 +17,7 @@
     <div class="custom-organisation-styling h-full @if($organisationUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
         <div class="background overflow-hidden w-full relative p-4 md:p-6 bg-{{ $organisationBackgroundColor }}">
             @if ($organisationLink2Url)
-                <a href="{{ $organisationLink2Url }}" target="_blank" aria-label="Ga naar {{ $organisationLink2Title }}"
+                <a href="{{ $organisationLink2Url }}" target="_blank" rel="noopener noreferrer" aria-label="Ga naar {{ $organisationLink2Title }}"
                  class="absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out"></a>
             @endif
             @if ($organisationImage)
@@ -32,7 +32,7 @@
         </div>
         @if (!empty($visibleElements) && in_array('name', $visibleElements) && ($organisationTitle))
             @if ($organisationLink2Title)
-                <a href="{{ $organisationLink2Url }}" target="_blank" aria-label="Ga naar {{ $organisationTitle }}">
+                <a href="{{ $organisationLink2Url }}" target="_blank" rel="noopener noreferrer" aria-label="Ga naar {{ $organisationTitle }}">
             @endif
             <div class="organisation-title mt-2 text-lg font-bold text-{{ $organisationTitleColor }} @if($organisationLink2Url) group-hover:text-primary @endif">{!! $organisationLink2Title !!}</div>
             @if ($organisationLink2Title)</a>@endif

@@ -23,7 +23,7 @@
     <div class="h-full @if($brandUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
         <div class="background overflow-hidden w-full relative p-4 md:p-6 bg-{{ $brandBackgroundColor }} rounded-{{ $borderRadius }}">
             @if ($brandUrl)
-                <a href="{{ $brandUrl }}" aria-label="Ga naar {{ $brandTitle }}" @if($brandLinkType === 'external_link') target="_blank"
+                <a href="{{ $brandUrl }}" aria-label="Ga naar {{ $brandTitle }}" @if($brandLinkType === 'external_link') target="_blank" rel="noopener noreferrer"
                    @endif class="overlay absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
             @endif
             @if ($logoImage)
@@ -38,7 +38,7 @@
         </div>
         @if (!empty($visibleElements) && in_array('name', $visibleElements) && ($brandTitle))
             @if ($brandUrl)
-                <a href="{{ $brandUrl }}" aria-label="Ga naar {{ $brandTitle }}" @if($brandLinkType === 'external_link') target="_blank" @endif>@endif
+                <a href="{{ $brandUrl }}" aria-label="Ga naar {{ $brandTitle }}" @if($brandLinkType === 'external_link') target="_blank" rel="noopener noreferrer" @endif>@endif
                     <p class="mt-2 text-lg font-bold @if($brandUrl) group-hover:text-primary @endif">{!! $brandTitle !!}</p>
                     @if ($brandUrl) </a>
             @endif

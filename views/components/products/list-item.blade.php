@@ -22,7 +22,7 @@
         @if ($productImage)
             <div class="product-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 @if($productUrl)
-                    <a href="{{ $productUrl }}" target="_blank" aria-label="Ga naar {{ $productTitle }} pagina"
+                    <a href="{{ $productUrl }}" target="_blank" rel="noopener noreferrer" aria-label="Ga naar {{ $productTitle }} pagina"
                    class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
                 @endif
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
