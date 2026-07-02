@@ -1863,6 +1863,74 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "key": "field_historie_scroll_animation_001",
+            "label": "Verticale lijn vult bij scrollen",
+            "name": "timeline_scroll_animation",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_historie_show_numbers_001",
+            "label": "Nummers tonen in tijdlijn dots",
+            "name": "timeline_show_numbers",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_historie_active_color_001",
+            "label": "Actieve kleur (gevulde lijn / actieve dot)",
+            "name": "timeline_active_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "Kleur voor de gevulde tijdlijn en actieve dots bij scroll-animatie",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_historie_scroll_animation_001",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "primary",
+            "allow_in_bindings": 1,
+            "font_size": 14
         }
     ],
     "location": [

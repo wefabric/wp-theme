@@ -132,10 +132,18 @@
 
     // Animaties
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
+    $scrollAnimation = (bool)($block['data']['timeline_scroll_animation'] ?? false);
+    $showNumbers = (bool)($block['data']['timeline_show_numbers'] ?? false);
+    $timelineActiveColor = $block['data']['timeline_active_color'] ?? $timelineLineColor;
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'historie' }}@endif" class="block-historie relative historie-{{ $randomNumber }}-custom-padding historie-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
-         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'historie' }}@endif"
+         class="block-historie relative historie-{{ $randomNumber }}-custom-padding historie-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         data-scroll-animate="{{ $scrollAnimation ? 'true' : 'false' }}"
+         data-show-numbers="{{ $showNumbers ? 'true' : 'false' }}"
+         data-active-color-class="bg-{{ $timelineActiveColor }}"
+         data-line-color-class="bg-{{ $timelineLineColor }}"
+         style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax) background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
@@ -160,6 +168,9 @@
             @endif
             <div class="mt-8 lg:mt-16 relative h-full">
                 <div class="history-vertical-line w-[4px] bg-{{ $timelineLineColor }} h-full absolute lg:left-1/2 -translate-x-1/2">
+                    @if ($scrollAnimation)
+                        <div class="timeline-progress-bar absolute top-0 left-0 w-full bg-{{ $timelineActiveColor }}" style="height: 0; transition: height 0.15s ease-out;"></div>
+                    @endif
                     <div class="timeline-start-dot end-dot w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
                     <div class="timeline-end-dot end-dot w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"></div>
                 </div>
@@ -172,11 +183,17 @@
                             $marginLeftClass = $isOdd ? 'lg:pl-16 mt-8 lg:mt-20' : 'lg:pl-0 lg:pr-16 mt-8 lg:mt-0';
                             $timelineLinePosition = $isOdd ? 'top-1/2' : 'lg:left-auto lg:right-0 top-1/2';
                             $roundedFullPosition = $isOdd ? 'right-0 top-1/2 translate-x-1/2 -translate-y-1/2' : 'left-auto right-0 lg:right-auto lg:left-0 top-1/2 translate-x-1/2 lg:-translate-x-1/2 -translate-y-1/2';
+                            $dotNumber = $index + 1;
                         @endphp
 
                         <div class="timeline-card {{ $cardClass }} relative h-fit pl-10 {{ $marginLeftClass }}">
                             <div class="history-horizontal-line w-[20px] lg:w-[30px] h-[4px] bg-{{ $timelineLineColor }} absolute left-0 {{ $timelineLinePosition }}">
-                                <div class="end-dot w-[12px] h-[12px] bg-{{ $timelineLineColor }} rounded-full absolute {{ $roundedFullPosition }}"></div>
+                                <div class="end-dot timeline-dot bg-{{ $timelineLineColor }} {{ $showNumbers ? 'timeline-dot--numbered' : 'w-[12px] h-[12px] rounded-full' }} absolute {{ $roundedFullPosition }}"
+                                     data-dot-number="{{ $dotNumber }}">
+                                    @if ($showNumbers)
+                                        <span class="dot-number">{{ $dotNumber }}</span>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="history-item flex flex-col @if ($flyinEffect) history-hidden @endif">
@@ -324,5 +341,58 @@
                 observer.observe(item);
             });
         });
+    </script>
+@endif
+
+@if ($scrollAnimation)
+    <script>
+        console.log('hello');
+
+        function historieInit() {
+            var allSections = document.querySelectorAll('.block-historie[data-scroll-animate="true"]');
+            allSections.forEach(function (sec) {
+                var verticalLine = sec.querySelector('.history-vertical-line');
+                var progressBar = sec.querySelector('.timeline-progress-bar');
+                var dots = sec.querySelectorAll('.timeline-dot');
+                var horizontalLines = sec.querySelectorAll('.history-horizontal-line');
+                var activeColorClass = sec.dataset.activeColorClass;
+                var lineColorClass = sec.dataset.lineColorClass;
+
+                if (!progressBar || !verticalLine) return;
+
+                function updateProgress() {
+                    var lineRect = verticalLine.getBoundingClientRect();
+                    var viewportTrigger = window.innerHeight * 0.65;
+                    var filled = viewportTrigger - lineRect.top;
+                    var progress = Math.min(Math.max(filled / lineRect.height, 0), 1);
+                    progressBar.style.height = (progress * 100) + '%';
+
+                    dots.forEach(function (dot, i) {
+                        var dotRect = dot.getBoundingClientRect();
+                        var dotMid = dotRect.top + dotRect.height / 2;
+                        var isActive = dotMid < viewportTrigger;
+                        dot.classList.toggle('timeline-dot--active', isActive);
+                        if (horizontalLines[i]) {
+                            if (isActive) {
+                                if (lineColorClass) { horizontalLines[i].classList.remove(lineColorClass); }
+                                if (activeColorClass) { horizontalLines[i].classList.add(activeColorClass); }
+                            } else {
+                                if (activeColorClass) { horizontalLines[i].classList.remove(activeColorClass); }
+                                if (lineColorClass) { horizontalLines[i].classList.add(lineColorClass); }
+                            }
+                        }
+                    });
+                }
+
+                window.addEventListener('scroll', updateProgress, { passive: true });
+                updateProgress();
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', historieInit);
+        } else {
+            historieInit();
+        }
     </script>
 @endif
