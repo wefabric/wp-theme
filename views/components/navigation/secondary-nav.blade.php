@@ -89,6 +89,7 @@
                         }
                     @endphp
 
+                    @if (in_array('phone', $options['secondary_menu_show_elements']) || in_array('email', $options['secondary_menu_show_elements']) || in_array('whatsapp', $options['secondary_menu_show_elements']))
                     <div class="contact-info flex gap-x-4">
 
                         {{-- WhatsApp --}}
@@ -120,6 +121,7 @@
                             </a>
                         @endif
                     </div>
+                    @endif
 
                     @break
                 @endforeach
