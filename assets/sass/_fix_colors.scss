@@ -306,11 +306,29 @@
 .bg-cta-color {
   @apply bg-cta;
 }
+.bg-cta-color-light {
+  @apply bg-cta-light;
+}
+.bg-cta-color-dark {
+  @apply bg-cta-dark;
+}
 .text-cta-color {
   @apply text-cta;
 }
+.text-cta-color-light {
+  @apply text-cta-light;
+}
+.text-cta-color-dark {
+  @apply text-cta-dark;
+}
 .btn-cta-color {
   @apply btn-cta;
+}
+.btn-cta-color-light {
+  @apply btn-cta-light;
+}
+.btn-cta-color-dark {
+  @apply btn-cta-dark;
 }
 .border-cta-color {
   @apply border-cta;
@@ -323,6 +341,120 @@
 }
 .border-r-cta-color {
   @apply border-r-cta;
+}
+
+
+// Senary colors
+.bg-senary-color {
+  @apply bg-senary;
+}
+.bg-senary-color-light {
+  @apply bg-senary-light;
+}
+.bg-senary-color-dark {
+  @apply bg-senary-dark;
+}
+.text-senary-color {
+  @apply text-senary;
+}
+.text-senary-color-light {
+  @apply text-senary-light;
+}
+.text-senary-color-dark {
+  @apply text-senary-dark;
+}
+.btn-senary-color {
+  @apply btn-senary;
+}
+.btn-senary-color-light {
+  @apply btn-senary-light;
+}
+.btn-senary-color-dark {
+  @apply btn-senary-dark;
+}
+.even-bg-senary-color {
+  @apply even:bg-senary;
+}
+.odd-bg-senary-color {
+  @apply odd:bg-senary;
+}
+.even-bg-senary-color-light {
+  @apply even:bg-senary-light;
+}
+.odd-bg-senary-color-light {
+  @apply odd:bg-senary-light;
+}
+.even-bg-senary-color-dark {
+  @apply even:bg-senary-dark;
+}
+.odd-bg-senary-color-dark {
+  @apply odd:bg-senary-dark;
+}
+.border-r-senary-color {
+  @apply border-r-senary;
+}
+.border-r-senary-color-light {
+  @apply border-r-senary-light;
+}
+.border-r-senary-color-dark {
+  @apply border-r-senary-dark;
+}
+
+
+// Quinary colors
+.bg-quinary-color {
+  @apply bg-quinary;
+}
+.bg-quinary-color-light {
+  @apply bg-quinary-light;
+}
+.bg-quinary-color-dark {
+  @apply bg-quinary-dark;
+}
+.text-quinary-color {
+  @apply text-quinary;
+}
+.text-quinary-color-light {
+  @apply text-quinary-light;
+}
+.text-quinary-color-dark {
+  @apply text-quinary-dark;
+}
+.btn-quinary-color {
+  @apply btn-quinary;
+}
+.btn-quinary-color-light {
+  @apply btn-quinary-light;
+}
+.btn-quinary-color-dark {
+  @apply btn-quinary-dark;
+}
+.even-bg-quinary-color {
+  @apply even:bg-quinary;
+}
+.odd-bg-quinary-color {
+  @apply odd:bg-quinary;
+}
+.even-bg-quinary-color-light {
+  @apply even:bg-quinary-light;
+}
+.odd-bg-quinary-color-light {
+  @apply odd:bg-quinary-light;
+}
+.even-bg-quinary-color-dark {
+  @apply even:bg-quinary-dark;
+}
+.odd-bg-quinary-color-dark {
+  @apply odd:bg-quinary-dark;
+}
+.border-r-quinary-color {
+  @apply border-r-quinary;
+}
+.border-r-quinary-color-light {
+  @apply border-r-quinary-light;
+}
+.border-r-quinary-color-dark {
+  @apply border-r-quinary-dark;
 }
 
 

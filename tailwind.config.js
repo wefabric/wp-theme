@@ -155,7 +155,19 @@ module.exports = {
           dark: 'var(--background-color-dark)'
         },
         cta: {
+          light: 'var(--cta-color-light)',
           DEFAULT: 'var(--cta-color)',
+          dark: 'var(--cta-color-dark)',
+        },
+        quinary: {
+          light: 'var(--quinary-color-light)',
+          DEFAULT: 'var(--quinary-color)',
+          dark: 'var(--quinary-color-dark)',
+        },
+        senary: {
+          light: 'var(--senary-color-light)',
+          DEFAULT: 'var(--senary-color)',
+          dark: 'var(--senary-color-dark)',
         },
         basic: {
           success: 'var(--basic-color-success)',

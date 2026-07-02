@@ -263,6 +263,124 @@
     }
   }
 
+  // CTA light button
+  .btn-cta-light {
+    &.btn-filled {
+      @apply bg-cta-light border border-2 border-cta-light text-white overflow-hidden z-1 duration-200 relative;
+
+      &:before {
+        content: '';
+        z-index: -1;
+        @apply bg-black opacity-20 absolute h-full w-0 left-0 bottom-0 transition-all duration-200;
+      }
+
+      &:hover {
+        @apply text-white border-black border-opacity-20;
+        &:before {
+          @apply w-full;
+        }
+      }
+    }
+
+    &.btn-outline {
+      @apply border border-2 border-cta-light text-cta-light overflow-hidden z-1 duration-200 relative;
+
+      &:before {
+        content: '';
+        z-index: -1;
+        @apply bg-cta-light absolute h-full w-0 left-0 bottom-0 transition-all duration-200;
+      }
+
+      &:hover {
+        @apply text-white;
+        &:before {
+          @apply w-full;
+        }
+      }
+    }
+
+    &.btn-underline {
+      @apply text-cta-light duration-200 relative;
+      padding-left: 0;
+      padding-right: 0;
+
+      &:before {
+        content: '';
+        z-index: -1;
+        @apply bg-cta-light absolute h-0.5 bottom-0 transition-all duration-200 w-full;
+        left: 0;
+        right: unset;
+      }
+
+      &:hover {
+        &:before {
+          width: 0%;
+          right: 0;
+          left: unset;
+        }
+      }
+    }
+  }
+
+  // CTA dark button
+  .btn-cta-dark {
+    &.btn-filled {
+      @apply bg-cta-dark border border-2 border-cta-dark text-white overflow-hidden z-1 duration-200 relative;
+
+      &:before {
+        content: '';
+        z-index: -1;
+        @apply bg-black opacity-20 absolute h-full w-0 left-0 bottom-0 transition-all duration-200;
+      }
+
+      &:hover {
+        @apply text-white border-black border-opacity-20;
+        &:before {
+          @apply w-full;
+        }
+      }
+    }
+
+    &.btn-outline {
+      @apply border border-2 border-cta-dark text-cta-dark overflow-hidden z-1 duration-200 relative;
+
+      &:before {
+        content: '';
+        z-index: -1;
+        @apply bg-cta-dark absolute h-full w-0 left-0 bottom-0 transition-all duration-200;
+      }
+
+      &:hover {
+        @apply text-white;
+        &:before {
+          @apply w-full;
+        }
+      }
+    }
+
+    &.btn-underline {
+      @apply text-cta-dark duration-200 relative;
+      padding-left: 0;
+      padding-right: 0;
+
+      &:before {
+        content: '';
+        z-index: -1;
+        @apply bg-cta-dark absolute h-0.5 bottom-0 transition-all duration-200 w-full;
+        left: 0;
+        right: unset;
+      }
+
+      &:hover {
+        &:before {
+          width: 0%;
+          right: 0;
+          left: unset;
+        }
+      }
+    }
+  }
+
   // White button
   .btn-white {
     &.btn-filled {

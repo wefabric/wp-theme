@@ -11,156 +11,42 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
+            "wrapper": { "width": "", "class": "", "id": "" },
             "placement": "top",
             "endpoint": 0
         },
         {
             "key": "field_6184ef734796b",
-            "label": "Hoofdkleur",
+            "label": "Eerste kleur",
             "name": "primary_color_group",
             "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {
-                "width": "30",
-                "class": "",
-                "id": ""
-            },
+            "wrapper": { "width": "30", "class": "", "id": "" },
             "layout": "block",
             "sub_fields": [
-                {
-                    "key": "field_6184eb8fd4093",
-                    "label": "Hoofdkleur",
-                    "name": "primary_color",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                },
-                {
-                    "key": "field_6184efa14796d",
-                    "label": "Licht",
-                    "name": "primary_color_light",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                },
-                {
-                    "key": "field_6184efb64796e",
-                    "label": "Donker",
-                    "name": "primary_color_dark",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                }
+                { "key": "field_6184eb8fd4093", "label": "Eerste kleur", "name": "primary_color", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_6184efa14796d", "label": "Licht", "name": "primary_color_light", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_6184efb64796e", "label": "Donker", "name": "primary_color_dark", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" }
             ]
         },
         {
             "key": "field_61853e5d00a1a",
-            "label": "Secundaire kleur",
+            "label": "Tweede kleur",
             "name": "secondary_color_group",
             "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {
-                "width": "30",
-                "class": "",
-                "id": ""
-            },
+            "wrapper": { "width": "30", "class": "", "id": "" },
             "layout": "block",
             "sub_fields": [
-                {
-                    "key": "field_61853e5d00a1b",
-                    "label": "Secundaire kleur",
-                    "name": "secondary_color",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                },
-                {
-                    "key": "field_61853e5d00a1c",
-                    "label": "Licht",
-                    "name": "secondary_color_light",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                },
-                {
-                    "key": "field_61853e5d00a1d",
-                    "label": "Donker",
-                    "name": "secondary_color_dark",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                }
+                { "key": "field_61853e5d00a1b", "label": "Tweede kleur", "name": "secondary_color", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_61853e5d00a1c", "label": "Licht", "name": "secondary_color_light", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_61853e5d00a1d", "label": "Donker", "name": "secondary_color_dark", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" }
             ]
         },
         {
@@ -172,67 +58,12 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {
-                "width": "30",
-                "class": "",
-                "id": ""
-            },
+            "wrapper": { "width": "30", "class": "", "id": "" },
             "layout": "block",
             "sub_fields": [
-                {
-                    "key": "field_61853e5e00a1f",
-                    "label": "Derde kleur",
-                    "name": "tertiary_color",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                },
-                {
-                    "key": "field_61853e5e00a20",
-                    "label": "Licht",
-                    "name": "tertiary_color_light",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                },
-                {
-                    "key": "field_61853e5e00a21",
-                    "label": "Donker",
-                    "name": "tertiary_color_dark",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                }
+                { "key": "field_61853e5e00a1f", "label": "Derde kleur", "name": "tertiary_color", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_61853e5e00a20", "label": "Licht", "name": "tertiary_color_light", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_61853e5e00a21", "label": "Donker", "name": "tertiary_color_dark", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" }
             ]
         },
         {
@@ -244,139 +75,63 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {
-                "width": "30",
-                "class": "",
-                "id": ""
-            },
+            "wrapper": { "width": "30", "class": "", "id": "" },
             "layout": "block",
             "sub_fields": [
-                {
-                    "key": "field_6565c1a7a56f3",
-                    "label": "Vierde kleur",
-                    "name": "quaternary_color",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                },
-                {
-                    "key": "field_6565c1a7a56f4",
-                    "label": "Licht",
-                    "name": "quaternary_color_light",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                },
-                {
-                    "key": "field_6565c1a7a56f5",
-                    "label": "Donker",
-                    "name": "quaternary_color_dark",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                }
+                { "key": "field_6565c1a7a56f3", "label": "Vierde kleur", "name": "quaternary_color", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_6565c1a7a56f4", "label": "Licht", "name": "quaternary_color_light", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_6565c1a7a56f5", "label": "Donker", "name": "quaternary_color_dark", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" }
+            ]
+        },
+        {
+            "key": "field_quinary_color_group_001",
+            "label": "Vijfde kleur",
+            "name": "quinary_color_group",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": { "width": "30", "class": "", "id": "" },
+            "layout": "block",
+            "sub_fields": [
+                { "key": "field_quinary_color_001", "label": "Vijfde kleur", "name": "quinary_color", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_quinary_color_light_001", "label": "Licht", "name": "quinary_color_light", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_quinary_color_dark_001", "label": "Donker", "name": "quinary_color_dark", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" }
+            ]
+        },
+        {
+            "key": "field_senary_color_group_001",
+            "label": "Zesde kleur",
+            "name": "senary_color_group",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": { "width": "30", "class": "", "id": "" },
+            "layout": "block",
+            "sub_fields": [
+                { "key": "field_senary_color_001", "label": "Zesde kleur", "name": "senary_color", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_senary_color_light_001", "label": "Licht", "name": "senary_color_light", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_senary_color_dark_001", "label": "Donker", "name": "senary_color_dark", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" }
             ]
         },
         {
             "key": "field_648c6941d3387",
-            "label": "Achtergrond",
+            "label": "Achtergrond kleur",
             "name": "background_color_group",
             "aria-label": "",
             "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {
-                "width": "30",
-                "class": "",
-                "id": ""
-            },
+            "wrapper": { "width": "30", "class": "", "id": "" },
             "layout": "block",
             "sub_fields": [
-                {
-                    "key": "field_648c6941d3388",
-                    "label": "Achtergrond kleur",
-                    "name": "background_color",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                },
-                {
-                    "key": "field_648c6941d3389",
-                    "label": "Licht",
-                    "name": "background_color_light",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                },
-                {
-                    "key": "field_648c6941d338a",
-                    "label": "Donker",
-                    "name": "background_color_dark",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                }
+                { "key": "field_648c6941d3388", "label": "Achtergrond kleur", "name": "background_color", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_648c6941d3389", "label": "Licht", "name": "background_color_light", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_648c6941d338a", "label": "Donker", "name": "background_color_dark", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" }
             ]
         },
         {
@@ -388,31 +143,12 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {
-                "width": "30",
-                "class": "",
-                "id": ""
-            },
+            "wrapper": { "width": "30", "class": "", "id": "" },
             "layout": "block",
             "sub_fields": [
-                {
-                    "key": "field_654c94b5c3782",
-                    "label": "Call to action kleur",
-                    "name": "cta_color",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string"
-                }
+                { "key": "field_654c94b5c3782", "label": "Call to action kleur", "name": "cta_color", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_cta_color_light_001", "label": "Licht", "name": "cta_color_light", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" },
+                { "key": "field_cta_color_dark_001", "label": "Donker", "name": "cta_color_dark", "aria-label": "", "type": "color_picker", "instructions": "", "required": 0, "conditional_logic": 0, "wrapper": { "width": "", "class": "", "id": "" }, "default_value": "", "enable_opacity": 0, "return_format": "string" }
             ]
         },
         {
@@ -424,11 +160,7 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
+            "wrapper": { "width": "", "class": "", "id": "" },
             "placement": "top",
             "endpoint": 0
         },
@@ -441,11 +173,7 @@
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
+            "wrapper": { "width": "", "class": "", "id": "" },
             "message": "",
             "default_value": 0,
             "ui": 0,
@@ -469,11 +197,7 @@
                     }
                 ]
             ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
+            "wrapper": { "width": "", "class": "", "id": "" },
             "choices": {
                 "[10px]": "Kleine ronde randen",
                 "[30px]": "Gemiddelde ronde randen",
