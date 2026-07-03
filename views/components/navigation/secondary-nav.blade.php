@@ -148,60 +148,64 @@
                     </a>
 
                     <script>
-                        const searchLink = document.querySelector('.search-link');
-                        const searchForm = document.querySelector('.search-form');
-                        const searchInputContainer = document.querySelector('.search-input-container');
-                        const searchInput = document.querySelector('.search-input');
-                        const backdrop = document.querySelector('.backdrop');
+                        (function () {
+                            var searchForm = document.querySelector('.search-form');
+                            var searchInputContainer = document.querySelector('.search-input-container');
+                            var searchInput = document.querySelector('.search-input');
+                            var backdrop = document.querySelector('.backdrop');
 
-                        function toggleSearchForm() {
-                            if (!searchForm || !searchInputContainer || !backdrop) return;
+                            window.wefabricToggleSearch = function () {
+                                if (!searchForm || !searchInputContainer || !backdrop) return;
 
-                            const isHidden = searchForm.classList.contains('search-form-hidden');
+                                var isHidden = searchForm.classList.contains('search-form-hidden');
 
-                            if (isHidden) {
-                                searchForm.classList.remove('slide-up');
-                                searchForm.classList.add('slide-down');
-                                backdrop.classList.add('backdrop-visible');
-                                setTimeout(() => {
-                                    searchForm.classList.remove('search-form-hidden');
-                                    searchInput.focus();
-                                }, 0);
-                            } else {
-                                searchForm.classList.remove('slide-down');
-                                searchForm.classList.add('slide-up');
-                                searchForm.addEventListener('animationend', function handleAnimationEnd() {
-                                    searchForm.classList.add('search-form-hidden');
-                                    backdrop.classList.remove('backdrop-visible');
-                                    searchForm.removeEventListener('animationend', handleAnimationEnd);
+                                if (isHidden) {
+                                    searchForm.classList.remove('slide-up');
+                                    searchForm.classList.add('slide-down');
+                                    backdrop.classList.add('backdrop-visible');
+                                    document.body.style.overflow = 'hidden';
+                                    setTimeout(function () {
+                                        searchForm.classList.remove('search-form-hidden');
+                                        searchInput.focus();
+                                    }, 0);
+                                } else {
+                                    searchForm.classList.remove('slide-down');
+                                    searchForm.classList.add('slide-up');
+                                    document.body.style.overflow = '';
+                                    searchForm.addEventListener('animationend', function handleAnimationEnd() {
+                                        searchForm.classList.add('search-form-hidden');
+                                        backdrop.classList.remove('backdrop-visible');
+                                        searchForm.removeEventListener('animationend', handleAnimationEnd);
+                                    });
+                                }
+
+                                if (isHidden) {
+                                    setTimeout(function () {
+                                        searchInputContainer.classList.add('animate-border');
+                                    }, 200);
+                                } else {
+                                    searchInputContainer.classList.remove('animate-border');
+                                }
+                            };
+
+                            var searchLink = document.querySelector('.search-link');
+                            if (searchLink) {
+                                searchLink.addEventListener('click', function (e) {
+                                    e.preventDefault();
+                                    window.wefabricToggleSearch();
                                 });
                             }
 
-                            if (isHidden) {
-                                setTimeout(() => {
-                                    searchInputContainer.classList.add('animate-border');
-                                }, 200);
-                            } else {
-                                searchInputContainer.classList.remove('animate-border');
+                            if (backdrop) {
+                                backdrop.addEventListener('click', window.wefabricToggleSearch);
                             }
-                        }
 
-                        if (searchLink) {
-                            searchLink.addEventListener('click', function (e) {
-                                e.preventDefault();
-                                toggleSearchForm();
+                            document.addEventListener('keydown', function (event) {
+                                if (event.key === 'Escape' && searchForm && !searchForm.classList.contains('search-form-hidden')) {
+                                    window.wefabricToggleSearch();
+                                }
                             });
-                        }
-
-                        if (backdrop) {
-                            backdrop.addEventListener('click', toggleSearchForm);
-                        }
-
-                        document.addEventListener('keydown', function (event) {
-                            if (event.key === 'Escape' && !searchForm.classList.contains('search-form-hidden')) {
-                                toggleSearchForm();
-                            }
-                        });
+                        })();
                     </script>
 
                 @endif
