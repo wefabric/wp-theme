@@ -44,6 +44,9 @@
     $mapsCity = $block['data']['maps_city'] ?? '';
     $mapsStreet = $block['data']['maps_street'] ?? '';
     $mapsHouseNumber = $block['data']['maps_house_number'] ?? '';
+    $mapsBusinessName = trim(get_bloginfo('name') . ' ' . $mapsCity);
+    $mapsAddress = trim($mapsBusinessName . ', ' . trim($mapsStreet . ' ' . $mapsHouseNumber) . ', ' . $mapsCity, ' ,');
+    $mapsQuery = urlencode($mapsAddress);
 
 
     // Blokinstellingen
@@ -121,7 +124,7 @@
             <iframe width="100%" height="600"
                     class="h-[300px] md:h-[400px] xl:h-[600px]"
                     frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{ $mapsCity }} {{ $mapsStreet }} {{$mapsHouseNumber}}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{ $mapsQuery }}&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
             </iframe>
             @if (($button1Text) && ($button1Link))
                 <div class="buttons bottom-button w-full flex flex-wrap gap-x-4 gap-y-2 mt-4 md:mt-8 {{ $textClass }} container mx-auto @if($blockWidth == 'fullscreen') px-8 @endif">
