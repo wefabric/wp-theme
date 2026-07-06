@@ -19,13 +19,13 @@
 
     $swiperLinear = $block['data']['linear_rotation'] ?? false;
     $swiperDirection = $block['data']['swiper_direction'] ?? 'left';
-    $swiperRotationSpeed = [
-        'super_slow' => 15000,
-        'slow' => 10000,
-        'normal' => 5000,
-        'fast' => 3000,
-        'super_fast' => 1000,
-    ][$block['data']['rotation_speed']] ?? 5000;
+    $swiperRotationPxPerSec = [
+        'super_slow' => 20,
+        'slow' => 40,
+        'normal' => 70,
+        'fast' => 120,
+        'super_fast' => 220,
+    ][$block['data']['rotation_speed']] ?? 70;
 
     $paginationStyle = $block['data']['pagination_style'] ?? 'bullets';
     $randomId = 'logosSwiper-' . $randomNumber;
@@ -98,25 +98,15 @@
                 centeredSlides: true,
             @endif
             @if ($swiperLinear)
-                freeMode: true,
-                allowTouchMove: false,
-                speed: {{ $swiperRotationSpeed }},
+                freeMode: {
+                    enabled: true,
+                    momentum: false,
+                },
             @endif
-            @if ($swiperAutoplay)
+            @if ($swiperAutoplay && !$swiperLinear)
                 autoplay: {
-                    delay:
-                    @if ($swiperLinear)
-                        0
-                    @else
-                        {{ $swiperAutoplaySpeed }}
-                    @endif,
-                    disableOnInteraction:
-                        @if ($swiperLinear)
-                            true
-                        @else
-                            false
-                       @endif,
-                    reverseDirection: {{ $swiperDirection === 'right' ? 'true' : 'false' }},
+                    delay: {{ $swiperAutoplaySpeed }},
+                    disableOnInteraction: false,
                 },
             @endif
             @if (!$swiperLinear)
@@ -154,6 +144,69 @@
                 },
             }
         });
+        @if ($swiperAutoplay && $swiperLinear)
+            // Continuous "vloeiend laten verlopen" scroll, driven by a plain CSS
+            // @keyframes animation instead of Swiper's autoplay module or a JS
+            // requestAnimationFrame loop. Swiper's autoplay is built around discrete
+            // slide transitions, not a true marquee — faking one that way caused
+            // permanent stalls and speed glitches on click/drag. A JS-driven rAF loop
+            // avoided that but runs on the main thread and looked choppy. A CSS
+            // animation is compositor-driven (GPU), so it stays smooth regardless of
+            // JS activity elsewhere on the page. Manual drag/swipe is left entirely to
+            // Swiper's own freeMode touch handling; we only start/stop the CSS
+            // animation around it and hand off the exact visual position each time.
+            document.querySelector(".{{ $randomId }}").addEventListener('dragstart', function (e) {
+                e.preventDefault();
+            });
+
+            (function () {
+                var direction = {{ $swiperDirection === 'right' ? '1' : '-1' }};
+                var pxPerSec = {{ $swiperRotationPxPerSec }};
+                var wrapperEl = document.querySelector(".{{ $randomId }} .swiper-wrapper");
+                var animationName = "logos-marquee-{{ $randomNumber }}";
+                var styleEl = document.createElement('style');
+                document.head.appendChild(styleEl);
+
+                wrapperEl.style.willChange = 'transform';
+
+                function currentVisualTranslateX() {
+                    var matrix = new DOMMatrixReadOnly(getComputedStyle(wrapperEl).transform);
+                    return matrix.m41;
+                }
+
+                function startMarquee(fromTranslate) {
+                    var distance = logosSwiper.virtualSize;
+                    var toTranslate = fromTranslate + direction * distance;
+                    var durationSec = distance / pxPerSec;
+
+                    styleEl.textContent =
+                        '@keyframes ' + animationName + ' {' +
+                        'from { transform: translate3d(' + fromTranslate + 'px, 0, 0); }' +
+                        'to { transform: translate3d(' + toTranslate + 'px, 0, 0); }' +
+                        '}';
+
+                    wrapperEl.style.animation = 'none';
+                    void wrapperEl.offsetWidth; // force reflow so the animation restarts cleanly
+                    wrapperEl.style.animation = animationName + ' ' + durationSec + 's linear infinite';
+                }
+
+                function stopMarquee() {
+                    var current = currentVisualTranslateX();
+                    wrapperEl.style.animation = 'none';
+                    logosSwiper.setTransition(0);
+                    logosSwiper.setTranslate(current);
+                }
+
+                startMarquee(logosSwiper.translate || 0);
+
+                logosSwiper.on('touchStart', function () {
+                    stopMarquee();
+                });
+                logosSwiper.on('touchEnd', function () {
+                    startMarquee(logosSwiper.translate);
+                });
+            })();
+        @endif
     });
 </script>
 
