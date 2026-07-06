@@ -195,6 +195,8 @@
                     wrapperEl.style.animation = animationName + ' ' + durationSec + 's linear infinite';
                 }
 
+                var isInteracting = false;
+
                 function stopMarquee() {
                     var current = currentVisualTranslateX();
                     wrapperEl.style.animation = 'none';
@@ -204,13 +206,21 @@
 
                 function recenterToMiddleCopy() {
                     var distance = passDistance();
-                    var current = logosSwiper.translate;
+                    // Read the live, computed CSS position rather than
+                    // logosSwiper.translate — the latter is only updated at
+                    // touchStart/End/imagesReady/resize, so while the marquee is
+                    // just running on its own it can be stale by however long
+                    // it's been since the last of those. The actual rendered
+                    // transform is always accurate, whatever the gap.
+                    var current = currentVisualTranslateX();
 
-                    if (current > -distance) {
-                        current -= distance;
-                    } else if (current < -2 * distance) {
-                        current += distance;
-                    }
+                    // Modulo-normalise into the middle copy in one step, however
+                    // far out of range "current" is — a single ±distance nudge is
+                    // only enough for normal drag drift, not for a large gap (e.g.
+                    // after a long spell in a backgrounded tab).
+                    var withinOnePass = current % distance;
+                    if (withinOnePass > 0) withinOnePass -= distance;
+                    current = withinOnePass - distance;
 
                     logosSwiper.setTransition(0);
                     logosSwiper.setTranslate(current);
@@ -220,9 +230,48 @@
                 startMarquee(-passDistance());
 
                 logosSwiper.on('touchStart', function () {
+                    isInteracting = true;
                     stopMarquee();
                 });
                 logosSwiper.on('touchEnd', function () {
+                    isInteracting = false;
+                    startMarquee(recenterToMiddleCopy());
+                });
+
+                // Logo images aren't loaded yet when we first measure virtualSize
+                // right after Swiper's constructor runs, so the very first
+                // passDistance() can be based on collapsed/placeholder image
+                // sizes. That's rarely noticeable locally where images load
+                // near-instantly, but on a slower connection (staging, production)
+                // the gap between "marquee already animating with the wrong
+                // distance" and "images finally loaded" is much bigger, and the
+                // keyframe ends up wrapping at the wrong point — landing on
+                // whatever the mismatched math produces instead of identical
+                // content. Once Swiper confirms every image has actually loaded,
+                // rebuild the keyframes with the now-correct measurements.
+                logosSwiper.on('imagesReady', function () {
+                    if (isInteracting) return;
+                    startMarquee(recenterToMiddleCopy());
+                });
+
+                // A resize/breakpoint change (orientation change, mobile browser
+                // toolbar show/hide, a responsive breakpoint kicking in) can also
+                // trigger Swiper's own update(), which resets the wrapper to
+                // Swiper's last-known translate. We only keep that in sync at
+                // touchStart/End/imagesReady, so refresh here too.
+                logosSwiper.on('resize', function () {
+                    if (isInteracting) return;
+                    startMarquee(recenterToMiddleCopy());
+                });
+
+                // Browsers throttle/pause JS timers in backgrounded tabs, but the
+                // CSS animation itself keeps running regardless. If the user
+                // switches away and back — more likely the longer one pass takes,
+                // i.e. at slower rotation speeds — swiper.translate can end up far
+                // stale by the time anything reads it. Resync the instant the tab
+                // is visible again, before that can happen.
+                document.addEventListener('visibilitychange', function () {
+                    if (document.visibilityState !== 'visible' || isInteracting) return;
                     startMarquee(recenterToMiddleCopy());
                 });
             })();
