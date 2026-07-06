@@ -54,6 +54,15 @@
                         @include('components.logos.list-item')
                     </div>
                 @endforeach
+                @if ($swiperLinear)
+                    @foreach (range(1, 2) as $duplicatePass)
+                        @foreach ($logos as $logo)
+                            <div class="swiper-slide h-auto" aria-hidden="true">
+                                @include('components.logos.list-item')
+                            </div>
+                        @endforeach
+                    @endforeach
+                @endif
             </div>
             @if (!$swiperLinear && ($paginationStyle != 'none'))
                 <div class="swiper-pagination"></div>
@@ -127,34 +136,24 @@
             @endif
             breakpoints: {
                 0: {
-                    loop: {{ $swiperLoop && count($logos) > $mobileLayout ? 'true' : 'false' }},
+                    loop: {{ !$swiperLinear && $swiperLoop && count($logos) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 640: {
-                    loop: {{ $swiperLoop && count($logos) > $tabletLayout ? 'true' : 'false' }},
+                    loop: {{ !$swiperLinear && $swiperLoop && count($logos) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ $swiperLoop && count($logos) > $desktopLayout ? 'true' : 'false' }},
+                    loop: {{ !$swiperLinear && $swiperLoop && count($logos) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
                 },
                 1536: {
-                    loop: {{ $swiperLoop && count($logos) > $desktopXlLayout ? 'true' : 'false' }},
+                    loop: {{ !$swiperLinear && $swiperLoop && count($logos) > $desktopXlLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopXlLayout }},
                 },
             }
         });
         @if ($swiperAutoplay && $swiperLinear)
-            // Continuous "vloeiend laten verlopen" scroll, driven by a plain CSS
-            // @keyframes animation instead of Swiper's autoplay module or a JS
-            // requestAnimationFrame loop. Swiper's autoplay is built around discrete
-            // slide transitions, not a true marquee — faking one that way caused
-            // permanent stalls and speed glitches on click/drag. A JS-driven rAF loop
-            // avoided that but runs on the main thread and looked choppy. A CSS
-            // animation is compositor-driven (GPU), so it stays smooth regardless of
-            // JS activity elsewhere on the page. Manual drag/swipe is left entirely to
-            // Swiper's own freeMode touch handling; we only start/stop the CSS
-            // animation around it and hand off the exact visual position each time.
             document.querySelector(".{{ $randomId }}").addEventListener('dragstart', function (e) {
                 e.preventDefault();
             });
@@ -174,8 +173,14 @@
                     return matrix.m41;
                 }
 
+                function passDistance() {
+                    // The wrapper now contains the logos three times (see markup
+                    // above), so a third of its width is exactly one seamless pass.
+                    return logosSwiper.virtualSize / 3;
+                }
+
                 function startMarquee(fromTranslate) {
-                    var distance = logosSwiper.virtualSize;
+                    var distance = passDistance();
                     var toTranslate = fromTranslate + direction * distance;
                     var durationSec = distance / pxPerSec;
 
@@ -197,13 +202,28 @@
                     logosSwiper.setTranslate(current);
                 }
 
-                startMarquee(logosSwiper.translate || 0);
+                function recenterToMiddleCopy() {
+                    var distance = passDistance();
+                    var current = logosSwiper.translate;
+
+                    if (current > -distance) {
+                        current -= distance;
+                    } else if (current < -2 * distance) {
+                        current += distance;
+                    }
+
+                    logosSwiper.setTransition(0);
+                    logosSwiper.setTranslate(current);
+                    return current;
+                }
+
+                startMarquee(-passDistance());
 
                 logosSwiper.on('touchStart', function () {
                     stopMarquee();
                 });
                 logosSwiper.on('touchEnd', function () {
-                    startMarquee(logosSwiper.translate);
+                    startMarquee(recenterToMiddleCopy());
                 });
             })();
         @endif
