@@ -205,11 +205,11 @@
                             {{-- Subtiele spinner rechtsboven --}}
                             <div class="absolute bottom-4 right-4 flex items-center gap-2" style="z-index: 41;">
                                 <div class="threejs-spinner" style="width: 18px; height: 18px; border-width: 3px;"></div>
-                                <span class="text-xs font-medium" style="color: var(--primary-color, #1e3a8a); opacity: 0.5;">3D laden…</span>
+                                <span class="text-xs font-medium loader-pct" style="color: var(--primary-color, #1e3a8a); opacity: 0.5;">3D laden…</span>
                             </div>
                         @else
                             <div class="threejs-spinner"></div>
-                            <span class="text-sm font-medium" style="color: var(--primary-color, #1e3a8a); opacity: 0.6;">3D model laden…</span>
+                            <span class="text-sm font-medium loader-pct" style="color: var(--primary-color, #1e3a8a); opacity: 0.6;">3D model laden…</span>
                         @endif
                     </div>
 
@@ -223,6 +223,24 @@
                             <div class="pinpoint-popup-text text-primary text-[14px] leading-relaxed"></div>
                         </div>
                         <div class="absolute left-1/2" style="bottom: -8px; transform: translateX(-50%); width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-top:8px solid white;"></div>
+                    </div>
+
+                    {{-- 3D-rotatie badge --}}
+                    <div id="badge-3d-{{ $randomNumber }}" class="absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 bg-white/90 rounded-full shadow-sm" style="z-index: 30; pointer-events: none; backdrop-filter: blur(4px);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-color, #1e3a8a);">
+                            <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>
+                        </svg>
+                        <span class="text-xs font-semibold" style="color: var(--primary-color, #1e3a8a); letter-spacing: 0.05em;">3D</span>
+                    </div>
+
+                    {{-- Interactie-hint: verschijnt kort na laden van het model --}}
+                    <div id="hint-3d-{{ $randomNumber }}" class="absolute pointer-events-none" style="bottom: 3.5rem; left: 50%; transform: translateX(-50%); z-index: 25; opacity: 0; transition: opacity 0.4s ease; white-space: nowrap;">
+                        <div class="flex items-center gap-2 bg-black/60 text-white px-3 py-2 rounded-full" style="font-size: 12px; line-height: 1.4;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>
+                            </svg>
+                            Sleep of gebruik de pijltjes om te draaien
+                        </div>
                     </div>
                 </div>
             </div>
@@ -291,6 +309,12 @@
         pointer-events: none;
     }
 
+    .threejs-{{ $randomNumber }} canvas {
+        cursor: grab;
+    }
+    .threejs-{{ $randomNumber }} canvas:active {
+        cursor: grabbing;
+    }
 
     .uitgelicht-object-{{ $randomNumber }}-canvas-height {
         @media only screen and (min-width: 0px) {
@@ -448,8 +472,10 @@
     controls.autoRotateSpeed = 1.2;
 
     // Stoppen met auto-roteren zodra gebruiker interacteert
+    let userInteracted = false;
     renderer.domElement.addEventListener('pointerdown', () => {
         controls.autoRotate = false;
+        userInteracted = true;
     }, { once: true });
 
     // Zoom activeren bij interactie (klik/touch)
@@ -551,6 +577,8 @@
 
     const loaderEl = document.getElementById('threejs-loader-{{ $randomNumber }}');
 
+    const hint3d = document.getElementById('hint-3d-{{ $randomNumber }}');
+
     loader.load(
         modelUrl,
         (gltf) => {
@@ -560,6 +588,16 @@
             });
             scene.add(object);
             if (loaderEl) loaderEl.classList.add('hidden');
+
+            // Interactie-hint kort tonen als gebruiker nog niet heeft gedraaid
+            if (hint3d && !userInteracted) {
+                setTimeout(() => {
+                    if (!userInteracted) {
+                        hint3d.style.opacity = '1';
+                        setTimeout(() => { hint3d.style.opacity = '0'; }, 3000);
+                    }
+                }, 600);
+            }
 
             resizeToContainer();
             try {
@@ -608,12 +646,20 @@
                 console.warn('Model framing failed:', e);
             }
         },
-        (xhr) => { /* progress — optioneel */ },
+        (xhr) => {
+            if (xhr.lengthComputable && loaderEl) {
+                const pct = Math.round((xhr.loaded / xhr.total) * 100);
+                const pctEl = loaderEl.querySelector('.loader-pct');
+                if (pctEl) pctEl.textContent = pct + '%';
+            }
+        },
         (err) => {
             console.error(err);
             if (loaderEl) {
-                loaderEl.querySelector('.threejs-spinner').style.display = 'none';
-                loaderEl.querySelector('span').textContent = 'Model kon niet worden geladen.';
+                const spinner = loaderEl.querySelector('.threejs-spinner');
+                const pctEl = loaderEl.querySelector('.loader-pct');
+                if (spinner) spinner.style.display = 'none';
+                if (pctEl) pctEl.textContent = 'Model kon niet worden geladen.';
             }
         }
     );
@@ -710,7 +756,7 @@
         raycaster.setFromCamera(mouse, camera);
         const hoverHits = raycaster.intersectObjects(pinpointMeshes);
         hoveredSprite = hoverHits.length > 0 ? hoverHits[0].object : null;
-        container.style.cursor = hoveredSprite ? 'pointer' : '';
+        renderer.domElement.style.cursor = hoveredSprite ? 'pointer' : '';
     });
 
     // On-demand rendering: alleen renderen als er iets verandert
