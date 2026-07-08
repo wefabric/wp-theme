@@ -11,13 +11,22 @@
     $visibleElements = $block['data']['show_element'] ?? [];
 
     // Show establishments
+    // Geen selectie gemaakt (bv. op andere theme-sites waar dit veld niet gebruikt wordt)? Dan gewoon de eerste vestiging tonen.
+    $selectedEstablishments = array_filter(array_map('intval', (array) ($block['data']['establishments'] ?? [])));
+
     $establishment_args = [
         'post_type'      => 'establishments',
-        'posts_per_page' => -1,
+        'posts_per_page' => $selectedEstablishments ? -1 : 1,
         'post_status'    => 'publish',
         'orderby'        => 'menu_order',
         'order'          => 'ASC',
     ];
+
+    if ($selectedEstablishments) {
+        $establishment_args['post__in'] = $selectedEstablishments;
+        $establishment_args['orderby']  = 'post__in';
+    }
+
     $establishment_query = new WP_Query($establishment_args);
 
 
