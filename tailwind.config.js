@@ -11,6 +11,14 @@ module.exports = {
   ],
   safelist: [
     // Grid
+    'grid-cols-1',
+    'grid-cols-2',
+    'grid-cols-3',
+    'grid-cols-4',
+    'grid-cols-5',
+    'grid-cols-6',
+    'grid-cols-7',
+    'grid-cols-8',
     'sm:grid-cols-1',
     'sm:grid-cols-2',
     'sm:grid-cols-3',
