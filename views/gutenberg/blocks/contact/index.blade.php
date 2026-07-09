@@ -286,12 +286,12 @@
                                             <div class="flex flex-col">
                                                 @foreach ($establishment->openingHours() as $openingHour)
 
-                                                    <div class="flex items-center sm:gap-x-12 justify-between sm:justify-start">
-                                                        <span class="w-fit sm:w-[120px]">{{ $openingHour->day }}</span>
+                                                    <div class="day-item flex items-center sm:gap-x-12 justify-between sm:justify-start">
+                                                        <span class="day-text w-fit sm:w-[120px]">{{ $openingHour->day }}</span>
                                                         @if ($openingHour->isClosed())
                                                             <span>Gesloten</span>
                                                         @else
-                                                            <span> {{ $openingHour->openingHour }} uur - {{  $openingHour->closingHour }} uur
+                                                            <span class="time-text"> {{ $openingHour->openingHour }} uur - {{  $openingHour->closingHour }} uur
                                                                 @if (!empty($openingHour->openingHour2) && !empty($openingHour->closingHour2))
                                                                     & {{ $openingHour->openingHour2 }} uur
                                                                     - {{ $openingHour->closingHour2 }} uur
