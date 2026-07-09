@@ -202,7 +202,7 @@
                                             @endif
 
                                             @if (!empty($visibleElements) && in_array('establishment_address', $visibleElements))
-                                                <div class="establishment-address">{{ $street }} {{ $house_number }} {{ $house_number_addition }}</div>
+                                                <div class="establishment-address">{{ $street }}@if ($house_number > 0) {{ $house_number }}{{ $house_number_addition }}@endif</div>
                                                 <div class="establishment-zipcode">{{ $postcode }} {{ $city }}</div>
                                             @endif
 
