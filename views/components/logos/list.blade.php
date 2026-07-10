@@ -161,6 +161,7 @@
             (function () {
                 var direction = {{ $swiperDirection === 'right' ? '1' : '-1' }};
                 var pxPerSec = {{ $swiperRotationPxPerSec }};
+                var containerEl = document.querySelector(".{{ $randomId }}");
                 var wrapperEl = document.querySelector(".{{ $randomId }} .swiper-wrapper");
                 var animationName = "logos-marquee-{{ $randomNumber }}";
                 var styleEl = document.createElement('style');
@@ -195,7 +196,12 @@
                     wrapperEl.style.animation = animationName + ' ' + durationSec + 's linear infinite';
                 }
 
-                var isInteracting = false;
+                // Both touch/drag interaction and hovering the slider with a mouse
+                // should pause the marquee, and it should only resume once neither
+                // is happening anymore — a counter (rather than one shared boolean)
+                // avoids a mouseleave firing while a touch is still in progress (or
+                // vice versa) from resuming it prematurely.
+                var pauseCount = 0;
 
                 function stopMarquee() {
                     var current = currentVisualTranslateX();
@@ -229,14 +235,25 @@
 
                 startMarquee(-passDistance());
 
-                logosSwiper.on('touchStart', function () {
-                    isInteracting = true;
-                    stopMarquee();
-                });
-                logosSwiper.on('touchEnd', function () {
-                    isInteracting = false;
-                    startMarquee(recenterToMiddleCopy());
-                });
+                function pauseMarquee() {
+                    pauseCount++;
+                    if (pauseCount === 1) {
+                        stopMarquee();
+                    }
+                }
+
+                function resumeMarquee() {
+                    pauseCount = Math.max(0, pauseCount - 1);
+                    if (pauseCount === 0) {
+                        startMarquee(recenterToMiddleCopy());
+                    }
+                }
+
+                logosSwiper.on('touchStart', pauseMarquee);
+                logosSwiper.on('touchEnd', resumeMarquee);
+
+                containerEl.addEventListener('mouseenter', pauseMarquee);
+                containerEl.addEventListener('mouseleave', resumeMarquee);
 
                 // Logo images aren't loaded yet when we first measure virtualSize
                 // right after Swiper's constructor runs, so the very first
@@ -250,7 +267,7 @@
                 // content. Once Swiper confirms every image has actually loaded,
                 // rebuild the keyframes with the now-correct measurements.
                 logosSwiper.on('imagesReady', function () {
-                    if (isInteracting) return;
+                    if (pauseCount > 0) return;
                     startMarquee(recenterToMiddleCopy());
                 });
 
@@ -260,7 +277,7 @@
                 // Swiper's last-known translate. We only keep that in sync at
                 // touchStart/End/imagesReady, so refresh here too.
                 logosSwiper.on('resize', function () {
-                    if (isInteracting) return;
+                    if (pauseCount > 0) return;
                     startMarquee(recenterToMiddleCopy());
                 });
 
@@ -271,7 +288,7 @@
                 // stale by the time anything reads it. Resync the instant the tab
                 // is visible again, before that can happen.
                 document.addEventListener('visibilitychange', function () {
-                    if (document.visibilityState !== 'visible' || isInteracting) return;
+                    if (document.visibilityState !== 'visible' || pauseCount > 0) return;
                     startMarquee(recenterToMiddleCopy());
                 });
             })();
