@@ -1,8 +1,12 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
-    $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
+    $subtitleIcon = $block['data']['subtitle_icon'] ?? '';
+    $subtitleIcon = $subtitleIcon ? json_decode($subtitleIcon, true) : null;
+    $subtitleIconColor = $block['data']['subtitle_icon_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -142,7 +146,12 @@
             <div class="text-image flex flex-col lg:flex-row gap-8 xl:gap-20 @if ($verticalCentered) lg:items-center @endif">
                 <div class="text {{ $textClass }} order-2 {{ $textOrder }}">
                     @if ($subTitle)
-                        <span class="subtitle block mb-2 text-{{ $titleColor }}">{!! $subTitle !!}</span>
+                        <span class="subtitle block mb-2 text-{{ $subTitleColor }}">
+                            @if ($subtitleIcon)
+                                <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
+                            @endif
+                            {!! $subTitle !!}
+                        </span>
                     @endif
                     @if ($title)
                         <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
