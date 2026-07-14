@@ -694,6 +694,13 @@ header.banner {
           color: var(--mnav2-active-color, currentColor);
           letter-spacing: 0.03em;
         }
+
+        // Toegevoegd door JS (mobile-menu-v2.js) voor items die met de hover
+        // letter-spacing niet meer op één regel zouden passen — dan liever
+        // standaard al op meerdere regels tonen dan bij hover laten verspringen.
+        &.mnav2-link--wraps {
+          width: min-content;
+        }
       }
 
       // Pijl voor items met sub-submenus
