@@ -21,7 +21,7 @@
     $logoCategories = get_the_terms($logo, 'logo_categories');
 @endphp
 
-<div class="logo-item group h-full @if ($flyinEffect) logo-hidden @endif">
+<div class="logo-item group h-full @if ($flyinEffect) logo-hidden @endif" @if ($flyinEffect) data-logo-flyin-id="{{ $logo }}" @endif>
     <div class="custom-logo-styling h-full relative rounded-{{ $borderRadius }} @if($logoUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
         <div class="background flex items-center justify-center w-full relative p-4 md:p-6 bg-{{ $logoBackgroundColor }}">
             @if ($logoUrl)

@@ -301,46 +301,93 @@
         opacity: 0;
     }
 
-    .swiper-slide-duplicate .logo-hidden {
-        animation: flyIn 0.6s ease-out forwards !important;
-    }
-
     .logo-animated {
         animation: flyIn 0.6s ease-out forwards;
+    }
+
+    .logo-visible {
+        opacity: 1;
     }
 </style>
 
 @if ($flyinEffect)
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const logoItems = document.querySelectorAll('.logo-item');
+            // Logo's die al eens zijn ingevlogen onthouden we op hun (stabiele) post-ID,
+            // niet op het DOM-element zelf — Swiper's loop-modus breekt de duplicate-
+            // slides bij een resize/update (bijv. de adresbalk die in/uitschuift tijdens
+            // scrollen op mobiel) af en maakt ze opnieuw aan. Zo'n nieuw element begint
+            // qua class weer bij "logo-hidden", ook al is dit logo al eerder getoond —
+            // zonder deze registratie zou het dan alsnog opnieuw invliegen.
+            const animatedLogoIds = new Set();
+
             const observerOptions = {
                 root: null,
                 rootMargin: '0px 0px -30px 0px',
                 threshold: 0.035
             };
 
-            const observerCallback = (entries, observer) => {
+            const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        const logoItem = entry.target;
-
-                        setTimeout(() => {
-                            if (logoItem.classList.contains('logo-hidden')) {
-                                logoItem.classList.add('logo-animated');
-                                logoItem.classList.remove('logo-hidden');
-                            }
-                        }, index * 200);
-
-                        observer.unobserve(logoItem);
+                    if (!entry.isIntersecting) {
+                        return;
                     }
-                });
-            };
 
-            const observer = new IntersectionObserver(observerCallback, observerOptions);
-            logoItems.forEach(item => {
+                    const logoItem = entry.target;
+                    const logoId = logoItem.dataset.logoFlyinId;
+
+                    setTimeout(() => {
+                        if (logoItem.classList.contains('logo-hidden')) {
+                            logoItem.classList.add('logo-animated');
+                            logoItem.classList.remove('logo-hidden');
+
+                            if (logoId) {
+                                animatedLogoIds.add(logoId);
+                            }
+                        }
+                    }, index * 200);
+
+                    obs.unobserve(logoItem);
+                });
+            }, observerOptions);
+
+            function watchLogoItem(item) {
+                const logoId = item.dataset.logoFlyinId;
+
+                // Dit logo is al eens (op een ander element) ingevlogen — direct
+                // zichtbaar zetten, zonder de animatie opnieuw af te spelen.
+                if (logoId && animatedLogoIds.has(logoId)) {
+                    item.classList.remove('logo-hidden');
+                    item.classList.add('logo-visible');
+                    return;
+                }
+
                 observer.observe(item);
-            });
+            }
+
+            document.querySelectorAll('.logo-item').forEach(watchLogoItem);
+
+            // Vang nieuwe .logo-item-elementen op die Swiper later toevoegt (loop-
+            // duplicates die worden afgebroken en opnieuw aangemaakt).
+            const wrapper = document.querySelector('.logosSwiper-{{ $randomNumber }} .swiper-wrapper');
+
+            if (wrapper) {
+                new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        mutation.addedNodes.forEach((node) => {
+                            if (!(node instanceof HTMLElement)) {
+                                return;
+                            }
+
+                            if (node.classList.contains('logo-item')) {
+                                watchLogoItem(node);
+                            }
+
+                            node.querySelectorAll('.logo-item').forEach(watchLogoItem);
+                        });
+                    });
+                }).observe(wrapper, { childList: true });
+            }
         });
     </script>
 @endif
