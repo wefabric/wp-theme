@@ -180,7 +180,7 @@
                     @foreach ($socials as $social)
                         <a class="text-{{ $employeeTextColor }} text-2xl transform ease-in-out duration-300 hover:scale-110 hover:text-primary"
                            href="{{ $social['url'] }}" target="_blank" rel="noopener noreferrer"
-                           aria-label="Ga naar social media pagina">
+                           aria-label="Ga naar {{ !empty($social['name']) ? $social['name'] . ' pagina' : 'social media pagina' }}">
                             {!! $social['icon'] !!}
                         </a>
                     @endforeach

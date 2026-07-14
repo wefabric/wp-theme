@@ -203,6 +203,27 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
+                    "key": "field_64a27e5a6cb56_name",
+                    "label": "Naam",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Naam van het social kanaal (bijv. LinkedIn, Instagram)",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "bijv. LinkedIn",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_64a27e3f6cb56"
+                },
+                {
                     "key": "field_64a27e5c6cb57",
                     "label": "Link",
                     "name": "url",
