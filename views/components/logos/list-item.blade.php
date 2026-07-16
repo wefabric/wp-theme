@@ -8,10 +8,20 @@
     $logoSummary = get_the_excerpt($logo);
 
     $logoLinkType = $block['data']['logo_link'] ?? 'page_link';
+    $logoLinkAnchor = $logoTitle;
+    $logoLinkTarget = '_self';
         if ($logoLinkType === 'page_link') {
             $logoUrl = get_permalink($logo);
         } elseif ($logoLinkType === 'external_link') {
-            $logoUrl = $fields['link'] ?? '';
+            $linkField = $fields['link'] ?? null;
+            if (is_array($linkField)) {
+                $logoUrl = $linkField['url'] ?? '';
+                $logoLinkAnchor = $linkField['title'] ?: $logoTitle;
+                $logoLinkTarget = $linkField['target'] ?: '_blank';
+            } else {
+                $logoUrl = $linkField ?? '';
+                $logoLinkTarget = '_blank';
+            }
         } elseif ($logoLinkType === 'no_link') {
              $logoUrl = '';
         } else {
@@ -25,9 +35,9 @@
     <div class="custom-logo-styling h-full relative rounded-{{ $borderRadius }} @if($logoUrl) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
         <div class="background flex items-center justify-center w-full relative p-4 md:p-6 bg-{{ $logoBackgroundColor }}">
             @if ($logoUrl)
-                <a href="{{ $logoUrl }}" @if($logoLinkType === 'external_link') target="_blank" @endif
-                aria-label="Ga naar {{ $logoTitle }} pagina" class="overlay absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}">
-                    <span class="sr-only">Ga naar {{ $logoTitle }} pagina</span>
+                <a href="{{ $logoUrl }}" target="{{ $logoLinkTarget }}" @if($logoLinkType === 'external_link') rel="noopener noreferrer" @endif
+                aria-label="{{ $logoLinkAnchor }}" class="overlay absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}">
+                    <span class="sr-only">{{ $logoLinkAnchor }}</span>
                 </a>
             @endif
 
@@ -61,7 +71,7 @@
         </div>
 
         @if (!empty($visibleElements) && in_array('name', $visibleElements) && ($logoTitle))
-            @if ($logoUrl)<a href="{{ $logoUrl }}" @if($logoLinkType === 'external_link') target="_blank" @endif aria-label="Ga naar {{ $logoTitle }} pagina">@endif
+            @if ($logoUrl)<a href="{{ $logoUrl }}" target="{{ $logoLinkTarget }}" @if($logoLinkType === 'external_link') rel="noopener noreferrer" @endif aria-label="{{ $logoLinkAnchor }}">@endif
                 <p class="logo-title mt-2 text-lg text-left font-bold text-{{ $logoTextColor }} @if($logoUrl) group-hover:text-primary @endif">{!! $logoTitle !!}</p>
                 @if ($logoUrl)</a> @endif
         @endif

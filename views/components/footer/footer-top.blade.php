@@ -96,9 +96,22 @@
                 <div class="footer-top-socials flex items-center gap-3">
                     <span class="footer-top-socials-label">{{ __('Volg ons', 'wefabric') }}</span>
                     @foreach($option['channels'] as $social)
+                        @php
+                            $channelLink = $social['url'];
+                            if (is_array($channelLink)) {
+                                $channelUrl = $channelLink['url'] ?? '';
+                                $channelLabel = $channelLink['title'] ?: ('Ga naar ' . $social['name']);
+                                $channelTarget = $channelLink['target'] ?: '_blank';
+                            } else {
+                                $channelUrl = $channelLink ?? '';
+                                $channelLabel = 'Ga naar ' . $social['name'];
+                                $channelTarget = '_blank';
+                            }
+                        @endphp
                         <a class="group footer-social social-{{ strtolower($social['name']) }}"
-                           href="{{ $social['url'] }}" title="{{ $social['name'] }} pagina" target="_blank"
-                           aria-label="Ga naar {{ $social['name'] }}">
+                           href="{{ $channelUrl }}" target="{{ $channelTarget }}" rel="noopener noreferrer"
+                           aria-label="{{ $channelLabel }}">
+                            <span class="sr-only">{{ $channelLabel }}</span>
                             <i class="{{ $social['icon'] }} transition-all group-hover:scale-110"></i>
                         </a>
                     @endforeach
