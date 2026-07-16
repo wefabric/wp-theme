@@ -268,9 +268,22 @@
                                             <div class="socials-text font-bold mb-2">Volg ons</div>
                                             <div class="socials flex gap-3 items-center flex-wrap">
                                                 @foreach($options['channels'] as $social)
+                                                    @php
+                                                        $channelLink = $social['url'];
+                                                        if (is_array($channelLink)) {
+                                                            $channelUrl = $channelLink['url'] ?? '';
+                                                            $channelLabel = $channelLink['title'] ?: ('Ga naar ' . $social['name']);
+                                                            $channelTarget = $channelLink['target'] ?: '_blank';
+                                                        } else {
+                                                            $channelUrl = $channelLink ?? '';
+                                                            $channelLabel = 'Ga naar ' . $social['name'];
+                                                            $channelTarget = '_blank';
+                                                        }
+                                                    @endphp
                                                     <a class="group footer-social social-{{ strtolower($social['name']) }}"
-                                                       href="{{ $social['url'] }}" title="{{ $social['name'] }} pagina" alt="{{ $social['name'] }}" target="_blank"
-                                                       aria-label="Ga naar {{ $social['name'] }}">
+                                                       href="{{ $channelUrl }}" target="{{ $channelTarget }}" rel="noopener noreferrer"
+                                                       aria-label="{{ $channelLabel }}">
+                                                        <span class="sr-only">{{ $channelLabel }}</span>
                                                         <i class="{{ $social['icon'] }} text-xl transition-all group-hover:scale-110"></i>
                                                     </a>
                                                 @endforeach
