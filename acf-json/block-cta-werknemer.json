@@ -131,6 +131,72 @@
             "font_size": 14
         },
         {
+            "key": "field_768a1f2b3c50",
+            "label": "Icoon voor subtitel",
+            "name": "subtitle_icon",
+            "aria-label": "",
+            "type": "font-awesome",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66f678cb6fe05",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+            },
+            "icon_sets": [
+                "solid",
+                "regular",
+                "light",
+                "thin",
+                "duotone_solid",
+                "fak",
+                "brands"
+            ],
+            "custom_icon_set": "",
+            "default_label": "",
+            "default_value": "",
+            "save_format": "element",
+            "allow_null": 1,
+            "show_preview": 1,
+            "enqueue_fa": 0,
+            "allow_in_bindings": 0,
+            "fa_live_preview": "",
+            "choices": []
+        },
+        {
+            "key": "field_768a1f2b3c51",
+            "label": "Icoon kleur",
+            "name": "subtitle_icon_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66f678cb6fe05",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "black",
+            "allow_in_bindings": 1,
+            "font_size": 14
+        },
+        {
             "key": "field_65647aa6196ff",
             "label": "Tekst",
             "name": "text",
@@ -213,30 +279,68 @@
             "bidirectional_target": []
         },
         {
-            "key": "field_658037a98f3a3",
-            "label": "Layout",
-            "name": "cta_layout",
+            "key": "field_768a1f2b3c4e",
+            "label": "Eigen foto",
+            "name": "employee_custom_image",
             "aria-label": "",
-            "type": "select",
+            "type": "image",
+            "instructions": "Overschrijft de foto van de werknemer wanneer hier een afbeelding is geüpload.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65647aa61971a",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_768a1f2b3c4f",
+            "label": "Weergave",
+            "name": "employee_show_details",
+            "aria-label": "",
+            "type": "checkbox",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65647aa61971a",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "choices": {
-                "horizontal": "Werknemer naast tekst weergeven",
-                "vertical": "Werknemer afbeelding boven tekst weergeven"
+                "name": "Naam",
+                "function": "Functie"
             },
-            "default_value": "horizontal",
+            "default_value": [],
             "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
+            "allow_custom": 0,
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0
         },
         {
             "key": "field_65803b23efd31",
@@ -244,17 +348,9 @@
             "name": "text_position",
             "aria-label": "",
             "type": "select",
-            "instructions": "",
+            "instructions": "Bepaalt zowel de positie van de werknemer-afbeelding als de uitlijning van tekst en knoppen. Links: werknemer rechts van de tekst. Midden: werknemer boven de tekst. Rechts: werknemer links van de tekst (tekst blijft links uitgelijnd).",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_658037a98f3a3",
-                        "operator": "==",
-                        "value": "horizontal"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -684,7 +780,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -712,7 +808,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -737,7 +833,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -861,7 +957,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -889,7 +985,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -914,7 +1010,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -975,6 +1071,27 @@
             },
             "default_value": "",
             "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_768a1f2b3c52",
+            "label": "Custom block ID",
+            "name": "custom_block_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""

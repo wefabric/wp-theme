@@ -4,15 +4,12 @@
      $titleColor = $block['data']['title_color'] ?? '';
      $subTitle = $block['data']['subtitle'] ?? '';
      $subTitleColor = $block['data']['subtitle_color'] ?? '';
+     $subTitleIcon = $block['data']['subtitle_icon'] ?? '';
+     $subTitleIcon = $subTitleIcon ? json_decode($subTitleIcon, true) : null;
+     $subTitleIconColor = $block['data']['subtitle_icon_color'] ?? '';
      $text = $block['data']['text'] ?? '';
      $textColor = $block['data']['text_color'] ?? '';
 
-
-     // todo: cleanup file
-     $flexClassMap = ['left' => 'justify-start', 'center' => 'justify-center', 'right' => 'justify-end',];
-     $flexClass = $flexClassMap[$textPosition] ?? 'items-center';
-     $ctaLayout = $block['data']['cta_layout'] ?? '';
-     $flexDirection = ($ctaLayout === 'vertical') ? 'flex-col' : (($ctaLayout === 'horizontal') ? 'flex-row' : '');
 
      $ctaForm = $block['data']['form'] ?? '';
      $blockBackgroundColor = $block['data']['block_background_color'] ?? '';
@@ -49,16 +46,37 @@
          }
      }
 
-     $textPosition = $block['data']['text_position'] ?? '';
-     $textClassMap = ['left' => 'text-left', 'center' => 'text-center', 'right' => 'text-right',];
-     $textClass = $textClassMap[$textPosition] ?? 'text-center';
+     // De positie van de werknemer en de uitlijning van tekst/knoppen worden volledig bepaald
+     // door de tekstpositie (het aparte "Layout" veld is vervallen):
+     // - links:  werknemer rechts van de tekst, tekst/knoppen links uitgelijnd
+     // - midden: werknemer boven de tekst, tekst/knoppen gecentreerd
+     // - rechts: werknemer links van de tekst, tekst/knoppen blijven links uitgelijnd
+     $textPosition = $block['data']['text_position'] ?? 'left';
+     $isStackedLayout = ($textPosition === 'center');
+     $employeeOnLeft = ($textPosition === 'right');
+     $flexDirection = $isStackedLayout ? 'flex-col' : 'flex-row';
+     $textAlignClass = $isStackedLayout ? 'text-center' : 'text-left';
+     $justifyClass = $isStackedLayout ? 'justify-center' : 'justify-start';
+
+     // Cross-axis uitlijning van de cta-wrapper (zelfde patroon als cta-whitepaper's $flexClass).
+     $itemsClassMap = ['left' => 'items-start', 'center' => 'items-center', 'right' => 'items-end'];
+     $itemsClass = $itemsClassMap[$textPosition] ?? 'items-center';
+
+     // Op mobiel staat de werknemer altijd eerst; op desktop bepaalt de tekstpositie de volgorde.
+     $employeeOrderClass = $employeeOnLeft ? 'order-1 lg:order-1' : 'order-1 lg:order-2';
+     $textOrderClass = $employeeOnLeft ? 'order-2 lg:order-2' : 'order-2 lg:order-1';
 
 
      // Employee
      $ctaEmployee = $block['data']['employee'] ?? '';
-     $employeeImageId = $ctaEmployee ? get_field('image', $ctaEmployee) : '';
+     $employeeCustomImageId = $block['data']['employee_custom_image'] ?? '';
+     $employeeImageId = $employeeCustomImageId ?: ($ctaEmployee ? get_field('image', $ctaEmployee) : '');
      $employeeImage = $employeeImageId ? wp_get_attachment_image_url($employeeImageId, 'full') : '';
      $employeeTitle = $ctaEmployee ? get_the_title($ctaEmployee) : '';
+     $employeeFunction = $ctaEmployee ? get_field('function', $ctaEmployee) : '';
+     $employeeShowDetails = $block['data']['employee_show_details'] ?? [];
+     $showEmployeeName = in_array('name', (array) $employeeShowDetails);
+     $showEmployeeFunction = in_array('function', (array) $employeeShowDetails) && $employeeFunction;
 
 
      // Blokinstellingen
@@ -127,8 +145,8 @@
             <div class="bg-{{ $blockBackgroundColor }} w-full h-full"></div>
         </div>
 
-        @if ($employeeImage && $ctaLayout == 'vertical')
-            <div class="employee-image overlay absolute z-30 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        @if ($employeeImage && $isStackedLayout)
+            <div class="top-image overlay absolute z-30 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
                 @include('components.image', [
                  'image_id' => $employeeImageId,
                  'size' => 'full',
@@ -136,21 +154,36 @@
                  'img_class' => 'w-[200px] lg:w-[300px] lg:h-[300px] aspect-square object-cover rounded-full',
                  'alt' => $employeeTitle,
              ])
+                @if ($ctaEmployee && ($showEmployeeName || $showEmployeeFunction))
+                    <div class="employee-details mt-3">
+                        @if ($showEmployeeName)
+                            <div class="employee-name font-bold">{{ $employeeTitle }}</div>
+                        @endif
+                        @if ($showEmployeeFunction)
+                            <div class="employee-function">{{ $employeeFunction }}</div>
+                        @endif
+                    </div>
+                @endif
             </div>
         @endif
         <div class="cta-block relative z-10 mx-auto {{ $blockClass }} relative @if($blockWidth !== 'fullscreen') md:px-8 @endif">
-            <div class="px-8 py-16 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif"
+            <div class="background px-8 py-16 bg-{{ $blockBackgroundColor }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif"
                  style="background-image: url('{{ wp_get_attachment_image_url($blockBackgroundImage, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($blockBackgroundImage) }}">
                 @if ($blockOverlayEnabled)
                     <div class="cta-overlay absolute inset-0 @if($blockWidth !== 'fullscreen') md:mx-8 @endif bg-{{ $blockOverlayColor }} opacity-{{ $blockOverlayOpacity }} @if($blockWidth !== 'fullscreen') md:rounded-{{ $borderRadius }} @endif"></div>
                 @endif
 
                 <div class="container mx-auto @if($blockWidth == 'fullscreen') md:px-8 @else w-full @endif relative z-10">
-                    <div class="flex flex-col lg:{{ $flexDirection }} {{ $flexClass }} justify-center sm:px-8 lg:px-32 gap-y-4 gap-x-8 @if($employeeImage && $ctaLayout == 'vertical') mt-12 sm:mt-16 lg:mt-32 @endif">
+                    <div class="cta-wrapper flex flex-col lg:{{ $flexDirection }} {{ $itemsClass }} justify-center sm:px-8 lg:px-32 gap-y-4 gap-x-8 @if($employeeImage && $isStackedLayout) mt-12 sm:mt-16 lg:mt-32 @endif">
 
-                        <div class="@if ($ctaLayout == 'horizontal') order-2 lg:order-1 @else order-2 @endif @if($employeeImage) w-full lg:w-4/5 text-center lg:{{$textClass}} @else w-full lg:w-full {{ $textClass }} @endif">
+                        <div class="cta-data @if (!$isStackedLayout) {{ $textOrderClass }} @else order-2 @endif @if($employeeImage) w-full lg:w-4/5 text-center lg:{{ $textAlignClass }} @else w-full lg:w-full {{ $textAlignClass }} @endif">
                             @if ($subTitle)
-                                <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
+                                <span class="subtitle block mb-2 text-{{ $subTitleColor }}">
+                                    @if ($subTitleIcon)
+                                        <i class="subtitle-icon text-{{ $subTitleIconColor }} fa-{{ $subTitleIcon['style'] }} fa-{{ $subTitleIcon['id'] }} mr-1"></i>
+                                    @endif
+                                    {!! $subTitle !!}
+                                </span>
                             @endif
                             @if ($title)
                                 <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
@@ -162,7 +195,7 @@
                                 ])
                             @endif
                             @if (($button1Text) && ($button1Link))
-                                <div class="buttons flex gap-x-4 gap-y-2 w-full mt-4 md:mt-8 @if($employeeImage) justify-center @endif lg:{{ $flexClass }}">
+                                <div class="buttons flex gap-x-4 gap-y-2 w-full mt-4 md:mt-8 @if($employeeImage) justify-center @endif lg:{{ $justifyClass }}">
                                     @include('components.buttons.default', [
                                         'text' => $button1Text,
                                         'href' => $button1Link,
@@ -188,14 +221,14 @@
                                 </div>
                             @endif
                             @if ($ctaForm)
-                                <div class="w-full @if($blockWidth == 'fullscreen') xl:w-1/2 @endif mx-auto mt-10 text-left text-white">
+                                <div class="cta-form w-full @if($blockWidth == 'fullscreen') xl:w-1/2 @endif mx-auto mt-10 text-left text-white">
                                     {!! gravity_form($ctaForm, false) ; !!}
                                 </div>
                             @endif
                         </div>
 
-                        @if ($ctaLayout == 'horizontal' && $employeeImage)
-                            <div class="@if($ctaLayout == 'horizontal') order-1 lg:order-2 @else order-1 @endif w-full lg:w-auto -mt-[150px]">
+                        @if (!$isStackedLayout && $employeeImage)
+                            <div class="side-image {{ $employeeOrderClass }} flex flex-col w-full lg:w-auto text-center">
                                 @include('components.image', [
                                     'image_id' => $employeeImageId,
                                     'size' => 'full',
@@ -203,6 +236,16 @@
                                     'img_class' => 'h-[200px] lg:h-auto w-auto lg:w-[350px] object-cover mx-auto rounded-full aspect-square',
                                     'alt' => $employeeTitle,
                                 ])
+                                @if ($ctaEmployee && ($showEmployeeName || $showEmployeeFunction))
+                                    <div class="employee-details mt-3">
+                                        @if ($showEmployeeName)
+                                            <div class="employee-name font-bold">{{ $employeeTitle }}</div>
+                                        @endif
+                                        @if ($showEmployeeFunction)
+                                            <div class="employee-function">{{ $employeeFunction }}</div>
+                                        @endif
+                                    </div>
+                                @endif
                             </div>
                         @endif
 
