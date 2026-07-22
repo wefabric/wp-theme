@@ -71,16 +71,16 @@
         <div class="hamburger-navigation flex items-center gap-x-2 xl:hidden">
 
             @if($phone)
-                <a href="tel:{{ $phone }}" title="Telefoonnummer"
+                <a href="tel:{{ $phone }}" title="Telefoonnummer" aria-label="Telefoonnummer"
                    class="phone-link h-[30px] w-[30px] bg-primary text-white rounded-full block text-center flex justify-center items-center">
-                    <i class="fa fa-phone"></i>
+                    <i class="fa fa-phone" aria-hidden="true"></i>
                 </a>
             @endif
 
             @if($email)
-                <a href="mailto:{{ $email }}" title="E-mailadres"
+                <a href="mailto:{{ $email }}" title="E-mailadres" aria-label="E-mailadres"
                    class="mail-link h-[30px] w-[30px] bg-primary text-white rounded-full block text-center flex justify-center items-center">
-                    <i class="fa fa-envelope"></i>
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
                 </a>
             @endif
 
@@ -112,15 +112,15 @@
                         <div class="contact-info flex gap-x-2">
                             @if (in_array('phone', $options['secondary_menu_show_elements']))
                                 <a class="phone-link group flex items-center" href="tel:{{ $phone }}"
-                                   title="Telefoonnummer">
-                                    <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone"></i>
+                                   title="Telefoonnummer" aria-label="Telefoonnummer">
+                                    <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone" aria-hidden="true"></i>
                                     <span class="align-middle"></span>
                                 </a>
                             @endif
                             @if (in_array('email', $options['secondary_menu_show_elements']))
                                 <a class="mail-link group flex items-center" href="mailto:{{ $email }}"
-                                   title="E-mailadres">
-                                    <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-envelope"></i>
+                                   title="E-mailadres" aria-label="E-mailadres">
+                                    <i class="p-2 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-envelope" aria-hidden="true"></i>
                                     <span class="align-middle"></span>
                                 </a>
                             @endif
@@ -242,20 +242,20 @@
                 @endif
 
                 @if (in_array('phone', $options['secondary_menu_show_elements']) && $phone)
-                    <a href="tel:{{ $phone }}" class="mnav2-overlay__contact">
-                        <i class="fa fa-phone mr-2"></i>{{ $phone }}
+                    <a href="tel:{{ $phone }}" class="mnav2-overlay__contact" aria-label="Telefoonnummer">
+                        <i class="fa fa-phone mr-2" aria-hidden="true"></i>{{ $phone }}
                     </a>
                 @endif
 
                 @if (in_array('email', $options['secondary_menu_show_elements']) && $email)
-                    <a href="mailto:{{ $email }}" class="mnav2-overlay__contact">
-                        <i class="fa fa-envelope mr-2"></i>{{ $email }}
+                    <a href="mailto:{{ $email }}" class="mnav2-overlay__contact" aria-label="E-mailadres">
+                        <i class="fa fa-envelope mr-2" aria-hidden="true"></i>{{ $email }}
                     </a>
                 @endif
 
                 @if (in_array('whatsapp', $options['secondary_menu_show_elements']) && !empty($options['whatsapp_link']))
                     <a href="{{ $options['whatsapp_link'] }}" class="mnav2-overlay__contact" target="_blank" rel="noopener">
-                        <i class="fa fa-whatsapp mr-2"></i>{{ $options['whatsapp_text'] ?? 'WhatsApp' }}
+                        <i class="fa fa-whatsapp mr-2" aria-hidden="true"></i>{{ $options['whatsapp_text'] ?? 'WhatsApp' }}
                     </a>
                 @endif
             </div>
@@ -265,13 +265,13 @@
         @if (empty($options['show_secondary_menu']))
             <footer class="mnav2-overlay__footer text-{{ str_replace('-color', '', $mobileMenuTextColor) }}">
                 @if($phone)
-                    <a href="tel:{{ $phone }}" class="mnav2-overlay__contact">
-                        <i class="fa fa-phone mr-2"></i>{{ $phone }}
+                    <a href="tel:{{ $phone }}" class="mnav2-overlay__contact" aria-label="Telefoonnummer">
+                        <i class="fa fa-phone mr-2" aria-hidden="true"></i>{{ $phone }}
                     </a>
                 @endif
                 @if($email)
-                    <a href="mailto:{{ $email }}" class="mnav2-overlay__contact">
-                        <i class="fa fa-envelope mr-2"></i>{{ $email }}
+                    <a href="mailto:{{ $email }}" class="mnav2-overlay__contact" aria-label="E-mailadres">
+                        <i class="fa fa-envelope mr-2" aria-hidden="true"></i>{{ $email }}
                     </a>
                 @endif
             </footer>
