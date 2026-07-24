@@ -35,10 +35,10 @@
                 "id": ""
             },
             "choices": {
-                "fixed_height": "Vaste header hoogte",
-                "scalable_height": "Header hoogte meeschalen met content"
+                "scalable_height": "Header hoogte meeschalen met content",
+                "fixed_height": "Vaste header hoogte"
             },
-            "default_value": "fixed_height",
+            "default_value": "scalable_height",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -2103,5 +2103,7 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1776675262
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1784900598
 }
