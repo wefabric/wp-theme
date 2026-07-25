@@ -97,9 +97,9 @@
                     <span class="footer-top-socials-label">{{ __('Volg ons', 'wefabric') }}</span>
                     @foreach($option['channels'] as $social)
                         <a class="group footer-social social-{{ strtolower($social['name']) }}"
-                           href="{{ $social['url'] }}" title="{{ $social['name'] }} pagina" target="_blank"
+                           href="{{ $social['url'] }}" title="{{ $social['name'] }} pagina" target="_blank" rel="noopener noreferrer"
                            aria-label="Ga naar {{ $social['name'] }}">
-                            <i class="{{ $social['icon'] }} transition-all group-hover:scale-110"></i>
+                            <i class="{{ $social['icon'] }} transition-all group-hover:scale-110" aria-hidden="true"></i>
                         </a>
                     @endforeach
                 </div>
