@@ -221,6 +221,27 @@
                     "parent_repeater": "field_64a27e3f6cb56"
                 },
                 {
+                    "key": "field_64a27e9b6cb59",
+                    "label": "Naam",
+                    "name": "naam",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Naam van het social platform, bijv. LinkedIn, Facebook, Instagram",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "bijv. LinkedIn",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_64a27e3f6cb56"
+                },
+                {
                     "key": "field_64a27e6f6cb58",
                     "label": "Icoon",
                     "name": "icon",
@@ -292,5 +313,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1744379022
+    "modified": 1753401600
 }
