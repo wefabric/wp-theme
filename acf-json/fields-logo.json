@@ -32,8 +32,8 @@
             "label": "Link",
             "name": "link",
             "aria-label": "",
-            "type": "url",
-            "instructions": "",
+            "type": "link",
+            "instructions": "Voeg een externe link toe. Vul ook het titelveld in met een beschrijvende naam voor toegankelijkheid.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -41,8 +41,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": ""
+            "return_format": "array"
         }
     ],
     "location": [
@@ -63,5 +62,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1701248728
+    "modified": 1783209600
 }

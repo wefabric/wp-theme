@@ -95,8 +95,8 @@
                         {{-- WhatsApp --}}
                         @if (in_array('whatsapp', $options['secondary_menu_show_elements']))
                             <a class="whatsapp-link group flex items-center gap-2" href="{{ $options['whatsapp_link'] }}"
-                               title="WhatsApp">
-                                <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-brands fa-whatsapp"></i>
+                               title="WhatsApp" aria-label="{{ !empty($options['whatsapp_text']) ? strip_tags($options['whatsapp_text']) : 'WhatsApp' }}">
+                                <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-brands fa-whatsapp" aria-hidden="true"></i>
                                 @if (!empty($options['whatsapp_text']))
                                     <span class="align-middle">{!! $options['whatsapp_text'] !!}</span>
                                 @endif
@@ -107,7 +107,7 @@
                         @if (in_array('phone', $options['secondary_menu_show_elements']))
                             <a class="phone-link group flex items-center gap-2" href="{{ $phone->uri() }}"
                                title="Telefoonnummer">
-                                <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone"></i>
+                                <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone" aria-hidden="true"></i>
                                 <span class="align-middle">{{ get_bloginfo("language") === 'nl-NL' ? $phone->national() : $phone->international() }}</span>
                             </a>
                         @endif
@@ -116,7 +116,7 @@
                         @if (in_array('email', $options['secondary_menu_show_elements']))
                             <a class="mail-link group flex items-center gap-2 email-hidden" href="mailto:{{ $email }}"
                                title="E-mailadres">
-                                <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-envelope"></i>
+                                <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-envelope" aria-hidden="true"></i>
                                 <span class="align-middle">{{ $email }}</span>
                             </a>
                         @endif
@@ -139,12 +139,12 @@
                         </div>
                         <button type="submit"
                                 class="search-button p-4 rounded-full flex justify-center items-center font-bold bg-background-color hover:bg-primary hover:scale-110 text-black hover:text-white cursor-pointer transition-transform duration-300 ease-in-out">
-                            <i class="fa fa-search"></i>
+                            <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
                     </form>
 
-                    <a class="search-link group flex items-center gap-2" href="#">
-                        <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-search"></i>
+                    <a class="search-link group flex items-center gap-2" href="#" aria-label="Zoeken">
+                        <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-search" aria-hidden="true"></i>
                     </a>
 
                     <script>
