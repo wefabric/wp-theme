@@ -53,10 +53,28 @@
                     }
 
                     if (!empty($itemListElement)) {
-                        \Wefabric\WPSupport\Schema\JsonLd::addSchema('breadcrumb_list', [
-                            '@type' => 'BreadcrumbList',
-                            'itemListElement' => $itemListElement,
-                        ]);
+                        // Rank Math zet zelf al een BreadcrumbList in de graph, met een eigen
+                        // @id. Deze onvoorwaardelijk toevoegen leverde daardoor twee
+                        // BreadcrumbList-nodes per pagina op, met verschillende kruimelpaden,
+                        // wat een validatiefout geeft in de Rich Results Test.
+                        //
+                        // Alleen toevoegen als die van Rank Math ontbreekt, bijvoorbeeld
+                        // wanneer een site het breadcrumb-schema daar heeft uitgezet. Zo
+                        // verliest niemand zijn markup en houdt niemand er twee over.
+                        add_filter('rank_math/json_ld', function ($data) use ($itemListElement) {
+                            foreach ((array) $data as $node) {
+                                if (is_array($node) && ($node['@type'] ?? '') === 'BreadcrumbList') {
+                                    return $data;
+                                }
+                            }
+
+                            $data['breadcrumb_list'] = [
+                                '@type' => 'BreadcrumbList',
+                                'itemListElement' => $itemListElement,
+                            ];
+
+                            return $data;
+                        }, 99, 1);
                     }
                 }
             @endphp
