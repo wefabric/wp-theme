@@ -171,8 +171,20 @@
 @endif
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'header' }}@endif"
          class="block-header relative header-{{ $randomNumber }}-custom-padding header-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} @if($headerStyle == 'fixed_height') fixed-header @elseif($headerStyle == 'scalable_height') scaled-header @endif {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
-    <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
-         style="@if($backgroundImageParallax) background-attachment: fixed; @endif background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
+    @php
+        // Het headerbeeld als <img> in plaats van een CSS-achtergrond, zodat de browser via
+        // srcset een variant kiest die bij het scherm past. Twee uitzonderingen houden de
+        // oude weg: parallax (background-attachment: fixed kan niet op een <img>) en de
+        // terugval op $featuredImage, die alleen een URL levert en geen attachment-ID om
+        // varianten uit af te leiden.
+        $headerBackgroundId   = $backgroundImageId ?: $featuredImageId;
+        $useResponsiveHeader  = ! $backgroundImageParallax && $headerBackgroundId;
+    @endphp
+    <div class="custom-styling bg-cover bg-center {{ $useResponsiveHeader ? 'relative' : '' }} {{ $headerClass }}"
+         style="@if($backgroundImageParallax) background-attachment: fixed; @endif @unless($useResponsiveHeader) background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); @endunless {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
+        @if ($useResponsiveHeader)
+            @include('components.header.background-image', ['backgroundImageId' => $headerBackgroundId])
+        @endif
         @if ($backgroundVideoURL)
             <video autoplay muted loop playsinline class="video-background absolute inset-0 w-full h-full object-cover">
                 <source src="{{ esc_url($backgroundVideoURL) }}" type="video/mp4">

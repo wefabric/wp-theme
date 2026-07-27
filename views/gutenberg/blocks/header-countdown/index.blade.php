@@ -144,8 +144,18 @@
     @endif
     @if ($customBlockClasses && $breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID()) </div> @endif
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'header-countdown' }}@endif" class="block-header-countdown relative header-countdown-{{ $randomNumber }}-custom-padding header-countdown-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} @if($headerStyle == 'fixed_height') fixed-header @elseif($headerStyle == 'scalable_height') scaled-header @endif {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
-    <div class="custom-styling bg-cover bg-center {{ $headerClass }}"
-         style="background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
+    @php
+        // Zie components/header/background-image: <img> met srcset in plaats van een
+        // CSS-achtergrond. Dit blok kent geen parallax, dus de enige uitzondering is de
+        // terugval op $featuredImage, die geen attachment-ID levert.
+        $headerBackgroundId  = $backgroundImageId ?: $featuredImageId;
+        $useResponsiveHeader = (bool) $headerBackgroundId;
+    @endphp
+    <div class="custom-styling bg-cover bg-center {{ $useResponsiveHeader ? 'relative' : '' }} {{ $headerClass }}"
+         style="@unless($useResponsiveHeader) background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); @endunless {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
+        @if ($useResponsiveHeader)
+            @include('components.header.background-image', ['backgroundImageId' => $headerBackgroundId])
+        @endif
         @if ($backgroundVideoURL)
             <div class="video-wrapper absolute h-full">
                 <video autoplay muted loop playsinline class="video-background absolute inset-0 w-full h-full object-cover">
