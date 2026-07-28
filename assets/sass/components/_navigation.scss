@@ -56,9 +56,13 @@ header#masthead.nav-ready {
 	color: var(--nav-text-color, currentColor) !important;
 }
 
-// Hover kleur desktop menu
+// Hover + actieve kleur desktop menu
 .main-navigation-bar .main-navigation .menu > li.menu-item:hover > a,
-.main-navigation-bar .main-navigation .menu > li.menu-item-has-children:hover::after {
+.main-navigation-bar .main-navigation .menu > li.menu-item.current-menu-item > a,
+.main-navigation-bar .main-navigation .menu > li.menu-item.current_page_item > a,
+.main-navigation-bar .main-navigation .menu > li.menu-item-has-children:hover::after,
+.main-navigation-bar .main-navigation .menu > li.menu-item-has-children.current-menu-item::after,
+.main-navigation-bar .main-navigation .menu > li.menu-item-has-children.current_page_item::after {
 	color: var(--nav-active-color, var(--nav-text-color, currentColor)) !important;
 }
 
@@ -69,7 +73,11 @@ header#masthead.nav-ready {
 }
 
 .main-navigation-bar .main-navigation .menu .sub-menu li.menu-item:hover > a,
-.main-navigation-bar .main-navigation .menu .sub-menu li.menu-item-has-children:hover::after {
+.main-navigation-bar .main-navigation .menu .sub-menu li.menu-item.current-menu-item > a,
+.main-navigation-bar .main-navigation .menu .sub-menu li.menu-item.current_page_item > a,
+.main-navigation-bar .main-navigation .menu .sub-menu li.menu-item-has-children:hover::after,
+.main-navigation-bar .main-navigation .menu .sub-menu li.menu-item-has-children.current-menu-item::after,
+.main-navigation-bar .main-navigation .menu .sub-menu li.menu-item-has-children.current_page_item::after {
 	color: var(--submenu-active-color, var(--submenu-text-color, currentColor)) !important;
 }
 
@@ -130,12 +138,19 @@ header#masthead.nav-ready {
 // !important is nodig om te winnen van klassen die via het WordPress menu-editor
 // per menu-item worden ingesteld (bv. text-white hover:text-cta op <li>).
 .secondary-navigation .menu li.menu-item > a,
+.secondary-navigation .menu li.menu-item-has-children::after,
 .secondary-navigation .secondary-menu-text {
 	color: var(--secondary-text-color, currentColor) !important;
 }
 
-// Hover tekstkleur topbalk — altijd actief wanneer --secondary-active-color gezet is door JS.
-.secondary-navigation .menu li.menu-item:hover > a {
+// Hover + actieve tekst- en chevronkleur topbalk — altijd actief wanneer
+// --secondary-active-color gezet is door JS.
+.secondary-navigation .menu li.menu-item:hover > a,
+.secondary-navigation .menu li.menu-item.current-menu-item > a,
+.secondary-navigation .menu li.menu-item.current_page_item > a,
+.secondary-navigation .menu li.menu-item-has-children:hover::after,
+.secondary-navigation .menu li.menu-item-has-children.current-menu-item::after,
+.secondary-navigation .menu li.menu-item-has-children.current_page_item::after {
 	color: var(--secondary-active-color, var(--secondary-text-color, currentColor)) !important;
 }
 

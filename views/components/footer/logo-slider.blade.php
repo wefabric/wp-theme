@@ -86,7 +86,7 @@
             @if ($swiperAutoplay)
             autoplay: {
                     delay: {{ $swiperAutoplaySpeed }},
-                    disableOnInteraction: true,
+                    disableOnInteraction: false,
                 },
             @endif
             breakpoints: {
@@ -108,5 +108,34 @@
                 },
             }
         });
+        @if ($swiperAutoplay)
+            // Swiper's own pause/resume bookkeeping can get orphaned when a click or
+            // drag interrupts a transition, leaving autoplay stuck forever. This
+            // watchdog force-restarts it whenever it stalls for longer than a normal
+            // tick, regardless of what interaction caused the stall.
+            (function () {
+                var stallThreshold = {{ $swiperAutoplaySpeed }} + 2000;
+                var lastTranslate = null;
+                var lastChange = Date.now();
+
+                setInterval(function () {
+                    if (!footerLogoSwiper || footerLogoSwiper.destroyed || !footerLogoSwiper.autoplay) return;
+
+                    var currentTranslate = footerLogoSwiper.translate;
+                    if (currentTranslate !== lastTranslate) {
+                        lastTranslate = currentTranslate;
+                        lastChange = Date.now();
+                        return;
+                    }
+
+                    if (footerLogoSwiper.autoplay.running && (Date.now() - lastChange) > stallThreshold) {
+                        footerLogoSwiper.autoplay.paused = false;
+                        footerLogoSwiper.autoplay.stop();
+                        footerLogoSwiper.autoplay.start();
+                        lastChange = Date.now();
+                    }
+                }, 1000);
+            })();
+        @endif
     });
 </script>

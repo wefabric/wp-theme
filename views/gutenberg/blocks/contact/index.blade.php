@@ -11,13 +11,22 @@
     $visibleElements = $block['data']['show_element'] ?? [];
 
     // Show establishments
+    // Geen selectie gemaakt (bv. op andere theme-sites waar dit veld niet gebruikt wordt)? Dan gewoon de eerste vestiging tonen.
+    $selectedEstablishments = array_filter(array_map('intval', (array) ($block['data']['establishments'] ?? [])));
+
     $establishment_args = [
         'post_type'      => 'establishments',
-        'posts_per_page' => -1,
+        'posts_per_page' => $selectedEstablishments ? -1 : 1,
         'post_status'    => 'publish',
         'orderby'        => 'menu_order',
         'order'          => 'ASC',
     ];
+
+    if ($selectedEstablishments) {
+        $establishment_args['post__in'] = $selectedEstablishments;
+        $establishment_args['orderby']  = 'post__in';
+    }
+
     $establishment_query = new WP_Query($establishment_args);
 
 
@@ -193,7 +202,7 @@
                                             @endif
 
                                             @if (!empty($visibleElements) && in_array('establishment_address', $visibleElements))
-                                                <div class="establishment-address">{{ $street }} {{ $house_number }} {{ $house_number_addition }}</div>
+                                                <div class="establishment-address">{{ $street }}@if ($house_number > 0) {{ $house_number }}{{ $house_number_addition }}@endif</div>
                                                 <div class="establishment-zipcode">{{ $postcode }} {{ $city }}</div>
                                             @endif
 
@@ -282,12 +291,12 @@
                                             <div class="flex flex-col">
                                                 @foreach ($establishment->openingHours() as $openingHour)
 
-                                                    <div class="flex items-center sm:gap-x-12 justify-between sm:justify-start">
-                                                        <span class="w-fit sm:w-[120px]">{{ $openingHour->day }}</span>
+                                                    <div class="day-item flex items-center sm:gap-x-12 justify-between sm:justify-start">
+                                                        <span class="day-text w-fit sm:w-[120px]">{{ $openingHour->day }}</span>
                                                         @if ($openingHour->isClosed())
                                                             <span>Gesloten</span>
                                                         @else
-                                                            <span> {{ $openingHour->openingHour }} uur - {{  $openingHour->closingHour }} uur
+                                                            <span class="time-text"> {{ $openingHour->openingHour }} uur - {{  $openingHour->closingHour }} uur
                                                                 @if (!empty($openingHour->openingHour2) && !empty($openingHour->closingHour2))
                                                                     & {{ $openingHour->openingHour2 }} uur
                                                                     - {{ $openingHour->closingHour2 }} uur

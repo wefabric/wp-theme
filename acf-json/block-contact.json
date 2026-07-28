@@ -170,6 +170,33 @@
             "font_size": 14
         },
         {
+            "key": "field_contact_establishments",
+            "label": "Vestigingen",
+            "name": "establishments",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Selecteer welke vestiging(en) getoond moeten worden. Leeg laten toont automatisch de eerste vestiging (handig voor andere sites waar niks is geselecteerd).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "establishments"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": [],
+            "return_format": "id",
+            "multiple": 1,
+            "allow_null": 1,
+            "ui": 1,
+            "allow_in_bindings": 0
+        },
+        {
             "key": "field_67ae0c89411a2",
             "label": "Weergave",
             "name": "show_element",

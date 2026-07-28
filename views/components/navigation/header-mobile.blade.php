@@ -191,7 +191,7 @@
 {{-- Versie 2: fullscreen overlay — wordt via JS naar <body> verplaatst --}}
 {{-- De bestaande hamburger label triggert dit menu via JS. --}}
 {{-- ============================================================ --}}
-<div class="mnav2-overlay bg-{{ $mobileMenuBackgroundColor }} text-{{ str_replace('-color', '', $mobileMenuTextColor) }}"
+<div class="mnav2-overlay xl:hidden bg-{{ $mobileMenuBackgroundColor }} text-{{ str_replace('-color', '', $mobileMenuTextColor) }}"
      id="mnav2-overlay"
      aria-hidden="true"
      role="dialog"

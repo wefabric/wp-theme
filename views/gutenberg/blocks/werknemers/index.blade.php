@@ -69,6 +69,8 @@
             'posts_per_page' => -1,
             'post_type' => 'werknemers',
             'post_status' => 'publish',
+            'orderby' => 'menu_order',
+            'order' => 'ASC',
         ];
 
         if ($currentTerms) {
@@ -100,6 +102,8 @@
             'posts_per_page' => -1,
             'post_type' => 'werknemers',
             'post_status' => 'publish',
+            'orderby' => 'menu_order',
+            'order' => 'ASC',
             'tax_query' => [
                 [
                     'taxonomy' => 'employee_categories',
@@ -140,6 +144,8 @@
             'posts_per_page' => -1,
             'post_type' => 'werknemers',
             'post_status' => 'publish',
+            'orderby' => 'menu_order',
+            'order' => 'ASC',
             'tax_query' => [],
         ];
 

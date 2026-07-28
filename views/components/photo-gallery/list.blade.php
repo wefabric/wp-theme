@@ -80,7 +80,6 @@
             spaceBetween: {{ $spaceBetween }},
             freeMode: true,
             watchSlidesProgress: true,
-            slideToClickedSlide: true,
             observer: true,
             observeParents: true,
             breakpoints: {
@@ -125,15 +124,15 @@
             },
         });
 
-        // Ensure initial sync of Top with current Thumb active index
-        if (typeof thumbsSwiper.activeIndex !== 'undefined') {
-            topSwiper.slideTo(thumbsSwiper.activeIndex, 0);
-        }
-        // Extra safety: react on click when slideToClickedSlide is not enough in some Swiper versions
-        thumbsSwiper.on('click', function(swiper){
-            if (typeof swiper.clickedIndex !== 'undefined' && swiper.clickedIndex !== null) {
-                topSwiper.slideTo(swiper.clickedIndex);
-            }
+        // Navigeer de hoofdslider rechtstreeks op basis van de daadwerkelijk aangeklikte
+        // thumbnail, i.p.v. te vertrouwen op Swiper's ingebouwde slideToClickedSlide/
+        // clickedIndex-detectie — in freeMode telt een klik soms (net) als een minimale
+        // sleepbeweging, waardoor die detectie de eerste keer niet aansloeg en er een
+        // 2e klik nodig was voor de hoofdfoto bijwerkte.
+        Array.from(thumbsSwiper.slides).forEach(function (slideEl, index) {
+            slideEl.addEventListener('click', function () {
+                topSwiper.slideTo(index);
+            });
         });
     });
 </script>
