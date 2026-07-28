@@ -34,7 +34,11 @@
   }
 
   table {
-    @apply shadow overflow-hidden border-b border-gray-200 mb-6;
+    @apply mb-6;
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 
     thead {
       @apply bg-gray-50;

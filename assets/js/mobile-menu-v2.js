@@ -267,4 +267,41 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     buildSubPanel(rootList, rootPanel, []);
+
+    // ── Regel-stabiliteit bij hover ──────────────────────────────────────────
+    // Sub-lijst-items krijgen op hover iets meer letter-spacing. Voor een item dat
+    // toevallig precies op de rand van één regel balanceert, kan die kleine
+    // verbreding het over de rand duwen naar een 2e regel — een layout-shift die
+    // niet bij hover mag gebeuren. In plaats van de hover-letter-spacing te
+    // schrappen (en zo het effect overal te verliezen), meten we per item of het
+    // MET de hover-breedte al niet meer op één regel past, en forceren we dat
+    // dan meteen (rest én hover), zodat hover het aantal regels nooit meer wijzigt.
+    const HOVER_LETTER_SPACING = '0.03em';
+
+    document.querySelectorAll('.mnav2-sublist li > a').forEach((link) => {
+        // Meet de daadwerkelijke, natuurlijk gewrapte hoogte bij rust vs. bij de
+        // hover-letter-spacing — zelfde mechanisme als de echte :hover, dus
+        // exact representatief voor wat er ook echt gebeurt (i.p.v. een losse
+        // nowrap/scrollWidth-berekening die het flex-wrap-gedrag niet exact
+        // nabootst). De CSS-transitie op letter-spacing wordt tijdens het meten
+        // uitgezet, anders lees je via clientHeight de beginwaarde van de
+        // transitie i.p.v. de daadwerkelijk ingestelde waarde.
+        const originalTransition = link.style.transition;
+        const originalLetterSpacing = link.style.letterSpacing;
+
+        link.style.transition = 'none';
+        const restHeight = link.clientHeight;
+
+        link.style.letterSpacing = HOVER_LETTER_SPACING;
+        void link.offsetHeight; // force reflow zodat de nieuwe waarde direct geldt
+        const hoverHeight = link.clientHeight;
+
+        link.style.letterSpacing = originalLetterSpacing;
+        void link.offsetHeight;
+        link.style.transition = originalTransition;
+
+        if (hoverHeight > restHeight) {
+            link.classList.add('mnav2-link--wraps');
+        }
+    });
 });

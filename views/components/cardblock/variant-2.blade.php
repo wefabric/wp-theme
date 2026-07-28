@@ -1,4 +1,4 @@
-<div id="{!! trim(preg_replace('/[^a-z0-9]+/', '-', strtolower(html_entity_decode($pageTitle))), '-') !!}" class="content-under-card-item card-item group h-full @if ($flyinEffect) card-hidden @endif">
+<div id="{!! trim(preg_replace('/[^a-z0-9]+/', '-', strtolower(html_entity_decode($pageTitle))), '-') !!}" class="content-under-card-item card-item group h-full @if ($cardVisual == 'featured_image' && $featuredImageId) featured-image-card  @elseif ($cardVisual == 'icon' && $pageIcon) icon-card @elseif ($cardVisual == 'image' && $imageId) image-card @endif @if ($flyinEffect) card-hidden @endif">
     <div class="custom-radius bg-{{ $cardBackgroundColor }} rounded-{{ $borderRadius }} h-full flex flex-col {{ $hoverEffectClass }} duration-300 ease-in-out overflow-hidden">
         <div class="image-wrapper">
             <div class="image-container h-[360px] relative overflow-hidden rounded-t-{{ $borderRadius }}">
@@ -41,9 +41,9 @@
                 @elseif ($cardVisual == 'icon' && $pageIcon)
                     @if($linkEnabled)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
-                       class="absolute left-0 top-0 w-full h-full"></a>
+                       class="card-overlay absolute left-0 top-0 w-full h-full"></a>
                     @else
-                    <div class="absolute left-0 top-0 w-full h-full"></div>
+                    <div class="card-overlay absolute left-0 top-0 w-full h-full"></div>
                     @endif
                     <div class="h-full flex justify-center items-center">
                         @if($linkEnabled)

@@ -110,6 +110,15 @@
     $backgroundVideoID = $block['data']['background_video'] ?? '';
     $backgroundVideoURL = $backgroundVideoID ? wp_get_attachment_url($backgroundVideoID) : '';
 
+    $hasBackgroundImage = !empty($backgroundImageId) || !empty($featuredImage);
+    if ($backgroundVideoURL) {
+        $headerMediaClass = 'header-with-video';
+    } elseif ($hasBackgroundImage) {
+        $headerMediaClass = 'header-with-image';
+    } else {
+        $headerMediaClass = 'header-blank';
+    }
+
     $overlayEnabled = $block['data']['overlay_image'] ?? false;
     $overlayColor = $block['data']['overlay_color'] ?? '';
     $overlayOpacity = $block['data']['overlay_opacity'] ?? '';
@@ -170,7 +179,7 @@
         @if ($customBlockClasses && $breadcrumbsEnabled && $breadcrumbsLocation === 'above' && !is_front_page() && get_the_ID()) </div>
 @endif
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'header' }}@endif"
-         class="block-header relative header-{{ $randomNumber }}-custom-padding header-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} @if($headerStyle == 'fixed_height') fixed-header @elseif($headerStyle == 'scalable_height') scaled-header @endif {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
+         class="block-header relative header-{{ $randomNumber }}-custom-padding header-{{ $randomNumber }}-custom-margin bg-{{ $headerBackgroundColor }} {{ $headerName }} {{ $headerMediaClass }} @if($headerStyle == 'fixed_height') fixed-header @elseif($headerStyle == 'scalable_height') scaled-header @endif {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }} max-w-[2800px] mx-auto">
     @php
         // Het headerbeeld als <img> in plaats van een CSS-achtergrond, zodat de browser via
         // srcset een variant kiest die bij het scherm past. Twee uitzonderingen houden de
