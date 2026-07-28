@@ -15,10 +15,8 @@
 // todo: add contact info of establishment
 @endphp
 
-<div class="establishment-item group h-full">
-
-{{-- todo: add check if link for hover effect--}}
-    <div class="establishment-card h-full flex flex-col items-center @if ($link) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
+<div class="establishment-item group h-full @if ($flyinEffect) establishment-hidden @endif">
+    <div class="establishment-card h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         <div class="image-container custom-height max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
             @include('components.image', [
                  'image_id' => $establishmentImage,
