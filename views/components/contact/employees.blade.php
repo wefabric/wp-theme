@@ -33,23 +33,25 @@
                     <div class="mx-auto mb-3">
                         @if(!empty($fields['phonenumber']))
                             @include('components.buttons.icon', [
-                                'href' => 'tel:'. $fields['phonenumber'],
+                                'href' => '#',
                                 'alt' => 'Telefoonnummer',
                                 'icon' => 'fa-solid fa-phone text-sm align-top pt-1.5',
                                 'size' => 'h-8 w-8',
                                 'colors' => 'btn-black text-white ',
-                                'a_class' => 'mx-1',
+                                'a_class' => 'mx-1 wf-obfuscated',
+                                'attributes' => ['data-href' => base64_encode('tel:' . $fields['phonenumber'])],
                             ])
                         @endif
 
                         @if(!empty($fields['email']))
                             @include('components.buttons.icon', [
-                                'href' => 'mailto:'. $fields['email'],
+                                'href' => '#',
                                 'alt' => 'Emailadres',
                                 'icon' => 'fa-solid fa-envelope text-sm align-top pt-1.5',
                                 'size' => 'h-8 w-8',
                                 'colors' => 'btn-black text-white ',
-                                'a_class' => 'mx-1',
+                                'a_class' => 'mx-1 wf-obfuscated',
+                                'attributes' => ['data-href' => base64_encode('mailto:' . $fields['email'])],
                             ])
                         @endif
 
