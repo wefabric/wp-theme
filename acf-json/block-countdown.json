@@ -764,6 +764,60 @@
             "font_size": 14
         },
         {
+            "key": "field_6a3e28cd3b97b",
+            "label": "Blok verwijderen als timer is afgelopen?",
+            "name": "remove_block_on_expire",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Verbergt het blok automatisch op het hieronder ingestelde tijdstip.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a3e28cd3b976",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6a3e28cd3b97c",
+            "label": "Tijd waarop blok verdwijnt",
+            "name": "remove_block_on_expire_time",
+            "aria-label": "",
+            "type": "date_time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a3e28cd3b97b",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "Y-m-d H:i:s",
+            "return_format": "Y-m-d H:i:s",
+            "first_day": 1,
+            "default_to_current_date": 0
+        },
+        {
             "key": "field_6a3e28cd3b9b2",
             "label": "Blokinstellingen",
             "name": "",

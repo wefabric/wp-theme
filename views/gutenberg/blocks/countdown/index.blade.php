@@ -121,13 +121,23 @@
     $countdownValueColor = $block['data']['countdown_value_color'] ?? '';
     $countdownLabelColor = $block['data']['countdown_label_color'] ?? '';
     $countdownItemBgColor = $block['data']['countdown_item_background_color'] ?? '';
+    $removeBlockOnExpire = $block['data']['remove_block_on_expire'] ?? false;
+    $removeBlockOnExpireTime = $block['data']['remove_block_on_expire_time'] ?? '';
+    $removeBlockOnExpireTimestamp = 0;
+    if ($removeBlockOnExpireTime) {
+        try {
+            $removeBlockOnExpireTimestamp = (new DateTime($removeBlockOnExpireTime, wp_timezone()))->getTimestamp() * 1000;
+        } catch (\Exception $e) {
+            $removeBlockOnExpireTimestamp = 0;
+        }
+    }
 
     // Animaties
     $flyinEffect = $block['data']['flyin_effect'] ?? false;
     $confetti = $block['data']['confetti'] ?? false;
 @endphp
 
-<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'countdown' }}@endif" class="block-countdown relative countdown-{{ $randomNumber }}-custom-padding countdown-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+<section id="@if($customBlockId){{ $customBlockId }}@else{{ 'countdown' }}@endif" class="block-countdown countdown-block-{{ $randomNumber }} relative countdown-{{ $randomNumber }}-custom-padding countdown-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($imageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax) background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($imageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
@@ -347,6 +357,30 @@
         var confettiEnabled = {{ (int) $confetti }};
         var flyinEnabled = {{ (int) $flyinEffect }};
         var rn = {{ $randomNumber }};
+        var removeOnExpire = {{ $removeBlockOnExpire ? 'true' : 'false' }};
+        var removeBlockAt = {{ $removeBlockOnExpireTimestamp }};
+        var confettiInterval = null;
+        var blockAlreadyExpired = false;
+
+        // --- Blok verbergen op het ingestelde tijdstip ---
+        var hideBlockEl = function() {
+            var blockEl = document.querySelector('.countdown-block-' + rn);
+            if (blockEl) blockEl.classList.add('hidden');
+            if (confettiInterval) {
+                clearInterval(confettiInterval);
+                confettiInterval = null;
+            }
+        };
+
+        if (removeOnExpire && removeBlockAt) {
+            var untilHide = removeBlockAt - new Date().getTime();
+            if (untilHide <= 0) {
+                blockAlreadyExpired = true;
+                hideBlockEl();
+            } else {
+                setTimeout(hideBlockEl, untilHide);
+            }
+        }
 
         // --- Nummer updaten met slide-animatie ---
         function setUnit(unitId, value) {
@@ -417,7 +451,7 @@
 
             if (distance <= 0) {
                 clearInterval(timer);
-                if (confettiEnabled) {
+                if (confettiEnabled && !blockAlreadyExpired) {
                     if (typeof confetti === 'function') {
                         startConfetti();
                     }
@@ -433,9 +467,9 @@
             var end = Date.now() + duration;
             var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
             function rnd(min, max) { return Math.random() * (max - min) + min; }
-            var iv = setInterval(function() {
+            confettiInterval = setInterval(function() {
                 var left = end - Date.now();
-                if (left <= 0) { return clearInterval(iv); }
+                if (left <= 0) { return clearInterval(confettiInterval); }
                 var n = 50 * (left / duration);
                 confetti(Object.assign({}, defaults, { particleCount: n, origin: { x: rnd(0.1, 0.3), y: Math.random() - 0.2 } }));
                 confetti(Object.assign({}, defaults, { particleCount: n, origin: { x: rnd(0.7, 0.9), y: Math.random() - 0.2 } }));
