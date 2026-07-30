@@ -30,6 +30,14 @@
 
     // Countdown
     $countdownTime = $block['data']['time'] ?? '';
+    $countdownTimestamp = 0;
+    if ($countdownTime) {
+        try {
+            $countdownTimestamp = (new DateTime($countdownTime, wp_timezone()))->getTimestamp() * 1000;
+        } catch (\Exception $e) {
+            $countdownTimestamp = 0;
+        }
+    }
     $countdownDisplay = $block['data']['timer_display'] ?? '';
     $confetti = $block['data']['confetti'] ?? false;
 
@@ -296,7 +304,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         // Server-side confetti waarde doorgeven aan JavaScript
         let confettiEnabled = @json($confetti);
-        let countdownDate = new Date("{{ $countdownTime }}").getTime();
+        let countdownDate = {{ $countdownTimestamp }};
         let countdownDisplay = @json($countdownDisplay);
 
         // Interval voor de countdown

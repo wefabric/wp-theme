@@ -109,6 +109,14 @@
 
     // Countdown
     $countdownTime = $block['data']['time'] ?? '';
+    $countdownTimestamp = 0;
+    if ($countdownTime) {
+        try {
+            $countdownTimestamp = (new DateTime($countdownTime, wp_timezone()))->getTimestamp() * 1000;
+        } catch (\Exception $e) {
+            $countdownTimestamp = 0;
+        }
+    }
     $countdownDisplay = $block['data']['timer_display'] ?? [];
     $countdownValueColor = $block['data']['countdown_value_color'] ?? '';
     $countdownLabelColor = $block['data']['countdown_label_color'] ?? '';
@@ -334,7 +342,7 @@
 @if ($countdownTime)
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var countdownDate = {{ $countdownTime ? strtotime($countdownTime) * 1000 : 0 }};
+        var countdownDate = {{ $countdownTimestamp }};
         var countdownDisplay = @json($countdownDisplay);
         var confettiEnabled = {{ (int) $confetti }};
         var flyinEnabled = {{ (int) $flyinEffect }};
