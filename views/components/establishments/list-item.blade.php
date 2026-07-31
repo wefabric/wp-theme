@@ -14,6 +14,7 @@
     $establishmentCity = $establishmentAddressDto->city ?? '';
     $establishmentAddress = $establishmentStreet . ' ' . $establishmentHouseNumber . $establishmentHouseNumberAddition . ', ' . $establishmentZipCode . ' ' . $establishmentCity;
 
+    $establishmentOverviewText = $establishmentModel->post->post_excerpt ?? '';
     $establishmentPhone = $establishmentModel->getContactPhone();
     $establishmentEmail = $establishmentModel->getEmailAddress();
     $establishmentWhatsapp = $establishmentModel->whatsapp_number ?? '';
@@ -46,6 +47,10 @@
                         <br>
                         {!! $establishmentZipCode . ' ' . $establishmentCity !!}
                     </div>
+                @endif
+
+                @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && $establishmentOverviewText)
+                    <div class="establishment-overview mt-2">{!! nl2br(e($establishmentOverviewText)) !!}</div>
                 @endif
 
                 @if (!empty($visibleElements) && in_array('kvk_number', $visibleElements) && $establishmentKvkNumber)
