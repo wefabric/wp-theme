@@ -523,6 +523,27 @@
             "append": ""
         },
         {
+            "key": "field_68861c2f4a880",
+            "label": "Whatsapp nummer",
+            "name": "whatsapp_number",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Volledig internationaal nummer, bijv. 31612345678 (zonder + of spaties).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_60b37f7561860",
             "label": "Coordinaten",
             "name": "coordinates",
@@ -796,5 +817,5 @@
     "active": true,
     "description": "Vul hieronder de vestigingen in van het bedrijf. De eerste vestiging is de hoofdvestiging.",
     "show_in_rest": 0,
-    "modified": 1768378753
+    "modified": 1785247550
 }

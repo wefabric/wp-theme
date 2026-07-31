@@ -708,7 +708,12 @@
                 "name": "Naam",
                 "address": "Adres",
                 "overview_text": "Overzichtstekst",
-                "contact_info": "Contactgegevens"
+                "phone": "Telefoonnummer",
+                "email": "E-mailadres",
+                "whatsapp": "Whatsapp",
+                "route": "Routebeschrijving",
+                "kvk_number": "KVK nummer",
+                "vat_number": "BTW nummer"
             },
             "default_value": [],
             "return_format": "value",
@@ -736,7 +741,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -770,12 +775,47 @@
                     {
                         "field": "field_670e1c035bfe0",
                         "operator": "==",
-                        "value": "contact_info"
+                        "value": "phone"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_670e1c035bfe0",
+                        "operator": "==",
+                        "value": "email"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_670e1c035bfe0",
+                        "operator": "==",
+                        "value": "whatsapp"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_670e1c035bfe0",
+                        "operator": "==",
+                        "value": "route"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_670e1c035bfe0",
+                        "operator": "==",
+                        "value": "kvk_number"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_670e1c035bfe0",
+                        "operator": "==",
+                        "value": "vat_number"
                     }
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -2257,5 +2297,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1785247547
+    "modified": 1785247550
 }
