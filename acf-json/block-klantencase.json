@@ -650,6 +650,42 @@
             "save_options": 0
         },
         {
+            "key": "field_690a1b2c3d4e5",
+            "label": "Overzicht kaart weergave",
+            "name": "overview_card_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Bepaalt hoe de samenvattingstekst in de overzicht weergave wordt getoond.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_657ae14ac4e60",
+                        "operator": "==",
+                        "value": "overview_layout"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "hover_overlay": "Hover overlay (tekst verschijnt bij hover)",
+                "always_visible": "Altijd zichtbaar (zoals nieuwsblok)"
+            },
+            "default_value": "hover_overlay",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_6579c9aff0920",
             "label": "Welke klantencases wil je tonen?",
             "name": "display_type",
