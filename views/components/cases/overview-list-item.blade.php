@@ -24,10 +24,13 @@
         }
     @endphp
 
-    <div class="klantcase-item h-full w-full @if ($flyinEffect) klantencase-hidden @endif">
-        <div class="card-static flex flex-col h-full w-full rounded-{{ $borderRadius }} overflow-hidden">
+    <div class="klantcase-item group h-full w-full @if ($flyinEffect) klantencase-hidden @endif">
+        <div class="card-static flex flex-col h-full w-full rounded-{{ $borderRadius }} overflow-hidden {{ $hoverEffectClass }} duration-300 ease-in-out">
             @if ($caseImage)
-                <div class="card-image w-full aspect-video overflow-hidden">
+                <div class="card-image relative w-full aspect-video overflow-hidden">
+                    <a href="{{ $caseUrl }}" aria-label="Ga naar {{ $caseTitle }} pagina" class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
+                        <span class="sr-only">Ga naar {{ $caseTitle }} pagina</span>
+                    </a>
                     @include('components.image', [
                         'image_id' => $caseImage,
                         'size' => 'full',
@@ -46,12 +49,25 @@
                 @if ($caseSummaryText)
                     <p class="case-summary text-{{ $caseTextColor }} opacity-80 m-0">{{ $caseSummaryText }}</p>
                 @endif
+
+                @if ($showCardButton)
+                    <div class="case-button mt-auto pt-8 z-10">
+                        @include('components.buttons.default', [
+                           'text' => $buttonCardText,
+                           'href' => $caseUrl,
+                           'alt' => $buttonCardText,
+                           'colors' => 'btn-' . $buttonCardColor . ' btn-' . $buttonCardStyle,
+                           'class' => 'rounded-lg',
+                           'icon' => $buttonCardIcon,
+                       ])
+                    </div>
+                @endif
             </div>
         </div>
     </div>
 @else
     <div class="klantcase-item group h-full w-full @if ($flyinEffect) klantencase-hidden @endif">
-        <div class="card-background p-6 xl:p-8 h-full mx-auto relative bg-{{ $caseBackgroundColor }} w-full aspect-square flex flex-col gap-y-4 items-center justify-end text-center overflow-hidden rounded-{{ $borderRadius }} group-hover:-translate-y-4 duration-300 ease-in-out"
+        <div class="card-background p-6 xl:p-8 h-full mx-auto relative bg-{{ $caseBackgroundColor }} w-full aspect-square flex flex-col gap-y-4 items-center justify-end text-center overflow-hidden rounded-{{ $borderRadius }} {{ $hoverEffectClass }} duration-300 ease-in-out"
 
              @if ($caseImage)
                  style="background-image: url('{{ wp_get_attachment_image_url($caseImage, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($caseImage) }}">
