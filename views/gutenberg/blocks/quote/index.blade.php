@@ -41,12 +41,15 @@
 
 
     // Quote
+    $showQuoteIcon = $block['data']['show_quote_icon'] ?? false;
     $quote = $block['data']['quote'] ?? '';
     $quoteTextColor = $block['data']['quote_text_color'] ?? '';
+    $avatarId = $block['data']['avatar'] ?? '';
     $name = $block['data']['name'] ?? '';
     $function = $block['data']['function'] ?? '';
     $personTextColor = $block['data']['person_text_color'] ?? '';
     $quoteBackgroundColor = $block['data']['quote_background_color'] ?? '';
+    $quoteBackgroundImageId = $block['data']['quote_background_image'] ?? '';
 
 
     // Blokinstellingen
@@ -95,6 +98,9 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+    // Animaties
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'quote' }}@endif" class="block-quote relative quote-{{ $randomNumber }}-custom-padding quote-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
@@ -106,7 +112,7 @@
             <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
         @endif
         <div class="whitespace-class relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
-            <div class="{{ $blockClass }} {{ $textClass }} mx-auto">
+            <div class="quote-{{ $randomNumber }}-flyin {{ $blockClass }} {{ $textClass }} mx-auto @if ($flyinEffect) quote-hidden @endif">
 
                 @if ($subTitle)
                     <span class="subtitle block mb-2 text-{{ $subTitleColor }}">{!! $subTitle !!}</span>
@@ -121,19 +127,49 @@
                     ])
                 @endif
 
-                @if ($quoteBackgroundColor)
-                    <div class="quote-background block bg-{{ $quoteBackgroundColor }} p-8">
+                @if ($quoteBackgroundColor || $quoteBackgroundImageId)
+                    <div class="quote-background relative block bg-{{ $quoteBackgroundColor }} p-8"
+                         @if ($quoteBackgroundImageId)
+                         style="background-image: url('{{ wp_get_attachment_image_url($quoteBackgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($quoteBackgroundImageId) }}"
+                         @endif
+                    >
                 @endif
+                    @if ($showQuoteIcon)
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                             class="quote-icon inline-block w-8 h-8 mb-2 md:mb-6 text-{{ $quoteTextColor }}"
+                             viewBox="0 0 975.036 975.036">
+                            <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
+                        </svg>
+                    @endif
                     @if ($quote)
                         @include('components.content', ['content' => apply_filters('the_content', $quote), 'class' => 'quote-text text-[24px] md:text-[36px] text-' . $quoteTextColor])
                     @endif
-                    @if ($name)
-                        <div class="name-text mt-5 h6 text-{{ $personTextColor }}">{{ $name }}</div>
+                    @if ($avatarId || $name || $function)
+                        <div class="avatar-section flex items-center gap-x-4 mt-5 {{ $textClass }}">
+                            @if ($avatarId)
+                                <div class="avatar-image-section flex-shrink-0">
+                                    @include('components.image', [
+                                        'image_id' => $avatarId,
+                                        'size' => 'full',
+                                        'object_fit' => 'cover',
+                                        'img_class' => 'avatar-image w-14 h-14 aspect-square rounded-full object-cover object-center',
+                                        'alt' => $name,
+                                    ])
+                                </div>
+                            @endif
+                            @if ($name || $function)
+                                <div class="avatar-details @if ($avatarId) text-left @endif">
+                                    @if ($name)
+                                        <div class="name-text h6 text-{{ $personTextColor }}">{{ $name }}</div>
+                                    @endif
+                                    @if ($function)
+                                        <div class="function-text mt-1 text-{{ $personTextColor }}">{{ $function }}</div>
+                                    @endif
+                                </div>
+                            @endif
+                        </div>
                     @endif
-                    @if ($function)
-                        <div class="function-text mt-1 text-{{ $personTextColor }}">{{ $function }}</div>
-                    @endif
-                @if ($quoteBackgroundColor)
+                @if ($quoteBackgroundColor || $quoteBackgroundImageId)
                     </div>
                 @endif
 
@@ -210,4 +246,45 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .quote-hidden {
+        opacity: 0;
+    }
+
+    .quote-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const quoteItem = document.querySelector('.quote-{{ $randomNumber }}-flyin');
+
+            if (!quoteItem) {
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    if (entry.target.classList.contains('quote-hidden')) {
+                        entry.target.classList.add('quote-animated');
+                        entry.target.classList.remove('quote-hidden');
+                    }
+
+                    obs.unobserve(entry.target);
+                });
+            }, {
+                root: null,
+                rootMargin: '0px 0px -30px 0px',
+                threshold: 0.035
+            });
+
+            observer.observe(quoteItem);
+        });
+    </script>
+@endif

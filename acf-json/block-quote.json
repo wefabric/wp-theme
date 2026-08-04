@@ -556,6 +556,26 @@
             "selected": 0
         },
         {
+            "key": "field_73cb032751a1",
+            "label": "Quote icoon tonen?",
+            "name": "show_quote_icon",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6572e36b3e8ca",
             "label": "Quote",
             "name": "quote",
@@ -591,6 +611,31 @@
             },
             "theme_color": null,
             "font_size": 14
+        },
+        {
+            "key": "field_fab8363f6b20",
+            "label": "Avatar",
+            "name": "avatar",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Avatar die naast de naam en functie getoond wordt.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
         },
         {
             "key": "field_6572e3bf93726",
@@ -689,6 +734,31 @@
             },
             "theme_color": null,
             "font_size": 14
+        },
+        {
+            "key": "field_9c26194747b3",
+            "label": "Quote achtergrond afbeelding",
+            "name": "quote_background_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
         },
         {
             "key": "field_6572e36b3e8e5",
@@ -1704,6 +1774,26 @@
             "placement": "top",
             "endpoint": 0,
             "selected": 0
+        },
+        {
+            "key": "field_1ec402e1e414",
+            "label": "Quote in laten vliegen",
+            "name": "flyin_effect",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -1724,5 +1814,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1760086177
+    "modified": 1785860000
 }
