@@ -18,15 +18,35 @@
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
     $randomId = 'vacancySwiper-' . $randomNumber;
+
+    // CTA tussen vacatures (zowel in de grid- als de slider-weergave)
+    $showCta = $block['data']['show_cta'] ?? false;
+    $ctaPositionType = $block['data']['cta_position_type'] ?? 'end';
+    $ctaPositionAfter = (int) ($block['data']['cta_position_after'] ?? 0);
+
+    $gridItems = array_map(fn ($vacancyId) => ['type' => 'vacancy', 'vacancy' => $vacancyId], $vacancies);
+
+    if ($showCta) {
+        $ctaInsertAt = $ctaPositionType === 'after_item'
+            ? min(max($ctaPositionAfter, 0), count($gridItems))
+            : count($gridItems);
+
+        array_splice($gridItems, $ctaInsertAt, 0, [['type' => 'cta']]);
+    }
 @endphp
 
 @if($block['data']['show_slider'])
     <div class="slider block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
-                @foreach ($vacancies as $vacancy)
+                @foreach ($gridItems as $gridItem)
                     <div class="swiper-slide h-auto">
-                        @include('components.vacancies.list-item')
+                        @if ($gridItem['type'] === 'cta')
+                            @include('components.vacancies.cta-item')
+                        @else
+                            @php($vacancy = $gridItem['vacancy'])
+                            @include('components.vacancies.list-item')
+                        @endif
                     </div>
                 @endforeach
             </div>
@@ -39,8 +59,13 @@
     </div>
 @else
     <div class="vacancy-list grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} {{ $layoutClasses['desktop-xl'] }} gap-y-16 gap-x-4 lg:gap-x-8 py-8">
-        @foreach ($vacancies as $vacancy)
-            @include('components.vacancies.list-item')
+        @foreach ($gridItems as $gridItem)
+            @if ($gridItem['type'] === 'cta')
+                @include('components.vacancies.cta-item')
+            @else
+                @php($vacancy = $gridItem['vacancy'])
+                @include('components.vacancies.list-item')
+            @endif
         @endforeach
     </div>
 @endif
@@ -76,19 +101,19 @@
             },
             breakpoints: {
                 0: {
-                    loop: {{ $swiperLoop && count($vacancies) > $mobileLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($gridItems) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 640: {
-                    loop: {{$swiperLoop && count($vacancies) > $tabletLayout ? 'true' : 'false' }},
+                    loop: {{$swiperLoop && count($gridItems) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ $swiperLoop && count($vacancies) > $desktopLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($gridItems) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
                 },
                 1536: {
-                    loop: {{ $swiperLoop && count($vacancies) > $desktopXlLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($gridItems) > $desktopXlLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopXlLayout }},
                 },
             }
