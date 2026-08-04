@@ -55,3 +55,43 @@
     word-wrap: normal;
   }
 }
+
+
+// Historie
+
+.block-historie {
+  .history-vertical-line,
+  .timeline-progress-bar,
+  .history-horizontal-line,
+  .timeline-dot,
+  .timeline-start-dot,
+  .timeline-end-dot {
+    background-color: currentColor;
+  }
+
+  &.historie-line-style-dashed {
+    .history-vertical-line,
+    .timeline-progress-bar {
+      background-image: repeating-linear-gradient(to bottom, currentColor 0 10px, transparent 10px 18px);
+      background-color: transparent;
+    }
+
+    .history-horizontal-line {
+      background-image: repeating-linear-gradient(to right, currentColor 0 10px, transparent 10px 18px);
+      background-color: transparent;
+    }
+  }
+
+  &.historie-line-style-dotted {
+    .history-vertical-line,
+    .timeline-progress-bar {
+      background-image: repeating-linear-gradient(to bottom, currentColor 0 4px, transparent 4px 10px);
+      background-color: transparent;
+    }
+
+    .history-horizontal-line {
+      background-image: repeating-linear-gradient(to right, currentColor 0 4px, transparent 4px 10px);
+      background-color: transparent;
+    }
+  }
+}
