@@ -86,6 +86,11 @@
                             true    // ajax
                         ) !!}
                     </div>
+                    @if ($text)
+                        <p class="agreement-text text-xs mt-2 italic text-{{ $text_color }}">
+                            {!! $text !!}
+                        </p>
+                    @endif
                 @endif
 
 
