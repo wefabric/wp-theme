@@ -87,9 +87,9 @@
                         ) !!}
                     </div>
                     @if ($text)
-                        <p class="agreement-text text-xs mt-2 italic text-{{ $text_color }}">
+                        <div class="agreement-text text-xs mt-2 italic text-{{ $text_color }}">
                             {!! $text !!}
-                        </p>
+                        </div>
                     @endif
                 @endif
 
