@@ -230,7 +230,7 @@
                                     )
                                         <div class="contact-info">
                                             <div class="contact-text font-bold mb-2">Contact</div>
-                                            <div class="flex-layout flex flex-col gap-y-2">
+                                            <div class="contact-layout flex-layout flex flex-col gap-y-2">
                                                 @if (!empty($visibleElements) && in_array('establishment_phone', $visibleElements) && $phone)
                                                     <a class="phone-link group flex items-center gap-2 w-fit"
                                                        href="{{ $phone->uri() }}"
