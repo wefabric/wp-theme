@@ -1904,6 +1904,37 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_68a1f2e3b4c01",
+            "label": "Horizontale ruimte tussen werknemers",
+            "name": "space_between",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a2c795a9c0c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 20,
+            "min": 0,
+            "max": 300,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "px"
+        },
+        {
             "key": "field_64a6c4c2e8c0e",
             "label": "Autoplay swiper",
             "name": "autoplay",
@@ -2047,6 +2078,44 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "key": "field_68a1f2e3b4c02",
+            "label": "Paginatie stijl",
+            "name": "pagination_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64a2c795a9c0c",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "bullets": "Bullets",
+                "progress_bar": "Progressie balk",
+                "none": "Geen"
+            },
+            "default_value": "bullets",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_6512dd2d2c301",

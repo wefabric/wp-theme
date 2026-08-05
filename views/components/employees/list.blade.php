@@ -17,7 +17,10 @@
     $swiperLoop = $block['data']['loop_slides'] ?? true;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
+    $paginationStyle = $block['data']['pagination_style'] ?? 'bullets';
     $randomId = 'employeeSwiper-' . $randomNumber;
+
+    $spaceBetween = $block['data']['space_between'] ?? 20;
 
     // CTA tussen werknemers (zowel in de grid- als de slider-weergave)
     $showCta = $block['data']['show_cta'] ?? false;
@@ -50,7 +53,9 @@
                     </div>
                 @endforeach
             </div>
-            <div class="swiper-pagination"></div>
+            @if ($paginationStyle != 'none')
+                <div class="swiper-pagination"></div>
+            @endif
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next employee-button-next-{{ $randomNumber }}"></div>
@@ -81,7 +86,7 @@
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var employeeSwiper = new Swiper(".{{ $randomId }}", {
-            spaceBetween: 20,
+            spaceBetween: {{ $spaceBetween }},
             @if ($swiperCenteredSlides)
                 centeredSlides: true,
             @endif
@@ -91,10 +96,16 @@
                     disableOnInteraction: true,
                 },
             @endif
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
+            @if ($paginationStyle != 'none')
+                pagination: {
+                    el: '.swiper-pagination',
+                    @if ($paginationStyle == 'progress_bar')
+                        type: 'progressbar',
+                    @elseif ($paginationStyle == 'bullets')
+                        clickable: true,
+                    @endif
+                },
+            @endif
             navigation: {
                 nextEl: ".employee-button-next-{{ $randomNumber }}",
                 prevEl: ".employee-button-prev-{{ $randomNumber }}",
