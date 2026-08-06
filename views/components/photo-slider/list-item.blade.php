@@ -18,6 +18,9 @@
                     </a>
                 </div>
             @endif
+            @if ($enableLightbox && !$imageLinkUrl)
+                <a href="{{ $imageUrl }}" class="glightbox-{{ $lightboxId }}" data-gallery="gallery-{{ $lightboxId }}">
+            @endif
             @include('components.image', [
                 'image_id'   => $image['id'],
                 'size'       => 'full',
@@ -29,6 +32,9 @@
                     ($imageLinkUrl ? 'group-hover:scale-110 ' : ''),
                 'alt'        => $image['alt'],
             ])
+            @if ($enableLightbox && !$imageLinkUrl)
+                </a>
+            @endif
         @endif
     </div>
     @if ($imageCaption)
