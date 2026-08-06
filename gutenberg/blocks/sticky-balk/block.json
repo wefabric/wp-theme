@@ -1,0 +1,28 @@
+{
+  "name": "wefabric/sticky-balk",
+  "title": "Sticky balk",
+  "description": "Een sticky balk onderaan het scherm met tekst en 2 buttons, die verdwijnt zodra een gekozen block in beeld komt",
+  "category": "wefabric-theme",
+  "icon": "megaphone",
+  "apiVersion": 3,
+  "keywords": [
+    "Sticky",
+    "Balk",
+    "Vacature",
+    "CTA"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3,
+    "hideFieldsInSidebar": true
+  },
+  "attributes": {},
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field"
+      }
+    }
+  }
+}

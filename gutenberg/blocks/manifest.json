@@ -76,6 +76,7 @@
     "nieuws-activiteit/block.json",
     "technologies/block.json",
     "landen/block.json",
-    "verhalen/block.json"
+    "verhalen/block.json",
+    "sticky-balk/block.json"
   ]
 }
