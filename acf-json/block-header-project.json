@@ -35,10 +35,10 @@
                 "id": ""
             },
             "choices": {
-                "fixed_height": "Vaste header hoogte",
-                "scalable_height": "Header hoogte meeschalen met content"
+                "scalable_height": "Header hoogte meeschalen met content",
+                "fixed_height": "Vaste header hoogte"
             },
-            "default_value": "fixed_height",
+            "default_value": "scalable_height",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -644,7 +644,7 @@
             "sub_fields": [
                 {
                     "key": "field_669a601a268bc",
-                    "label": "Project tekst",
+                    "label": "Titel",
                     "name": "project_title",
                     "aria-label": "",
                     "type": "text",
@@ -665,7 +665,7 @@
                 },
                 {
                     "key": "field_669a6042268bd",
-                    "label": "Project tekst",
+                    "label": "Tekst",
                     "name": "project_text",
                     "aria-label": "",
                     "type": "text",
@@ -1089,6 +1089,27 @@
             "default_value": 0,
             "allow_in_bindings": 1,
             "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_68d9000000001",
+            "label": "Swiper voor meerdere foto's tonen?",
+            "name": "show_image_slider",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Toont de extra afbeeldingen van het project of de klantcase als swiper op de achtergrond, met navigatiepijltjes.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 1,
+            "ui": 1,
             "ui_on_text": "",
             "ui_off_text": ""
         },
@@ -1915,5 +1936,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758890396
+    "modified": 1786002877
 }

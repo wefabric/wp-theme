@@ -21,19 +21,39 @@
     $randomId = 'klantcaseSwiper-' . $randomNumber;
 
     $spaceBetween = $block['data']['space_between'] ?? 20;
+
+    // CTA tussen klantencases (alleen bij de "Overview" layout-versie, zowel grid als slider)
+    $showCta = $block['data']['show_cta'] ?? false;
+    $ctaPositionType = $block['data']['cta_position_type'] ?? 'end';
+    $ctaPositionAfter = (int) ($block['data']['cta_position_after'] ?? 0);
+
+    $gridItems = array_map(fn ($caseId) => ['type' => 'case', 'case' => $caseId], $cases);
+
+    if ($showCta && $layoutVersion == 'overview_layout') {
+        $ctaInsertAt = $ctaPositionType === 'after_item'
+            ? min(max($ctaPositionAfter, 0), count($gridItems))
+            : count($gridItems);
+
+        array_splice($gridItems, $ctaInsertAt, 0, [['type' => 'cta']]);
+    }
 @endphp
 
 @if ($block['data']['show_slider'])
     <div class="slider block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
-                @foreach ($cases as $case)
+                @foreach ($gridItems as $gridItem)
                     <div class="swiper-slide h-auto">
-                        @if ($layoutVersion == 'featured_layout')
-                            @include('components.cases.featured-list-item')
-                        @endif
-                        @if ($layoutVersion == 'overview_layout')
-                            @include('components.cases.overview-list-item')
+                        @if ($gridItem['type'] === 'cta')
+                            @include('components.cases.cta-item')
+                        @else
+                            @php($case = $gridItem['case'])
+                            @if ($layoutVersion == 'featured_layout')
+                                @include('components.cases.featured-list-item')
+                            @endif
+                            @if ($layoutVersion == 'overview_layout')
+                                @include('components.cases.overview-list-item')
+                            @endif
                         @endif
                     </div>
                 @endforeach
@@ -49,12 +69,17 @@
     </div>
 @else
     <div class="grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} {{ $layoutClasses['desktop-xl'] }} gap-y-8 gap-x-4 lg:gap-x-8 py-8">
-        @foreach ($cases as $case)
-            @if ($layoutVersion == 'featured_layout')
-                @include('components.cases.featured-list-item')
-            @endif
-            @if ($layoutVersion == 'overview_layout')
-                @include('components.cases.overview-list-item')
+        @foreach ($gridItems as $gridItem)
+            @if ($gridItem['type'] === 'cta')
+                @include('components.cases.cta-item')
+            @else
+                @php($case = $gridItem['case'])
+                @if ($layoutVersion == 'featured_layout')
+                    @include('components.cases.featured-list-item')
+                @endif
+                @if ($layoutVersion == 'overview_layout')
+                    @include('components.cases.overview-list-item')
+                @endif
             @endif
         @endforeach
     </div>
@@ -100,19 +125,19 @@
             },
             breakpoints: {
                 0: {
-                    loop: {{ $swiperLoop && count($cases) > $mobileLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($gridItems) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 640: {
-                    loop: {{ $swiperLoop && count($cases) > $tabletLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($gridItems) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ $swiperLoop && count($cases) > $desktopLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($gridItems) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
                 },
                 1536: {
-                    loop: {{ $swiperLoop && count($cases) > $desktopXlLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($gridItems) > $desktopXlLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopXlLayout }},
                 },
             }

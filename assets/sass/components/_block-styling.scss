@@ -72,10 +72,14 @@
     }
   }
 
-  // Hover over de swiper-navigatie mag de group-hover kaart-overlay niet activeren
+  // Hover over de swiper-navigatie mag de group-hover kaart-overlay en de inzoom niet activeren
   .project-image:has(.project-image-nav:hover) {
     .card-overlay {
       opacity: 0 !important;
+    }
+
+    img {
+      transform: none !important;
     }
   }
 
@@ -143,6 +147,58 @@
   }
 
   .header-image-nav {
+    @apply absolute z-30 flex gap-x-2;
+    top: 15px;
+    right: 15px;
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      @apply relative bg-white/90 hover:bg-primary h-[32px] w-[32px] rounded-[6px] #{!important};
+      top: auto;
+      left: auto;
+      right: auto;
+      margin: 0;
+
+      &:after {
+        @apply text-[14px] text-primary #{!important};
+      }
+
+      &:hover:after {
+        @apply text-white #{!important};
+      }
+
+      &.swiper-button-disabled {
+        @apply bg-white/40 #{!important};
+        opacity: 1 !important;
+      }
+    }
+  }
+}
+
+.block-klantencases {
+  .case-image-swiper {
+
+    .swiper-wrapper {
+      @apply h-full;
+    }
+
+    .swiper-slide {
+      @apply h-full;
+    }
+  }
+
+  // Hover over de swiper-navigatie mag de group-hover kaart-overlay en de inzoom niet activeren
+  .card-image:has(.case-image-nav:hover) {
+    .card-overlay {
+      opacity: 0 !important;
+    }
+
+    img {
+      transform: none !important;
+    }
+  }
+
+  .case-image-nav {
     @apply absolute z-30 flex gap-x-2;
     top: 15px;
     right: 15px;

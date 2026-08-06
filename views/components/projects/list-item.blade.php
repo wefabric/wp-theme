@@ -54,12 +54,12 @@
                         <div class="swiper-wrapper h-full">
                             @foreach ($projectImageIds as $projectImageId)
                                 <div class="swiper-slide h-full">
-                                    <a href="{{ $projectUrl }}" aria-label="Ga naar {{ $projectTitle }} pagina" class="block h-full w-full">
+                                    <a href="{{ $projectUrl }}" aria-label="Ga naar {{ $projectTitle }} pagina" class="block h-full w-full overflow-hidden">
                                         @include('components.image', [
                                            'image_id' => $projectImageId,
                                            'size' => 'full',
                                            'object_fit' => 'cover',
-                                           'img_class' => 'aspect-square w-full h-full object-cover object-center',
+                                           'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
                                            'alt' => $projectTitle,
                                         ])
                                     </a>

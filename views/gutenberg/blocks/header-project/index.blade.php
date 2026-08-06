@@ -150,13 +150,17 @@
         // CSS-achtergrond, behalve bij parallax en bij de terugval op $featuredImage.
         $headerBackgroundId  = $backgroundImageId ?: $featuredImageId;
 
-        // Extra afbeeldingen van het project (zelfde herhaalveld als bij het projecten-blok):
-        // uitgelichte/geselecteerde afbeelding altijd eerst, dan de extra foto's als swiper.
-        $headerGalleryRows = get_field('project_images', get_the_ID()) ?: [];
+        // Extra afbeeldingen van de huidige post (zelfde herhaalveld als bij het projecten- en
+        // klantencase-blok): uitgelichte/geselecteerde afbeelding altijd eerst, dan de extra
+        // foto's als swiper. Dit blok kan zowel op een project- als een klantcase-pagina staan.
+        $showImageSlider = $block['data']['show_image_slider'] ?? true;
+        $headerGalleryFieldMap = ['project' => 'project_images', 'klantcases' => 'case_images'];
+        $headerGalleryFieldName = $headerGalleryFieldMap[get_post_type()] ?? null;
+        $headerGalleryRows = $headerGalleryFieldName ? (get_field($headerGalleryFieldName, get_the_ID()) ?: []) : [];
         $headerGalleryImageIds = array_values(array_filter(array_map(fn ($row) => $row['image'] ?? null, $headerGalleryRows)));
         $headerImageIds = $headerBackgroundId ? array_merge([$headerBackgroundId], $headerGalleryImageIds) : $headerGalleryImageIds;
         $headerImageIds = array_values(array_unique($headerImageIds));
-        $hasMultipleHeaderImages = !$backgroundVideoURL && count($headerImageIds) > 1;
+        $hasMultipleHeaderImages = $showImageSlider && !$backgroundVideoURL && count($headerImageIds) > 1;
         $headerImageSwiperClass = 'header-image-swiper-' . get_the_ID() . '-' . mt_rand(0, 999999);
 
         $useResponsiveHeader = ! $hasMultipleHeaderImages && ! $backgroundImageParallax && $headerBackgroundId;
