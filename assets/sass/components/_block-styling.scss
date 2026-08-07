@@ -266,3 +266,48 @@
     }
   }
 }
+
+
+// Sticky balk
+
+.block-sticky-balk {
+  z-index: 40;
+  padding-bottom: env(safe-area-inset-bottom);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+
+  // Standaard verborgen (voorkomt een flits bij het laden van de pagina,
+  // voordat de JS heeft kunnen bepalen of de balk zichtbaar moet zijn).
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+
+  &.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  // Balk "landt" boven het opgegeven blok: stopt met sticky volgen en komt
+  // in de normale documentflow te staan (top wordt door JS berekend/gezet).
+  &.is-landed {
+    position: absolute !important;
+    bottom: auto !important;
+    transform: translateY(0) !important;
+  }
+
+  // De globale ".buttons { width: 100% !important }" (_buttons.scss, bedoeld
+  // voor full-width knoppen op mobiel) forceert deze knoppenrij anders altijd
+  // over de volledige breedte, waardoor er niks overblijft voor de tekst.
+  .buttons {
+    width: auto !important;
+  }
+
+  .sticky-balk-text {
+    font-size: 16px;
+    line-height: 1.4;
+
+    strong, b {
+      font-weight: 700;
+    }
+  }
+}

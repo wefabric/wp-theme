@@ -42,6 +42,7 @@
     "werkwijze/block.json",
     "delen/block.json",
     "contact/block.json",
+    "tekst-formulier/block.json",
     "quote/block.json",
     "historie/block.json",
     "testimonial/block.json",
