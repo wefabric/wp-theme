@@ -1,8 +1,12 @@
 @php
     // Content
     $title = $block['data']['title'] ?? '';
-    $subTitle = $block['data']['subtitle'] ?? '';
     $titleColor = $block['data']['title_color'] ?? '';
+    $subTitle = $block['data']['subtitle'] ?? '';
+    $subTitleColor = $block['data']['subtitle_color'] ?? '';
+    $subtitleIcon = $block['data']['subtitle_icon'] ?? '';
+    $subtitleIcon = $subtitleIcon ? json_decode($subtitleIcon, true) : null;
+    $subtitleIconColor = $block['data']['subtitle_icon_color'] ?? '';
     $text = $block['data']['text'] ?? '';
     $textColor = $block['data']['text_color'] ?? '';
 
@@ -42,6 +46,7 @@
     // Vestigingen
     $establishmentTitleColor = $block['data']['establishment_title_color'] ?? '';
     $establishmentTextColor = $block['data']['establishment_text_color'] ?? '';
+    $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
     $displayType = $block['data']['display_type'];
 
@@ -145,17 +150,38 @@
     $desktopMarginRight = $block['data']['margin_desktop_margin_right'] ?? '';
     $desktopMarginBottom = $block['data']['margin_desktop_margin_bottom'] ?? '';
     $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
+
+
+    // Animaties
+    $hoverEffect = $block['data']['hover_effect'] ?? '';
+    $hoverEffectClasses = [
+        'lift-up' => 'group-hover:-translate-y-2 group-hover:md:-translate-y-4',
+        'scale-up' => 'group-hover:scale-105',
+        'scale-down' => 'group-hover:scale-95',
+        'none' => ''
+    ];
+    $hoverEffectClass = $hoverEffectClasses[$hoverEffect] ?? '';
+
+    $flyinEffect = $block['data']['flyin_effect'] ?? false;
 @endphp
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'vestigingen' }}@endif" class="block-vestigingen relative vestigingen-{{ $randomNumber }}-custom-padding vestigingen-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
+    @if($swiperOutContainer)
+        <div class="overflow-hidden">
+    @endif
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
     <div class="relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="{{ $blockClass }} mx-auto">
             @if ($subTitle)
-                <span class="subtitle block mb-2 text-{{ $titleColor }} {{ $textClass }}">{!! $subTitle !!}</span>
+                <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }}">
+                    @if ($subtitleIcon)
+                        <i class="subtitle-icon text-{{ $subtitleIconColor }} fa-{{ $subtitleIcon['style'] }} fa-{{ $subtitleIcon['id'] }} mr-1"></i>
+                    @endif
+                    {!! $subTitle !!}
+                </span>
             @endif
             @if ($title)
                 <h2 class="title mb-4 text-{{ $titleColor }} {{ $textClass }}">{!! $title !!}</h2>
@@ -197,6 +223,9 @@
             @endif
         </div>
     </div>
+    @if($swiperOutContainer)
+        </div>
+    @endif
 </section>
 
 <style>
@@ -241,4 +270,51 @@
             @if($desktopMarginLeft) margin-left: {{ $desktopMarginLeft }}px; @endif
         }
     }
+
+    .establishment-hidden {
+        opacity: 0;
+    }
+
+    .swiper-slide-duplicate .establishment-hidden {
+        animation: flyIn 0.6s ease-out forwards !important;
+    }
+
+    .establishment-animated {
+        animation: flyIn 0.6s ease-out forwards;
+    }
 </style>
+
+@if ($flyinEffect)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const establishmentItems = document.querySelectorAll('.establishment-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -30px 0px',
+                threshold: 0.035
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const establishmentItem = entry.target;
+
+                        setTimeout(() => {
+                            if (establishmentItem.classList.contains('establishment-hidden')) {
+                                establishmentItem.classList.add('establishment-animated');
+                                establishmentItem.classList.remove('establishment-hidden');
+                            }
+                        }, index * 200);
+
+                        observer.unobserve(establishmentItem);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            establishmentItems.forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+@endif

@@ -20,7 +20,7 @@
     </div>
 </form>
 <div>
-    <p class="agreement-text text-xs mt-2 italic text-{{ $text_color }}">
+    <div class="agreement-text text-xs mt-2 italic text-{{ $text_color }}">
         @if ($text)
             {!! $text !!}
         @else
@@ -31,5 +31,5 @@
             ])
             . Je kunt je ook altijd weer afmelden voor deze e-mails.
         @endif
-    </p>
+    </div>
 </div>

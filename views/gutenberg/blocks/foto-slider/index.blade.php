@@ -45,6 +45,7 @@
 
     // Afbeeldingen
     $captionColor = $block['data']['caption_color'] ?? '';
+    $enableLightbox = $block['data']['enable_lightbox'] ?? false;
     $imagesData = [];
     $swiperOutContainer = $block['data']['slider_outside_container'] ?? false;
 
@@ -139,6 +140,10 @@
     // Paddings & margins
     $randomNumber = rand(0, 1000);
 
+    // De slider-component (list.blade.php) definieert zijn eigen $randomNumber voor de Swiper-instantie,
+    // die overschrijft dit lokaal in de include-scope. Daarom een losse variabele voor de lightbox-groepering.
+    $lightboxId = $randomNumber;
+
     $mobilePaddingTop = $block['data']['padding_mobile_padding_top'] ?? '';
     $mobilePaddingRight = $block['data']['padding_mobile_padding_right'] ?? '';
     $mobilePaddingBottom = $block['data']['padding_mobile_padding_bottom'] ?? '';
@@ -199,6 +204,10 @@
                         ])
                     @endif
                     @if ($imagesData)
+                        @if ($enableLightbox)
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+                            <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+                        @endif
                         @include('components.photo-slider.list')
                     @endif
                     @if (($button1Text) && ($button1Link))
@@ -356,6 +365,18 @@
             const observer = new IntersectionObserver(observerCallback, observerOptions);
             imageItems.forEach(item => {
                 observer.observe(item);
+            });
+        });
+    </script>
+@endif
+
+@if ($enableLightbox)
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightbox = GLightbox({
+                selector: '.glightbox-{{ $lightboxId }}',
+                touchNavigation: true,
+                loop: true,
             });
         });
     </script>

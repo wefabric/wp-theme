@@ -17,20 +17,45 @@
     $swiperLoop = $block['data']['loop_slides'] ?? true;
     $swiperCenteredSlides = $block['data']['centered_slides'] ?? false;
     $randomNumber = rand(0, 1000);
+    $paginationStyle = $block['data']['pagination_style'] ?? 'bullets';
     $randomId = 'employeeSwiper-' . $randomNumber;
+
+    $spaceBetween = $block['data']['space_between'] ?? 20;
+
+    // CTA tussen werknemers (zowel in de grid- als de slider-weergave)
+    $showCta = $block['data']['show_cta'] ?? false;
+    $ctaPositionType = $block['data']['cta_position_type'] ?? 'end';
+    $ctaPositionAfter = (int) ($block['data']['cta_position_after'] ?? 0);
+
+    $gridItems = array_map(fn ($employeeId) => ['type' => 'employee', 'employee' => $employeeId], $employees);
+
+    if ($showCta) {
+        $ctaInsertAt = $ctaPositionType === 'after_item'
+            ? min(max($ctaPositionAfter, 0), count($gridItems))
+            : count($gridItems);
+
+        array_splice($gridItems, $ctaInsertAt, 0, [['type' => 'cta']]);
+    }
 @endphp
 
 @if($block['data']['show_slider'])
     <div class="slider block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
-                @foreach ($employees as $employee)
+                @foreach ($gridItems as $gridItem)
                     <div class="swiper-slide h-auto">
-                        @include('components.employees.list-item')
+                        @if ($gridItem['type'] === 'cta')
+                            @include('components.employees.cta-item')
+                        @else
+                            @php($employee = $gridItem['employee'])
+                            @include('components.employees.list-item')
+                        @endif
                     </div>
                 @endforeach
             </div>
-            <div class="swiper-pagination"></div>
+            @if ($paginationStyle != 'none')
+                <div class="swiper-pagination"></div>
+            @endif
         </div>
         <div class="swiper-navigation">
             <div class="swiper-button-next employee-button-next-{{ $randomNumber }}"></div>
@@ -39,8 +64,13 @@
     </div>
 @else
     <div class="employee-list grid {{ $layoutClasses['mobile'] }} {{ $layoutClasses['tablet'] }} {{ $layoutClasses['desktop'] }} {{ $layoutClasses['desktop-xl'] }} gap-y-16 gap-x-4 lg:gap-x-8 py-8">
-        @foreach ($employees as $employee)
-            @include('components.employees.list-item')
+        @foreach ($gridItems as $gridItem)
+            @if ($gridItem['type'] === 'cta')
+                @include('components.employees.cta-item')
+            @else
+                @php($employee = $gridItem['employee'])
+                @include('components.employees.list-item')
+            @endif
         @endforeach
     </div>
 @endif
@@ -56,7 +86,7 @@
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var employeeSwiper = new Swiper(".{{ $randomId }}", {
-            spaceBetween: 20,
+            spaceBetween: {{ $spaceBetween }},
             @if ($swiperCenteredSlides)
                 centeredSlides: true,
             @endif
@@ -66,29 +96,35 @@
                     disableOnInteraction: true,
                 },
             @endif
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
+            @if ($paginationStyle != 'none')
+                pagination: {
+                    el: '.swiper-pagination',
+                    @if ($paginationStyle == 'progress_bar')
+                        type: 'progressbar',
+                    @elseif ($paginationStyle == 'bullets')
+                        clickable: true,
+                    @endif
+                },
+            @endif
             navigation: {
                 nextEl: ".employee-button-next-{{ $randomNumber }}",
                 prevEl: ".employee-button-prev-{{ $randomNumber }}",
             },
             breakpoints: {
                 0: {
-                    loop: {{ $swiperLoop && count($employees) > $mobileLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($gridItems) > $mobileLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $mobileLayout }},
                 },
                 640: {
-                    loop: {{ $swiperLoop && count($employees) > $tabletLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($gridItems) > $tabletLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $tabletLayout }},
                 },
                 1280: {
-                    loop: {{ $swiperLoop && count($employees) > $desktopLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($gridItems) > $desktopLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopLayout }},
                 },
                 1536: {
-                    loop: {{ $swiperLoop && count($employees) > $desktopXlLayout ? 'true' : 'false' }},
+                    loop: {{ $swiperLoop && count($gridItems) > $desktopXlLayout ? 'true' : 'false' }},
                     slidesPerView: {{ $desktopXlLayout }},
                 },
             }

@@ -68,10 +68,12 @@
     $usps = [];
     foreach (\Theme\Helpers\AcfRepeater::parse($block['data'], 'usps') as $row) {
         $usps[] = [
+            'uspTitle' => $row['usp_title'] ?? '',
             'uspText' => $row['usp_text'] ?? '',
             'uspIcon' => $row['usp_icon'] ?? '',
         ];
     }
+    $uspsOverImage = $block['data']['usps_over_image'] ?? false;
 
 
     // Afbeelding
@@ -210,10 +212,10 @@
                             @endforeach
                         </div>
                     @endif
-                    @if ($usps)
+                    @if ($usps && !$uspsOverImage)
                         <div class="usp-list flex flex-col gap-y-4">
                             @foreach($usps as $usp)
-                                @if($usp['uspText'])
+                                @if($usp['uspTitle'] || $usp['uspText'])
                                     <div class="usp-item flex items-center gap-x-4">
                                         @if($usp['uspIcon'])
                                             @php
@@ -221,6 +223,9 @@
                                                 $iconClass = 'fa-' . ($iconData['style'] ?? 'solid') . ' fa-' . ($iconData['id'] ?? '');
                                             @endphp
                                             <i class="fa {{ $iconClass }} text-[20px] w-[24px] h-[24px] flex justify-center items-center" aria-hidden="true"></i>
+                                        @endif
+                                        @if($usp['uspTitle'])
+                                            <div class="usp-title text-{{ $textColor }} font-bold">{!! $usp['uspTitle'] !!}</div>
                                         @endif
                                         <div class="usp-text text-{{ $textColor }} font-medium">{!! $usp['uspText'] !!}</div>
                                     </div>
@@ -339,7 +344,7 @@
                             @endif
                         </div>
                     @elseif ($imageId)
-                        <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }} @if ($imageParallax) parallax-image @endif @if($hoverImageId) image-hover-wrapper-{{ $randomNumber }} @endif">
+                        <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }} @if ($imageParallax) parallax-image @endif @if($hoverImageId) image-hover-wrapper-{{ $randomNumber }} @endif @if($uspsOverImage) relative @endif">
                             @include('components.image', [
                                 'image_id' => $imageId,
                                 'size' => 'full',
@@ -356,10 +361,13 @@
                                     'alt' => get_post_meta($hoverImageId, '_wp_attachment_image_alt', true)
                                 ])
                             @endif
+                            @if ($uspsOverImage && $usps)
+                                @include('components.image-usp-slider', ['usps' => $usps, 'randomNumber' => $randomNumber, 'borderRadius' => $borderRadius])
+                            @endif
                         </div>
                     @endif
                 @elseif ($imageId)
-                    <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }} @if ($imageParallax) parallax-image @endif @if($hoverImageId) image-hover-wrapper-{{ $randomNumber }} @endif">
+                    <div class="image image-{{ $randomNumber }} {{ $imageClass }} order-1 {{ $imageOrder }} @if ($imageParallax) parallax-image @endif @if($hoverImageId) image-hover-wrapper-{{ $randomNumber }} @endif @if($uspsOverImage) relative @endif">
                         @include('components.image', [
                             'image_id' => $imageId,
                             'size' => 'full',
@@ -375,6 +383,9 @@
                                 'img_class' => 'image-item image-hover w-full object-cover rounded-' . $borderRadius . ($stickyImage ? ' sticky-image sticky top-[150px]' : ''),
                                 'alt' => get_post_meta($hoverImageId, '_wp_attachment_image_alt', true)
                             ])
+                        @endif
+                        @if ($uspsOverImage && $usps)
+                            @include('components.image-usp-slider', ['usps' => $usps, 'randomNumber' => $randomNumber, 'borderRadius' => $borderRadius])
                         @endif
                     </div>
                 @endif

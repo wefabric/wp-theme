@@ -716,6 +716,26 @@
             ]
         },
         {
+            "key": "field_69c6400ac56b9",
+            "label": "Open afbeeldingen in lightbox",
+            "name": "enable_lightbox",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_6705392ba8c86",
             "label": "Onderschrift kleur",
             "name": "caption_color",
@@ -2283,5 +2303,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758012312
+    "modified": 1786011475
 }

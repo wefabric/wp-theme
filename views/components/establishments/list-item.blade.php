@@ -1,24 +1,29 @@
 @php
-    $fields = get_fields($establishment);
+    $establishmentModel = new \Wefabric\WPEstablishments\Establishment($establishment);
 
-    $establishmentName = $fields['name'] ?? '';
+    $establishmentName = $establishmentModel->name ?? '';
     $establishmentImage = get_post_thumbnail_id($establishment);
 
     $visibleElements = $block['data']['show_element'] ?? [];
-    $establishmentStreet = $fields['street'] ?? '';
-    $establishmentHouseNumber = $fields['house_number'] ?? '';
-    $establishmentHouseNumberAddition = $fields['house_number_addition'] ?? '';
-    $establishmentZipCode = $fields['postcode'] ?? '';
-    $establishmentCity = $fields['city'] ?? '';
+
+    $establishmentAddressDto = $establishmentModel->getAddress();
+    $establishmentStreet = $establishmentAddressDto->street ?? '';
+    $establishmentHouseNumber = $establishmentAddressDto->housenumber ?? '';
+    $establishmentHouseNumberAddition = $establishmentAddressDto->housenumber_addition ?? '';
+    $establishmentZipCode = $establishmentAddressDto->postcode ?? '';
+    $establishmentCity = $establishmentAddressDto->city ?? '';
     $establishmentAddress = $establishmentStreet . ' ' . $establishmentHouseNumber . $establishmentHouseNumberAddition . ', ' . $establishmentZipCode . ' ' . $establishmentCity;
 
-// todo: add contact info of establishment
+    $establishmentOverviewText = $establishmentModel->post->post_excerpt ?? '';
+    $establishmentPhone = $establishmentModel->getContactPhone();
+    $establishmentEmail = $establishmentModel->getEmailAddress();
+    $establishmentWhatsapp = $establishmentModel->whatsapp_number ?? '';
+    $establishmentKvkNumber = $establishmentModel->coc_number ?? '';
+    $establishmentVatNumber = $establishmentModel->vat_number ?? '';
 @endphp
 
-<div class="establishment-item group h-full">
-
-{{-- todo: add check if link for hover effect--}}
-    <div class="establishment-card h-full flex flex-col items-center @if ($link) group-hover:-translate-y-4 duration-300 ease-in-out @endif">
+<div class="establishment-item group h-full @if ($flyinEffect) establishment-hidden @endif">
+    <div class="establishment-card h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         <div class="image-container custom-height max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
             @include('components.image', [
                  'image_id' => $establishmentImage,
@@ -36,17 +41,75 @@
 
             <div class="establishment-data mt-4 text-{{ $establishmentTextColor }}">
                 @if (!empty($visibleElements) && in_array('address', $visibleElements))
-                    <p class="establishment-address flex items-baseline leading-[1.5]">
-                        <i class="w-4 object-cover fas fa-map-marker-alt mr-3"></i>
+                    <div class="establishment-address flex items-baseline leading-[1.5]">
+
                         {!! $establishmentStreet . ' ' . $establishmentHouseNumber . $establishmentHouseNumberAddition !!}
                         <br>
                         {!! $establishmentZipCode . ' ' . $establishmentCity !!}
-                    </p>
+                    </div>
+                @endif
+
+                @if (!empty($visibleElements) && in_array('overview_text', $visibleElements) && $establishmentOverviewText)
+                    <div class="establishment-overview mt-2">{!! nl2br(e($establishmentOverviewText)) !!}</div>
+                @endif
+
+                @if (!empty($visibleElements) && in_array('kvk_number', $visibleElements) && $establishmentKvkNumber)
+                    <div class="establishment-kvk mt-2">KvK: {{ $establishmentKvkNumber }}</div>
+                @endif
+
+                @if (!empty($visibleElements) && in_array('vat_number', $visibleElements) && $establishmentVatNumber)
+                    <div class="establishment-vat">BTW nummer: {{ $establishmentVatNumber }}</div>
+                @endif
+
+                @if (!empty($visibleElements) &&
+                    (
+                        (in_array('phone', $visibleElements) && $establishmentPhone) ||
+                        (in_array('email', $visibleElements) && $establishmentEmail) ||
+                        (in_array('whatsapp', $visibleElements) && $establishmentWhatsapp) ||
+                        in_array('route', $visibleElements)
+                    )
+                )
+                    <div class="establishment-contact flex flex-col gap-y-2 mt-2">
+                        @if (in_array('phone', $visibleElements) && $establishmentPhone)
+                            <a class="phone-link group/link flex items-center gap-2 w-fit"
+                               href="{{ $establishmentPhone->uri() }}"
+                               title="Telefoonnummer">
+                                <i class="fa-solid fa-phone text-primary"></i>
+                                <span class="align-middle group-hover/link:text-primary group-hover/link:underline">{{ get_bloginfo('language') === 'nl-NL' ? $establishmentPhone->national() : $establishmentPhone->international() }}</span>
+                            </a>
+                        @endif
+
+                        @if (in_array('email', $visibleElements) && $establishmentEmail)
+                            <a class="email-link group/link flex items-center gap-2 w-fit"
+                               href="mailto:{{ $establishmentEmail }}"
+                               title="E-mailadres">
+                                <i class="fa-solid fa-envelope text-primary"></i>
+                                <span class="align-middle group-hover/link:text-primary group-hover/link:underline">{{ $establishmentEmail }}</span>
+                            </a>
+                        @endif
+
+                        @if (in_array('whatsapp', $visibleElements) && $establishmentWhatsapp)
+                            <a class="whatsapp-link group/link flex items-center gap-2 w-fit"
+                               href="https://wa.me/{{ preg_replace('/\D+/', '', $establishmentWhatsapp) }}"
+                               target="_blank" rel="noopener"
+                               title="Whatsapp">
+                                <i class="fa-brands fa-whatsapp text-primary"></i>
+                                <span class="align-middle group-hover/link:text-primary group-hover/link:underline">{{ $establishmentWhatsapp }}</span>
+                            </a>
+                        @endif
+
+                        @if (in_array('route', $visibleElements))
+                            <a class="route-link group/link flex items-center gap-2 w-fit"
+                               href="{{ $establishmentAddressDto->getGoogleMapsUrl() }}"
+                               target="_blank" rel="noopener"
+                               title="Routebeschrijving">
+                                <i class="fa-solid fa-route text-primary"></i>
+                                <span class="align-middle group-hover/link:text-primary group-hover/link:underline">Route</span>
+                            </a>
+                        @endif
+                    </div>
                 @endif
             </div>
-
-            {{-- todo: add contact information --}}
-
         </div>
     </div>
 </div>

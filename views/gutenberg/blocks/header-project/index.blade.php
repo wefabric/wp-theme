@@ -149,11 +149,54 @@
         // Zie components/header/background-image: <img> met srcset in plaats van een
         // CSS-achtergrond, behalve bij parallax en bij de terugval op $featuredImage.
         $headerBackgroundId  = $backgroundImageId ?: $featuredImageId;
-        $useResponsiveHeader = ! $backgroundImageParallax && $headerBackgroundId;
+
+        // Extra afbeeldingen van de huidige post (zelfde herhaalveld als bij het projecten- en
+        // klantencase-blok): uitgelichte/geselecteerde afbeelding altijd eerst, dan de extra
+        // foto's als swiper. Dit blok kan zowel op een project- als een klantcase-pagina staan.
+        $showImageSlider = $block['data']['show_image_slider'] ?? true;
+        $headerGalleryFieldMap = ['project' => 'project_images', 'klantcases' => 'case_images'];
+        $headerGalleryFieldName = $headerGalleryFieldMap[get_post_type()] ?? null;
+        $headerGalleryRows = $headerGalleryFieldName ? (get_field($headerGalleryFieldName, get_the_ID()) ?: []) : [];
+        $headerGalleryImageIds = array_values(array_filter(array_map(fn ($row) => $row['image'] ?? null, $headerGalleryRows)));
+        $headerImageIds = $headerBackgroundId ? array_merge([$headerBackgroundId], $headerGalleryImageIds) : $headerGalleryImageIds;
+        $headerImageIds = array_values(array_unique($headerImageIds));
+        $hasMultipleHeaderImages = $showImageSlider && !$backgroundVideoURL && count($headerImageIds) > 1;
+        $headerImageSwiperClass = 'header-image-swiper-' . get_the_ID() . '-' . mt_rand(0, 999999);
+
+        $useResponsiveHeader = ! $hasMultipleHeaderImages && ! $backgroundImageParallax && $headerBackgroundId;
     @endphp
-    <div class="custom-styling bg-cover bg-center {{ $useResponsiveHeader ? 'relative' : '' }} {{ $headerClass }}"
-         style="@if($backgroundImageParallax) background-attachment: fixed; @endif @unless($useResponsiveHeader) background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); @endunless {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
-        @if ($useResponsiveHeader)
+    <div class="custom-styling bg-cover bg-center {{ ($useResponsiveHeader || $hasMultipleHeaderImages) ? 'relative' : '' }} {{ $headerClass }}"
+         style="@if($backgroundImageParallax && !$hasMultipleHeaderImages) background-attachment: fixed; @endif @unless($useResponsiveHeader || $hasMultipleHeaderImages) background-image: url('{{ $backgroundImageId ? wp_get_attachment_image_url($backgroundImageId, 'full') : ($featuredImage ? $featuredImage : '') }}'); @endunless {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId ?: $featuredImageId) }}">
+        @if ($hasMultipleHeaderImages)
+            <div class="header-image-swiper swiper {{ $headerImageSwiperClass }} absolute inset-0 w-full h-full">
+                <div class="swiper-wrapper h-full">
+                    @foreach ($headerImageIds as $headerImageId)
+                        <div class="swiper-slide h-full">
+                            @include('components.header.background-image', ['backgroundImageId' => $headerImageId])
+                        </div>
+                    @endforeach
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="header-image-nav">
+                <div role="button" tabindex="0" aria-label="Vorige foto" class="swiper-button-prev header-image-button-prev-{{ $headerImageSwiperClass }}"></div>
+                <div role="button" tabindex="0" aria-label="Volgende foto" class="swiper-button-next header-image-button-next-{{ $headerImageSwiperClass }}"></div>
+            </div>
+            <script>
+                window.addEventListener('DOMContentLoaded', () => {
+                    new Swiper('.{{ $headerImageSwiperClass }}', {
+                        navigation: {
+                            nextEl: '.header-image-button-next-{{ $headerImageSwiperClass }}',
+                            prevEl: '.header-image-button-prev-{{ $headerImageSwiperClass }}',
+                        },
+                        pagination: {
+                            el: '.{{ $headerImageSwiperClass }} .swiper-pagination',
+                            clickable: true,
+                        },
+                    });
+                });
+            </script>
+        @elseif ($useResponsiveHeader)
             @include('components.header.background-image', ['backgroundImageId' => $headerBackgroundId])
         @endif
         @if ($backgroundVideoURL)

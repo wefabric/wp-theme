@@ -7,16 +7,29 @@
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
     $projectCategories = get_the_terms($project, 'project_categories');
+
+    // Afbeeldingen (uitgelichte afbeelding + extra afbeeldingen voor de swiper)
+    $showImageSwiper = !empty($visibleElements) && in_array('image_slider', $visibleElements);
+    $projectGalleryRows = get_field('project_images', $project) ?: [];
+    $projectGalleryImageIds = array_values(array_filter(array_map(fn ($row) => $row['image'] ?? null, $projectGalleryRows)));
+    $projectImageIds = $projectThumbnailId ? array_merge([$projectThumbnailId], $projectGalleryImageIds) : $projectGalleryImageIds;
+    $projectImageIds = array_values(array_unique($projectImageIds));
+    $hasMultipleProjectImages = $showImageSwiper && count($projectImageIds) > 1;
+    $projectImageSwiperClass = 'project-image-swiper-' . $project . '-' . mt_rand(0, 999999);
 @endphp
 
 <div class="project-item group h-full @if ($flyinEffect) project-hidden @endif">
     <div class="project-wrapper h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
-        @if ($projectThumbnailId)
+        @if (!empty($projectImageIds))
             <div class="project-image image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
-                <a href="{{ $projectUrl }}" aria-label="Ga naar {{ $projectTitle }} pagina"
-                   class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
-                    <span class="sr-only">Ga naar {{ $projectTitle }} pagina</span>
-                </a>
+                @if ($hasMultipleProjectImages)
+                    <div class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out pointer-events-none"></div>
+                @else
+                    <a href="{{ $projectUrl }}" aria-label="Ga naar {{ $projectTitle }} pagina"
+                       class="card-overlay absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
+                        <span class="sr-only">Ga naar {{ $projectTitle }} pagina</span>
+                    </a>
+                @endif
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     @if ($projectCategories && !is_bool($projectCategories))
                         <div class="project-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
@@ -36,13 +49,50 @@
                         </div>
                     @endif
                 @endif
-                @include('components.image', [
-                   'image_id' => $projectThumbnailId,
-                   'size' => 'full',
-                   'object_fit' => 'cover',
-                   'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
-                   'alt' => $projectTitle,
-                ])
+                @if ($hasMultipleProjectImages)
+                    <div class="project-image-swiper swiper {{ $projectImageSwiperClass }} h-full w-full">
+                        <div class="swiper-wrapper h-full">
+                            @foreach ($projectImageIds as $projectImageId)
+                                <div class="swiper-slide h-full">
+                                    <a href="{{ $projectUrl }}" aria-label="Ga naar {{ $projectTitle }} pagina" class="block h-full w-full overflow-hidden">
+                                        @include('components.image', [
+                                           'image_id' => $projectImageId,
+                                           'size' => 'full',
+                                           'object_fit' => 'cover',
+                                           'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
+                                           'alt' => $projectTitle,
+                                        ])
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="project-image-nav">
+                        <div role="button" tabindex="0" aria-label="Vorige foto" class="swiper-button-prev project-image-button-prev-{{ $projectImageSwiperClass }}"></div>
+                        <div role="button" tabindex="0" aria-label="Volgende foto" class="swiper-button-next project-image-button-next-{{ $projectImageSwiperClass }}"></div>
+                    </div>
+                    <script>
+                        window.addEventListener('DOMContentLoaded', () => {
+                            new Swiper('.{{ $projectImageSwiperClass }}', {
+                                nested: true,
+                                preventClicks: true,
+                                preventClicksPropagation: true,
+                                navigation: {
+                                    nextEl: '.project-image-button-next-{{ $projectImageSwiperClass }}',
+                                    prevEl: '.project-image-button-prev-{{ $projectImageSwiperClass }}',
+                                },
+                            });
+                        });
+                    </script>
+                @else
+                    @include('components.image', [
+                       'image_id' => $projectImageIds[0],
+                       'size' => 'full',
+                       'object_fit' => 'cover',
+                       'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
+                       'alt' => $projectTitle,
+                    ])
+                @endif
             </div>
         @endif
         <div class="project-content flex flex-col w-full grow mt-5">

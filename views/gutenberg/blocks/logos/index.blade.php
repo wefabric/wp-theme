@@ -199,6 +199,7 @@
     @endif
     <div class="custom-styling relative z-10 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }} @if ($blockWidth !== 'fullscreen') container mx-auto px-8 @endif">
         <div class="{{ $blockClass }} mx-auto {{ $textClass }} layout">
+            @if ($subTitle || $title || $text)
             <div class="content-data mb-4">
                 @if ($subTitle)
                     <span class="subtitle block mb-2 text-{{ $subTitleColor }} {{ $textClass }} @if ($blockWidth == 'fullscreen') container mx-auto px-8 @endif">
@@ -218,6 +219,7 @@
                     ])
                 @endif
             </div>
+            @endif
             @if ($logos)
                 @include('components.logos.list', ['logos' => $logos])
             @endif

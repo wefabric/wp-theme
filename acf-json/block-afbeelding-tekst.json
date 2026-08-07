@@ -370,6 +370,28 @@
                     "parent_repeater": "field_68c286dd1063c"
                 },
                 {
+                    "key": "field_690c1d2e3f405",
+                    "label": "USP titel",
+                    "name": "usp_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Bijv. een getal (\"3123+\") of korte titel. Wordt vetgedrukt getoond.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_68c286dd1063c"
+                },
+                {
                     "key": "field_68c286dd1063f",
                     "label": "USP tekst",
                     "name": "usp_text",
@@ -392,6 +414,26 @@
                     "parent_repeater": "field_68c286dd1063c"
                 }
             ]
+        },
+        {
+            "key": "field_690c1d2e3f406",
+            "label": "USP's als slider over de afbeelding tonen",
+            "name": "usps_over_image",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "In plaats van de USP's onder de tekst te tonen, worden ze als een swiper-slider over de afbeelding getoond (rechtsonder/linksonder over de afbeelding). Vereist een ingestelde afbeelding.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         },
         {
             "key": "field_654a0674ec5d0",

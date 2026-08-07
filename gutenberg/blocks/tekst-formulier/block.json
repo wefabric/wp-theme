@@ -1,0 +1,27 @@
+{
+  "name": "wefabric/tekst-formulier",
+  "title": "Tekst formulier",
+  "description": "Een tekst en formulier blok",
+  "category": "wefabric-theme",
+  "icon": "feedback",
+  "apiVersion": 3,
+  "keywords": [
+    "Tekst formulier",
+    "Contact"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3,
+    "hideFieldsInSidebar": true
+  },
+  "attributes": {},
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

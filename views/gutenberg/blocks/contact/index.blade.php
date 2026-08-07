@@ -118,7 +118,7 @@
                 @if ($title)
                     <h2 class="title mb-4 text-{{ $titleColor }}">{!! $title !!}</h2>
                 @endif
-                <div class="flex flex-col content-layout">
+                <div class="flex flex-col gap-y-8 content-layout">
                     @if ($establishment_query->have_posts())
                         <div class="establishment-list flex flex-col gap-y-8">
                             @while ($establishment_query->have_posts())
@@ -230,7 +230,7 @@
                                     )
                                         <div class="contact-info">
                                             <div class="contact-text font-bold mb-2">Contact</div>
-                                            <div class="flex-layout flex flex-col gap-y-2">
+                                            <div class="contact-layout flex-layout flex flex-col gap-y-2">
                                                 @if (!empty($visibleElements) && in_array('establishment_phone', $visibleElements) && $phone)
                                                     <a class="phone-link group flex items-center gap-2 w-fit"
                                                        href="{{ $phone->uri() }}"
@@ -263,27 +263,6 @@
                                         </div>
                                     @endif
 
-                                    @if (!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($options) && array_key_exists('channels', $options))
-                                        <div class="socials text-{{ $textColor }}">
-                                            <div class="socials-text font-bold mb-2">Volg ons</div>
-                                            <div class="socials flex gap-3 items-center flex-wrap">
-                                                @foreach($options['channels'] as $social)
-                                                    @php
-                                                        $socialLinkData = $social['url'] ?? '';
-                                                        $socialUrl = is_array($socialLinkData) ? ($socialLinkData['url'] ?? '') : $socialLinkData;
-                                                        $socialTarget = is_array($socialLinkData) ? ($socialLinkData['target'] ?? '_blank') : '_blank';
-                                                    @endphp
-                                                    <a class="group footer-social social-{{ strtolower($social['name']) }}"
-                                                       href="{{ $socialUrl }}" title="{{ $social['name'] }} pagina" target="{{ $socialTarget }}"
-                                                       aria-label="Ga naar {{ $social['name'] }}">
-                                                        <i class="{{ $social['icon'] }} text-xl transition-all group-hover:scale-110"></i>
-                                                    </a>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @endif
-
-
                                     {{-- Openingstijden --}}
                                     @if (!empty($visibleElements) && in_array('establishment_opening_hours', $visibleElements) && $establishment->openingHours()->isNotEmpty())
                                         <div class="opening-hours-section">
@@ -313,6 +292,28 @@
                             @endwhile
                         </div>
                     @endif
+
+                    {{-- Socials (1x voor de hele website, niet per vestiging) --}}
+                    @if (!empty($visibleElements) && in_array('socials', $visibleElements) && !empty($options) && array_key_exists('channels', $options))
+                        <div class="socials text-{{ $textColor }}">
+                            <div class="socials-text font-bold mb-2">Volg ons</div>
+                            <div class="socials flex gap-3 items-center flex-wrap">
+                                @foreach($options['channels'] as $social)
+                                    @php
+                                        $socialLinkData = $social['url'] ?? '';
+                                        $socialUrl = is_array($socialLinkData) ? ($socialLinkData['url'] ?? '') : $socialLinkData;
+                                        $socialTarget = is_array($socialLinkData) ? ($socialLinkData['target'] ?? '_blank') : '_blank';
+                                    @endphp
+                                    <a class="group footer-social social-{{ strtolower($social['name']) }}"
+                                       href="{{ $socialUrl }}" title="{{ $social['name'] }} pagina" target="{{ $socialTarget }}"
+                                       aria-label="Ga naar {{ $social['name'] }}">
+                                        <i class="{{ $social['icon'] }} text-xl transition-all group-hover:scale-110"></i>
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+
                     @if ($text)
                         @include('components.content', [
                             'content' => apply_filters('the_content', $text),

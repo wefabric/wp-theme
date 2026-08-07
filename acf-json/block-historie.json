@@ -757,6 +757,36 @@
             ]
         },
         {
+            "key": "field_historie_line_style_001",
+            "label": "Tijdlijn lijnstijl",
+            "name": "timeline_line_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "solid": "Doorgetrokken",
+                "dashed": "Gestreept",
+                "dotted": "Gestippeld"
+            },
+            "default_value": "solid",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
             "key": "field_65733070c140d",
             "label": "Tijdlijn lijn kleur",
             "name": "timeline_line_color",
@@ -766,7 +796,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -784,7 +814,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -802,7 +832,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -820,7 +850,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "25",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -1874,7 +1904,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -1884,6 +1914,32 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "key": "field_historie_active_color_001",
+            "label": "Actieve kleur (gevulde lijn / actieve dot)",
+            "name": "timeline_active_color",
+            "aria-label": "",
+            "type": "Thema Kleur",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_historie_scroll_animation_001",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "theme_color": "primary",
+            "allow_in_bindings": 1,
+            "font_size": 14
         },
         {
             "key": "field_historie_show_numbers_001",
@@ -1905,32 +1961,6 @@
             "ui": 0,
             "ui_on_text": "",
             "ui_off_text": ""
-        },
-        {
-            "key": "field_historie_active_color_001",
-            "label": "Actieve kleur (gevulde lijn / actieve dot)",
-            "name": "timeline_active_color",
-            "aria-label": "",
-            "type": "Thema Kleur",
-            "instructions": "Kleur voor de gevulde tijdlijn en actieve dots bij scroll-animatie",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_historie_scroll_animation_001",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "25",
-                "class": "",
-                "id": ""
-            },
-            "theme_color": "primary",
-            "allow_in_bindings": 1,
-            "font_size": 14
         }
     ],
     "location": [
