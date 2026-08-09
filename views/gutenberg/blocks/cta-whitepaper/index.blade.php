@@ -161,7 +161,7 @@
                                 </div>
                             @endif
                             @if (($button1Text) && ($button1Link))
-                                <div class="buttons w-full flex flex-col flex-wrap gap-x-4 gap-y-2 w-fit
+                                <div class="buttons flex flex-wrap flex-col gap-x-4 gap-y-2 w-fit
                                     {{ $textPosition === 'left' ? 'sm:justify-start' : '' }}
                                     {{ $textPosition === 'center' ? 'sm:justify-center' : '' }}
                                     {{ $textPosition === 'right' ? 'sm:justify-end' : '' }}

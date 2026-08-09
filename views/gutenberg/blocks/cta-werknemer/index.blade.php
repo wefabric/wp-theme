@@ -195,7 +195,7 @@
                                 ])
                             @endif
                             @if (($button1Text) && ($button1Link))
-                                <div class="buttons flex gap-x-4 gap-y-2 w-full mt-4 md:mt-8 @if($employeeImage) justify-center @endif lg:{{ $justifyClass }}">
+                                <div class="buttons flex flex-wrap gap-x-4 gap-y-2 w-full mt-4 md:mt-8 @if($employeeImage) justify-center @endif lg:{{ $justifyClass }}">
                                     @include('components.buttons.default', [
                                         'text' => $button1Text,
                                         'href' => $button1Link,
