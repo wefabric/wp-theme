@@ -133,9 +133,9 @@
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
     @endif
-    <div class="custom-styling relative z-10 px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
+    <div class="custom-styling relative z-10 sm:px-8 py-8 lg:py-16 xl:py-20 {{ $fullScreenClass }}">
         <div class="custom-layout {{ $blockClass }} mx-auto flex flex-col lg:flex-row gap-2 lg:gap-8 @if ($verticalCentered) lg:items-center @endif">
-            <div class="content-block h-fit w-full {{ $contentClass }} order-1 @if ($formPosition == 'right') lg:order-0 @else lg:order-1 @endif py-8 px-8 lg:py-12 bg-{{ $contentBackgroundColor }}">
+            <div class="content-block h-fit w-full {{ $contentClass }} order-1 @if ($formPosition == 'right') lg:order-0 @else lg:order-1 @endif py-8 px-8 sm:px-0 lg:py-12 bg-{{ $contentBackgroundColor }}">
                 @if ($subTitle)
                     <span class="subtitle block mb-2 text-{{ $subTitleColor }}">
                         @if ($subtitleIcon)
