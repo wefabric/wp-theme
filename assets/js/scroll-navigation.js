@@ -156,7 +156,7 @@ const HIDE_DELTA       = 25;  // minimale scroll-afstand voor hide/show
      *
      * Stap 1: Zoek de CSS custom property die styleCustomizer()->renderCustomColors() zet.
      *         'text-cta'          → '--cta-color'  → '#ff6400'
-     *         'text-primary-dark' → '--primary-dark-color' → '#003b69'
+     *         'text-primary-dark' → '--primary-color-dark' → '#003b69'
      *
      * Stap 2: Fallback via tijdelijk DOM-element voor standaard Tailwind kleuren
      *         zoals 'text-white' of 'text-black' (geen CSS custom property).
@@ -165,9 +165,15 @@ const HIDE_DELTA       = 25;  // minimale scroll-afstand voor hide/show
         if (!className) return '';
 
         // Stap 1: thema-kleur via CSS custom property
+        // 'background-light'/'primary-dark' → '-color' wordt vóór de light/dark suffix
+        // ingevoegd, net als in de id's uit config/wp-style-customizer.php.
         const colorName = className.replace(/^(text|bg)-/, '');
+        const suffixMatch = colorName.match(/-(light|dark)$/);
+        const varName = suffixMatch
+            ? colorName.slice(0, -suffixMatch[0].length) + '-color-' + suffixMatch[1]
+            : colorName + '-color';
         const propValue = getComputedStyle(document.documentElement)
-            .getPropertyValue('--' + colorName + '-color').trim();
+            .getPropertyValue('--' + varName).trim();
 
         if (propValue) return propValue;
 
