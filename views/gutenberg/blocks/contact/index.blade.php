@@ -130,7 +130,7 @@
                                     $street = $establishment->getAddress()->street;
                                     $postcode = $establishment->getAddress()->postcode;
                                     $house_number = $establishment->getAddress()->housenumber;
-                                    $house_number_addition = $establishment->getAddress()->house_number_addition;
+                                    $house_number_addition = $establishment->getAddress()->housenumber_addition;
                                     $city = $establishment->getAddress()->city;
                                     $phone = $establishment->getContactPhone();
                                     $email = $establishment->getEmailAddress();
@@ -151,7 +151,7 @@
                                         'image' => get_site_icon_url(),
                                         'address' => [
                                             '@type' => 'PostalAddress',
-                                            'streetAddress' => trim($street . ' ' . $house_number . ' ' . $house_number_addition),
+                                            'streetAddress' => trim($street . ' ' . $house_number . $house_number_addition),
                                             'addressLocality' => $city,
                                             'postalCode' => $postcode,
                                             'addressCountry' => $country_id ?: 'NL',

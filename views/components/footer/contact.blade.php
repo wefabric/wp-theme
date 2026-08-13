@@ -44,6 +44,10 @@
 
             $vatNumber = $acfData['vat_number'] ?? null;
             $cocNumber = $acfData['coc_number'] ?? null;
+
+            $houseNumber = $establishment ? $establishment->getAddress()->housenumber : '';
+            $houseNumberAddition = $establishment ? $establishment->getAddress()->housenumber_addition : '';
+            $fullHouseNumber = $houseNumber . $houseNumberAddition;
 		@endphp
 
 		<div class="establishment-item footer-address flex flex-col gap-y-4">
@@ -64,8 +68,8 @@
 							@if($establishment->getAddress()->street)
 								{{ $establishment->getAddress()->street }}
 							@endif
-							@if($establishment->getAddress()->full_housenumber > 0)
-								{{ $establishment->getAddress()->full_housenumber }}
+							@if($fullHouseNumber !== '')
+								{{ $fullHouseNumber }}
 							@endif
 							<br/>
 							@if($establishment->getAddress()->postcode)
@@ -115,7 +119,7 @@
 					{{-- Establishment Route --}}
 					@if(in_array('establishment_route', $establishmentElements) && $establishment->getAddress()->street)
 						@include('components.link.opening', [
-						'href' => 'https://www.google.com/maps/search/?api=1&query=' . $establishment->getAddress()->street . '+' . $establishment->getAddress()->full_housenumber . $house_number_addition . '+' .  $establishment->getAddress()->postcode  . '+' . $establishment->getAddress()->city ,
+						'href' => 'https://www.google.com/maps/search/?api=1&query=' . $establishment->getAddress()->street . '+' . $fullHouseNumber . '+' .  $establishment->getAddress()->postcode  . '+' . $establishment->getAddress()->city ,
 						'alt' => 'Route',
 						'class' => 'route-text flex w-fit'
 						])
