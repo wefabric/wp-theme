@@ -26,6 +26,7 @@ import './scroll-navigation';
 import './mega-menu';
 import './mobile-menu-v2';
 import './employee-swiper-popup';
+import './obfuscate';
 import ThemeChildApp from './../../../theme-child/assets/js/app';
 
 // Use Swiper and the necessary modules
