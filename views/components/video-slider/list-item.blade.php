@@ -1,6 +1,6 @@
 @if ($video['url'])
     <div class="flex flex-col lg:flex-row items-center gap-x-8 gap-y-4 @if(!$video['caption']) justify-center @endif">
-        <div class="video-container {{ $videoFormatClass ?? 'aspect-video' }} w-full  @if ($video['caption']) lg:w-3/5 @endif relative">
+        <div class="video-container {{ $videoFormatClass ?? 'aspect-video' }} w-full  @if ($video['caption']) lg:w-3/5 @endif relative @if(!(isset($video['type']) && $video['type'] === 'file')) video-embed-wrapper @endif">
             @if(isset($video['type']) && $video['type'] === 'file')
                 <video class="video-item w-full h-full object-cover rounded-{{ $borderRadius }}"
                     @if($videoSetting === 'automatic') autoplay muted loop playsinline @endif
