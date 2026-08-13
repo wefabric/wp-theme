@@ -58,6 +58,18 @@
     </style>
 @endif
 
+<style>
+    /* WordPress' [embed]-oEmbed geeft iframes vaste width/height mee (bv. 640x360).
+       Forceer ze om de aspect-ratio container te vullen, zoals de losse iframe dat voorheen deed. */
+    .video-container iframe,
+    .video-container p {
+        position: absolute;
+        inset: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+</style>
+
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var videoSliderSwiper = new Swiper(".{{ $randomId }}", {

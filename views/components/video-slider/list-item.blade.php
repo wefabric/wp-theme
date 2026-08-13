@@ -73,29 +73,28 @@
                     @php
                         $html = '';
                         if (is_string($val)) {
-                            $oembed = function_exists('wp_oembed_get') ? wp_oembed_get($val) : '';
-                            if ($oembed) {
-                                // Voeg enablejsapi toe zodat postMessage play/pause werkt
-                                $html = strpos($oembed, 'enablejsapi') === false
-                                    ? preg_replace('~(src="https://www\.youtube\.com/embed/[^"]*)"~', '$1&enablejsapi=1"', $oembed) ?? $oembed
-                                    : $oembed;
-                            } else {
-                                $src = $val;
-                                $ytId = '';
-                                $vmId = '';
-                                if (preg_match('~youtu\.be/([A-Za-z0-9_-]{6,})~', $val, $m) || preg_match('~youtube\.com/watch\\?v=([A-Za-z0-9_-]{6,})~', $val, $m) || preg_match('~youtube\.com/embed/([A-Za-z0-9_-]{6,})~',$val,$m)) {
-                                    $ytId = $m[1];
-                                }
-                                if (!$ytId && preg_match('~vimeo\.com/(?:video/)?(\d+)~', $val, $m)) {
-                                    $vmId = $m[1];
-                                }
-                                if ($ytId) {
-                                    $params = 'rel=0&modestbranding=1&playsinline=1&enablejsapi=1';
-                                    $src = 'https://www.youtube.com/embed/' . $ytId . '?' . $params;
-                                } elseif ($vmId) {
-                                    $src = 'https://player.vimeo.com/video/' . $vmId;
-                                }
-                                $html = '<iframe width="100%" height="100%" src="' . esc_url($src) . '" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+                            $isYoutube = preg_match('~youtu\.be/([A-Za-z0-9_-]{6,})~', $val, $m) || preg_match('~youtube\.com/watch\\?v=([A-Za-z0-9_-]{6,})~', $val, $m) || preg_match('~youtube\.com/embed/([A-Za-z0-9_-]{6,})~', $val, $m);
+                            $embedUrl = $isYoutube ? 'https://www.youtube.com/watch?v=' . $m[1] . '&rel=0&modestbranding=1&playsinline=1' : $val;
+
+                            // Via de [embed] shortcode + the_content-filters (zoals het video-blok), zodat cookie-consent
+                            // plugins (CookieYes) de iframe kunnen blokkeren totdat bezoeker toestemming geeft.
+                            $html = apply_filters('the_content', '[embed]' . $embedUrl . '[/embed]');
+
+                            if ($isYoutube) {
+                                // WordPress' oEmbed-provider laat onze extra querystring params vallen, dus
+                                // enablejsapi (nodig voor de postMessage play/pause vanuit de slider) alsnog
+                                // toevoegen aan de src (of, indien door cookie-consent geblokkeerd, data-video-src).
+                                $html = preg_replace_callback(
+                                    '~((?:src|data-video-src)=")(https://www\.youtube\.com/embed/[^"]*)(")~',
+                                    function ($matches) {
+                                        if (strpos($matches[2], 'enablejsapi') !== false) {
+                                            return $matches[0];
+                                        }
+                                        $separator = strpos($matches[2], '?') !== false ? '&' : '?';
+                                        return $matches[1] . $matches[2] . $separator . 'enablejsapi=1' . $matches[3];
+                                    },
+                                    $html
+                                ) ?? $html;
                             }
                         }
                     @endphp
