@@ -68,6 +68,17 @@
         width: 100% !important;
         height: 100% !important;
     }
+
+    /* De <p>-wrapper heeft zelf geen zichtbare inhoud (enkel de iframe erin) en staat na de
+       cookie-consent overlay in de DOM. Zonder dit ligt hij "onzichtbaar" over die overlay heen
+       en vangt hij klikken op de "Accepteer cookies"-knop af. */
+    .video-container p {
+        pointer-events: none;
+    }
+
+    .video-container p iframe {
+        pointer-events: auto;
+    }
 </style>
 
 <script>
@@ -153,6 +164,18 @@
                     guard.style.cssText = 'position:absolute;inset:0;z-index:2;cursor:pointer;';
                     guard._playing = false;
                     container.appendChild(guard);
+
+                    // Als de video door cookie-consent is geblokkeerd, staat er een overlay met een
+                    // "Accepteer cookies"-knop in de container. Laat klikken dan door de guard heen vallen,
+                    // anders vangt deze laag de klik af voordat die de knop bereikt.
+                    function syncGuardWithConsent() {
+                        guard.style.pointerEvents = container.hasAttribute('data-video-blocked') ? 'none' : 'auto';
+                    }
+                    syncGuardWithConsent();
+                    new MutationObserver(syncGuardWithConsent).observe(container, {
+                        attributes: true,
+                        attributeFilter: ['data-video-blocked']
+                    });
 
                     var startX = 0, startY = 0, moved = false;
 
