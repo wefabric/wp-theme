@@ -1,0 +1,29 @@
+{
+  "name": "wefabric/vestigingen-kaart",
+  "title": "Vestigingen kaart",
+  "description": "Een interactieve kaart met vestigingen als pinpoints",
+  "category": "wefabric-theme",
+  "icon": "location-alt",
+  "apiVersion": 3,
+  "keywords": [
+    "Vestigingen",
+    "Kaart",
+    "Locaties",
+    "Pinpoints"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3,
+    "hideFieldsInSidebar": true
+  },
+  "attributes": {},
+  "example": {
+    "attributes": {
+      "data": {
+        "text": "This is an example text field",
+        "text_area": "This is an example text area field"
+      }
+    }
+  }
+}

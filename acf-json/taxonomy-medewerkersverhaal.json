@@ -5,7 +5,7 @@
     "active": true,
     "taxonomy": "employee_story_categories",
     "object_type": [
-        "employee-stories"
+        "employee_stories"
     ],
     "advanced_configuration": 1,
     "import_source": "",

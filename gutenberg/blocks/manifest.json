@@ -39,6 +39,7 @@
     "vacatures/block.json",
     "werknemers/block.json",
     "vestigingen/block.json",
+    "vestigingen-kaart/block.json",
     "werkwijze/block.json",
     "delen/block.json",
     "contact/block.json",
