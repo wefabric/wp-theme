@@ -17,7 +17,9 @@
         @if ($technologyThumbnailID)
             <div class="@if( $technologyLayout == 'horizontal') max-h-[300px] max-w-[300px] @elseif( $uspLayout == 'vertical') max-h-[360px] @endif overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $technologyUrl }}" aria-label="Ga naar {{ $technologyTitle }}"
-                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
+                    <span class="sr-only">Ga naar {{ $technologyTitle }}</span>
+                </a>
 
                 @include('components.image', [
                     'image_id' => $technologyThumbnailID,

@@ -24,7 +24,9 @@
         <div class="background overflow-hidden w-full relative p-4 md:p-6 bg-{{ $brandBackgroundColor }} rounded-{{ $borderRadius }}">
             @if ($brandUrl)
                 <a href="{{ $brandUrl }}" aria-label="Ga naar {{ $brandTitle }}" @if($brandLinkType === 'external_link') target="_blank"
-                   @endif class="overlay absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}"></a>
+                   @endif class="overlay absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out rounded-{{ $borderRadius }}">
+                    <span class="sr-only">Ga naar {{ $brandTitle }}</span>
+                </a>
             @endif
             @if ($logoImage)
                 @include('components.image', [

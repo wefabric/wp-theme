@@ -14,7 +14,9 @@
         @if ($eventThumbnailId)
             <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $eventUrl }}" aria-label="Ga naar {{ $eventTitle }} pagina"
-                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
+                    <span class="sr-only">Ga naar {{ $eventTitle }} pagina</span>
+                </a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     @if ($eventCategories && !is_bool($eventCategories))
                         <div class="event-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">

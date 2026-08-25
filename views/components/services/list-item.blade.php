@@ -20,7 +20,9 @@
         @if ($serviceThumbnailId)
             <div class="service-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $serviceUrl }}" aria-label="Ga naar {{ $serviceTitle }} pagina"
-                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
+                    <span class="sr-only">Ga naar {{ $serviceTitle }} pagina</span>
+                </a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     <div class="service-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                         @foreach ($serviceCategories as $category)

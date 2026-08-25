@@ -15,7 +15,9 @@
         @if ($storyThumbnailID)
             <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $storyUrl }}" aria-label="Ga naar {{ $storyTitle }} pagina"
-                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
+                    <span class="sr-only">Ga naar {{ $storyTitle }} pagina</span>
+                </a>
 
                 @include('components.image', [
                    'image_id' => $storyThumbnailID,

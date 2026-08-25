@@ -22,7 +22,9 @@
         @if ($countryThumbnailId)
             <div class="country-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $countryUrl }}" aria-label="Ga naar {{ $countryTitle }} pagina"
-                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
+                    <span class="sr-only">Ga naar {{ $countryTitle }} pagina</span>
+                </a>
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     <div class="country-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">
                         @foreach ($countryCategories as $category)

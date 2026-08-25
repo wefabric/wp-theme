@@ -27,7 +27,9 @@
             <div class="subpage-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 @if ($pageLink)
                 <a href="{{ $subpageUrl }}" aria-label="Ga naar {{ $subpageTitle }} pagina"
-                   class="overlay left-0 top-0 absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                   class="overlay left-0 top-0 absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
+                    <span class="sr-only">Ga naar {{ $subpageTitle }} pagina</span>
+                </a>
                 @endif
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     <div class="subpage-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">

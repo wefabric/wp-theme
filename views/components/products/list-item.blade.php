@@ -23,7 +23,9 @@
             <div class="product-image max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 @if($productUrl)
                     <a href="{{ $productUrl }}" target="_blank" aria-label="Ga naar {{ $productTitle }} pagina"
-                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                   class="absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
+                        <span class="sr-only">Ga naar {{ $productTitle }} pagina</span>
+                    </a>
                 @endif
                 @if (!empty($visibleElements) && in_array('category', $visibleElements))
                     @if ($productCategories && !is_bool($productCategories))

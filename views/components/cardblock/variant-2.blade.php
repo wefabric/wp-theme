@@ -26,7 +26,9 @@
                 @if ($cardVisual == 'featured_image' && $featuredImageId)
                     @if($linkEnabled)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
-                       class="card-overlay absolute left-0 top-0 w-full h-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out"></a>
+                       class="card-overlay absolute left-0 top-0 w-full h-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out">
+                        <span class="sr-only">Ga naar {{ !empty($customPageTitle) ? $customPageTitle : $pageTitle }} pagina</span>
+                    </a>
                     @else
                     <div class="card-overlay absolute left-0 top-0 w-full h-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out"></div>
                     @endif
@@ -41,7 +43,9 @@
                 @elseif ($cardVisual == 'icon' && $pageIcon)
                     @if($linkEnabled)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
-                       class="card-overlay absolute left-0 top-0 w-full h-full"></a>
+                       class="card-overlay absolute left-0 top-0 w-full h-full">
+                        <span class="sr-only">Ga naar {{ !empty($customPageTitle) ? $customPageTitle : $pageTitle }} pagina</span>
+                    </a>
                     @else
                     <div class="card-overlay absolute left-0 top-0 w-full h-full"></div>
                     @endif
@@ -49,6 +53,7 @@
                         @if($linkEnabled)
                         <a class="page-icon" href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina">
                             <i class="text-{{ $cardIconColor }} relative z-20 text-[200px] fa-{{ $pageIcon['style'] }} fa-{{ $pageIcon['id'] }} group-hover:scale-110 group-hover:text-primary transition-all duration-300 ease-in-out"></i>
+                            <span class="sr-only">Ga naar {{ !empty($customPageTitle) ? $customPageTitle : $pageTitle }} pagina</span>
                         </a>
                         @else
                         <div class="page-icon">
@@ -59,7 +64,9 @@
                 @elseif ($cardVisual == 'image' && $imageId)
                     @if($linkEnabled)
                     <a href="{{ $pageUrl }}" aria-label="Ga naar {{ $pageTitle }} pagina"
-                       class="card-overlay absolute left-0 w-full h-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out"></a>
+                       class="card-overlay absolute left-0 w-full h-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out">
+                        <span class="sr-only">Ga naar {{ !empty($customPageTitle) ? $customPageTitle : $pageTitle }} pagina</span>
+                    </a>
                     @else
                     <div class="card-overlay absolute left-0 w-full h-full @if ($cardOverlayColor) opacity-50 group-hover:opacity-50 bg-{{ $cardOverlayColor }} @else opacity-0 group-hover:opacity-50 bg-primary @endif z-10 transition-opacity duration-300 ease-in-out"></div>
                     @endif

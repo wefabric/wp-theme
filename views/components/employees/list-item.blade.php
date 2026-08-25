@@ -82,7 +82,9 @@
         <div class="custom-height @if ($contactInfoDisplay == 'under_image') overflow-hidden @endif relative max-h-[360px] w-full rounded-{{ $borderRadius }}">
             @if ($linkUrl)
                 <a href="{{ $linkUrl }}" aria-label="Ga naar {{ $fullName }} pagina"
-                   class="card-overlay overlay left-0 top-0 absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out"></a>
+                   class="card-overlay overlay left-0 top-0 absolute w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out">
+                    <span class="sr-only">Ga naar {{ $fullName }} pagina</span>
+                </a>
             @endif
             @if (!empty($visibleElements) && in_array('category', $visibleElements))
                 <div class="employee-categories absolute z-20 top-[15px] left-[15px] flex flex-wrap gap-2">

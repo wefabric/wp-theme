@@ -12,7 +12,9 @@
         <div class="image-container h-[200px] relative overflow-hidden rounded-t-{{ $borderRadius }}">
             @if ($processImage)
                 @if ($processUrl)
-                    <a href="{{ $processUrl }}" aria-label="Ga naar {{ $processUrl }} pagina" class="image-overlay absolute left-0 w-full h-full bg-white z-10 opacity-80 group-hover:opacity-0 transition-opacity duration-300 ease-in-out"></a>
+                    <a href="{{ $processUrl }}" aria-label="Ga naar {{ $processTitle }} pagina" class="image-overlay absolute left-0 w-full h-full bg-white z-10 opacity-80 group-hover:opacity-0 transition-opacity duration-300 ease-in-out">
+                        <span class="sr-only">Ga naar {{ $processTitle }} pagina</span>
+                    </a>
                 @else
                     <div class="absolute left-0 w-full h-full bg-white z-10 opacity-50 group-hover:opacity-0 transition-opacity duration-300 ease-in-out"></div>
                 @endif

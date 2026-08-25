@@ -18,7 +18,9 @@
         <div class="background overflow-hidden w-full relative p-4 md:p-6 bg-{{ $organisationBackgroundColor }}">
             @if ($organisationLink2Url)
                 <a href="{{ $organisationLink2Url }}" target="_blank" aria-label="Ga naar {{ $organisationLink2Title }}"
-                 class="absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out"></a>
+                 class="absolute left-0 top-0 w-full h-full bg-primary z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-300 ease-in-out">
+                    <span class="sr-only">Ga naar {{ $organisationLink2Title }}</span>
+                </a>
             @endif
             @if ($organisationImage)
                 @include('components.image', [

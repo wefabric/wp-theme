@@ -62,6 +62,7 @@
                                            'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 group-hover:scale-110',
                                            'alt' => $projectTitle,
                                         ])
+                                        <span class="sr-only">Ga naar {{ $projectTitle }} pagina</span>
                                     </a>
                                 </div>
                             @endforeach
