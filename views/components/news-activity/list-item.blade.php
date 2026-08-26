@@ -78,7 +78,11 @@
                 }
             }
         }
-        \Wefabric\WPSupport\Schema\JsonLd::addSchema('activity_news_' . $postId, $eventSchema);
+        // Google keurt Event-markup af op overzichtspagina's met meerdere
+        // items; alleen toevoegen op de eigen postpagina zelf.
+        if (is_singular(get_post_type($postId)) && get_the_ID() === $postId) {
+            \Wefabric\WPSupport\Schema\JsonLd::addSchema('activity_news_' . $postId, $eventSchema);
+        }
     }
 @endphp
 

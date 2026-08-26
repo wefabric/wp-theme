@@ -108,7 +108,11 @@
         ];
     }
 
-    \Wefabric\WPSupport\Schema\JsonLd::addSchema('activity_' . $activityId, $eventSchema);
+    // Google keurt Event-markup af op overzichtspagina's met meerdere
+    // activiteiten; alleen toevoegen op de eigen activiteitpagina zelf.
+    if (is_singular('activiteiten') && get_the_ID() === $activityId) {
+        \Wefabric\WPSupport\Schema\JsonLd::addSchema('activity_' . $activityId, $eventSchema);
+    }
 @endphp
 
 <div class="activiteit-item group h-full @if ($flyinEffect) activity-hidden @endif">

@@ -42,15 +42,16 @@
         $vacancySchema['employmentType'] = $employmentTypeSchema;
     }
 
-    if (!empty($fields['location'])) {
-        $vacancySchema['jobLocation'] = [
-            '@type' => 'Place',
-            'address' => [
-                '@type' => 'PostalAddress',
-                'addressLocality' => $fields['location'],
-            ],
-        ];
-    }
+    // Google keurt JobPosting af zonder jobLocation, dus altijd toevoegen —
+    // addressLocality alleen als het echt is ingevuld, geen verzonnen waarde.
+    $vacancySchema['jobLocation'] = [
+        '@type' => 'Place',
+        'address' => array_filter([
+            '@type' => 'PostalAddress',
+            'addressCountry' => 'NL',
+            'addressLocality' => $fields['location'] ?? '',
+        ]),
+    ];
 
     if ($vacancyThumbnailID) {
         $vacancySchema['image'] = str_replace('//content', '/content', wp_get_attachment_image_url($vacancyThumbnailID, 'job-thumbnail'));
@@ -88,11 +89,12 @@
         }
     }
 
+    // Google keurt JobPosting-markup af op overzichtspagina's met meerdere
+    // vacatures; alleen toevoegen op de eigen vacaturepagina zelf.
     if (is_singular('vacatures') && get_the_ID() === $vacancy) {
         $vacancySchema['directApply'] = true;
+        \Wefabric\WPSupport\Schema\JsonLd::addSchema('vacancy_' . $vacancy, $vacancySchema);
     }
-
-    \Wefabric\WPSupport\Schema\JsonLd::addSchema('vacancy_' . $vacancy, $vacancySchema);
 @endphp
 
 <div class="vacature-item group h-full @if ($flyinEffect) vacancy-hidden @endif">

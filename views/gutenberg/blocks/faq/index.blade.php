@@ -145,7 +145,22 @@
                                 ]
                             ];
                         }
-                        \Wefabric\WPSupport\Schema\JsonLd::addSchema('faq_' . $randomNumber, $faqSchema);
+                        // Rank Math kan zelf ook een handmatig ingesteld FAQPage-schema tonen
+                        // (via de Schema Generator in de post-editor). Onvoorwaardelijk
+                        // toevoegen leverde dan twee FAQPage-nodes per pagina op, wat Search
+                        // Console als 'Dubbel veld FAQPage' afkeurt. Alleen toevoegen als er
+                        // nog geen FAQPage-node in de graph zit.
+                        add_filter('rank_math/json_ld', function ($data) use ($faqSchema, $randomNumber) {
+                            foreach ((array) $data as $node) {
+                                if (is_array($node) && ($node['@type'] ?? '') === 'FAQPage') {
+                                    return $data;
+                                }
+                            }
+
+                            $data['faq_' . $randomNumber] = $faqSchema;
+
+                            return $data;
+                        }, 99, 1);
                     @endphp
                     @foreach ($questionsAndAnswers as $key => $faq)
                             @php

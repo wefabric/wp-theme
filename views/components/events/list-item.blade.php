@@ -7,6 +7,46 @@
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
     $eventCategories = get_the_terms($event, 'event_categories');
+
+    // Er is (nog) geen datum- of locatieveld op dit post type. Zonder een
+    // echte startDate is Event-schema ongeldig, en een verzonnen datum/locatie
+    // levert misleidende markup op — dus alleen toevoegen als het veld er is.
+    $eventFields = get_fields($event);
+    $eventStartDate = $eventFields['event_date'] ?? $eventFields['start_date'] ?? $eventFields['date'] ?? '';
+    $eventLocation = $eventFields['location'] ?? $eventFields['locatie'] ?? '';
+
+    if ($eventStartDate && is_singular('evenementen') && get_the_ID() === $event) {
+        $eventSchema = [
+            '@type' => 'Event',
+            'name' => strip_tags($eventTitle),
+            'description' => strip_tags($eventSummary ?: $eventTitle),
+            'url' => $eventUrl,
+            'startDate' => date('c', strtotime($eventStartDate)),
+            'eventStatus' => 'https://schema.org/EventScheduled',
+            'organizer' => [
+                '@type' => 'Organization',
+                'name' => get_bloginfo('name'),
+                'url' => home_url(),
+            ],
+        ];
+
+        if ($eventLocation) {
+            $eventSchema['location'] = [
+                '@type' => 'Place',
+                'name' => $eventLocation,
+                'address' => [
+                    '@type' => 'PostalAddress',
+                    'addressLocality' => $eventLocation,
+                ],
+            ];
+        }
+
+        if ($eventThumbnailId) {
+            $eventSchema['image'] = str_replace('//content', '/content', wp_get_attachment_image_url($eventThumbnailId, 'full'));
+        }
+
+        \Wefabric\WPSupport\Schema\JsonLd::addSchema('event_' . $event, $eventSchema);
+    }
 @endphp
 
 <div class="event-item group h-full @if ($flyinEffect) event-hidden @endif">

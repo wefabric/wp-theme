@@ -7,6 +7,46 @@
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
     $privateEventCategories = get_the_terms($privateEvent, 'private_event_categories');
+
+    // Er is (nog) geen datum- of locatieveld op dit post type. Zonder een
+    // echte startDate is Event-schema ongeldig, en een verzonnen datum/locatie
+    // levert misleidende markup op — dus alleen toevoegen als het veld er is.
+    $privateEventFields = get_fields($privateEvent);
+    $privateEventStartDate = $privateEventFields['event_date'] ?? $privateEventFields['start_date'] ?? $privateEventFields['date'] ?? '';
+    $privateEventLocation = $privateEventFields['location'] ?? $privateEventFields['locatie'] ?? '';
+
+    if ($privateEventStartDate && is_singular('prive-event') && get_the_ID() === $privateEvent) {
+        $privateEventSchema = [
+            '@type' => 'Event',
+            'name' => strip_tags($privateEventTitle),
+            'description' => strip_tags($privateEventSummary ?: $privateEventTitle),
+            'url' => $privateEventUrl,
+            'startDate' => date('c', strtotime($privateEventStartDate)),
+            'eventStatus' => 'https://schema.org/EventScheduled',
+            'organizer' => [
+                '@type' => 'Organization',
+                'name' => get_bloginfo('name'),
+                'url' => home_url(),
+            ],
+        ];
+
+        if ($privateEventLocation) {
+            $privateEventSchema['location'] = [
+                '@type' => 'Place',
+                'name' => $privateEventLocation,
+                'address' => [
+                    '@type' => 'PostalAddress',
+                    'addressLocality' => $privateEventLocation,
+                ],
+            ];
+        }
+
+        if ($privateEventThumbnailId) {
+            $privateEventSchema['image'] = str_replace('//content', '/content', wp_get_attachment_image_url($privateEventThumbnailId, 'full'));
+        }
+
+        \Wefabric\WPSupport\Schema\JsonLd::addSchema('private_event_' . $privateEvent, $privateEventSchema);
+    }
 @endphp
 
 <div class="private-event-item group h-full @if ($flyinEffect) private-event-hidden @endif">
