@@ -47,6 +47,16 @@
     $legend = \Theme\Helpers\AcfRepeater::parse($block['data'], 'legend');
     $pins = \Theme\Helpers\AcfRepeater::parse($block['data'], 'pins');
 
+    $mapImageWidth = 0;
+    $mapImageHeight = 0;
+    if ($mapImageId) {
+        $mapImageMeta = wp_get_attachment_image_src($mapImageId, 'full');
+        $mapImageWidth = $mapImageMeta[1] ?? 0;
+        $mapImageHeight = $mapImageMeta[2] ?? 0;
+    }
+
+    $showZoomControls = $block['data']['show_zoom_controls'] ?? true;
+
     // Weergave
     $visibleElements = $block['data']['show_element'] ?? [];
     if (!is_array($visibleElements)) {
@@ -186,25 +196,45 @@
 
             @if ($mapImageId)
                 <div class="vestigingen-kaart-map relative w-full" id="{{ $mapId }}">
-                    @include('components.image', [
-                        'image_id' => $mapImageId,
-                        'size' => 'full',
-                        'class' => 'block w-full',
-                        'img_class' => 'w-full h-auto select-none pointer-events-none rounded-' . $borderRadius,
-                        'alt' => $title ?: 'Vestigingenkaart',
-                    ])
+                    @if ($showZoomControls)
+                        <div class="kaart-zoom-controls">
+                            <button type="button" class="kaart-zoom-btn" data-kaart-zoom-in aria-label="Inzoomen">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            <button type="button" class="kaart-zoom-btn" data-kaart-zoom-out aria-label="Uitzoomen">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                            <button type="button" class="kaart-zoom-btn" data-kaart-zoom-reset aria-label="Zoom resetten">
+                                <i class="fa-solid fa-arrows-rotate"></i>
+                            </button>
+                        </div>
+                    @endif
 
-                    @foreach ($pinsData as $pinData)
-                        <button
-                            type="button"
-                            class="kaart-pin absolute -translate-x-1/2 -translate-y-1/2 bg-{{ $pinData['color'] }}"
-                            style="left: {{ $pinData['x'] }}%; top: {{ $pinData['y'] }}%;"
-                            data-pin-index="{{ $pinData['id'] }}"
-                            aria-label="{{ $pinData['name'] }}"
-                        >
-                            <span class="kaart-pin-label bg-{{ $pinData['color'] }} @if($pinData['labelColor']) text-{{ $pinData['labelColor'] }} @else default-label-color @endif">{{ $pinData['name'] }}</span>
-                        </button>
-                    @endforeach
+                    <div class="kaart-viewport relative w-full overflow-hidden" data-kaart-viewport
+                         @if ($mapImageWidth && $mapImageHeight) style="aspect-ratio: {{ $mapImageWidth }} / {{ $mapImageHeight }};" @endif>
+                        <div class="kaart-zoom-content relative w-full h-full" data-kaart-zoom-content>
+                            @include('components.image', [
+                                'image_id' => $mapImageId,
+                                'size' => 'full',
+                                'object_fit' => 'cover',
+                                'class' => 'block w-full h-full',
+                                'img_class' => 'w-full h-full select-none pointer-events-none rounded-' . $borderRadius,
+                                'alt' => $title ?: 'Vestigingenkaart',
+                            ])
+
+                            @foreach ($pinsData as $pinData)
+                                <button
+                                    type="button"
+                                    class="kaart-pin absolute bg-{{ $pinData['color'] }}"
+                                    style="left: {{ $pinData['x'] }}%; top: {{ $pinData['y'] }}%;"
+                                    data-pin-index="{{ $pinData['id'] }}"
+                                    aria-label="{{ $pinData['name'] }}"
+                                >
+                                    <span class="kaart-pin-label bg-{{ $pinData['color'] }} @if($pinData['labelColor']) text-{{ $pinData['labelColor'] }} @else default-label-color @endif">{{ $pinData['name'] }}</span>
+                                </button>
+                            @endforeach
+                        </div>
+                    </div>
 
                     <div class="kaart-popup hidden absolute z-20" data-kaart-popup>
                         <button type="button" class="kaart-popup-close" data-kaart-popup-close aria-label="Sluiten">&times;</button>
@@ -259,7 +289,74 @@
 <script type="application/json" id="{{ $mapId }}-data">{!! wp_json_encode($pinsData, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) !!}</script>
 
 <style>
+    /* Positionering hieronder bewust expliciet i.p.v. via Tailwind's absolute/relative
+       utility-classes, omdat die op dit dynamisch geïnjecteerde blok niet betrouwbaar
+       toegepast bleken te worden. */
+
+    #{{ $mapId }}.vestigingen-kaart-map {
+        position: relative;
+        width: 100%;
+    }
+
+    #{{ $mapId }} .kaart-viewport {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        cursor: grab;
+        touch-action: none;
+        background: #f2f2f2;
+    }
+
+    #{{ $mapId }} .kaart-viewport.is-panning {
+        cursor: grabbing;
+    }
+
+    #{{ $mapId }} .kaart-zoom-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-origin: 0 0;
+        will-change: transform;
+    }
+
+    #{{ $mapId }} .kaart-zoom-controls {
+        position: absolute;
+        z-index: 30;
+        bottom: 12px;
+        right: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        pointer-events: auto;
+    }
+
+    #{{ $mapId }} .kaart-zoom-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        background: #fff;
+        border: none;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+        font-size: 13px;
+        cursor: pointer;
+        color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    #{{ $mapId }} .kaart-zoom-btn:hover {
+        background: #f0f0f0;
+    }
+
+    #{{ $mapId }} .kaart-zoom-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
     #{{ $mapId }} .kaart-pin {
+        position: absolute;
         width: 20px;
         height: 20px;
         border-radius: 9999px;
@@ -268,11 +365,15 @@
         cursor: pointer;
         padding: 0;
         transition: transform 0.15s ease-in-out;
+        /* Tegengesteld aan de kaart-zoom geschaald (via JS bijgewerkt), zodat de pin altijd
+           even groot en scherp blijft, ongeacht het zoomniveau van de kaart. */
+        transform: translate(-50%, -50%) scale(var(--kaart-pin-scale, 1));
+        transform-origin: center;
     }
 
     #{{ $mapId }} .kaart-pin:hover,
     #{{ $mapId }} .kaart-pin:focus-visible {
-        transform: translate(-50%, -50%) scale(1.15);
+        transform: translate(-50%, -50%) scale(calc(var(--kaart-pin-scale, 1) * 1.15));
     }
 
     #{{ $mapId }} .kaart-pin-label {
@@ -294,6 +395,10 @@
     }
 
     #{{ $mapId }} .kaart-popup {
+        position: fixed;
+        z-index: 200;
+        top: 0;
+        left: 0;
         width: 280px;
         max-width: 80vw;
         background: #fff;
@@ -339,6 +444,11 @@
         var popup = mapEl.querySelector('[data-kaart-popup]');
         var popupContent = mapEl.querySelector('[data-kaart-popup-content]');
         var closeBtn = mapEl.querySelector('[data-kaart-popup-close]');
+        var viewport = mapEl.querySelector('[data-kaart-viewport]');
+        var content = mapEl.querySelector('[data-kaart-zoom-content]');
+        var zoomInBtn = mapEl.querySelector('[data-kaart-zoom-in]');
+        var zoomOutBtn = mapEl.querySelector('[data-kaart-zoom-out]');
+        var zoomResetBtn = mapEl.querySelector('[data-kaart-zoom-reset]');
 
         function escapeHtml(value) {
             var div = document.createElement('div');
@@ -371,21 +481,251 @@
             }
         }
 
-        function openPopup(pin) {
+        var activePinEl = null;
+
+        function positionPopupAt(pinEl) {
+            if (!popup || !pinEl) {
+                return;
+            }
+
+            // De popup staat "position: fixed" en gebruikt daarom rechtstreeks de
+            // viewport-coördinaten van de pin (geen afhankelijkheid van de kaart-container
+            // of eventuele zoom/pan-transforms nodig). Deze functie wordt zowel bij het
+            // openen van de popup aangeroepen, als telkens wanneer er gezoomd/gepand wordt
+            // terwijl de popup open staat, zodat hij bij de pin blijft "plakken".
+            var pinRect = pinEl.getBoundingClientRect();
+            var left = pinRect.left + pinRect.width / 2;
+            var top = pinRect.top;
+
+            var horizontal = left > window.innerWidth * 0.6
+                ? 'translate(-100%, -110%)'
+                : (left < window.innerWidth * 0.15 ? 'translate(0, -110%)' : 'translate(-50%, -110%)');
+
+            popup.style.left = left + 'px';
+            popup.style.top = top + 'px';
+            popup.style.transform = horizontal;
+        }
+
+        function openPopup(pin, pinEl) {
             if (!popup || !popupContent) {
                 return;
             }
 
             popupContent.innerHTML = pin.items.map(renderItem).join('');
             popup.classList.remove('hidden');
+            activePinEl = pinEl;
+            positionPopupAt(pinEl);
+        }
 
-            var left = pin.x;
-            var top = pin.y;
-            var horizontal = left > 60 ? 'translate(-100%, -110%)' : (left < 15 ? 'translate(0, -110%)' : 'translate(-50%, -110%)');
+        // Zoom & pan: afbeelding en pins zitten samen in "kaart-zoom-content" en krijgen
+        // dezelfde transform, zodat de pins (die met % gepositioneerd zijn) altijd correct
+        // op de kaart blijven staan, ongeacht het zoomniveau.
+        var canZoomPan = viewport ? !!content : false;
+        if (canZoomPan) {
+            var scale = 1;
+            var minScale = 1;
+            var maxScale = 4;
+            var tx = 0;
+            var ty = 0;
+            var isPanning = false;
+            var hasPanned = false;
+            var panStartX = 0;
+            var panStartY = 0;
+            var panStartTx = 0;
+            var panStartTy = 0;
 
-            popup.style.left = left + '%';
-            popup.style.top = top + '%';
-            popup.style.transform = horizontal;
+            function clampPan() {
+                var vw = viewport.clientWidth;
+                var vh = viewport.clientHeight;
+                var minTx = Math.min(0, vw - vw * scale);
+                var minTy = Math.min(0, vh - vh * scale);
+                tx = Math.min(0, Math.max(minTx, tx));
+                ty = Math.min(0, Math.max(minTy, ty));
+            }
+
+            function applyTransform() {
+                content.style.transform = 'translate(' + tx + 'px, ' + ty + 'px) scale(' + scale + ')';
+
+                // Pins tegengesteld schalen zodat ze altijd even groot en scherp blijven,
+                // ongeacht het zoomniveau van de kaart zelf.
+                var pinScale = 1 / scale;
+                var pinEls = content.querySelectorAll('.kaart-pin');
+                for (var i = 0; i < pinEls.length; i++) {
+                    pinEls[i].style.setProperty('--kaart-pin-scale', pinScale);
+                }
+
+                // Popup mee laten bewegen met de pin zolang die open staat.
+                if (activePinEl) {
+                    if (!popup.classList.contains('hidden')) {
+                        positionPopupAt(activePinEl);
+                    }
+                }
+            }
+
+            function updateZoomState() {
+                if (zoomOutBtn) {
+                    zoomOutBtn.disabled = scale <= minScale;
+                }
+                if (zoomInBtn) {
+                    zoomInBtn.disabled = scale >= maxScale;
+                }
+                viewport.classList.toggle('is-zoomed', scale > minScale);
+            }
+
+            function setScale(newScale, originX, originY) {
+                newScale = Math.min(maxScale, Math.max(minScale, newScale));
+                if (newScale === scale) {
+                    return;
+                }
+
+                var vw = viewport.clientWidth;
+                var vh = viewport.clientHeight;
+                if (typeof originX !== 'number') {
+                    originX = vw / 2;
+                }
+                if (typeof originY !== 'number') {
+                    originY = vh / 2;
+                }
+
+                var contentX = (originX - tx) / scale;
+                var contentY = (originY - ty) / scale;
+
+                scale = newScale;
+                tx = originX - contentX * scale;
+                ty = originY - contentY * scale;
+
+                if (scale <= minScale) {
+                    tx = 0;
+                    ty = 0;
+                }
+
+                clampPan();
+                applyTransform();
+                updateZoomState();
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', function () {
+                    setScale(scale + 0.5);
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', function () {
+                    setScale(scale - 0.5);
+                });
+            }
+
+            if (zoomResetBtn) {
+                zoomResetBtn.addEventListener('click', function () {
+                    setScale(1);
+                });
+            }
+
+            viewport.addEventListener('wheel', function (event) {
+                event.preventDefault();
+                var rect = viewport.getBoundingClientRect();
+                var originX = event.clientX - rect.left;
+                var originY = event.clientY - rect.top;
+                var delta = event.deltaY < 0 ? 0.35 : -0.35;
+                setScale(scale + delta, originX, originY);
+            }, { passive: false });
+
+            viewport.addEventListener('mousedown', function (event) {
+                if (scale <= minScale) {
+                    return;
+                }
+                isPanning = true;
+                hasPanned = false;
+                panStartX = event.clientX;
+                panStartY = event.clientY;
+                panStartTx = tx;
+                panStartTy = ty;
+                viewport.classList.add('is-panning');
+            });
+
+            window.addEventListener('mousemove', function (event) {
+                if (!isPanning) {
+                    return;
+                }
+                var dx = event.clientX - panStartX;
+                var dy = event.clientY - panStartY;
+                if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+                    hasPanned = true;
+                }
+                tx = panStartTx + dx;
+                ty = panStartTy + dy;
+                clampPan();
+                applyTransform();
+            });
+
+            window.addEventListener('mouseup', function () {
+                if (isPanning) {
+                    isPanning = false;
+                    viewport.classList.remove('is-panning');
+                }
+            });
+
+            // Voorkom dat het loslaten van een sleepbeweging op een pin per ongeluk de
+            // popup opent.
+            viewport.addEventListener('click', function (event) {
+                if (hasPanned) {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    hasPanned = false;
+                }
+            }, true);
+
+            var touchStartDistance = 0;
+            var touchStartScale = 1;
+            var touchLastX = 0;
+            var touchLastY = 0;
+
+            function getTouchDistance(touches) {
+                var dx = touches[0].clientX - touches[1].clientX;
+                var dy = touches[0].clientY - touches[1].clientY;
+                return Math.sqrt(dx * dx + dy * dy);
+            }
+
+            viewport.addEventListener('touchstart', function (event) {
+                if (event.touches.length === 2) {
+                    touchStartDistance = getTouchDistance(event.touches);
+                    touchStartScale = scale;
+                } else if (event.touches.length === 1) {
+                    if (scale > minScale) {
+                        isPanning = true;
+                        touchLastX = event.touches[0].clientX;
+                        touchLastY = event.touches[0].clientY;
+                        panStartTx = tx;
+                        panStartTy = ty;
+                    }
+                }
+            }, { passive: true });
+
+            viewport.addEventListener('touchmove', function (event) {
+                if (event.touches.length === 2) {
+                    event.preventDefault();
+                    var newDistance = getTouchDistance(event.touches);
+                    var rect = viewport.getBoundingClientRect();
+                    var midX = (event.touches[0].clientX + event.touches[1].clientX) / 2 - rect.left;
+                    var midY = (event.touches[0].clientY + event.touches[1].clientY) / 2 - rect.top;
+                    setScale(touchStartScale * (newDistance / touchStartDistance), midX, midY);
+                } else if (event.touches.length === 1) {
+                    if (isPanning) {
+                        event.preventDefault();
+                        tx = panStartTx + (event.touches[0].clientX - touchLastX);
+                        ty = panStartTy + (event.touches[0].clientY - touchLastY);
+                        clampPan();
+                        applyTransform();
+                    }
+                }
+            }, { passive: false });
+
+            viewport.addEventListener('touchend', function () {
+                isPanning = false;
+            });
+
+            updateZoomState();
         }
 
         mapEl.querySelectorAll('.kaart-pin').forEach(function (pinEl) {
@@ -394,7 +734,7 @@
                 var index = parseInt(pinEl.getAttribute('data-pin-index'), 10);
                 var pin = pins.find(function (p) { return p.id === index; });
                 if (pin) {
-                    openPopup(pin);
+                    openPopup(pin, pinEl);
                 }
             });
         });
@@ -402,6 +742,7 @@
         if (closeBtn) {
             closeBtn.addEventListener('click', function () {
                 popup.classList.add('hidden');
+                activePinEl = null;
             });
         }
 
@@ -413,6 +754,7 @@
                 return;
             }
             popup.classList.add('hidden');
+            activePinEl = null;
         });
     });
 </script>

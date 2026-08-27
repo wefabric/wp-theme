@@ -648,6 +648,26 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_68f1a0000046",
+            "label": "Zoom-knoppen tonen?",
+            "name": "show_zoom_controls",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Bezoekers kunnen altijd scrollen/pinchen om in/uit te zoomen op de kaart. Dit bepaalt alleen of de +/- knoppen rechtsonder de kaart zichtbaar zijn.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_68f1a0000025",
             "label": "Vestigingen op de kaart",
             "name": "pins",
@@ -1070,5 +1090,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1787512117
+    "modified": 1787834943
 }
