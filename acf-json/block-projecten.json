@@ -815,7 +815,8 @@
                 "category": "Categorie",
                 "category_filter": "Categorie filter",
                 "overview_text": "Korte samenvatting",
-                "button": "Knop in project blok"
+                "button": "Knop in project blok",
+                "image_slider": "Swiper voor meerdere foto's"
             },
             "default_value": [],
             "return_format": "array",
@@ -3089,5 +3090,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1785855821
+    "modified": 1789720593
 }
