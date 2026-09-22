@@ -133,6 +133,8 @@
 	text-secondary-light text-secondary text-secondary-dark hover:text-secondary-light hover:text-secondary hover:text-secondary-darkd bg-secondairy bg-secondairy-light bg-secondairy-dark
 	text-tertiary-light text-tertiary text-tertiary-dark hover:text-tertiary-light hover:text-tertiary hover:text-tertiary-dark bg-tertiary bg-tertiary-light bg-tertiary-dark
 	text-quaternary-light text-quaternary text-quaternary-dark hover:text-quaternary-light hover:text-quaternary hover:text-quaternary-dark bg-quaternary bg-quaternary-light bg-quaternary-dark
+	text-quinary-light text-quinary text-quinary-dark hover:text-quinary-light hover:text-quinary hover:text-quinary-dark bg-quinary bg-quinary-light bg-quinary-dark
+	text-senary-light text-senary text-senary-dark hover:text-senary-light hover:text-senary hover:text-senary-dark bg-senary bg-senary-light bg-senary-dark
 	text-cta hover:text-cta bg-cta
 	text-basic-success text-basic-danger bg-basic-success bg-basic-danger
 	text-green-600 text-red-500
