@@ -11,7 +11,7 @@
     $logoExternalTarget = '_blank';
     $logoAnchorText = '';
     if ($logoLinkType === 'page_link') {
-        $logoUrl = get_permalink($logo);
+        $logoUrl = is_post_type_viewable(get_post_type($logo)) ? get_permalink($logo) : '';
     } elseif ($logoLinkType === 'external_link') {
         $logoLinkData = $fields['link'] ?? '';
         $logoUrl = is_array($logoLinkData) ? ($logoLinkData['url'] ?? '') : $logoLinkData;
