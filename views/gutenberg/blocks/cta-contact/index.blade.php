@@ -269,7 +269,7 @@
                                 @if(in_array('establishment_route', $establishmentElements) && $contactEstablishment->getAddress()->street)
                                     @php $addr = $contactEstablishment->getAddress(); @endphp
                                     @include('components.link.opening', [
-                                        'href' => 'https://www.google.com/maps/search/?api=1&query=' . urlencode($addr->street . ' ' . $addr->full_housenumber . ' ' . $addr->postcode . ' ' . $addr->city),
+                                        'href' => 'https://www.google.com/maps/search/?api=1&query=' . urlencode($contactEstablishment->name . ', ' . $addr->street . ' ' . $addr->housenumber . $addr->housenumber_addition . ', ' . $addr->postcode . ' ' . $addr->city),
                                         'alt' => 'Route',
                                         'class' => 'route-text flex w-fit items-center',
                                         'target' => '_blank'

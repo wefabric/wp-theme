@@ -256,8 +256,9 @@
                                                 @if (!empty($visibleElements) && in_array('establishment_route', $visibleElements))
                                                     <div class="route-info">
                                                         <a class="route-link group flex items-center gap-2 w-fit"
-                                                           href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $full_house_number }}+{{ $postcode }}+{{ $city }}"
-                                                           title="Email">
+                                                           href="https://www.google.com/maps/search/?api=1&query={{ urlencode($establishment_title . ', ' . $street . ' ' . $full_house_number . ', ' . $postcode . ' ' . $city) }}"
+                                                           target="_blank" rel="noopener"
+                                                           title="Route">
                                                             <i class="fa-solid fa-route text-primary"></i>
                                                             <span class="align-middle group-hover:text-primary group-hover:underline">Route</span>
                                                         </a>

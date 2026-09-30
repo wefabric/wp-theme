@@ -119,9 +119,11 @@
 					{{-- Establishment Route --}}
 					@if(in_array('establishment_route', $establishmentElements) && $establishment->getAddress()->street)
 						@include('components.link.opening', [
-						'href' => 'https://www.google.com/maps/search/?api=1&query=' . $establishment->getAddress()->street . '+' . $fullHouseNumber . '+' .  $establishment->getAddress()->postcode  . '+' . $establishment->getAddress()->city ,
+						'href' => 'https://www.google.com/maps/search/?api=1&query=' . urlencode($establishment->name . ', ' . $establishment->getAddress()->street . ' ' . $fullHouseNumber . ', ' . $establishment->getAddress()->postcode . ' ' . $establishment->getAddress()->city),
 						'alt' => 'Route',
-						'class' => 'route-text flex w-fit'
+						'class' => 'route-text flex w-fit',
+						'target' => '_blank',
+						'rel' => 'noopener'
 						])
 						<i class="fa-solid fa-route text-{{ $title_color }} mr-4 text-md pt-1"></i>
 						<span class="inline-block pt-1">Route</span>
