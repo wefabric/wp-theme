@@ -131,6 +131,10 @@
                                     $postcode = $establishment->getAddress()->postcode;
                                     $house_number = $establishment->getAddress()->housenumber;
                                     $house_number_addition = $establishment->getAddress()->housenumber_addition;
+                                    // full_housenumber joins the two with a "-" when there's an
+                                    // addition (e.g. "3-5") — plain concatenation below produced
+                                    // "35" instead, unlike the footer which already uses this.
+                                    $full_house_number = $establishment->getAddress()->full_housenumber;
                                     $city = $establishment->getAddress()->city;
                                     $phone = $establishment->getContactPhone();
                                     $email = $establishment->getEmailAddress();
@@ -151,7 +155,7 @@
                                         'image' => get_site_icon_url(),
                                         'address' => [
                                             '@type' => 'PostalAddress',
-                                            'streetAddress' => trim($street . ' ' . $house_number . $house_number_addition),
+                                            'streetAddress' => trim($street . ' ' . $full_house_number),
                                             'addressLocality' => $city,
                                             'postalCode' => $postcode,
                                             'addressCountry' => $country_id ?: 'NL',
@@ -202,7 +206,7 @@
                                             @endif
 
                                             @if (!empty($visibleElements) && in_array('establishment_address', $visibleElements))
-                                                <div class="establishment-address">{{ $street }}@if ($house_number > 0) {{ $house_number }}{{ $house_number_addition }}@endif</div>
+                                                <div class="establishment-address">{{ $street }}@if ($house_number > 0) {{ $full_house_number }}@endif</div>
                                                 <div class="establishment-zipcode">{{ $postcode }} {{ $city }}</div>
                                             @endif
 
@@ -252,7 +256,7 @@
                                                 @if (!empty($visibleElements) && in_array('establishment_route', $visibleElements))
                                                     <div class="route-info">
                                                         <a class="route-link group flex items-center gap-2 w-fit"
-                                                           href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $house_number }}{{ $house_number_addition }}+{{ $postcode }}+{{ $city }}"
+                                                           href="https://www.google.com/maps/search/?api=1&query={{ $street }}+{{ $full_house_number }}+{{ $postcode }}+{{ $city }}"
                                                            title="Email">
                                                             <i class="fa-solid fa-route text-primary"></i>
                                                             <span class="align-middle group-hover:text-primary group-hover:underline">Route</span>
