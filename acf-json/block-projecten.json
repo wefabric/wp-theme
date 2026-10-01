@@ -696,8 +696,8 @@
             "name": "category",
             "aria-label": "",
             "type": "taxonomy",
-            "instructions": "",
-            "required": 1,
+            "instructions": "Leeg laten op een projectdetail: dan worden projecten uit dezelfde categorie als het huidige project getoond.",
+            "required": 0,
             "conditional_logic": [
                 [
                     {
