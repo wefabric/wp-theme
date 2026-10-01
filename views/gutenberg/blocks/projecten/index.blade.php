@@ -95,9 +95,17 @@
     // Show category
     elseif ($displayType == 'show_category') {
         $selectedCategory = $block['data']['category'] ?? '';
+        $postAmount = (int) ($block['data']['post_amount'] ?? 0);
+
+        // Geen categorie gekozen op een projectdetail: gebruik de (sub)categorieën van het huidige project
+        if (empty($selectedCategory) && is_singular('project')) {
+            $currentProjectTerms = wp_get_post_terms(get_the_ID(), 'project_categories');
+            $childTerms = array_filter($currentProjectTerms, fn ($term) => $term->parent);
+            $selectedCategory = wp_list_pluck($childTerms ?: $currentProjectTerms, 'term_id');
+        }
 
         $args = [
-            'posts_per_page' => -1,
+            'posts_per_page' => $postAmount > 0 ? $postAmount : -1,
             'post_type' => 'project',
             'post_status' => 'publish',
             'tax_query' => [
@@ -116,6 +124,12 @@
                 'terms' => $currentTerms,
             ];
             $args['tax_query']['relation'] = 'AND';
+        }
+
+        // Bij een maximum aantal: altijd de laatst geplaatste projecten tonen
+        if ($postAmount > 0) {
+            $args['orderby'] = 'date';
+            $args['order'] = 'DESC';
         }
 
         // Exclude current post

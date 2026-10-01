@@ -781,6 +781,13 @@
                         "operator": "==",
                         "value": "show_latest"
                     }
+                ],
+                [
+                    {
+                        "field": "field_678e24680bf36",
+                        "operator": "==",
+                        "value": "show_category"
+                    }
                 ]
             ],
             "wrapper": {
