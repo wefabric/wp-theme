@@ -10,8 +10,9 @@
     $visibleElements = $block['data']['show_element'] ?? [];
     $function = $fields['function'] ?? '';
     $overviewText = $fields['overview_text'] ?? '';
-    $mail = $fields['email'] ?? '';
-    $phoneNumber = $fields['phone_number'] ?? '';
+    $showContactOnWebsite = $fields['show_contact_on_website'] ?? true;
+    $mail = $showContactOnWebsite ? ($fields['email'] ?? '') : '';
+    $phoneNumber = $showContactOnWebsite ? ($fields['phone_number'] ?? '') : '';
     $socials = $fields['socials'] ?? [];
 
     $showFullContactInfo = $block['data']['show_full_contact_info'] ?? false;
