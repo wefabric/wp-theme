@@ -28,10 +28,16 @@
                     @php
                         $logoImage = $logo['image'] ?? null;
                         $logoName = !empty($logo['name']) ? $logo['name'] : 'Logo';
+                        $logoLink = $logo['url'] ?? null;
+                        $logoUrl = $logoLink['url'] ?? '';
+                        $logoTarget = $logoLink['target'] ?? '_self';
                     @endphp
 
                     @if($logoImage)
                         <div class="swiper-slide flex items-center justify-center w-full ">
+                            @if($logoUrl)
+                            <a href="{{ esc_url($logoUrl) }}" target="{{ $logoTarget }}" @if($logoTarget === '_blank') rel="noopener noreferrer" @endif aria-label="{{ !empty($logoLink['title']) ? $logoLink['title'] : $logoName }}">
+                            @endif
                             @include('components.image', [
                                 'image_id' => $logoImage,
                                 'size' => 'full',
@@ -39,6 +45,9 @@
                                 'img_class' => 'max-w-[130px] max-h-[60px] transition ease-in-out duration-300',
                                 'alt' => $logoName,
                             ])
+                            @if($logoUrl)
+                            </a>
+                            @endif
                         </div>
                     @endif
                 @endforeach
@@ -51,10 +60,16 @@
             @php
                 $logoImage = $logo['image'] ?? null;
                 $logoName = !empty($logo['name']) ? $logo['name'] : 'Logo';
+                $logoLink = $logo['url'] ?? null;
+                $logoUrl = $logoLink['url'] ?? '';
+                $logoTarget = $logoLink['target'] ?? '_self';
             @endphp
 
             @if($logoImage)
                 <div class="swiper-slide flex items-center justify-center w-full">
+                    @if($logoUrl)
+                    <a href="{{ esc_url($logoUrl) }}" target="{{ $logoTarget }}" @if($logoTarget === '_blank') rel="noopener noreferrer" @endif aria-label="{{ !empty($logoLink['title']) ? $logoLink['title'] : $logoName }}">
+                    @endif
                     @include('components.image', [
                         'image_id' => $logoImage,
                         'size' => 'full',
@@ -62,6 +77,9 @@
                         'img_class' => 'max-w-[130px] max-h-[60px] transition ease-in-out duration-300',
                         'alt' => $logoName,
                     ])
+                    @if($logoUrl)
+                    </a>
+                    @endif
                 </div>
             @endif
         @endforeach
