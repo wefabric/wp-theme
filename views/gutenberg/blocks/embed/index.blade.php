@@ -45,6 +45,7 @@
 
  // Embed
  $embedSource = $block['data']['embed'] ?? '';
+ $embedIframe = $block['data']['embed_iframe'] ?? '';
  $embedHeight = $block['data']['embed_height'] ?? 600;
 
 
@@ -120,11 +121,20 @@
                     'class' => 'mb-8 text-' . $textColor . ' ' . $textClass . ($blockWidth == 'fullscreen' ? ' ' : '')
                 ])
             @endif
-            @if ($embedSource)
+            @if ($embedSource || $embedIframe)
                 @php
                     $embedHtml = '';
-                    if (strpos($embedSource, '<iframe') !== false) {
-                        $embedHtml = $embedSource;
+
+                    // Een iframe-code (eigen veld, of in het Embed veld geplakt) tonen we via de src met dezelfde opmaak als een URL
+                    $iframeCode = stripslashes(trim($embedIframe ?: (stripos($embedSource, '<iframe') !== false ? $embedSource : '')));
+
+                    if ($iframeCode !== '') {
+                        if (preg_match('/\ssrc\s*=\s*["\']([^"\']+)["\']/i', $iframeCode, $iframeMatches)) {
+                            $iframeSrc = html_entity_decode($iframeMatches[1]);
+                            if (preg_match('#^https://#i', $iframeSrc)) {
+                                $embedHtml = '<iframe width="100%" height="' . esc_attr($embedHeight) . '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" loading="lazy" src="' . esc_url($iframeSrc) . '"></iframe>';
+                            }
+                        }
                     } else {
                         $embedHtml = wp_oembed_get($embedSource);
                         if (!$embedHtml) {

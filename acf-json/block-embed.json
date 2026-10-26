@@ -658,6 +658,26 @@
             "height": ""
         },
         {
+            "key": "field_68fa1c3e5d2b7",
+            "label": "Iframe code",
+            "name": "embed_iframe",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Optioneel: plak hier een iframe-code (bijv. Google My Maps). Heeft voorrang op het Embed veld hierboven.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "<iframe src=\"https://...\"></iframe>",
+            "new_lines": ""
+        },
+        {
             "key": "field_657704c1dfcb2",
             "label": "Embed hoogte",
             "name": "embed_height",
@@ -669,6 +689,12 @@
                 [
                     {
                         "field": "field_657700225e931",
+                        "operator": "!=empty"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_68fa1c3e5d2b7",
                         "operator": "!=empty"
                     }
                 ]
