@@ -14,6 +14,12 @@
         }
     }
 
+    // Een expliciet gekozen vestiging voor de navigatie heeft voorrang op de footer-vestigingen
+    $navEstablishmentId = $options['nav_establishment'] ?? null;
+    if (!empty($navEstablishmentId) && get_post_status($navEstablishmentId) === 'publish') {
+        $footer_establishments = [new \Wefabric\WPEstablishments\Establishment(get_post($navEstablishmentId))];
+    }
+
     $logoMap = [
         'logo_1'       => 'logo',
         'logo_2'       => 'logo_white',

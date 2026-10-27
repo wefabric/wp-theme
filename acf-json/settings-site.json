@@ -1035,6 +1035,32 @@
                             "append": ""
                         },
                         {
+                            "key": "field_nav_establishment_001",
+                            "label": "Vestiging voor contactgegevens",
+                            "name": "nav_establishment",
+                            "aria-label": "",
+                            "type": "post_object",
+                            "instructions": "Telefoon en e-mail (contact) van deze vestiging worden getoond in de topbalk en het mobiele menu. Leeg = eerste vestiging uit Footer contact vestigingen.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "establishments"
+                            ],
+                            "post_status": "",
+                            "taxonomy": "",
+                            "return_format": "id",
+                            "multiple": 0,
+                            "allow_null": 1,
+                            "bidirectional": 0,
+                            "ui": 1,
+                            "bidirectional_target": []
+                        },
+                        {
                             "key": "field_655730670ebc4",
                             "label": "Elementen",
                             "name": "secondary_menu_show_elements",

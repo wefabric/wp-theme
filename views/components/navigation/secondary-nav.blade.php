@@ -14,6 +14,12 @@
         }
     }
 
+    // Een expliciet gekozen vestiging voor de navigatie heeft voorrang op de footer-vestigingen
+    $navEstablishmentId = $options['nav_establishment'] ?? null;
+    if (!empty($navEstablishmentId) && get_post_status($navEstablishmentId) === 'publish') {
+        $footer_establishments = [new \Wefabric\WPEstablishments\Establishment(get_post($navEstablishmentId))];
+    }
+
     // Kleur-waarden voor de topbalk
     $secBgColor              = $options['secondary_menu_background_color'] ?? '';
     $secTextColor            = $options['secondary_menu_text_color'] ?? '';
