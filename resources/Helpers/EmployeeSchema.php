@@ -67,8 +67,6 @@ class EmployeeSchema
             ? trim(preg_replace('/\s+/', ' ', $firstName . ' ' . $lastName))
             : get_the_title($employeeId);
 
-        // Contactgegevens alleen als ze ook op de website getoond mogen worden.
-        $showContact = $fields['show_contact_on_website'] ?? true;
         $socials = $fields['socials'] ?? [];
 
         $person = [
@@ -77,10 +75,13 @@ class EmployeeSchema
             'jobTitle' => strip_tags($fields['function'] ?? ''),
             'description' => trim(strip_tags($fields['overview_text'] ?? '')),
             'image' => !empty($fields['image']) ? wp_get_attachment_image_url($fields['image'], 'full') : '',
-            'email' => $showContact ? ($fields['email'] ?? '') : '',
-            'telephone' => $showContact ? ($fields['phone_number'] ?? '') : '',
+            // Geen e-mail, telefoon of WhatsApp van medewerkers: levert geen rich result op en zou
+            // de contact-obfuscatie omzeilen. Bedrijfsgegevens (Organization) blijven wel leesbaar.
             'url' => $url ?? '',
-            'sameAs' => is_array($socials) ? array_values(array_filter(array_column($socials, 'url'))) : [],
+            'sameAs' => is_array($socials) ? array_values(array_filter(
+                array_column($socials, 'url'),
+                fn ($url) => is_string($url) && $url !== '' && ! ContactObfuscator::isSensitiveUrl($url),
+            )) : [],
         ];
 
         $person = array_filter($person);

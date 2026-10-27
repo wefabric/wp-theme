@@ -95,10 +95,9 @@
 					{{-- Establishment Phone --}}
 					@if(in_array('establishment_phone', $establishmentElements) && $phone = $establishment->getContactPhone())
 						@include('components.link.opening', [
-							'href' => '#',
+							'href' => $phone->uri(),
 							'alt' => 'Telefoonnummer',
-							'class' => 'phone-text flex w-fit wf-obfuscated',
-							'attributes' => ['data-href' => base64_encode('tel:' . $phone->uri())]
+							'class' => 'phone-text flex w-fit'
 						])
 						<i class="fa-solid fa-phone mr-4 text-{{ $title_color }} text-md pt-1"></i>
 						<span class="inline-block pt-1">{{ get_bloginfo("language") === 'nl-NL' ? $phone->national() : $phone->international() }}</span>
@@ -108,10 +107,9 @@
 					{{-- Establishment Email --}}
 					@if(in_array('establishment_mail', $establishmentElements) && $email = $establishment->getContactEmailAddress())
 						@include('components.link.opening', [
-							'href' => '#',
+							'href' => 'mailto:' . $email,
 							'alt' => 'E-mailadres',
-							'class' => 'email-text flex w-fit wf-obfuscated',
-							'attributes' => ['data-href' => base64_encode('mailto:' . $email)]
+							'class' => 'email-text flex w-fit'
 						])
 						<i class="fa-solid fa-envelope text-{{ $title_color }} mr-4 text-md pt-1"></i>
 						<span class="inline-block pt-1">{{ $email }}</span>
