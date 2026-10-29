@@ -549,7 +549,7 @@
             "name": "coordinates",
             "aria-label": "",
             "type": "group",
-            "instructions": "Vul hieronder optioneel de coordinaten toe van de vestiging. De coordinaten van het adres zijn hier op te halen: https:\/\/www.latlong.net\/convert-address-to-lat-long.html",
+            "instructions": "Vul hieronder optioneel de coordinaten toe van de vestiging. De coordinaten van het adres zijn hier op te halen: https://www.latlong.net/convert-address-to-lat-long.html",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -636,7 +636,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "d\/m\/Y",
+                    "display_format": "d/m/Y",
                     "return_format": "Y-m-d",
                     "first_day": 1,
                     "default_to_current_date": 0,
@@ -797,6 +797,34 @@
                     "parent_repeater": "field_60b37f7561868"
                 }
             ]
+        },
+        {
+            "key": "field_6b1f0a7c9d3e1",
+            "label": "Uitgelichte werknemer(s)",
+            "name": "featured_employees",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Koppel een of meerdere werknemers aan deze vestiging. Bij meer dan één werknemer wordt dit een slider onder de vestiging.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "werknemers"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 1,
+            "allow_null": 0,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
         }
     ],
     "location": [
@@ -817,5 +845,5 @@
     "active": true,
     "description": "Vul hieronder de vestigingen in van het bedrijf. De eerste vestiging is de hoofdvestiging.",
     "show_in_rest": 0,
-    "modified": 1785247550
+    "modified": 1793268621
 }

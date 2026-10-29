@@ -20,6 +20,26 @@
     $establishmentWhatsapp = $establishmentModel->whatsapp_number ?? '';
     $establishmentKvkNumber = $establishmentModel->coc_number ?? '';
     $establishmentVatNumber = $establishmentModel->vat_number ?? '';
+
+    $establishmentOpeningHours = get_field('opening_hours', $establishment) ?: [];
+    $establishmentUrl = get_permalink($establishment);
+
+    // Knop op de kaart (zelfde opties als andere blokken)
+    $cardButtonText = $block['data']['card_button_button_text'] ?? '' ?: 'Meer informatie';
+    $cardButtonColor = $block['data']['card_button_button_color'] ?? '' ?: 'primary-color';
+    $cardButtonStyle = $block['data']['card_button_button_style'] ?? '' ?: 'outline';
+    $cardButtonIcon = $block['data']['card_button_button_icon'] ?? '';
+    if (!empty($cardButtonIcon)) {
+        $cardButtonIconData = json_decode($cardButtonIcon, true);
+        if (isset($cardButtonIconData['id'], $cardButtonIconData['style'])) {
+            $cardButtonIcon = 'fa-' . $cardButtonIconData['style'] . ' fa-' . $cardButtonIconData['id'];
+        }
+    }
+
+    // Uitgelichte werknemers
+    $featuredEmployees = get_field('featured_employees', $establishment) ?: [];
+    $featuredEmployees = array_values(array_filter(array_map(fn ($employee) => is_object($employee) ? $employee->ID : (int) $employee, (array) $featuredEmployees)));
+    $employeeSliderId = 'establishmentEmployees-' . $establishment . '-' . rand(0, 100000);
 @endphp
 
 <div class="establishment-item group h-full @if ($flyinEffect) establishment-hidden @endif">
@@ -109,7 +129,107 @@
                         @endif
                     </div>
                 @endif
+
+                @if (in_array('opening_hours', (array) $visibleElements) && !empty($establishmentOpeningHours))
+                    <div class="establishment-opening-hours mt-4">
+                        <p class="establishment-opening-hours-title">Openingstijden</p>
+                        @foreach ($establishmentOpeningHours as $day)
+                            <div class="establishment-opening-hours-row flex flex-wrap gap-x-2">
+                                <span class="day">{{ $day['day'] ?? '' }}:</span>
+                                @if (!empty($day['closed']))
+                                    <span class="hours">gesloten</span>
+                                @else
+                                    <span class="hours">
+                                        {{ $day['opening_hour'] ?? '' }} – {{ $day['closing_hour'] ?? '' }} uur
+                                        @if (!empty($day['opening_hour_2']) && !empty($day['closing_hour_2']))
+                                            &amp; {{ $day['opening_hour_2'] }} – {{ $day['closing_hour_2'] }} uur
+                                        @endif
+                                    </span>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
+
+            @if (in_array('more_info', (array) $visibleElements) && $establishmentUrl)
+                <div class="establishment-more-info buttons mt-auto pt-6">
+                    @include('components.buttons.default', [
+                        'text' => $cardButtonText,
+                        'href' => $establishmentUrl,
+                        'alt' => $cardButtonText . ' - ' . strip_tags($establishmentName),
+                        'colors' => 'btn-' . $cardButtonColor . ' btn-' . $cardButtonStyle,
+                        'class' => 'rounded-lg',
+                        'icon' => $cardButtonIcon,
+                    ])
+                </div>
+            @endif
         </div>
+
+        @if (in_array('featured_employees', (array) $visibleElements) && !empty($featuredEmployees))
+            @php $employeeCount = count($featuredEmployees); @endphp
+            <div class="establishment-employees w-full">
+                <div class="swiper {{ $employeeSliderId }} establishment-employee-swiper">
+                    <div class="swiper-wrapper">
+                        @foreach ($featuredEmployees as $employeeId)
+                            @php
+                                $employeeFields = get_fields($employeeId) ?: [];
+                                $employeeFirstName = $employeeFields['first_name'] ?? '';
+                                $employeeLastName = $employeeFields['last_name'] ?? '';
+                                $employeeName = trim($employeeFirstName . ' ' . $employeeLastName) ?: get_the_title($employeeId);
+                                $employeeImage = $employeeFields['image'] ?? '';
+                                $employeePhone = $employeeFields['phone_number'] ?? '';
+                            @endphp
+                            <div class="swiper-slide establishment-employee">
+                                @if ($employeeImage)
+                                    <div class="employee-image shrink-0">
+                                        @include('components.image', [
+                                            'image_id' => $employeeImage,
+                                            'size' => 'thumbnail',
+                                            'object_fit' => 'cover',
+                                            'img_class' => 'w-full h-full object-cover rounded-full',
+                                            'alt' => $employeeName,
+                                        ])
+                                    </div>
+                                @endif
+                                <div class="employee-info">
+                                    <p class="employee-name">{{ $employeeName }}</p>
+                                    @if ($employeePhone)
+                                        <a class="employee-phone flex items-center gap-2 w-fit"
+                                           href="tel:{{ preg_replace('/[^\d+]/', '', $employeePhone) }}"
+                                           title="Bel {{ $employeeName }}">
+                                            <i class="fa-solid fa-phone"></i>
+                                            <span>{{ $employeePhone }}</span>
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                @if ($employeeCount > 1)
+                    <div class="employee-navigation flex shrink-0 gap-2">
+                        <button type="button" class="employee-prev employee-prev-{{ $employeeSliderId }}" aria-label="Vorige werknemer"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button type="button" class="employee-next employee-next-{{ $employeeSliderId }}" aria-label="Volgende werknemer"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                @endif
+            </div>
+            @if ($employeeCount > 1)
+                <script>
+                    window.addEventListener('DOMContentLoaded', () => {
+                        new Swiper('.{{ $employeeSliderId }}', {
+                            nested: true,
+                            rewind: true,
+                            slidesPerView: 1,
+                            spaceBetween: 16,
+                            navigation: {
+                                nextEl: '.employee-next-{{ $employeeSliderId }}',
+                                prevEl: '.employee-prev-{{ $employeeSliderId }}',
+                            },
+                        });
+                    });
+                </script>
+            @endif
+        @endif
     </div>
 </div>
