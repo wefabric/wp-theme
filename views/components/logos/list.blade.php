@@ -31,6 +31,9 @@
     $randomId = 'logosSwiper-' . $randomNumber;
     $spaceBetween = $block['data']['space_between'] ?? 20;
 
+    // Vloeiend verlopen in 2 rijen: de logo's worden in tweeën gedeeld, rij 2 beweegt de andere kant op
+    $twoRowsMarquee = !empty($block['data']['show_slider']) && $swiperLinear && !empty($block['data']['two_rows']);
+
     $logoCount = count($logos);
 
     // Determine $gridStartClass based on $logoCount
@@ -45,7 +48,74 @@
     }
 @endphp
 
-@if($block['data']['show_slider'])
+@if($twoRowsMarquee)
+    @php
+        $marqueeRows = array_chunk(array_values($logos), max(1, (int) ceil($logoCount / 2)));
+        // Zelfde snelheid als de enkele rij: 'px per seconde' omgerekend naar seconden per logo (± 220px per logo)
+        $marqueeSecondsPerLogo = 220 / $swiperRotationPxPerSec;
+    @endphp
+    <div class="logos-marquee logos-marquee-{{ $randomNumber }} @if ($swiperOutContainer) logos-marquee-out @endif slider block relative py-8"
+         style="--logos-gap: {{ (int) $spaceBetween }}px; --logos-n: {{ (int) $mobileLayout }};">
+        <div class="logos-marquee-inner">
+        @foreach ($marqueeRows as $rowIndex => $rowLogos)
+            @php
+                // Rij 1 volgt de ingestelde richting, rij 2 gaat de andere kant op
+                $marqueeReverse = (($rowIndex % 2) === 1) xor ($swiperDirection === 'right');
+                // Genoeg kopieën zodat de rij ook op brede schermen (tot ± 4K, volledige breedte) nooit leeg raakt:
+                // na één verschuiving van een groep moeten er nog steeds ≥ 32 logo's in beeld kunnen staan
+                $marqueeCopies = max(2, (int) ceil(32 / max(1, count($rowLogos))) + 1);
+                $marqueeDuration = max(10, round(count($rowLogos) * $marqueeSecondsPerLogo));
+            @endphp
+            <div class="logos-marquee-row" style="--marquee-duration: {{ $marqueeDuration }}s; --marquee-copies: {{ $marqueeCopies }}; --marquee-direction: {{ $marqueeReverse ? 'reverse' : 'normal' }};">
+                <div class="logos-marquee-track">
+                    @foreach (range(1, $marqueeCopies) as $copy)
+                        <div class="logos-marquee-group" @if ($copy > 1) aria-hidden="true" @endif>
+                            @foreach ($rowLogos as $logo)
+                                <div class="logos-marquee-item">
+                                    @include('components.logos.list-item')
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endforeach
+        </div>
+    </div>
+
+    <style>
+        .logos-marquee-{{ $randomNumber }} { container-type: inline-size; }
+        /* Ruimte boven/onder, zodat het logo bij hover (omhoog bewegen) niet wordt afgesneden */
+        .logos-marquee-{{ $randomNumber }} .logos-marquee-inner { overflow: hidden; padding: 1.25rem 0; margin: -1.25rem 0; }
+        /* 'Slider buiten container laten vallen': de rijen lopen door tot de rand van het scherm,
+           de logo-breedte blijft gebaseerd op de breedte van de container */
+        .logos-marquee-{{ $randomNumber }}.logos-marquee-out .logos-marquee-inner { width: 100vw; margin-left: calc(50% - 50vw); }
+        .logos-marquee-{{ $randomNumber }} .logos-marquee-row + .logos-marquee-row { margin-top: var(--logos-gap); }
+        .logos-marquee-{{ $randomNumber }} .logos-marquee-track {
+            display: flex;
+            width: max-content;
+            will-change: transform;
+            animation: logos-marquee-scroll var(--marquee-duration) linear infinite;
+            animation-direction: var(--marquee-direction);
+        }
+        .logos-marquee-{{ $randomNumber }} .logos-marquee-row:hover .logos-marquee-track { animation-play-state: paused; }
+        .logos-marquee-{{ $randomNumber }} .logos-marquee-group { display: flex; gap: var(--logos-gap); padding-right: var(--logos-gap); }
+        .logos-marquee-{{ $randomNumber }} .logos-marquee-item {
+            flex: 0 0 calc((100cqw - (var(--logos-n) - 1) * var(--logos-gap)) / var(--logos-n));
+        }
+        @media (min-width: 640px) { .logos-marquee-{{ $randomNumber }} { --logos-n: {{ (int) $tabletLayout }} !important; } }
+        @media (min-width: 1280px) { .logos-marquee-{{ $randomNumber }} { --logos-n: {{ (int) $desktopLayout }} !important; } }
+        @media (min-width: 1536px) { .logos-marquee-{{ $randomNumber }} { --logos-n: {{ (int) $desktopXlLayout }} !important; } }
+        @keyframes logos-marquee-scroll {
+            from { transform: translate3d(0, 0, 0); }
+            to { transform: translate3d(calc(-100% / var(--marquee-copies)), 0, 0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .logos-marquee-{{ $randomNumber }} .logos-marquee-track { animation: none; }
+        }
+    </style>
+
+@elseif($block['data']['show_slider'])
     <div class="slider swiper-container block relative">
         <div class="swiper {{ $randomId }} py-8">
             <div class="swiper-wrapper">
@@ -99,6 +169,7 @@
     </div>
 @endif
 
+@if (!$twoRowsMarquee)
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         var logosSwiper = new Swiper(".{{ $randomId }}", {
@@ -295,6 +366,7 @@
         @endif
     });
 </script>
+@endif
 
 @if ($swiperOutContainer)
     <style>

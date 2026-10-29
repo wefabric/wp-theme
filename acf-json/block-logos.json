@@ -1339,6 +1339,35 @@
             "save_options": 0
         },
         {
+            "key": "field_6b1f2c00b0001",
+            "label": "Logo's in 2 rijen (tegengestelde richting)",
+            "name": "two_rows",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Deelt de logo's in tweeën: rij 1 beweegt in de ingestelde richting, rij 2 de andere kant op.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6798c107882a1",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_68c188e6bbed5",
             "label": "Actieve slide in het midden",
             "name": "centered_slides",
@@ -2536,7 +2565,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "wefabric\/logos"
+                "value": "wefabric/logos"
             }
         ]
     ],
@@ -2552,5 +2581,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1775200496
+    "modified": 1793278260
 }
