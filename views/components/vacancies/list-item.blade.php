@@ -98,7 +98,7 @@
 @endphp
 
 <div class="vacature-item group h-full @if ($flyinEffect) vacancy-hidden @endif">
-    <div class="h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
+    <div class="custom-styling h-full flex flex-col items-center {{ $hoverEffectClass }} duration-300 ease-in-out">
         @if ($vacancyThumbnailID)
             <div class="image-container max-h-[360px] overflow-hidden w-full relative rounded-{{ $borderRadius }}">
                 <a href="{{ $vacancyUrl }}" aria-label="Ga naar {{ $vacancyTitle }} pagina"
