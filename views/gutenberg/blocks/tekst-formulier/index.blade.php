@@ -128,7 +128,7 @@
 @endphp
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'tekst-formulier' }}@endif"
-         class="block-tekst-formulier tekst-formulier-{{ $randomNumber }}-custom-padding tekst-formulier-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
+         class="block-tekst-formulier relative tekst-formulier-{{ $randomNumber }}-custom-padding tekst-formulier-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"
          style="background-image: url('{{ wp_get_attachment_image_url($backgroundImageId, 'full') }}'); background-repeat: no-repeat; @if($backgroundImageParallax)	background-attachment: fixed; @endif background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($backgroundImageId) }}">
     @if ($overlayEnabled)
         <div class="overlay absolute inset-0 bg-{{ $overlayColor }} opacity-{{ $overlayOpacity }}"></div>
