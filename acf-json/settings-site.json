@@ -1061,6 +1061,32 @@
                             "bidirectional_target": []
                         },
                         {
+                            "key": "field_nav_phone_establishments_001",
+                            "label": "Vestigingen met telefoonnummer in topbalk",
+                            "name": "nav_phone_establishments",
+                            "aria-label": "",
+                            "type": "post_object",
+                            "instructions": "Optioneel. Toont per gekozen vestiging 'Plaats: telefoonnummer' in de topbalk (i.p.v. het enkele telefoonnummer). Leeg = standaard gedrag.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "establishments"
+                            ],
+                            "post_status": "",
+                            "taxonomy": "",
+                            "return_format": "id",
+                            "multiple": 1,
+                            "allow_null": 1,
+                            "bidirectional": 0,
+                            "ui": 1,
+                            "bidirectional_target": []
+                        },
+                        {
                             "key": "field_655730670ebc4",
                             "label": "Elementen",
                             "name": "secondary_menu_show_elements",

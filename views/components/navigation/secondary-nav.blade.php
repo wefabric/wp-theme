@@ -20,6 +20,14 @@
         $footer_establishments = [new \Wefabric\WPEstablishments\Establishment(get_post($navEstablishmentId))];
     }
 
+    // Optioneel: meerdere vestigingen met plaatsnaam + telefoonnummer in de topbalk
+    $navPhoneEstablishments = [];
+    foreach ((array) ($options['nav_phone_establishments'] ?? []) as $navPhoneId) {
+        if (!empty($navPhoneId) && get_post_status($navPhoneId) === 'publish') {
+            $navPhoneEstablishments[] = new \Wefabric\WPEstablishments\Establishment(get_post($navPhoneId));
+        }
+    }
+
     // Kleur-waarden voor de topbalk
     $secBgColor              = $options['secondary_menu_background_color'] ?? '';
     $secTextColor            = $options['secondary_menu_text_color'] ?? '';
@@ -109,8 +117,19 @@
                             </a>
                         @endif
 
-                        {{-- Phone number --}}
-                        @if (in_array('phone', $options['secondary_menu_show_elements']))
+                        {{-- Phone numbers per establishment (optional, opt-in via nav_phone_establishments) --}}
+                        @if (in_array('phone', $options['secondary_menu_show_elements']) && !empty($navPhoneEstablishments))
+                            @foreach($navPhoneEstablishments as $navPhoneEstablishment)
+                                @php $navPhone = $navPhoneEstablishment->getContactPhone(); @endphp
+                                @if ($navPhone)
+                                    <a class="phone-link group flex items-center gap-2" href="{{ $navPhone->uri() }}"
+                                       title="Telefoonnummer {{ $navPhoneEstablishment->city }}">
+                                        <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone"></i>
+                                        <span class="align-middle">@if ($navPhoneEstablishment->city){{ $navPhoneEstablishment->city }}: @endif{{ get_bloginfo("language") === 'nl-NL' ? $navPhone->national() : $navPhone->international() }}</span>
+                                    </a>
+                                @endif
+                            @endforeach
+                        @elseif (in_array('phone', $options['secondary_menu_show_elements']))
                             <a class="phone-link group flex items-center gap-2" href="{{ $phone->uri() }}"
                                title="Telefoonnummer">
                                 <i class="p-1.5 flex justify-center items-center bg-primary-light group-hover:bg-primary-dark rounded-lg fa-solid fa-phone"></i>
