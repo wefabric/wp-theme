@@ -1473,6 +1473,39 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_68d5cc0000012",
+            "label": "CTA afbeelding (rechts in tegel)",
+            "name": "cta_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Vrijstaande afbeelding (bij voorkeur PNG met transparante achtergrond) die rechts onderin de CTA-tegel wordt getoond.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68d5cc0000002",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
             "key": "field_68d5cc000000b",
             "label": "Breedte CTA tegel",
             "name": "cta_column_span",
@@ -2986,7 +3019,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "wefabric\/vacatures"
+                "value": "wefabric/vacatures"
             }
         ]
     ],

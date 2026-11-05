@@ -21,12 +21,18 @@
 
     $ctaBackgroundColor = $block['data']['cta_background_color'] ?? '';
     $ctaBackgroundImageId = $block['data']['cta_background_image'] ?? '';
+    $ctaImageId = $block['data']['cta_image'] ?? '';
     $ctaColumnSpan = $block['data']['cta_column_span'] ?? '1';
 @endphp
 
-<div class="vacature-item vacature-cta-item group h-full {{ $ctaColumnSpan == '2' ? 'sm:col-span-2' : '' }} @if ($flyinEffect) vacancy-hidden @endif">
+<div class="vacature-item vacature-cta-item group h-full @if($ctaImageId) has-cta-image @endif {{ $ctaColumnSpan == '2' ? 'sm:col-span-2' : '' }} @if ($flyinEffect) vacancy-hidden @endif">
     <div class="custom-styling h-full flex flex-col justify-center p-8 relative overflow-hidden bg-{{ $ctaBackgroundColor }}"
          style="@if($ctaBackgroundImageId) background-image: url('{{ wp_get_attachment_image_url($ctaBackgroundImageId, 'full') }}'); background-repeat: no-repeat; background-size: cover; {{ \Theme\Helpers\FocalPoint::getBackgroundPosition($ctaBackgroundImageId) }} @endif">
+        @if ($ctaImageId)
+            <div class="vacature-cta-image">
+                {!! wp_get_attachment_image($ctaImageId, 'large', false, ['class' => 'object-contain object-bottom', 'loading' => 'lazy']) !!}
+            </div>
+        @endif
         <div class="vacature-cta-content relative z-10">
             @if ($ctaSubtitle)
                 <span class="vacature-cta-subtitle block mb-2 text-{{ $ctaSubtitleColor }}">{!! $ctaSubtitle !!}</span>
