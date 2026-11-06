@@ -258,43 +258,11 @@ $desktopMarginLeft = $block['data']['margin_desktop_margin_left'] ?? '';
 // Animaties
 $flyinEffect = $block['data']['flyin_effect'] ?? false;
 
-// Aggregate rating
-$testimonialRatings = [];
-if (!empty($testimonials)) {
-    foreach ($testimonials as $testimonialId) {
-        $rating = get_field('star_rating', $testimonialId);
-        if (!empty($rating)) {
-            $testimonialRatings[] = (float) $rating;
-        }
-    }
-}
-
-if (!empty($testimonialRatings)) {
-    // Bij meerdere testimonial-blokken op één pagina zou elk blok een eigen
-    // Organization-node met een andere aggregateRating toevoegen, wat
-    // dezelfde 'dubbel veld'-fout oplevert als bij FAQPage. Alleen de eerste
-    // (grootste beschikbare) set aan reviews wordt daarom meegenomen.
-    add_filter('rank_math/json_ld', function ($data) use ($testimonialRatings) {
-        foreach ((array) $data as $node) {
-            if (is_array($node) && ($node['@type'] ?? '') === 'Organization' && isset($node['aggregateRating'])) {
-                return $data;
-            }
-        }
-
-        $data['testimonial_aggregate'] = [
-            '@type' => 'Organization',
-            'name' => get_bloginfo('name'),
-            'aggregateRating' => [
-                '@type' => 'AggregateRating',
-                'ratingValue' => round(array_sum($testimonialRatings) / count($testimonialRatings), 1),
-                'reviewCount' => count($testimonialRatings),
-                'bestRating' => '5',
-            ],
-        ];
-
-        return $data;
-    }, 99, 1);
-}
+// Geen AggregateRating-schema meer op de eigen Organization: Google beschouwt
+// reviews die een bedrijf over zichzelf op de eigen site toont als
+// 'self-serving' en toont er geen sterren voor; het gaf alleen meldingen in
+// Search Console. Sterren in de zoekresultaten lopen via een Google
+// Bedrijfsprofiel of een koppeling met een extern reviewplatform.
 @endphp
 
 <section id="@if($customBlockId){{ $customBlockId }}@else{{ 'testimonial' }}@endif" class="block-testimonial relative testimonial-{{ $randomNumber }}-custom-padding testimonial-{{ $randomNumber }}-custom-margin bg-{{ $backgroundColor }} {{ $customBlockClasses }} {{ $hideBlock ? 'hidden' : '' }}"

@@ -9,92 +9,11 @@
     $vacancySummary = $fields['excerpt'] ?? '';
     $vacancyCategories = get_the_terms($vacancy, 'vacature_categories');
 
-    $workingHours = '';
-    $employmentTypeSchema = '';
-    if (!empty($fields['working_hours'])) {
-        $workingHours = $fields['working_hours'];
-        $workingHoursLower = strtolower($workingHours);
-
-        if (str_contains($workingHoursLower, 'parttime') && str_contains($workingHoursLower, 'fulltime')) {
-            $employmentTypeSchema = ['FULL_TIME', 'PART_TIME'];
-        } elseif (str_contains($workingHoursLower, 'parttime')) {
-            $employmentTypeSchema = 'PART_TIME';
-        } elseif (str_contains($workingHoursLower, 'fulltime')) {
-            $employmentTypeSchema = 'FULL_TIME';
-        }
-    }
-
+    $workingHours = $fields['working_hours'] ?? '';
     $baseSalary = $fields['salary'] ?? '';
 
-    $vacancySchema = [
-        '@type' => 'JobPosting',
-        'title' => strip_tags($vacancyTitle),
-        'datePosted' => get_the_date('Y-m-d', $vacancy),
-        'description' => strip_tags(!empty($vacancySummary) ? $vacancySummary : $vacancyTitle),
-        'hiringOrganization' => [
-            '@type' => 'Organization',
-            'name' => get_bloginfo('name'),
-            'logo' => str_replace('//content', '/content', get_site_icon_url()),
-        ],
-    ];
-
-    if ($employmentTypeSchema) {
-        $vacancySchema['employmentType'] = $employmentTypeSchema;
-    }
-
-    // Google keurt JobPosting af zonder jobLocation, dus altijd toevoegen —
-    // addressLocality alleen als het echt is ingevuld, geen verzonnen waarde.
-    $vacancySchema['jobLocation'] = [
-        '@type' => 'Place',
-        'address' => array_filter([
-            '@type' => 'PostalAddress',
-            'addressCountry' => 'NL',
-            'addressLocality' => $fields['location'] ?? '',
-        ]),
-    ];
-
-    if ($vacancyThumbnailID) {
-        $vacancySchema['image'] = str_replace('//content', '/content', wp_get_attachment_image_url($vacancyThumbnailID, 'job-thumbnail'));
-    }
-
-    if (!empty($baseSalary)) {
-        $vacancySchema['baseSalary'] = [
-            '@type' => 'MonetaryAmount',
-            'currency' => 'EUR',
-            'value' => [
-                '@type' => 'QuantitativeValue',
-                'unitText' => 'MONTH'
-            ]
-        ];
-
-        if (str_contains($baseSalary, '-')) {
-            $salaryParts = explode('-', $baseSalary);
-            $minValue = (int) preg_replace('/[^0-9]/', '', $salaryParts[0]);
-            $maxValue = (int) preg_replace('/[^0-9]/', '', $salaryParts[1]);
-
-            if ($minValue > 0 && $maxValue > 0) {
-                $vacancySchema['baseSalary']['value']['minValue'] = $minValue;
-                $vacancySchema['baseSalary']['value']['maxValue'] = $maxValue;
-                $vacancySchema['baseSalary']['value']['value'] = $minValue; // Fallback to minValue
-            } else {
-                $vacancySchema['baseSalary']['value']['value'] = $baseSalary;
-            }
-        } else {
-            $salaryValue = (int) preg_replace('/[^0-9]/', '', $baseSalary);
-            if ($salaryValue > 0) {
-                $vacancySchema['baseSalary']['value']['value'] = $salaryValue;
-            } else {
-                $vacancySchema['baseSalary']['value']['value'] = $baseSalary;
-            }
-        }
-    }
-
-    // Google keurt JobPosting-markup af op overzichtspagina's met meerdere
-    // vacatures; alleen toevoegen op de eigen vacaturepagina zelf.
-    if (is_singular('vacatures') && get_the_ID() === $vacancy) {
-        $vacancySchema['directApply'] = true;
-        \Wefabric\WPSupport\Schema\JsonLd::addSchema('vacancy_' . $vacancy, $vacancySchema);
-    }
+    // JobPosting-schema (alleen op de eigen vacaturepagina, zie Theme\Helpers\VacancySchema)
+    \Theme\Helpers\VacancySchema::register(is_object($vacancy) ? (int) $vacancy->ID : (int) $vacancy);
 @endphp
 
 <div class="vacature-item group h-full @if ($flyinEffect) vacancy-hidden @endif">

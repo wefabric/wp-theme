@@ -13,9 +13,11 @@
     // levert misleidende markup op — dus alleen toevoegen als het veld er is.
     $eventFields = get_fields($event);
     $eventStartDate = $eventFields['event_date'] ?? $eventFields['start_date'] ?? $eventFields['date'] ?? '';
+    $eventEndDate = $eventFields['end_date'] ?? $eventFields['einddatum'] ?? '';
     $eventLocation = $eventFields['location'] ?? $eventFields['locatie'] ?? '';
 
-    if ($eventStartDate && is_singular('evenementen') && get_the_ID() === $event) {
+    // Google vereist zowel startDate als location voor Event-schema.
+    if ($eventStartDate && $eventLocation && is_singular('evenementen') && get_the_ID() === $event) {
         $eventSchema = [
             '@type' => 'Event',
             'name' => strip_tags($eventTitle),
@@ -30,16 +32,19 @@
             ],
         ];
 
-        if ($eventLocation) {
-            $eventSchema['location'] = [
-                '@type' => 'Place',
-                'name' => $eventLocation,
-                'address' => [
-                    '@type' => 'PostalAddress',
-                    'addressLocality' => $eventLocation,
-                ],
-            ];
+        if ($eventEndDate && strtotime($eventEndDate)) {
+            $eventSchema['endDate'] = date('c', strtotime($eventEndDate));
         }
+
+        $eventSchema['location'] = [
+            '@type' => 'Place',
+            'name' => $eventLocation,
+            'address' => [
+                '@type' => 'PostalAddress',
+                'addressLocality' => $eventLocation,
+                'addressCountry' => 'NL',
+            ],
+        ];
 
         if ($eventThumbnailId) {
             $eventSchema['image'] = str_replace('//content', '/content', wp_get_attachment_image_url($eventThumbnailId, 'full'));

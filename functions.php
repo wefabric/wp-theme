@@ -1060,53 +1060,21 @@ add_action('wp', function () {
         return;
     }
 
-    $vacancy = get_the_ID();
+    \Theme\Helpers\VacancySchema::register((int) get_the_ID());
+});
 
-    if (array_key_exists('vacancy_' . $vacancy, \Wefabric\WPSupport\Schema\JsonLd::getSchemas())) {
+
+/**
+ * ProfilePage-fallback: de eigen medewerkerspagina bevat vaak geen
+ * werknemersblok met die persoon zelf, waardoor er geen ProfilePage-schema
+ * werd uitgestuurd. Deze fallback voegt het altijd toe — maar alleen als de
+ * pagina indexeerbaar is (zie Theme\Helpers\EmployeeSchema). Sites zonder
+ * (of met noindex) medewerkerspagina's merken hier niets van.
+ */
+add_action('wp', function () {
+    if (!is_singular('werknemers')) {
         return;
     }
 
-    $fields = get_fields($vacancy);
-    $vacancyTitle = get_the_title($vacancy);
-    $vacancySummary = $fields['excerpt'] ?? '';
-
-    $vacancySchema = [
-        '@type' => 'JobPosting',
-        'title' => strip_tags($vacancyTitle),
-        'datePosted' => get_the_date('Y-m-d', $vacancy),
-        'description' => strip_tags($vacancySummary ?: $vacancyTitle),
-        'hiringOrganization' => [
-            '@type' => 'Organization',
-            'name' => get_bloginfo('name'),
-            'logo' => str_replace('//content', '/content', get_site_icon_url()),
-        ],
-        'jobLocation' => [
-            '@type' => 'Place',
-            'address' => array_filter([
-                '@type' => 'PostalAddress',
-                'addressCountry' => 'NL',
-                'addressLocality' => $fields['location'] ?? '',
-            ]),
-        ],
-        'directApply' => true,
-    ];
-
-    $vacancyThumbnailID = get_post_thumbnail_id($vacancy);
-    if ($vacancyThumbnailID) {
-        $vacancySchema['image'] = str_replace('//content', '/content', wp_get_attachment_image_url($vacancyThumbnailID, 'job-thumbnail'));
-    }
-
-    if (!empty($fields['working_hours'])) {
-        $workingHoursLower = strtolower($fields['working_hours']);
-        if (str_contains($workingHoursLower, 'parttime') && str_contains($workingHoursLower, 'fulltime')) {
-            $vacancySchema['employmentType'] = ['FULL_TIME', 'PART_TIME'];
-        } elseif (str_contains($workingHoursLower, 'parttime')) {
-            $vacancySchema['employmentType'] = 'PART_TIME';
-        } elseif (str_contains($workingHoursLower, 'fulltime')) {
-            $vacancySchema['employmentType'] = 'FULL_TIME';
-        }
-    }
-
-    \Wefabric\WPSupport\Schema\JsonLd::addSchema('vacancy_' . $vacancy, $vacancySchema);
+    \Theme\Helpers\EmployeeSchema::registerProfilePage((int) get_the_ID());
 });
-

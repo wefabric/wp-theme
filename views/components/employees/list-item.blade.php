@@ -32,49 +32,10 @@
         $linkUrl = null;
     }
 
-    $personSchema = [
-        '@type' => 'Person',
-        'name' => strip_tags($fullName),
-    ];
-    if ($function) {
-        $personSchema['jobTitle'] = strip_tags($function);
-    }
-    if ($overviewText) {
-        $personSchema['description'] = strip_tags($overviewText);
-    }
-    if ($imageId) {
-        $personSchema['image'] = wp_get_attachment_image_url($imageId, 'full');
-    }
-    if ($mail) {
-        $personSchema['email'] = $mail;
-    }
-    if ($phoneNumber) {
-        $personSchema['telephone'] = $phoneNumber;
-    }
-    if ($linkUrl) {
-        $personSchema['url'] = $linkUrl;
-    }
-    if (!empty($socials)) {
-        $personSchema['sameAs'] = array_column($socials, 'url');
-    }
+    $employeeId = is_numeric($employee) ? (int) $employee : ($employee->ID ?? 0);
 
-    $personSchema['worksFor'] = [
-        '@type' => 'Organization',
-        'name' => get_bloginfo('name')
-    ];
-
-    $employeeId = is_numeric($employee) ? (int)$employee : ($employee->ID ?? 0);
-
-    if (is_singular('werknemers') && get_the_ID() === $employeeId) {
-        $employeeSchema = [
-            '@type' => 'ProfilePage',
-            'mainEntity' => $personSchema
-        ];
-    } else {
-        $employeeSchema = $personSchema;
-    }
-
-    \Wefabric\WPSupport\Schema\JsonLd::addSchema('employee_' . $employeeId, $employeeSchema);
+    // Person-schema (of ProfilePage op de eigen medewerkerspagina), zie Theme\Helpers\EmployeeSchema
+    \Theme\Helpers\EmployeeSchema::register($employeeId, $linkUrl);
 
 @endphp
 
