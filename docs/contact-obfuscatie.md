@@ -12,6 +12,7 @@ E-mailadressen, telefoonnummers en WhatsApp-, Signal- en Telegram-links worden v
 | `[at]`/`[punt]`-vervanging | Beperkt | Gangbare scrapers herkennen dit patroon. Alleen geschikt als fallback zonder JS. |
 | Kale base64 in data-attributen | Beperkt | Base64 van een adres is een herkenbaar patroon en is met één regel te decoderen. |
 | Versleuteling met sleutel + JS-decoder | Ja | Scrapers zonder JavaScript zien alleen willekeurige bytes. Met een willekeurige sleutel per waarde is ook geen vaste payload te herkennen. |
+| Cloudflare Email Obfuscation | Ja, maar alleen e-mail | Werkt alleen achter Cloudflare, doet niets met telefoon en WhatsApp, en laadt een extra script (`email-decode.min.js`) dat de laadtijd raakt. |
 | Scrapers met een volledige browser | Nee, niets helpt | Die voeren de JS uit en zien wat de bezoeker ziet. Deze scrapers zijn duur en zeldzaam voor e-mail-harvesting. |
 
 ### Vergelijking van de aanpakken
@@ -25,11 +26,17 @@ E-mailadressen, telefoonnummers en WhatsApp-, Signal- en Telegram-links worden v
 
 **Gekozen:** server-side versleutelen met XOR en een willekeurige sleutel per waarde, base64 als transport, decoderen met een klein inline script. Zonder JS ziet de bezoeker een leesbare fallback.
 
+De versleuteling draait als output buffer over de hele pagina, niet als filter op `the_content` en widgets. Contactgegevens staan ook in ACF-velden, blokken, de footer en menu's. Een filter op `the_content` mist die.
+
+Er komt geen aparte plugin. De oplossing zit in `wefabric/wp-theme`, dus elke site op de parent theme krijgt het automatisch na een theme-update. Per site uitzetten kan met een filter (zie onder). Een plugin is pas nodig als er WordPress-sites zonder wp-theme bij komen. `ContactObfuscator` en de service provider gebruiken alleen WordPress-functies en kunnen dan zonder aanpassingen naar `wp-support`.
+
 ### SEO en structured data
 
 - Structured data (JSON-LD in `<head>` en in `<script>`-tags) wordt **bewust niet** versleuteld. Google moet hetzelfde telefoonnummer en adres zien als in het Google Business Profile, en JSON-LD wordt niet door onze decoder verwerkt.
-- Wel zijn het e-mailadres en telefoonnummer van **medewerkers** (schema `Person`) uit de structured data gehaald. Die leveren geen rich result op en zouden de obfuscatie volledig omzeilen. De bedrijfsgegevens (`Organization`, vestigingen) blijven staan.
-- Meta-tags in `<head>` (description, Open Graph) worden niet aangepast, want daar draait geen JS. Zet daarom geen contactgegevens in de SEO-beschrijving van pagina's.
+- **Afwijking van het acceptatiecriterium:** het telefoonnummer van het bedrijf blijft daardoor leesbaar in de ruwe HTML, in de `Organization`/`ContactPoint`-schema van Rank Math en de `LocalBusiness`-schema van het contactblok. Dat is een bewuste keuze voor SEO. Verder hoort er niets leesbaar in de HTML te staan.
+- E-mailadressen staan **niet** in de structured data. Ze leveren geen rich result op en zouden de obfuscatie omzeilen. Dat geldt voor de vestigingen (`LocalBusiness` in het contactblok) en voor medewerkers (`Person`: geen e-mail, telefoon of WhatsApp-link).
+- Rank Math kan zelf ook een e-mailadres in de `Organization`-schema zetten (Titels & Meta > Lokale SEO). Laat dat veld leeg.
+- Meta-tags in `<head>` (description, Open Graph, Twitter) worden niet aangepast, want daar draait geen JS. Zet daarom geen contactgegevens in de SEO-beschrijving van pagina's. Rank Math gebruikt de beschrijving ook voor `og:description` en `twitter:description`, dus één leesbaar nummer staat er dan drie keer in.
 
 ### Gedrag zonder JavaScript
 
@@ -42,7 +49,8 @@ E-mailadressen, telefoonnummers en WhatsApp-, Signal- en Telegram-links worden v
 
 - Adressen die al als HTML-entities in de bron staan, of telefoonnummers met `&nbsp;` ertussen, worden niet herkend.
 - Telefoonnummers worden herkend als Nederlands formaat (`0` + 9 cijfers) of internationaal met een landcode van 2 cijfers (`+31`, `0031`, `+32`, `+49`). Andere formaten niet.
-- Inhoud van `<script>`, `<style>`, `<textarea>` en HTML-comments wordt overgeslagen.
+- Inhoud van `<script>`, `<style>`, `<textarea>`, `<option>` en HTML-comments wordt overgeslagen.
+- Alleen `href`, `aria-label`, `title` en `alt` worden versleuteld. Contactgegevens in andere attributen, zoals `<input value="…">`, `placeholder` of `data-*`, blijven leesbaar.
 - Bij lange pagina's kan de bezoeker heel kort de fallback zien voordat het script draait.
 
 ## Hoe het werkt
@@ -57,7 +65,6 @@ E-mailadressen, telefoonnummers en WhatsApp-, Signal- en Telegram-links worden v
    - vangt fouten per element af, zodat één kapotte waarde de rest niet blokkeert;
    - ondersteunt UTF-8 (`jöran@…`);
    - zorgt dat screenreaders het echte adres of nummer voorlezen. Een label als "E-mailadres" wordt aangevuld tot "E-mailadres: info@rondaan.nl".
-   - opent WhatsApp-, Signal- en Telegram-links in een nieuw tabblad.
 
 ## Implementatie in bestaande projecten
 
@@ -66,11 +73,12 @@ Projecten op `wefabric/wp-theme` krijgen het automatisch na het updaten van de t
 Controleer na de update:
 
 ```bash
-# Moet niets opleveren (JSON-LD en <head> uitgesloten)
+# Doorzoekt de volledige HTML, inclusief <head> en JSON-LD
 curl -s https://example.nl/contact/ \
-  | perl -0pe 's#<head\b.*?</head>##s; s#<script\b.*?</script>##gs' \
-  | grep -oE '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}|(mailto|tel):[^"]+|wa\.me/[^"]+|\b0[1-9]([ -]?[0-9]){8}\b'
+  | grep -oE '.{40}([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}|(mailto|tel):[^"]+|wa\.me/[^"]+|\b0[1-9]([ -]?[0-9]){8}\b|\+31[ 0-9]{9,13})'
 ```
+
+Het enige toegestane resultaat is het telefoonnummer van het bedrijf in de JSON-LD (`"telephone":…`). Komt er iets anders uit, zoals een e-mailadres of een nummer in een `content="…"` van een meta-tag, pas dan de SEO-beschrijving of de Rank Math-instellingen aan.
 
 Leeg de WP Rocket-cache na de update, anders wordt de oude HTML nog geserveerd.
 
@@ -84,7 +92,14 @@ add_filter('wefabric/contact_obfuscation/enabled', fn () => ! is_page('contact')
 
 ### Handmatig gebruiken
 
-In templates is dit niet nodig, de output buffer pakt alles op. Wil je de functie gebruiken buiten de buffer (bijvoorbeeld in een e-mail-preview of REST-response die als HTML wordt getoond):
+In templates is dit niet nodig, de output buffer pakt alles op. Wil je contactgegevens toch expliciet beschermd uitleveren, gebruik dan de Blade-componenten:
+
+```blade
+<x-protected-email email="info@rondaan.nl" />
+<x-protected-phone phone="0518 462 070" label="Bel ons" class="btn" />
+```
+
+Of de helper:
 
 ```blade
 {!! \Theme\Helpers\ContactObfuscator::email('info@rondaan.nl') !!}
@@ -92,8 +107,8 @@ In templates is dit niet nodig, de output buffer pakt alles op. Wil je de functi
 {!! \Theme\Helpers\ContactObfuscator::whatsapp('+31 6 12345678', 'Hallo!', 'Stuur een WhatsApp') !!}
 ```
 
-Het decoder-script staat alleen op pagina's die `wp_footer` aanroepen.
+Het decoder-script staat alleen op pagina's die `wp_footer` aanroepen. Gebruik de componenten dus niet in HTML zonder `wp_footer`, zoals een REST-response. Staat de obfuscatie uit via het filter, dan geven de componenten een gewone link.
 
 ### Laravel-projecten
 
-De `ContactObfuscator`-klasse gebruikt alleen `esc_attr` en `esc_html` uit WordPress. Voor Laravel kun je die vervangen door `e()`, `protectHtml()` aanroepen in een middleware op HTML-responses, en het script in de layout opnemen. Een Blade-component als `<x-protected-email>` is dan een dunne wrapper rond `ContactObfuscator::email()`.
+Buiten scope van deze oplevering: er is nog geen Laravel-package. De aanpak is wel direct over te zetten. De `ContactObfuscator`-klasse gebruikt WordPress alleen voor escapen (`esc_attr`, `esc_html`, `esc_url`) en voor de aan/uit-check in `isEnabled()`. Voor Laravel vervang je die door `e()` en een config-waarde, roep je `protectHtml()` aan in een middleware op HTML-responses, en neem je het script op in de layout. De Blade-componenten `<x-protected-email>` en `<x-protected-phone>` uit `views/components` kunnen zo mee.

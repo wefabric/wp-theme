@@ -165,9 +165,8 @@
                                     if ($phone) {
                                         $establishmentSchema['telephone'] = $phone->international();
                                     }
-                                    if ($email) {
-                                        $establishmentSchema['email'] = $email;
-                                    }
+                                    // Geen e-mail in de structured data: levert geen rich result op en zou de
+                                    // contact-obfuscatie omzeilen. Telefoon blijft, zodat het overeenkomt met het Google Business Profile.
 
                                     $openingHours = $establishment->openingHours();
                                     if ($openingHours->isNotEmpty()) {

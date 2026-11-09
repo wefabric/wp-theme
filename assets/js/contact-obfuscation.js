@@ -35,7 +35,7 @@
 
     const contactValue = (href) => decodeURIComponent(href.replace(/^(mailto|tel|sms):/i, '').split('?')[0]);
 
-    // Phone numbers are compared on their last nine digits, so "0518 462 070" matches "+31518462070".
+    // Phone numbers are compared on their last nine digits, so a local number also matches its +31 form.
     const mentionsValue = (text, value) => {
         if (value.includes('@')) {
             return text.toLowerCase().includes(value.toLowerCase());
@@ -47,13 +47,13 @@
     const revealLink = (link) => {
         const href = decode(link.dataset.wfoHref);
 
+        // Editors can add data-* attributes, so never let a payload smuggle in a javascript: URL.
+        if (! /^(mailto|tel|sms|whatsapp|https?):/i.test(href)) {
+            throw new Error('Unsupported contact link');
+        }
+
         link.setAttribute('href', href);
         link.removeAttribute('data-wfo-href');
-
-        if (/^https?:\/\//i.test(href) && ! link.hasAttribute('target')) {
-            link.setAttribute('target', '_blank');
-            link.setAttribute('rel', 'noopener noreferrer');
-        }
 
         if (! /^(mailto|tel|sms):/i.test(href)) {
             return;

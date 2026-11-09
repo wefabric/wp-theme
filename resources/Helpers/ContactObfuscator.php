@@ -14,24 +14,46 @@ class ContactObfuscator
 
     /*
      * Regions that are never touched: the head (meta tags, Rank Math JSON-LD), scripts
-     * (JSON-LD in the body, inline config), styles and form values. Structured data
-     * deliberately stays readable so it matches the Google Business Profile.
+     * (JSON-LD in the body, inline config), styles and form values. Options are skipped
+     * because browsers drop the span inside them, so the fallback would never be revealed.
+     * Structured data deliberately stays readable so it matches the Google Business Profile.
+     *
+     * Tags skip quoted attribute values, so x-show="count > 0" does not end the tag early.
      */
-    private static string $documentPattern = '/(<head\b.*?<\/head>|<script\b.*?<\/script>|<style\b.*?<\/style>|<textarea\b.*?<\/textarea>|<!--.*?-->|<[^>]*>)/is';
+    private static string $skippedRegionPattern = '<head\b.*?<\/head>|<script\b.*?<\/script>|<style\b.*?<\/style>|<textarea\b.*?<\/textarea>|<option\b.*?<\/option>|<!--.*?-->';
 
-    public static function email(string $email, ?string $label = null): string
+    private static string $tagPattern = '<[\/!]?[a-zA-Z](?:[^>"\']|"[^"]*"|\'[^\']*\')*>';
+
+    public static function isEnabled(): bool
     {
-        return self::link("mailto:{$email}", $label ?? $email);
+        if (is_admin()) {
+            return false;
+        }
+
+        if (is_feed()) {
+            return false;
+        }
+
+        if (is_customize_preview()) {
+            return false;
+        }
+
+        return (bool) apply_filters('wefabric/contact_obfuscation/enabled', true);
     }
 
-    public static function phone(string $phone, ?string $label = null): string
+    public static function email(string $email, ?string $label = null, string $attributes = ''): string
+    {
+        return self::link("mailto:{$email}", $label ?? $email, $attributes);
+    }
+
+    public static function phone(string $phone, ?string $label = null, string $attributes = ''): string
     {
         $number = preg_replace('/[^\d+]/', '', $phone);
 
-        return self::link("tel:{$number}", $label ?? $phone);
+        return self::link("tel:{$number}", $label ?? $phone, $attributes);
     }
 
-    public static function whatsapp(string $number, string $message = '', ?string $label = null): string
+    public static function whatsapp(string $number, string $message = '', ?string $label = null, string $attributes = ''): string
     {
         $number = preg_replace('/\D/', '', $number);
 
@@ -41,29 +63,47 @@ class ContactObfuscator
             $url .= '?text=' . rawurlencode($message);
         }
 
-        return self::link($url, $label ?? "+{$number}");
+        return self::link($url, $label ?? "+{$number}", $attributes);
     }
 
-    public static function link(string $url, string $label): string
+    /*
+     * Without the decoder (obfuscation disabled) an encoded link would never become
+     * readable, so it is rendered as a plain link instead.
+     */
+    public static function link(string $url, string $label, string $attributes = ''): string
     {
+        $attributes = trim($attributes) === '' ? '' : ' ' . trim($attributes);
+
+        if (! self::isEnabled()) {
+            return sprintf('<a href="%s"%s>%s</a>', esc_url($url, ['mailto', 'tel', 'sms', 'whatsapp', 'http', 'https']), $attributes, esc_html($label));
+        }
+
         return sprintf(
-            '<a data-wfo-href="%s">%s</a>',
+            '<a data-wfo-href="%s"%s>%s</a>',
             esc_attr(self::encode($url)),
+            $attributes,
             self::protectText(esc_html($label)),
         );
     }
 
     public static function protectHtml(string $html): string
     {
-        $parts = preg_split(self::$documentPattern, $html, -1, PREG_SPLIT_DELIM_CAPTURE);
+        $documentPattern = '/(' . self::$skippedRegionPattern . '|' . self::$tagPattern . ')/is';
+
+        $parts = preg_split($documentPattern, $html, -1, PREG_SPLIT_DELIM_CAPTURE);
 
         if ($parts === false) {
             return $html;
         }
 
-        $protectedParts = array_map(function (string $part): string {
-            if (! str_starts_with($part, '<')) {
+        // With PREG_SPLIT_DELIM_CAPTURE, odd indexes hold the tags and skipped regions.
+        $protectedParts = array_map(function (string $part, int $index): string {
+            if ($index % 2 === 0) {
                 return self::protectText($part);
+            }
+
+            if (preg_match('/^(?:' . self::$skippedRegionPattern . ')/is', $part)) {
+                return $part;
             }
 
             if (preg_match('/^<a\s/i', $part)) {
@@ -71,7 +111,7 @@ class ContactObfuscator
             }
 
             return self::protectAttributes($part);
-        }, $parts);
+        }, $parts, array_keys($parts));
 
         return implode('', $protectedParts);
     }
@@ -96,7 +136,7 @@ class ContactObfuscator
             function (array $matches): string {
                 $href = html_entity_decode($matches[2], ENT_QUOTES | ENT_HTML5);
 
-                if (! preg_match(self::$sensitiveHrefPattern, trim($href))) {
+                if (! self::isSensitiveUrl($href)) {
                     return $matches[0];
                 }
 
@@ -104,6 +144,11 @@ class ContactObfuscator
             },
             $tag,
         ) ?? $tag;
+    }
+
+    public static function isSensitiveUrl(string $url): bool
+    {
+        return (bool) preg_match(self::$sensitiveHrefPattern, trim($url));
     }
 
     /*

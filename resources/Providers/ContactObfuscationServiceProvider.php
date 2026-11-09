@@ -16,7 +16,7 @@ class ContactObfuscationServiceProvider extends ServiceProvider
 
     public function startOutputBuffer(): void
     {
-        if (! $this->shouldObfuscate()) {
+        if (! ContactObfuscator::isEnabled()) {
             return;
         }
 
@@ -35,30 +35,13 @@ class ContactObfuscationServiceProvider extends ServiceProvider
      */
     public function printDecoder(): void
     {
-        if (! $this->shouldObfuscate()) {
+        if (! ContactObfuscator::isEnabled()) {
             return;
         }
 
         $decoder = file_get_contents(get_template_directory() . '/assets/js/contact-obfuscation.js');
 
         echo "<script nowprocket data-no-optimize=\"1\">{$decoder}</script>";
-    }
-
-    protected function shouldObfuscate(): bool
-    {
-        if (is_admin()) {
-            return false;
-        }
-
-        if (is_feed()) {
-            return false;
-        }
-
-        if (is_customize_preview()) {
-            return false;
-        }
-
-        return (bool) apply_filters('wefabric/contact_obfuscation/enabled', true);
     }
 
     protected function isHtmlResponse(): bool
