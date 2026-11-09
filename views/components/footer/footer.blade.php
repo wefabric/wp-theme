@@ -17,6 +17,9 @@
     $visibleFooterElements = $option['footer_elements'] ?? [];
     $privacyPage = $option['pages']['privacy_page'] ?? '';
     $termsPage = $option['pages']['terms_page'] ?? '';
+    // Default aan: voorwaarden/privacy links openen in nieuw tabblad tenzij expliciet uitgeschakeld
+    $footerPagesNewTab = !isset($option['pages']['footer_pages_new_tab']) || $option['pages']['footer_pages_new_tab'];
+    $footerPagesTarget = $footerPagesNewTab ? ' target="_blank" rel="noopener"' : '';
 
     $sectionTypes = [
         1 => $option['footer_section_1_type'] ?? 'menu_1',
@@ -242,13 +245,13 @@
                 <div class="footer-pages text-center md:text-left text-[14px]">
                     @if($termsPage)
                         <a class="terms-text underline"
-                           href="{{ get_permalink($termsPage) }}">{{ get_the_title($termsPage) }}</a> @if($termsPage && $privacyPage)
+                           href="{{ get_permalink($termsPage) }}"{!! $footerPagesTarget !!}>{{ get_the_title($termsPage) }}</a> @if($termsPage && $privacyPage)
                             |
                         @endif
                     @endif
                     @if($privacyPage)
                         <a class="privacy-text underline"
-                           href="{{ get_permalink($privacyPage) }}">{{ get_the_title($privacyPage) }}</a>
+                           href="{{ get_permalink($privacyPage) }}"{!! $footerPagesTarget !!}>{{ get_the_title($privacyPage) }}</a>
                     @endif
                 </div>
 
@@ -261,7 +264,9 @@
                         </span>
                     @include('components.link.opening', [
                         'href' => 'https://wefabric.nl/',
-                        'alt' => 'Wefabric.nl'
+                        'alt' => 'Wefabric.nl',
+                        'target' => '_blank',
+                        'rel' => 'noopener'
                     ])
                     @php
                         $theme = app('wp.theme');

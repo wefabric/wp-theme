@@ -297,6 +297,26 @@
                     "bidirectional_target": []
                 },
                 {
+                    "key": "field_6a2f1c0e7b8d1",
+                    "label": "Voorwaarden/privacy links openen in nieuw tabblad",
+                    "name": "footer_pages_new_tab",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Opent de algemene voorwaarden- en privacybeleid-links in de footer in een nieuw tabblad.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "ui": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
                     "key": "field_65ddfa9639420",
                     "label": "Zoekpagina",
                     "name": "search_page",
@@ -2459,5 +2479,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1780992440
+    "modified": 1794215173
 }
