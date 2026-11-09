@@ -50,6 +50,14 @@
         break;
     }
 
+    // Optioneel: meerdere vestigingen met plaatsnaam + telefoonnummer
+    $navPhoneEstablishments = [];
+    foreach ((array) ($options['nav_phone_establishments'] ?? []) as $navPhoneId) {
+        if (!empty($navPhoneId) && get_post_status($navPhoneId) === 'publish') {
+            $navPhoneEstablishments[] = new \Wefabric\WPEstablishments\Establishment(get_post($navPhoneId));
+        }
+    }
+
     $menuType          = $options['mobile_menu_type']    ?? 'desktop_menu';
     $mobileMenuVersion = $options['mobile_menu_version'] ?? 'v1';
 @endphp
@@ -247,7 +255,16 @@
                     @endif
                 @endif
 
-                @if (in_array('phone', $options['secondary_menu_show_elements']) && $phone)
+                @if (in_array('phone', $options['secondary_menu_show_elements']) && !empty($navPhoneEstablishments))
+                    @foreach ($navPhoneEstablishments as $navPhoneEstablishment)
+                        @php $navPhone = $navPhoneEstablishment->getContactPhone(); @endphp
+                        @if ($navPhone)
+                            <a href="{{ $navPhone->uri() }}" class="mnav2-overlay__contact">
+                                <i class="fa fa-phone mr-2"></i>@if ($navPhoneEstablishment->city){{ $navPhoneEstablishment->city }}: @endif{{ get_bloginfo('language') === 'nl-NL' ? $navPhone->national() : $navPhone->international() }}
+                            </a>
+                        @endif
+                    @endforeach
+                @elseif (in_array('phone', $options['secondary_menu_show_elements']) && $phone)
                     <a href="tel:{{ $phone }}" class="mnav2-overlay__contact">
                         <i class="fa fa-phone mr-2"></i>{{ $phone }}
                     </a>
@@ -270,7 +287,16 @@
         {{-- Footer: vestigingscontactinfo (fallback als topbalk uit staat) --}}
         @if (empty($options['show_secondary_menu']))
             <footer class="mnav2-overlay__footer text-{{ str_replace('-color', '', $mobileMenuTextColor) }}">
-                @if($phone)
+                @if(!empty($navPhoneEstablishments))
+                    @foreach ($navPhoneEstablishments as $navPhoneEstablishment)
+                        @php $navPhone = $navPhoneEstablishment->getContactPhone(); @endphp
+                        @if ($navPhone)
+                            <a href="{{ $navPhone->uri() }}" class="mnav2-overlay__contact">
+                                <i class="fa fa-phone mr-2"></i>@if ($navPhoneEstablishment->city){{ $navPhoneEstablishment->city }}: @endif{{ get_bloginfo('language') === 'nl-NL' ? $navPhone->national() : $navPhone->international() }}
+                            </a>
+                        @endif
+                    @endforeach
+                @elseif($phone)
                     <a href="tel:{{ $phone }}" class="mnav2-overlay__contact">
                         <i class="fa fa-phone mr-2"></i>{{ $phone }}
                     </a>
