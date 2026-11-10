@@ -1,0 +1,28 @@
+{
+  "name": "wefabric/historie-slider",
+  "title": "Historie slider",
+  "description": "Horizontale historie-slider met afbeelding, jaartal en tekst per item",
+  "category": "wefabric-theme",
+  "icon": "backup",
+  "apiVersion": 3,
+  "keywords": [
+    "historie",
+    "slider",
+    "tijdlijn",
+    "geschiedenis"
+  ],
+  "acf": {
+    "mode": "auto",
+    "renderTemplate": "render.php",
+    "blockVersion": 3,
+    "hideFieldsInSidebar": true
+  },
+  "attributes": {},
+  "example": {
+    "attributes": {
+      "data": {
+        "title": "Historie van Broekens"
+      }
+    }
+  }
+}

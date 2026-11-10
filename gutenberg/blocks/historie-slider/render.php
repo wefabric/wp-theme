@@ -1,0 +1,1 @@
+<?php echo view('gutenberg.blocks.historie-slider.index', ['block' => $block])->render(); ?>
