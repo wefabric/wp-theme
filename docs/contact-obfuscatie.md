@@ -36,12 +36,12 @@ Er komt geen aparte plugin. De oplossing zit in `wefabric/wp-theme`, dus elke si
 - **Afwijking van het acceptatiecriterium:** het telefoonnummer van het bedrijf blijft daardoor leesbaar in de ruwe HTML, in de `Organization`/`ContactPoint`-schema van Rank Math en de `LocalBusiness`-schema van het contactblok. Dat is een bewuste keuze voor SEO. Verder hoort er niets leesbaar in de HTML te staan.
 - E-mailadressen staan **niet** in de structured data. Ze leveren geen rich result op en zouden de obfuscatie omzeilen. Dat geldt voor de vestigingen (`LocalBusiness` in het contactblok) en voor medewerkers (`Person`: geen e-mail, telefoon of WhatsApp-link).
 - Rank Math kan zelf ook een e-mailadres in de `Organization`-schema zetten (Titels & Meta > Lokale SEO). Laat dat veld leeg.
-- Meta-tags in `<head>` (description, Open Graph, Twitter) worden niet aangepast, want daar draait geen JS. Zet daarom geen contactgegevens in de SEO-beschrijving van pagina's. Rank Math gebruikt de beschrijving ook voor `og:description` en `twitter:description`, dus één leesbaar nummer staat er dan drie keer in.
+- Meta-tags in `<head>` worden niet door de browser gedecodeerd. Daarom worden e-mailadressen, telefoonnummers en WhatsApp-links uit de Rank Math-`description`, `og:description` en `twitter:description` **verwijderd** in plaats van versleuteld, inclusief losse scheidingstekens (`verder. | 0518 … | info@…` wordt `verder.`). Zoekmachines tonen ze dan niet in de snippet. Zet ze daarom liever niet in de SEO-beschrijving, want de zin kan na het verwijderen stroef lopen ("Mail of bel voor info.").
 
 ### Gedrag zonder JavaScript
 
-- E-mail: `info [at] rondaan [punt] nl`
-- Telefoon: `0518 · 462 · 070`
+- E-mail: `info [at] example [punt] nl`
+- Telefoon: `0123 · 456 · 789`
 - WhatsApp-tekst: `WhatsApp`
 - Links hebben geen `href` tot de JS draait. Ze zijn dan niet klikbaar, maar de tekst is wel leesbaar.
 
@@ -57,14 +57,14 @@ Er komt geen aparte plugin. De oplossing zit in `wefabric/wp-theme`, dus elke si
 
 1. `ContactObfuscationServiceProvider` start op `template_redirect` een output buffer voor alle front-end HTML (niet voor admin, feeds en de customizer).
 2. `ContactObfuscator::protectHtml()` loopt door de HTML en:
-   - vervangt `href="mailto:…"`, `tel:`, `sms:`, `whatsapp:`, `wa.me`, `api.whatsapp.com`, `signal.me` en `t.me` door `data-wfo-href="…"`;
+   - vervangt `href="mailto:…"`, `tel:`, `whatsapp:`, `wa.me`, `api.whatsapp.com`, `signal.me` en `t.me` door `data-wfo-href="…"`;
    - vervangt e-mailadressen, telefoonnummers en `wa.me`-links in tekst door `<span class="wfo" data-wfo="…">fallback</span>`;
    - verplaatst `aria-label`, `title` en `alt` die contactgegevens bevatten naar `data-wfo-aria-label` enz.
 3. `assets/js/contact-obfuscation.js` wordt inline in `wp_footer` gezet (met `nowprocket`, zodat WP Rocket hem niet uitstelt). Het script:
    - decodeert alles direct, en ook content die later wordt toegevoegd (AJAX, popups) via een `MutationObserver`;
    - vangt fouten per element af, zodat één kapotte waarde de rest niet blokkeert;
    - ondersteunt UTF-8 (`jöran@…`);
-   - zorgt dat screenreaders het echte adres of nummer voorlezen. Een label als "E-mailadres" wordt aangevuld tot "E-mailadres: info@rondaan.nl".
+   - zorgt dat screenreaders het echte adres of nummer voorlezen. Een label als "E-mailadres" wordt aangevuld tot "E-mailadres: info@example.nl".
 
 ## Implementatie in bestaande projecten
 
@@ -78,7 +78,7 @@ curl -s https://example.nl/contact/ \
   | grep -oE '.{40}([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}|(mailto|tel):[^"]+|wa\.me/[^"]+|\b0[1-9]([ -]?[0-9]){8}\b|\+31[ 0-9]{9,13})'
 ```
 
-Het enige toegestane resultaat is het telefoonnummer van het bedrijf in de JSON-LD (`"telephone":…`). Komt er iets anders uit, zoals een e-mailadres of een nummer in een `content="…"` van een meta-tag, pas dan de SEO-beschrijving of de Rank Math-instellingen aan.
+Het enige toegestane resultaat is het telefoonnummer van het bedrijf in de JSON-LD (`"telephone":…`). Komt er iets anders uit, zoals een e-mailadres in de JSON-LD of een nummer in een meta-tag die niet van Rank Math komt, pas dan de Rank Math-instellingen of die plugin aan.
 
 Leeg de WP Rocket-cache na de update, anders wordt de oude HTML nog geserveerd.
 
@@ -95,15 +95,16 @@ add_filter('wefabric/contact_obfuscation/enabled', fn () => ! is_page('contact')
 In templates is dit niet nodig, de output buffer pakt alles op. Wil je contactgegevens toch expliciet beschermd uitleveren, gebruik dan de Blade-componenten:
 
 ```blade
-<x-protected-email email="info@rondaan.nl" />
-<x-protected-phone phone="0518 462 070" label="Bel ons" class="btn" />
+<x-protected-email email="info@example.nl" />
+<x-protected-phone phone="0123 456 789" label="Bel ons" class="btn" />
+<x-protected-whatsapp number="+31 6 12345678" message="Hallo!" label="Stuur een WhatsApp" />
 ```
 
 Of de helper:
 
 ```blade
-{!! \Theme\Helpers\ContactObfuscator::email('info@rondaan.nl') !!}
-{!! \Theme\Helpers\ContactObfuscator::phone('0518 462 070') !!}
+{!! \Theme\Helpers\ContactObfuscator::email('info@example.nl') !!}
+{!! \Theme\Helpers\ContactObfuscator::phone('0123 456 789') !!}
 {!! \Theme\Helpers\ContactObfuscator::whatsapp('+31 6 12345678', 'Hallo!', 'Stuur een WhatsApp') !!}
 ```
 
@@ -111,4 +112,4 @@ Het decoder-script staat alleen op pagina's die `wp_footer` aanroepen. Gebruik d
 
 ### Laravel-projecten
 
-Buiten scope van deze oplevering: er is nog geen Laravel-package. De aanpak is wel direct over te zetten. De `ContactObfuscator`-klasse gebruikt WordPress alleen voor escapen (`esc_attr`, `esc_html`, `esc_url`) en voor de aan/uit-check in `isEnabled()`. Voor Laravel vervang je die door `e()` en een config-waarde, roep je `protectHtml()` aan in een middleware op HTML-responses, en neem je het script op in de layout. De Blade-componenten `<x-protected-email>` en `<x-protected-phone>` uit `views/components` kunnen zo mee.
+Buiten scope van deze oplevering: er is nog geen Laravel-package. De aanpak is wel direct over te zetten. De `ContactObfuscator`-klasse gebruikt WordPress alleen voor escapen (`esc_attr`, `esc_html`, `esc_url`) en voor de aan/uit-check in `isEnabled()`. Voor Laravel vervang je die door `e()` en een config-waarde, roep je `protectHtml()` aan in een middleware op HTML-responses, en neem je het script op in de layout. De Blade-componenten `<x-protected-email>`, `<x-protected-phone>` en `<x-protected-whatsapp>` uit `views/components` kunnen zo mee.

@@ -12,6 +12,27 @@ class ContactObfuscationServiceProvider extends ServiceProvider
         add_action('template_redirect', [$this, 'startOutputBuffer'], PHP_INT_MAX);
 
         add_action('wp_footer', [$this, 'printDecoder'], 1);
+
+        foreach ([
+            'rank_math/frontend/description',
+            'rank_math/opengraph/facebook/og_description',
+            'rank_math/opengraph/twitter/twitter_description',
+        ] as $descriptionFilter) {
+            add_filter($descriptionFilter, [$this, 'stripContactDetails'], PHP_INT_MAX);
+        }
+    }
+
+    public function stripContactDetails(mixed $description): mixed
+    {
+        if (! is_string($description)) {
+            return $description;
+        }
+
+        if (! ContactObfuscator::isEnabled()) {
+            return $description;
+        }
+
+        return ContactObfuscator::stripContactDetails($description);
     }
 
     public function startOutputBuffer(): void

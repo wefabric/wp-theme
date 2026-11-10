@@ -4,7 +4,7 @@ namespace Theme\Helpers;
 
 class ContactObfuscator
 {
-    private static string $sensitiveHrefPattern = '/^(?:mailto:|tel:|sms:|whatsapp:|https?:\/\/(?:wa\.me|api\.whatsapp\.com|web\.whatsapp\.com|signal\.me|t\.me|telegram\.me)\/)/i';
+    private static string $sensitiveHrefPattern = '/^(?:mailto:|tel:|whatsapp:|https?:\/\/(?:wa\.me|api\.whatsapp\.com|web\.whatsapp\.com|signal\.me|t\.me|telegram\.me)\/)/i';
 
     private static string $sensitiveTextPattern = '/
         (?<whatsapp>(?:https?:\/\/)?(?:wa\.me|api\.whatsapp\.com)\/[^\s<"\']+)
@@ -75,7 +75,7 @@ class ContactObfuscator
         $attributes = trim($attributes) === '' ? '' : ' ' . trim($attributes);
 
         if (! self::isEnabled()) {
-            return sprintf('<a href="%s"%s>%s</a>', esc_url($url, ['mailto', 'tel', 'sms', 'whatsapp', 'http', 'https']), $attributes, esc_html($label));
+            return sprintf('<a href="%s"%s>%s</a>', esc_url($url, ['mailto', 'tel', 'whatsapp', 'http', 'https']), $attributes, esc_html($label));
         }
 
         return sprintf(
@@ -127,6 +127,27 @@ class ContactObfuscator
             fn (array $matches): string => self::protectedSpan($matches[0]),
             $text,
         ) ?? $text;
+    }
+
+    /*
+     * Meta tags in the head are never decoded by the browser, so contact details are
+     * removed there instead of encoded. Separators left behind ("verder. | ") go too.
+     */
+    public static function stripContactDetails(string $text): string
+    {
+        if (! preg_match('/[@\d]|wa\.me|whatsapp/i', $text)) {
+            return $text;
+        }
+
+        $separator = '[|·•\/,:;–—-]';
+
+        $text = preg_replace(self::$sensitiveTextPattern, '', $text) ?? $text;
+
+        $text = preg_replace("/(?:\s*{$separator})+\s*(?={$separator})/u", '', $text) ?? $text;
+
+        $text = preg_replace("/^\s*{$separator}\s*|\s*{$separator}\s*$/u", '', $text) ?? $text;
+
+        return trim(preg_replace('/\s{2,}/u', ' ', $text) ?? $text);
     }
 
     public static function protectLinkTag(string $tag): string

@@ -33,7 +33,7 @@
         });
     };
 
-    const contactValue = (href) => decodeURIComponent(href.replace(/^(mailto|tel|sms):/i, '').split('?')[0]);
+    const contactValue = (href) => decodeURIComponent(href.replace(/^(mailto|tel):/i, '').split('?')[0]);
 
     // Phone numbers are compared on their last nine digits, so a local number also matches its +31 form.
     const mentionsValue = (text, value) => {
@@ -48,14 +48,14 @@
         const href = decode(link.dataset.wfoHref);
 
         // Editors can add data-* attributes, so never let a payload smuggle in a javascript: URL.
-        if (! /^(mailto|tel|sms|whatsapp|https?):/i.test(href)) {
+        if (! /^(mailto|tel|whatsapp|https?):/i.test(href)) {
             throw new Error('Unsupported contact link');
         }
 
         link.setAttribute('href', href);
         link.removeAttribute('data-wfo-href');
 
-        if (! /^(mailto|tel|sms):/i.test(href)) {
+        if (! /^(mailto|tel):/i.test(href)) {
             return;
         }
 
