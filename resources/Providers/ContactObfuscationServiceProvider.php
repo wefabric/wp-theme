@@ -13,6 +13,9 @@ class ContactObfuscationServiceProvider extends ServiceProvider
 
         add_action('wp_footer', [$this, 'printDecoder'], 1);
 
+        // For front-end pages that render their own layout without wp_footer (e.g. business cards).
+        add_action('wefabric/contact_obfuscation/print_decoder', [$this, 'printDecoder']);
+
         foreach ([
             'rank_math/frontend/description',
             'rank_math/opengraph/facebook/og_description',
