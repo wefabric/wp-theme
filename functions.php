@@ -647,6 +647,24 @@ add_filter('rank_math/frontend/breadcrumb/html', function ($html){
  */
 add_filter( 'rank_math/can_edit_file', '__return_true' );
 
+/**
+ * Disable Rank Math's "Add missing image title" feature.
+ * It adds titles like "Home 1", "Home 2" to every image, which show up as a tooltip on hover.
+ */
+add_filter( 'option_rank-math-options-general', function ( $options ) {
+    if ( is_array( $options ) ) {
+        $options['add_img_title'] = 'off';
+    }
+
+    return $options;
+} );
+
+add_action( 'after_setup_theme', function () {
+    if ( function_exists( 'rank_math' ) && isset( rank_math()->settings ) ) {
+        rank_math()->settings->reset();
+    }
+} );
+
 
 // Hide Wordpress version
 remove_action('wp_head', 'wp_generator');
