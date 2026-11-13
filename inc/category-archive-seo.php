@@ -1,19 +1,25 @@
 <?php
 
 /**
- * SEO voor categoriearchieven (bijv. /nieuws-categorie/evenementen/).
+ * SEO voor termarchieven (categorieën, tags en taxonomieën van CPT's,
+ * bijv. /nieuws-categorie/evenementen/ of een project-categorie).
  *
- * Categoriearchieven renderen de content van de nieuwspagina (page_for_posts),
- * inclusief het header-blok met een vaste H1 ("Actueel"). Daardoor kregen alle
- * categoriepagina's dezelfde H1 en meta description. Hier krijgt elke categorie
- * een eigen H1 en meta description.
+ * Termarchieven renderen de content van de archiefpagina van het bijbehorende
+ * post type (bij berichten de page_for_posts), inclusief het header-blok met
+ * een vaste H1 ("Actueel"). Daardoor kregen alle termpagina's dezelfde H1 en
+ * meta description. Hier krijgt elke term een eigen H1 en meta description.
  */
 
+function wefabric_is_term_archive(): bool
+{
+    return is_category() || is_tag() || is_tax();
+}
+
 /**
- * H1 van het header-blok vervangen door de categorienaam op categoriearchieven.
+ * H1 van het header-blok vervangen door de termnaam op termarchieven.
  */
 add_filter('render_block_data', function ($parsedBlock) {
-    if (! is_category() || is_admin()) {
+    if (! wefabric_is_term_archive() || is_admin()) {
         return $parsedBlock;
     }
 
@@ -38,7 +44,7 @@ add_filter('render_block_data', function ($parsedBlock) {
  * Meta description: termbeschrijving, anders een nette fallback.
  */
 add_filter('rank_math/frontend/description', function ($description) {
-    if (! is_category()) {
+    if (! wefabric_is_term_archive()) {
         return $description;
     }
 
@@ -53,7 +59,7 @@ add_filter('rank_math/frontend/description', function ($description) {
         return $description;
     }
 
-    $termDescription = trim(wp_strip_all_tags(term_description($term->term_id)));
+    $termDescription = trim(wp_strip_all_tags(term_description($term->term_id, $term->taxonomy)));
 
     if ($termDescription !== '') {
         return $termDescription;
@@ -61,7 +67,7 @@ add_filter('rank_math/frontend/description', function ($description) {
 
     return sprintf(
         /* translators: 1: categorienaam, 2: sitenaam */
-        __('Alle berichten in de categorie %1$s van %2$s.', 'themosis'),
+        __('Overzicht van %1$s bij %2$s.', 'themosis'),
         $term->name,
         get_bloginfo('name')
     );
