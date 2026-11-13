@@ -648,6 +648,26 @@ add_filter('rank_math/frontend/breadcrumb/html', function ($html){
 add_filter( 'rank_math/can_edit_file', '__return_true' );
 
 /**
+ * Serve /sitemap.xml directly with the Rank Math sitemap index instead of a 301 redirect
+ * to /sitemap_index.xml, so crawlers/Search Console that request /sitemap.xml don't hit a redirect.
+ * Uses the `request` filter, so no rewrite flush is needed.
+ */
+add_filter( 'request', function ( $query_vars ) {
+    if ( ! class_exists( '\\RankMath\\Sitemap\\Sitemap' ) ) {
+        return $query_vars;
+    }
+
+    $path = wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH );
+    $home = trailingslashit( (string) wp_parse_url( home_url(), PHP_URL_PATH ) );
+
+    if ( untrailingslashit( (string) $path ) === untrailingslashit( $home ) . '/sitemap.xml' ) {
+        $query_vars = [ 'sitemap' => 1 ];
+    }
+
+    return $query_vars;
+} );
+
+/**
  * Disable Rank Math's "Add missing image title" feature.
  * It adds titles like "Home 1", "Home 2" to every image, which show up as a tooltip on hover.
  */
