@@ -6,9 +6,10 @@ import SplitType from "split-type";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import TelQr from '@wefabric/telqr';
+import jQuery from 'jquery';
 
 // Import dependencies
-window.$ = window.jQuery = require('jquery');
+window.$ = window.jQuery = jQuery;
 
 // Import custom JS files
 import './outOfOffice';
