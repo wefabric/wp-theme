@@ -70,6 +70,7 @@
                 @include('components.image', [
                      'image_id' => $imageId,
                      'size' => 'full',
+                     'crop_ratio' => 1,
                      'object_fit' => 'cover',
                      'img_class' => 'aspect-square w-full h-full object-cover object-center transform ease-in-out duration-300 '
                                         . ($hoverImageId ? 'group-hover:opacity-0 ' : ($linkUrl ? 'group-hover:scale-110 ' : ''))
@@ -80,6 +81,7 @@
                     @include('components.image', [
                          'image_id' => $hoverImageId,
                          'size' => 'full',
+                         'crop_ratio' => 1,
                          'object_fit' => 'cover',
                          'img_class' => 'aspect-square w-full h-full object-cover object-center absolute top-0 left-0 transform ease-in-out duration-300 opacity-0 group-hover:opacity-100 rounded-' . $borderRadius,
                          'alt' => $fullName . ' hover',

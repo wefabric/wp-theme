@@ -242,19 +242,23 @@
                                 @endif
 
                                 {{-- Telefoon --}}
-                                @if(in_array('establishment_phone', $establishmentElements) && $contactPhone = $contactEstablishment->getContactPhone())
+                                @php
+                                    $customPhone = trim($block['data']['custom_phone'] ?? '');
+                                    $contactPhone = $customPhone === '' ? $contactEstablishment->getContactPhone() : null;
+                                @endphp
+                                @if(in_array('establishment_phone', $establishmentElements) && ($customPhone !== '' || $contactPhone))
                                     @include('components.link.opening', [
-                                        'href' => $contactPhone->uri(),
+                                        'href' => $customPhone !== '' ? 'tel:' . preg_replace('/[^\d+]/', '', $customPhone) : $contactPhone->uri(),
                                         'alt' => 'Telefoonnummer',
                                         'class' => 'phone-text flex w-fit items-center'
                                     ])
                                     <i class="fa-solid fa-phone mr-3 text-{{ $contactIconColor }} text-md"></i>
-                                    <span>{{ get_bloginfo('language') === 'nl-NL' ? $contactPhone->national() : $contactPhone->international() }}</span>
+                                    <span>{{ $customPhone !== '' ? $customPhone : (get_bloginfo('language') === 'nl-NL' ? $contactPhone->national() : $contactPhone->international()) }}</span>
                                     @include('components.link.closing')
                                 @endif
 
                                 {{-- E-mail --}}
-                                @if(in_array('establishment_mail', $establishmentElements) && $contactEmail = $contactEstablishment->getContactEmailAddress())
+                                @if(in_array('establishment_mail', $establishmentElements) && $contactEmail = (!empty($block['data']['custom_email']) ? $block['data']['custom_email'] : $contactEstablishment->getContactEmailAddress()))
                                     @include('components.link.opening', [
                                         'href' => 'mailto:' . $contactEmail,
                                         'alt' => 'E-mailadres',

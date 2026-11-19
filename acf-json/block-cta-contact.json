@@ -893,6 +893,71 @@
             "custom_choice_button_text": "Nieuwe keuze toevoegen"
         },
         {
+            "key": "field_6820cc007ph001",
+            "label": "Afwijkend telefoonnummer",
+            "name": "custom_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optioneel. Indien ingevuld wordt dit telefoonnummer getoond in plaats van het telefoonnummer van de vestiging. Vereist dat 'Telefoonnummer van vestiging' is aangevinkt.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6820cc002sc001",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_6820cc004ee001",
+                        "operator": "==",
+                        "value": "establishment_phone"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6820cc006em001",
+            "label": "Afwijkend e-mailadres",
+            "name": "custom_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Optioneel. Indien ingevuld wordt dit e-mailadres getoond in plaats van het e-mailadres van de vestiging. Vereist dat 'E-mailadres van vestiging' is aangevinkt.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6820cc002sc001",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_6820cc004ee001",
+                        "operator": "==",
+                        "value": "establishment_mail"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6820cc005ss001",
             "label": "Toon social media",
             "name": "show_socials",
