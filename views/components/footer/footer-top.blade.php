@@ -105,6 +105,7 @@
                            href="{{ $socialUrl }}" title="{{ $social['name'] }} pagina" target="{{ $socialTarget }}"
                            aria-label="Ga naar {{ $social['name'] }}">
                             <i class="{{ $social['icon'] }} transition-all group-hover:scale-110"></i>
+                            <span class="screen-reader-only">{{ $social['name'] }}</span>
                         </a>
                     @endforeach
                 </div>
